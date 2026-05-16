@@ -1,0 +1,149 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Read metadata specified on the body tag
+    const body = document.body;
+    const navId = body.getAttribute('data-nav') || 'overview';
+    const pageTitle = body.getAttribute('data-title') || 'Overview';
+    
+    // Find unique content for this page
+    const contentDiv = document.querySelector('.content');
+    if (!contentDiv) {
+        console.warn('layout.js: No <div class="content"> element found.');
+        return;
+    }
+
+    // 1. Inject the Global Sidebar and Overlay
+    body.insertAdjacentHTML('afterbegin', `
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <nav class="sidebar" id="sidebar">
+            <div class="brand">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="ph-fill ph-paw-print" style="color: var(--accent); font-size: 1.8rem; transition: color 0.3s ease;"></i>
+                    <span style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.9rem; letter-spacing: -0.05em; color: var(--accent); transition: color 0.3s ease;">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
+                </div>
+                <button class="hamburger" id="closeSidebarBtn"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div style="font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;">Menu</div>
+            
+            <a href="/" class="nav-link ${navId === 'overview' ? 'active' : ''}"><i class="ph ph-house"></i> <span>Overview</span></a>
+            <a href="/commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+        </nav>
+    `);
+
+    // 2. Build the Content Wrapper & Header
+    const wrapper = document.createElement('div');
+    wrapper.className = 'content-wrapper';
+    
+    // Insert wrapper before our page content
+    contentDiv.parentNode.insertBefore(wrapper, contentDiv);
+    
+    // Inject the Header into the wrapper
+    wrapper.insertAdjacentHTML('beforeend', `
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button class="hamburger" id="openSidebarBtn"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a href="/" class="breadcrumb-item" title="Dashboard">
+                        <i class="ph-fill ph-paw-print breadcrumb-icon"></i> 
+                        <span style="font-weight: 900; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--accent); transition: color 0.3s ease;">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
+                    </a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">${pageTitle}</span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle">
+                    <div class="active-display"></div>
+                    <i class="ph ph-caret-down"></i>
+                    
+                    <div class="dropdown-menu-content">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Theme Accent</div>
+                        <div class="color-grid" id="colorGrid">
+                            <div class="accent-dot" data-accent="gold" style="background: #FFD700;"></div>
+                            <div class="accent-dot" data-accent="amber" style="background: #F59E0B;"></div>
+                            <div class="accent-dot" data-accent="orange" style="background: #F97316;"></div>
+                            <div class="accent-dot" data-accent="rose" style="background: #E11D48;"></div>
+                            <div class="accent-dot" data-accent="pink" style="background: #EC4899;"></div>
+                            <div class="accent-dot" data-accent="purple" style="background: #9333EA;"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background: #5865F2;"></div>
+                            <div class="accent-dot" data-accent="indigo" style="background: #6366F1;"></div>
+                            <div class="accent-dot" data-accent="blue" style="background: #3B82F6;"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;"></div>
+                            <div class="accent-dot" data-accent="teal" style="background: #0D9488;"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background: #10B981;"></div>
+                            <div class="accent-dot" data-accent="green" style="background: #22C55E;"></div>
+                            <div class="accent-dot" data-accent="lime" style="background: #84CC16;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    `);
+
+    // Move actual page content safely into wrapper
+    wrapper.appendChild(contentDiv);
+
+    // Inject the Footer at the bottom of wrapper
+    wrapper.insertAdjacentHTML('beforeend', `
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div>
+                <a href="/tos.html">Terms & Privacy</a>
+            </div>
+        </footer>
+    `);
+
+    // 3. Initialize Shared Layout Events
+    initLayoutEvents();
+});
+
+function initLayoutEvents() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            if(e.target.closest('.dropdown-menu-content') && !e.target.classList.contains('accent-dot')) return;
+            themeToggle.classList.toggle('open');
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (themeToggle && !themeToggle.contains(e.target)) themeToggle.classList.remove('open');
+    });
+
+    document.querySelectorAll('.accent-dot').forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            const color = e.target.getAttribute('data-accent') || e.target.getAttribute('data-color');
+            if (color) {
+                document.documentElement.setAttribute('data-accent', color);
+                localStorage.setItem('seanbotAccent', color);
+                
+                const header = document.querySelector('.top-header');
+                if (header) {
+                    header.classList.remove('theme-pulse');
+                    void header.offsetWidth;
+                    header.classList.add('theme-pulse');
+                }
+            }
+        });
+    });
+
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+
+    function toggleSidebar(show) {
+        if (show) {
+            sidebar.classList.add('mobile-open');
+            overlay.classList.add('show');
+        } else {
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('show');
+        }
+    }
+
+    openBtn?.addEventListener('click', () => toggleSidebar(true));
+    closeBtn?.addEventListener('click', () => toggleSidebar(false));
+    overlay?.addEventListener('click', () => toggleSidebar(false));
+}

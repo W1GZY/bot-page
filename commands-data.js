@@ -1,0 +1,256 @@
+const commandsDatabase = [
+    // --- SECTION 1: GENERAL & FUN ---
+    {
+        id: "general-fun",
+        title: "1.0 General & Fun",
+        icon: "ph-house-line",
+        tocLabel: "1.0 General & Fun",
+        commands: [
+            { name: "/serverinfo", desc: "Shows server information.", badge: "Everyone", type: "public" },
+            { name: "/ping", desc: "Checks the bots latency.", badge: "Everyone", type: "public" },
+            { name: "/dashboard", desc: "Get a link to view server stats", badge: "Administrator", type: "perm" },
+            { name: "/invite", desc: "Get the bot’s invite link.", badge: "Administrator", type: "perm" },
+            { name: "/duel", desc: "Start a Battle Royale!", badge: "Everyone", type: "public" },
+            { name: "/8ball", desc: "Ask the magic 8-ball a question.", badge: "Everyone", type: "public" },
+            { name: "/discquote", desc: "Fake a discord screenshot.", badge: "Member", type: "role" },
+            { name: "/cat says", desc: "Make a cat say something", badge: "Everyone", type: "public" },
+            { name: "/remindme", desc: "Set a reminder for later", badge: "Everyone", type: "public" },
+            { name: "/slap", desc: "Slap someone!", badge: "Everyone", type: "public" },
+            { name: "/slap stats", desc: "View slap statistics", badge: "Everyone", type: "public" },
+            { name: "/slap leaderboard", desc: "Top 10 most slapped users", badge: "Everyone", type: "public" }
+        ]
+    },
+
+    // --- SECTION 2: STAFF & ADMINISTRATION ---
+    {
+        id: "staff-admin",
+        title: "2.0 Staff & Administration",
+        icon: "ph-shield-checkered",
+        tocLabel: "2.0 Staff & Admin",
+        commands: [
+            { name: "/kick", desc: "Kicks user.", badge: "Kick", type: "perm" },
+            { name: "/ban", desc: "Bans the user.", badge: "Ban", type: "perm" },
+            { name: "/shadowban", desc: "Bans the user without being in the server.", badge: "Ban", type: "perm" },
+            { name: "/unban", desc: "Unbans the user by ID.", badge: "Ban", type: "perm" },
+            { name: "/untimeout", desc: "User can message and join VC again.", badge: "Moderate Member", type: "perm" },
+            { name: "/nick", desc: "Change a users Nickname.", badge: "Manage Nicknames", type: "perm" },
+            { name: "/purge", desc: "Deletes x number of messages from that channel.", badge: "Manage Messages", type: "perm" },
+            { name: "/archive", desc: "Archive x amount of messages into a file and database.", badge: "Manage Message", type: "perm" },
+            { name: "/archive_get", desc: "Lookup archive with archive ID.", badge: "Manage Message", type: "perm" },
+            { name: "/warning add", desc: "Adds a warning to the user.", badge: "Manage Message", type: "perm" },
+            { name: "/warning remove", desc: "Removes a warning from the user.", badge: "Manage Messages", type: "perm" },
+            { name: "/warning list", desc: "Lists the warnings of the user.", badge: "Manage Messages", type: "perm" },
+            { name: "/softban", desc: "Kicks a member and deletes their messages from the last 1 to 7 days.", badge: "Ban", type: "perm" },
+            { name: "/timeout", desc: "Prevents user from messaging and joining VC.", badge: "Moderate Member", type: "perm" },
+            { name: "/log list", desc: "List log types.", badge: "Manage Server", type: "perm" },
+            { name: "/set_log_webhook", desc: "Set the webhook URL for logging events.", badge: "Manage Server", type: "perm" },
+            { name: "/add_ignored_channel", desc: "Adds a channel to ignore list.", badge: "Manage Server", type: "perm" },
+            { name: "/remove_ignored_channel", desc: "Remove a channel from ignore list.", badge: "Manage Server", type: "perm" },
+            { name: "/list_ignored_channels", desc: "Shows a list of channels from ignore list.", badge: "Manage Server", type: "perm" },
+            { name: "/quarantine", desc: "Quarantine a member (removes roles).", badge: "Kick", type: "perm" },
+            { name: "/quarantine_remove", desc: "Restore a user from quarantine.", badge: "Administrator", type: "perm" },
+            { name: "/activity setup", desc: "Opt-in to activity tracking or update threshold.", badge: "Manage Server", type: "perm" },
+            { name: "/activity disable", desc: "Disable activity tracking for this server.", badge: "Manage Server", type: "perm" },
+            { name: "/activity status", desc: "View current activity tracking configuration for this server.", badge: "Everyone", type: "public" },
+            { name: "/activity refresh", desc: "Force update all activity roles immediately instead of waiting for the automatic cycle.", badge: "Manage Server", type: "perm" },
+            { name: "/returning_role set", desc: "Configure the returning member role", badge: "Administrator", type: "perm" },
+            { name: "/returning_role view", desc: "View current returning role configuration", badge: "Everyone", type: "public" },
+            { name: "/returning_role clear", desc: "Disable the returning role system", badge: "Administrator", type: "perm" }
+        ]
+    },
+
+    // --- SECTION 3: SECURITY & ANTI-RAID ---
+    {
+        id: "security-antiraid",
+        title: "3.0 Security & Anti-Raid",
+        icon: "ph-detective",
+        tocLabel: "3.0 Security",
+        commands: [
+            { name: "/antiraid whitelist", desc: "Toggles a role to bypass all detection.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid canary", desc: "Toggles Canary mode (Logging Only).", badge: "Administrator", type: "perm" },
+            { name: "/antiraid pause", desc: "Suspends join detection for high-traffic events.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid multiplier_channel", desc: "Sets the threat multiplier for a specific channel.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid multiplier_role", desc: "Sets the threat multiplier for a specific role.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid dashboard", desc: "Displays a comprehensive security overview.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid audit", desc: "Scans the server to find where the bot is lacking permissions.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid simulate", desc: "Simulates the heat score of a hypothetical message.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid threatlist", desc: "Shows users currently carrying high heat scores.", badge: "Administrator", type: "perm" },
+            { name: "/antiraid reset", desc: "Hard resets all current scores and threat trackers in the server.", badge: "Administrator", type: "perm" }
+        ]
+    },
+
+    // --- SECTION 4: COMMUNITY & HIGHLIGHTS ---
+    {
+        id: "community-highlights",
+        title: "4.0 Community & Highlights",
+        icon: "ph-users",
+        tocLabel: "4.0 Community",
+        commands: [
+            { name: "/star info", desc: "View current configuration.", badge: "Everyone", type: "public" },
+            { name: "/star set", desc: "Set starboard channel and options", badge: "Manage Server", type: "perm" },
+            { name: "/star ignore", desc: "Prevents a channel from being tracked.", badge: "Manage Server", type: "perm" },
+            { name: "/star unignore", desc: "Allows a channel to be tracked again.", badge: "Manage Server", type: "perm" },
+            { name: "/star stats server", desc: "Starboard stats for this server", badge: "Everyone", type: "public" },
+            { name: "/star stats user", desc: "Starboard stats for a user", badge: "Everyone", type: "public" },
+            { name: "/star stats top_message", desc: "Most starred message", badge: "Everyone", type: "public" },
+            { name: "/autopin toggle", desc: "Turn the entire Auto-Pin system on or off for this server.", badge: "Manage Messages", type: "perm" },
+            { name: "/autopin stats", desc: "View live AutoPin system statistics.", badge: "Manage Messages", type: "perm" },
+            { name: "/autopin set_threshold", desc: "Set the default required reactions to auto-pin.", badge: "Manage Messages", type: "perm" },
+            { name: "/autopin set_emoji", desc: "Set a custom emoji for Auto-Pins.", badge: "Manage Messages", type: "perm" },
+            { name: "/autopin channel_override", desc: "Set a custom threshold for a specific channel.", badge: "Manage Messages", type: "perm" },
+            { name: "/autopin toggle_channel", desc: "Enable or disable auto-pins in a specific channel.", badge: "Manage Messages", type: "perm" },
+            { name: "/autopin settings", desc: "View current auto-pin configurations.", badge: "Manage Messages", type: "perm" },
+            { name: "/emoji top_users", desc: "Show who types emojis the most in messages.", badge: "Everyone", type: "public" },
+            { name: "/emoji top15", desc: "Show top 15 most used emojis.", badge: "Everyone", type: "public" },
+            { name: "/reaction top_users", desc: "Show who reacts the most.", badge: "Everyone", type: "public" },
+            { name: "/reaction top15", desc: "Show top 15 most used reactions.", badge: "Everyone", type: "public" },
+            { name: "/r toggle", desc: "Enable/disable reply.", badge: "Everyone", type: "public" },
+            { name: "/react", desc: "React to a message with an animated emoji.", badge: "Member or Guest", type: "role" },
+            { name: "/r set", desc: "Sets reply message if mentioned.", badge: "Member or Guest", type: "role" },
+            { name: "/r remove", desc: "Removes your reply.", badge: "Member or Guest", type: "role" },
+            { name: "/r_admin_clear", desc: "Clear a users reply.", badge: "Manage Server", type: "perm" }
+        ]
+    },
+
+    // --- SECTION 5: EVENTS & SCHEDULING ---
+    {
+        id: "events-scheduling",
+        title: "5.0 Events & Scheduling",
+        icon: "ph-calendar-check",
+        tocLabel: "5.0 Events",
+        commands: [
+            { name: "/raidpoll", desc: "Quickly create Raid Polls", badge: "Manage Channels", type: "perm" },
+            { name: "/teamup", desc: "Create an LFG / Team-Up Board", badge: "Everyone", type: "public" },
+            { name: "/teamup_admin", desc: "Setup the Team-Up system", badge: "Administrator", type: "perm" },
+            { name: "/raid_list", desc: "List all current signups.", badge: "Everyone", type: "public" },
+            { name: "/raid_info", desc: "Get info about an active raid/event by ID.", badge: "Everyone", type: "public" },
+            { name: "/raid_start", desc: "Start a new raid/event signup sheet.", badge: "Keymaster", type: "role" },
+            { name: "/set_raid_channel", desc: "Set the channel for event signups.", badge: "Administrator", type: "perm" },
+            { name: "/raid_cancel", desc: "Cancel an active raid/event.", badge: "Administrator", type: "perm" },
+            { name: "/event refresh", desc: "Force update all events immediately.", badge: "Manage Channels", type: "perm" },
+            { name: "/event cancel", desc: "Cancel event via Message Link/ID.", badge: "Manage Channels", type: "perm" },
+            { name: "/event extend", desc: "Extend event duration.", badge: "Manage Channels", type: "perm" },
+            { name: "/event config clean_history", desc: "Permanently delete old event history.", badge: "Administrator", type: "perm" },
+            { name: "/event config set_category", desc: "Set category for new events.", badge: "Administrator", type: "perm" },
+            { name: "/timeping_watch", desc: "Start watching a message link for reactions.", badge: "Manage Channel", type: "perm" },
+            { name: "/timeping list", desc: "View all active events in this server.", badge: "Everyone", type: "public" },
+            { name: "/timeping preview", desc: "Preview reminders.", badge: "Everyone", type: "public" },
+            { name: "/timeping delete", desc: "Stop watching a message.", badge: "Manage Channel", type: "perm" },
+            { name: "/timeping my-timezone set", desc: "Set your personal timezone.", badge: "Everyone", type: "public" },
+            { name: "/timeping my-timezone view", desc: "See your currently saved timezone.", badge: "Everyone", type: "public" },
+            { name: "/timeping_my_timezone_clear", desc: "Clear your currently saved timezone.", badge: "Everyone", type: "public" },
+            { name: "/timeping defaults view", desc: "See current server default configurations.", badge: "Manage Channel", type: "perm" },
+            { name: "/timeping defaults set", desc: "Update server-wide defaults.", badge: "Manage Channel", type: "perm" },
+            { name: "/timeping auto-watch add", desc: "Auto-watch a specific channel.", badge: "Manage Channel", type: "perm" },
+            { name: "/timeping auto-watch remove", desc: "Remove auto-watch.", badge: "Manage Channel", type: "perm" },
+            { name: "/timeping auto-watch list", desc: "List watched channels.", badge: "Everyone", type: "public" },
+            { name: "/timeping auto-watch settings", desc: "Configure auto watch.", badge: "Manage Channel", type: "perm" },
+            { name: "/ping_config authors", desc: "Safety controls for regular message authors.", badge: "Manage Channel", type: "perm" }
+        ]
+    },
+
+    // --- SECTION 6: VOICE & CHANNELS ---
+    {
+        id: "voice-channels",
+        title: "6.0 Voice & Temp Channels",
+        icon: "ph-microphone-stage",
+        tocLabel: "6.0 Voice",
+        commands: [
+            { name: "/voice claim", desc: "Take control of a temporary channel if the owner has left.", badge: "Everyone", type: "public" },
+            { name: "/voice kick", desc: "Kick a member from your temp channel.", badge: "Everyone", type: "public" },
+            { name: "/voice ban", desc: "Ban a member from rejoining your temp channel.", badge: "Everyone", type: "public" },
+            { name: "/voice unban", desc: "Unban a member from your temp channel.", badge: "Everyone", type: "public" },
+            { name: "/templates save", desc: "Save current settings as a template.", badge: "Everyone", type: "public" },
+            { name: "/templates load", desc: "Create a new VC using a saved template.", badge: "Everyone", type: "public" },
+            { name: "/templates list", desc: "List templates.", badge: "Everyone", type: "public" },
+            { name: "/voice-admin set-create", desc: "Set the Join-to-Create voice channel.", badge: "Administrator", type: "perm" },
+            { name: "/voice-admin set-inactivity", desc: "Set inactivity cleanup timer.", badge: "Administrator", type: "perm" },
+            { name: "/voice analytics", desc: "Advanced voice channel analytics.", badge: "Manage Server", type: "perm" }
+        ]
+    },
+
+    // --- SECTION 7: FEDERATION & NETWORKING ---
+    {
+        id: "federation-networking",
+        title: "7.0 Federation & Networking",
+        icon: "ph-globe-hemisphere-west",
+        tocLabel: "7.0 Federation",
+        commands: [
+            { name: "/thread network create", desc: "Create a new Thread network.", badge: "Administrator", type: "perm" },
+            { name: "/thread network join", desc: "Join a thread network using a token.", badge: "Administrator", type: "perm" },
+            { name: "/thread network info", desc: "View current network info.", badge: "Everyone", type: "public" },
+            { name: "/thread network dashboard", desc: "View federation health and config dashboard.", badge: "Everyone", type: "public" },
+            { name: "/thread network health", desc: "View network health statistics.", badge: "Everyone", type: "public" },
+            { name: "/thread network leave", desc: "Leave the current network.", badge: "Administrator", type: "perm" },
+            { name: "/thread network kick", desc: "Remove a guild from the network.", badge: "Administrator", type: "perm" },
+            { name: "/thread network rotate_token", desc: "Rotate the join token (Owner only).", badge: "Administrator", type: "perm" },
+            { name: "/thread network dissolve", desc: "Delete the network (Owner only).", badge: "Administrator", type: "perm" },
+            { name: "/thread network config", desc: "Configure network settings (Owner only).", badge: "Administrator", type: "perm" },
+            { name: "/thread network requests", desc: "Manage join requests (Owner only).", badge: "Administrator", type: "perm" },
+            { name: "/thread network directory", desc: "List discoverable public networks.", badge: "Everyone", type: "public" },
+            { name: "/thread network apply", desc: "Request to join a public network.", badge: "Administrator", type: "perm" },
+            { name: "/thread network permission", desc: "Set permissions for a member guild.", badge: "Administrator", type: "perm" },
+            { name: "/thread network observer", desc: "Set a guild to Observer Mode.", badge: "Administrator", type: "perm" },
+            { name: "/thread network role", desc: "Manage user roles in the network.", badge: "Network Admin", type: "role" },
+            { name: "/thread network reputation", desc: "View reputation scores for members.", badge: "Everyone", type: "public" },
+            { name: "/thread network rotate_secret", desc: "Rotate primary HMAC secret.", badge: "Administrator", type: "perm" },
+            { name: "/thread admin debug", desc: "Developer system inspection tools.", badge: "Administrator", type: "perm" },
+            { name: "/thread admin set_federated_forum", desc: "Set Forum for federation.", badge: "Manage Server", type: "perm" },
+            { name: "/thread admin set_global_tag", desc: "Only federate threads with this Tag.", badge: "Manage Server", type: "perm" },
+            { name: "/thread admin unset_global_tag", desc: "Remove global tag requirement.", badge: "Manage Server", type: "perm" },
+            { name: "/thread admin set_admin_channel", desc: "Set channel for connection requests.", badge: "Manage Server", type: "perm" },
+            { name: "/thread admin metrics", desc: "View global cross-server metrics.", badge: "Administrator", type: "perm" },
+            { name: "/thread mod purge", desc: "Purge messages across the federation.", badge: "Manage Messages", type: "perm" },
+            { name: "/thread mod ban", desc: "Ban a user from the entire network.", badge: "Manage Server", type: "perm" },
+            { name: "/thread mod timeout", desc: "Timeout user across the federation.", badge: "Manage Server", type: "perm" },
+            { name: "/thread mod lock", desc: "Lock this thread across the federation.", badge: "Manage Threads", type: "perm" },
+            { name: "/thread mod archive", desc: "Archive this thread across the federation.", badge: "Manage Threads", type: "perm" },
+            { name: "/relay create", desc: "Create a new channel relay network.", badge: "Administrator", type: "perm" },
+            { name: "/relay link", desc: "Link this channel to a relay.", badge: "Administrator", type: "perm" },
+            { name: "/relay unlink", desc: "Unlink channel from the relay.", badge: "Administrator", type: "perm" },
+            { name: "/identity set", desc: "Set federation identity and optional badge.", badge: "Everyone", type: "public" },
+            { name: "/identity view", desc: "View your current identity.", badge: "Everyone", type: "public" },
+            { name: "/identity clear", desc: "Clear your custom identity.", badge: "Everyone", type: "public" },
+            { name: "/identity connect", desc: "Connect identity via OAuth2.", badge: "Everyone", type: "public" },
+            { name: "/identity proof", desc: "Submit verification token.", badge: "Everyone", type: "public" },
+            { name: "/identity verify", desc: "Verify user identity (Admin only).", badge: "Administrator", type: "perm" },
+            { name: "/identity unverify", desc: "Unverify user identity (Admin only).", badge: "Administrator", type: "perm" }
+        ]
+    },
+
+    // --- SECTION 8: WIZARD101 TOOLKIT ---
+    {
+        id: "wizard101-toolkit",
+        title: "8.0 Wizard101 Toolkit",
+        icon: "ph-magic-wand",
+        tocLabel: "8.0 W101 Toolkit",
+        commands: [
+            { name: "/item", desc: "Search for an item in the W101 database", badge: "Everyone", type: "public" },
+            { name: "/damage", desc: "Open the Damage Assistant", badge: "Everyone", type: "public" },
+            { name: "/spell", desc: "Search for a spell in the W101 database", badge: "Everyone", type: "public" },
+            { name: "/value", desc: "Look up trade value of a Treasure Card", badge: "Everyone", type: "public" },
+            { name: "/decks", desc: "Browse decks in this server.", badge: "Everyone", type: "public" },
+            { name: "/deck_search", desc: "Search a deck by name or keywords.", badge: "Everyone", type: "public" },
+            { name: "/deck_share", desc: "DM a user a specific deck.", badge: "Everyone", type: "public" },
+            { name: "/deck_export", desc: "Export a deck as an image", badge: "Everyone", type: "public" },
+            { name: "/deck_create", desc: "Create a new deck.", badge: "Keymaster", type: "role" },
+            { name: "/bm_stats", desc: "View Beastmoon forms spells and stats.", badge: "Everyone", type: "public" },
+            { name: "/bm_add", desc: "Add or update your Beastmoon forms.", badge: "Everyone", type: "public" },
+            { name: "/bm_quick_add", desc: "Add or update forms in raw format.", badge: "Everyone", type: "public" },
+            { name: "/bm_forms_alt", desc: "View Beastmoon forms for your alt.", badge: "Everyone", type: "public" },
+            { name: "/bm_forms", desc: "View your Beastmoon forms.", badge: "Everyone", type: "public" },
+            { name: "/bm_check", desc: "Shows your Beastmoon progress.", badge: "Everyone", type: "public" },
+            { name: "/bm_leaderboard", desc: "Top Beastmoon gamers in server.", badge: "Everyone", type: "public" },
+            { name: "/bm_user", desc: "View another users Beastmoon forms.", badge: "Everyone", type: "public" },
+            { name: "/bm_max", desc: "View users with at least Tier 5 forms.", badge: "Everyone", type: "public" },
+            { name: "/set_bm_log_channel", desc: "Sets channel for Beastmoon announcements.", badge: "Manage Channel", type: "perm" },
+            { name: "/strategy", desc: "View and edit a strategy.", badge: "Keymaster", type: "role" },
+            { name: "/strategy_create", desc: "Create strategy.", badge: "Administrator", type: "perm" },
+            { name: "/strategy_delete", desc: "Delete a strategy.", badge: "Administrator", type: "perm" },
+            { name: "/tapestry_list", desc: "List all tapestries.", badge: "Everyone", type: "public" },
+            { name: "/tapestry_set", desc: "Toggle status of a tapestry.", badge: "Everyone", type: "public" },
+            { name: "/bobblehead_list", desc: "List all bobbleheads.", badge: "Everyone", type: "public" },
+            { name: "/bobblehead_set", desc: "Toggle status of a bobblehead.", badge: "Everyone", type: "public" }
+        ]
+    }
+];

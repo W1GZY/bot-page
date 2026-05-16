@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot Commands</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <script>
+        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+        document.documentElement.setAttribute('data-accent', savedAccent);
+    </script>
+    <link rel="stylesheet" href="global.css">
+    
+    <script src="commands-data.js"></script>
+    <script src="layout.js" defer></script>
+</head>
+
+<body data-nav="commands" data-title="Commands">
+
+    <div class="content" style="max-width: 1400px;">
+        
+        <div class="auto-fade-in" style="margin-bottom: 32px; animation-delay: 0s;">
+            <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Command List</h1>
+            <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">A complete reference guide for all available bot commands.</p>
+        </div>
+
+        <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
+            <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+            <input type="text" id="commandSearch" placeholder="Search for a command (e.g. /ban, /timeping)...">
+        </div>
+
+        <div class="layout-with-toc auto-fade-in" style="animation-delay: 0.1s;">
+            <div class="commands-feed" id="commandsFeedContainer"></div>
+
+            <aside class="toc-sidebar" id="tocSidebarContainer">
+                <div class="toc-title">Jump to Category</div>
+            </aside>
+        </div>
+    </div>
+
+    // Render script
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const feedContainer = document.getElementById('commandsFeedContainer');
+            const tocContainer = document.getElementById('tocSidebarContainer');
+
+            // Build the UI from commands-data.js
+            commandsDatabase.forEach((category) => {
+                
+                // 1. Build the TOC Link
+                const tocLink = document.createElement('a');
+                tocLink.href = `#${category.id}`;
+                tocLink.className = 'toc-link';
+                tocLink.textContent = category.tocLabel;
+                tocContainer.appendChild(tocLink);
+
+                // 2. Sort Commands By Badge Type (Public -> Role -> Perm)
+                const sortedCommands = [...category.commands].sort((a, b) => {
+                    const order = { "public": 1, "role": 2, "perm": 3 };
+                    return (order[a.type] || 99) - (order[b.type] || 99);
+                });
+
+                // 3. Build the Cards HTML
+                const cardsHTML = sortedCommands.map(cmd => `
+                    <div class="cmd-card">
+                        <div class="cmd-header">
+                            <p class="cmd-name">${cmd.name}</p>
+                            <div class="badge-container">
+                                <span class="badge ${cmd.type}">${cmd.badge}</span>
+                                ${cmd.isNew ? '<span class="badge new">New!</span>' : ''}
+                            </div>
+                        </div>
+                        <p class="cmd-desc">${cmd.desc}</p>
+                    </div>
+                `).join('');
+
+                // 4. Build the Section HTML
+                const section = document.createElement('section');
+                section.className = 'cmd-section';
+                section.id = category.id;
+                section.innerHTML = `
+                    <h2><i class="ph-duotone ${category.icon}"></i> ${category.title}</h2>
+                    <div class="cards-container">${cardsHTML}</div>
+                `;
+                
+                feedContainer.appendChild(section);
+            });
+
+            // Initialize Search Logic
+            const searchInput = document.getElementById('commandSearch');
+            const cmdSections = document.querySelectorAll('.cmd-section');
+
+            searchInput?.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                cmdSections.forEach(section => {
+                    let hasVisibleCard = false;
+                    const cards = section.querySelectorAll('.cmd-card');
+                    cards.forEach(card => {
+                        const textContent = card.textContent.toLowerCase();
+                        if (textContent.includes(term)) {
+                            card.style.display = 'flex';
+                            hasVisibleCard = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    section.style.display = hasVisibleCard ? 'block' : 'none';
+                });
+            });
+
+            // Initialize TOC Scrolling Observer
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(link => link.classList.remove('active-toc'));
+                        const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                        if (activeLink) activeLink.classList.add('active-toc');
+                    }
+                });
+            }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+            cmdSections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
