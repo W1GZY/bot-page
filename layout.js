@@ -1,17 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Read metadata specified on the body tag
     const body = document.body;
     const navId = body.getAttribute('data-nav') || 'overview';
     const pageTitle = body.getAttribute('data-title') || 'Overview';
     
-    // Find unique content for this page
     const contentDiv = document.querySelector('.content');
     if (!contentDiv) {
         console.warn('layout.js: No <div class="content"> element found.');
         return;
     }
 
-    // 1. Inject the Global Sidebar and Overlay
     body.insertAdjacentHTML('afterbegin', `
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
         <nav class="sidebar" id="sidebar">
@@ -30,14 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </nav>
     `);
 
-    // 2. Build the Content Wrapper & Header
     const wrapper = document.createElement('div');
     wrapper.className = 'content-wrapper';
     
-    // Insert wrapper before our page content
     contentDiv.parentNode.insertBefore(wrapper, contentDiv);
     
-    // Inject the Header into the wrapper
     wrapper.insertAdjacentHTML('beforeend', `
         <header class="top-header">
             <div style="display: flex; align-items: center; gap: 16px;">
@@ -81,10 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
         </header>
     `);
 
-    // Move actual page content safely into wrapper
     wrapper.appendChild(contentDiv);
 
-    // Inject the Footer at the bottom of wrapper
+
     wrapper.insertAdjacentHTML('beforeend', `
         <footer class="page-footer">
             <div>&copy; 2026 SeanBot. All rights reserved.</div>
@@ -94,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </footer>
     `);
 
-    // 3. Initialize Shared Layout Events
     initLayoutEvents();
 });
 

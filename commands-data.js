@@ -1,5 +1,4 @@
 const commandsDatabase = [
-    // --- SECTION 1: GENERAL & FUN ---
     {
         id: "general-fun",
         title: "1.0 General & Fun",
@@ -21,7 +20,6 @@ const commandsDatabase = [
         ]
     },
 
-    // --- SECTION 2: STAFF & ADMINISTRATION ---
     {
         id: "staff-admin",
         title: "2.0 Staff & Administration",
@@ -59,7 +57,6 @@ const commandsDatabase = [
         ]
     },
 
-    // --- SECTION 3: SECURITY & ANTI-RAID ---
     {
         id: "security-antiraid",
         title: "3.0 Security & Anti-Raid",
@@ -79,7 +76,6 @@ const commandsDatabase = [
         ]
     },
 
-    // --- SECTION 4: COMMUNITY & HIGHLIGHTS ---
     {
         id: "community-highlights",
         title: "4.0 Community & Highlights",
@@ -111,8 +107,6 @@ const commandsDatabase = [
             { name: "/r_admin_clear", desc: "Clear a users reply.", badge: "Manage Server", type: "perm" }
         ]
     },
-
-    // --- SECTION 5: EVENTS & SCHEDULING ---
     {
         id: "events-scheduling",
         title: "5.0 Events & Scheduling",
@@ -149,7 +143,6 @@ const commandsDatabase = [
         ]
     },
 
-    // --- SECTION 6: VOICE & CHANNELS ---
     {
         id: "voice-channels",
         title: "6.0 Voice & Temp Channels",
@@ -168,8 +161,7 @@ const commandsDatabase = [
             { name: "/voice analytics", desc: "Advanced voice channel analytics.", badge: "Manage Server", type: "perm" }
         ]
     },
-
-    // --- SECTION 7: FEDERATION & NETWORKING ---
+-
     {
         id: "federation-networking",
         title: "7.0 Federation & Networking",
@@ -218,7 +210,6 @@ const commandsDatabase = [
         ]
     },
 
-    // --- SECTION 8: WIZARD101 TOOLKIT ---
     {
         id: "wizard101-toolkit",
         title: "8.0 Wizard101 Toolkit",
