@@ -50,7 +50,7 @@
                 const tocLink = document.createElement('a');
                 tocLink.href = `#${category.id}`;
                 tocLink.className = 'toc-link';
-                tocLink.textContent = category.tocLabel;
+                tocLink.textContent = `${category.tocLabel} (${category.commands.length})`;
                 tocContainer.appendChild(tocLink);
 
                 const sortedCommands = [...category.commands].sort((a, b) => {
@@ -75,7 +75,7 @@
                 section.className = 'cmd-section';
                 section.id = category.id;
                 section.innerHTML = `
-                    <h2><i class="ph-duotone ${category.icon}"></i> ${category.title}</h2>
+                    <h2><i class="ph-duotone ${category.icon}"></i> ${category.title} <span class="badge public">${category.commands.length}</span></h2>
                     <div class="cards-container">${cardsHTML}</div>
                 `;
                 
