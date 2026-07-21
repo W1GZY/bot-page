@@ -574,6 +574,14 @@
                             </div>
                         </div>
 
+                        <div class="feature-card" data-category="community">
+                            <div class="feature-icon"><i class="ph ph-calendar-check"></i></div>
+                            <div>
+                                <h3 class="feature-title">Leave of Absence (LOA)</h3>
+                                <p class="feature-desc">Streamline administrative staff leaves with natural date parsing, auto-approvals, expiration warnings, and automated role synchronization.</p>
+                            </div>
+                        </div>
+
                         <div class="feature-card" data-category="security">                     
                             <div class="feature-icon"><i class="ph ph-shield-warning"></i></div>                     
                             <div>                         
@@ -587,6 +595,13 @@
                                 <h3 class="feature-title">Advanced Raid Polls</h3>                         
                                 <p class="feature-desc">Organize raid lobbies, team-ups, and events with interactive rosters, automatic waitlisting, slot caps, and roster exports.</p>                     
                             </div>                 
+                        </div>
+                        <div class="feature-card" data-category="community">
+                            <div class="feature-icon"><i class="ph ph-arrows-merge"></i></div>
+                            <div>
+                                <h3 class="feature-title">Team-Up Federation Mesh</h3>
+                                <p class="feature-desc">Broadcast live Team-Up lobbies across allied servers in your network with synced proxy embeds and automatic cross-server thread creation.</p>
+                            </div>
                         </div>
                         <div class="feature-card" data-category="community">
                             <div class="feature-icon"><i class="ph ph-calendar"></i></div>
@@ -630,11 +645,32 @@
                                 <p class="feature-desc">Track Wizard101 Beastmoon form progress, calculate Lunari and Idol costs, view stats, and compete on federated network leaderboards.</p>                     
                             </div>                 
                         </div>
+                        <div class="feature-card" data-category="w101">
+                            <div class="feature-icon"><i class="ph ph-magnifying-glass"></i></div>
+                            <div>
+                                <h3 class="feature-title">W101 Item Search</h3>
+                                <p class="feature-desc">Instantly query the Wizard101 gear database to inspect item schools, required levels, rarities, set bonuses, and Archmastery stats.</p>
+                            </div>
+                        </div>
+                        <div class="feature-card" data-category="w101">
+                            <div class="feature-icon"><i class="ph ph-trend-down"></i></div>
+                            <div>
+                                <h3 class="feature-title">Level Scaling Calculator</h3>
+                                <p class="feature-desc">Calculate exact stat downscaling when playing at lower level tiers with dynamic database cap lookups and school selections.</p>
+                            </div>
+                        </div>
+                        <div class="feature-card" data-category="utility">
+                            <div class="feature-icon"><i class="ph ph-cpu"></i></div>
+                            <div>
+                                <h3 class="feature-title">System & RAM Diagnostics</h3>
+                                <p class="feature-desc">Monitor hardware memory usage, process loads (Bot, Worker, Listener, MongoDB), and system cache with permission-gated metrics.</p>
+                            </div>
+                        </div>
                         <div class="feature-card" data-category="utility">
                             <div class="feature-icon"><i class="ph ph-smiley"></i></div>
                             <div>
                                 <h3 class="feature-title">Fun & Entertainment</h3>
-                                <p class="feature-desc">Generate fake Discord quotes, browse cat breeds, fetch random cat facts, and render custom cat image macros.</p>
+                                <p class="feature-desc">Generate fake Discord quotes, browse cat breeds, fetch random cat facts, render custom cat image macros, and ask the magic 8-ball.</p>
                             </div>
                         </div>
                         <div class="feature-card" data-category="security">                     
@@ -695,7 +731,7 @@
                 <!-- Doc Search Filter -->
                 <div class="search-container">
                     <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Embeds, AutoPin, Emoji, Beastmoon)...">
+                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. LOA, Anti-Raid, Level Scale, Federation, Items)...">
                 </div>
 
                 <!-- Full Width Seamless Article Stream -->
@@ -756,6 +792,29 @@
                 ]
             },
             {
+                id: "loa",
+                icon: "ph-calendar-check",
+                title: "Leave of Absence (LOA)",
+                subtitle: "Automated staff leave management with natural date parsing and role synchronization.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The LOA system allows staff and community members to request time off. It processes flexible relative date entries (e.g. 'today', 'in 5 days', '11/05'), automatically updates roles upon activation, sends 24-hour expiration warnings, and features background state reconciliation." },
+                    { type: "list", title: "Key Features", items: [
+                        "Natural Language Date Parsing: Accepts dates like 'today', 'in 1 week', or standard date strings.",
+                        "Auto-Approval Thresholds: Short leave requests under configured hours can be auto-approved.",
+                        "Role Synchronization: Dynamically grants and removes designated LOA roles during active periods, with retry backoffs if API limits are hit.",
+                        "Interactive Pagination: View personal leave history or manage server-wide active leaves with interactive UI views.",
+                        "Review Workflow: Administrators receive review prompts with one-click Approval or Denial modals."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/loa request", desc: "Opens the modal to request a new Leave of Absence with start date, end date, and reason." },
+                        { cmd: "/loa status", desc: "Check your active/pending LOAs with options to Extend duration or Cancel early." },
+                        { cmd: "/loa list", desc: "Admin command to view and manage active/scheduled LOAs with Force End capabilities." }
+                    ]},
+                    { type: "callout", icon: "⏰", title: "Expiration Alerts", text: "Users with active LOAs will automatically receive a direct message 24 hours before their leave expires, allowing them to extend if necessary." }
+                ]
+            },
+            {
                 id: "core",
                 icon: "ph-browser",
                 title: "Dashboard & Core Settings",
@@ -810,7 +869,7 @@
                     { type: "list", items: [
                         "Administrator permissions required to modify settings.",
                         "SeanBot's role must be positioned above any managed roles (or quarantine role) to apply timeouts and role swaps.",
-                        "Requires View Channel, Send Messages, Manage Messages, Manage Webhooks, Read Message History, Attach files and Moderate Members permissions. (Every permission is given to bot automatically on invite.)",
+                        "Requires View Channel, Send Messages, Manage Messages, Manage Webhooks, Read Message History, Attach files and Moderate Members permissions."
                     ]},
                     { type: "callout", icon: "🛡️", title: "Common Use Cases", text: "Preventing server raids, stopping compromised accounts, and catching bad users without automated permanent bans." }
                 ]
@@ -839,6 +898,25 @@
                 ]
             },
             {
+                id: "teamup_fed",
+                icon: "ph-arrows-merge",
+                title: "Team-Up Federation Mesh",
+                subtitle: "Broadcast team-up lobbies across allied network servers with synchronized proxy threads.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "Extends team-ups across connected ThreadWatcher network meshes. Creating a team-up board request on one server automatically broadcasts proxy embeds across all network nodes with synchronized button states and live cross-server thread creation." },
+                    { type: "list", title: "Key Features", items: [
+                        "Cross-Server Lobbies: Broadcast team-up board embeds across all mesh nodes.",
+                        "Thread Auto-Spawning: Assembles players into dedicated cross-server proxy threads connected directly to the host.",
+                        "Live Sync: Joining, leaving, or completing a team-up updates all proxy embeds in real time.",
+                        "Automatic Clean-up: Disbanding a team-up removes ghost embeds across all allied servers automatically."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/teamup_federation", desc: "Opens the Team-Up Federation control panel to toggle broadcasts and enforce thread modes (Admin only)." }
+                    ]}
+                ]
+            },
+            {
                 id: "autopin",
                 icon: "ph-push-pin",
                 title: "Auto-Pin System",
@@ -861,7 +939,7 @@
                         { cmd: "/autopin settings", desc: "Displays current auto-pin configurations, overrides, and disabled channels." },
                         { cmd: "/autopin stats", desc: "Displays diagnostic metrics including total pins, unpins, and active cache size." }
                     ]},
-                    { type: "callout", icon: "📌", title: "Note", text: "Dont worry about old messages being ressurected. SeanBot will not pin messages older than 14 days."}
+                    { type: "callout", icon: "📌", title: "Note", text: "Don't worry about old messages being resurrected. SeanBot will not pin messages older than 14 days."}
                 ]
             },
             {
@@ -919,7 +997,7 @@
                     { type: "text", text: "The Emoji Suite provides enterprise-grade emoji management. It tracks chat and reaction usage to help you clean up unused emojis, allows you to restrict specific custom emojis to designated roles, and introduces a webhook-based alias system." },
                     { type: "list", title: "Key Features", items: [
                         "Usage Tracking & Purging: View top emojis and unused 'dead' emojis to free up server slots.",
-                        "Role Restrictions (Emoji Lock): Lock custom emojis so only specific roles (e.g., VIPs or Subscribers) can use them.",
+                        "Role Restrictions (Emoji Lock): Lock custom emojis so only specific roles can use them.",
                         "Reaction Spam Protection: Apply global or channel-specific cooldowns for reaction interactions.",
                         "Webhook Aliases: Automatically replace text aliases (e.g., `;smile;`) with the corresponding emoji via webhooks."
                     ]},
@@ -944,11 +1022,6 @@
                 content: [
                     { type: "heading", text: "Overview" },
                     { type: "text", text: "The Community Calendar parses spreadsheet schedules to provide an always-up-to-date, interactive monthly overview. It includes visual emojis for event types and developer notes." },
-                    { type: "list", title: "Key Features", items: [
-                        "Auto-Updating: Syncs hourly with the master schedule.",
-                        "Interactive Pagination: Browse past and future pages of the month.",
-                        "Developer Notes: Read expanded context on updates and events via the interactive dropdown."
-                    ]},
                     { type: "commands", title: "Commands Reference", items: [
                         { cmd: "/calendar view", desc: "View the current event calendar manually." },
                         { cmd: "/calendar set_channel", desc: "Set up the live auto-updating calendar dashboard in a specific channel (Admin only)." }
@@ -959,16 +1032,24 @@
                 id: "w101",
                 icon: "ph-magic-wand",
                 title: "Wizard101 Toolkit",
-                subtitle: "Advanced game utilities including Damage Assistant and Deck sharing.",
+                subtitle: "Advanced game utilities including Item Search, Level Scaling, Damage Assistant, and Deck sharing.",
                 content: [
-                    { type: "text", text: "See the **Beastmoon Tracker** section for detailed Beastmoon documentation." },
+                    { type: "heading", text: "Item Search Engine" },
+                    { type: "text", text: "Query the Wizard101 SQLite database asynchronously to find gear stats, required level, school, rarity, bonus sets, and Archmastery points." },
+                    { type: "commands", items: [
+                        { cmd: "/item [name]", desc: "Search for gear items matching a query in the Wizard101 database." }
+                    ]},
+                    { type: "heading", text: "Level Scaling Calculator" },
+                    { type: "text", text: "Calculate how gear stats scale down when fighting at lower level tiers. Uses dynamic tier caps from the database based on school and stat categories (Damage, Resist, Accuracy, Critical, Block, Pierce, Pip Conserve, Archmastery, etc.)." },
+                    { type: "commands", items: [
+                        { cmd: "/levelscale", desc: "Open the interactive Level Scaler calculator with dropdowns for School, Category, and Specific Stat." }
+                    ]},
                     { type: "heading", text: "Damage Assistant" },
-                    { type: "text", text: "Calculate complex multi-buff hits easily. Supports base damage, gear %, pierce, critical, resist, block, and arrays of blades, traps, and auras. Includes PvP and PvE scaling." },
+                    { type: "text", text: "Calculate complex multi-buff hits easily. Supports base damage, gear %, pierce, critical, resist, block, and arrays of blades, traps, and auras." },
                     { type: "commands", items: [
                         { cmd: "/damage", desc: "Open the interactive Damage Assistant calculator menu to set stats, stack buffs, and save presets." }
                     ]},
                     { type: "heading", text: "Deck Builder" },
-                    { type: "text", text: "Create, browse, share, and export visually rendered Wizard101 decks, complete with Treasure Cards and school themes." },
                     { type: "commands", items: [
                         { cmd: "/decks create", desc: "Create a new deck (Requires Keymaster role)." },
                         { cmd: "/decks browse", desc: "Browse decks saved in this server." },
@@ -1004,8 +1085,25 @@
                         { cmd: "/bm max", desc: "See which users have fully maxed Tier 5 forms." },
                         { cmd: "/bm log_channel [channel]", desc: "Admin command to set the channel for public Beastmoon upgrade announcements." },
                         { cmd: "/bm redeem [code]", desc: "Redeem a Beastmoon sync code from the web dashboard." }
-                    ]},
-                    { type: "callout", icon: "🏆", title: "Maxing Forms", text: "Upgrading a form to Tier 5 triggers a special Maxed announcement! Track all maxed out players using the `/bm max` command." }
+                    ]}
+                ]
+            },
+            {
+                id: "general_sys",
+                icon: "ph-cpu",
+                title: "General & Diagnostics",
+                subtitle: "System monitoring, hardware statistics, and general server tools.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "General utility commands providing bot latency metrics, server stats, invite links, and restricted hardware memory (RAM) diagnostics." },
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/ram", desc: "Check current RAM usage across SeanBot, Listener, NovaBlock, Webhook Worker, and MongoDB (Restricted to ALLOWED_USERS or Bot Owners)." },
+                        { cmd: "/serverinfo", desc: "Display light-weight server statistics including member count, channels, and roles." },
+                        { cmd: "/ping", desc: "Check bot API latency in milliseconds." },
+                        { cmd: "/invite", desc: "Get the bot's official invite link." },
+                        { cmd: "/8ball [question]", desc: "Ask the magic 8-ball a question for funny, witty, or standard responses." },
+                        { cmd: "Grab ID (Context Menu)", desc: "Right-click any user -> Apps -> Grab ID to view and copy their Discord User ID." }
+                    ]}
                 ]
             },
             {
@@ -1015,7 +1113,6 @@
                 subtitle: "Cat facts, cute pictures, and fake Discord message generators.",
                 content: [
                     { type: "heading", text: "Cat Command Center" },
-                    { type: "text", text: "Your ultimate source for feline content. Powered by multiple APIs to ensure you always get your cat fix." },
                     { type: "commands", items: [
                         { cmd: "/cat fact", desc: "Get a random cat fact." },
                         { cmd: "/cat image", desc: "Get a random cat picture." },
@@ -1038,6 +1135,9 @@
                     { type: "heading", text: "Setting Up a Federation Network" },
                     { type: "text", text: "1. Execute `/thread network create [name]` on your primary hub server to receive a network access token." },
                     { type: "text", text: "2. On secondary servers, execute `/thread network join [token]`." },
+                    { type: "commands", title: "Audit Command", items: [
+                        { cmd: "/thread audit [thread_id]", desc: "Audit a thread showing recent replies, score metrics, and moderation audit logs (Moderators only)." }
+                    ]},
                     { type: "callout", icon: "🛡️", title: "Security Guarantee", text: "All cross-server relay messages use HMAC token verification to guarantee message authenticity." }
                 ]
             },
