@@ -1,222 +1,1103 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head>     
-    <meta charset="UTF-8">     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
-    <title>SeanBot Dashboard</title>          
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">     
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>     
-    <script>         
-        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';         
-        document.documentElement.setAttribute('data-accent', savedAccent);     
-    </script>     
-    <link rel="stylesheet" href="global.css">     
-    <script src="layout.js" defer></script> 
-</head> 
-<body data-nav="overview" data-title="Overview">     
-    <div class="content">                  
-        <!-- Hero Section -->
-        <div class="hero-section auto-fade-in">             
-            <h1 class="hero-title">Meet <span style="font-weight: 900; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af;">.</span></span></h1>             
-            <p class="hero-desc">The ultimate multipurpose Discord companion built to manage your community, secure your server, and seamlessly bridge networks.</p>             
-            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">                 
-                <a href="#" class="btn-large btn-primary"><i class="ph-fill ph-discord-logo"></i> Invite to Server</a>                 
-                <a href="/docs.html" class="btn-large btn-secondary"><i class="ph ph-book-open"></i> Read Documentation</a>             
-                <a href="/commands.html" class="btn-large btn-secondary"><i class="ph ph-terminal-window"></i> Commands</a>             
-            </div>         
-        </div>         
+<!DOCTYPE html>
+<html lang="en" data-accent="gold">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot Dashboard & Documentation</title>
+    
+    <!-- Google Fonts & Phosphor Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    
+    <style>
+        /* ==========================================================================
+           1. DESIGN TOKENS & ACCENT THEMES
+           ========================================================================== */
+        :root {
+            --bg-dark: #09090b;
+            --bg-panel: #0d0d10;
+            --bg-card: #16161b;
+            --bg-card-hover: #1c1c23;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(255, 255, 255, 0.16);
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
 
-        <!-- Live Stats Counter Grid -->
-        <div class="stats-grid auto-fade-in" style="animation-delay: 0.05s;">
-            <div class="stat-card">
-                <div class="stat-number">2</div>
-                <div class="stat-label">Communities</div>
+            --accent: #FFD700;
+            --accent-glow: rgba(255, 215, 0, 0.12);
+            --accent-faint: rgba(255, 215, 0, 0.03);
+
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-full: 9999px;
+
+            --transition-fast: 0.15s ease-out;
+            --transition-normal: 0.25s ease-out;
+        }
+
+        /* Color Themes */
+        :root[data-accent="gold"]    { --accent: #FFD700; --accent-glow: rgba(255, 215, 0, 0.12); }
+        :root[data-accent="amber"]   { --accent: #F59E0B; --accent-glow: rgba(245, 158, 11, 0.12); }
+        :root[data-accent="orange"]  { --accent: #F97316; --accent-glow: rgba(249, 115, 22, 0.12); }
+        :root[data-accent="rose"]    { --accent: #E11D48; --accent-glow: rgba(225, 29, 72, 0.12); }
+        :root[data-accent="pink"]    { --accent: #EC4899; --accent-glow: rgba(236, 72, 153, 0.12); }
+        :root[data-accent="purple"]  { --accent: #9333EA; --accent-glow: rgba(147, 51, 234, 0.12); }
+        :root[data-accent="blurple"] { --accent: #5865F2; --accent-glow: rgba(88, 101, 242, 0.12); }
+        :root[data-accent="indigo"]  { --accent: #6366F1; --accent-glow: rgba(99, 102, 241, 0.12); }
+        :root[data-accent="blue"]    { --accent: #3B82F6; --accent-glow: rgba(59, 130, 246, 0.12); }
+        :root[data-accent="cyan"]    { --accent: #06B6D4; --accent-glow: rgba(6, 182, 212, 0.12); }
+        :root[data-accent="teal"]    { --accent: #0D9488; --accent-glow: rgba(13, 148, 136, 0.12); }
+        :root[data-accent="emerald"] { --accent: #10B981; --accent-glow: rgba(16, 185, 129, 0.12); }
+        :root[data-accent="green"]   { --accent: #22C55E; --accent-glow: rgba(34, 197, 94, 0.12); }
+        :root[data-accent="lime"]    { --accent: #84CC16; --accent-glow: rgba(132, 204, 22, 0.12); }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--text-primary); text-decoration: none; }
+        a:hover { color: var(--accent); }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            background: #202026;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+        .sidebar {
+            width: 250px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--border);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 50;
+            overflow-y: auto;
+            transition: transform var(--transition-normal);
+        }
+
+        .brand {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 4px;
+        }
+
+        .nav-section-title {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 18px 0 8px 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            margin-bottom: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .nav-link.active { color: var(--accent); background: var(--accent-glow); font-weight: 700; }
+
+        .sidebar-toc-container {
+            margin-top: 10px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+
+        .sidebar-toc-container.show {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .sidebar-toc-header {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sidebar-toc-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-toc-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar-toc-link.active {
+            color: var(--accent);
+            background: var(--accent-glow);
+            font-weight: 700;
+        }
+
+        .content-wrapper {
+            margin-left: 250px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .top-header {
+            height: 60px;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+        .breadcrumb-item { color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .breadcrumb-item.active { color: var(--text-primary); font-weight: 600; }
+        .breadcrumb-separator { color: var(--text-muted); font-size: 0.75rem; }
+
+        .dropdown-toggle {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .active-display { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
+        
+        .dropdown-menu-content {
+            position: absolute;
+            top: 115%;
+            right: 0;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            display: none;
+            padding: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            z-index: 100;
+            width: 210px;
+        }
+        .dropdown-toggle.open .dropdown-menu-content { display: block; }
+        .color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 8px; }
+        .accent-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; transition: transform var(--transition-fast); }
+        .accent-dot:hover { transform: scale(1.2); }
+
+        .content {
+            padding: 32px 40px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .page-footer {
+            margin-top: auto;
+            padding: 20px 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: var(--bg-panel);
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            margin-bottom: 24px;
+            transition: border-color var(--transition-fast);
+        }
+
+        .search-container:focus-within { border-color: var(--accent); }
+        .search-container input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
+            margin-left: 10px;
+            font-family: inherit;
+        }
+
+        .btn-large {
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-primary { background: var(--accent); color: #000; border: 1px solid var(--accent); }
+        .btn-primary:hover { filter: brightness(1.1); }
+        .btn-secondary { background: #1f1f26; color: #fff; border: 1px solid var(--border); }
+        .btn-secondary:hover { background: #262630; border-color: var(--border-highlight); }
+
+        .hero-section {
+            text-align: center;
+            padding: 48px 24px;
+            background: #121217;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            margin-bottom: 28px;
+        }
+
+        .hero-title { font-size: 2.5rem; font-weight: 900; margin: 0 0 12px 0; letter-spacing: -0.5px; }
+        .hero-desc { font-size: 1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 24px auto; line-height: 1.5; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 36px; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; text-align: center; }
+        .stat-number { font-size: 1.8rem; font-weight: 900; color: var(--accent); }
+        .stat-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700; margin-top: 4px; }
+
+        .responsive-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+
+        .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+        .pill-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .pill-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+        .pill-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            transition: border-color var(--transition-fast);
+        }
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .feature-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-md);
+            background: var(--accent-glow);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .feature-title { margin: 0 0 6px 0; font-size: 1.05rem; font-weight: 800; color: #fff; }
+        .feature-desc { margin: 0; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
+
+        .docs-full-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .docs-article {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            scroll-margin-top: 80px;
+            transition: border-color var(--transition-fast);
+        }
+        .docs-article:hover { border-color: var(--border-highlight); }
+        .docs-article h2 { color: #fff; margin-top: 0; font-size: 1.4rem; font-weight: 800; border-bottom: 1px solid var(--border); padding-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .docs-article h3 { color: var(--accent); font-size: 1.05rem; font-weight: 700; margin: 20px 0 8px 0; }
+        .docs-article p, .docs-article li { color: #ddd; font-size: 0.925rem; line-height: 1.6; }
+        .callout-box { background: #1a1a22; border-left: 3px solid var(--accent); padding: 14px 18px; margin: 16px 0; font-size: 0.875rem; color: #ccc; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+
+        .layout-with-toc { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: start; }
+        .toc-sidebar { position: sticky; top: 80px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; }
+        .toc-title { font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .toc-link { display: block; color: var(--text-secondary); font-size: 0.8rem; padding: 4px 0; border-left: 2px solid transparent; padding-left: 8px; cursor: pointer; }
+        .toc-link.active-toc { color: var(--accent); border-left-color: var(--accent); font-weight: 700; }
+
+        .cmd-section { margin-bottom: 32px; scroll-margin-top: 80px; }
+        .cmd-section h2 { color: var(--accent); margin: 0 0 14px 0; font-size: 1.2rem; font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .cards-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+        .cmd-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 18px; display: flex; flex-direction: column; }
+        .cmd-card:hover { border-color: var(--border-highlight); }
+        .cmd-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .cmd-name { color: #fff; font-size: 0.9rem; font-weight: 700; margin: 0; font-family: monospace; background: rgba(255,255,255,0.05); padding: 3px 6px; border-radius: 4px; }
+        .cmd-desc { font-size: 0.825rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.4; }
+
+        .badge-container { display: flex; gap: 4px; }
+        .badge { font-size: 0.6rem; padding: 3px 8px; border-radius: var(--radius-full); font-weight: 800; text-transform: uppercase; }
+        .badge.public { background: rgba(255,255,255,0.08); color: #ccc; }
+        .badge.role { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .badge.perm { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+        /* Terms Page */
+        .tos-title { font-size: 2rem; font-weight: 900; margin: 0 0 8px 0; }
+        .tos-date { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .tos-section { margin-bottom: 28px; }
+        .tos-section h2 { color: var(--accent); font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+        .tos-section p, .tos-section li { color: #ddd; font-size: 0.9rem; line-height: 1.5; }
+
+        /* Responsive Breakpoints */
+        .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 4px; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 45; }
+        .sidebar-overlay.show { display: block; }
+
+        .tab-view { display: none; }
+        .tab-view.active-tab { display: block; animation: slideUpFade 0.2s ease-out forwards; }
+
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 1000px) {
+            .sidebar { transform: translateX(-100%); width: 260px; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .content-wrapper { margin-left: 0; }
+            .hamburger { display: block; }
+            .top-header { padding: 0 20px; }
+            .content { padding: 24px 20px; }
+            .layout-with-toc { grid-template-columns: 1fr; }
+            .toc-sidebar { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title { font-size: 1.8rem; }
+            .page-footer { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="ph-fill ph-paw-print" style="color: var(--accent); font-size: 1.8rem;"></i>
+                <span style="font-weight: 900; font-size: 1.8rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">200+</div>
-                <div class="stat-label">Active Users</div>
+            <button class="hamburger" id="closeSidebarBtn"><i class="ph ph-x"></i></button>
+        </div>
+        
+        <div class="nav-section-title">Menu</div>
+        
+        <a class="nav-link active" data-target="overview"><i class="ph ph-house"></i> <span>Overview</span></a>
+        <a class="nav-link" data-target="docs"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
+        <a class="nav-link" data-target="commands"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+
+        <!-- Dynamic Documentation Sidebar Navigation -->
+        <div class="sidebar-toc-container" id="sidebarDocsNav">
+            <div class="sidebar-toc-header">
+                <i class="ph ph-compass"></i> Docs Navigation
             </div>
-            <div class="stat-card">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Bot Commands</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">Uptime</div>
+            <div id="sidebarDocsNavLinks">
+                <!-- Dynamically populated when in Documentation view -->
             </div>
         </div>
+    </nav>
 
-        <!-- Why Choose SeanBot -->
-        <div class="auto-fade-in" style="margin-bottom: 40px; animation-delay: 0.1s;">             
-            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">                 
-                <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
-            </h2>             
-            <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: #ddd;">                 
-                <p style="margin-top: 0;">SeanBot is a highly specialized toolkit designed for communities that need <strong>real reliability and power</strong>.</p>                 
-                <p style="margin-bottom: 0;">Whether you are running a multi-server network, scheduling cross-timezone events, or protecting your server from raids, SeanBot gives you granular control without clutter. Tailor every module and keep your community running flawlessly.</p>             
-            </div>         
-        </div>         
+    <div class="content-wrapper">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button class="hamburger" id="openSidebarBtn"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb-item" title="Dashboard">
+                        <i class="ph-fill ph-paw-print"></i> 
+                        <span style="font-weight: 900; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
+                    </a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active" id="currentPageTitle">Overview</span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle" title="Change Theme Accent">
+                    <div class="active-display"></div>
+                    <i class="ph ph-caret-down"></i>
+                    
+                    <div class="dropdown-menu-content">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Theme Accent</div>
+                        <div class="color-grid">
+                            <div class="accent-dot" data-accent="gold" style="background: #FFD700;" title="Gold"></div>
+                            <div class="accent-dot" data-accent="amber" style="background: #F59E0B;" title="Amber"></div>
+                            <div class="accent-dot" data-accent="orange" style="background: #F97316;" title="Orange"></div>
+                            <div class="accent-dot" data-accent="rose" style="background: #E11D48;" title="Rose"></div>
+                            <div class="accent-dot" data-accent="pink" style="background: #EC4899;" title="Pink"></div>
+                            <div class="accent-dot" data-accent="purple" style="background: #9333EA;" title="Purple"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background: #5865F2;" title="Blurple"></div>
+                            <div class="accent-dot" data-accent="indigo" style="background: #6366F1;" title="Indigo"></div>
+                            <div class="accent-dot" data-accent="blue" style="background: #3B82F6;" title="Blue"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;" title="Cyan"></div>
+                            <div class="accent-dot" data-accent="teal" style="background: #0D9488;" title="Teal"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background: #10B981;" title="Emerald"></div>
+                            <div class="accent-dot" data-accent="green" style="background: #22C55E;" title="Green"></div>
+                            <div class="accent-dot" data-accent="lime" style="background: #84CC16;" title="Lime"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-        <!-- Featured Modules with Filter Pills -->
-        <div class="auto-fade-in" style="animation-delay: 0.15s;">             
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
-                <h2 style="font-size: 1.6rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px;">                 
-                    <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 1.8rem;"></i> Featured Modules             
-                </h2>             
-                
-                <div class="filter-pills" id="featureFilters">
-                    <button class="pill-btn active" data-filter="all">All</button>
-                    <button class="pill-btn" data-filter="security">Security & Admin</button>
-                    <button class="pill-btn" data-filter="community">Community & Events</button>
-                    <button class="pill-btn" data-filter="w101">Wizard101</button>
-                    <button class="pill-btn" data-filter="utility">Utility</button>
+        <main class="content">
+            
+            <!-- VIEW 1: OVERVIEW -->
+            <div class="tab-view active-tab" id="view-overview">
+                <!-- Hero Section -->
+                <div class="hero-section">             
+                    <h1 class="hero-title">Meet <span style="font-weight: 900; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af;">.</span></span></h1>             
+                    <p class="hero-desc">The ultimate multipurpose Discord companion built to manage your community, secure your server, and seamlessly bridge networks.</p>             
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">                 
+                        <a href="#" class="btn-large btn-primary"><i class="ph-fill ph-discord-logo"></i> Invite to Server</a>                 
+                        <a class="btn-large btn-secondary switch-tab-btn" data-target="docs"><i class="ph ph-book-open"></i> Read Documentation</a>             
+                        <a class="btn-large btn-secondary switch-tab-btn" data-target="commands"><i class="ph ph-terminal-window"></i> Commands</a>             
+                    </div>         
+                </div>         
+
+                <!-- Live Stats Counter Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Communities</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Bot Commands</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+
+                <!-- Why Choose SeanBot -->
+                <div style="margin-bottom: 40px;">             
+                    <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">                 
+                        <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
+                    </h2>             
+                    <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: #ddd;">                 
+                        <p style="margin-top: 0;">SeanBot is a highly specialized toolkit designed for communities that need <strong>real reliability and power</strong>.</p>                 
+                        <p style="margin-bottom: 0;">Whether you are running a multi-server network, scheduling cross-timezone events, or protecting your server from raids, SeanBot gives you granular control without clutter. Tailor every module and keep your community running flawlessly.</p>             
+                    </div>         
+                </div>         
+
+                <!-- Featured Modules with Filter Pills -->
+                <div>             
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+                        <h2 style="font-size: 1.6rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px;">                 
+                            <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 1.8rem;"></i> Featured Modules             
+                        </h2>             
+                        
+                        <div class="filter-pills" id="featureFilters">
+                            <button class="pill-btn active" data-filter="all">All</button>
+                            <button class="pill-btn" data-filter="security">Security & Admin</button>
+                            <button class="pill-btn" data-filter="community">Community & Events</button>
+                            <button class="pill-btn" data-filter="w101">Wizard101</button>
+                            <button class="pill-btn" data-filter="utility">Utility</button>
+                        </div>
+                    </div>
+
+                    <div class="responsive-grid-2" id="featuresGrid">                 
+                        <div class="feature-card" data-category="security">                     
+                            <div class="feature-icon"><i class="ph ph-shield-warning"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Anti-Raid Protection</h3>                         
+                                <p class="feature-desc">Keep your server safe automatically. Detects sudden bursts of spam, quarantines bad actors, blocks phishing links, and lets you test security settings with Canary Mode.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="security">                     
+                            <div class="feature-icon"><i class="ph ph-globe-hemisphere-west"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Server Federation</h3>                         
+                                <p class="feature-desc">Connect multiple Discord servers together! Share live channels, sync forum threads, and maintain a shared ban list across your network.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="community">                     
+                            <div class="feature-icon"><i class="ph ph-clock-countdown"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Event Reminders & Timezones</h3>                         
+                                <p class="feature-desc">Schedule automatic alerts mentioning roles at the right time. Save your local timezone so every reminder is perfectly synced globally.</p>                     
+                            </div>                 
+                        </div>                                  
+                        <div class="feature-card" data-category="utility">                     
+                            <div class="feature-icon"><i class="ph ph-bell"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Personal Reminders</h3>                         
+                                <p class="feature-desc">Right-click any message to set a quick reminder. SeanBot will DM you when time is up, with snooze options directly from chat.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="community">                     
+                            <div class="feature-icon"><i class="ph ph-calendar-plus"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Event Signups & Team-Ups</h3>                         
+                                <p class="feature-desc">Create signup boards for raids, lobbies, or dungeons. Lock specific roles, set slot limits, and generate private Voice Channels automatically.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="community">                     
+                            <div class="feature-icon"><i class="ph ph-microphone-stage"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Dynamic Voice Channels</h3>                         
+                                <p class="feature-desc">Join a hub channel to instantly create your own private Voice room with full kick, ban, and lock controls. Auto-deletes when empty.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="security">                     
+                            <div class="feature-icon"><i class="ph ph-browser"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Secure Web Dashboard</h3>                         
+                                <p class="feature-desc">Manage server settings through a clean web interface. Secure token authentication keeps configurations safe as you adjust active modules.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="security">                     
+                            <div class="feature-icon"><i class="ph ph-scroll"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Server Logging & User Reports</h3>                         
+                                <p class="feature-desc">Keep clean logs of server activity. Groups rapid events to prevent spam, archives deleted messages, and provides a reporting UI for members.</p>                     
+                            </div>                 
+                        </div>                 
+                        <div class="feature-card" data-category="w101">                     
+                            <div class="feature-icon"><i class="ph ph-magic-wand"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Wizard101 Toolkit</h3>                         
+                                <p class="feature-desc">Calculate multi-buff damage outputs, export custom deck images, and track Beastmoon forms.</p>                     
+                            </div>                 
+                        </div>             
+                    </div>         
                 </div>
             </div>
 
-            <div class="responsive-grid-2" id="featuresGrid">                 
-                <!-- Anti-Raid -->                 
-                <div class="feature-card" data-category="security">                     
-                    <div class="feature-icon"><i class="ph ph-shield-warning"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Anti-Raid Protection</h3>                         
-                        <p class="feature-desc">Keep your server safe automatically. Detects sudden bursts of spam, quarantines bad actors, blocks phishing links, and lets you test security settings with Canary Mode.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Server Federation -->                 
-                <div class="feature-card" data-category="security">                     
-                    <div class="feature-icon"><i class="ph ph-globe-hemisphere-west"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Server Federation</h3>                         
-                        <p class="feature-desc">Connect multiple Discord servers together! Share live channels, sync forum threads, and maintain a shared ban list across your network.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- TimePing & Timezones -->                 
-                <div class="feature-card" data-category="community">                     
-                    <div class="feature-icon"><i class="ph ph-clock-countdown"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Event Reminders & Timezones</h3>                         
-                        <p class="feature-desc">Schedule automatic alerts mentioning roles at the right time. Save your local timezone so every reminder is perfectly synced globally.</p>                     
-                    </div>                 
-                </div>                                  
-                <!-- Personal Reminders -->                 
-                <div class="feature-card" data-category="utility">                     
-                    <div class="feature-icon"><i class="ph ph-bell"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Personal Reminders</h3>                         
-                        <p class="feature-desc">Right-click any message to set a quick reminder. SeanBot will DM you when time is up, with snooze options directly from chat.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Event Tracking & Polls -->                 
-                <div class="feature-card" data-category="community">                     
-                    <div class="feature-icon"><i class="ph ph-calendar-plus"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Event Signups & Team-Ups</h3>                         
-                        <p class="feature-desc">Create signup boards for raids, lobbies, or dungeons. Lock specific roles, set slot limits, and generate private Voice Channels automatically.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Temp Channels -->                 
-                <div class="feature-card" data-category="community">                     
-                    <div class="feature-icon"><i class="ph ph-microphone-stage"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Dynamic Voice Channels</h3>                         
-                        <p class="feature-desc">Join a hub channel to instantly create your own private Voice room with full kick, ban, and lock controls. Auto-deletes when empty.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Web Dashboard -->                 
-                <div class="feature-card" data-category="security">                     
-                    <div class="feature-icon"><i class="ph ph-browser"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Secure Web Dashboard</h3>                         
-                        <p class="feature-desc">Manage server settings through a clean web interface. Secure token authentication keeps configurations safe as you adjust active modules.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Enterprise Logging & Reporting -->                 
-                <div class="feature-card" data-category="security">                     
-                    <div class="feature-icon"><i class="ph ph-scroll"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Server Logging & User Reports</h3>                         
-                        <p class="feature-desc">Keep clean logs of server activity. Groups rapid events to prevent spam, archives deleted messages, and provides a reporting UI for members.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Highlights & Starboard -->                 
-                <div class="feature-card" data-category="community">                     
-                    <div class="feature-icon"><i class="ph ph-star"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Community Highlights</h3>                         
-                        <p class="feature-desc">Pin best messages automatically upon hitting reaction milestones, manage a server Starboard, and track forum thread upvotes in real-time.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Reaction & Emoji Suite -->                 
-                <div class="feature-card" data-category="utility">                     
-                    <div class="feature-icon"><i class="ph ph-bell-ringing"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Reaction & Emoji Suite</h3>                         
-                        <p class="feature-desc">Subscribe to messages via reactions. Track emoji usage leaderboards, clean up unused emotes, and react with animated custom emojis.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Returning Members -->                 
-                <div class="feature-card" data-category="security">                     
-                    <div class="feature-icon"><i class="ph ph-users-three"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Returning Members</h3>                         
-                        <p class="feature-desc">Automatically remember server veterans. If a member leaves and rejoins later, SeanBot restores their returning member role automatically.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- In-Chat Translator -->                 
-                <div class="feature-card" data-category="utility">                     
-                    <div class="feature-icon"><i class="ph ph-translate"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">In-Chat Translator</h3>                         
-                        <p class="feature-desc">Break language barriers instantly. Right-click any message to automatically detect the source language and translate it cleanly into chat.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- Fun & Utility -->                 
-                <div class="feature-card" data-category="utility">                     
-                    <div class="feature-icon"><i class="ph ph-smiley"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Fun & Utility Tools</h3>                         
-                        <p class="feature-desc">Slap your friends on tracked leaderboards, ask the Magic 8-Ball, generate fake quote screenshots, or pull up random facts and GIFs.</p>                     
-                    </div>                 
-                </div>                 
-                <!-- W101 Toolkit -->                 
-                <div class="feature-card" data-category="w101">                     
-                    <div class="feature-icon"><i class="ph ph-magic-wand"></i></div>                     
-                    <div>                         
-                        <h3 class="feature-title">Wizard101 Toolkit</h3>                         
-                        <p class="feature-desc">Calculate multi-buff damage outputs, search live Pet Tome spreadsheets, export custom deck images, and track Beastmoon forms.</p>                     
-                    </div>                 
-                </div>             
-            </div>         
-        </div>
+            <!-- VIEW 2: DOCUMENTATION -->
+            <div class="tab-view" id="view-docs">
+                <div style="margin-bottom: 24px;">
+                    <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
+                    <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
+                        Configuring and getting the most out of SeanBot for your Discord server.
+                    </p>
+                </div>
 
-        <!-- 3-Step Setup Guide -->
-        <div class="auto-fade-in" style="margin-top: 48px; margin-bottom: 20px;">
-            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
-                <i class="ph-duotone ph-rocket" style="color: var(--accent); font-size: 1.8rem;"></i> Simple 3-Step Setup
-            </h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-num">1</div>
-                    <h3 style="margin: 0 0 6px 0; color: #fff;">Invite SeanBot</h3>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; line-height: 1.5;">Click the invite button to add SeanBot to your Discord server with standard permissions.</p>
+                <!-- Doc Search Filter -->
+                <div class="search-container">
+                    <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing, Commands)...">
                 </div>
-                <div class="step-card">
-                    <div class="step-num">2</div>
-                    <h3 style="margin: 0 0 6px 0; color: #fff;">Enable Modules</h3>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; line-height: 1.5;">Use <code>/serveradmin module</code> or log into the web dashboard to enable only the tools you need.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-num">3</div>
-                    <h3 style="margin: 0 0 6px 0; color: #fff;">Automate Community</h3>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; line-height: 1.5;">Sit back while SeanBot manages events, protects channels, and enhances community fun.</p>
+
+                <!-- Full Width Seamless Article Stream -->
+                <div class="docs-full-container" id="docsContent">
+                    <!-- Dynamic Articles populated via JS -->
                 </div>
             </div>
-        </div>
 
+            <!-- VIEW 3: COMMANDS -->
+            <div class="tab-view" id="view-commands">
+                <div style="margin-bottom: 24px;">
+                    <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Command Database</h1>
+                    <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
+                        Browse all available slash and text commands across active modules.
+                    </p>
+                </div>
+
+                <div class="search-container">
+                    <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+                    <input type="text" id="cmdSearch" placeholder="Search commands by name or description (e.g. /ban, /antiraid, /teamup)...">
+                </div>
+
+                <div class="layout-with-toc">
+                    <div id="commandsList">
+                        <!-- Command Sections generated dynamically -->
+                    </div>
+
+                    <div class="toc-sidebar">
+                        <div class="toc-title"><i class="ph ph-list-bullets"></i> Command Categories</div>
+                        <div id="cmdTocLinks">
+                            <!-- Category Links generated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 4: TERMS & PRIVACY -->
+            <div class="tab-view" id="view-tos">
+                <div class="glass-card">
+                    <h1 class="tos-title">Terms of Service & Privacy Policy</h1>
+                    <div class="tos-date">Last Updated: April 2026</div>
+
+                    <div class="tos-section">
+                        <h2>1. Terms of Service</h2>
+                        <p>By using <strong>SeanBot</strong>, you agree to comply with Discord's Terms of Service and all applicable laws. Your continued use signifies acceptance of these Terms.</p>
+                    </div>
+
+                    <div class="tos-section">
+                        <h2>1.1 Prohibited Use</h2>
+                        <p>You agree not to use the Bot for any purpose that violates these Terms or applicable law. Prohibited uses include harassment, illegal activities, spamming, or attempting to disrupt the bot's service.</p>
+                    </div>
+
+                    <div class="tos-section">
+                        <h2>2. Privacy Policy</h2>
+                        <p>We only collect data necessary for the Bot's core functionality (e.g. User IDs, Server IDs, user-defined preferences such as timezones). We never sell or share user data with third parties.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+                <a class="switch-tab-btn" data-target="tos" style="cursor: pointer;">Terms & Privacy</a>
+            </div>
+        </footer>
     </div>
 
     <script>
+        /* ==========================================================================
+           COMMANDS DATABASE
+           ========================================================================== */
+        const commandsDatabase = [
+            {
+                id: "general-fun",
+                title: "1.0 General & Fun",
+                icon: "ph-house-line",
+                commands: [
+                    { name: "/serverinfo", desc: "Shows server information.", badge: "Everyone", type: "public" },
+                    { name: "/ping", desc: "Checks the bots latency.", badge: "Everyone", type: "public" },
+                    { name: "/prefix", desc: "View or change this server's text command prefix.", badge: "Manage Server", type: "perm" },
+                    { name: "/dashboard", desc: "Get a link to view server stats", badge: "Administrator", type: "perm" },
+                    { name: "/invite", desc: "Get the bot’s invite link.", badge: "Administrator", type: "perm" },
+                    { name: "/server avatar", desc: "View a member's avatar.", badge: "Everyone", type: "public" },
+                    { name: "/server count", desc: "View this server's member count.", badge: "Everyone", type: "public" },
+                    { name: "/duel", desc: "Start a Battle Royale!", badge: "Everyone", type: "public" },
+                    { name: "/8ball", desc: "Ask the magic 8-ball a question.", badge: "Everyone", type: "public" },
+                    { name: "/remindme", desc: "Set a reminder for later", badge: "Everyone", type: "public" },
+                    { name: "/slap", desc: "Slap someone!", badge: "Everyone", type: "public" }
+                ]
+            },
+            {
+                id: "moderation-core",
+                title: "2.0 Core Moderation",
+                icon: "ph-shield-checkered",
+                commands: [
+                    { name: "/kick", desc: "Kicks user.", badge: "Kick", type: "perm" },
+                    { name: "/ban", desc: "Bans the user.", badge: "Ban", type: "perm" },
+                    { name: "/shadowban", desc: "Bans the user without being in the server.", badge: "Ban", type: "perm" },
+                    { name: "/unban", desc: "Unbans the user by ID.", badge: "Ban", type: "perm" },
+                    { name: "/timeout", desc: "Prevents user from messaging and joining VC.", badge: "Moderate Member", type: "perm" },
+                    { name: "/purge", desc: "Deletes x number of messages from that channel.", badge: "Manage Messages", type: "perm" },
+                    { name: "/warn add", desc: "Issue a warning to a member.", badge: "Manage Messages", type: "perm" }
+                ]
+            },
+            {
+                id: "security-antiraid",
+                title: "3.0 Security & Anti-Raid",
+                icon: "ph-detective",
+                commands: [
+                    { name: "/antiraid whitelist", desc: "Toggles a role to bypass all detection.", badge: "Administrator", type: "perm" },
+                    { name: "/antiraid canary", desc: "Toggles Canary mode (Logging Only).", badge: "Administrator", type: "perm" },
+                    { name: "/antiraid quarantine", desc: "Configure locked quarantine isolation.", badge: "Administrator", type: "perm" },
+                    { name: "/antiraid dashboard", desc: "Displays a comprehensive security overview.", badge: "Administrator", type: "perm" },
+                    { name: "/antiraid register_scam", desc: "Register scam screenshots as visual blocks.", badge: "Administrator", type: "perm" }
+                ]
+            },
+            {
+                id: "federation-networking",
+                title: "4.0 Federation & Networking",
+                icon: "ph-globe-hemisphere-west",
+                commands: [
+                    { name: "/thread network create", desc: "Create a new Thread network.", badge: "Administrator", type: "perm" },
+                    { name: "/thread network join", desc: "Join a thread network using a token.", badge: "Administrator", type: "perm" },
+                    { name: "/thread network dashboard", desc: "View federation health and config.", badge: "Everyone", type: "public" },
+                    { name: "/relay link", desc: "Link this channel to a relay.", badge: "Administrator", type: "perm" }
+                ]
+            },
+            {
+                id: "wizard101-toolkit",
+                title: "5.0 Wizard101 Toolkit",
+                icon: "ph-magic-wand",
+                commands: [
+                    { name: "/item", desc: "Search for an item in the W101 database", badge: "Everyone", type: "public" },
+                    { name: "/damage", desc: "Open the Damage Assistant", badge: "Everyone", type: "public" },
+                    { name: "/spell", desc: "Search for a spell in the W101 database", badge: "Everyone", type: "public" },
+                    { name: "/decks browse", desc: "Browse decks in this server.", badge: "Everyone", type: "public" },
+                    { name: "/decks export", desc: "Export a deck as an image", badge: "Everyone", type: "public" },
+                    { name: "/statcaps find", desc: "View Wizard101 stat cap by level and school.", badge: "Everyone", type: "public" },
+                    { name: "/bm forms", desc: "View your Beastmoon forms.", badge: "Everyone", type: "public" }
+                ]
+            }
+        ];
+
+        /* ==========================================================================
+           DOCUMENTATION DATA
+           ========================================================================== */
+        const docsData = [
+            {
+                id: "quickstart",
+                icon: "ph-rocket",
+                title: "Quick Start Guide",
+                subtitle: "Integrate SeanBot into your Discord community in three simple steps.",
+                content: [
+                    { type: "heading", text: "1. Invite the Bot" },
+                    { type: "text", text: "Add SeanBot to your server with basic administrative permissions. Ensure the bot's role is positioned above any roles it needs to manage in your Discord Server Settings." },
+                    { type: "heading", text: "2. Manage Active Modules" },
+                    { type: "text", text: "SeanBot features a modular architecture. You can disable features you don't need using `/serveradmin module` or through the Web Dashboard to keep your server clutter-free." },
+                    { type: "callout", icon: "💡", title: "Pro Tip", text: "Run `/staff diagnose` anytime to verify bot permissions and command prefix configurations across your channels." }
+                ]
+            },
+            {
+                id: "antiraid",
+                icon: "ph-shield-warning",
+                title: "Anti-Raid & Security",
+                subtitle: "Protect your server from sudden bot raids, link spam, and mass join events.",
+                content: [
+                    { type: "list", title: "Core Security Systems", items: [
+                        "Heat Score Engine: Dynamically calculates user threat levels based on join rate, account age, and repeated link bursts.",
+                        "Canary Mode: Test your security parameters safely without punishing real members. Logs flagged actions directly to staff channels.",
+                        "Quarantine Isolation: Revokes permissions from suspected raid accounts and isolates them in a secure holding channel."
+                    ]},
+                    { type: "commands", title: "Essential Security Commands", items: [
+                        { cmd: "/antiraid dashboard", desc: "View real-time threat scores, active bursts, and security health." },
+                        { cmd: "/antiraid canary [on/off]", desc: "Toggle simulation mode for safe configuration testing." },
+                        { cmd: "/antiraid register_scam", desc: "Register visual scam fingerprints to auto-block phishing images." }
+                    ]}
+                ]
+            },
+            {
+                id: "federation",
+                icon: "ph-globe-hemisphere-west",
+                title: "Server Federation & Relays",
+                subtitle: "Connect multiple Discord servers together into a unified real-time network.",
+                content: [
+                    { type: "heading", text: "Setting Up a Federation Network" },
+                    { type: "text", text: "1. Execute `/thread network create [name]` on your primary hub server to receive a network access token." },
+                    { type: "text", text: "2. On secondary servers, execute `/thread network join [token]`." },
+                    { type: "callout", icon: "🛡️", title: "Security Guarantee", text: "All cross-server relay messages use HMAC token verification to guarantee message authenticity." }
+                ]
+            },
+            {
+                id: "timeping",
+                icon: "ph-clock-countdown",
+                title: "TimePing & Global Reminders",
+                subtitle: "Eliminate timezone confusion for global gaming groups and scheduled events.",
+                content: [
+                    { type: "list", title: "Key Features", items: [
+                        "Personal Timezones: Save your local timezone with `/remindme` or right-click any message to attach a reminder.",
+                        "Scheduled Role Pings: Use `/timeping schedule` to configure automated alerts that ping specific roles prior to events.",
+                        "Discord Event Sync: Attach TimePings directly to native Discord Scheduled Events using `/timeping native`."
+                    ]}
+                ]
+            },
+            {
+                id: "events",
+                icon: "ph-calendar-plus",
+                title: "Event Signups & Team-Ups",
+                subtitle: "Organize MMO raids, dungeon runs, and competitive lobbies with interactive boards.",
+                content: [
+                    { type: "commands", title: "Event Management Commands", items: [
+                        { cmd: "/teamup create", desc: "Open an interactive form to host a quick dungeon run or team-up." },
+                        { cmd: "/raid start", desc: "Create a structured multi-role signup board with slot limits per role." }
+                    ]}
+                ]
+            },
+            {
+                id: "w101",
+                icon: "ph-magic-wand",
+                title: "Wizard101 Toolkit",
+                subtitle: "Advanced game utilities built specifically for Wizard101 players and communities.",
+                content: [
+                    { type: "list", title: "Tools & Utilities", items: [
+                        "Damage Assistant: Calculate multi-buff blade, trap, and weakness damage outputs with `/damage`.",
+                        "Deck Sharing & Export: Render compact deck share codes into visual images with `/deck lookup`.",
+                        "Beastmoon Tracker: Track and display Beastmoon form tiers with `/bm forms` and `/bm leaderboard`."
+                    ]}
+                ]
+            },
+            {
+                id: "faq",
+                icon: "ph-question",
+                title: "Frequently Asked Questions",
+                subtitle: "Common troubleshooting questions and answers.",
+                content: [
+                    { type: "heading", text: "Why aren't slash commands displaying?" },
+                    { type: "text", text: "Ensure SeanBot was granted the `applications.commands` scope when invited. Re-inviting the bot with default permissions resolves missing command registrations." }
+                ]
+            }
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
+            initTabSystem();
+            initThemeSystem();
+            initDocsView();
+            initCommandsView();
+            initOverviewFilters();
+            initMobileMenu();
+        });
+
+        // Tab Switching Engine
+        function initTabSystem() {
+            const navLinks = document.querySelectorAll('.sidebar .nav-link');
+            const tabViews = document.querySelectorAll('.tab-view');
+            const pageTitle = document.getElementById('currentPageTitle');
+            const sidebarDocsNav = document.getElementById('sidebarDocsNav');
+
+            function switchTab(targetId) {
+                // Update Nav links
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-target') === targetId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Update Views
+                tabViews.forEach(view => {
+                    if (view.id === `view-${targetId}`) {
+                        view.classList.add('active-tab');
+                    } else {
+                        view.classList.remove('active-tab');
+                    }
+                });
+
+                // Show Sidebar Docs TOC ONLY when on Documentation tab
+                if (targetId === 'docs') {
+                    sidebarDocsNav.classList.add('show');
+                } else {
+                    sidebarDocsNav.classList.remove('show');
+                }
+
+                // Update Breadcrumb Title
+                const titleMap = {
+                    'overview': 'Overview',
+                    'docs': 'Documentation',
+                    'commands': 'Commands',
+                    'tos': 'Terms & Privacy'
+                };
+                if (pageTitle) pageTitle.textContent = titleMap[targetId] || 'Overview';
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const target = link.getAttribute('data-target');
+                    if (target) switchTab(target);
+                });
+            });
+
+            document.querySelectorAll('.switch-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.getAttribute('data-target');
+                    if (target) switchTab(target);
+                });
+            });
+        }
+
+        function initDocsView() {
+            const docsContent = document.getElementById('docsContent');
+            const sidebarTocContainer = document.getElementById('sidebarDocsNavLinks');
+
+            if (!docsContent || !sidebarTocContainer) return;
+
+            docsContent.innerHTML = '';
+            sidebarTocContainer.innerHTML = '';
+
+            docsData.forEach((doc, idx) => {
+                // 1. Populate Sidebar TOC Link
+                const sidebarTocLink = document.createElement('a');
+                sidebarTocLink.className = `sidebar-toc-link ${idx === 0 ? 'active' : ''}`;
+                sidebarTocLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
+                sidebarTocLink.addEventListener('click', () => {
+                    document.querySelectorAll('.sidebar-toc-link').forEach(l => l.classList.remove('active'));
+                    sidebarTocLink.classList.add('active');
+                    const articleElem = document.getElementById(`doc-${doc.id}`);
+                    if (articleElem) {
+                        articleElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+                sidebarTocContainer.appendChild(sidebarTocLink);
+
+                // 2. Populate Full Article Stream
+                const article = document.createElement('article');
+                article.className = 'docs-article';
+                article.id = `doc-${doc.id}`;
+
+                let html = `
+                    <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px; margin-bottom: 24px;">${doc.subtitle}</p>
+                `;
+
+                doc.content.forEach(item => {
+                    if (item.type === 'heading') {
+                        html += `<h3>${item.text}</h3>`;
+                    } else if (item.type === 'text') {
+                        html += `<p>${item.text}</p>`;
+                    } else if (item.type === 'callout') {
+                        html += `
+                            <div class="callout-box">
+                                <strong>${item.icon || '💡'} ${item.title}:</strong> ${item.text}
+                            </div>
+                        `;
+                    } else if (item.type === 'list') {
+                        if (item.title) html += `<h3>${item.title}</h3>`;
+                        html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+                    } else if (item.type === 'commands') {
+                        if (item.title) html += `<h3>${item.title}</h3>`;
+                        html += `<ul>${item.items.map(i => `<li><code>${i.cmd}</code> — ${i.desc}</li>`).join('')}</ul>`;
+                    }
+                });
+
+                article.innerHTML = html;
+                docsContent.appendChild(article);
+            });
+
+            // Doc Search Filter
+            const docSearch = document.getElementById('docSearch');
+            docSearch?.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                document.querySelectorAll('.docs-article').forEach(article => {
+                    const match = !query || article.textContent.toLowerCase().includes(query);
+                    article.style.display = match ? 'block' : 'none';
+                });
+            });
+        }
+
+        function initCommandsView() {
+            const container = document.getElementById('commandsList');
+            const tocContainer = document.getElementById('cmdTocLinks');
+
+            if (!container || !tocContainer) return;
+
+            container.innerHTML = '';
+            tocContainer.innerHTML = '';
+
+            commandsDatabase.forEach(sec => {
+                // TOC link
+                const tocLink = document.createElement('a');
+                tocLink.className = 'toc-link';
+                tocLink.textContent = sec.title;
+                tocLink.addEventListener('click', () => {
+                    document.getElementById(`cmd-sec-${sec.id}`)?.scrollIntoView({ behavior: 'smooth' });
+                });
+                tocContainer.appendChild(tocLink);
+
+                // Section
+                const section = document.createElement('section');
+                section.className = 'cmd-section';
+                section.id = `cmd-sec-${sec.id}`;
+
+                let html = `<h2><i class="ph ${sec.icon}"></i> ${sec.title}</h2><div class="cards-container">`;
+                sec.commands.forEach(cmd => {
+                    html += `
+                        <div class="cmd-card" data-search="${cmd.name.toLowerCase()} ${cmd.desc.toLowerCase()}">
+                            <div class="cmd-header">
+                                <span class="cmd-name">${cmd.name}</span>
+                                <span class="badge ${cmd.type}">${cmd.badge}</span>
+                            </div>
+                            <div class="cmd-desc">${cmd.desc}</div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+                section.innerHTML = html;
+                container.appendChild(section);
+            });
+
+            // Search Commands
+            const cmdSearch = document.getElementById('cmdSearch');
+            cmdSearch?.addEventListener('input', (e) => {
+                const q = e.target.value.toLowerCase().trim();
+                document.querySelectorAll('.cmd-card').forEach(card => {
+                    const match = !q || card.getAttribute('data-search').includes(q);
+                    card.style.display = match ? 'flex' : 'none';
+                });
+            });
+        }
+
+        // Overview Pill Filter
+        function initOverviewFilters() {
             const filterBtns = document.querySelectorAll('#featureFilters .pill-btn');
             const featureCards = document.querySelectorAll('#featuresGrid .feature-card');
 
@@ -226,7 +1107,6 @@
                     btn.classList.add('active');
 
                     const category = btn.getAttribute('data-filter');
-
                     featureCards.forEach(card => {
                         if (category === 'all' || card.getAttribute('data-category') === category) {
                             card.style.display = 'flex';
@@ -236,7 +1116,57 @@
                     });
                 });
             });
-        });
+        }
+
+        // Theme Switcher Logic
+        function initThemeSystem() {
+            const themeToggle = document.getElementById('themeToggle');
+            const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+            document.documentElement.setAttribute('data-accent', savedAccent);
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', (e) => {
+                    if (e.target.closest('.dropdown-menu-content') && !e.target.classList.contains('accent-dot')) return;
+                    themeToggle.classList.toggle('open');
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (themeToggle && !themeToggle.contains(e.target)) themeToggle.classList.remove('open');
+            });
+
+            document.querySelectorAll('.accent-dot').forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const color = e.target.getAttribute('data-accent');
+                    if (color) {
+                        document.documentElement.setAttribute('data-accent', color);
+                        localStorage.setItem('seanbotAccent', color);
+                    }
+                });
+            });
+        }
+
+        // Mobile Sidebar Controls
+        function initMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const openBtn = document.getElementById('openSidebarBtn');
+            const closeBtn = document.getElementById('closeSidebarBtn');
+
+            function toggleSidebar(show) {
+                if (show) {
+                    sidebar?.classList.add('mobile-open');
+                    overlay?.classList.add('show');
+                } else {
+                    sidebar?.classList.remove('mobile-open');
+                    overlay?.classList.remove('show');
+                }
+            }
+
+            openBtn?.addEventListener('click', () => toggleSidebar(true));
+            closeBtn?.addEventListener('click', () => toggleSidebar(false));
+            overlay?.addEventListener('click', () => toggleSidebar(false));
+        }
     </script>
-</body> 
+</body>
 </html>
