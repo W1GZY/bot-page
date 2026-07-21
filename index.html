@@ -800,7 +800,7 @@
                         "Configurable Emoji & Threshold: Customize the trigger emoji and the number of required reactions globally or per channel.",
                         "Channel Overrides: Set different required reaction counts for specific text channels or disable auto-pinning in channels like #announcements.",
                         "Automatic Unpinning: If reactions drop below the required threshold, SeanBot automatically unpins the message.",
-                        "Rapid Pin Protection: Cooldown safeguards prevent channels from exceeding Discord's 50-pin channel limit during rapid viral events."
+                        "Rapid Pin Protection: Prevents channels from exceeding 50-pin channel pins."
                     ]},
                     { type: "commands", title: "Commands Reference", items: [
                         { cmd: "/autopin toggle", desc: "Enables or disables the Auto-Pin system globally across the server." },
@@ -811,7 +811,7 @@
                         { cmd: "/autopin settings", desc: "Displays current auto-pin configurations, overrides, and disabled channels." },
                         { cmd: "/autopin stats", desc: "Displays diagnostic metrics including total pins, unpins, and active cache size." }
                     ]},
-                    { type: "callout", icon: "📌", title: "Note", text: "Messages older than 14 days are ignored to conserve resources. If a channel reaches Discord's 50-pin limit, SeanBot alerts channel moderators." }
+                    { type: "callout", icon: "📌", title: "Note", text: "Dont worry about old messages being ressurected. SeanBot will not pin messages older than 14 days."}
                 ]
             },
             {
@@ -823,16 +823,15 @@
                     { type: "heading", text: "Overview" },
                     { type: "text", text: "The Activity Tracker module monitors community engagement across messages, reactions, voice chat, and slash command usage. It automatically assigns designated 'Active' or 'Inactive' roles based on user activity over a configurable timeframe." },
                     { type: "list", title: "Key Features", items: [
-                        "Automated Role Management: Dynamically grants an 'Active' role and removes an 'Inactive' role (or vice versa) as members interact.",
-                        "Multi-Event Tracking: Detects activity across text messages, reaction additions, voice channel joins, and command interactions.",
-                        "Rate-Limited Background Processing: Batch-updates member roles on a scheduled loop to avoid Discord API rate limits.",
+                        "Automated Role Management: Dynamically grants an 'Active' or 'Inactive' role (or vice versa) as members interact.",
+                        "Multi-Event Tracking: Tracks users discord interaction to determine activity status, so any activity inside your server will trigger Active.",
                         "Custom Inactivity Windows: Administrators choose the exact number of inactive days before roles transition."
                     ]},
                     { type: "commands", title: "Commands Reference", items: [
                         { cmd: "/activity setup [threshold_days]", desc: "Opts the server into activity tracking, creates Active/Inactive roles if missing, and sets the inactivity threshold." },
                         { cmd: "/activity disable", desc: "Disables activity tracking for the server and cleans up associated configurations and roles." }
                     ]},
-                    { type: "callout", icon: "📊", title: "API Safety Guarantee", text: "Role updates are chunked into background batches to respect Discord rate limits and prevent freezes on large communities." }
+                    { type: "callout", icon: "📊", title: "Tip:", text: "Can be used to monitor who is active and who hasnt visited your server." }
                 ]
             },
             {
