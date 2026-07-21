@@ -594,6 +594,13 @@
                                 <p class="feature-desc">Track member participation across text, voice, and commands with automated Active/Inactive role assignments and rate-limited background processing.</p>                     
                             </div>                 
                         </div>
+                        <div class="feature-card" data-category="w101">                     
+                            <div class="feature-icon"><i class="ph ph-paw-print"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Beastmoon Tracker</h3>                         
+                                <p class="feature-desc">Track Wizard101 Beastmoon form progress, calculate Lunari and Idol costs, view stats, and compete on federated network leaderboards.</p>                     
+                            </div>                 
+                        </div>
                         <div class="feature-card" data-category="security">                     
                             <div class="feature-icon"><i class="ph ph-globe-hemisphere-west"></i></div>                     
                             <div>                         
@@ -633,7 +640,7 @@
                             <div class="feature-icon"><i class="ph ph-magic-wand"></i></div>                     
                             <div>                         
                                 <h3 class="feature-title">Wizard101 Toolkit</h3>                         
-                                <p class="feature-desc">Calculate multi-buff damage outputs, export custom deck images, and track Beastmoon forms.</p>                     
+                                <p class="feature-desc">Calculate multi-buff blade/trap/weakness damage outputs and export compact deck share codes into visual images.</p>                     
                             </div>                 
                         </div>             
                     </div>         
@@ -652,7 +659,7 @@
                 <!-- Doc Search Filter -->
                 <div class="search-container">
                     <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, RaidPoll, AutoPin, Activity)...">
+                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, RaidPoll, AutoPin, Activity, Beastmoon)...">
                 </div>
 
                 <!-- Full Width Seamless Article Stream -->
@@ -716,17 +723,17 @@
                 id: "antiraid",
                 icon: "ph-shield-warning",
                 title: "Anti-Raid & Security",
-                subtitle: "Automated threat detection, heat velocity calculations, and hijacked account interception.",
+                subtitle: "Detect and prevent raids, compromised accounts, and phishing attempts automatically.",
                 content: [
                     { type: "heading", text: "Overview" },
-                    { type: "text", text: "The Anti-Raid & Security module provides automated threat detection and mitigation for Discord servers. It monitors server traffic and messaging behavior to dynamically analyze threat levels, quarantine rogue users, intercept hijacked account sessions, and neutralize scam links or rogue webhooks in real time." },
+                    { type: "text", text: "The Anti-Raid & Security module provides automated threat detection and mitigation for Discord servers. It monitors server traffic and messaging behavior to dynamically analyze threat levels, quarantine users, intercept hijacked account sessions, and prevent scam links or rogue webhooks." },
                     { type: "list", title: "Key Features", items: [
-                        "Heat Score Engine: Calculates dynamic user threat scores based on message rate, account age, avatar status, and content weight.",
-                        "Canary Simulation Mode: Test security sensitivity settings safely by logging actions to audit channels without issuing automatic punishments.",
-                        "Hijacked Session & Scam Shield: Intercepts promo/casino spam, invisible unicode padding, scramble-text link masks, and suspicious attachments (.exe, .scr, .zip).",
-                        "Visual Perceptual Scanning: Uses image hashing (dHash) to match uploaded screenshots against known visual scam templates.",
-                        "Quarantine Sandbox: Isolates suspicious accounts into a restricted jail role while backing up original roles for safe restoration.",
-                        "Webhook Protection: Detects and destroys unauthorized or rogue webhooks used to spam channels."
+                        "Score System: Calculates a dynamic score for each user based on their messaging behavior.",
+                        "Canary Mode: Test security sensitivity settings safely by logging actions to audit channels without issuing punishments, allowing you to fine-tune detection thresholds.",
+                        "Hijacked Accounts & Scam Shield: Intercepts promo/casino spam, suspicious links and attachments.",
+                        "Image Scanning: Integrated scam database to detect and block known phishing or scam images, you can also contribute by registering new scams.",
+                        "Quarantine Functionality: Isolates suspicious accounts into a restricted jail role while backing up original roles for safe restoration for hacked accounts.",
+                        "Webhook Protection: Detects and destroys unauthorized webhooks if your admins/mods get hacked and installs malicious bots/webhooks."
                     ]},
                     { type: "commands", title: "Commands Reference", items: [
                         { cmd: "/antiraid dashboard", desc: "Displays an overview of active anti-raid parameters, whitelisted roles, and threat levels." },
@@ -753,9 +760,9 @@
                     { type: "list", items: [
                         "Administrator permissions required to modify settings.",
                         "SeanBot's role must be positioned above any managed roles (or quarantine role) to apply timeouts and role swaps.",
-                        "Requires View Channel, Send Messages, Manage Messages, and Moderate Members permissions."
+                        "Requires View Channel, Send Messages, Manage Messages, Manage Webhooks, Read Message History, Attach files and Moderate Members permissions. (Every permission is given to bot automatically on invite.)",
                     ]},
-                    { type: "callout", icon: "🛡️", title: "Common Use Cases", text: "Preventing server raids, stopping compromised account spammers, and isolating bad actors without permanent bans." }
+                    { type: "callout", icon: "🛡️", title: "Common Use Cases", text: "Preventing server raids, stopping compromised accounts, and catching bad users without automated permanent bans." }
                 ]
             },
             {
@@ -829,6 +836,34 @@
                 ]
             },
             {
+                id: "beastmoon",
+                icon: "ph-paw-print",
+                title: "Beastmoon Tracker",
+                subtitle: "Comprehensive Wizard101 Beastmoon form tracking, cost calculation, and leaderboards.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Beastmoon Tracker allows Wizard101 players to save their form progress, calculate remaining Lunari and Idol costs, and compete on server-wide or federated leaderboards." },
+                    { type: "list", title: "Key Features", items: [
+                        "Visual Progress Rendering: Automatically generates Tier Curve and Grid images of your progress.",
+                        "Automated Announcements: Posts celebratory messages in your server's log channel when members upgrade or max out forms.",
+                        "Alt Account Support: Track main and alt wizard profiles separately.",
+                        "Federated Leaderboards: Compete with players across all connected servers in your network.",
+                        "Web Dashboard Sync: Import your progress seamlessly using redemption codes."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/bm add", desc: "Interactive menu to add or update your Beastmoon forms." },
+                        { cmd: "/bm quick_add [form] [school] [tier]", desc: "Quickly update a Beastmoon form with autocomplete support." },
+                        { cmd: "/bm check", desc: "Check your progress towards Tier 5 with visual progression bars and Lunari/Idol costs." },
+                        { cmd: "/bm forms", desc: "View your saved Beastmoon forms as an interactive image grid or chart." },
+                        { cmd: "/bm leaderboard", desc: "View the top Beastmoon players in your server or federated network." },
+                        { cmd: "/bm max", desc: "See which users have fully maxed Tier 5 forms." },
+                        { cmd: "/bm log_channel [channel]", desc: "Admin command to set the channel for public Beastmoon upgrade announcements." },
+                        { cmd: "/bm redeem [code]", desc: "Redeem a Beastmoon sync code from the web dashboard." }
+                    ]},
+                    { type: "callout", icon: "🏆", title: "Maxing Forms", text: "Upgrading a form to Tier 5 triggers a special Maxed announcement! Track all maxed out players using the `/bm max` command." }
+                ]
+            },
+            {
                 id: "federation",
                 icon: "ph-globe-hemisphere-west",
                 title: "Server Federation & Relays",
@@ -859,10 +894,10 @@
                 title: "Wizard101 Toolkit",
                 subtitle: "Advanced game utilities built specifically for Wizard101 players and communities.",
                 content: [
-                    { type: "list", title: "Tools & Utilities", items: [
+                    { type: "text", text: "See the **Beastmoon Tracker** section for detailed Beastmoon documentation." },
+                    { type: "list", title: "Other Tools & Utilities", items: [
                         "Damage Assistant: Calculate multi-buff blade, trap, and weakness damage outputs with `/damage`.",
-                        "Deck Sharing & Export: Render compact deck share codes into visual images with `/deck lookup`.",
-                        "Beastmoon Tracker: Track and display Beastmoon form tiers with `/bm forms` and `/bm leaderboard`."
+                        "Deck Sharing & Export: Render compact deck share codes into visual images with `/deck lookup`."
                     ]}
                 ]
             },
