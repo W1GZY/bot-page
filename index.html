@@ -393,27 +393,6 @@
         .docs-article p, .docs-article li { color: #ddd; font-size: 0.925rem; line-height: 1.6; }
         .callout-box { background: #1a1a22; border-left: 3px solid var(--accent); padding: 14px 18px; margin: 16px 0; font-size: 0.875rem; color: #ccc; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
 
-        .layout-with-toc { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: start; }
-        .toc-sidebar { position: sticky; top: 80px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; }
-        .toc-title { font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .toc-link { display: block; color: var(--text-secondary); font-size: 0.8rem; padding: 4px 0; border-left: 2px solid transparent; padding-left: 8px; cursor: pointer; }
-        .toc-link.active-toc { color: var(--accent); border-left-color: var(--accent); font-weight: 700; }
-
-        .cmd-section { margin-bottom: 32px; scroll-margin-top: 80px; }
-        .cmd-section h2 { color: var(--accent); margin: 0 0 14px 0; font-size: 1.2rem; font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-        .cards-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-        .cmd-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 18px; display: flex; flex-direction: column; }
-        .cmd-card:hover { border-color: var(--border-highlight); }
-        .cmd-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .cmd-name { color: #fff; font-size: 0.9rem; font-weight: 700; margin: 0; font-family: monospace; background: rgba(255,255,255,0.05); padding: 3px 6px; border-radius: 4px; }
-        .cmd-desc { font-size: 0.825rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.4; }
-
-        .badge-container { display: flex; gap: 4px; }
-        .badge { font-size: 0.6rem; padding: 3px 8px; border-radius: var(--radius-full); font-weight: 800; text-transform: uppercase; }
-        .badge.public { background: rgba(255,255,255,0.08); color: #ccc; }
-        .badge.role { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-        .badge.perm { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-
         /* Terms Page */
         .tos-title { font-size: 2rem; font-weight: 900; margin: 0 0 8px 0; }
         .tos-date { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
@@ -439,8 +418,6 @@
             .hamburger { display: block; }
             .top-header { padding: 0 20px; }
             .content { padding: 24px 20px; }
-            .layout-with-toc { grid-template-columns: 1fr; }
-            .toc-sidebar { display: none; }
         }
 
         @media (max-width: 600px) {
@@ -468,7 +445,7 @@
         
         <a class="nav-link active" data-target="overview"><i class="ph ph-house"></i> <span>Overview</span></a>
         <a class="nav-link" data-target="docs"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
-        <a class="nav-link" data-target="commands"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+        <a class="nav-link" href="commands.html"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
 
         <!-- Dynamic Documentation Sidebar Navigation -->
         <div class="sidebar-toc-container" id="sidebarDocsNav">
@@ -535,7 +512,7 @@
                     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">                 
                         <a href="#" class="btn-large btn-primary"><i class="ph-fill ph-discord-logo"></i> Invite to Server</a>                 
                         <a class="btn-large btn-secondary switch-tab-btn" data-target="docs"><i class="ph ph-book-open"></i> Read Documentation</a>             
-                        <a class="btn-large btn-secondary switch-tab-btn" data-target="commands"><i class="ph ph-terminal-window"></i> Commands</a>             
+                        <a href="commands.html" class="btn-large btn-secondary"><i class="ph ph-terminal-window"></i> Commands</a>             
                     </div>         
                 </div>         
 
@@ -666,7 +643,7 @@
                 <!-- Doc Search Filter -->
                 <div class="search-container">
                     <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing, Commands)...">
+                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing)...">
                 </div>
 
                 <!-- Full Width Seamless Article Stream -->
@@ -675,35 +652,7 @@
                 </div>
             </div>
 
-            <!-- VIEW 3: COMMANDS -->
-            <div class="tab-view" id="view-commands">
-                <div style="margin-bottom: 24px;">
-                    <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Command Database</h1>
-                    <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
-                        Browse all available slash and text commands across active modules.
-                    </p>
-                </div>
-
-                <div class="search-container">
-                    <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="cmdSearch" placeholder="Search commands by name or description (e.g. /ban, /antiraid, /teamup)...">
-                </div>
-
-                <div class="layout-with-toc">
-                    <div id="commandsList">
-                        <!-- Command Sections generated dynamically -->
-                    </div>
-
-                    <div class="toc-sidebar">
-                        <div class="toc-title"><i class="ph ph-list-bullets"></i> Command Categories</div>
-                        <div id="cmdTocLinks">
-                            <!-- Category Links generated dynamically -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VIEW 4: TERMS & PRIVACY -->
+            <!-- VIEW 3: TERMS & PRIVACY -->
             <div class="tab-view" id="view-tos">
                 <div class="glass-card">
                     <h1 class="tos-title">Terms of Service & Privacy Policy</h1>
@@ -737,81 +686,6 @@
     </div>
 
     <script>
-        /* ==========================================================================
-           COMMANDS DATABASE
-           ========================================================================== */
-        const commandsDatabase = [
-            {
-                id: "general-fun",
-                title: "1.0 General & Fun",
-                icon: "ph-house-line",
-                commands: [
-                    { name: "/serverinfo", desc: "Shows server information.", badge: "Everyone", type: "public" },
-                    { name: "/ping", desc: "Checks the bots latency.", badge: "Everyone", type: "public" },
-                    { name: "/prefix", desc: "View or change this server's text command prefix.", badge: "Manage Server", type: "perm" },
-                    { name: "/dashboard", desc: "Get a link to view server stats", badge: "Administrator", type: "perm" },
-                    { name: "/invite", desc: "Get the bot’s invite link.", badge: "Administrator", type: "perm" },
-                    { name: "/server avatar", desc: "View a member's avatar.", badge: "Everyone", type: "public" },
-                    { name: "/server count", desc: "View this server's member count.", badge: "Everyone", type: "public" },
-                    { name: "/duel", desc: "Start a Battle Royale!", badge: "Everyone", type: "public" },
-                    { name: "/8ball", desc: "Ask the magic 8-ball a question.", badge: "Everyone", type: "public" },
-                    { name: "/remindme", desc: "Set a reminder for later", badge: "Everyone", type: "public" },
-                    { name: "/slap", desc: "Slap someone!", badge: "Everyone", type: "public" }
-                ]
-            },
-            {
-                id: "moderation-core",
-                title: "2.0 Core Moderation",
-                icon: "ph-shield-checkered",
-                commands: [
-                    { name: "/kick", desc: "Kicks user.", badge: "Kick", type: "perm" },
-                    { name: "/ban", desc: "Bans the user.", badge: "Ban", type: "perm" },
-                    { name: "/shadowban", desc: "Bans the user without being in the server.", badge: "Ban", type: "perm" },
-                    { name: "/unban", desc: "Unbans the user by ID.", badge: "Ban", type: "perm" },
-                    { name: "/timeout", desc: "Prevents user from messaging and joining VC.", badge: "Moderate Member", type: "perm" },
-                    { name: "/purge", desc: "Deletes x number of messages from that channel.", badge: "Manage Messages", type: "perm" },
-                    { name: "/warn add", desc: "Issue a warning to a member.", badge: "Manage Messages", type: "perm" }
-                ]
-            },
-            {
-                id: "security-antiraid",
-                title: "3.0 Security & Anti-Raid",
-                icon: "ph-detective",
-                commands: [
-                    { name: "/antiraid whitelist", desc: "Toggles a role to bypass all detection.", badge: "Administrator", type: "perm" },
-                    { name: "/antiraid canary", desc: "Toggles Canary mode (Logging Only).", badge: "Administrator", type: "perm" },
-                    { name: "/antiraid quarantine", desc: "Configure locked quarantine isolation.", badge: "Administrator", type: "perm" },
-                    { name: "/antiraid dashboard", desc: "Displays a comprehensive security overview.", badge: "Administrator", type: "perm" },
-                    { name: "/antiraid register_scam", desc: "Register scam screenshots as visual blocks.", badge: "Administrator", type: "perm" }
-                ]
-            },
-            {
-                id: "federation-networking",
-                title: "4.0 Federation & Networking",
-                icon: "ph-globe-hemisphere-west",
-                commands: [
-                    { name: "/thread network create", desc: "Create a new Thread network.", badge: "Administrator", type: "perm" },
-                    { name: "/thread network join", desc: "Join a thread network using a token.", badge: "Administrator", type: "perm" },
-                    { name: "/thread network dashboard", desc: "View federation health and config.", badge: "Everyone", type: "public" },
-                    { name: "/relay link", desc: "Link this channel to a relay.", badge: "Administrator", type: "perm" }
-                ]
-            },
-            {
-                id: "wizard101-toolkit",
-                title: "5.0 Wizard101 Toolkit",
-                icon: "ph-magic-wand",
-                commands: [
-                    { name: "/item", desc: "Search for an item in the W101 database", badge: "Everyone", type: "public" },
-                    { name: "/damage", desc: "Open the Damage Assistant", badge: "Everyone", type: "public" },
-                    { name: "/spell", desc: "Search for a spell in the W101 database", badge: "Everyone", type: "public" },
-                    { name: "/decks browse", desc: "Browse decks in this server.", badge: "Everyone", type: "public" },
-                    { name: "/decks export", desc: "Export a deck as an image", badge: "Everyone", type: "public" },
-                    { name: "/statcaps find", desc: "View Wizard101 stat cap by level and school.", badge: "Everyone", type: "public" },
-                    { name: "/bm forms", desc: "View your Beastmoon forms.", badge: "Everyone", type: "public" }
-                ]
-            }
-        ];
-
         /* ==========================================================================
            DOCUMENTATION DATA
            ========================================================================== */
@@ -913,14 +787,13 @@
             initTabSystem();
             initThemeSystem();
             initDocsView();
-            initCommandsView();
             initOverviewFilters();
             initMobileMenu();
         });
 
         // Tab Switching Engine
         function initTabSystem() {
-            const navLinks = document.querySelectorAll('.sidebar .nav-link');
+            const navLinks = document.querySelectorAll('.sidebar .nav-link[data-target]');
             const tabViews = document.querySelectorAll('.tab-view');
             const pageTitle = document.getElementById('currentPageTitle');
             const sidebarDocsNav = document.getElementById('sidebarDocsNav');
@@ -955,7 +828,6 @@
                 const titleMap = {
                     'overview': 'Overview',
                     'docs': 'Documentation',
-                    'commands': 'Commands',
                     'tos': 'Terms & Privacy'
                 };
                 if (pageTitle) pageTitle.textContent = titleMap[targetId] || 'Overview';
@@ -1071,58 +943,6 @@
                 if (query && firstMatch) {
                     activateDoc(firstMatch);
                 }
-            });
-        }
-
-        function initCommandsView() {
-            const container = document.getElementById('commandsList');
-            const tocContainer = document.getElementById('cmdTocLinks');
-
-            if (!container || !tocContainer) return;
-
-            container.innerHTML = '';
-            tocContainer.innerHTML = '';
-
-            commandsDatabase.forEach(sec => {
-                // TOC link
-                const tocLink = document.createElement('a');
-                tocLink.className = 'toc-link';
-                tocLink.textContent = sec.title;
-                tocLink.addEventListener('click', () => {
-                    document.getElementById(`cmd-sec-${sec.id}`)?.scrollIntoView({ behavior: 'smooth' });
-                });
-                tocContainer.appendChild(tocLink);
-
-                // Section
-                const section = document.createElement('section');
-                section.className = 'cmd-section';
-                section.id = `cmd-sec-${sec.id}`;
-
-                let html = `<h2><i class="ph ${sec.icon}"></i> ${sec.title}</h2><div class="cards-container">`;
-                sec.commands.forEach(cmd => {
-                    html += `
-                        <div class="cmd-card" data-search="${cmd.name.toLowerCase()} ${cmd.desc.toLowerCase()}">
-                            <div class="cmd-header">
-                                <span class="cmd-name">${cmd.name}</span>
-                                <span class="badge ${cmd.type}">${cmd.badge}</span>
-                            </div>
-                            <div class="cmd-desc">${cmd.desc}</div>
-                        </div>
-                    `;
-                });
-                html += `</div>`;
-                section.innerHTML = html;
-                container.appendChild(section);
-            });
-
-            // Search Commands
-            const cmdSearch = document.getElementById('cmdSearch');
-            cmdSearch?.addEventListener('input', (e) => {
-                const q = e.target.value.toLowerCase().trim();
-                document.querySelectorAll('.cmd-card').forEach(card => {
-                    const match = !q || card.getAttribute('data-search').includes(q);
-                    card.style.display = match ? 'flex' : 'none';
-                });
             });
         }
 
