@@ -16,8 +16,8 @@
 <body data-nav="overview" data-title="Overview">     
     <div class="content">                  
         <!-- Hero Section -->
-        <div class="hero-section auto-fade-in" style="animation-delay: 0s;">             
-            <h1 class="hero-title">Meet <span style="font-weight: 900; letter-spacing: -0.05em; color: var(--accent); transition: color 0.3s ease;">SeanBot<span style="color: #9ca3af;">.</span></span></h1>             
+        <div class="hero-section auto-fade-in">             
+            <h1 class="hero-title">Meet <span style="font-weight: 900; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af;">.</span></span></h1>             
             <p class="hero-desc">The ultimate multipurpose Discord companion built to manage your community, secure your server, and seamlessly bridge networks.</p>             
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">                 
                 <a href="#" class="btn-large btn-primary"><i class="ph-fill ph-discord-logo"></i> Invite to Server</a>                 
@@ -46,46 +46,22 @@
             </div>
         </div>
 
-        <!-- Interactive Bot Preview Section -->
-        <div class="auto-fade-in" style="margin-bottom: 50px; animation-delay: 0.1s;">
-            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-                <i class="ph-duotone ph-desktop" style="color: var(--accent); font-size: 2.2rem;"></i> Live Response Preview
-            </h2>
-            <div class="discord-mockup">
-                <div class="discord-msg">
-                    <div class="discord-avatar"><i class="ph-fill ph-paw-print"></i></div>
-                    <div style="flex: 1;">
-                        <div class="discord-username">
-                            SeanBot <span class="discord-bot-badge">APP</span>
-                            <span class="discord-time">Today at 8:45 PM</span>
-                        </div>
-                        <div class="discord-embed">
-                            <div class="discord-embed-title"><i class="ph ph-shield-check"></i> Anti-Raid Active Protection</div>
-                            <div class="discord-embed-desc">
-                                Server threat level is normal. Automatic raid protection, link filtering, and user verification are currently active across all channels.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Why Choose SeanBot -->
-        <div class="auto-fade-in" style="margin-bottom: 50px; animation-delay: 0.15s;">             
-            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">                 
-                <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 2.2rem;"></i> Why SeanBot?             
+        <div class="auto-fade-in" style="margin-bottom: 40px; animation-delay: 0.1s;">             
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">                 
+                <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
             </h2>             
-            <div class="glass-card" style="line-height: 1.7; font-size: 1.05rem; color: #ddd;">                 
-                <p style="margin-top: 0;">SeanBot isn't just another generic moderation bot. It is a highly specialized toolkit designed for communities that need <strong>real reliability and power</strong>.</p>                 
-                <p style="margin-bottom: 0;">Whether you are running a complex multi-server network, scheduling cross-timezone events, or protecting your server from sophisticated raids, SeanBot gives you the granular control you need without the clutter. Tailor every module, customize your alerts, and keep your community running flawlessly.</p>             
+            <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: #ddd;">                 
+                <p style="margin-top: 0;">SeanBot is a highly specialized toolkit designed for communities that need <strong>real reliability and power</strong>.</p>                 
+                <p style="margin-bottom: 0;">Whether you are running a multi-server network, scheduling cross-timezone events, or protecting your server from raids, SeanBot gives you granular control without clutter. Tailor every module and keep your community running flawlessly.</p>             
             </div>         
         </div>         
 
         <!-- Featured Modules with Filter Pills -->
-        <div class="auto-fade-in" style="animation-delay: 0.2s;">             
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
-                <h2 style="font-size: 1.8rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 12px;">                 
-                    <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 2.2rem;"></i> Featured Modules             
+        <div class="auto-fade-in" style="animation-delay: 0.15s;">             
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+                <h2 style="font-size: 1.6rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px;">                 
+                    <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 1.8rem;"></i> Featured Modules             
                 </h2>             
                 
                 <div class="filter-pills" id="featureFilters">
@@ -103,7 +79,7 @@
                     <div class="feature-icon"><i class="ph ph-shield-warning"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Anti-Raid Protection</h3>                         
-                        <p class="feature-desc">Keep your server safe automatically. Detects sudden bursts of spam, quarantines bad actors, blocks phishing links, and lets you test your security settings safely with Canary Mode.</p>                     
+                        <p class="feature-desc">Keep your server safe automatically. Detects sudden bursts of spam, quarantines bad actors, blocks phishing links, and lets you test security settings with Canary Mode.</p>                     
                     </div>                 
                 </div>                 
                 <!-- Server Federation -->                 
@@ -111,7 +87,7 @@
                     <div class="feature-icon"><i class="ph ph-globe-hemisphere-west"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Server Federation</h3>                         
-                        <p class="feature-desc">Connect multiple Discord servers together! Share live chat channels, sync forum threads, and maintain a shared ban list across your entire community network.</p>                     
+                        <p class="feature-desc">Connect multiple Discord servers together! Share live channels, sync forum threads, and maintain a shared ban list across your network.</p>                     
                     </div>                 
                 </div>                 
                 <!-- TimePing & Timezones -->                 
@@ -119,7 +95,7 @@
                     <div class="feature-icon"><i class="ph ph-clock-countdown"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Event Reminders & Timezones</h3>                         
-                        <p class="feature-desc">Never miss an event again. Schedule automatic alerts that mention the right roles at the right time. Users can save their local timezone so every reminder is perfectly synced globally.</p>                     
+                        <p class="feature-desc">Schedule automatic alerts mentioning roles at the right time. Save your local timezone so every reminder is perfectly synced globally.</p>                     
                     </div>                 
                 </div>                                  
                 <!-- Personal Reminders -->                 
@@ -127,7 +103,7 @@
                     <div class="feature-icon"><i class="ph ph-bell"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Personal Reminders</h3>                         
-                        <p class="feature-desc">Right-click any message to set a quick personal reminder. SeanBot will DM you when the time is up, and you can easily "snooze" the reminder for later directly from the message.</p>                     
+                        <p class="feature-desc">Right-click any message to set a quick reminder. SeanBot will DM you when time is up, with snooze options directly from chat.</p>                     
                     </div>                 
                 </div>                 
                 <!-- Event Tracking & Polls -->                 
@@ -135,7 +111,7 @@
                     <div class="feature-icon"><i class="ph ph-calendar-plus"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Event Signups & Team-Ups</h3>                         
-                        <p class="feature-desc">Create beautiful signup boards for raids, game lobbies, or dungeons. Lock specific roles (like Healer or Tank), set group limits, and automatically generate private Voice Channels for the group when it's time to play.</p>                     
+                        <p class="feature-desc">Create signup boards for raids, lobbies, or dungeons. Lock specific roles, set slot limits, and generate private Voice Channels automatically.</p>                     
                     </div>                 
                 </div>                 
                 <!-- Temp Channels -->                 
@@ -143,7 +119,7 @@
                     <div class="feature-icon"><i class="ph ph-microphone-stage"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Dynamic Voice Channels</h3>                         
-                        <p class="feature-desc">Join a hub to instantly create your own private Voice Channel. You have full control to kick, ban, or lock your room. Channels automatically delete themselves when everyone leaves.</p>                     
+                        <p class="feature-desc">Join a hub channel to instantly create your own private Voice room with full kick, ban, and lock controls. Auto-deletes when empty.</p>                     
                     </div>                 
                 </div>                 
                 <!-- Web Dashboard -->                 
@@ -151,7 +127,7 @@
                     <div class="feature-icon"><i class="ph ph-browser"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Secure Web Dashboard</h3>                         
-                        <p class="feature-desc">Manage your server settings easily through a clean web interface. Secure token authentication keeps your configurations safe while you adjust your auto-watch alerts or game settings.</p>                     
+                        <p class="feature-desc">Manage server settings through a clean web interface. Secure token authentication keeps configurations safe as you adjust active modules.</p>                     
                     </div>                 
                 </div>                 
                 <!-- Enterprise Logging & Reporting -->                 
@@ -159,39 +135,39 @@
                     <div class="feature-icon"><i class="ph ph-scroll"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Server Logging & User Reports</h3>                         
-                        <p class="feature-desc">Keep a clean record of server activity. Groups rapid events together to prevent spam, safely archives deleted messages, and provides a built-in UI for members to privately report bad behavior to your staff.</p>                     
+                        <p class="feature-desc">Keep clean logs of server activity. Groups rapid events to prevent spam, archives deleted messages, and provides a reporting UI for members.</p>                     
                     </div>                 
                 </div>                 
-                <!-- Thread & Starboard -->                 
+                <!-- Highlights & Starboard -->                 
                 <div class="feature-card" data-category="community">                     
                     <div class="feature-icon"><i class="ph ph-star"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Community Highlights</h3>                         
-                        <p class="feature-desc">Let your community shine. Pin the best messages automatically when they hit reaction milestones, create a server Starboard, or run live upvote/downvote tracking in your forum threads.</p>                     
+                        <p class="feature-desc">Pin best messages automatically upon hitting reaction milestones, manage a server Starboard, and track forum thread upvotes in real-time.</p>                     
                     </div>                 
                 </div>                 
-                <!-- Reaction Ping & Emoji Lock -->                 
+                <!-- Reaction & Emoji Suite -->                 
                 <div class="feature-card" data-category="utility">                     
                     <div class="feature-icon"><i class="ph ph-bell-ringing"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Reaction & Emoji Suite</h3>                         
-                        <p class="feature-desc">Allow users to "subscribe" to messages via reactions. Manage your server's custom emojis, track usage leaderboards, auto-delete unused emotes, and right-click to react with animated emojis.</p>                     
+                        <p class="feature-desc">Subscribe to messages via reactions. Track emoji usage leaderboards, clean up unused emotes, and react with animated custom emojis.</p>                     
                     </div>                 
                 </div>                 
-                <!-- Returning Roles -->                 
+                <!-- Returning Members -->                 
                 <div class="feature-card" data-category="security">                     
                     <div class="feature-icon"><i class="ph ph-users-three"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Returning Members</h3>                         
-                        <p class="feature-desc">Never lose track of your veterans. If a member leaves and rejoins your server later, SeanBot will automatically remember them and give them "returning" role.</p>                     
+                        <p class="feature-desc">Automatically remember server veterans. If a member leaves and rejoins later, SeanBot restores their returning member role automatically.</p>                     
                     </div>                 
                 </div>                 
-                <!-- Translation Suite -->                 
+                <!-- In-Chat Translator -->                 
                 <div class="feature-card" data-category="utility">                     
                     <div class="feature-icon"><i class="ph ph-translate"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">In-Chat Translator</h3>                         
-                        <p class="feature-desc">Break language barriers instantly. Right-click any message to automatically detect the language and translate it into a clean, easy-to-read embed directly in the chat.</p>                     
+                        <p class="feature-desc">Break language barriers instantly. Right-click any message to automatically detect the source language and translate it cleanly into chat.</p>                     
                     </div>                 
                 </div>                 
                 <!-- Fun & Utility -->                 
@@ -199,7 +175,7 @@
                     <div class="feature-icon"><i class="ph ph-smiley"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Fun & Utility Tools</h3>                         
-                        <p class="feature-desc">Engage your members! Slap your friends (and track it on leaderboards!), ask the Magic 8-Ball, generate "fake quote" images, or instantly pull up random Cat Facts and GIFs.</p>                     
+                        <p class="feature-desc">Slap your friends on tracked leaderboards, ask the Magic 8-Ball, generate fake quote screenshots, or pull up random facts and GIFs.</p>                     
                     </div>                 
                 </div>                 
                 <!-- W101 Toolkit -->                 
@@ -207,32 +183,32 @@
                     <div class="feature-icon"><i class="ph ph-magic-wand"></i></div>                     
                     <div>                         
                         <h3 class="feature-title">Wizard101 Toolkit</h3>                         
-                        <p class="feature-desc">Specialized tools for W101: Calculate complex damage buffs, instantly look up Spells, export custom deck images, track Beastmoon forms, and check live Treasure Card values.</p>                     
+                        <p class="feature-desc">Calculate multi-buff damage outputs, search live Pet Tome spreadsheets, export custom deck images, and track Beastmoon forms.</p>                     
                     </div>                 
                 </div>             
             </div>         
         </div>
 
         <!-- 3-Step Setup Guide -->
-        <div class="auto-fade-in" style="margin-top: 60px; margin-bottom: 20px;">
-            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-                <i class="ph-duotone ph-rocket" style="color: var(--accent); font-size: 2.2rem;"></i> Simple 3-Step Setup
+        <div class="auto-fade-in" style="margin-top: 48px; margin-bottom: 20px;">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+                <i class="ph-duotone ph-rocket" style="color: var(--accent); font-size: 1.8rem;"></i> Simple 3-Step Setup
             </h2>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-num">1</div>
-                    <h3 style="margin: 0 0 8px 0; color: #fff;">Invite SeanBot</h3>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem; line-line-height: 1.5;">Click the invite button to add SeanBot to your Discord server with standard permissions.</p>
+                    <h3 style="margin: 0 0 6px 0; color: #fff;">Invite SeanBot</h3>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; line-height: 1.5;">Click the invite button to add SeanBot to your Discord server with standard permissions.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">2</div>
-                    <h3 style="margin: 0 0 8px 0; color: #fff;">Enable Modules</h3>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem; line-height: 1.5;">Use <code>/serveradmin module</code> or log into the web dashboard to enable only the tools you need.</p>
+                    <h3 style="margin: 0 0 6px 0; color: #fff;">Enable Modules</h3>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; line-height: 1.5;">Use <code>/serveradmin module</code> or log into the web dashboard to enable only the tools you need.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">3</div>
-                    <h3 style="margin: 0 0 8px 0; color: #fff;">Enjoy & Automate</h3>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem; line-height: 1.5;">Sit back while SeanBot manages your events, protects your channels, and enhances community fun.</p>
+                    <h3 style="margin: 0 0 6px 0; color: #fff;">Automate Community</h3>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; line-height: 1.5;">Sit back while SeanBot manages events, protects channels, and enhances community fun.</p>
                 </div>
             </div>
         </div>
