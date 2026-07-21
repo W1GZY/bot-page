@@ -27,7 +27,6 @@
                 <a href="/docs.html" class="nav-link ${navId === 'docs' ? 'active' : ''}"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
                 <a href="/commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
                 <a href="/pettome.html" class="nav-link ${navId === 'pettome' ? 'active' : ''}"><i class="ph ph-book-bookmark"></i> <span>Pet Tome</span></a>
-                <a href="/tos.html" class="nav-link ${navId === 'tos' ? 'active' : ''}"><i class="ph ph-shield-check"></i> <span>Terms & Privacy</span></a>
             </nav>
         `);
 
@@ -84,8 +83,6 @@
             <footer class="page-footer">
                 <div>&copy; 2026 SeanBot. All rights reserved.</div>
                 <div style="display:flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="/docs.html">Documentation</a>
-                    <a href="/pettome.html">Pet Tome</a>
                     <a href="/tos.html">Terms & Privacy</a>
                 </div>
             </footer>

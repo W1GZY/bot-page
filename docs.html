@@ -1,279 +1,228 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeanBot - Documentation & Setup Guide</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-    <script>
-        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
-        document.documentElement.setAttribute('data-accent', savedAccent);
-    </script>
-    <link rel="stylesheet" href="global.css">
-    <script src="layout.js" defer></script>
-</head>
-<body data-nav="docs" data-title="Documentation">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script>
+    const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+    document.documentElement.setAttribute('data-accent', savedAccent);
+</script>
+<link rel="stylesheet" href="global.css">
+<script src="layout.js" defer></script>
 
-    <!-- 
-    ================================================================================
-    AI PROMPT & EDITING GUIDE FOR SEANBOT DOCUMENTATION
-    ================================================================================
-    
-    HOW TO ADD NEW DOCUMENTATION ARTICLES:
-    Simply copy one of the objects inside the `docsData` JavaScript array at the 
-    bottom of this file and update its fields. The sidebar navigation, live search, 
-    and article layout will assemble automatically!
 
-    PATTERN TO GIVE TO ANY AI MODEL WHEN ADDING NEW DOCS:
-    --------------------------------------------------------------------------------
-    "Add a new documentation section to `docsData` in `docs.html` following this schema:
-    {
-        id: "unique-slug-id",
-        icon: "ph-icon-name", // e.g., ph-shield-warning, ph-lightning, ph-robot
-        title: "Section Title",
-        subtitle: "Brief description of the feature or module.",
-        content: [
-            { type: "heading", text: "Subheading Title" },
-            { type: "text", text: "Explanatory text describing how it works." },
-            { type: "callout", icon: "💡 Pro Tip", text: "A highlighted tip or warning box." },
-            { type: "list", title: "Key Features:", items: ["Feature 1", "Feature 2"] },
-            { type: "commands", title: "Commands:", items: [
-                { cmd: "/command name", desc: "What the command does." }
-            ]}
-        ]
-    }"
-    ================================================================================
-    -->
-
-    <div class="content">
-        <!-- Page Header -->
-        <div class="auto-fade-in" style="margin-bottom: 24px;">
-            <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
-            <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
-                Configuring and getting the most out of SeanBot for your Discord server.
-            </p>
-        </div>
-
-        <!-- Doc Search Filter -->
-        <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
-            <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-            <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing, Pet Tome)...">
-        </div>
-
-        <!-- Documentation Layout Grid -->
-        <div class="docs-grid auto-fade-in" style="animation-delay: 0.1s;">
-            <!-- Sticky Navigation -->
-            <nav class="docs-nav" id="docsNav">
-                <div class="docs-nav-title">Navigation</div>
-                <div id="docsNavLinks">
-                    <!-- Dynamic Nav Links populated by JS -->
-                </div>
-            </nav>
-
-            <!-- Main Articles Container -->
-            <main id="docsContent">
-                <!-- Articles dynamically generated from docsData -->
-            </main>
-        </div>
+<div class="content">
+    <!-- Page Header -->
+    <div class="auto-fade-in" style="margin-bottom: 24px;">
+        <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
+        <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
+            Configuring and getting the most out of SeanBot for your Discord server.
+        </p>
     </div>
 
-    <!-- DOCUMENTATION DATA SOURCE -->
-    <script>
-        /**
-         * Easy-to-edit Documentation Data Array.
-         * To add new docs, simply append a new object to this array!
-         */
-        const docsData = [
-            {
-                id: "quickstart",
-                icon: "ph-rocket",
-                title: "Quick Start Guide",
-                subtitle: "Integrate SeanBot into your Discord community in three simple steps.",
-                content: [
-                    { type: "heading", text: "1. Invite the Bot" },
-                    { type: "text", text: "Add SeanBot to your server with basic administrative permissions. Ensure the bot's role is positioned above any roles it needs to manage in your Discord Server Settings." },
-                    
-                    { type: "heading", text: "2. Manage Active Modules" },
-                    { type: "text", text: "SeanBot features a modular architecture. You can disable features you don't need using `/serveradmin module` or through the Web Dashboard to keep your server clutter-free." },
-                    
-                    { type: "callout", icon: "💡", title: "Pro Tip", text: "Run `/staff diagnose` anytime to verify bot permissions and command prefix configurations across your channels." },
-                    
-                    { type: "heading", text: "3. Command Prefixes & Language" },
-                    { type: "text", text: "Slash commands are active by default. Legacy text command prefixes can be customized for your guild using `/prefix set [prefix]`." }
-                ]
-            },
-            {
-                id: "antiraid",
-                icon: "ph-shield-warning",
-                title: "Anti-Raid & Security",
-                subtitle: "Protect your server from sudden bot raids, link spam, and mass join events.",
-                content: [
-                    { type: "list", title: "Core Security Systems", items: [
-                        "Heat Score Engine: Dynamically calculates user threat levels based on join rate, account age, and repeated link bursts.",
-                        "Canary Mode: Test your security parameters safely without punishing real members. Logs flagged actions directly to staff channels.",
-                        "Quarantine Isolation: Revokes permissions from suspected raid accounts and isolates them in a secure holding channel."
-                    ]},
-                    { type: "commands", title: "Essential Security Commands", items: [
-                        { cmd: "/antiraid dashboard", desc: "View real-time threat scores, active bursts, and security health." },
-                        { cmd: "/antiraid canary [on/off]", desc: "Toggle simulation mode for safe configuration testing." },
-                        { cmd: "/antiraid whitelist [role]", desc: "Grant trusted roles immunity from threat detection." },
-                        { cmd: "/antiraid register_scam", desc: "Register visual scam fingerprints to auto-block phishing images." }
-                    ]}
-                ]
-            },
-            {
-                id: "federation",
-                icon: "ph-globe-hemisphere-west",
-                title: "Server Federation & Relays",
-                subtitle: "Connect multiple Discord servers together into a unified real-time network.",
-                content: [
-                    { type: "heading", text: "Setting Up a Federation Network" },
-                    { type: "text", text: "1. Execute `/thread network create [name]` on your primary hub server to receive a network access token." },
-                    { type: "text", text: "2. On secondary servers, execute `/thread network join [token]`." },
-                    { type: "text", text: "3. Link specific text channels or forum threads together using `/relay link [relay_id]`." },
-                    { type: "callout", icon: "🔒", title: "Security Guarantee", text: "All cross-server relay messages use HMAC token verification to guarantee message authenticity and prevent spoofing." }
-                ]
-            },
-            {
-                id: "timeping",
-                icon: "ph-clock-countdown",
-                title: "TimePing & Global Reminders",
-                subtitle: "Eliminate timezone confusion for global gaming groups and scheduled events.",
-                content: [
-                    { type: "list", title: "Key Features", items: [
-                        "Personal Timezones: Save your local timezone with `/remindme` or right-click any message to attach a reminder.",
-                        "Scheduled Role Pings: Use `/timeping schedule` to configure automated alerts that ping specific roles prior to events (e.g. 24h, 1h, 15m).",
-                        "Discord Event Sync: Attach TimePings directly to native Discord Scheduled Events using `/timeping native`."
-                    ]}
-                ]
-            },
-            {
-                id: "events",
-                icon: "ph-calendar-plus",
-                title: "Event Signups & Team-Ups",
-                subtitle: "Organize MMO raids, dungeon runs, and competitive lobbies with interactive boards.",
-                content: [
-                    { type: "commands", title: "Event Management Commands", items: [
-                        { cmd: "/teamup create", desc: "Open an interactive form to host a quick dungeon run or team-up." },
-                        { cmd: "/raid start", desc: "Create a structured multi-role signup board with slot limits per role (e.g., Tank, Healer, DPS)." }
-                    ]},
-                    { type: "text", text: "When group capacity requirements are filled, SeanBot can automatically spin up a private temporary Voice Channel for the team." }
-                ]
-            },
-            {
-                id: "w101",
-                icon: "ph-magic-wand",
-                title: "Wizard101 Toolkit",
-                subtitle: "Advanced game utilities built specifically for Wizard101 players and communities.",
-                content: [
-                    { type: "list", title: "Tools & Utilities", items: [
-                        "Live Pet Tome: Search over 1,200+ pets directly synced with Google Sheets (or use the web Pet Tome page).",
-                        "Damage Assistant: Calculate multi-buff blade, trap, and weakness damage outputs with `/damage`.",
-                        "Deck Sharing & Export: Render compact deck share codes into visual images with `/deck lookup` and `/decks export`.",
-                        "Beastmoon Tracker: Track and display Beastmoon form tiers with `/bm forms` and `/bm leaderboard`."
-                    ]}
-                ]
-            },
-            {
-                id: "staff",
-                icon: "ph-toolbox",
-                title: "Staff Tools & Ban Appeals",
-                subtitle: "Empower moderation staff with reason presets, appeals, and suggestion boards.",
-                content: [
-                    { type: "heading", text: "Direct Ban Appeals Setup" },
-                    { type: "text", text: "Enable direct-message ban appeals using `/appeal setup`. Banned users receive an appeal form link, which safely forwards their submission to your staff review channel for voting." }
-                ]
-            },
-            {
-                id: "faq",
-                icon: "ph-question",
-                title: "Frequently Asked Questions",
-                subtitle: "Common troubleshooting questions and answers.",
-                content: [
-                    { type: "heading", text: "Why aren't slash commands displaying?" },
-                    { type: "text", text: "Ensure SeanBot was granted the `applications.commands` scope when invited. Re-inviting the bot with default permissions resolves missing command registrations." },
-                    { type: "heading", text: "How frequently does the Pet Tome synchronize?" },
-                    { type: "text", text: "The Pet Tome updates every 1 hour directly from the collaborative Google Spreadsheet." }
-                ]
-            }
-        ];
+    <!-- Doc Search Filter -->
+    <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
+        <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+        <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing, Pet Tome)...">
+    </div>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const navContainer = document.getElementById('docsNavLinks');
-            const contentContainer = document.getElementById('docsContent');
+    <!-- Documentation Layout Grid -->
+    <div class="docs-grid auto-fade-in" style="animation-delay: 0.1s;">
+        <!-- Sticky Navigation -->
+        <nav class="docs-nav" id="docsNav">
+            <div class="docs-nav-title">Navigation</div>
+            <div id="docsNavLinks">
+                <!-- Dynamic Nav Links populated by JS -->
+            </div>
+        </nav>
 
-            if (!navContainer || !contentContainer) return;
+        <!-- Main Articles Container -->
+        <main id="docsContent">
+            <!-- Articles dynamically generated from docsData -->
+        </main>
+    </div>
+</div>
 
-            // 1. Build Navigation & Articles dynamically
-            docsData.forEach((doc, idx) => {
-                // Create Sidebar Link
-                const navLink = document.createElement('a');
-                navLink.href = `#${doc.id}`;
-                navLink.className = `docs-nav-link ${idx === 0 ? 'active' : ''}`;
-                navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
-                navContainer.appendChild(navLink);
+<!-- DOCUMENTATION DATA SOURCE -->
+<script>
+    const docsData = [
+        {
+            id: "quickstart",
+            icon: "ph-rocket",
+            title: "Quick Start Guide",
+            subtitle: "Integrate SeanBot into your Discord community in three simple steps.",
+            content: [
+                { type: "heading", text: "1. Invite the Bot" },
+                { type: "text", text: "Add SeanBot to your server with basic administrative permissions. Ensure the bot's role is positioned above any roles it needs to manage in your Discord Server Settings." },
+                
+                { type: "heading", text: "2. Manage Active Modules" },
+                { type: "text", text: "SeanBot features a modular architecture. You can disable features you don't need using `/serveradmin module` or through the Web Dashboard to keep your server clutter-free." },
+                
+                { type: "callout", icon: "💡", title: "Pro Tip", text: "Run `/staff diagnose` anytime to verify bot permissions and command prefix configurations across your channels." },
+                
+                { type: "heading", text: "3. Command Prefixes & Language" },
+                { type: "text", text: "Slash commands are active by default. Legacy text command prefixes can be customized for your guild using `/prefix set [prefix]`." }
+            ]
+        },
+        {
+            id: "antiraid",
+            icon: "ph-shield-warning",
+            title: "Anti-Raid & Security",
+            subtitle: "Protect your server from sudden bot raids, link spam, and mass join events.",
+            content: [
+                { type: "list", title: "Core Security Systems", items: [
+                    "Heat Score Engine: Dynamically calculates user threat levels based on join rate, account age, and repeated link bursts.",
+                    "Canary Mode: Test your security parameters safely without punishing real members. Logs flagged actions directly to staff channels.",
+                    "Quarantine Isolation: Revokes permissions from suspected raid accounts and isolates them in a secure holding channel."
+                ]},
+                { type: "commands", title: "Essential Security Commands", items: [
+                    { cmd: "/antiraid dashboard", desc: "View real-time threat scores, active bursts, and security health." },
+                    { cmd: "/antiraid canary [on/off]", desc: "Toggle simulation mode for safe configuration testing." },
+                    { cmd: "/antiraid whitelist [role]", desc: "Grant trusted roles immunity from threat detection." },
+                    { cmd: "/antiraid register_scam", desc: "Register visual scam fingerprints to auto-block phishing images." }
+                ]}
+            ]
+        },
+        {
+            id: "federation",
+            icon: "ph-globe-hemisphere-west",
+            title: "Server Federation & Relays",
+            subtitle: "Connect multiple Discord servers together into a unified real-time network.",
+            content: [
+                { type: "heading", text: "Setting Up a Federation Network" },
+                { type: "text", text: "1. Execute `/thread network create [name]` on your primary hub server to receive a network access token." },
+                { type: "text", text: "2. On secondary servers, execute `/thread network join [token]`." },
+                { type: "text", text: "3. Link specific text channels or forum threads together using `/relay link [relay_id]`." },
+                { type: "callout", icon: "🛡️", title: "Security Guarantee", text: "All cross-server relay messages use HMAC token verification to guarantee message authenticity and prevent spoofing." }
+            ]
+        },
+        {
+            id: "timeping",
+            icon: "ph-clock-countdown",
+            title: "TimePing & Global Reminders",
+            subtitle: "Eliminate timezone confusion for global gaming groups and scheduled events.",
+            content: [
+                { type: "list", title: "Key Features", items: [
+                    "Personal Timezones: Save your local timezone with `/remindme` or right-click any message to attach a reminder.",
+                    "Scheduled Role Pings: Use `/timeping schedule` to configure automated alerts that ping specific roles prior to events (e.g. 24h, 1h, 15m).",
+                    "Discord Event Sync: Attach TimePings directly to native Discord Scheduled Events using `/timeping native`."
+                ]}
+            ]
+        },
+        {
+            id: "events",
+            icon: "ph-calendar-plus",
+            title: "Event Signups & Team-Ups",
+            subtitle: "Organize MMO raids, dungeon runs, and competitive lobbies with interactive boards.",
+            content: [
+                { type: "commands", title: "Event Management Commands", items: [
+                    { cmd: "/teamup create", desc: "Open an interactive form to host a quick dungeon run or team-up." },
+                    { cmd: "/raid start", desc: "Create a structured multi-role signup board with slot limits per role (e.g., Tank, Healer, DPS)." }
+                ]},
+                { type: "text", text: "When group capacity requirements are filled, SeanBot can automatically spin up a private temporary Voice Channel for the team." }
+            ]
+        },
+        {
+            id: "w101",
+            icon: "ph-magic-wand",
+            title: "Wizard101 Toolkit",
+            subtitle: "Advanced game utilities built specifically for Wizard101 players and communities.",
+            content: [
+                { type: "list", title: "Tools & Utilities", items: [
+                    "Live Pet Tome: Search over 1,200+ pets directly in the interactive database.",
+                    "Damage Assistant: Calculate multi-buff blade, trap, and weakness damage outputs with `/damage`.",
+                    "Deck Sharing & Export: Render compact deck share codes into visual images with `/deck lookup` and `/decks export`.",
+                    "Beastmoon Tracker: Track and display Beastmoon form tiers with `/bm forms` and `/bm leaderboard`."
+                ]}
+            ]
+        },
+        {
+            id: "staff",
+            icon: "ph-toolbox",
+            title: "Staff Tools & Ban Appeals",
+            subtitle: "Empower moderation staff with reason presets, appeals, and suggestion boards.",
+            content: [
+                { type: "heading", text: "Direct Ban Appeals Setup" },
+                { type: "text", text: "Enable direct-message ban appeals using `/appeal setup`. Banned users receive an appeal form link, which safely forwards their submission to your staff review channel for voting." }
+            ]
+        },
+        {
+            id: "faq",
+            icon: "ph-question",
+            title: "Frequently Asked Questions",
+            subtitle: "Common troubleshooting questions and answers.",
+            content: [
+                { type: "heading", text: "Why aren't slash commands displaying?" },
+                { type: "text", text: "Ensure SeanBot was granted the `applications.commands` scope when invited. Re-inviting the bot with default permissions resolves missing command registrations." },
+                { type: "heading", text: "How frequently does the Pet Tome synchronize?" },
+                { type: "text", text: "The Pet Tome updates regularly to reflect the latest game updates and community discoveries." }
+            ]
+        }
+    ];
 
-                // Create Article Block
-                const article = document.createElement('article');
-                article.className = 'docs-article';
-                article.id = doc.id;
+    document.addEventListener('DOMContentLoaded', () => {
+        const navContainer = document.getElementById('docsNavLinks');
+        const contentContainer = document.getElementById('docsContent');
 
-                let html = `
-                    <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; margin-bottom: 20px;">${doc.subtitle}</p>
-                `;
+        if (!navContainer || !contentContainer) return;
 
-                // Render article items based on type
-                doc.content.forEach(item => {
-                    if (item.type === 'heading') {
-                        html += `<h3>${item.text}</h3>`;
-                    } else if (item.type === 'text') {
-                        html += `<p>${item.text}</p>`;
-                    } else if (item.type === 'callout') {
-                        html += `
-                            <div class="callout-box">
-                                <strong>${item.icon || '💡'} ${item.title}:</strong> ${item.text}
-                            </div>
-                        `;
-                    } else if (item.type === 'list') {
-                        if (item.title) html += `<h3>${item.title}</h3>`;
-                        html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
-                    } else if (item.type === 'commands') {
-                        if (item.title) html += `<h3>${item.title}</h3>`;
-                        html += `<ul>${item.items.map(i => `<li><code>${i.cmd}</code> — ${i.desc}</li>`).join('')}</ul>`;
-                    }
-                });
+        docsData.forEach((doc, idx) => {
+            const navLink = document.createElement('a');
+            navLink.href = `#${doc.id}`;
+            navLink.className = `docs-nav-link ${idx === 0 ? 'active' : ''}`;
+            navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
+            navContainer.appendChild(navLink);
 
-                article.innerHTML = html;
-                contentContainer.appendChild(article);
+            const article = document.createElement('article');
+            article.className = 'docs-article';
+            article.id = doc.id;
+
+            let html = `
+                <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; margin-bottom: 20px;">${doc.subtitle}</p>
+            `;
+
+            doc.content.forEach(item => {
+                if (item.type === 'heading') {
+                    html += `<h3>${item.text}</h3>`;
+                } else if (item.type === 'text') {
+                    html += `<p>${item.text}</p>`;
+                } else if (item.type === 'callout') {
+                    html += `
+                        <div class="callout-box">
+                            <strong>${item.icon || '💡'} ${item.title}:</strong> ${item.text}
+                        </div>
+                    `;
+                } else if (item.type === 'list') {
+                    if (item.title) html += `<h3>${item.title}</h3>`;
+                    html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+                } else if (item.type === 'commands') {
+                    if (item.title) html += `<h3>${item.title}</h3>`;
+                    html += `<ul>${item.items.map(i => `<li><code>${i.cmd}</code> —${i.desc}</li>`).join('')}</ul>`;
+                }
             });
 
-            // 2. Live Search Filter
-            const searchInput = document.getElementById('docSearch');
-            searchInput?.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                document.querySelectorAll('.docs-article').forEach(article => {
-                    const match = !query || article.textContent.toLowerCase().includes(query);
-                    article.style.display = match ? 'block' : 'none';
-                });
-            });
-
-            // 3. ScrollSpy Intersection Observer
-            const navLinks = document.querySelectorAll('.docs-nav-link');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        const active = document.querySelector(`.docs-nav-link[href="#${entry.target.id}"]`);
-                        active?.classList.add('active');
-                    }
-                });
-            }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-
-            document.querySelectorAll('.docs-article').forEach(a => observer.observe(a));
+            article.innerHTML = html;
+            contentContainer.appendChild(article);
         });
-    </script>
-</body>
-</html>
+
+        const searchInput = document.getElementById('docSearch');
+        searchInput?.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            document.querySelectorAll('.docs-article').forEach(article => {
+                const match = !query || article.textContent.toLowerCase().includes(query);
+                article.style.display = match ? 'block' : 'none';
+            });
+        });
+
+        const navLinks = document.querySelectorAll('.docs-nav-link');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.docs-nav-link[href="#${entry.target.id}"]`);
+                    active?.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+        document.querySelectorAll('.docs-article').forEach(a => observer.observe(a));
+    });
+</script>

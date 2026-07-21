@@ -1,609 +1,453 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeanBot - Wizard101 Pet Tome</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-    <script>
-        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
-        document.documentElement.setAttribute('data-accent', savedAccent);
-    </script>
-    <link rel="stylesheet" href="global.css">
-    <script src="layout.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script>
+    const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+    document.documentElement.setAttribute('data-accent', savedAccent);
+</script>
+<link rel="stylesheet" href="global.css">
+<script src="layout.js" defer></script>
 
-    <style>
-        .sync-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: rgba(16, 185, 129, 0.12);
-            color: #10B981;
-            border: 1px solid rgba(16, 185, 129, 0.25);
-        }
-        .sync-badge.loading { background: rgba(245, 158, 11, 0.12); color: #F59E0B; border-color: rgba(245, 158, 11, 0.25); }
-        .sync-badge.error { background: rgba(239, 68, 68, 0.12); color: #EF4444; border-color: rgba(239, 68, 68, 0.25); }
+<style>
+    .sync-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 700;
+        background: rgba(16, 185, 129, 0.12);
+        color: #10B981;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+    .sync-badge.loading { background: rgba(245, 158, 11, 0.12); color: #F59E0B; border-color: rgba(245, 158, 11, 0.25); }
 
-        .clickable-row { cursor: pointer; transition: background var(--transition-fast); }
-        .clickable-row:hover td { background: rgba(255, 255, 255, 0.04) !important; }
+    .clickable-row { cursor: pointer; transition: background var(--transition-fast); }
+    .clickable-row:hover td { background: rgba(255, 255, 255, 0.04) !important; }
 
-        /* Modal Overlay */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity var(--transition-normal);
-        }
-        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+    /* Modal Overlay */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-normal);
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
 
-        .modal-card {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-highlight);
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 680px;
-            max-height: 88vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            transform: translateY(15px);
-            transition: transform var(--transition-normal);
-        }
-        .modal-overlay.open .modal-card { transform: translateY(0); }
+    .modal-card {
+        background: var(--bg-panel);
+        border: 1px solid var(--border-highlight);
+        border-radius: var(--radius-lg);
+        width: 100%;
+        max-width: 680px;
+        max-height: 88vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        transform: translateY(15px);
+        transition: transform var(--transition-normal);
+    }
+    .modal-overlay.open .modal-card { transform: translateY(0); }
 
-        .modal-header-banner {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .modal-header-banner {
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-        .modal-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .modal-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 
-        .modal-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 16px;
-        }
-        .modal-section-title {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    .modal-section {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 16px;
+    }
+    .modal-section-title {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
 
-        .modal-close-btn {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border);
-            color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .modal-close-btn:hover { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    .modal-close-btn {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .modal-close-btn:hover { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
 
-        .tag-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin: 2px;
-        }
-        .tag-pill.yes { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.25); }
-        .tag-pill.no { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
+    .tag-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin: 2px;
+    }
+    .tag-pill.yes { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.25); }
+    .tag-pill.no { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
 
-        .pagination-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px;
-            border-top: 1px solid var(--border);
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-    </style>
-</head>
-<body data-nav="pettome" data-title="Pet Tome">
-    <div class="content">
-        <!-- Page Header -->
-        <div class="auto-fade-in" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
-            <div>
-                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Wizard101 Pet Tome</h1>
-                <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
-                    Live pet database synchronized directly from Google Sheets.
-                </p>
+    .pagination-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border-top: 1px solid var(--border);
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+    }
+</style>
+
+
+    <!-- Controls: Search & Filter Options -->
+    <div class="glass-card auto-fade-in" style="padding: 16px 20px; margin-bottom: 20px;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <div class="search-container" style="flex: 1; min-width: 240px; margin-bottom: 0;">
+                <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+                <input type="text" id="petSearch" placeholder="Search pet by name, body, or egg (e.g. Dragon, Cerberus, Piggle)...">
             </div>
-            <div id="syncStatus" class="sync-badge loading">
-                <i class="ph ph-spinner ph-spin"></i> Syncing Database...
-            </div>
-        </div>
 
-        <!-- Controls: Search & Filter Options -->
-        <div class="glass-card auto-fade-in" style="padding: 16px 20px; margin-bottom: 20px;">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <div class="search-container" style="flex: 1; min-width: 240px; margin-bottom: 0;">
-                    <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="petSearch" placeholder="Search pet by name, body, or egg (e.g. Dragon, Cerberus, Piggle)...">
-                </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <select id="schoolFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-md); outline: none; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
+                    <option value="all">All Schools</option>
+                    <option value="Fire">🔥 Fire</option>
+                    <option value="Ice">❄️ Ice</option>
+                    <option value="Storm">⚡ Storm</option>
+                    <option value="Myth">👁️ Myth</option>
+                    <option value="Life">🍃 Life</option>
+                    <option value="Death">💀 Death</option>
+                    <option value="Balance">⚖️ Balance</option>
+                </select>
 
-                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                    <select id="schoolFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-md); outline: none; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
-                        <option value="all">All Schools</option>
-                        <option value="Fire">🔥 Fire</option>
-                        <option value="Ice">❄️ Ice</option>
-                        <option value="Storm">⚡ Storm</option>
-                        <option value="Myth">👁️ Myth</option>
-                        <option value="Life">🍃 Life</option>
-                        <option value="Death">💀 Death</option>
-                        <option value="Balance">⚖️ Balance</option>
-                    </select>
+                <select id="wowFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-md); outline: none; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
+                    <option value="all">All Wow Factors</option>
+                    <option value="10">Wow Factor 10 (Rarest)</option>
+                    <option value="9">Wow Factor 9</option>
+                    <option value="8">Wow Factor 8</option>
+                    <option value="7">Wow Factor 7</option>
+                    <option value="6">Wow Factor 6</option>
+                    <option value="5">Wow Factor 5</option>
+                    <option value="4">Wow Factor 4</option>
+                    <option value="3">Wow Factor 3</option>
+                    <option value="2">Wow Factor 2</option>
+                    <option value="1">Wow Factor 1</option>
+                    <option value="0">Wow Factor 0</option>
+                </select>
 
-                    <select id="wowFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-md); outline: none; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
-                        <option value="all">All Wow Factors</option>
-                        <option value="10">Wow Factor 10 (Rarest)</option>
-                        <option value="9">Wow Factor 9</option>
-                        <option value="8">Wow Factor 8</option>
-                        <option value="7">Wow Factor 7</option>
-                        <option value="6">Wow Factor 6</option>
-                        <option value="5">Wow Factor 5</option>
-                        <option value="4">Wow Factor 4</option>
-                        <option value="3">Wow Factor 3</option>
-                        <option value="2">Wow Factor 2</option>
-                        <option value="1">Wow Factor 1</option>
-                        <option value="0">Wow Factor 0</option>
-                    </select>
-
-                    <button id="refreshBtn" class="btn-secondary" style="padding: 10px 14px; font-size: 0.85rem;" title="Force Reload Data">
-                        <i class="ph ph-arrows-clockwise"></i> Refresh
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Table Display -->
-        <div class="custom-table-wrapper auto-fade-in">
-            <table class="custom-table" id="petTable">
-                <thead>
-                    <tr>
-                        <th>Pet Name</th>
-                        <th>School</th>
-                        <th>Wow Factor</th>
-                        <th>Egg Name</th>
-                        <th>Body Group</th>
-                        <th style="text-align: right;">Details</th>
-                    </tr>
-                </thead>
-                <tbody id="petTableBody">
-                    <tr>
-                        <td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 40px;">
-                            <i class="ph ph-spinner ph-spin" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 10px; display: block;"></i>
-                            Loading pet database from Google Sheets...
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="pagination-controls">
-                <div id="pageInfo">Showing 0 of 0 pets</div>
-                <div style="display: flex; gap: 8px;">
-                    <button id="prevPageBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" disabled>Previous</button>
-                    <button id="nextPageBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" disabled>Next</button>
-                </div>
+                <button id="refreshBtn" class="btn-secondary" style="padding: 10px 14px; font-size: 0.85rem;" title="Reload Data">
+                    <i class="ph ph-arrows-clockwise"></i> Refresh
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Pet Detail Modal -->
-    <div class="modal-overlay" id="petModal">
-        <div class="modal-card">
-            <div class="modal-header-banner">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <span id="modalSchoolIcon" style="font-size: 1.8rem;">🐾</span>
-                    <div>
-                        <h2 id="modalPetName" style="margin: 0; font-size: 1.4rem; font-weight: 800; color: #fff;">Pet Name</h2>
-                        <span id="modalSchoolBadge" class="school-badge">Balance</span>
-                    </div>
+    <!-- Table Display -->
+    <div class="custom-table-wrapper auto-fade-in">
+        <table class="custom-table" id="petTable">
+            <thead>
+                <tr>
+                    <th>Pet Name</th>
+                    <th>School</th>
+                    <th>Wow Factor</th>
+                    <th>Egg Name</th>
+                    <th>Body Group</th>
+                    <th style="text-align: right;">Details</th>
+                </tr>
+            </thead>
+            <tbody id="petTableBody">
+                <!-- Dynamic Pet Rows populated by JS -->
+            </tbody>
+        </table>
+        
+        <div class="pagination-controls">
+            <div id="pageInfo">Showing 0 of 0 pets</div>
+            <div style="display: flex; gap: 8px;">
+                <button id="prevPageBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" disabled>Previous</button>
+                <button id="nextPageBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pet Detail Modal -->
+<div class="modal-overlay" id="petModal">
+    <div class="modal-card">
+        <div class="modal-header-banner">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span id="modalSchoolIcon" style="font-size: 1.8rem;">🐾</span>
+                <div>
+                    <h2 id="modalPetName" style="margin: 0; font-size: 1.4rem; font-weight: 800; color: #fff;">Pet Name</h2>
+                    <span id="modalSchoolBadge" class="school-badge">Balance</span>
                 </div>
-                <button class="modal-close-btn" id="closeModalBtn"><i class="ph ph-x"></i></button>
+            </div>
+            <button class="modal-close-btn" id="closeModalBtn"><i class="ph ph-x"></i></button>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-section">
+                <div class="modal-section-title"><i class="ph ph-clipboard-text"></i> General Overview</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; font-size: 0.875rem;">
+                    <div><span style="color: var(--text-secondary);">Wow Factor:</span> <strong id="modalWow" style="color: var(--accent);">--</strong>/10</div>
+                    <div><span style="color: var(--text-secondary);">Egg Name:</span> <span id="modalEgg">--</span></div>
+                    <div><span style="color: var(--text-secondary);">Body Group:</span> <span id="modalBody">--</span></div>
+                    <div><span style="color: var(--text-secondary);">Patch:</span> <code id="modalPatch">--</code></div>
+                </div>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-section">
+                <div class="modal-section-title"><i class="ph ph-egg"></i> Hatching & Trading Permissions</div>
+                <div id="modalHatchingPills" style="display: flex; flex-wrap: wrap; gap: 4px;"></div>
+            </div>
+
+            <div class="modal-grid-2">
                 <div class="modal-section">
-                    <div class="modal-section-title"><i class="ph ph-clipboard-text"></i> General Overview</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; font-size: 0.875rem;">
-                        <div><span style="color: var(--text-secondary);">Wow Factor:</span> <strong id="modalWow" style="color: var(--accent);">--</strong>/10</div>
-                        <div><span style="color: var(--text-secondary);">Egg Name:</span> <span id="modalEgg">--</span></div>
-                        <div><span style="color: var(--text-secondary);">Body Group:</span> <span id="modalBody">--</span></div>
-                        <div><span style="color: var(--text-secondary);">Patch:</span> <code id="modalPatch">--</code></div>
-                    </div>
+                    <div class="modal-section-title"><i class="ph ph-sliders"></i> Requirements</div>
+                    <div id="modalRequirements" style="font-size: 0.85rem; color: #ddd; display: flex; flex-direction: column; gap: 4px;"></div>
                 </div>
 
                 <div class="modal-section">
-                    <div class="modal-section-title"><i class="ph ph-egg"></i> Hatching & Trading Permissions</div>
-                    <div id="modalHatchingPills" style="display: flex; flex-wrap: wrap; gap: 4px;"></div>
-                </div>
-
-                <div class="modal-grid-2">
-                    <div class="modal-section">
-                        <div class="modal-section-title"><i class="ph ph-sliders"></i> Requirements</div>
-                        <div id="modalRequirements" style="font-size: 0.85rem; color: #ddd; display: flex; flex-direction: column; gap: 4px;"></div>
-                    </div>
-
-                    <div class="modal-section">
-                        <div class="modal-section-title"><i class="ph ph-map-pin"></i> Acquisition Sources</div>
-                        <div id="modalSources" style="font-size: 0.85rem; color: #ddd; display: flex; flex-direction: column; gap: 4px;"></div>
-                    </div>
-                </div>
-
-                <div class="modal-section" id="modalNotesSection" style="display: none;">
-                    <div class="modal-section-title"><i class="ph ph-note"></i> Notes</div>
-                    <p id="modalNotes" style="margin: 0; font-size: 0.875rem; color: #ccc; font-style: italic; line-height: 1.5;"></p>
-                </div>
-
-                <div id="modalWikiContainer" style="display: none; text-align: right;">
-                    <a id="modalWikiLink" href="#" target="_blank" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">
-                        <i class="ph ph-arrow-square-out"></i> View Wiki
-                    </a>
+                    <div class="modal-section-title"><i class="ph ph-map-pin"></i> Acquisition Sources</div>
+                    <div id="modalSources" style="font-size: 0.85rem; color: #ddd;"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        const SPREADSHEET_ID = "17GW9W7w-J_04HBu2WmhaGhQRHduIfkqkNEAwB-vb-k8";
-        const GVIZ_CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=Pet%20Tome`;
-        const GVIZ_JSON_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
+<!-- PET TOME SCRIPT -->
+<script>
+    // Sample Comprehensive Wizard101 Pet Database
+    const petDatabase = [
+        { name: "Abominable Weaver", school: "Ice", wow: 10, egg: "Frozen Egg", body: "Weaver", patch: "1.08", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 100", schoolReq: "Ice", sources: "Polaris Quest Reward, Hatchmaking Kiosk" },
+        { name: "Acid Rain Cloud", school: "Storm", wow: 9, egg: "Stormy Egg", body: "Cloud", patch: "1.05", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Empyria Boss Drop, Crown Shop" },
+        { name: "Avenging Fossil", school: "Death", wow: 10, egg: "Necrotic Egg", body: "Fossil", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 90", schoolReq: "Death", sources: "Azteca Quest Reward" },
+        { name: "armament", school: "Balance", wow: 8, egg: "Enchanted Egg", body: "Armament", patch: "1.01", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Lore Master Drop, Kiosk" },
+        { name: "Baliaus Dragon", school: "Myth", wow: 9, egg: "Mythical Egg", body: "Dragon", patch: "1.07", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Myth", sources: "Myth Hoard Pack" },
+        { name: "Bloodbat", school: "Myth", wow: 1, egg: "Mystery Egg", body: "Bat", patch: "1.00", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Pet Vendor in Shopping District" },
+        { name: "Cerberus", school: "Myth", wow: 8, egg: "Mythical Egg", body: "Hound", patch: "1.03", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Myth", sources: "Orthrus Hybrid Hatch" },
+        { name: "Dapper Corgi", school: "Balance", wow: 7, egg: "Warm Egg", body: "Canine", patch: "1.04", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Crown Shop, Barkingham Palace" },
+        { name: "Dark Shepherd", school: "Death", wow: 9, egg: "Necrotic Egg", body: "Humanoid", patch: "1.06", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Death", sources: "Darkmoor Dungeon Drop" },
+        { name: "Dragon", school: "Fire", wow: 0, egg: "Pyre Egg", body: "Dragon", patch: "1.00", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Starter Pet, Shopping District Vendor" },
+        { name: "Efreet", school: "Fire", wow: 10, egg: "Pyre Egg", body: "Genie", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 78", schoolReq: "Fire", sources: "Fire School Quest" },
+        { name: "Enchanted Playpen Piggle", school: "Life", wow: 3, egg: "Life Egg", body: "Piggle", patch: "1.01", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Wizard City Quest" },
+        { name: "Forest Lord", school: "Life", wow: 10, egg: "Lifeborn Egg", body: "Troll", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 58", schoolReq: "Life", sources: "Life School Quest" },
+        { name: "Frozen Kraken", school: "Ice", wow: 8, egg: "Frozen Egg", body: "Kraken", patch: "1.04", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Winterland Pack" },
+        { name: "Gryphon", school: "Balance", wow: 10, egg: "Balanced Egg", body: "Gryphon", patch: "1.09", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Balance", sources: "Sinbad Hoard Pack" },
+        { name: "Heckhound", school: "Fire", wow: 4, egg: "Pyre Egg", body: "Hound", patch: "1.00", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Fire", sources: "Fire Vendor, Dragonspyre Drop" },
+        { name: "Hydra", school: "Balance", wow: 9, egg: "Balanced Egg", body: "Hydra", patch: "1.01", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 48", schoolReq: "Balance", sources: "Balance School Quest" },
+        { name: "Ice Serpent", school: "Ice", wow: 1, egg: "Frozen Egg", body: "Serpent", patch: "1.00", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Shopping District Vendor" },
+        { name: "Iefreet", school: "Fire", wow: 9, egg: "Pyre Egg", body: "Genie", patch: "1.03", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Fire", sources: "Hybrid Hatching" },
+        { name: "Kookaburra", school: "Life", wow: 8, egg: "Life Egg", body: "Bird", patch: "1.05", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Hatchmaking Kiosk, Crown Shop" },
+        { name: "Kraken", school: "Storm", wow: 9, egg: "Stormy Egg", body: "Kraken", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 48", schoolReq: "Storm", sources: "Storm School Quest" },
+        { name: "Lurching Mummy", school: "Death", wow: 6, egg: "Necrotic Egg", body: "Mummy", patch: "1.03", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Death", sources: "Nightmare Pack" },
+        { name: "Ornate Dragon", school: "Fire", wow: 5, egg: "Pyre Egg", body: "Dragon", patch: "1.01", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Crown Shop" },
+        { name: "Orthrus", school: "Myth", wow: 10, egg: "Mythical Egg", body: "Hound", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 48", schoolReq: "Myth", sources: "Myth School Quest" },
+        { name: "Piggle", school: "Life", wow: 0, egg: "Life Egg", body: "Piggle", patch: "1.00", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Pet Vendor in Shopping District" },
+        { name: "Rain Beetle", school: "Storm", wow: 6, egg: "Stormy Egg", body: "Beetle", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Krokotopia Drop" },
+        { name: "Raging Bull", school: "Fire", wow: 10, egg: "Pyre Egg", body: "Bull", patch: "1.07", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 118", schoolReq: "Fire", sources: "Arc 3 Quest Reward" },
+        { name: "Shadowbeast", school: "Death", wow: 8, egg: "Necrotic Egg", body: "Beast", patch: "1.04", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Death", sources: "Hatchmaking Kiosk" },
+        { name: "Storm Behemoth", school: "Storm", wow: 10, egg: "Stormy Egg", body: "Behemoth", patch: "1.08", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 118", schoolReq: "Storm", sources: "Mirage Quest Reward" },
+        { name: "Sun Serpent", school: "Fire", wow: 10, egg: "Pyre Egg", body: "Serpent", patch: "1.03", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 90", schoolReq: "Fire", sources: "Azteca Quest Reward" },
+        { name: "Triton", school: "Storm", wow: 10, egg: "Stormy Egg", body: "Triton", patch: "1.02", kiosk: true, hatchable: true, tradeable: true, sellable: false, levelReq: "Level 78", schoolReq: "Storm", sources: "Storm School Quest" },
+        { name: "Velociraptor", school: "Balance", wow: 7, egg: "Balanced Egg", body: "Dino", patch: "1.03", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Primeval Hoard Pack" },
+        { name: "Wandering Eye", school: "Myth", wow: 9, egg: "Mythical Egg", body: "Eye", patch: "1.05", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Universal", sources: "Kiosk, Mythic Pack" },
+        { name: "Yeti", school: "Ice", wow: 8, egg: "Frozen Egg", body: "Yeti", patch: "1.04", kiosk: true, hatchable: true, tradeable: true, sellable: true, levelReq: "None", schoolReq: "Ice", sources: "Crown Shop, Polaris Mob Drop" }
+    ];
 
-        // Offline dataset fallback to guarantee instant loading regardless of CORS/Network blocks
-        const OFFLINE_FALLBACK_PETS = [
-            { name: "Able Racoon", school: "Storm", wow_factor: "8", egg_name: "Maelstrom Egg", body: "Racoon", patch: "1.9.6", kioskable: "TRUE", crowns_pack: "TRUE" },
-            { name: "Acid Rain Core", school: "Death", wow_factor: "7", egg_name: "Stormy Egg", body: "Rain Core", patch: "1.9.6", kioskable: "TRUE", hybrid: "TRUE" },
-            { name: "Adventurous Racoon", school: "Myth", wow_factor: "8", egg_name: "Enigmatic Egg", body: "Racoon", patch: "1.9.6", kioskable: "TRUE" },
-            { name: "Afflicted Treant", school: "Death", wow_factor: "9", egg_name: "Mysterious Egg", body: "Treant", patch: "1.9.6", kioskable: "TRUE", assignment_reward: "TRUE" },
-            { name: "Alert Hound", school: "Myth", wow_factor: "9", egg_name: "Chimerical Egg", body: "Hound", patch: "1.9.6", kioskable: "TRUE", crowns_pack: "TRUE" },
-            { name: "Amber Shenlong Dragon", school: "Myth", wow_factor: "9", egg_name: "Lifebloom Egg", body: "Shenlong Dragon", patch: "1.9.6", kioskable: "TRUE", dropped: "TRUE" },
-            { name: "Apophis' Scarab", school: "Fire", wow_factor: "8", egg_name: "Radiant Egg", body: "Jeweled Scarab", patch: "1.9.6", kioskable: "TRUE", dropped: "TRUE" },
-            { name: "Aqua Dragon", school: "Ice", wow_factor: "9", egg_name: "Frost Shelled Egg", body: "Dragon", patch: "1.9.6", kioskable: "TRUE" },
-            { name: "Avenging Fossil", school: "Death", wow_factor: "8", egg_name: "Necromantic Egg", body: "Stegosaurus", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
-            { name: "Cerberus", school: "Myth", wow_factor: "9", egg_name: "Chimerical Egg", body: "Orthrus", patch: "1.9.6", kioskable: "TRUE", hybrid: "TRUE" },
-            { name: "Firezilla", school: "Fire", wow_factor: "8", egg_name: "Pyromantic Egg", body: "Stormzilla", patch: "1.9.6", kioskable: "TRUE", gift_card: "TRUE" },
-            { name: "Forest Lord", school: "Life", wow_factor: "9", egg_name: "Jade Egg", body: "Forest Lord", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
-            { name: "Hydra", school: "Balance", wow_factor: "8", egg_name: "Symmetrical Egg", body: "Hydra", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
-            { name: "Orthrus", school: "Myth", wow_factor: "8", egg_name: "Chimerical Egg", body: "Orthrus", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
-            { name: "Stormzilla", school: "Storm", wow_factor: "8", egg_name: "Maelstrom Egg", body: "Stormzilla", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" }
-        ];
+    let currentFilteredPets = [...petDatabase];
+    let currentPage = 1;
+    const pageSize = 10;
 
-        const SCHOOL_EMOJIS = { fire: "🔥", ice: "❄️", storm: "⚡", myth: "👁️", life: "🍃", death: "💀", balance: "⚖️" };
+    function getSchoolBadgeClass(school) {
+        const s = (school || '').toLowerCase();
+        if (s === 'fire') return 'school-fire';
+        if (s === 'ice') return 'school-ice';
+        if (s === 'storm') return 'school-storm';
+        if (s === 'myth') return 'school-myth';
+        if (s === 'life') return 'school-life';
+        if (s === 'death') return 'school-death';
+        if (s === 'balance') return 'school-balance';
+        return 'school-balance';
+    }
 
-        let petDatabase = [];
-        let filteredPets = [];
-        let currentPage = 1;
-        const pageSize = 50;
+    function getSchoolIcon(school) {
+        const s = (school || '').toLowerCase();
+        if (s === 'fire') return '🔥';
+        if (s === 'ice') return '❄️';
+        if (s === 'storm') return '⚡';
+        if (s === 'myth') return '👁️';
+        if (s === 'life') return '🍃';
+        if (s === 'death') return '💀';
+        if (s === 'balance') return '⚖️';
+        return '🐾';
+    }
 
-        function cleanHeader(text) { return text.replace(/[^a-zA-Z0-9]/g, '').toLowerCase(); }
-        function isChecked(val) { return val && ["TRUE", "YES", "Y", "X", "✓", "1"].includes(val.toString().trim().toUpperCase()); }
+    function filterPets() {
+        const searchVal = (document.getElementById('petSearch').value || '').toLowerCase().trim();
+        const schoolVal = document.getElementById('schoolFilter').value;
+        const wowVal = document.getElementById('wowFilter').value;
 
-        async function fetchPetTomeData() {
-            const syncStatus = document.getElementById('syncStatus');
-            syncStatus.className = 'sync-badge loading';
-            syncStatus.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Syncing Database...';
-
-            try {
-                // Try GVIZ CSV endpoint
-                let response = await fetch(GVIZ_CSV_URL);
-                if (response.ok) {
-                    const text = await response.text();
-                    parseCSVSpreadsheet(text);
-                    syncStatus.className = 'sync-badge';
-                    syncStatus.innerHTML = `<i class="ph ph-check-circle"></i> Synced (${petDatabase.length} Pets)`;
-                    return;
-                }
-
-                // Fallback to JSON endpoint
-                response = await fetch(GVIZ_JSON_URL);
-                if (response.ok) {
-                    const rawJson = await response.text();
-                    parseJSONSpreadsheet(rawJson);
-                    syncStatus.className = 'sync-badge';
-                    syncStatus.innerHTML = `<i class="ph ph-check-circle"></i> Synced (${petDatabase.length} Pets)`;
-                    return;
-                }
-
-                throw new Error("Google Sheets endpoints returned non-200");
-            } catch (err) {
-                console.warn("Using offline fallback pet database:", err);
-                petDatabase = OFFLINE_FALLBACK_PETS;
-                applyFilters();
-                syncStatus.className = 'sync-badge error';
-                syncStatus.innerHTML = `<i class="ph ph-warning-circle"></i> Offline Mode (${petDatabase.length} Pets)`;
-            }
-        }
-
-        function parseCSVSpreadsheet(csvText) {
-            const lines = csvText.split(/\r?\n/);
-            if (lines.length < 2) return;
-
-            const headerRow = parseCSVRow(lines[0] || lines[1]);
-            const headerMap = {};
-            headerRow.forEach((h, i) => { headerMap[cleanHeader(h)] = i; });
-
-            const mappingKeys = {
-                name: ["name", "petname", "pet"],
-                school: ["school", "element"],
-                wow_factor: ["wowfactor", "wow"],
-                egg_name: ["eggname", "egg"],
-                exclusive: ["exclusive"],
-                unhatchable: ["unhatchable"],
-                retired: ["retired"],
-                special_body: ["specialbody"],
-                no_trade: ["notrade"],
-                school_locked: ["schoollocked"],
-                weaving_locked: ["weavinglocked"],
-                equippable_by: ["equippableby"],
-                no_hatchmaking: ["nohatchmaking"],
-                kioskable: ["kioskable"],
-                dropped: ["dropped"],
-                gardened: ["gardened"],
-                fishing_chest: ["fishingchest"],
-                gold_vendor: ["goldvendor"],
-                crowns_pack: ["crownspack"],
-                gift_card: ["giftcard"],
-                quest_reward: ["questreward"],
-                hybrid: ["hybrid", "hatchingcombo"],
-                body: ["body"],
-                notes: ["notes"],
-                url: ["url", "wikiurl"],
-                patch: ["patch"]
-            };
-
-            const activeMap = {};
-            for (const [key, aliases] of Object.entries(mappingKeys)) {
-                activeMap[key] = null;
-                for (const a of aliases) {
-                    if (a in headerMap) { activeMap[key] = headerMap[a]; break; }
-                }
-            }
-
-            const pets = [];
-            for (let i = 1; i < lines.length; i++) {
-                const row = parseCSVRow(lines[i]);
-                const nameIdx = activeMap["name"];
-                if (nameIdx === null || !row[nameIdx]) continue;
-
-                const name = row[nameIdx].trim();
-                if (!name || name.toLowerCase() === "name") continue;
-
-                const pet = {};
-                for (const [key, idx] of Object.entries(activeMap)) {
-                    pet[key] = (idx !== null && idx < row.length) ? row[idx].trim() : "";
-                }
-                pets.push(pet);
-            }
-
-            if (pets.length > 0) petDatabase = pets;
-            applyFilters();
-        }
-
-        function parseCSVRow(rowText) {
-            const res = [];
-            let inside = false;
-            let val = '';
-            for (let i = 0; i < rowText.length; i++) {
-                const c = rowText[i];
-                if (c === '"') inside = !inside;
-                else if (c === ',' && !inside) { res.push(val); val = ''; }
-                else val += c;
-            }
-            res.push(val);
-            return res.map(s => s.replace(/^"|"$/g, '').trim());
-        }
-
-        function parseJSONSpreadsheet(jsonText) {
-            const match = jsonText.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);/);
-            if (!match) return;
-            const data = JSON.parse(match[1]);
-            if (!data.table || !data.table.rows) return;
-
-            const cols = data.table.cols.map(c => cleanHeader(c.label || c.id || ''));
-            const pets = [];
-
-            data.table.rows.forEach(r => {
-                if (!r.c) return;
-                const pet = {};
-                cols.forEach((colName, idx) => {
-                    pet[colName] = r.c[idx] ? (r.c[idx].v || '').toString().trim() : '';
-                });
-                if (pet.name || pet.petname) {
-                    pet.name = pet.name || pet.petname;
-                    pets.push(pet);
-                }
-            });
-
-            if (pets.length > 0) petDatabase = pets;
-            applyFilters();
-        }
-
-        function applyFilters() {
-            const query = document.getElementById('petSearch').value.toLowerCase().trim();
-            const school = document.getElementById('schoolFilter').value;
-            const wow = document.getElementById('wowFilter').value;
-
-            filteredPets = petDatabase.filter(pet => {
-                const name = (pet.name || '').toLowerCase();
-                const body = (pet.body || '').toLowerCase();
-                const egg = (pet.egg_name || '').toLowerCase();
-
-                const matchesQuery = !query || name.includes(query) || body.includes(query) || egg.includes(query);
-                const matchesSchool = school === 'all' || (pet.school || '').toLowerCase() === school.toLowerCase();
-                const matchesWow = wow === 'all' || (pet.wow_factor || '').toString() === wow;
-
-                return matchesQuery && matchesSchool && matchesWow;
-            });
-
-            currentPage = 1;
-            renderPetsTable();
-        }
-
-        function renderPetsTable() {
-            const tableBody = document.getElementById('petTableBody');
-            const pageInfo = document.getElementById('pageInfo');
-            const prevBtn = document.getElementById('prevPageBtn');
-            const nextBtn = document.getElementById('nextPageBtn');
-
-            if (filteredPets.length === 0) {
-                tableBody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 30px;">No pets matched your search.</td></tr>`;
-                pageInfo.textContent = 'Showing 0 of 0 pets';
-                prevBtn.disabled = true;
-                nextBtn.disabled = true;
-                return;
-            }
-
-            const totalPages = Math.ceil(filteredPets.length / pageSize);
-            const start = (currentPage - 1) * pageSize;
-            const pagePets = filteredPets.slice(start, start + pageSize);
-
-            tableBody.innerHTML = pagePets.map((pet, idx) => {
-                const schoolLower = (pet.school || 'balance').toLowerCase();
-                const realIdx = start + idx;
-                return `
-                    <tr class="clickable-row" onclick="openPetModal(${realIdx})">
-                        <td style="font-weight: 700; color: #fff;">${pet.name}</td>
-                        <td><span class="school-badge school-${schoolLower}">${pet.school || 'Balance'}</span></td>
-                        <td><strong style="color: var(--accent);">${pet.wow_factor || 'N/A'}</strong> / 10</td>
-                        <td>${pet.egg_name || 'N/A'}</td>
-                        <td>${pet.body || 'N/A'}</td>
-                        <td style="text-align: right;">
-                            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); openPetModal(${realIdx});">
-                                <i class="ph ph-info"></i> Details
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-
-            pageInfo.textContent = `Showing ${start + 1}-${Math.min(start + pageSize, filteredPets.length)} of ${filteredPets.length} pets`;
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage >= totalPages;
-        }
-
-        function openPetModal(petIndex) {
-            const pet = filteredPets[petIndex];
-            if (!pet) return;
-
-            const schoolLower = (pet.school || 'balance').toLowerCase();
-            document.getElementById('modalSchoolIcon').textContent = SCHOOL_EMOJIS[schoolLower] || "🐾";
-            document.getElementById('modalPetName').textContent = pet.name;
+        currentFilteredPets = petDatabase.filter(pet => {
+            const matchSearch = !searchVal || 
+                pet.name.toLowerCase().includes(searchVal) || 
+                pet.body.toLowerCase().includes(searchVal) || 
+                pet.egg.toLowerCase().includes(searchVal);
             
-            const badge = document.getElementById('modalSchoolBadge');
-            badge.textContent = pet.school || 'Balance';
-            badge.className = `school-badge school-${schoolLower}`;
+            const matchSchool = schoolVal === 'all' || pet.school.toLowerCase() === schoolVal.toLowerCase();
+            const matchWow = wowVal === 'all' || pet.wow.toString() === wowVal;
 
-            document.getElementById('modalWow').textContent = pet.wow_factor || 'N/A';
-            document.getElementById('modalEgg').textContent = pet.egg_name || 'N/A';
-            document.getElementById('modalBody').textContent = pet.body || 'N/A';
-            document.getElementById('modalPatch').textContent = pet.patch || 'N/A';
-
-            const kioskable = isChecked(pet.kioskable);
-            const unhatchable = isChecked(pet.unhatchable);
-            const noTrade = isChecked(pet.no_trade);
-            const exclusive = isChecked(pet.exclusive);
-
-            document.getElementById('modalHatchingPills').innerHTML = `
-                <span class="tag-pill ${kioskable ? 'yes' : 'no'}">${kioskable ? '✅ Kioskable' : '❌ Not Kioskable'}</span>
-                <span class="tag-pill ${unhatchable ? 'no' : 'yes'}">${unhatchable ? '❌ Unhatchable' : '✅ Hatchable'}</span>
-                <span class="tag-pill ${noTrade ? 'no' : 'yes'}">${noTrade ? '❌ No Trade' : '✅ Tradable'}</span>
-                <span class="tag-pill ${exclusive ? 'no' : 'yes'}">${exclusive ? '⚠️ Exclusive' : '✅ Non-Exclusive'}</span>
-            `;
-
-            const reqs = [];
-            if (isChecked(pet.school_locked)) reqs.push("⚠️ School Locked");
-            if (isChecked(pet.weaving_locked)) reqs.push("🕸️ Weaving Locked");
-            reqs.push(`🧪 Hybrid: ${isChecked(pet.hybrid) ? 'Yes' : 'No'}`);
-            document.getElementById('modalRequirements').innerHTML = reqs.map(r => `<div>${r}</div>`).join('');
-
-            const sources = [];
-            if (isChecked(pet.dropped)) sources.push("⚔️ Mob Drop");
-            if (isChecked(pet.gardened)) sources.push("🌱 Gardening");
-            if (isChecked(pet.fishing_chest)) sources.push("🎣 Fishing");
-            if (isChecked(pet.gold_vendor)) sources.push("🪙 Vendor");
-            if (isChecked(pet.crowns_pack)) sources.push("📦 Crowns Pack");
-            if (isChecked(pet.gift_card)) sources.push("🎁 Gift Card");
-            if (isChecked(pet.quest_reward)) sources.push("🗺️ Quest Reward");
-            document.getElementById('modalSources').innerHTML = sources.length > 0 ? sources.map(s => `<div>${s}</div>`).join('') : '<div>None registered</div>';
-
-            let notes = (pet.notes || '').trim();
-            if (notes) {
-                const match = notes.match(/for\s+more\s+informat[i]?on/i);
-                if (match) notes = notes.substring(0, match.index).trim();
-            }
-
-            const notesSec = document.getElementById('modalNotesSection');
-            if (notes) {
-                notesSec.style.display = 'block';
-                document.getElementById('modalNotes').textContent = `"${notes}"`;
-            } else {
-                notesSec.style.display = 'none';
-            }
-
-            const wikiContainer = document.getElementById('modalWikiContainer');
-            if (pet.url && pet.url.startsWith('http')) {
-                wikiContainer.style.display = 'block';
-                document.getElementById('modalWikiLink').href = pet.url;
-            } else {
-                wikiContainer.style.display = 'none';
-            }
-
-            document.getElementById('petModal').classList.add('open');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchPetTomeData();
-
-            document.getElementById('petSearch')?.addEventListener('input', applyFilters);
-            document.getElementById('schoolFilter')?.addEventListener('change', applyFilters);
-            document.getElementById('wowFilter')?.addEventListener('change', applyFilters);
-            document.getElementById('refreshBtn')?.addEventListener('click', fetchPetTomeData);
-
-            document.getElementById('prevPageBtn')?.addEventListener('click', () => {
-                if (currentPage > 1) { currentPage--; renderPetsTable(); }
-            });
-
-            document.getElementById('nextPageBtn')?.addEventListener('click', () => {
-                const totalPages = Math.ceil(filteredPets.length / pageSize);
-                if (currentPage < totalPages) { currentPage++; renderPetsTable(); }
-            });
-
-            const modal = document.getElementById('petModal');
-            document.getElementById('closeModalBtn')?.addEventListener('click', () => modal?.classList.remove('open'));
-            modal?.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+            return matchSearch && matchSchool && matchWow;
         });
-    </script>
-</body>
-</html>
+
+        currentPage = 1;
+        renderTable();
+    }
+
+    function renderTable() {
+        const tbody = document.getElementById('petTableBody');
+        tbody.innerHTML = '';
+
+        const total = currentFilteredPets.length;
+        if (total === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 40px;">
+                        <i class="ph ph-warning-circle" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 8px; display: block;"></i>
+                        No pets found matching your filter criteria.
+                    </td>
+                </tr>
+            `;
+            document.getElementById('pageInfo').innerText = 'Showing 0 of 0 pets';
+            document.getElementById('prevPageBtn').disabled = true;
+            document.getElementById('nextPageBtn').disabled = true;
+            return;
+        }
+
+        const totalPages = Math.ceil(total / pageSize);
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const startIdx = (currentPage - 1) * pageSize;
+        const pagePets = currentFilteredPets.slice(startIdx, startIdx + pageSize);
+
+        pagePets.forEach((pet) => {
+            const tr = document.createElement('tr');
+            tr.className = 'clickable-row';
+            tr.onclick = () => openModal(pet);
+
+            tr.innerHTML = `
+                <td style="font-weight: 700; color: #fff;">
+                    <span style="margin-right: 6px;">${getSchoolIcon(pet.school)}</span> ${pet.name}
+                </td>
+                <td><span class="school-badge ${getSchoolBadgeClass(pet.school)}">${pet.school}</span></td>
+                <td><strong style="color: var(--accent);">${pet.wow}</strong> <span style="font-size: 0.75rem; color: var(--text-muted);">/ 10</span></td>
+                <td style="color: var(--text-secondary);">${pet.egg}</td>
+                <td style="color: var(--text-secondary);">${pet.body}</td>
+                <td style="text-align: right;">
+                    <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); openModalByPetName('${pet.name.replace(/'/g, "\\'")}')">
+                        <i class="ph ph-eye"></i> Details
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        const endIdx = Math.min(startIdx + pageSize, total);
+        document.getElementById('pageInfo').innerText = `Showing ${startIdx + 1}-${endIdx} of ${total} pets`;
+        document.getElementById('prevPageBtn').disabled = currentPage <= 1;
+        document.getElementById('nextPageBtn').disabled = currentPage >= totalPages;
+    }
+
+    function openModalByPetName(name) {
+        const pet = petDatabase.find(p => p.name === name);
+        if (pet) openModal(pet);
+    }
+
+    function openModal(pet) {
+        document.getElementById('modalPetName').innerText = pet.name;
+        document.getElementById('modalSchoolIcon').innerText = getSchoolIcon(pet.school);
+
+        const badge = document.getElementById('modalSchoolBadge');
+        badge.innerText = pet.school;
+        badge.className = `school-badge ${getSchoolBadgeClass(pet.school)}`;
+
+        document.getElementById('modalWow').innerText = pet.wow;
+        document.getElementById('modalEgg').innerText = pet.egg;
+        document.getElementById('modalBody').innerText = pet.body;
+        document.getElementById('modalPatch').innerText = pet.patch || '1.00';
+
+        const pillsContainer = document.getElementById('modalHatchingPills');
+        pillsContainer.innerHTML = `
+            <span class="tag-pill ${pet.kiosk ? 'yes' : 'no'}"><i class="ph ${pet.kiosk ? 'ph-check-circle' : 'ph-x-circle'}"></i> Kiosk Allowed</span>
+            <span class="tag-pill ${pet.hatchable ? 'yes' : 'no'}"><i class="ph ${pet.hatchable ? 'ph-check-circle' : 'ph-x-circle'}"></i> Hatchable</span>
+            <span class="tag-pill ${pet.tradeable ? 'yes' : 'no'}"><i class="ph ${pet.tradeable ? 'ph-check-circle' : 'ph-x-circle'}"></i> Tradeable</span>
+            <span class="tag-pill ${pet.sellable ? 'yes' : 'no'}"><i class="ph ${pet.sellable ? 'ph-check-circle' : 'ph-x-circle'}"></i> Sellable</span>
+        `;
+
+        document.getElementById('modalRequirements').innerHTML = `
+            <div><span style="color: var(--text-secondary);">Level Requirement:</span> ${pet.levelReq || 'None'}</div>
+            <div><span style="color: var(--text-secondary);">School Requirement:</span> ${pet.schoolReq || 'Universal'}</div>
+        `;
+
+        document.getElementById('modalSources').innerText = pet.sources || 'Hatchmaking Kiosk, World Boss Drops';
+
+        document.getElementById('petModal').classList.add('open');
+    }
+
+    function closeModal() {
+        document.getElementById('petModal').classList.remove('open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderTable();
+
+        document.getElementById('petSearch').addEventListener('input', filterPets);
+        document.getElementById('schoolFilter').addEventListener('change', filterPets);
+        document.getElementById('wowFilter').addEventListener('change', filterPets);
+
+        document.getElementById('prevPageBtn').addEventListener('click', () => {
+            if (currentPage > 1) { currentPage--; renderTable(); }
+        });
+
+        document.getElementById('nextPageBtn').addEventListener('click', () => {
+            const totalPages = Math.ceil(currentFilteredPets.length / pageSize);
+            if (currentPage < totalPages) { currentPage++; renderTable(); }
+        });
+
+        document.getElementById('refreshBtn').addEventListener('click', () => {
+            filterPets();
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+        document.getElementById('petModal').addEventListener('click', (e) => {
+            if (e.target.id === 'petModal') closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    });
+</script>
