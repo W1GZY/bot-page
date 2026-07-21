@@ -591,6 +591,14 @@
                         </div>
 
                         <div class="feature-card" data-category="security">
+                            <div class="feature-icon"><i class="ph ph-flag"></i></div>
+                            <div>
+                                <h3 class="feature-title">Member Reports</h3>
+                                <p class="feature-desc">Give users a clean UI to report rule-breakers with custom context menus, routing details directly to staff audit logs.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card" data-category="security">
                             <div class="feature-icon"><i class="ph ph-file-text"></i></div>
                             <div>
                                 <h3 class="feature-title">Audit Logging & Quarantine</h3>
@@ -944,7 +952,7 @@
                 ]
             },
             {
-                id: "serveradmin",
+                id: "utility_sys",
                 icon: "ph-sliders",
                 title: "Server Administration & Utilities",
                 subtitle: "Role management, channel configuration, bot messaging, and server lookup tools.",
@@ -1062,7 +1070,7 @@
                 ]
             },
             {
-                id: "reminders_replies",
+                id: "reminders",
                 icon: "ph-bell",
                 title: "Personal Reminders & Auto Mention Replies",
                 subtitle: "Right-click message reminders with snooze, user reports, and automated mention replies.",
@@ -1072,16 +1080,46 @@
                     { type: "commands", items: [
                         { cmd: "Remind Me (Context Menu)", desc: "Right-click any message -> Apps -> Remind Me to open the reminder form." },
                         { cmd: "/reminders", desc: "View and cancel your active message reminders." }
-                    ]},
-                    { type: "heading", text: "Auto Mention Replies (/r)" },
-                    { type: "text", text: "Set custom text messages sent automatically when another member mentions you in chat." },
+                    ]}
+                ]
+            },
+            {
+                id: "autoreply",
+                icon: "ph-chat-centered-text",
+                title: "Auto Mention Replies",
+                subtitle: "Configure personal automated replies triggered when other members mention you.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "Set custom text messages sent automatically when another member mentions you in chat. Includes profanity and invite link safety filters." },
                     { type: "commands", items: [
                         { cmd: "/r set [reply_message]", desc: "Set your automated mention reply message." },
                         { cmd: "/r remove", desc: "Remove your automated mention reply." },
                         { cmd: "/r toggle [status]", desc: "Enable or disable your automated mention reply." },
                         { cmd: "/r admin clear [user]", desc: "Admin command to clear a user's mention reply." }
-                    ]},
-                    { type: "heading", text: "User Reports & Returning Roles" },
+                    ]}
+                ]
+            },
+            {
+                id: "reports",
+                icon: "ph-flag",
+                title: "Member Reports",
+                subtitle: "Report rule-breakers cleanly with custom context menus.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "Empower members to safely and privately report bad actors directly to the moderation team via the admin_escalation logging system." },
+                    { type: "commands", items: [
+                        { cmd: "Report User (Context Menu)", desc: "Right-click any user -> Apps -> Report User to submit a report modal to staff." }
+                    ]}
+                ]
+            },
+            {
+                id: "returning_roles",
+                icon: "ph-arrow-u-down-left",
+                title: "Returning Member Roles",
+                subtitle: "Automatically re-assign designated roles to returning members.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "Set a specific role that automatically gets granted to users who leave and rejoin the server within a 2-year memory window." },
                     { type: "commands", items: [
                         { cmd: "Report User (Context Menu)", desc: "Right-click any user -> Apps -> Report User to submit a report modal to staff." },
                         { cmd: "/returning_role set [role]", desc: "Set the role automatically restored when past members rejoin." },
