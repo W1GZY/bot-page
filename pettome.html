@@ -15,7 +15,6 @@
     <script src="layout.js" defer></script>
 
     <style>
-        /* Pet Tome Specific Styles */
         .sync-badge {
             display: inline-flex;
             align-items: center;
@@ -28,34 +27,17 @@
             color: #10B981;
             border: 1px solid rgba(16, 185, 129, 0.25);
         }
+        .sync-badge.loading { background: rgba(245, 158, 11, 0.12); color: #F59E0B; border-color: rgba(245, 158, 11, 0.25); }
+        .sync-badge.error { background: rgba(239, 68, 68, 0.12); color: #EF4444; border-color: rgba(239, 68, 68, 0.25); }
 
-        .sync-badge.loading {
-            background: rgba(245, 158, 11, 0.12);
-            color: #F59E0B;
-            border-color: rgba(245, 158, 11, 0.25);
-        }
-
-        .sync-badge.error {
-            background: rgba(239, 68, 68, 0.12);
-            color: #EF4444;
-            border-color: rgba(239, 68, 68, 0.25);
-        }
-
-        .clickable-row {
-            cursor: pointer;
-            transition: background var(--transition-fast);
-        }
-
-        .clickable-row:hover td {
-            background: rgba(255, 255, 255, 0.04) !important;
-        }
+        .clickable-row { cursor: pointer; transition: background var(--transition-fast); }
+        .clickable-row:hover td { background: rgba(255, 255, 255, 0.04) !important; }
 
         /* Modal Overlay */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 100;
             display: flex;
             align-items: center;
@@ -65,11 +47,7 @@
             pointer-events: none;
             transition: opacity var(--transition-normal);
         }
-
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
 
         .modal-card {
             background: var(--bg-panel);
@@ -80,54 +58,38 @@
             max-height: 88vh;
             overflow-y: auto;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            transform: translateY(20px);
+            transform: translateY(15px);
             transition: transform var(--transition-normal);
-            position: relative;
         }
-
-        .modal-overlay.open .modal-card {
-            transform: translateY(0);
-        }
+        .modal-overlay.open .modal-card { transform: translateY(0); }
 
         .modal-header-banner {
-            padding: 24px;
+            padding: 20px 24px;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
+            align-items: center;
         }
 
-        .modal-body {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .modal-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-        }
+        .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+        .modal-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 
         .modal-section {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 16px;
         }
-
         .modal-section-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 800;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .modal-close-btn {
@@ -141,14 +103,8 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all var(--transition-fast);
         }
-
-        .modal-close-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            border-color: rgba(239, 68, 68, 0.4);
-        }
+        .modal-close-btn:hover { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
 
         .tag-pill {
             display: inline-flex;
@@ -160,16 +116,14 @@
             font-weight: 600;
             margin: 2px;
         }
-
         .tag-pill.yes { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.25); }
         .tag-pill.no { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
-        .tag-pill.neutral { background: rgba(255, 255, 255, 0.06); color: #ddd; border: 1px solid var(--border); }
-        
+
         .pagination-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px;
+            padding: 14px 16px;
             border-top: 1px solid var(--border);
             font-size: 0.85rem;
             color: var(--text-secondary);
@@ -179,28 +133,28 @@
 <body data-nav="pettome" data-title="Pet Tome">
     <div class="content">
         <!-- Page Header -->
-        <div class="auto-fade-in" style="margin-bottom: 28px; animation-delay: 0s; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+        <div class="auto-fade-in" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
             <div>
                 <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Wizard101 Pet Tome</h1>
                 <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
-                    Live database synced directly from the collaborative Wizard101 Google Spreadsheet.
+                    Live pet database synchronized directly from Google Sheets.
                 </p>
             </div>
             <div id="syncStatus" class="sync-badge loading">
-                <i class="ph ph-spinner ph-spin"></i> Syncing with Google Sheets...
+                <i class="ph ph-spinner ph-spin"></i> Syncing Database...
             </div>
         </div>
 
-        <!-- Controls: Search & Filters -->
-        <div class="glass-card auto-fade-in" style="padding: 20px; margin-bottom: 24px; animation-delay: 0.05s;">
-            <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-                <div class="search-container" style="flex: 1; min-width: 260px; margin-bottom: 0;">
+        <!-- Controls: Search & Filter Options -->
+        <div class="glass-card auto-fade-in" style="padding: 16px 20px; margin-bottom: 20px;">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <div class="search-container" style="flex: 1; min-width: 240px; margin-bottom: 0;">
                     <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
                     <input type="text" id="petSearch" placeholder="Search pet by name, body, or egg (e.g. Dragon, Cerberus, Piggle)...">
                 </div>
 
-                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <select id="schoolFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 14px; border-radius: 10px; outline: none; cursor: pointer; font-family: inherit; font-size: 0.9rem;">
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <select id="schoolFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-md); outline: none; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
                         <option value="all">All Schools</option>
                         <option value="Fire">🔥 Fire</option>
                         <option value="Ice">❄️ Ice</option>
@@ -211,7 +165,7 @@
                         <option value="Balance">⚖️ Balance</option>
                     </select>
 
-                    <select id="wowFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 14px; border-radius: 10px; outline: none; cursor: pointer; font-family: inherit; font-size: 0.9rem;">
+                    <select id="wowFilter" style="background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); padding: 10px 12px; border-radius: var(--radius-md); outline: none; cursor: pointer; font-family: inherit; font-size: 0.85rem;">
                         <option value="all">All Wow Factors</option>
                         <option value="10">Wow Factor 10 (Rarest)</option>
                         <option value="9">Wow Factor 9</option>
@@ -222,7 +176,7 @@
                         <option value="4">Wow Factor 4</option>
                         <option value="3">Wow Factor 3</option>
                         <option value="2">Wow Factor 2</option>
-                        <option value="1">Wow Factor 1 (Common)</option>
+                        <option value="1">Wow Factor 1</option>
                         <option value="0">Wow Factor 0</option>
                     </select>
 
@@ -234,7 +188,7 @@
         </div>
 
         <!-- Table Display -->
-        <div class="custom-table-wrapper auto-fade-in" style="animation-delay: 0.1s;">
+        <div class="custom-table-wrapper auto-fade-in">
             <table class="custom-table" id="petTable">
                 <thead>
                     <tr>
@@ -243,14 +197,14 @@
                         <th>Wow Factor</th>
                         <th>Egg Name</th>
                         <th>Body Group</th>
-                        <th style="text-align: right;">Action</th>
+                        <th style="text-align: right;">Details</th>
                     </tr>
                 </thead>
                 <tbody id="petTableBody">
                     <tr>
                         <td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 40px;">
                             <i class="ph ph-spinner ph-spin" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 10px; display: block;"></i>
-                            Loading live pet data from Google Sheets...
+                            Loading pet database from Google Sheets...
                         </td>
                     </tr>
                 </tbody>
@@ -269,11 +223,11 @@
     <!-- Pet Detail Modal -->
     <div class="modal-overlay" id="petModal">
         <div class="modal-card">
-            <div class="modal-header-banner" id="modalBanner">
+            <div class="modal-header-banner">
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <span id="modalSchoolIcon" style="font-size: 2rem;">🐾</span>
+                    <span id="modalSchoolIcon" style="font-size: 1.8rem;">🐾</span>
                     <div>
-                        <h2 id="modalPetName" style="margin: 0; font-size: 1.5rem; font-weight: 800; color: #fff;">Pet Name</h2>
+                        <h2 id="modalPetName" style="margin: 0; font-size: 1.4rem; font-weight: 800; color: #fff;">Pet Name</h2>
                         <span id="modalSchoolBadge" class="school-badge">Balance</span>
                     </div>
                 </div>
@@ -281,10 +235,9 @@
             </div>
 
             <div class="modal-body">
-                <!-- Section 1: General Details -->
                 <div class="modal-section">
-                    <div class="modal-section-title"><i class="ph ph-clipboard-text"></i> General Information</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; font-size: 0.9rem;">
+                    <div class="modal-section-title"><i class="ph ph-clipboard-text"></i> General Overview</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; font-size: 0.875rem;">
                         <div><span style="color: var(--text-secondary);">Wow Factor:</span> <strong id="modalWow" style="color: var(--accent);">--</strong>/10</div>
                         <div><span style="color: var(--text-secondary);">Egg Name:</span> <span id="modalEgg">--</span></div>
                         <div><span style="color: var(--text-secondary);">Body Group:</span> <span id="modalBody">--</span></div>
@@ -292,34 +245,31 @@
                     </div>
                 </div>
 
-                <!-- Section 2: Hatching & Trading -->
                 <div class="modal-section">
                     <div class="modal-section-title"><i class="ph ph-egg"></i> Hatching & Trading Permissions</div>
-                    <div id="modalHatchingPills" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                    <div id="modalHatchingPills" style="display: flex; flex-wrap: wrap; gap: 4px;"></div>
                 </div>
 
-                <!-- Section 3: Requirements & Acquisition -->
                 <div class="modal-grid-2">
                     <div class="modal-section">
                         <div class="modal-section-title"><i class="ph ph-sliders"></i> Requirements</div>
-                        <div id="modalRequirements" style="font-size: 0.875rem; color: #ddd; display: flex; flex-direction: column; gap: 6px;"></div>
+                        <div id="modalRequirements" style="font-size: 0.85rem; color: #ddd; display: flex; flex-direction: column; gap: 4px;"></div>
                     </div>
 
                     <div class="modal-section">
-                        <div class="modal-section-title"><i class="ph ph-map-pin"></i> How to Acquire</div>
-                        <div id="modalSources" style="font-size: 0.875rem; color: #ddd; display: flex; flex-direction: column; gap: 6px;"></div>
+                        <div class="modal-section-title"><i class="ph ph-map-pin"></i> Acquisition Sources</div>
+                        <div id="modalSources" style="font-size: 0.85rem; color: #ddd; display: flex; flex-direction: column; gap: 4px;"></div>
                     </div>
                 </div>
 
-                <!-- Section 4: Notes & Links -->
                 <div class="modal-section" id="modalNotesSection" style="display: none;">
                     <div class="modal-section-title"><i class="ph ph-note"></i> Notes</div>
-                    <p id="modalNotes" style="margin: 0; font-size: 0.9rem; color: #ccc; font-style: italic; line-height: 1.5;"></p>
+                    <p id="modalNotes" style="margin: 0; font-size: 0.875rem; color: #ccc; font-style: italic; line-height: 1.5;"></p>
                 </div>
 
                 <div id="modalWikiContainer" style="display: none; text-align: right;">
                     <a id="modalWikiLink" href="#" target="_blank" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">
-                        <i class="ph ph-arrow-square-out"></i> View on W101 Central Wiki
+                        <i class="ph ph-arrow-square-out"></i> View Wiki
                     </a>
                 </div>
             </div>
@@ -327,77 +277,82 @@
     </div>
 
     <script>
-        // Configuration constants identical to discord bot
         const SPREADSHEET_ID = "17GW9W7w-J_04HBu2WmhaGhQRHduIfkqkNEAwB-vb-k8";
-        const TSV_EXPORT_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=tsv`;
-        const CSV_EXPORT_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv`;
+        const GVIZ_CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=Pet%20Tome`;
+        const GVIZ_JSON_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
 
-        const SCHOOL_EMOJIS = {
-            fire: "🔥", ice: "❄️", storm: "⚡", myth: "👁️", life: "🍃", death: "💀", balance: "⚖️"
-        };
+        // Offline dataset fallback to guarantee instant loading regardless of CORS/Network blocks
+        const OFFLINE_FALLBACK_PETS = [
+            { name: "Able Racoon", school: "Storm", wow_factor: "8", egg_name: "Maelstrom Egg", body: "Racoon", patch: "1.9.6", kioskable: "TRUE", crowns_pack: "TRUE" },
+            { name: "Acid Rain Core", school: "Death", wow_factor: "7", egg_name: "Stormy Egg", body: "Rain Core", patch: "1.9.6", kioskable: "TRUE", hybrid: "TRUE" },
+            { name: "Adventurous Racoon", school: "Myth", wow_factor: "8", egg_name: "Enigmatic Egg", body: "Racoon", patch: "1.9.6", kioskable: "TRUE" },
+            { name: "Afflicted Treant", school: "Death", wow_factor: "9", egg_name: "Mysterious Egg", body: "Treant", patch: "1.9.6", kioskable: "TRUE", assignment_reward: "TRUE" },
+            { name: "Alert Hound", school: "Myth", wow_factor: "9", egg_name: "Chimerical Egg", body: "Hound", patch: "1.9.6", kioskable: "TRUE", crowns_pack: "TRUE" },
+            { name: "Amber Shenlong Dragon", school: "Myth", wow_factor: "9", egg_name: "Lifebloom Egg", body: "Shenlong Dragon", patch: "1.9.6", kioskable: "TRUE", dropped: "TRUE" },
+            { name: "Apophis' Scarab", school: "Fire", wow_factor: "8", egg_name: "Radiant Egg", body: "Jeweled Scarab", patch: "1.9.6", kioskable: "TRUE", dropped: "TRUE" },
+            { name: "Aqua Dragon", school: "Ice", wow_factor: "9", egg_name: "Frost Shelled Egg", body: "Dragon", patch: "1.9.6", kioskable: "TRUE" },
+            { name: "Avenging Fossil", school: "Death", wow_factor: "8", egg_name: "Necromantic Egg", body: "Stegosaurus", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
+            { name: "Cerberus", school: "Myth", wow_factor: "9", egg_name: "Chimerical Egg", body: "Orthrus", patch: "1.9.6", kioskable: "TRUE", hybrid: "TRUE" },
+            { name: "Firezilla", school: "Fire", wow_factor: "8", egg_name: "Pyromantic Egg", body: "Stormzilla", patch: "1.9.6", kioskable: "TRUE", gift_card: "TRUE" },
+            { name: "Forest Lord", school: "Life", wow_factor: "9", egg_name: "Jade Egg", body: "Forest Lord", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
+            { name: "Hydra", school: "Balance", wow_factor: "8", egg_name: "Symmetrical Egg", body: "Hydra", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
+            { name: "Orthrus", school: "Myth", wow_factor: "8", egg_name: "Chimerical Egg", body: "Orthrus", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" },
+            { name: "Stormzilla", school: "Storm", wow_factor: "8", egg_name: "Maelstrom Egg", body: "Stormzilla", patch: "1.9.6", school_locked: "TRUE", quest_reward: "TRUE" }
+        ];
 
-        const SCHOOL_COLORS = {
-            fire: "#e25822", ice: "#00ffff", storm: "#8a2be2", myth: "#ffd700", life: "#32cd32", death: "#94a3b8", balance: "#f97316"
-        };
+        const SCHOOL_EMOJIS = { fire: "🔥", ice: "❄️", storm: "⚡", myth: "👁️", life: "🍃", death: "💀", balance: "⚖️" };
 
         let petDatabase = [];
         let filteredPets = [];
         let currentPage = 1;
         const pageSize = 50;
 
-        function cleanHeader(text) {
-            return text.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-        }
-
-        function isChecked(value) {
-            if (!value) return false;
-            const val = value.toString().trim().toUpperCase();
-            return ["TRUE", "YES", "Y", "X", "✓", "1", "CHECKED"].includes(val);
-        }
+        function cleanHeader(text) { return text.replace(/[^a-zA-Z0-9]/g, '').toLowerCase(); }
+        function isChecked(val) { return val && ["TRUE", "YES", "Y", "X", "✓", "1"].includes(val.toString().trim().toUpperCase()); }
 
         async function fetchPetTomeData() {
             const syncStatus = document.getElementById('syncStatus');
             syncStatus.className = 'sync-badge loading';
-            syncStatus.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Syncing with Google Sheets...';
+            syncStatus.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Syncing Database...';
 
             try {
-                let response = await fetch(TSV_EXPORT_URL);
-                let textData = '';
-                let delimiter = '\t';
-
-                if (!response.ok) {
-                    // Fallback to gviz CSV format
-                    response = await fetch(CSV_EXPORT_URL);
-                    delimiter = ',';
+                // Try GVIZ CSV endpoint
+                let response = await fetch(GVIZ_CSV_URL);
+                if (response.ok) {
+                    const text = await response.text();
+                    parseCSVSpreadsheet(text);
+                    syncStatus.className = 'sync-badge';
+                    syncStatus.innerHTML = `<i class="ph ph-check-circle"></i> Synced (${petDatabase.length} Pets)`;
+                    return;
                 }
 
-                if (!response.ok) {
-                    throw new Error(`HTTP Error: ${response.status}`);
+                // Fallback to JSON endpoint
+                response = await fetch(GVIZ_JSON_URL);
+                if (response.ok) {
+                    const rawJson = await response.text();
+                    parseJSONSpreadsheet(rawJson);
+                    syncStatus.className = 'sync-badge';
+                    syncStatus.innerHTML = `<i class="ph ph-check-circle"></i> Synced (${petDatabase.length} Pets)`;
+                    return;
                 }
 
-                textData = await response.text();
-                parseSpreadsheet(textData, delimiter);
-
-                syncStatus.className = 'sync-badge';
-                syncStatus.innerHTML = `<i class="ph ph-check-circle"></i> Synced (${petDatabase.length} Pets)`;
+                throw new Error("Google Sheets endpoints returned non-200");
             } catch (err) {
-                console.error("Pet Tome fetch failed:", err);
+                console.warn("Using offline fallback pet database:", err);
+                petDatabase = OFFLINE_FALLBACK_PETS;
+                applyFilters();
                 syncStatus.className = 'sync-badge error';
-                syncStatus.innerHTML = '<i class="ph ph-warning-circle"></i> Sync Failed (Using Offline Mode)';
+                syncStatus.innerHTML = `<i class="ph ph-warning-circle"></i> Offline Mode (${petDatabase.length} Pets)`;
             }
         }
 
-        function parseSpreadsheet(dataText, delimiter) {
-            const lines = dataText.split(/\r?\n/);
-            if (lines.length < 3) return;
+        function parseCSVSpreadsheet(csvText) {
+            const lines = csvText.split(/\r?\n/);
+            if (lines.length < 2) return;
 
-            // Parse headers on Row 2 (Index 1)
-            const headerRow = parseCSVRow(lines[1], delimiter);
+            const headerRow = parseCSVRow(lines[0] || lines[1]);
             const headerMap = {};
-            headerRow.forEach((h, idx) => {
-                const cleaned = cleanHeader(h);
-                if (cleaned) headerMap[cleaned] = idx;
-            });
+            headerRow.forEach((h, i) => { headerMap[cleanHeader(h)] = i; });
 
             const mappingKeys = {
                 name: ["name", "petname", "pet"],
@@ -408,94 +363,91 @@
                 unhatchable: ["unhatchable"],
                 retired: ["retired"],
                 special_body: ["specialbody"],
-                unobtainable: ["unobtainable"],
                 no_trade: ["notrade"],
                 school_locked: ["schoollocked"],
                 weaving_locked: ["weavinglocked"],
                 equippable_by: ["equippableby"],
                 no_hatchmaking: ["nohatchmaking"],
                 kioskable: ["kioskable"],
-                crowns_pet: ["crownspet"],
-                pet_derby: ["petderby"],
-                pvp: ["pvp"],
-                beastmoon: ["beastmoon"],
-                deckathalon: ["deckathalon"],
-                raid: ["raid"],
-                quest_reward: ["questreward"],
-                hybrid: ["hatchingcombo", "hybrid", "hatching_combo"],
                 dropped: ["dropped"],
                 gardened: ["gardened"],
                 fishing_chest: ["fishingchest"],
-                daily_house_reward: ["dailyhousereward"],
-                assignment_reward: ["assignmentreward"],
                 gold_vendor: ["goldvendor"],
-                ticket_vendor: ["ticketvendor"],
-                crowns_vendor: ["crownsvendor"],
                 crowns_pack: ["crownspack"],
                 gift_card: ["giftcard"],
-                bundle_seasonal: ["bundleseasonal"],
-                availability: ["availability"],
-                promotional_code: ["promotionalcode"],
-                body: ["body", "bodyreleasing", "bodyreleasediscoverydate"],
+                quest_reward: ["questreward"],
+                hybrid: ["hybrid", "hatchingcombo"],
+                body: ["body"],
                 notes: ["notes"],
-                url: ["url", "wikiurl", "link"],
+                url: ["url", "wikiurl"],
                 patch: ["patch"]
             };
 
             const activeMap = {};
             for (const [key, aliases] of Object.entries(mappingKeys)) {
                 activeMap[key] = null;
-                for (const alias of aliases) {
-                    if (alias in headerMap) {
-                        activeMap[key] = headerMap[alias];
-                        break;
-                    }
+                for (const a of aliases) {
+                    if (a in headerMap) { activeMap[key] = headerMap[a]; break; }
                 }
             }
 
-            const parsedPets = [];
-            for (let i = 2; i < lines.length; i++) {
-                const row = parseCSVRow(lines[i], delimiter);
-                if (!row || row.length === 0) continue;
-
+            const pets = [];
+            for (let i = 1; i < lines.length; i++) {
+                const row = parseCSVRow(lines[i]);
                 const nameIdx = activeMap["name"];
                 if (nameIdx === null || !row[nameIdx]) continue;
 
                 const name = row[nameIdx].trim();
-                if (!name || name.toLowerCase() === "name" || name.toLowerCase() === "pet name") continue;
+                if (!name || name.toLowerCase() === "name") continue;
 
-                const petObj = {};
+                const pet = {};
                 for (const [key, idx] of Object.entries(activeMap)) {
-                    petObj[key] = (idx !== null && idx < row.length) ? row[idx].trim() : "";
+                    pet[key] = (idx !== null && idx < row.length) ? row[idx].trim() : "";
                 }
-
-                parsedPets.push(petObj);
+                pets.push(pet);
             }
 
-            petDatabase = parsedPets;
+            if (pets.length > 0) petDatabase = pets;
             applyFilters();
         }
 
-        function parseCSVRow(rowText, delimiter) {
-            if (delimiter === '\t') return rowText.split('\t');
-            
-            const result = [];
-            let insideQuote = false;
-            let entry = '';
-
+        function parseCSVRow(rowText) {
+            const res = [];
+            let inside = false;
+            let val = '';
             for (let i = 0; i < rowText.length; i++) {
-                const char = rowText[i];
-                if (char === '"') {
-                    insideQuote = !insideQuote;
-                } else if (char === delimiter && !insideQuote) {
-                    result.push(entry);
-                    entry = '';
-                } else {
-                    entry += char;
-                }
+                const c = rowText[i];
+                if (c === '"') inside = !inside;
+                else if (c === ',' && !inside) { res.push(val); val = ''; }
+                else val += c;
             }
-            result.push(entry);
-            return result.map(s => s.replace(/^"|"$/g, '').trim());
+            res.push(val);
+            return res.map(s => s.replace(/^"|"$/g, '').trim());
+        }
+
+        function parseJSONSpreadsheet(jsonText) {
+            const match = jsonText.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);/);
+            if (!match) return;
+            const data = JSON.parse(match[1]);
+            if (!data.table || !data.table.rows) return;
+
+            const cols = data.table.cols.map(c => cleanHeader(c.label || c.id || ''));
+            const pets = [];
+
+            data.table.rows.forEach(r => {
+                if (!r.c) return;
+                const pet = {};
+                cols.forEach((colName, idx) => {
+                    pet[colName] = r.c[idx] ? (r.c[idx].v || '').toString().trim() : '';
+                });
+                if (pet.name || pet.petname) {
+                    pet.name = pet.name || pet.petname;
+                    pets.push(pet);
+                }
+            });
+
+            if (pets.length > 0) petDatabase = pets;
+            applyFilters();
         }
 
         function applyFilters() {
@@ -504,15 +456,15 @@
             const wow = document.getElementById('wowFilter').value;
 
             filteredPets = petDatabase.filter(pet => {
-                const matchesName = !query || 
-                    pet.name.toLowerCase().includes(query) || 
-                    pet.body.toLowerCase().includes(query) || 
-                    pet.egg_name.toLowerCase().includes(query);
-                    
-                const matchesSchool = school === 'all' || pet.school.toLowerCase() === school.toLowerCase();
-                const matchesWow = wow === 'all' || pet.wow_factor.toString() === wow;
+                const name = (pet.name || '').toLowerCase();
+                const body = (pet.body || '').toLowerCase();
+                const egg = (pet.egg_name || '').toLowerCase();
 
-                return matchesName && matchesSchool && matchesWow;
+                const matchesQuery = !query || name.includes(query) || body.includes(query) || egg.includes(query);
+                const matchesSchool = school === 'all' || (pet.school || '').toLowerCase() === school.toLowerCase();
+                const matchesWow = wow === 'all' || (pet.wow_factor || '').toString() === wow;
+
+                return matchesQuery && matchesSchool && matchesWow;
             });
 
             currentPage = 1;
@@ -526,13 +478,7 @@
             const nextBtn = document.getElementById('nextPageBtn');
 
             if (filteredPets.length === 0) {
-                tableBody.innerHTML = `
-                    <tr>
-                        <td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 40px;">
-                            No pets found matching your criteria.
-                        </td>
-                    </tr>
-                `;
+                tableBody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 30px;">No pets matched your search.</td></tr>`;
                 pageInfo.textContent = 'Showing 0 of 0 pets';
                 prevBtn.disabled = true;
                 nextBtn.disabled = true;
@@ -540,16 +486,16 @@
             }
 
             const totalPages = Math.ceil(filteredPets.length / pageSize);
-            const startIdx = (currentPage - 1) * pageSize;
-            const pagePets = filteredPets.slice(startIdx, startIdx + pageSize);
+            const start = (currentPage - 1) * pageSize;
+            const pagePets = filteredPets.slice(start, start + pageSize);
 
             tableBody.innerHTML = pagePets.map((pet, idx) => {
-                const schoolClass = `school-${(pet.school || 'balance').toLowerCase()}`;
-                const realIdx = startIdx + idx;
+                const schoolLower = (pet.school || 'balance').toLowerCase();
+                const realIdx = start + idx;
                 return `
                     <tr class="clickable-row" onclick="openPetModal(${realIdx})">
                         <td style="font-weight: 700; color: #fff;">${pet.name}</td>
-                        <td><span class="school-badge ${schoolClass}">${pet.school || 'Balance'}</span></td>
+                        <td><span class="school-badge school-${schoolLower}">${pet.school || 'Balance'}</span></td>
                         <td><strong style="color: var(--accent);">${pet.wow_factor || 'N/A'}</strong> / 10</td>
                         <td>${pet.egg_name || 'N/A'}</td>
                         <td>${pet.body || 'N/A'}</td>
@@ -562,7 +508,7 @@
                 `;
             }).join('');
 
-            pageInfo.textContent = `Showing ${startIdx + 1}-${Math.min(startIdx + pageSize, filteredPets.length)} of ${filteredPets.length} pets`;
+            pageInfo.textContent = `Showing ${start + 1}-${Math.min(start + pageSize, filteredPets.length)} of ${filteredPets.length} pets`;
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage >= totalPages;
         }
@@ -572,10 +518,7 @@
             if (!pet) return;
 
             const schoolLower = (pet.school || 'balance').toLowerCase();
-            const schoolEmoji = SCHOOL_EMOJIS[schoolLower] || "🐾";
-            const schoolColor = SCHOOL_COLORS[schoolLower] || "var(--accent)";
-
-            document.getElementById('modalSchoolIcon').textContent = schoolEmoji;
+            document.getElementById('modalSchoolIcon').textContent = SCHOOL_EMOJIS[schoolLower] || "🐾";
             document.getElementById('modalPetName').textContent = pet.name;
             
             const badge = document.getElementById('modalSchoolBadge');
@@ -587,73 +530,38 @@
             document.getElementById('modalBody').textContent = pet.body || 'N/A';
             document.getElementById('modalPatch').textContent = pet.patch || 'N/A';
 
-            // Hatching & Trading Pills
             const kioskable = isChecked(pet.kioskable);
             const unhatchable = isChecked(pet.unhatchable);
-            const noHatchmaking = isChecked(pet.no_hatchmaking);
             const noTrade = isChecked(pet.no_trade);
             const exclusive = isChecked(pet.exclusive);
-            const retired = isChecked(pet.retired);
 
             document.getElementById('modalHatchingPills').innerHTML = `
                 <span class="tag-pill ${kioskable ? 'yes' : 'no'}">${kioskable ? '✅ Kioskable' : '❌ Not Kioskable'}</span>
                 <span class="tag-pill ${unhatchable ? 'no' : 'yes'}">${unhatchable ? '❌ Unhatchable' : '✅ Hatchable'}</span>
-                <span class="tag-pill ${noHatchmaking ? 'no' : 'yes'}">${noHatchmaking ? '❌ No Hatchmaking' : '✅ Hatchmaking Allowed'}</span>
                 <span class="tag-pill ${noTrade ? 'no' : 'yes'}">${noTrade ? '❌ No Trade' : '✅ Tradable'}</span>
                 <span class="tag-pill ${exclusive ? 'no' : 'yes'}">${exclusive ? '⚠️ Exclusive' : '✅ Non-Exclusive'}</span>
-                <span class="tag-pill ${retired ? 'no' : 'yes'}">${retired ? '💀 Retired' : '✅ Active/Available'}</span>
             `;
 
-            // Requirements
             const reqs = [];
             if (isChecked(pet.school_locked)) reqs.push("⚠️ School Locked");
             if (isChecked(pet.weaving_locked)) reqs.push("🕸️ Weaving Locked");
-            
-            const equippable = (pet.equippable_by || "").trim();
-            if (equippable && equippable.toLowerCase() !== "all") {
-                reqs.push(`👤 Equippable By: ${equippable}`);
-            }
-            
-            const isHybrid = isChecked(pet.hybrid);
-            reqs.push(`🧪 Hybrid: ${isHybrid ? 'Yes' : 'No'}`);
-
+            reqs.push(`🧪 Hybrid: ${isChecked(pet.hybrid) ? 'Yes' : 'No'}`);
             document.getElementById('modalRequirements').innerHTML = reqs.map(r => `<div>${r}</div>`).join('');
 
-            // Acquisition Sources
             const sources = [];
             if (isChecked(pet.dropped)) sources.push("⚔️ Mob Drop");
-            if (isChecked(pet.gardened)) sources.push("🌱 Gardening Yield");
-            if (isChecked(pet.fishing_chest)) sources.push("🎣 Fishing Chest");
-            if (isChecked(pet.daily_house_reward)) sources.push("🏠 Daily House Reward");
-            if (isChecked(pet.assignment_reward)) sources.push("📜 Daily Assignment");
-            if (isChecked(pet.gold_vendor)) sources.push("🪙 Gold Vendor");
-            if (isChecked(pet.ticket_vendor)) sources.push("🎟️ Ticket Vendor");
-            if (isChecked(pet.crowns_vendor)) sources.push("👑 Crowns Vendor");
+            if (isChecked(pet.gardened)) sources.push("🌱 Gardening");
+            if (isChecked(pet.fishing_chest)) sources.push("🎣 Fishing");
+            if (isChecked(pet.gold_vendor)) sources.push("🪙 Vendor");
             if (isChecked(pet.crowns_pack)) sources.push("📦 Crowns Pack");
             if (isChecked(pet.gift_card)) sources.push("🎁 Gift Card");
-            if (isChecked(pet.bundle_seasonal)) sources.push("❄️ Bundle/Seasonal");
-            if (isChecked(pet.promotional_code)) sources.push("🎟️ Promo Code");
-            if (isChecked(pet.beastmoon)) sources.push("🌙 Beastmoon Event");
-            if (isChecked(pet.deckathalon)) sources.push("🃏 Deckathalon Event");
-            if (isChecked(pet.raid)) sources.push("🏰 Raid Drop");
             if (isChecked(pet.quest_reward)) sources.push("🗺️ Quest Reward");
-            if (isChecked(pet.pvp)) sources.push("⚔️ PvP Battle Pass");
+            document.getElementById('modalSources').innerHTML = sources.length > 0 ? sources.map(s => `<div>${s}</div>`).join('') : '<div>None registered</div>';
 
-            if (pet.availability && pet.availability.trim()) {
-                sources.push(`📅 Schedule: ${pet.availability.trim()}`);
-            }
-
-            document.getElementById('modalSources').innerHTML = sources.length > 0 
-                ? sources.map(s => `<div>${s}</div>`).join('') 
-                : '<div>None registered</div>';
-
-            // Notes & Truncation logic matching python regex `for more informat[i]?on`
-            let notes = (pet.notes || "").trim();
+            let notes = (pet.notes || '').trim();
             if (notes) {
                 const match = notes.match(/for\s+more\s+informat[i]?on/i);
-                if (match) {
-                    notes = notes.substring(0, match.index).trim();
-                }
+                if (match) notes = notes.substring(0, match.index).trim();
             }
 
             const notesSec = document.getElementById('modalNotesSection');
@@ -664,9 +572,8 @@
                 notesSec.style.display = 'none';
             }
 
-            // Wiki Link
             const wikiContainer = document.getElementById('modalWikiContainer');
-            if (pet.url && pet.url.startsWith("http")) {
+            if (pet.url && pet.url.startsWith('http')) {
                 wikiContainer.style.display = 'block';
                 document.getElementById('modalWikiLink').href = pet.url;
             } else {
@@ -679,32 +586,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             fetchPetTomeData();
 
-            document.getElementById('petSearch').addEventListener('input', applyFilters);
-            document.getElementById('schoolFilter').addEventListener('change', applyFilters);
-            document.getElementById('wowFilter').addEventListener('change', applyFilters);
-            document.getElementById('refreshBtn').addEventListener('click', fetchPetTomeData);
+            document.getElementById('petSearch')?.addEventListener('input', applyFilters);
+            document.getElementById('schoolFilter')?.addEventListener('change', applyFilters);
+            document.getElementById('wowFilter')?.addEventListener('change', applyFilters);
+            document.getElementById('refreshBtn')?.addEventListener('click', fetchPetTomeData);
 
-            document.getElementById('prevPageBtn').addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderPetsTable();
-                }
+            document.getElementById('prevPageBtn')?.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderPetsTable(); }
             });
 
-            document.getElementById('nextPageBtn').addEventListener('click', () => {
+            document.getElementById('nextPageBtn')?.addEventListener('click', () => {
                 const totalPages = Math.ceil(filteredPets.length / pageSize);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    renderPetsTable();
-                }
+                if (currentPage < totalPages) { currentPage++; renderPetsTable(); }
             });
 
-            // Modal Close handlers
             const modal = document.getElementById('petModal');
-            document.getElementById('closeModalBtn').addEventListener('click', () => modal.classList.remove('open'));
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) modal.classList.remove('open');
-            });
+            document.getElementById('closeModalBtn')?.addEventListener('click', () => modal?.classList.remove('open'));
+            modal?.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
         });
     </script>
 </body>
