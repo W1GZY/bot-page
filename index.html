@@ -87,7 +87,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
         .sidebar {
-            width: 250px;
+            width: 260px;
             background: var(--bg-panel);
             border-right: 1px solid var(--border);
             padding: 24px 16px;
@@ -187,7 +187,7 @@
         }
 
         .content-wrapper {
-            margin-left: 250px;
+            margin-left: 260px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -389,8 +389,10 @@
             animation: slideUpFade 0.2s ease-out forwards;
         }
         .docs-article h2 { color: #fff; margin-top: 0; font-size: 1.4rem; font-weight: 800; border-bottom: 1px solid var(--border); padding-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .docs-article h3 { color: var(--accent); font-size: 1.05rem; font-weight: 700; margin: 20px 0 8px 0; }
+        .docs-article h3 { color: var(--accent); font-size: 1.05rem; font-weight: 700; margin: 24px 0 10px 0; }
         .docs-article p, .docs-article li { color: #ddd; font-size: 0.925rem; line-height: 1.6; }
+        .docs-article ul { margin-top: 6px; padding-left: 20px; }
+        .docs-article li { margin-bottom: 6px; }
         .callout-box { background: #1a1a22; border-left: 3px solid var(--accent); padding: 14px 18px; margin: 16px 0; font-size: 0.875rem; color: #ccc; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
 
         /* Terms Page */
@@ -571,6 +573,27 @@
                                 <p class="feature-desc">Keep your server safe automatically. Detects sudden bursts of spam, quarantines bad actors, blocks phishing links, and lets you test security settings with Canary Mode.</p>                     
                             </div>                 
                         </div>                 
+                        <div class="feature-card" data-category="community">                     
+                            <div class="feature-icon"><i class="ph ph-users-three"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Advanced Raid Polls</h3>                         
+                                <p class="feature-desc">Organize raid lobbies, team-ups, and events with interactive rosters, automatic waitlisting, slot caps, and roster exports.</p>                     
+                            </div>                 
+                        </div>
+                        <div class="feature-card" data-category="utility">                     
+                            <div class="feature-icon"><i class="ph ph-push-pin"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Auto-Pin System</h3>                         
+                                <p class="feature-desc">Empower your community to pin great content! Messages achieving reaction thresholds get pinned automatically with custom channel overrides.</p>                     
+                            </div>                 
+                        </div>
+                        <div class="feature-card" data-category="utility">                     
+                            <div class="feature-icon"><i class="ph ph-chart-line-up"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Activity Tracker</h3>                         
+                                <p class="feature-desc">Track member participation across text, voice, and commands with automated Active/Inactive role assignments and rate-limited background processing.</p>                     
+                            </div>                 
+                        </div>
                         <div class="feature-card" data-category="security">                     
                             <div class="feature-icon"><i class="ph ph-globe-hemisphere-west"></i></div>                     
                             <div>                         
@@ -593,24 +616,10 @@
                             </div>                 
                         </div>                 
                         <div class="feature-card" data-category="community">                     
-                            <div class="feature-icon"><i class="ph ph-calendar-plus"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Event Signups & Team-Ups</h3>                         
-                                <p class="feature-desc">Create signup boards for raids, lobbies, or dungeons. Lock specific roles, set slot limits, and generate private Voice Channels automatically.</p>                     
-                            </div>                 
-                        </div>                 
-                        <div class="feature-card" data-category="community">                     
                             <div class="feature-icon"><i class="ph ph-microphone-stage"></i></div>                     
                             <div>                         
                                 <h3 class="feature-title">Dynamic Voice Channels</h3>                         
                                 <p class="feature-desc">Join a hub channel to instantly create your own private Voice room with full kick, ban, and lock controls. Auto-deletes when empty.</p>                     
-                            </div>                 
-                        </div>                 
-                        <div class="feature-card" data-category="security">                     
-                            <div class="feature-icon"><i class="ph ph-browser"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Secure Web Dashboard</h3>                         
-                                <p class="feature-desc">Manage server settings through a clean web interface. Secure token authentication keeps configurations safe as you adjust active modules.</p>                     
                             </div>                 
                         </div>                 
                         <div class="feature-card" data-category="security">                     
@@ -643,7 +652,7 @@
                 <!-- Doc Search Filter -->
                 <div class="search-container">
                     <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing)...">
+                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, RaidPoll, AutoPin, Activity)...">
                 </div>
 
                 <!-- Full Width Seamless Article Stream -->
@@ -687,7 +696,7 @@
 
     <script>
         /* ==========================================================================
-           DOCUMENTATION DATA
+           DOCUMENTATION DATA (All Cogs & Modules Included)
            ========================================================================== */
         const docsData = [
             {
@@ -707,18 +716,116 @@
                 id: "antiraid",
                 icon: "ph-shield-warning",
                 title: "Anti-Raid & Security",
-                subtitle: "Protect your server from sudden bot raids, link spam, and mass join events.",
+                subtitle: "Automated threat detection, heat velocity calculations, and hijacked account interception.",
                 content: [
-                    { type: "list", title: "Core Security Systems", items: [
-                        "Heat Score Engine: Dynamically calculates user threat levels based on join rate, account age, and repeated link bursts.",
-                        "Canary Mode: Test your security parameters safely without punishing real members. Logs flagged actions directly to staff channels.",
-                        "Quarantine Isolation: Revokes permissions from suspected raid accounts and isolates them in a secure holding channel."
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Anti-Raid & Security module provides automated threat detection and mitigation for Discord servers. It monitors server traffic and messaging behavior to dynamically analyze threat levels, quarantine rogue users, intercept hijacked account sessions, and neutralize scam links or rogue webhooks in real time." },
+                    { type: "list", title: "Key Features", items: [
+                        "Heat Score Engine: Calculates dynamic user threat scores based on message rate, account age, avatar status, and content weight.",
+                        "Canary Simulation Mode: Test security sensitivity settings safely by logging actions to audit channels without issuing automatic punishments.",
+                        "Hijacked Session & Scam Shield: Intercepts promo/casino spam, invisible unicode padding, scramble-text link masks, and suspicious attachments (.exe, .scr, .zip).",
+                        "Visual Perceptual Scanning: Uses image hashing (dHash) to match uploaded screenshots against known visual scam templates.",
+                        "Quarantine Sandbox: Isolates suspicious accounts into a restricted jail role while backing up original roles for safe restoration.",
+                        "Webhook Protection: Detects and destroys unauthorized or rogue webhooks used to spam channels."
                     ]},
-                    { type: "commands", title: "Essential Security Commands", items: [
-                        { cmd: "/antiraid dashboard", desc: "View real-time threat scores, active bursts, and security health." },
-                        { cmd: "/antiraid canary [on/off]", desc: "Toggle simulation mode for safe configuration testing." },
-                        { cmd: "/antiraid register_scam", desc: "Register visual scam fingerprints to auto-block phishing images." }
-                    ]}
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/antiraid dashboard", desc: "Displays an overview of active anti-raid parameters, whitelisted roles, and threat levels." },
+                        { cmd: "/antiraid audit", desc: "Scans server permissions and channel visibility to flag bot hierarchy limitations or blind spots." },
+                        { cmd: "/antiraid canary [state]", desc: "Toggles Canary Mode (Logging-Only) on or off." },
+                        { cmd: "/antiraid register_scam [label] [image1]", desc: "Registers image attachments as universal visual scam blocks (Bot Owner restricted)." },
+                        { cmd: "/antiraid unregister_scam [fingerprint]", desc: "Removes a registered visual hash signature from the scam database." },
+                        { cmd: "/antiraid scam_list", desc: "Lists all registered visual fingerprints blocked on the server." },
+                        { cmd: "/antiraid whitelist [role]", desc: "Toggles whether a specific role bypasses security checks." },
+                        { cmd: "/antiraid quarantine [role] [enable]", desc: "Configures the quarantine jail system and designates a holding role for isolated users." },
+                        { cmd: "/antiraid unquarantine [user]", desc: "Releases a user from quarantine and restores their previous server roles." },
+                        { cmd: "/antiraid pause [minutes]", desc: "Temporarily suspends mass-join detection during high-traffic community events." },
+                        { cmd: "/antiraid simulate [text] [attachments]", desc: "Calculates the heat score of a hypothetical message to test sensitivity." },
+                        { cmd: "/antiraid threatlist", desc: "Lists users currently accumulating high heat scores or active strikes." },
+                        { cmd: "/antiraid logs", desc: "Displays recent persistent security audit logs for the server." },
+                        { cmd: "/antiraid reset", desc: "Wipes active threat tracking scores and heat metrics for the server." },
+                        { cmd: "/antiraid multiplier_channel [channel] [multiplier]", desc: "Sets a threat score multiplier for messages in a specific channel." },
+                        { cmd: "/antiraid multiplier_role [role] [multiplier]", desc: "Sets a threat score multiplier for members holding a specific role." },
+                        { cmd: "/antiraid burstlevel [limit]", desc: "Configures maximum concurrent tracked threats." },
+                        { cmd: "/antiraid channelsensitivity [channel] [threshold]", desc: "Overrides the velocity threshold trigger level for a specific channel." },
+                        { cmd: "/antiraid advanced [state]", desc: "Toggles advanced protection tools for the server." }
+                    ]},
+                    { type: "heading", text: "Configuration & Requirements" },
+                    { type: "list", items: [
+                        "Administrator permissions required to modify settings.",
+                        "SeanBot's role must be positioned above any managed roles (or quarantine role) to apply timeouts and role swaps.",
+                        "Requires View Channel, Send Messages, Manage Messages, and Moderate Members permissions."
+                    ]},
+                    { type: "callout", icon: "🛡️", title: "Common Use Cases", text: "Preventing server raids, stopping compromised account spammers, and isolating bad actors without permanent bans." }
+                ]
+            },
+            {
+                id: "raidpolls",
+                icon: "ph-users-three",
+                title: "Advanced Raid Polls",
+                subtitle: "Coordinate multiplayer raids, event signups, and team-ups with interactive roster embeds.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Advanced Raid Polls module helps community organizers coordinate multiplayer raids, event signups, and team-ups. It supports interactive selection menus or reaction modes, dynamic waitlists, automatic promotions when slots open up, and administrative roster management." },
+                    { type: "list", title: "Key Features", items: [
+                        "Interactive Roster UI: Clean Discord embeds displaying available slots, target player counts, filled status, and current waitlists.",
+                        "Automatic Waitlisting & Promotion: Excess signups are automatically placed on a waitlist and promoted if a confirmed player leaves.",
+                        "Bulk Setup Modal: Generate complex event schedules containing multiple time slots and player caps in a single command.",
+                        "Roster Export & Analytics: View quick-mention lists, participation stats, and slot demand metrics.",
+                        "Integration Support: Transition finalized poll rosters into scheduled alerts or voice countdown timers."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/raidpoll", desc: "Opens the interactive setup modal to create single or multi-slot raid signup boards." }
+                    ]},
+                    { type: "heading", text: "Configuration & Management" },
+                    { type: "text", text: "Requires Manage Channels permissions to create or administer polls. Admins can click 'Admin Options' (⚙️) on any poll embed to edit details, adjust close time, edit slots, view analytics, clone polls, export rosters, or trigger integrations." },
+                    { type: "callout", icon: "⚔️", title: "Pro Tip", text: "Use the bulk setup schedule format e.g. 'Saturday 18:00 - Voracious Void [10]' to generate multi-slot events with custom caps instantly." }
+                ]
+            },
+            {
+                id: "autopin",
+                icon: "ph-push-pin",
+                title: "Auto-Pin System",
+                subtitle: "Community-driven message pinning based on configurable reaction emoji thresholds.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Auto-Pin module enables community-driven message pinning. When a message receives a set number of reaction emojis from server members, SeanBot automatically pins the message to the channel and posts an announcement embed." },
+                    { type: "list", title: "Key Features", items: [
+                        "Configurable Emoji & Threshold: Customize the trigger emoji and the number of required reactions globally or per channel.",
+                        "Channel Overrides: Set different required reaction counts for specific text channels or disable auto-pinning in channels like #announcements.",
+                        "Automatic Unpinning: If reactions drop below the required threshold, SeanBot automatically unpins the message.",
+                        "Rapid Pin Protection: Cooldown safeguards prevent channels from exceeding Discord's 50-pin channel limit during rapid viral events."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/autopin toggle", desc: "Enables or disables the Auto-Pin system globally across the server." },
+                        { cmd: "/autopin set_threshold [threshold]", desc: "Sets the default number of reactions required to auto-pin a message." },
+                        { cmd: "/autopin set_emoji [emoji]", desc: "Sets the emoji used to trigger community pins." },
+                        { cmd: "/autopin channel_override [channel] [threshold]", desc: "Sets a custom reaction threshold for a specific channel." },
+                        { cmd: "/autopin toggle_channel [channel]", desc: "Enables or disables auto-pinning in a specific channel." },
+                        { cmd: "/autopin settings", desc: "Displays current auto-pin configurations, overrides, and disabled channels." },
+                        { cmd: "/autopin stats", desc: "Displays diagnostic metrics including total pins, unpins, and active cache size." }
+                    ]},
+                    { type: "callout", icon: "📌", title: "Note", text: "Messages older than 14 days are ignored to conserve resources. If a channel reaches Discord's 50-pin limit, SeanBot alerts channel moderators." }
+                ]
+            },
+            {
+                id: "activitytracker",
+                icon: "ph-chart-line-up",
+                title: "Activity Tracker",
+                subtitle: "Monitor server engagement and automate Active/Inactive role assignments.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Activity Tracker module monitors community engagement across messages, reactions, voice chat, and slash command usage. It automatically assigns designated 'Active' or 'Inactive' roles based on user activity over a configurable timeframe." },
+                    { type: "list", title: "Key Features", items: [
+                        "Automated Role Management: Dynamically grants an 'Active' role and removes an 'Inactive' role (or vice versa) as members interact.",
+                        "Multi-Event Tracking: Detects activity across text messages, reaction additions, voice channel joins, and command interactions.",
+                        "Rate-Limited Background Processing: Batch-updates member roles on a scheduled loop to avoid Discord API rate limits.",
+                        "Custom Inactivity Windows: Administrators choose the exact number of inactive days before roles transition."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/activity setup [threshold_days]", desc: "Opts the server into activity tracking, creates Active/Inactive roles if missing, and sets the inactivity threshold." },
+                        { cmd: "/activity disable", desc: "Disables activity tracking for the server and cleans up associated configurations and roles." }
+                    ]},
+                    { type: "callout", icon: "📊", title: "API Safety Guarantee", text: "Role updates are chunked into background batches to respect Discord rate limits and prevent freezes on large communities." }
                 ]
             },
             {
@@ -747,18 +854,6 @@
                 ]
             },
             {
-                id: "events",
-                icon: "ph-calendar-plus",
-                title: "Event Signups & Team-Ups",
-                subtitle: "Organize MMO raids, dungeon runs, and competitive lobbies with interactive boards.",
-                content: [
-                    { type: "commands", title: "Event Management Commands", items: [
-                        { cmd: "/teamup create", desc: "Open an interactive form to host a quick dungeon run or team-up." },
-                        { cmd: "/raid start", desc: "Create a structured multi-role signup board with slot limits per role." }
-                    ]}
-                ]
-            },
-            {
                 id: "w101",
                 icon: "ph-magic-wand",
                 title: "Wizard101 Toolkit",
@@ -778,7 +873,9 @@
                 subtitle: "Common troubleshooting questions and answers.",
                 content: [
                     { type: "heading", text: "Why aren't slash commands displaying?" },
-                    { type: "text", text: "Ensure SeanBot was granted the `applications.commands` scope when invited. Re-inviting the bot with default permissions resolves missing command registrations." }
+                    { type: "text", text: "Ensure SeanBot was granted the `applications.commands` scope when invited. Re-inviting the bot with default permissions resolves missing command registrations." },
+                    { type: "heading", text: "How do I grant permissions for Anti-Raid or Auto-Pin?" },
+                    { type: "text", text: "Make sure SeanBot's role is placed high in the Discord Server Settings role hierarchy, above any roles it needs to timeout, quarantine, or manage." }
                 ]
             }
         ];
