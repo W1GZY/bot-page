@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot - Documentation & Setup Guide</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <script>
+        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+        document.documentElement.setAttribute('data-accent', savedAccent);
+    </script>
+    <link rel="stylesheet" href="global.css">
+    <script src="layout.js" defer></script>
+</head>
+<body data-nav="docs" data-title="Documentation">
+    <div class="content">
+        <!-- Page Header -->
+        <div class="auto-fade-in" style="margin-bottom: 28px;">
+            <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
+            <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
+                Learn how to set up, configure, and get the most out of SeanBot for your Discord server.
+            </p>
+        </div>
+
+        <!-- Doc Search -->
+        <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
+            <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+            <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing, Pet Tome)...">
+        </div>
+
+        <!-- Documentation Layout Grid -->
+        <div class="docs-grid auto-fade-in" style="animation-delay: 0.1s;">
+            <!-- Sticky Navigation -->
+            <nav class="docs-nav">
+                <div class="docs-nav-title">Quick Navigation</div>
+                <a href="#quickstart" class="docs-nav-link active"><i class="ph ph-rocket"></i> Quick Start</a>
+                <a href="#antiraid" class="docs-nav-link"><i class="ph ph-shield-warning"></i> Anti-Raid System</a>
+                <a href="#federation" class="docs-nav-link"><i class="ph ph-globe-hemisphere-west"></i> Server Federation</a>
+                <a href="#timeping" class="docs-nav-link"><i class="ph ph-clock-countdown"></i> TimePing & Reminders</a>
+                <a href="#events" class="docs-nav-link"><i class="ph ph-calendar-plus"></i> Events & Team-Ups</a>
+                <a href="#w101" class="docs-nav-link"><i class="ph ph-magic-wand"></i> Wizard101 Tools</a>
+                <a href="#staff" class="docs-nav-link"><i class="ph ph-toolbox"></i> Staff Tools & Appeals</a>
+                <a href="#faq" class="docs-nav-link"><i class="ph ph-question"></i> FAQ & Support</a>
+            </nav>
+
+            <!-- Documentation Articles -->
+            <main id="docsContent">
+                <!-- 1. Quick Start -->
+                <article class="docs-article" id="quickstart">
+                    <h2><i class="ph-duotone ph-rocket" style="color: var(--accent);"></i> Quick Start Guide</h2>
+                    <p>Welcome to SeanBot! Follow these three simple steps to integrate SeanBot into your Discord community:</p>
+                    
+                    <h3>1. Invite the Bot</h3>
+                    <p>Add SeanBot to your server with basic administrative permissions. Ensure the bot role is positioned above roles it needs to manage in your Server Settings.</p>
+                    
+                    <h3>2. Manage Active Modules</h3>
+                    <p>SeanBot features a modular architecture. Disable tools you don't need using <code>/serveradmin module</code> or via the Web Dashboard to keep your server clutter-free.</p>
+                    
+                    <div class="callout-box">
+                        <strong>💡 Pro Tip:</strong> Use <code>/staff diagnose</code> anytime to verify bot permissions and command setup across your channels.
+                    </div>
+
+                    <h3>3. Set Command Prefix & Language</h3>
+                    <p>While slash commands are enabled by default, you can configure text command prefixes using <code>/prefix set [prefix]</code>.</p>
+                </article>
+
+                <!-- 2. Anti-Raid -->
+                <article class="docs-article" id="antiraid">
+                    <h2><i class="ph-duotone ph-shield-warning" style="color: var(--accent);"></i> Anti-Raid Protection</h2>
+                    <p>Protect your server from sudden bot raids, link spam bursts, and suspicious mass joins automatically.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>Heat Score System:</strong> Dynamically calculates threat levels based on message frequency, user age, and repetitive links.</li>
+                        <li><strong>Canary Mode (Safe Testing):</strong> Test security settings without punishing actual members. Logs actions to staff channels first.</li>
+                        <li><strong>Quarantine Isolation:</strong> Temporarily revokes roles from suspected raid accounts and moves them to a secure holding channel.</li>
+                    </ul>
+
+                    <h3>Primary Commands</h3>
+                    <ul>
+                        <li><code>/antiraid dashboard</code> — View real-time threat scores and server health.</li>
+                        <li><code>/antiraid canary [on/off]</code> — Enable or disable simulation mode.</li>
+                        <li><code>/antiraid whitelist [role]</code> — Grant trusted roles immunity from threat detection.</li>
+                    </ul>
+                </article>
+
+                <!-- 3. Federation -->
+                <article class="docs-article" id="federation">
+                    <h2><i class="ph-duotone ph-globe-hemisphere-west" style="color: var(--accent);"></i> Server Federation & Relays</h2>
+                    <p>Cross-server communication networks made simple. Sync channels, forum threads, and banlists between multiple Discord servers.</p>
+
+                    <h3>Setting Up a Network</h3>
+                    <ol>
+                        <li>Run <code>/thread network create [name]</code> on your primary hub server to receive a network key token.</li>
+                        <li>On secondary servers, execute <code>/thread network join [token]</code>.</li>
+                        <li>Link specific channels together with <code>/relay link [relay_id]</code>.</li>
+                    </ol>
+
+                    <div class="callout-box">
+                        <strong>🔒 Security:</strong> All cross-server relays use HMAC token verification to guarantee message integrity.
+                    </div>
+                </article>
+
+                <!-- 4. TimePing -->
+                <article class="docs-article" id="timeping">
+                    <h2><i class="ph-duotone ph-clock-countdown" style="color: var(--accent);"></i> TimePing & Global Reminders</h2>
+                    <p>Eliminate timezone confusion for global gaming and community events.</p>
+
+                    <h3>Usage Guide</h3>
+                    <ul>
+                        <li><strong>Personal Timezone:</strong> Save your local timezone with <code>/remindme</code> or right-click any message to attach a reminder.</li>
+                        <li><strong>Scheduled Pings:</strong> Use <code>/timeping schedule</code> to configure automated alerts that ping specific roles at interval count-downs (e.g., 24h, 1h, 15m prior).</li>
+                        <li><strong>Native Event Sync:</strong> Automatically attach TimePings to official Discord Scheduled Events using <code>/timeping native</code>.</li>
+                    </ul>
+                </article>
+
+                <!-- 5. Events & Team-Ups -->
+                <article class="docs-article" id="events">
+                    <h2><i class="ph-duotone ph-calendar-plus" style="color: var(--accent);"></i> Event Signups & Team-Ups</h2>
+                    <p>Organize MMO raids, dungeon runs, and competitive lobbies with interactive signup embeds.</p>
+
+                    <h3>Key Commands</h3>
+                    <ul>
+                        <li><code>/teamup create</code> — Open an interactive modal form to host a dungeon team-up.</li>
+                        <li><code>/raid start</code> — Create a multi-role raid signup board with slot limits per role (e.g., Tank, Healer, DPS).</li>
+                    </ul>
+                    <p>When group requirements are met, SeanBot can automatically create a private temporary voice channel for the participants.</p>
+                </article>
+
+                <!-- 6. Wizard101 Tools -->
+                <article class="docs-article" id="w101">
+                    <h2><i class="ph-duotone ph-magic-wand" style="color: var(--accent);"></i> Wizard101 Toolkit</h2>
+                    <p>High-tier utilities built specifically for Wizard101 communities.</p>
+
+                    <h3>Features</h3>
+                    <ul>
+                        <li><strong>Live Pet Tome:</strong> Search over 1,200+ pets directly via Google Sheets sync (or use the web <a href="/pettome.html" style="color: var(--accent);">Pet Tome page</a>).</li>
+                        <li><strong>Damage Assistant:</strong> Calculate multi-buff blade, trap, and weakness damage outputs using <code>/damage</code>.</li>
+                        <li><strong>Deck Sharing & Image Export:</strong> Render compact deck codes into high-resolution images with <code>/deck lookup</code> and <code>/decks export</code>.</li>
+                        <li><strong>Beastmoon Tracker:</strong> Store and showcase your Beastmoon form tiers with <code>/bm forms</code> and <code>/bm leaderboard</code>.</li>
+                    </ul>
+                </article>
+
+                <!-- 7. Staff Tools -->
+                <article class="docs-article" id="staff">
+                    <h2><i class="ph-duotone ph-toolbox" style="color: var(--accent);"></i> Staff Tools & Ban Appeals</h2>
+                    <p>Empower your moderation staff with custom reason presets, appeal processing, and suggestion boards.</p>
+
+                    <h3>Ban Appeals Setup</h3>
+                    <p>Enable direct-message ban appeals via <code>/appeal setup</code>. Banned users receive a submission link, which routes their appeal to your staff review channel for voting.</p>
+                </article>
+
+                <!-- 8. FAQ -->
+                <article class="docs-article" id="faq">
+                    <h2><i class="ph-duotone ph-question" style="color: var(--accent);"></i> Frequently Asked Questions</h2>
+                    
+                    <h3>Why aren't slash commands showing up?</h3>
+                    <p>Make sure SeanBot was granted the <code>applications.commands</code> OAuth2 scope when invited. You can re-invite the bot using the invite link on the homepage.</p>
+
+                    <h3>How often does the Pet Tome database update?</h3>
+                    <p>The database synchronizes automatically every 1 hour directly from the collaborative Google Sheet.</p>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Live Search Filter across docs
+            const docSearch = document.getElementById('docSearch');
+            const articles = document.querySelectorAll('.docs-article');
+
+            docSearch?.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                articles.forEach(article => {
+                    const text = article.textContent.toLowerCase();
+                    article.style.display = (!term || text.includes(term)) ? 'block' : 'none';
+                });
+            });
+
+            // Smooth Scroll Active Nav Observer
+            const navLinks = document.querySelectorAll('.docs-nav-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const activeLink = document.querySelector(`.docs-nav-link[href="#${entry.target.id}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+            articles.forEach(a => observer.observe(a));
+        });
+    </script>
+</body>
+</html>

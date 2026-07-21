@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;">Menu</div>
             
             <a href="/" class="nav-link ${navId === 'overview' ? 'active' : ''}"><i class="ph ph-house"></i> <span>Overview</span></a>
+            <a href="/docs.html" class="nav-link ${navId === 'docs' ? 'active' : ''}"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
             <a href="/commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
             <a href="/pettome.html" class="nav-link ${navId === 'pettome' ? 'active' : ''}"><i class="ph ph-book-bookmark"></i> <span>Pet Tome</span></a>
             <a href="/tos.html" class="nav-link ${navId === 'tos' ? 'active' : ''}"><i class="ph ph-shield-check"></i> <span>Terms & Privacy</span></a>
@@ -84,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.insertAdjacentHTML('beforeend', `
         <footer class="page-footer">
             <div>&copy; 2026 SeanBot. All rights reserved.</div>
-            <div style="display:flex; gap: 16px;">
+            <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+                <a href="/docs.html">Documentation</a>
                 <a href="/pettome.html">Pet Tome</a>
                 <a href="/tos.html">Terms & Privacy</a>
             </div>
