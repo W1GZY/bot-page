@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Insert Sidebar
     body.insertAdjacentHTML('afterbegin', `
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
         <nav class="sidebar" id="sidebar">
@@ -24,9 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             <a href="/" class="nav-link ${navId === 'overview' ? 'active' : ''}"><i class="ph ph-house"></i> <span>Overview</span></a>
             <a href="/commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+            <a href="/pettome.html" class="nav-link ${navId === 'pettome' ? 'active' : ''}"><i class="ph ph-book-bookmark"></i> <span>Pet Tome</span></a>
+            <a href="/tos.html" class="nav-link ${navId === 'tos' ? 'active' : ''}"><i class="ph ph-shield-check"></i> <span>Terms & Privacy</span></a>
         </nav>
     `);
 
+    // Wrap content
     const wrapper = document.createElement('div');
     wrapper.className = 'content-wrapper';
     
@@ -47,27 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             
             <div class="header-right">
-                <div class="dropdown-toggle" id="themeToggle">
+                <div class="dropdown-toggle" id="themeToggle" title="Change Theme Accent">
                     <div class="active-display"></div>
                     <i class="ph ph-caret-down"></i>
                     
                     <div class="dropdown-menu-content">
                         <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Theme Accent</div>
                         <div class="color-grid" id="colorGrid">
-                            <div class="accent-dot" data-accent="gold" style="background: #FFD700;"></div>
-                            <div class="accent-dot" data-accent="amber" style="background: #F59E0B;"></div>
-                            <div class="accent-dot" data-accent="orange" style="background: #F97316;"></div>
-                            <div class="accent-dot" data-accent="rose" style="background: #E11D48;"></div>
-                            <div class="accent-dot" data-accent="pink" style="background: #EC4899;"></div>
-                            <div class="accent-dot" data-accent="purple" style="background: #9333EA;"></div>
-                            <div class="accent-dot" data-accent="blurple" style="background: #5865F2;"></div>
-                            <div class="accent-dot" data-accent="indigo" style="background: #6366F1;"></div>
-                            <div class="accent-dot" data-accent="blue" style="background: #3B82F6;"></div>
-                            <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;"></div>
-                            <div class="accent-dot" data-accent="teal" style="background: #0D9488;"></div>
-                            <div class="accent-dot" data-accent="emerald" style="background: #10B981;"></div>
-                            <div class="accent-dot" data-accent="green" style="background: #22C55E;"></div>
-                            <div class="accent-dot" data-accent="lime" style="background: #84CC16;"></div>
+                            <div class="accent-dot" data-accent="gold" style="background: #FFD700;" title="Gold"></div>
+                            <div class="accent-dot" data-accent="amber" style="background: #F59E0B;" title="Amber"></div>
+                            <div class="accent-dot" data-accent="orange" style="background: #F97316;" title="Orange"></div>
+                            <div class="accent-dot" data-accent="rose" style="background: #E11D48;" title="Rose"></div>
+                            <div class="accent-dot" data-accent="pink" style="background: #EC4899;" title="Pink"></div>
+                            <div class="accent-dot" data-accent="purple" style="background: #9333EA;" title="Purple"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background: #5865F2;" title="Blurple"></div>
+                            <div class="accent-dot" data-accent="indigo" style="background: #6366F1;" title="Indigo"></div>
+                            <div class="accent-dot" data-accent="blue" style="background: #3B82F6;" title="Blue"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;" title="Cyan"></div>
+                            <div class="accent-dot" data-accent="teal" style="background: #0D9488;" title="Teal"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background: #10B981;" title="Emerald"></div>
+                            <div class="accent-dot" data-accent="green" style="background: #22C55E;" title="Green"></div>
+                            <div class="accent-dot" data-accent="lime" style="background: #84CC16;" title="Lime"></div>
                         </div>
                     </div>
                 </div>
@@ -77,11 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wrapper.appendChild(contentDiv);
 
-
     wrapper.insertAdjacentHTML('beforeend', `
         <footer class="page-footer">
             <div>&copy; 2026 SeanBot. All rights reserved.</div>
-            <div>
+            <div style="display:flex; gap: 16px;">
+                <a href="/pettome.html">Pet Tome</a>
                 <a href="/tos.html">Terms & Privacy</a>
             </div>
         </footer>
