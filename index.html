@@ -558,14 +558,22 @@
                         
                         <div class="filter-pills" id="featureFilters">
                             <button class="pill-btn active" data-filter="all">All</button>
-                            <button class="pill-btn" data-filter="security">Security & Admin</button>
+                            <button class="pill-btn" data-filter="security">Security & Core</button>
                             <button class="pill-btn" data-filter="community">Community & Events</button>
                             <button class="pill-btn" data-filter="w101">Wizard101</button>
                             <button class="pill-btn" data-filter="utility">Utility</button>
                         </div>
                     </div>
 
-                    <div class="responsive-grid-2" id="featuresGrid">                 
+                    <div class="responsive-grid-2" id="featuresGrid">
+                        <div class="feature-card" data-category="security">
+                            <div class="feature-icon"><i class="ph ph-browser"></i></div>
+                            <div>
+                                <h3 class="feature-title">Web Dashboard & Core</h3>
+                                <p class="feature-desc">Generate secure, single-use authentication links to manage your server settings directly from the browser, and sync your command layouts.</p>
+                            </div>
+                        </div>
+
                         <div class="feature-card" data-category="security">                     
                             <div class="feature-icon"><i class="ph ph-shield-warning"></i></div>                     
                             <div>                         
@@ -579,6 +587,13 @@
                                 <h3 class="feature-title">Advanced Raid Polls</h3>                         
                                 <p class="feature-desc">Organize raid lobbies, team-ups, and events with interactive rosters, automatic waitlisting, slot caps, and roster exports.</p>                     
                             </div>                 
+                        </div>
+                        <div class="feature-card" data-category="community">
+                            <div class="feature-icon"><i class="ph ph-calendar"></i></div>
+                            <div>
+                                <h3 class="feature-title">Community Calendar</h3>
+                                <p class="feature-desc">Auto-updating interactive event calendar synced with Google Sheets, featuring developer notes and visual categorization.</p>
+                            </div>
                         </div>
                         <div class="feature-card" data-category="utility">                     
                             <div class="feature-icon"><i class="ph ph-push-pin"></i></div>                     
@@ -600,6 +615,13 @@
                                 <h3 class="feature-title">Beastmoon Tracker</h3>                         
                                 <p class="feature-desc">Track Wizard101 Beastmoon form progress, calculate Lunari and Idol costs, view stats, and compete on federated network leaderboards.</p>                     
                             </div>                 
+                        </div>
+                        <div class="feature-card" data-category="utility">
+                            <div class="feature-icon"><i class="ph ph-smiley"></i></div>
+                            <div>
+                                <h3 class="feature-title">Fun & Entertainment</h3>
+                                <p class="feature-desc">Generate fake Discord quotes, browse cat breeds, fetch random cat facts, and render custom cat image macros.</p>
+                            </div>
                         </div>
                         <div class="feature-card" data-category="security">                     
                             <div class="feature-icon"><i class="ph ph-globe-hemisphere-west"></i></div>                     
@@ -720,6 +742,20 @@
                 ]
             },
             {
+                id: "core",
+                icon: "ph-browser",
+                title: "Dashboard & Core Settings",
+                subtitle: "Manage bot connectivity and command synchronizations.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "Access your server's settings directly via the web dashboard, and manage the bot's command registry." },
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/dashboard", desc: "Generate a secure, single-use login link to access the server's web dashboard (Admin only)." },
+                        { cmd: "/reload_commands", desc: "Force synchronization of all active bot commands to the database (Admin only)." }
+                    ]}
+                ]
+            },
+            {
                 id: "antiraid",
                 icon: "ph-shield-warning",
                 title: "Anti-Raid & Security",
@@ -835,6 +871,50 @@
                 ]
             },
             {
+                id: "calendar",
+                icon: "ph-calendar",
+                title: "Community Calendar",
+                subtitle: "Auto-updating interactive event calendar synced with Google Sheets.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Community Calendar parses spreadsheet schedules to provide an always-up-to-date, interactive monthly overview. It includes visual emojis for event types and developer notes." },
+                    { type: "list", title: "Key Features", items: [
+                        "Auto-Updating: Syncs hourly with the master schedule.",
+                        "Interactive Pagination: Browse past and future pages of the month.",
+                        "Developer Notes: Read expanded context on updates and events via the interactive dropdown."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/calendar view", desc: "View the current event calendar manually." },
+                        { cmd: "/calendar set_channel", desc: "Set up the live auto-updating calendar dashboard in a specific channel (Admin only)." }
+                    ]}
+                ]
+            },
+            {
+                id: "w101",
+                icon: "ph-magic-wand",
+                title: "Wizard101 Toolkit",
+                subtitle: "Advanced game utilities including Damage Assistant and Deck sharing.",
+                content: [
+                    { type: "text", text: "See the **Beastmoon Tracker** section for detailed Beastmoon documentation." },
+                    { type: "heading", text: "Damage Assistant" },
+                    { type: "text", text: "Calculate complex multi-buff hits easily. Supports base damage, gear %, pierce, critical, resist, block, and arrays of blades, traps, and auras. Includes PvP and PvE scaling." },
+                    { type: "commands", items: [
+                        { cmd: "/damage", desc: "Open the interactive Damage Assistant calculator menu to set stats, stack buffs, and save presets." }
+                    ]},
+                    { type: "heading", text: "Deck Builder" },
+                    { type: "text", text: "Create, browse, share, and export visually rendered Wizard101 decks, complete with Treasure Cards and school themes." },
+                    { type: "commands", items: [
+                        { cmd: "/decks create", desc: "Create a new deck (Requires Keymaster role)." },
+                        { cmd: "/decks browse", desc: "Browse decks saved in this server." },
+                        { cmd: "/decks search [query]", desc: "Search decks by name or card keyword." },
+                        { cmd: "/decks share [deck] [user]", desc: "Send a deck to a user via DM." },
+                        { cmd: "/decks export [deck]", desc: "Export a deck as a high-quality visual image." },
+                        { cmd: "/deck show [user] [code]", desc: "Display a saved deck from the database or render a web share code." },
+                        { cmd: "/deck lookup [code]", desc: "Instantly render and inspect any compact deck code." }
+                    ]}
+                ]
+            },
+            {
                 id: "beastmoon",
                 icon: "ph-paw-print",
                 title: "Beastmoon Tracker",
@@ -863,6 +943,27 @@
                 ]
             },
             {
+                id: "fun",
+                icon: "ph-smiley",
+                title: "Fun & Entertainment",
+                subtitle: "Cat facts, cute pictures, and fake Discord message generators.",
+                content: [
+                    { type: "heading", text: "Cat Command Center" },
+                    { type: "text", text: "Your ultimate source for feline content. Powered by multiple APIs to ensure you always get your cat fix." },
+                    { type: "commands", items: [
+                        { cmd: "/cat fact", desc: "Get a random cat fact." },
+                        { cmd: "/cat image", desc: "Get a random cat picture." },
+                        { cmd: "/cat gif", desc: "Get a random cat GIF." },
+                        { cmd: "/cat search [breed]", desc: "Look up info and pictures for a specific cat breed." },
+                        { cmd: "/cat says [text]", desc: "Generate an image of a cat saying your custom text." }
+                    ]},
+                    { type: "heading", text: "Discord Quotes" },
+                    { type: "commands", items: [
+                        { cmd: "/discquote [user] [text]", desc: "Generate a realistic-looking fake Discord screenshot of a user saying something." }
+                    ]}
+                ]
+            },
+            {
                 id: "federation",
                 icon: "ph-globe-hemisphere-west",
                 title: "Server Federation & Relays",
@@ -884,19 +985,6 @@
                         "Personal Timezones: Save your local timezone with `/remindme` or right-click any message to attach a reminder.",
                         "Scheduled Role Pings: Use `/timeping schedule` to configure automated alerts that ping specific roles prior to events.",
                         "Discord Event Sync: Attach TimePings directly to native Discord Scheduled Events using `/timeping native`."
-                    ]}
-                ]
-            },
-            {
-                id: "w101",
-                icon: "ph-magic-wand",
-                title: "Wizard101 Toolkit",
-                subtitle: "Advanced game utilities built specifically for Wizard101 players and communities.",
-                content: [
-                    { type: "text", text: "See the **Beastmoon Tracker** section for detailed Beastmoon documentation." },
-                    { type: "list", title: "Other Tools & Utilities", items: [
-                        "Damage Assistant: Calculate multi-buff blade, trap, and weakness damage outputs with `/damage`.",
-                        "Deck Sharing & Export: Render compact deck share codes into visual images with `/deck lookup`."
                     ]}
                 ]
             },
