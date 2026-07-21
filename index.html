@@ -609,6 +609,20 @@
                                 <p class="feature-desc">Track member participation across text, voice, and commands with automated Active/Inactive role assignments and rate-limited background processing.</p>                     
                             </div>                 
                         </div>
+                        <div class="feature-card" data-category="utility">                     
+                            <div class="feature-icon"><i class="ph ph-layout"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Embed Builder</h3>                         
+                                <p class="feature-desc">Interactive in-chat workspace to draft, design, and save rich embeds. Bind templates to automated triggers like welcome messages or custom commands.</p>                     
+                            </div>                 
+                        </div>
+                        <div class="feature-card" data-category="utility">                     
+                            <div class="feature-icon"><i class="ph ph-smiley-sticker"></i></div>                     
+                            <div>                         
+                                <h3 class="feature-title">Emoji Suite</h3>                         
+                                <p class="feature-desc">Enterprise emoji management. Track usage stats, restrict custom emojis to specific roles, prevent reaction spam, and replace text aliases via webhooks.</p>                     
+                            </div>                 
+                        </div>
                         <div class="feature-card" data-category="w101">                     
                             <div class="feature-icon"><i class="ph ph-paw-print"></i></div>                     
                             <div>                         
@@ -681,7 +695,7 @@
                 <!-- Doc Search Filter -->
                 <div class="search-container">
                     <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, RaidPoll, AutoPin, Activity, Beastmoon)...">
+                    <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Embeds, AutoPin, Emoji, Beastmoon)...">
                 </div>
 
                 <!-- Full Width Seamless Article Stream -->
@@ -868,6 +882,58 @@
                         { cmd: "/activity disable", desc: "Disables activity tracking for the server and cleans up associated configurations and roles." }
                     ]},
                     { type: "callout", icon: "📊", title: "Tip:", text: "Can be used to monitor who is active and who hasnt visited your server." }
+                ]
+            },
+            {
+                id: "embeds",
+                icon: "ph-layout",
+                title: "Embed Builder",
+                subtitle: "Interactive rich embed designer and automation trigger suite.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Embed Builder is a modular workspace that allows server managers to draft, design, preview, and output custom rich Discord embeds directly in chat. Save your designs as templates and bind them to automated events like member joins, server boosts, or custom chat commands." },
+                    { type: "list", title: "Key Features", items: [
+                        "Interactive Live Workspace: Edit text, colors, images, and fields using modal popups.",
+                        "Template Library: Save your designs to the database for future use and easy broadcasting.",
+                        "JSON Import/Clone: Import raw JSON schemas or instantly clone live messages and existing templates.",
+                        "Automated Triggers: Bind saved embeds to Welcome/Farewell events, Recurring Schedules, Custom Commands, and more."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/embed builder", desc: "Deploy the embed builder design dashboard." },
+                        { cmd: "/embed clone [template/msg]", desc: "Clone an existing live message or template into the designer." },
+                        { cmd: "/embed load [template] [channel]", desc: "Retrieve and post a saved embed template into a channel." },
+                        { cmd: "/embed delete [template]", desc: "Permanently delete a saved embed template." },
+                        { cmd: "/embed disable [trigger_type]", desc: "Disable and remove an active automated trigger." },
+                        { cmd: "/embed list", desc: "View and manage all saved custom embed templates." }
+                    ]},
+                    { type: "callout", icon: "🛡️", title: "Permissions", text: "Requires `Manage Messages` to design embeds, `Manage Server` to save/delete templates, and `Mention Everyone` to broadcast directly." }
+                ]
+            },
+            {
+                id: "emojis",
+                icon: "ph-smiley-sticker",
+                title: "Emoji Suite",
+                subtitle: "Track usage stats, role-lock custom emojis, and manage webhook aliases.",
+                content: [
+                    { type: "heading", text: "Overview" },
+                    { type: "text", text: "The Emoji Suite provides enterprise-grade emoji management. It tracks chat and reaction usage to help you clean up unused emojis, allows you to restrict specific custom emojis to designated roles, and introduces a webhook-based alias system." },
+                    { type: "list", title: "Key Features", items: [
+                        "Usage Tracking & Purging: View top emojis and unused 'dead' emojis to free up server slots.",
+                        "Role Restrictions (Emoji Lock): Lock custom emojis so only specific roles (e.g., VIPs or Subscribers) can use them.",
+                        "Reaction Spam Protection: Apply global or channel-specific cooldowns for reaction interactions.",
+                        "Webhook Aliases: Automatically replace text aliases (e.g., `;smile;`) with the corresponding emoji via webhooks."
+                    ]},
+                    { type: "commands", title: "Commands Reference", items: [
+                        { cmd: "/emojis top15 [interval]", desc: "Show top 15 most typed emojis in chat (Weekly, Monthly, All Time)." },
+                        { cmd: "/emojis top_users [interval]", desc: "Show which users type emojis the most." },
+                        { cmd: "/emoji lock [emoji] [role]", desc: "Restrict an emoji to a specific role." },
+                        { cmd: "/emoji unlock [emoji] [role]", desc: "Remove role restrictions from an emoji." },
+                        { cmd: "/emoji react_lock_bulk [role] [emojis]", desc: "Bulk lock multiple reaction emojis." },
+                        { cmd: "/emoji set_guild_cooldown [seconds]", desc: "Adjust the spam-prevention cooldown for locked reactions server-wide." },
+                        { cmd: "/emoji suggest_purge [days]", desc: "See a list of custom emojis that haven't been used recently." },
+                        { cmd: "/emoji purge_dead [days]", desc: "Delete custom emojis that haven't been used in a specific number of days." }
+                    ]},
+                    { type: "callout", icon: "🧹", title: "Emoji Purging", text: "Use `/emoji suggest_purge` before deleting! Safe removal helps you keep your emoji slots open for active community trends." }
                 ]
             },
             {
