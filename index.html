@@ -381,10 +381,13 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 32px;
-            scroll-margin-top: 80px;
+            display: none;
             transition: border-color var(--transition-fast);
         }
-        .docs-article:hover { border-color: var(--border-highlight); }
+        .docs-article.active-doc {
+            display: block;
+            animation: slideUpFade 0.2s ease-out forwards;
+        }
         .docs-article h2 { color: #fff; margin-top: 0; font-size: 1.4rem; font-weight: 800; border-bottom: 1px solid var(--border); padding-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .docs-article h3 { color: var(--accent); font-size: 1.05rem; font-weight: 700; margin: 20px 0 8px 0; }
         .docs-article p, .docs-article li { color: #ddd; font-size: 0.925rem; line-height: 1.6; }
@@ -984,24 +987,42 @@
             docsContent.innerHTML = '';
             sidebarTocContainer.innerHTML = '';
 
+            function activateDoc(docId) {
+                // Update Toc links
+                document.querySelectorAll('.sidebar-toc-link').forEach(link => {
+                    if (link.getAttribute('data-doc') === docId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Update Articles to show ONLY the selected module
+                document.querySelectorAll('.docs-article').forEach(article => {
+                    if (article.id === `doc-${docId}`) {
+                        article.classList.add('active-doc');
+                    } else {
+                        article.classList.remove('active-doc');
+                    }
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
             docsData.forEach((doc, idx) => {
                 // 1. Populate Sidebar TOC Link
                 const sidebarTocLink = document.createElement('a');
                 sidebarTocLink.className = `sidebar-toc-link ${idx === 0 ? 'active' : ''}`;
+                sidebarTocLink.setAttribute('data-doc', doc.id);
                 sidebarTocLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
                 sidebarTocLink.addEventListener('click', () => {
-                    document.querySelectorAll('.sidebar-toc-link').forEach(l => l.classList.remove('active'));
-                    sidebarTocLink.classList.add('active');
-                    const articleElem = document.getElementById(`doc-${doc.id}`);
-                    if (articleElem) {
-                        articleElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
+                    activateDoc(doc.id);
                 });
                 sidebarTocContainer.appendChild(sidebarTocLink);
 
-                // 2. Populate Full Article Stream
+                // 2. Populate Module Article (Only active module is displayed)
                 const article = document.createElement('article');
-                article.className = 'docs-article';
+                article.className = `docs-article ${idx === 0 ? 'active-doc' : ''}`;
                 article.id = `doc-${doc.id}`;
 
                 let html = `
@@ -1033,14 +1054,23 @@
                 docsContent.appendChild(article);
             });
 
-            // Doc Search Filter
             const docSearch = document.getElementById('docSearch');
             docSearch?.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
-                document.querySelectorAll('.docs-article').forEach(article => {
-                    const match = !query || article.textContent.toLowerCase().includes(query);
-                    article.style.display = match ? 'block' : 'none';
+                let firstMatch = null;
+
+                document.querySelectorAll('.sidebar-toc-link').forEach(link => {
+                    const docId = link.getAttribute('data-doc');
+                    const article = document.getElementById(`doc-${docId}`);
+                    const match = !query || link.textContent.toLowerCase().includes(query) || (article && article.textContent.toLowerCase().includes(query));
+                    
+                    link.style.display = match ? 'flex' : 'none';
+                    if (match && !firstMatch) firstMatch = docId;
                 });
+
+                if (query && firstMatch) {
+                    activateDoc(firstMatch);
+                }
             });
         }
 
