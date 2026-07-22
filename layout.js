@@ -95,21 +95,25 @@
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', (e) => {
-                if(e.target.closest('.dropdown-menu-content') && !e.target.classList.contains('accent-dot')) return;
+                e.stopPropagation();
                 themeToggle.classList.toggle('open');
             });
         }
 
         document.addEventListener('click', (e) => {
-            if (themeToggle && !themeToggle.contains(e.target)) themeToggle.classList.remove('open');
+            if (themeToggle && !themeToggle.contains(e.target)) {
+                themeToggle.classList.remove('open');
+            }
         });
 
         document.querySelectorAll('.accent-dot').forEach(dot => {
             dot.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const color = e.target.getAttribute('data-accent');
                 if (color) {
                     document.documentElement.setAttribute('data-accent', color);
                     localStorage.setItem('seanbotAccent', color);
+                    themeToggle?.classList.remove('open');
                 }
             });
         });
