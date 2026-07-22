@@ -103,6 +103,21 @@
                     "Personal Timezones: Save your local timezone with `/remindme` or right-click any message to attach a reminder.",
                     "Scheduled Role Pings: Use `/timeping schedule` to configure automated alerts that ping specific roles prior to events (e.g. 24h, 1h, 15m).",
                     "Discord Event Sync: Attach TimePings directly to native Discord Scheduled Events using `/timeping native`."
+                ]},
+                { type: "commands", title: "Commands Reference", items: [
+                    { cmd: "/timeping native [event]", desc: "Link a TimePing alert directly to a native Discord event." },
+                    { cmd: "/timeping schedule [title] [time] [role]", desc: "Schedule a future role ping with optional text/image." },
+                    { cmd: "/timeping add [message] [time]", desc: "Attach an event reminder to a message and alert reactors." },
+                    { cmd: "/timeping my-events", desc: "View all upcoming scheduled events you joined." },
+                    { cmd: "/timeping server-events", desc: "List all active scheduled events in the server." },
+                    { cmd: "/timeping edit [event_id]", desc: "Open the live edit panel for an event." },
+                    { cmd: "/timeping cancel [event_id]", desc: "Cancel an active event or scheduled alert." },
+                    { cmd: "/timeping simulate [time]", desc: "Preview exact reminder firing times." },
+                    { cmd: "/timeping defaults set", desc: "Update server-wide default alert preferences." },
+                    { cmd: "/timeping templates list", desc: "List saved reminder interval templates." },
+                    { cmd: "/timeping auto-watch add [channel]", desc: "Auto-watch a specific channel for event posts." },
+                    { cmd: "/countdown create [title] [time]", desc: "Create a live dynamic countdown timer in chat." },
+                    { cmd: "/countdown list", desc: "List active countdown timers in the channel." }
                 ]}
             ]
         },
