@@ -361,5 +361,224 @@ const commandsDatabase = [
             { name: "/wizard check", desc: "DM users missing wizard info.", badge: "Manage Server", type: "perm" },
             { name: "/wizard missing-list", desc: "Post missing wizard info list.", badge: "Manage Server", type: "perm" }
         ]
-    }
+    },
+
+    {
+            "id": "timezone-systems",
+            "title": "9.0 Timezone Systems",
+            "icon": "ph-globe-stand",
+            "tocLabel": "9.0 Timezones",
+            "commands": [
+                    {
+                            "name": "/timezone detect",
+                            "desc": "Automatically detect your timezone by local time.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone compare [user]",
+                            "desc": "Compare local time difference with another member.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone map",
+                            "desc": "Get a link to the interactive Community Timezone Map.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone admin-map",
+                            "desc": "Get administrative view of community timezone map.",
+                            "badge": "Administrator",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/timezone admin-set [user] [tz]",
+                            "desc": "Force set a member's local timezone.",
+                            "badge": "Administrator",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/timezone set [tz]",
+                            "desc": "Manually set your local timezone.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone user [member]",
+                            "desc": "View a member's local time and UTC offset.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    }
+            ]
+    },,
+
+    {
+            "id": "ticket-system",
+            "title": "10.0 Support Ticket System",
+            "icon": "ph-ticket",
+            "tocLabel": "10.0 Tickets",
+            "commands": [
+                    {
+                            "name": "/ticket panel [panel_name]",
+                            "desc": "Deploy an interactive support ticket panel.",
+                            "badge": "Manage Channels",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket setup_channel",
+                            "desc": "Automatically create open-ticket channel with panel.",
+                            "badge": "Manage Channels",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket claim",
+                            "desc": "Claim ownership of a support ticket.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket unclaim",
+                            "desc": "Release ticket ownership back to queue.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket priority [level]",
+                            "desc": "Set priority level for active ticket.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket staffsay [msg]",
+                            "desc": "Post a private staff discussion note inside ticket.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket close [reason]",
+                            "desc": "Close ticket and save transcript archive.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    }
+            ]
+    },,
+
+    {
+            "id": "voice-analytics",
+            "title": "11.0 Voice Analytics",
+            "icon": "ph-waveform",
+            "tocLabel": "11.0 Voice Stats",
+            "commands": [
+                    {
+                            "name": "/voice loyalty",
+                            "desc": "Rank members by unbroken voice attendance.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/voice sessions",
+                            "desc": "View longest unbroken voice sessions recorded.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/voice channels",
+                            "desc": "Display voice channel popularity heatmap.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/voice streaks",
+                            "desc": "Most consistent active voice members.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/voice graph [member]",
+                            "desc": "Render historical weekly voice activity chart.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    }
+            ]
+    },,
+
+    {
+            "id": "loa-system",
+            "title": "12.0 Leave of Absence (LOA)",
+            "icon": "ph-calendar-x",
+            "tocLabel": "12.0 LOA System",
+            "commands": [
+                    {
+                            "name": "/loa request",
+                            "desc": "Submit a new Leave of Absence request.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/loa status",
+                            "desc": "Check, extend, or cancel active LOA requests.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/loa list",
+                            "desc": "List pending or active member LOAs.",
+                            "badge": "Manage Server",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/loa approve [id]",
+                            "desc": "Approve a pending leave of absence.",
+                            "badge": "Manage Server",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/loa deny [id]",
+                            "desc": "Deny a pending leave of absence.",
+                            "badge": "Manage Server",
+                            "type": "perm"
+                    }
+            ]
+    },,
+
+    {
+            "id": "reaction-pings",
+            "title": "13.0 Reaction Pings",
+            "icon": "ph-bell-ringing",
+            "tocLabel": "13.0 Reaction Pings",
+            "commands": [
+                    {
+                            "name": "/reactionping menu",
+                            "desc": "Open the reaction ping management panel.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/reactionping type [method]",
+                            "desc": "Set ping method to temp roles or direct mentions.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/reactionping roles",
+                            "desc": "Manage roles permitted to trigger reaction pings.",
+                            "badge": "Manage Server",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/reactionping limits [max]",
+                            "desc": "Adjust maximum user limit for reaction pings.",
+                            "badge": "Manage Server",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/reactionping authors",
+                            "desc": "Safety controls for message author pings.",
+                            "badge": "Manage Server",
+                            "type": "perm"
+                    }
+            ]
+    },
 ];

@@ -143,7 +143,268 @@
                 { type: "text", text: "Enable direct-message ban appeals using `/appeal setup`. Banned users receive an appeal form link, which safely forwards their submission to your staff review channel for voting." }
             ]
         },
-        {
+                    {
+                            "id": "timezones",
+                            "icon": "ph-globe-stand",
+                            "title": "Timezone Systems & World Clocks",
+                            "subtitle": "Convert, compare, and display member timezones with interactive visual time maps.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Eliminate timezone confusion for global gaming groups. Members can save their local timezone manually or let SeanBot detect it automatically from their local time."
+                                            },
+                                            {
+                                                            "type": "list",
+                                                            "title": "Key Features",
+                                                            "items": [
+                                                                            "Interactive Community Map: View a live visual map of member local times across the globe.",
+                                                                            "Timezone Detection: Automatically detect member timezones based on local time input.",
+                                                                            "Member Time Comparison: Compare your local time directly against any member."
+                                                            ]
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/timezone detect",
+                                                                                            "desc": "Automatically detect your timezone by specifying local time."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/timezone compare [user]",
+                                                                                            "desc": "Compare your local time with another member."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/timezone map",
+                                                                                            "desc": "Get a link to the interactive Community Timezone Map."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/timezone admin-map",
+                                                                                            "desc": "Get administrative view of community timezone map."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/timezone admin-set [user] [tz]",
+                                                                                            "desc": "Force set a member's local timezone (Admin only)."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/timezone set [tz]",
+                                                                                            "desc": "Manually set your local timezone."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/timezone user [member]",
+                                                                                            "desc": "View a member's local time and UTC offset."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "tickets",
+                            "icon": "ph-ticket",
+                            "title": "Support Ticket System",
+                            "subtitle": "Private support ticket channels with claim management, priority levels, and transcripts.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Deploy interactive support panels where members can click buttons to open private ticket channels. Staff members can claim tickets, set priority levels, post staff-only internal notes, and close tickets with transcript logs."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/ticket panel [panel_name]",
+                                                                                            "desc": "Deploy an interactive support ticket panel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/ticket setup_channel",
+                                                                                            "desc": "Automatically create open-ticket channel with panel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/ticket claim",
+                                                                                            "desc": "Claim ownership of a support ticket."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/ticket unclaim",
+                                                                                            "desc": "Release ticket ownership back to queue."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/ticket priority [level]",
+                                                                                            "desc": "Set priority level for active ticket (Low, Medium, High, Emergency)."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/ticket staffsay [msg]",
+                                                                                            "desc": "Post a private staff discussion note inside ticket."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/ticket close [reason]",
+                                                                                            "desc": "Close ticket and save transcript archive."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "voicestats",
+                            "icon": "ph-waveform",
+                            "title": "Voice Channel & Member Analytics",
+                            "subtitle": "Track member voice participation, unbroken session records, and activity heatmaps.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Monitor voice activity across all channels. Rank members by voice dedication, track unbroken session records, and generate weekly activity graphs."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/voice loyalty",
+                                                                                            "desc": "Rank members by unbroken voice attendance and session length."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/voice sessions",
+                                                                                            "desc": "View longest unbroken voice sessions recorded."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/voice channels",
+                                                                                            "desc": "Display voice channel popularity heatmap."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/voice streaks",
+                                                                                            "desc": "Most consistent active voice members."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/voice graph [member]",
+                                                                                            "desc": "Render historical weekly voice activity chart."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "thread_watcher",
+                            "icon": "ph-chats-teardrop",
+                            "title": "Thread Watcher & Auto-Archiver",
+                            "subtitle": "Keep critical forum threads and text threads unarchived automatically.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Automatically monitors designated forum threads or channel threads and prevents Discord from archiving them due to inactivity."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/threadwatch add [thread]",
+                                                                                            "desc": "Add a thread to the auto-unarchive watch list."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/threadwatch list",
+                                                                                            "desc": "View all actively monitored server threads."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/threadwatch remove [thread]",
+                                                                                            "desc": "Remove a thread from the watch list."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "wizard_info",
+                            "icon": "ph-hat-wizard",
+                            "title": "Wizard Info & Roster Audits",
+                            "subtitle": "Verify guild wizard character profiles and audit unverified member lists.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Manage guild roster verifications and post missing profile audits to staff channels."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/wizard missing-channel [channel]",
+                                                                                            "desc": "Set missing wizard audit report channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/wizard missing-list",
+                                                                                            "desc": "Post list of unverified guild members."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/wizard check",
+                                                                                            "desc": "DM users missing wizard character information."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "reaction_pings",
+                            "icon": "ph-bell-ringing",
+                            "title": "Reaction Ping Notifications",
+                            "subtitle": "Allow members to ping users who reacted to a message with controlled rate limits.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Configure reaction ping controls to allow message authors or staff to ping users who reacted to an event announcement."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/reactionping menu",
+                                                                                            "desc": "Open the reaction ping management panel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/reactionping type [method]",
+                                                                                            "desc": "Set ping method to temp roles or direct mentions."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/reactionping roles",
+                                                                                            "desc": "Manage roles permitted to trigger reaction pings."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/reactionping limits [max]",
+                                                                                            "desc": "Adjust maximum user limit for reaction pings."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/reactionping authors",
+                                                                                            "desc": "Safety controls for message author pings."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+{
             id: "faq",
             icon: "ph-question",
             title: "Frequently Asked Questions",
