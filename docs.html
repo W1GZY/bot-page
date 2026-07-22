@@ -419,6 +419,456 @@
                                             }
                             ]
             },
+            {
+                            "id": "warn_cog",
+                            "icon": "ph-warning-octagon",
+                            "title": "Warnings & Penalty Points System",
+                            "subtitle": "Issue warning logs, calculate active penalty points, and set preset warning reasons.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "The Warning System tracks member infractions, logs warning history with reasons, calculates active penalty points, and automatically triggers escalations if penalty thresholds are exceeded."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/warn add [member] [reason] [points]",
+                                                                                            "desc": "Issue an official warning log to a member."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/warn list [member]",
+                                                                                            "desc": "View a member's active and historical warning records."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/warn clear [member]",
+                                                                                            "desc": "Clear all warning logs and reset penalty points for a member."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/warn preset [key]",
+                                                                                            "desc": "Issue a warning using a saved moderation preset."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/staff points [member]",
+                                                                                            "desc": "View total active moderation penalty points for a member."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/staff logs [member]",
+                                                                                            "desc": "Inspect full staff warning history logs for a user."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "value_reagent",
+                            "icon": "ph-coins",
+                            "title": "Reagent & TC Values (Wizard101 Toolkit)",
+                            "subtitle": "Lookup community trade values for Wizard101 reagents, snacks, and Treasure Cards.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Query community trade value data for Wizard101 reagents, Empower cards, and rare TC reagents. Instant price checks help players trade fairly."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/reagent price [reagent_name]",
+                                                                                            "desc": "Check community gold and Empower value for a reagent."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/reagent list",
+                                                                                            "desc": "Browse all tracked Wizard101 reagents and prices."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/reagent search [keyword]",
+                                                                                            "desc": "Search reagents by name or craft category."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tc value [card_name]",
+                                                                                            "desc": "Look up trade values for rare Treasure Cards."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "translate_cog",
+                            "icon": "ph-translate",
+                            "title": "Live Message Translation Engine",
+                            "subtitle": "Translate chat messages, text channels, or user posts into any language.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Seamlessly translate messages across international gaming groups. Translate individual text messages, set auto-translate channels, or right-click any message to translate."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/translate [text] [to_language]",
+                                                                                            "desc": "Translate custom text into your target language."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/translate channel [language]",
+                                                                                            "desc": "Enable automatic message translation in a text channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "Translate Message (Context Menu)",
+                                                                                            "desc": "Right-click any message -> Apps -> Translate Message to read in your language."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "time_converter",
+                            "icon": "ph-clock-user",
+                            "title": "Time & Timestamp Converter",
+                            "subtitle": "Convert event times across timezones and generate dynamic Discord timestamp tags.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Convert local times between global timezones and generate Discord `<t:unix:F>` dynamic timestamp tags that automatically display in every member's local time."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/time convert [time] [from_tz] [to_tz]",
+                                                                                            "desc": "Convert a specific time string from one timezone to another."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/time timestamp [time] [timezone]",
+                                                                                            "desc": "Generate dynamic Discord timestamp markdown tags."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/time diff [time1] [time2]",
+                                                                                            "desc": "Calculate exact time difference between two times."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "teamup_w101",
+                            "icon": "ph-users-four",
+                            "title": "Team-Up & Dungeon Finder (Wizard101 Toolkit)",
+                            "subtitle": "Organize dungeon runs, farming groups, and boss fights with automated lobby signups.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Create interactive Team-Up boards for Wizard101 dungeons (e.g., Waterworks, Darkmoor, Novus). Players can join with one click, choose their school, and receive auto-created temporary voice lobbies when full."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/teamup create",
+                                                                                            "desc": "Open an interactive modal form to host a dungeon Team-Up."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup quick [dungeon] [realm]",
+                                                                                            "desc": "Quickly post a Team-Up request for a specific dungeon."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup list",
+                                                                                            "desc": "List all active Team-Up lobbies in the server."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup edit [team_id]",
+                                                                                            "desc": "Edit your active Team-Up lobby settings."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup extend [minutes]",
+                                                                                            "desc": "Add extra time to an active Team-Up countdown."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup end [team_id]",
+                                                                                            "desc": "Disband an active Team-Up lobby."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup channel [channel]",
+                                                                                            "desc": "Admin command to set the dedicated Team-Up posting channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/teamup role [role]",
+                                                                                            "desc": "Admin command to designate role pinged for new Team-Ups."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "temp_vc",
+                            "icon": "ph-microphone",
+                            "title": "Temporary Voice Channels (TempVC)",
+                            "subtitle": "Join-to-Create dynamic voice channels with owner controls and template saving.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Members join a master 'Join to Create' voice channel, and SeanBot instantly spawns a private voice channel for them with full owner controls (rename, user limits, lock/unlock, kick, claim)."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/tempvc setup [category] [channel_name]",
+                                                                                            "desc": "Admin command to set up the Join-to-Create generator channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc claim",
+                                                                                            "desc": "Claim ownership of an orphaned temporary voice channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc save [template_name]",
+                                                                                            "desc": "Save your current temp channel setup as a reusable template."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc load [template_name]",
+                                                                                            "desc": "Create a new temp voice channel using a saved template."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc name [new_name]",
+                                                                                            "desc": "Rename your active temporary voice channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc limit [user_count]",
+                                                                                            "desc": "Set maximum member limit for your voice channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc lock",
+                                                                                            "desc": "Lock your temp channel to prevent new members from joining."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tempvc unlock",
+                                                                                            "desc": "Unlock your temp channel for everyone."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "tapestry",
+                            "icon": "ph-map-trifold",
+                            "title": "House Tapestries (Wizard101 Toolkit)",
+                            "subtitle": "Track housing tapestries, teleport locations, and community bobbleheads.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Wizard101 players can catalog house tapestries and bobbleheads, check missing housing items, and locate house teleports across community housing."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/tapestry list",
+                                                                                            "desc": "View all saved house tapestries and locations."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tapestry set [name] [status]",
+                                                                                            "desc": "Toggle ownership or location status of a tapestry."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/tapestry search [location]",
+                                                                                            "desc": "Search tapestries by target destination."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/bobblehead list",
+                                                                                            "desc": "List all saved housing bobbleheads."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/bobblehead set [name] [status]",
+                                                                                            "desc": "Toggle ownership status of a bobblehead."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "strategy",
+                            "icon": "ph-scroll",
+                            "title": "Boss Strategies & Guides (Wizard101 Toolkit)",
+                            "subtitle": "Save, search, and share boss cheats, blade sequences, and raid strategies.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Create and inspect Wizard101 boss strategies, cheat guides, and raid positioning. Store universal guides for easy access during runs."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/strategy list",
+                                                                                            "desc": "List all saved boss strategies and dungeon guides."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/strategy add [boss_name] [guide_text]",
+                                                                                            "desc": "Add a new boss strategy or cheat guide (Admin/Keymaster)."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/strategy view [boss_name]",
+                                                                                            "desc": "Display full strategy guide for a specific boss."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/strategy delete [boss_name]",
+                                                                                            "desc": "Delete a saved boss strategy guide."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "stats",
+                            "icon": "ph-chart-line-up",
+                            "title": "Server Statistics & Live Counters",
+                            "subtitle": "Live voice counter channels, member growth charts, and activity analytics.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Automatically generate live voice counter channels displaying server member counts, online users, role counts, and historical member growth charts."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/stats setup",
+                                                                                            "desc": "Set up live counter channels (Total Members, Humans, Bots)."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/stats growth",
+                                                                                            "desc": "Generate a visual server member growth chart over time."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/stats channels",
+                                                                                            "desc": "View status of all configured stat counter channels."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/stats refresh",
+                                                                                            "desc": "Force an immediate refresh of all live counter channel names."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "starboard",
+                            "icon": "ph-star",
+                            "title": "Starboard Engine",
+                            "subtitle": "Automatically highlight top-reacted community posts in a starboard channel.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "When a message receives a set number of star reactions (\u2b50), SeanBot posts a beautiful highlight embed to the server's starboard channel."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/starboard setup [channel]",
+                                                                                            "desc": "Set the target starboard channel."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/starboard threshold [number]",
+                                                                                            "desc": "Set required star reaction count to trigger a highlight."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/starboard stats server",
+                                                                                            "desc": "View server-wide starboard statistics and most starred post."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/starboard stats user [member]",
+                                                                                            "desc": "View starboard statistics for a specific member."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
+            {
+                            "id": "spells",
+                            "icon": "ph-book-open-text",
+                            "title": "Spell Tome Database (Wizard101 Toolkit)",
+                            "subtitle": "Search Wizard101 spells by school, pip cost, accuracy, and card descriptions.",
+                            "content": [
+                                            {
+                                                            "type": "heading",
+                                                            "text": "Overview"
+                                            },
+                                            {
+                                                            "type": "text",
+                                                            "text": "Search the complete Wizard101 spell database for pip costs, school alignments, shadow pip requirements, damage ranges, and secondary effects."
+                                            },
+                                            {
+                                                            "type": "commands",
+                                                            "title": "Commands Reference",
+                                                            "items": [
+                                                                            {
+                                                                                            "cmd": "/spells lookup [spell_name]",
+                                                                                            "desc": "Inspect full stats, pip cost, and effects for a spell."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/spells school [school_name]",
+                                                                                            "desc": "List all spells for a specific school (e.g. Fire, Storm, Death)."
+                                                                            },
+                                                                            {
+                                                                                            "cmd": "/spells search [keyword]",
+                                                                                            "desc": "Search spells by card text keyword or effect type."
+                                                                            }
+                                                            ]
+                                            }
+                            ]
+            },
 {
             id: "faq",
             icon: "ph-question",
