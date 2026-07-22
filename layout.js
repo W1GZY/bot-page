@@ -83,7 +83,7 @@
             <footer class="page-footer">
                 <div>&copy; 2026 SeanBot. All rights reserved.</div>
                 <div style="display:flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="/tos.html">Terms & Privacy</a>
+                    <a href="tos.html">Terms & Privacy</a>
                 </div>
             </footer>
         `);
