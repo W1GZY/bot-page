@@ -47,29 +47,43 @@
                         "id": "quickstart",
                         "icon": "ph-rocket",
                         "title": "Quick Start Guide",
-                        "subtitle": "Integrate SeanBot into your Discord community in three simple steps.",
+                        "subtitle": "Empower your community with effortless, automated server management in under 60 seconds.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "1. Invite the Bot"
+                                                "text": "1. One-Click Authorization"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Add SeanBot to your server with basic administrative permissions. Position the bot's role high in Server Settings above roles it manages."
+                                                "text": "Add SeanBot to your Discord community with optimized administrative permissions. Elevate SeanBot's role near the top of your role hierarchy to unlock real-time moderation and role assignment power."
                                     },
                                     {
                                                 "type": "heading",
-                                                "text": "2. Manage Active Modules"
+                                                "text": "2. Tailored Feature Modules"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Enable or disable specific features using `/serveradmin module` or through the Web Dashboard."
+                                                "text": "Toggle feature modules instantly with `/serveradmin module` or through your personalized Web Dashboard."
                                     },
                                     {
                                                 "type": "callout",
-                                                "icon": "\ud83d\udca1",
-                                                "title": "Pro Tip",
-                                                "text": "Run `/staff diagnose` anytime to verify bot permissions and command prefix configurations across channels."
+                                                "icon": "\u26a1",
+                                                "title": "Instant Audit Diagnostics",
+                                                "text": "Run `/staff diagnose` anytime for an automated diagnostic sweep of bot channel permissions, role bindings, and command overrides."
+                                    },
+                                    {
+                                                "type": "commands",
+                                                "title": "Commands Reference",
+                                                "items": [
+                                                            {
+                                                                        "cmd": "/staff diagnose",
+                                                                        "desc": "Perform an automated audit sweep of channel permissions and bot hierarchy."
+                                                            },
+                                                            {
+                                                                        "cmd": "/prefix [symbol]",
+                                                                        "desc": "View or update custom legacy command prefix."
+                                                            }
+                                                ]
                                     }
                         ]
             },
@@ -77,15 +91,15 @@
                         "id": "core",
                         "icon": "ph-browser",
                         "title": "Dashboard & Settings",
-                        "subtitle": "Manage bot connectivity and command synchronizations.",
+                        "subtitle": "Blazing-fast cloud control workspace for instant server configuration.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Web Dashboard Workspace"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Access your server's configuration workspace directly via the web dashboard and manage command registries."
+                                                "text": "Seamlessly configure server preferences, manage feature modules, and synchronize command registries in real time with security token authentication."
                                     },
                                     {
                                                 "type": "commands",
@@ -93,11 +107,15 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/dashboard",
-                                                                        "desc": "Generate a single-use login link to access the server web dashboard."
+                                                                        "desc": "Generate an encrypted, single-use login link to access the Web Control Panel."
                                                             },
                                                             {
                                                                         "cmd": "/reload_commands",
-                                                                        "desc": "Force synchronization of active bot commands to the database."
+                                                                        "desc": "Force immediate database synchronization for all active slash command registries."
+                                                            },
+                                                            {
+                                                                        "cmd": "/ram",
+                                                                        "desc": "Monitor live hardware memory usage and system response latency."
                                                             }
                                                 ]
                                     }
@@ -107,7 +125,7 @@
                         "id": "prefix",
                         "icon": "ph-hash",
                         "title": "Custom Prefixes",
-                        "subtitle": "Configure custom text command prefixes per server.",
+                        "subtitle": "Flexible text command prefix customization tailored for your community.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -115,7 +133,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Change default prefix (`!`) to any custom symbol for legacy text commands."
+                                                "text": "Customize your text command prefix to prevent conflicts with legacy bots."
                                     },
                                     {
                                                 "type": "commands",
@@ -123,7 +141,7 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/prefix [new_prefix]",
-                                                                        "desc": "View current prefix or set a new custom command prefix."
+                                                                        "desc": "Inspect active server prefix or set a custom command trigger symbol."
                                                             }
                                                 ]
                                     }
@@ -133,67 +151,69 @@
                         "id": "w101",
                         "icon": "ph-magic-wand",
                         "title": "W101: Core Toolkit & Damage",
-                        "subtitle": "Item lookup, level scaling, multi-buff damage calculator, and deck sharing.",
+                        "subtitle": "Precision hit calculators, multi-buff stack previews, gear scaling, and visual deck sharing.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Damage Assistant"
+                                                "text": "Damage & Buff Calculation Engine"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Calculate complex multi-buff hits with blades, traps, auras, gear %, critical, and pierce multipliers."
+                                                "text": "Eliminate math guesswork during high-stakes raids. Model multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy."
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Damage & Gear Commands",
                                                 "items": [
                                                             {
                                                                         "cmd": "/damage",
-                                                                        "desc": "Open interactive Damage Assistant calculator to set stats and stack buffs."
+                                                                        "desc": "Launch the interactive Damage Assistant modal to model damage outputs."
                                                             },
                                                             {
                                                                         "cmd": "/item [name]",
-                                                                        "desc": "Search gear items matching a query in the Wizard101 database."
+                                                                        "desc": "Search the complete gear database with stats, school requirements, and drops."
                                                             },
                                                             {
-                                                                        "cmd": "/levelscale",
-                                                                        "desc": "Calculate gear stat scaling at lower level tiers."
+                                                                        "cmd": "/levelscale [item] [level]",
+                                                                        "desc": "Calculate exact gear stat scaling across lower level tiers."
                                                             }
                                                 ]
                                     },
                                     {
                                                 "type": "heading",
-                                                "text": "Deck Builder"
+                                                "text": "Visual Deck Building Suite"
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Deck Building Commands",
                                                 "items": [
                                                             {
                                                                         "cmd": "/decks create",
-                                                                        "desc": "Create a new deck (Requires Keymaster role)."
+                                                                        "desc": "Draft a custom deck loadout with visual card slots (Keymaster role)."
                                                             },
                                                             {
                                                                         "cmd": "/decks browse",
-                                                                        "desc": "Browse decks saved in this server."
+                                                                        "desc": "Browse community-submitted decks saved in the server repository."
                                                             },
                                                             {
                                                                         "cmd": "/decks search [query]",
-                                                                        "desc": "Search decks by name or card keyword."
+                                                                        "desc": "Search saved decks by school, boss counter, or card composition."
                                                             },
                                                             {
                                                                         "cmd": "/decks share [deck] [user]",
-                                                                        "desc": "Send a deck to a user via DM."
+                                                                        "desc": "Instantly dispatch a saved deck directly to a teammate via DM."
                                                             },
                                                             {
                                                                         "cmd": "/decks export [deck]",
-                                                                        "desc": "Export a deck as a high-quality visual image."
+                                                                        "desc": "Export a high-definition image card graphic of any saved deck."
                                                             },
                                                             {
                                                                         "cmd": "/deck show [code]",
-                                                                        "desc": "Display a saved deck or render a web share code."
+                                                                        "desc": "Render a visual deck spread from a compact web share code."
                                                             },
                                                             {
                                                                         "cmd": "/deck lookup [code]",
-                                                                        "desc": "Instantly render and inspect any compact deck code."
+                                                                        "desc": "Inspect card quantities and school breakdowns for any deck code."
                                                             }
                                                 ]
                                     }
@@ -202,8 +222,8 @@
             {
                         "id": "beastmoon",
                         "icon": "ph-paw-print",
-                        "title": "W101: Beastmoon Tracker",
-                        "subtitle": "Wizard101 Beastmoon form progress, cost calculations, and leaderboards.",
+                        "title": "W101: Beastmoon Suite",
+                        "subtitle": "Form progression tracking, Lunari & Idol cost calculators, and global leaderboards.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -211,7 +231,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Save form progress, calculate Lunari and Idol costs, and compete on server or federated leaderboards."
+                                                "text": "Track your Beastmoon Hunt & Monster Mayhem form tiers, estimate exact Lunari and Gold Thread upgrade requirements, and claim top ranks on server leaderboards."
                                     },
                                     {
                                                 "type": "commands",
@@ -219,35 +239,43 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/bm add",
-                                                                        "desc": "Interactive menu to add or update your Beastmoon forms."
+                                                                        "desc": "Launch the interactive Beastmoon Form Manager to log tier progress."
                                                             },
                                                             {
                                                                         "cmd": "/bm quick_add [form] [school] [tier]",
-                                                                        "desc": "Quickly update Beastmoon forms with autocomplete."
+                                                                        "desc": "Update form tiers instantly with autocomplete."
                                                             },
                                                             {
                                                                         "cmd": "/bm check",
-                                                                        "desc": "Check progress towards Tier 5 with Lunari/Idol costs."
+                                                                        "desc": "Inspect progress towards Tier 5 with exact Lunari and Idol costs."
                                                             },
                                                             {
                                                                         "cmd": "/bm forms",
-                                                                        "desc": "View saved Beastmoon forms as an interactive image grid."
+                                                                        "desc": "Render your full Beastmoon form collection as a visual badge grid."
                                                             },
                                                             {
                                                                         "cmd": "/bm leaderboard",
-                                                                        "desc": "View top Beastmoon players in server or network."
+                                                                        "desc": "View top Beastmoon players in your server or cross-server network."
                                                             },
                                                             {
                                                                         "cmd": "/bm max",
-                                                                        "desc": "See users with fully maxed Tier 5 forms."
+                                                                        "desc": "Display elite players who have achieved max Tier 5 form masteries."
                                                             },
                                                             {
                                                                         "cmd": "/bm log_channel [channel]",
-                                                                        "desc": "Set channel for public Beastmoon upgrade announcements."
+                                                                        "desc": "Designate a channel for public Beastmoon level-up announcements."
                                                             },
                                                             {
                                                                         "cmd": "/bm redeem [code]",
-                                                                        "desc": "Redeem a Beastmoon sync code from web dashboard."
+                                                                        "desc": "Instantly sync Beastmoon form upgrades from the Web Dashboard."
+                                                            },
+                                                            {
+                                                                        "cmd": "/bm forms_alt [member]",
+                                                                        "desc": "Inspect another player's public Beastmoon form collection."
+                                                            },
+                                                            {
+                                                                        "cmd": "/bm user [member]",
+                                                                        "desc": "View complete Beastmoon statistics for a guild member."
                                                             }
                                                 ]
                                     }
@@ -257,7 +285,7 @@
                         "id": "pet_tome",
                         "icon": "ph-book-bookmark",
                         "title": "W101: Pet Tome Database",
-                        "subtitle": "Search 1,000+ Wizard101 pets with stats and hatching permissions.",
+                        "subtitle": "Instant stats, talent pools, and hatching guides for over 1,000 Wizard101 pets.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -265,7 +293,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Instant stats, hatching permissions, and acquisition guides for Wizard101 pets."
+                                                "text": "Search the complete pet encyclopedia to inspect base stats, wow factors, hatching permissions, and talent pools."
                                     },
                                     {
                                                 "type": "commands",
@@ -273,7 +301,7 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/pet lookup [query]",
-                                                                        "desc": "Search for a pet by name to inspect stats and hatching details."
+                                                                        "desc": "Search for any pet by name to inspect stats, egg timer, and talents."
                                                             }
                                                 ]
                                     }
@@ -283,7 +311,7 @@
                         "id": "spells",
                         "icon": "ph-book-open-text",
                         "title": "W101: Spell Tome Database",
-                        "subtitle": "Search Wizard101 spells by school, pip cost, accuracy, and card descriptions.",
+                        "subtitle": "Complete spell database with pip costs, accuracy ratings, shadow pips, and card effects.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -291,7 +319,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Search the complete Wizard101 spell database for pip costs, school alignments, and secondary effects."
+                                                "text": "Query the master spell registry for damage ranges, shadow pip requirements, utility effects, and trained locations."
                                     },
                                     {
                                                 "type": "commands",
@@ -299,15 +327,15 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/spells lookup [spell_name]",
-                                                                        "desc": "Inspect full stats, pip cost, and effects for a spell."
+                                                                        "desc": "Display high-res card art, pip costs, and secondary card effects."
                                                             },
                                                             {
                                                                         "cmd": "/spells school [school_name]",
-                                                                        "desc": "List all spells for a specific school (e.g. Fire, Storm, Death)."
+                                                                        "desc": "Browse all spells belonging to a specific school of magic."
                                                             },
                                                             {
                                                                         "cmd": "/spells search [keyword]",
-                                                                        "desc": "Search spells by card text keyword or effect type."
+                                                                        "desc": "Search spells by card description text or keyword effect."
                                                             }
                                                 ]
                                     }
@@ -317,7 +345,7 @@
                         "id": "teamup_w101",
                         "icon": "ph-users-four",
                         "title": "W101: Dungeon Team-Ups",
-                        "subtitle": "Organize dungeon runs, farming groups, and boss fights with automated lobbies.",
+                        "subtitle": "Automated dungeon LFG lobbies with one-click signups and private voice spawning.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -325,7 +353,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Interactive Team-Up boards for Wizard101 dungeons with one-click signups and auto-created voice lobbies."
+                                                "text": "Eliminate waiting at dungeon gates. Post interactive Team-Up boards for Waterworks, Darkmoor, or Novus raids. Players join with one click, select their school, and get auto-created voice channels when full."
                                     },
                                     {
                                                 "type": "commands",
@@ -333,23 +361,23 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/teamup create",
-                                                                        "desc": "Open an interactive modal form to host a dungeon Team-Up."
+                                                                        "desc": "Open an interactive modal form to post a new dungeon Team-Up lobby."
                                                             },
                                                             {
                                                                         "cmd": "/teamup quick [dungeon] [realm]",
-                                                                        "desc": "Quickly post a Team-Up request for a specific dungeon."
+                                                                        "desc": "Instantly post a Team-Up request for a specific dungeon."
                                                             },
                                                             {
                                                                         "cmd": "/teamup list",
-                                                                        "desc": "List all active Team-Up lobbies in the server."
+                                                                        "desc": "Display all open Team-Up lobbies actively looking for players."
                                                             },
                                                             {
                                                                         "cmd": "/teamup edit [team_id]",
-                                                                        "desc": "Edit your active Team-Up lobby settings."
+                                                                        "desc": "Modify dungeon settings, realm, or required school slots."
                                                             },
                                                             {
                                                                         "cmd": "/teamup extend [minutes]",
-                                                                        "desc": "Add extra time to an active Team-Up countdown."
+                                                                        "desc": "Add extra time to an active Team-Up countdown timer."
                                                             },
                                                             {
                                                                         "cmd": "/teamup end [team_id]",
@@ -357,11 +385,11 @@
                                                             },
                                                             {
                                                                         "cmd": "/teamup channel [channel]",
-                                                                        "desc": "Set dedicated Team-Up posting channel."
+                                                                        "desc": "Set dedicated text channel for Team-Up board postings."
                                                             },
                                                             {
                                                                         "cmd": "/teamup role [role]",
-                                                                        "desc": "Designate role pinged for new Team-Ups."
+                                                                        "desc": "Set default role pinged when new dungeon runs are posted."
                                                             }
                                                 ]
                                     }
@@ -371,7 +399,7 @@
                         "id": "value_reagent",
                         "icon": "ph-coins",
                         "title": "W101: Reagent & TC Values",
-                        "subtitle": "Lookup trade values for Wizard101 reagents, snacks, and Treasure Cards.",
+                        "subtitle": "Real-time community trade valuations for reagents, snacks, and rare Treasure Cards.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -379,7 +407,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Query community trade value data for Wizard101 reagents, Empower cards, and rare TC reagents."
+                                                "text": "Instant price checks for rare reagents (Agave Nectar, Flying Cuttlefish) and Empower TC equivalence."
                                     },
                                     {
                                                 "type": "commands",
@@ -387,19 +415,19 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/reagent price [reagent_name]",
-                                                                        "desc": "Check community gold and Empower value for a reagent."
+                                                                        "desc": "Check average gold and Empower TC trade value for a reagent."
                                                             },
                                                             {
                                                                         "cmd": "/reagent list",
-                                                                        "desc": "Browse all tracked Wizard101 reagents and prices."
+                                                                        "desc": "Browse tracked Wizard101 reagents sorted by popularity."
                                                             },
                                                             {
                                                                         "cmd": "/reagent search [keyword]",
-                                                                        "desc": "Search reagents by name or craft category."
+                                                                        "desc": "Search reagents by craft category or location."
                                                             },
                                                             {
                                                                         "cmd": "/tc value [card_name]",
-                                                                        "desc": "Look up trade values for rare Treasure Cards."
+                                                                        "desc": "Look up community trade values for rare Treasure Cards."
                                                             }
                                                 ]
                                     }
@@ -409,7 +437,7 @@
                         "id": "strategy",
                         "icon": "ph-scroll",
                         "title": "W101: Boss Strategies",
-                        "subtitle": "Save, search, and share boss cheats, blade sequences, and raid strategies.",
+                        "subtitle": "Curated boss cheat sheets, blade turn orders, and raid position guides.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -417,7 +445,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Create and inspect Wizard101 boss strategies, cheat guides, and raid positioning."
+                                                "text": "Store and query boss cheat guides directly in Discord chat to execute flawless dungeon strategies."
                                     },
                                     {
                                                 "type": "commands",
@@ -425,19 +453,19 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/strategy list",
-                                                                        "desc": "List all saved boss strategies and dungeon guides."
+                                                                        "desc": "List all saved boss strategy guides available in the server."
                                                             },
                                                             {
                                                                         "cmd": "/strategy add [boss_name] [guide_text]",
-                                                                        "desc": "Add a new boss strategy or cheat guide."
+                                                                        "desc": "Save a new boss cheat guide or strategy sequence."
                                                             },
                                                             {
                                                                         "cmd": "/strategy view [boss_name]",
-                                                                        "desc": "Display full strategy guide for a specific boss."
+                                                                        "desc": "Display detailed strategy notes for a specific boss fight."
                                                             },
                                                             {
                                                                         "cmd": "/strategy delete [boss_name]",
-                                                                        "desc": "Delete a saved boss strategy guide."
+                                                                        "desc": "Remove an outdated boss strategy guide."
                                                             }
                                                 ]
                                     }
@@ -447,7 +475,7 @@
                         "id": "tapestry",
                         "icon": "ph-map-trifold",
                         "title": "W101: House Tapestries",
-                        "subtitle": "Track housing tapestries, teleport locations, and community bobbleheads.",
+                        "subtitle": "Interactive catalog for housing tapestries, teleports, and community bobbleheads.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -455,7 +483,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Catalog house tapestries, bobbleheads, check missing housing items, and locate teleports."
+                                                "text": "Track house tapestry collections, locate community teleports, and complete housing collections."
                                     },
                                     {
                                                 "type": "commands",
@@ -463,15 +491,15 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/tapestry list",
-                                                                        "desc": "View all saved house tapestries and locations."
+                                                                        "desc": "View all cataloged house tapestries and destination links."
                                                             },
                                                             {
                                                                         "cmd": "/tapestry set [name] [status]",
-                                                                        "desc": "Toggle ownership or location status of a tapestry."
+                                                                        "desc": "Toggle ownership or housing location status of a tapestry."
                                                             },
                                                             {
                                                                         "cmd": "/tapestry search [location]",
-                                                                        "desc": "Search tapestries by target destination."
+                                                                        "desc": "Find housing tapestries leading to specific worlds or dungeons."
                                                             },
                                                             {
                                                                         "cmd": "/bobblehead list",
@@ -479,7 +507,7 @@
                                                             },
                                                             {
                                                                         "cmd": "/bobblehead set [name] [status]",
-                                                                        "desc": "Toggle ownership status of a bobblehead."
+                                                                        "desc": "Toggle ownership status of a housing bobblehead."
                                                             }
                                                 ]
                                     }
@@ -489,7 +517,7 @@
                         "id": "wizard_info",
                         "icon": "ph-hat-wizard",
                         "title": "W101: Wizard Roster Check",
-                        "subtitle": "Verify guild wizard profiles and audit missing roster lists.",
+                        "subtitle": "Automated guild wizard profile verifications and missing roster audits.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -497,7 +525,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Manage guild roster verifications and post missing profile audits to staff channels."
+                                                "text": "Audit guild member wizard levels, main schools, and send automated DMs to unverified members."
                                     },
                                     {
                                                 "type": "commands",
@@ -505,15 +533,23 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/wizard missing-channel [channel]",
-                                                                        "desc": "Set missing wizard audit report channel."
+                                                                        "desc": "Designate staff channel where missing profile audits publish."
                                                             },
                                                             {
                                                                         "cmd": "/wizard missing-list",
-                                                                        "desc": "Post list of unverified guild members."
+                                                                        "desc": "Generate a real-time list of unverified guild members."
                                                             },
                                                             {
                                                                         "cmd": "/wizard check",
-                                                                        "desc": "DM users missing wizard character information."
+                                                                        "desc": "Dispatch friendly automated DM reminders to unverified members."
+                                                            },
+                                                            {
+                                                                        "cmd": "/wizard verify [member]",
+                                                                        "desc": "Manually verify a member's wizard character credentials."
+                                                            },
+                                                            {
+                                                                        "cmd": "/wizard profile [member]",
+                                                                        "desc": "Inspect full wizard profile stats for a guild member."
                                                             }
                                                 ]
                                     }
@@ -523,59 +559,95 @@
                         "id": "antiraid",
                         "icon": "ph-shield-warning",
                         "title": "Anti-Raid & Security",
-                        "subtitle": "Dynamic heat score engine, visual scam fingerprinting, and quarantine holding.",
+                        "subtitle": "Next-generation raid protection, visual scam fingerprinting, and quarantine holding.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Enterprise Security Engine"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Automated threat detection and mitigation for Discord servers. Analyzes threat levels, quarantines suspect users, and blocks scam link bursts."
+                                                "text": "Fortify your community against raid bots, malicious link bursts, and compromised accounts with intelligent heat scoring and visual image fingerprint matching."
                                     },
                                     {
                                                 "type": "commands",
-                                                "title": "Commands Reference",
+                                                "title": "Security Commands Reference",
                                                 "items": [
                                                             {
                                                                         "cmd": "/antiraid dashboard",
-                                                                        "desc": "Displays overview of active anti-raid parameters and threat levels."
+                                                                        "desc": "Display live threat indicators, burst levels, and active security rules."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid audit",
-                                                                        "desc": "Scans server permissions to flag bot hierarchy limitations."
+                                                                        "desc": "Perform automated security audit to flag role hierarchy risks."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid canary [state]",
-                                                                        "desc": "Toggles Canary Mode (Logging-Only) on or off."
+                                                                        "desc": "Toggle Silent Canary Mode (log threats without taking action)."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid register_scam [image]",
-                                                                        "desc": "Registers image attachments as visual scam blocks."
+                                                                        "desc": "Register image attachments as instant visual scam blocks."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid unregister_scam [hash]",
+                                                                        "desc": "Remove an image hash from the visual scam blocker."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid scam_list",
-                                                                        "desc": "Lists registered visual fingerprints blocked on server."
+                                                                        "desc": "Inspect all active visual scam fingerprints on your server."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid whitelist [role]",
-                                                                        "desc": "Toggles whether a role bypasses security checks."
+                                                                        "desc": "Grant trusted roles bypass immunity from security checks."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid quarantine [user]",
-                                                                        "desc": "Isolates suspicious accounts into a restricted jail role."
+                                                                        "desc": "Isolate a suspect user into restricted quarantine holding."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid unquarantine [user]",
-                                                                        "desc": "Releases a user from quarantine and restores roles."
+                                                                        "desc": "Release a user from quarantine and restore original roles."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid pause [minutes]",
-                                                                        "desc": "Temporarily suspends join detection for high-traffic events."
+                                                                        "desc": "Temporarily pause join detection during massive official events."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid simulate [level]",
+                                                                        "desc": "Simulate raid traffic to test automated response times."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid threatlist",
+                                                                        "desc": "Inspect accounts currently flagged with elevated heat scores."
                                                             },
                                                             {
                                                                         "cmd": "/antiraid logs",
-                                                                        "desc": "Displays recent persistent security audit logs."
+                                                                        "desc": "View persistent audit trail logs of security enforcement actions."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid reset",
+                                                                        "desc": "Reset server anti-raid parameters back to default security levels."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid multiplier_channel [channel]",
+                                                                        "desc": "Configure risk score multipliers for high-exposure channels."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid multiplier_role [role]",
+                                                                        "desc": "Adjust threat sensitivity multipliers for unverified roles."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid burstlevel [level]",
+                                                                        "desc": "Set message frequency threshold for burst detection."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid channelsensitivity [channel]",
+                                                                        "desc": "Tweak security sensitivity on specific channels."
+                                                            },
+                                                            {
+                                                                        "cmd": "/antiraid advanced",
+                                                                        "desc": "Configure advanced heuristic triggers and automated bans."
                                                             }
                                                 ]
                                     }
@@ -585,39 +657,43 @@
                         "id": "moderation",
                         "icon": "ph-gavel",
                         "title": "Server Moderation",
-                        "subtitle": "Enforcement commands, role hierarchy checks, and transcript archiving.",
+                        "subtitle": "Robust staff enforcement suite respecting Discord role hierarchy constraints.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "High-Efficiency Moderation Tools"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Managing members, enforcing rules, and logging actions respecting Discord role hierarchies."
+                                                "text": "Maintain order across large servers with rapid enforcement actions, shadowbans, bulk message purges, and automated transcript exports."
                                     },
                                     {
                                                 "type": "commands",
-                                                "title": "Standard Moderation Commands",
+                                                "title": "Enforcement Commands",
                                                 "items": [
                                                             {
                                                                         "cmd": "/kick [member] [reason]",
-                                                                        "desc": "Kick a member from the server."
+                                                                        "desc": "Kick a member with DM notification and audit log tracking."
                                                             },
                                                             {
                                                                         "cmd": "/ban [user] [reason]",
-                                                                        "desc": "Ban a user and dispatch an appeal guide via DM."
+                                                                        "desc": "Ban a user and dispatch an appeal guide link via DM."
                                                             },
                                                             {
                                                                         "cmd": "/unban [user_id] [reason]",
-                                                                        "desc": "Lift a ban by numerical User ID."
+                                                                        "desc": "Revoke a ban using a numerical Discord User ID."
                                                             },
                                                             {
                                                                         "cmd": "/softban [user] [days]",
-                                                                        "desc": "Ban and immediately unban to wipe recent messages."
+                                                                        "desc": "Ban and immediately unban to clear recent messages."
                                                             },
                                                             {
                                                                         "cmd": "/shadowban [user_id]",
-                                                                        "desc": "Hackban a user by ID even if not in the server."
+                                                                        "desc": "Pre-emptively ban a user ID before they join the server."
+                                                            },
+                                                            {
+                                                                        "cmd": "/nick [member] [nickname]",
+                                                                        "desc": "Update or clear a member's server nickname."
                                                             },
                                                             {
                                                                         "cmd": "/timeout [member] [duration]",
@@ -625,15 +701,51 @@
                                                             },
                                                             {
                                                                         "cmd": "/untimeout [member]",
-                                                                        "desc": "Remove an active timeout."
+                                                                        "desc": "Remove an active timeout penalty."
+                                                            },
+                                                            {
+                                                                        "cmd": "/purgetimeout [duration]",
+                                                                        "desc": "Mass-clear messages sent by users currently in timeout."
                                                             },
                                                             {
                                                                         "cmd": "/purge [amount]",
                                                                         "desc": "Bulk delete messages in the active channel."
                                                             },
                                                             {
+                                                                        "cmd": "/lock [channel] [reason]",
+                                                                        "desc": "Lock a text channel to prevent non-staff messaging."
+                                                            },
+                                                            {
                                                                         "cmd": "/archive [limit]",
-                                                                        "desc": "Archive channel message history to database and export file."
+                                                                        "desc": "Export complete channel message logs to file archive."
+                                                            },
+                                                            {
+                                                                        "cmd": "/archive_get [id]",
+                                                                        "desc": "Retrieve a previously archived channel transcript."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff clean [count]",
+                                                                        "desc": "Purge recent bot commands and responses."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff unlock [channel]",
+                                                                        "desc": "Re-open a locked channel for general messaging."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff locked",
+                                                                        "desc": "List all channels currently under staff lockdown."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff slowmode [seconds]",
+                                                                        "desc": "Adjust channel message cooldown slowmode."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff members [role]",
+                                                                        "desc": "List all members holding a specific role."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff timeouts",
+                                                                        "desc": "List all server members currently under active timeout."
                                                             }
                                                 ]
                                     }
@@ -643,7 +755,7 @@
                         "id": "warn_cog",
                         "icon": "ph-warning-octagon",
                         "title": "Warnings & Points",
-                        "subtitle": "Issue warning logs, calculate active penalty points, and set presets.",
+                        "subtitle": "Infraction tracking, active penalty point calculations, and automatic escalations.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -651,19 +763,19 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Track member infractions, log warning history, and calculate active penalty points."
+                                                "text": "Track member infractions, log warning histories, calculate active penalty points, and set automatic punishment thresholds."
                                     },
                                     {
                                                 "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
                                                             {
-                                                                        "cmd": "/warn add [member] [reason]",
-                                                                        "desc": "Issue an official warning log to a member."
+                                                                        "cmd": "/warn add [member] [reason] [points]",
+                                                                        "desc": "Issue an official warning log with assigned penalty points."
                                                             },
                                                             {
                                                                         "cmd": "/warn list [member]",
-                                                                        "desc": "View a member's active and historical warning records."
+                                                                        "desc": "Inspect a member's warning history and active points."
                                                             },
                                                             {
                                                                         "cmd": "/warn clear [member]",
@@ -675,7 +787,11 @@
                                                             },
                                                             {
                                                                         "cmd": "/staff points [member]",
-                                                                        "desc": "View total active moderation penalty points for a member."
+                                                                        "desc": "Check total active moderation penalty points for a user."
+                                                            },
+                                                            {
+                                                                        "cmd": "/staff logs [member]",
+                                                                        "desc": "Inspect complete staff warning history logs for a user."
                                                             }
                                                 ]
                                     }
@@ -685,15 +801,15 @@
                         "id": "logging",
                         "icon": "ph-file-text",
                         "title": "Audit Logging & Jails",
-                        "subtitle": "Granular event tracking, external worker microservices, and quarantine.",
+                        "subtitle": "Asynchronous audit event logging to external webhooks without latency impact.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "High-Speed Event Logging"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Record server events to dedicated webhooks without impacting bot performance."
+                                                "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to isolated webhook channels."
                                     },
                                     {
                                                 "type": "commands",
@@ -701,23 +817,43 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/log webhook [url] [type]",
-                                                                        "desc": "Set and validate a webhook URL for logging events."
+                                                                        "desc": "Configure and test a webhook destination for audit events."
                                                             },
                                                             {
                                                                         "cmd": "/log toggle [log_type]",
-                                                                        "desc": "Enable or disable logging for a specific event type."
+                                                                        "desc": "Enable or disable logging for specific server events."
+                                                            },
+                                                            {
+                                                                        "cmd": "/log toggle_batch [type] [state]",
+                                                                        "desc": "Batch toggle multiple audit event categories at once."
+                                                            },
+                                                            {
+                                                                        "cmd": "/log ignore_reaction_add [emoji]",
+                                                                        "desc": "Ignore specific reaction emojis from audit logs."
+                                                            },
+                                                            {
+                                                                        "cmd": "/log ignore_log_add [channel]",
+                                                                        "desc": "Exclude high-traffic channels from audit logging."
                                                             },
                                                             {
                                                                         "cmd": "/log status",
-                                                                        "desc": "View configured webhooks, active toggles, and ignored channels."
+                                                                        "desc": "Inspect active webhooks, enabled event types, and channel filters."
+                                                            },
+                                                            {
+                                                                        "cmd": "/log metrics",
+                                                                        "desc": "View audit event processing speed and throughput stats."
+                                                            },
+                                                            {
+                                                                        "cmd": "/log reset",
+                                                                        "desc": "Reset audit logging configurations back to server defaults."
                                                             },
                                                             {
                                                                         "cmd": "/quarantine user [member]",
-                                                                        "desc": "Quarantine a member and temporarily back up roles."
+                                                                        "desc": "Jail a member and safely back up their original roles."
                                                             },
                                                             {
                                                                         "cmd": "/quarantine remove [member]",
-                                                                        "desc": "Remove quarantine status and restore saved roles."
+                                                                        "desc": "Release a jailed member and restore all saved roles."
                                                             }
                                                 ]
                                     }
@@ -727,7 +863,7 @@
                         "id": "staff_tools",
                         "icon": "ph-wrench",
                         "title": "Staff Tools & Appeals",
-                        "subtitle": "Manage ban appeals, saved moderation presets, and suggestion queues.",
+                        "subtitle": "Interactive ban appeal processing, warning presets, and community suggestion boards.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -735,7 +871,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Interactive ban appeal processing with DM notifications, warning presets, and suggestion boards."
+                                                "text": "Provide banned users a fair, web-authenticated appeal process while streaming review cards to staff channels."
                                     },
                                     {
                                                 "type": "commands",
@@ -743,19 +879,31 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/modpreset set [key] [reason]",
-                                                                        "desc": "Save a reusable warning reason shortcut."
+                                                                        "desc": "Save a reusable moderation warning shortcut."
                                                             },
                                                             {
                                                                         "cmd": "/modpreset list",
                                                                         "desc": "List all saved moderation reason presets."
                                                             },
                                                             {
+                                                                        "cmd": "/modpreset warn [user] [key]",
+                                                                        "desc": "Warn a user instantly using a saved preset key."
+                                                            },
+                                                            {
                                                                         "cmd": "/appeals setup [channel]",
-                                                                        "desc": "Enable appeals and set staff review channel."
+                                                                        "desc": "Enable ban appeals and set staff review channel."
                                                             },
                                                             {
                                                                         "cmd": "/appeals submit [text]",
-                                                                        "desc": "Submit a ban appeal for staff review."
+                                                                        "desc": "Submit a ban appeal for staff evaluation."
+                                                            },
+                                                            {
+                                                                        "cmd": "/appeals list",
+                                                                        "desc": "View open ban appeals awaiting staff decision."
+                                                            },
+                                                            {
+                                                                        "cmd": "/appeals view [id]",
+                                                                        "desc": "Inspect appeal details, user statement, and history."
                                                             },
                                                             {
                                                                         "cmd": "/appeals close [id] [action]",
@@ -763,11 +911,31 @@
                                                             },
                                                             {
                                                                         "cmd": "/suggestion setup [channel]",
-                                                                        "desc": "Set channel where community suggestions post."
+                                                                        "desc": "Set channel where community suggestions publish."
                                                             },
                                                             {
                                                                         "cmd": "/suggestion submit [title]",
                                                                         "desc": "Submit a new suggestion for community voting."
+                                                            },
+                                                            {
+                                                                        "cmd": "/suggestion list",
+                                                                        "desc": "List active community suggestions."
+                                                            },
+                                                            {
+                                                                        "cmd": "/suggestion close [id] [status]",
+                                                                        "desc": "Mark a suggestion Approved, Denied, or In Progress."
+                                                            },
+                                                            {
+                                                                        "cmd": "/brand set [key] [value]",
+                                                                        "desc": "Customize server branding headers on bot embeds."
+                                                            },
+                                                            {
+                                                                        "cmd": "/brand view",
+                                                                        "desc": "View active server embed branding configuration."
+                                                            },
+                                                            {
+                                                                        "cmd": "/brand clear",
+                                                                        "desc": "Reset embed branding back to SeanBot defaults."
                                                             }
                                                 ]
                                     }
@@ -777,7 +945,7 @@
                         "id": "reports",
                         "icon": "ph-flag",
                         "title": "Member Reports",
-                        "subtitle": "Report rule-breakers privately with custom context menus.",
+                        "subtitle": "Discreet, single-click report submissions for moderation review.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -785,14 +953,19 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Empower members to safely report bad actors directly to the moderation team."
+                                                "text": "Give members a safe, private way to flag rule violations or harassment directly to moderators."
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Commands Reference",
                                                 "items": [
                                                             {
+                                                                        "cmd": "/report submit [user] [reason]",
+                                                                        "desc": "Submit a private rule violation report to staff."
+                                                            },
+                                                            {
                                                                         "cmd": "Report User (Context Menu)",
-                                                                        "desc": "Right-click any user -> Apps -> Report User to submit report to staff."
+                                                                        "desc": "Right-click any user -> Apps -> Report User to submit report."
                                                             }
                                                 ]
                                     }
@@ -802,15 +975,15 @@
                         "id": "timeping",
                         "icon": "ph-clock-countdown",
                         "title": "TimePing & Event Pings",
-                        "subtitle": "Scheduled role pings, Discord event sync, and dynamic countdown timers.",
+                        "subtitle": "Automated role pings, Discord event synchronization, and dynamic countdown timers.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Precision Event Reminders"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Schedule automated alerts that ping specific roles prior to events or link alerts to native Discord events."
+                                                "text": "Ensure your community never misses a raid or guild meeting. Schedule multi-interval alerts (24h, 1h, 15m) that ping designated roles automatically."
                                     },
                                     {
                                                 "type": "commands",
@@ -822,27 +995,43 @@
                                                             },
                                                             {
                                                                         "cmd": "/timeping schedule [title] [time] [role]",
-                                                                        "desc": "Schedule a future role ping with text/images."
+                                                                        "desc": "Schedule a future role ping with custom text/images."
                                                             },
                                                             {
                                                                         "cmd": "/timeping add [message] [time]",
-                                                                        "desc": "Attach an event reminder to a message."
+                                                                        "desc": "Attach an event reminder to a message and alert reactors."
                                                             },
                                                             {
                                                                         "cmd": "/timeping my-events",
-                                                                        "desc": "View upcoming scheduled events you joined."
+                                                                        "desc": "View upcoming scheduled events you have joined."
                                                             },
                                                             {
                                                                         "cmd": "/timeping server-events",
-                                                                        "desc": "List all active scheduled events in server."
+                                                                        "desc": "List all active scheduled events in the server."
                                                             },
                                                             {
                                                                         "cmd": "/timeping edit [event_id]",
-                                                                        "desc": "Open live edit panel for an event."
+                                                                        "desc": "Open live edit panel for an active event."
                                                             },
                                                             {
                                                                         "cmd": "/timeping cancel [event_id]",
                                                                         "desc": "Cancel an active event or scheduled alert."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping simulate [time]",
+                                                                        "desc": "Preview exact reminder firing times in advance."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping defaults set",
+                                                                        "desc": "Update server-wide default alert preferences."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping templates list",
+                                                                        "desc": "List saved reminder interval templates."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping auto-watch add [channel]",
+                                                                        "desc": "Auto-watch a specific channel for event posts."
                                                             },
                                                             {
                                                                         "cmd": "/countdown create [title] [time]",
@@ -860,15 +1049,15 @@
                         "id": "timezones",
                         "icon": "ph-globe-stand",
                         "title": "Timezones & World Clocks",
-                        "subtitle": "Convert, compare, and display member timezones with time maps.",
+                        "subtitle": "Seamless timezone detection, comparisons, and interactive community time maps.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Global Time Synchronization"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Save local timezones manually or detect automatically to view live community time maps."
+                                                "text": "Eliminate timezone math for international gaming groups. Members can detect or set their timezone to display local times and view live community time maps."
                                     },
                                     {
                                                 "type": "commands",
@@ -876,15 +1065,23 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/timezone detect",
-                                                                        "desc": "Automatically detect your timezone by local time."
+                                                                        "desc": "Automatically detect your timezone by entering local time."
                                                             },
                                                             {
                                                                         "cmd": "/timezone compare [user]",
-                                                                        "desc": "Compare your local time with another member."
+                                                                        "desc": "Compare your local time directly with another member."
                                                             },
                                                             {
                                                                         "cmd": "/timezone map",
-                                                                        "desc": "Get a link to interactive Community Timezone Map."
+                                                                        "desc": "Get a link to the interactive Community Timezone Map."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone admin-map",
+                                                                        "desc": "Get administrative view of community timezone map."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone admin-set [user] [tz]",
+                                                                        "desc": "Force set a member's local timezone (Admin only)."
                                                             },
                                                             {
                                                                         "cmd": "/timezone set [tz]",
@@ -902,7 +1099,7 @@
                         "id": "time_converter",
                         "icon": "ph-clock-user",
                         "title": "Time & Timestamp Converter",
-                        "subtitle": "Convert event times across timezones and generate dynamic Discord timestamps.",
+                        "subtitle": "Convert times across timezones and generate dynamic Discord timestamp tags.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -910,7 +1107,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Convert local times and generate Discord `<t:unix:F>` dynamic timestamp tags."
+                                                "text": "Convert event times between timezones and generate Discord `<t:unix:F>` dynamic timestamp markdown tags that display in every member's local time."
                                     },
                                     {
                                                 "type": "commands",
@@ -936,15 +1133,15 @@
                         "id": "calendar",
                         "icon": "ph-calendar",
                         "title": "Community Calendar",
-                        "subtitle": "Auto-updating interactive event calendar synced with Google Sheets.",
+                        "subtitle": "Real-time auto-updating community event dashboard and schedule manager.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Live Event Dashboard"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Parses spreadsheet schedules to provide an always-up-to-date, interactive monthly overview."
+                                                "text": "Publish a live, auto-updating community calendar directly in your server. Members can view monthly events, upcoming tournaments, and scheduled raids."
                                     },
                                     {
                                                 "type": "commands",
@@ -952,11 +1149,11 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/calendar view",
-                                                                        "desc": "View current event calendar manually."
+                                                                        "desc": "View current event calendar manually in chat."
                                                             },
                                                             {
-                                                                        "cmd": "/calendar set_channel",
-                                                                        "desc": "Set up live auto-updating calendar dashboard."
+                                                                        "cmd": "/calendar set_channel [channel]",
+                                                                        "desc": "Set up live auto-updating event calendar dashboard."
                                                             }
                                                 ]
                                     }
@@ -966,7 +1163,7 @@
                         "id": "raids",
                         "icon": "ph-swords",
                         "title": "Raid & Event Organizer",
-                        "subtitle": "Create scheduled raid signups with role reactions and strategy options.",
+                        "subtitle": "Multi-role raid builder with localized times and strategy signups.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -974,7 +1171,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Schedule multi-role gaming events with reaction embeds and timezone localization."
+                                                "text": "Schedule gaming events with role signup embeds, localized event times, and strategy requirements."
                                     },
                                     {
                                                 "type": "commands",
@@ -990,7 +1187,7 @@
                                                             },
                                                             {
                                                                         "cmd": "/raid list",
-                                                                        "desc": "Display all active raid signups running in server."
+                                                                        "desc": "Display all active raid signups running in the server."
                                                             },
                                                             {
                                                                         "cmd": "/raid my",
@@ -998,11 +1195,19 @@
                                                             },
                                                             {
                                                                         "cmd": "/raid edit [msg_id]",
-                                                                        "desc": "Edit title, description, or time of a raid."
+                                                                        "desc": "Edit title, description, or time of an active raid."
                                                             },
                                                             {
                                                                         "cmd": "/raid cancel [msg_id]",
-                                                                        "desc": "Cancel a raid event and clean up reactions."
+                                                                        "desc": "Cancel a raid event and clean up signup reactions."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid lock [msg_id]",
+                                                                        "desc": "Lock raid signups to freeze active rosters."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid unlock [msg_id]",
+                                                                        "desc": "Re-open raid signups for new players."
                                                             }
                                                 ]
                                     }
@@ -1012,7 +1217,7 @@
                         "id": "raidpolls",
                         "icon": "ph-users-three",
                         "title": "Advanced Raid Polls",
-                        "subtitle": "Coordinate multiplayer raids and event signups with roster embeds.",
+                        "subtitle": "Interactive selection menus, dynamic waitlists, and automated roster promotions.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1020,7 +1225,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Interactive selection menus or reaction modes, dynamic waitlists, and automatic promotions."
+                                                "text": "Coordinate multi-slot raids with interactive dropdown menus, main roster caps, and automated waitlist promotions."
                                     },
                                     {
                                                 "type": "commands",
@@ -1028,7 +1233,7 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/raidpoll",
-                                                                        "desc": "Opens setup modal to create single or multi-slot raid signup boards."
+                                                                        "desc": "Open setup modal to build interactive multi-role raid signup boards."
                                                             }
                                                 ]
                                     }
@@ -1038,15 +1243,15 @@
                         "id": "teamup_fed",
                         "icon": "ph-arrows-merge",
                         "title": "Team-Up Federation Mesh",
-                        "subtitle": "Broadcast team-up lobbies across allied network servers with proxy threads.",
+                        "subtitle": "Broadcast LFG dungeon lobbies across allied server networks with proxy threads.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Cross-Server Federation Mesh"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Creating a team-up board request broadcasts proxy embeds across all network nodes."
+                                                "text": "Unite allied communities. Posting a Team-Up lobby automatically broadcasts synced proxy embeds to partner servers."
                                     },
                                     {
                                                 "type": "commands",
@@ -1054,7 +1259,7 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/teamup_federation",
-                                                                        "desc": "Opens Team-Up Federation control panel to toggle broadcasts."
+                                                                        "desc": "Open Team-Up Federation control panel to toggle broadcast nodes."
                                                             }
                                                 ]
                                     }
@@ -1064,15 +1269,15 @@
                         "id": "temp_vc",
                         "icon": "ph-microphone",
                         "title": "Temporary Voice Channels",
-                        "subtitle": "Join-to-Create dynamic voice channels with owner controls.",
+                        "subtitle": "Join-to-Create voice channels with complete owner customization controls.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Join-to-Create Voice Generator"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Spawns private voice channels when members join with full owner controls."
+                                                "text": "Members join a generator voice channel and SeanBot instantly creates a private, custom voice channel for them with full owner controls."
                                     },
                                     {
                                                 "type": "commands",
@@ -1080,27 +1285,35 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/tempvc setup [category]",
-                                                                        "desc": "Set up Join-to-Create generator channel."
+                                                                        "desc": "Set up Join-to-Create generator voice channel."
                                                             },
                                                             {
                                                                         "cmd": "/tempvc claim",
-                                                                        "desc": "Claim ownership of orphaned temporary voice channel."
+                                                                        "desc": "Claim ownership of an orphaned temporary voice channel."
                                                             },
                                                             {
                                                                         "cmd": "/tempvc save [template]",
-                                                                        "desc": "Save current temp channel setup as a template."
+                                                                        "desc": "Save your current temp channel setup as a template."
+                                                            },
+                                                            {
+                                                                        "cmd": "/tempvc load [template]",
+                                                                        "desc": "Create a new temp voice channel using a saved template."
                                                             },
                                                             {
                                                                         "cmd": "/tempvc name [new_name]",
-                                                                        "desc": "Rename active temporary voice channel."
+                                                                        "desc": "Rename your active temporary voice channel."
                                                             },
                                                             {
                                                                         "cmd": "/tempvc limit [count]",
-                                                                        "desc": "Set maximum member limit for voice channel."
+                                                                        "desc": "Set maximum member limit for your voice channel."
                                                             },
                                                             {
                                                                         "cmd": "/tempvc lock",
                                                                         "desc": "Lock temp channel to prevent new members joining."
+                                                            },
+                                                            {
+                                                                        "cmd": "/tempvc unlock",
+                                                                        "desc": "Unlock temp channel for everyone."
                                                             }
                                                 ]
                                     }
@@ -1110,15 +1323,15 @@
                         "id": "tickets",
                         "icon": "ph-ticket",
                         "title": "Support Ticket System",
-                        "subtitle": "Private support ticket channels with claim management and priority levels.",
+                        "subtitle": "Private support tickets with claim controls, priority tags, and transcript archives.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Streamlined Support Workflows"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Deploy interactive support panels where members click buttons to open private ticket channels."
+                                                "text": "Deploy interactive support panels where members click to open private ticket channels. Staff members can claim tickets, set priority levels, and post internal notes."
                                     },
                                     {
                                                 "type": "commands",
@@ -1142,7 +1355,7 @@
                                                             },
                                                             {
                                                                         "cmd": "/ticket priority [level]",
-                                                                        "desc": "Set priority level for active ticket."
+                                                                        "desc": "Set priority level for active ticket (Low, Medium, High, Emergency)."
                                                             },
                                                             {
                                                                         "cmd": "/ticket staffsay [msg]",
@@ -1160,15 +1373,15 @@
                         "id": "activitytracker",
                         "icon": "ph-chart-line-up",
                         "title": "Activity Tracker",
-                        "subtitle": "Monitor engagement and automate Active/Inactive role assignments.",
+                        "subtitle": "Track member engagement and automate Active/Inactive role assignments.",
                         "content": [
                                     {
                                                 "type": "heading",
-                                                "text": "Overview"
+                                                "text": "Automated Engagement Analytics"
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Monitors community engagement across messages, reactions, voice chat, and slash commands."
+                                                "text": "Monitor chat messages, voice attendance, reactions, and command activity to automatically reward active members."
                                     },
                                     {
                                                 "type": "commands",
@@ -1176,11 +1389,19 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/activity setup [days]",
-                                                                        "desc": "Opts server into activity tracking and sets inactivity threshold."
+                                                                        "desc": "Opt server into activity tracking and set inactivity threshold."
+                                                            },
+                                                            {
+                                                                        "cmd": "/activity status",
+                                                                        "desc": "View your current server activity ranking and score."
+                                                            },
+                                                            {
+                                                                        "cmd": "/activity refresh",
+                                                                        "desc": "Force immediate recalculation of active member roles."
                                                             },
                                                             {
                                                                         "cmd": "/activity disable",
-                                                                        "desc": "Disables activity tracking for server and cleans up roles."
+                                                                        "desc": "Disable activity tracking for server and clean up roles."
                                                             }
                                                 ]
                                     }
@@ -1206,19 +1427,31 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/autopin toggle",
-                                                                        "desc": "Enables or disables Auto-Pin system globally across server."
+                                                                        "desc": "Enable or disable Auto-Pin system globally across server."
                                                             },
                                                             {
                                                                         "cmd": "/autopin set_threshold [num]",
-                                                                        "desc": "Sets default reactions required to auto-pin."
+                                                                        "desc": "Set default reactions required to auto-pin."
                                                             },
                                                             {
                                                                         "cmd": "/autopin set_emoji [emoji]",
-                                                                        "desc": "Sets emoji used to trigger community pins."
+                                                                        "desc": "Set emoji used to trigger community pins."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autopin channel_override",
+                                                                        "desc": "Configure custom pin thresholds per channel."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autopin toggle_channel",
+                                                                        "desc": "Toggle auto-pin functionality for a specific channel."
                                                             },
                                                             {
                                                                         "cmd": "/autopin settings",
-                                                                        "desc": "Displays current auto-pin configurations and overrides."
+                                                                        "desc": "Display current auto-pin configurations and overrides."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autopin stats",
+                                                                        "desc": "View total messages pinned by community reactions."
                                                             }
                                                 ]
                                     }
@@ -1228,7 +1461,7 @@
                         "id": "starboard",
                         "icon": "ph-star",
                         "title": "Starboard Engine",
-                        "subtitle": "Automatically highlight top-reacted community posts in a starboard channel.",
+                        "subtitle": "Highlight top-reacted community messages in a starboard showcase channel.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1236,7 +1469,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "When a message receives star reactions (\u2b50), SeanBot posts a highlight embed."
+                                                "text": "When a message receives star reactions (\u2b50), SeanBot posts a highlight embed to the starboard channel."
                                     },
                                     {
                                                 "type": "commands",
@@ -1244,15 +1477,23 @@
                                                 "items": [
                                                             {
                                                                         "cmd": "/starboard setup [channel]",
-                                                                        "desc": "Set target starboard channel."
+                                                                        "desc": "Set target starboard showcase channel."
                                                             },
                                                             {
                                                                         "cmd": "/starboard threshold [num]",
                                                                         "desc": "Set required star reactions to trigger highlight."
                                                             },
                                                             {
+                                                                        "cmd": "/starboard channel",
+                                                                        "desc": "Inspect currently configured starboard channel."
+                                                            },
+                                                            {
                                                                         "cmd": "/starboard stats server",
                                                                         "desc": "View server-wide starboard statistics."
+                                                            },
+                                                            {
+                                                                        "cmd": "/starboard stats user [member]",
+                                                                        "desc": "View starboard statistics for a specific member."
                                                             }
                                                 ]
                                     }
@@ -1262,7 +1503,7 @@
                         "id": "emojis",
                         "icon": "ph-smiley-sticker",
                         "title": "Emoji Suite & Locks",
-                        "subtitle": "Track usage stats, role-lock custom emojis, and manage cooldowns.",
+                        "subtitle": "Track emoji usage, role-lock custom emojis, and manage chat cooldowns.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1270,7 +1511,7 @@
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Track chat and reaction usage to clean up dead emojis and restrict custom emojis to specific roles."
+                                                "text": "Track chat and reaction usage to purge unused emojis and restrict custom emojis to specific roles."
                                     },
                                     {
                                                 "type": "commands",
@@ -1286,15 +1527,27 @@
                                                             },
                                                             {
                                                                         "cmd": "/emoji lock [emoji] [role]",
-                                                                        "desc": "Restrict an emoji to a specific role."
+                                                                        "desc": "Restrict a custom emoji to a specific role."
                                                             },
                                                             {
                                                                         "cmd": "/emoji unlock [emoji] [role]",
                                                                         "desc": "Remove role restrictions from an emoji."
                                                             },
                                                             {
+                                                                        "cmd": "/emoji react_lock_bulk",
+                                                                        "desc": "Bulk lock reactions to specific permissions."
+                                                            },
+                                                            {
+                                                                        "cmd": "/emoji set_guild_cooldown",
+                                                                        "desc": "Set server-wide emoji reaction cooldown."
+                                                            },
+                                                            {
                                                                         "cmd": "/emoji suggest_purge [days]",
                                                                         "desc": "See list of custom emojis not used recently."
+                                                            },
+                                                            {
+                                                                        "cmd": "/emoji purge_dead",
+                                                                        "desc": "Delete unused emojis to free up server slots."
                                                             }
                                                 ]
                                     }
@@ -1329,6 +1582,22 @@
                                                             {
                                                                         "cmd": "/react [emoji] [link]",
                                                                         "desc": "React to target message with an animated custom emoji."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autoping type [method]",
+                                                                        "desc": "Configure automated reaction ping methods."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autoping roles",
+                                                                        "desc": "Manage roles permitted to trigger reaction pings."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autoping limits",
+                                                                        "desc": "Set rate limits for automated reaction pings."
+                                                            },
+                                                            {
+                                                                        "cmd": "/autoping authors",
+                                                                        "desc": "Configure author permission checks for reaction pings."
                                                             }
                                                 ]
                                     }
@@ -1367,6 +1636,10 @@
                                                             {
                                                                         "cmd": "/reactionping limits [max]",
                                                                         "desc": "Adjust maximum user limit for reaction pings."
+                                                            },
+                                                            {
+                                                                        "cmd": "/reactionping authors",
+                                                                        "desc": "Configure author permission checks for reaction pings."
                                                             }
                                                 ]
                                     }
@@ -1376,7 +1649,7 @@
                         "id": "embeds",
                         "icon": "ph-layout",
                         "title": "Visual Embed Builder",
-                        "subtitle": "Interactive rich embed designer and automation trigger suite.",
+                        "subtitle": "Interactive rich embed designer and template automation triggers.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1403,6 +1676,14 @@
                                                                         "desc": "Retrieve and post saved embed template."
                                                             },
                                                             {
+                                                                        "cmd": "/embed delete [template]",
+                                                                        "desc": "Delete a saved embed template."
+                                                            },
+                                                            {
+                                                                        "cmd": "/embed disable",
+                                                                        "desc": "Disable embed builder for specific channels."
+                                                            },
+                                                            {
                                                                         "cmd": "/embed list",
                                                                         "desc": "View and manage saved custom embed templates."
                                                             }
@@ -1414,7 +1695,7 @@
                         "id": "autoreply",
                         "icon": "ph-chat-centered-text",
                         "title": "Auto Mention Replies",
-                        "subtitle": "Automated replies triggered when members mention you.",
+                        "subtitle": "Automated custom replies triggered when members mention you in chat.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1426,6 +1707,7 @@
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Commands Reference",
                                                 "items": [
                                                             {
                                                                         "cmd": "/r set [reply_message]",
@@ -1438,6 +1720,10 @@
                                                             {
                                                                         "cmd": "/r toggle [status]",
                                                                         "desc": "Enable or disable automated mention reply."
+                                                            },
+                                                            {
+                                                                        "cmd": "/r admin clear [user]",
+                                                                        "desc": "Clear automated mention reply for a user (Admin only)."
                                                             }
                                                 ]
                                     }
@@ -1447,7 +1733,7 @@
                         "id": "reminders",
                         "icon": "ph-bell",
                         "title": "Personal Reminders",
-                        "subtitle": "Right-click message reminders with snooze controls.",
+                        "subtitle": "Right-click message reminders with natural language time parsing.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1459,14 +1745,19 @@
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Commands Reference",
                                                 "items": [
                                                             {
-                                                                        "cmd": "Remind Me (Context Menu)",
-                                                                        "desc": "Right-click message -> Apps -> Remind Me."
+                                                                        "cmd": "/remindme [time] [text]",
+                                                                        "desc": "Set a personal reminder with natural date parsing."
                                                             },
                                                             {
                                                                         "cmd": "/reminders",
-                                                                        "desc": "View and cancel active message reminders."
+                                                                        "desc": "View and cancel active personal reminders."
+                                                            },
+                                                            {
+                                                                        "cmd": "Remind Me (Context Menu)",
+                                                                        "desc": "Right-click message -> Apps -> Remind Me."
                                                             }
                                                 ]
                                     }
@@ -1535,6 +1826,10 @@
                                                             {
                                                                         "cmd": "/threadwatch remove [thread]",
                                                                         "desc": "Remove thread from watch list."
+                                                            },
+                                                            {
+                                                                        "cmd": "/threadwatch setup",
+                                                                        "desc": "Configure thread watcher default intervals."
                                                             }
                                                 ]
                                     }
@@ -1571,8 +1866,24 @@
                                                                         "desc": "Display voice channel popularity heatmap."
                                                             },
                                                             {
+                                                                        "cmd": "/voice streaks",
+                                                                        "desc": "Display most consistent active voice members."
+                                                            },
+                                                            {
                                                                         "cmd": "/voice graph [member]",
                                                                         "desc": "Render historical weekly voice activity chart."
+                                                            },
+                                                            {
+                                                                        "cmd": "/voice claim",
+                                                                        "desc": "Claim ownership of an orphaned voice channel."
+                                                            },
+                                                            {
+                                                                        "cmd": "/voice kick [member]",
+                                                                        "desc": "Kick a member out of your temp voice channel."
+                                                            },
+                                                            {
+                                                                        "cmd": "/voice ban [member]",
+                                                                        "desc": "Ban a member from joining your voice channel."
                                                             }
                                                 ]
                                     }
@@ -1607,6 +1918,10 @@
                                                             {
                                                                         "cmd": "/stats channels",
                                                                         "desc": "View status of all configured stat counter channels."
+                                                            },
+                                                            {
+                                                                        "cmd": "/stats refresh",
+                                                                        "desc": "Force immediate refresh of all live counter channel names."
                                                             }
                                                 ]
                                     }
@@ -1628,6 +1943,7 @@
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Commands Reference",
                                                 "items": [
                                                             {
                                                                         "cmd": "/returning_role set [role]",
@@ -1636,6 +1952,10 @@
                                                             {
                                                                         "cmd": "/returning_role view",
                                                                         "desc": "View current returning member role setting."
+                                                            },
+                                                            {
+                                                                        "cmd": "/returning_role clear",
+                                                                        "desc": "Clear returning member role configuration."
                                                             }
                                                 ]
                                     }
@@ -1668,8 +1988,36 @@
                                                                         "desc": "Join a thread network using access token."
                                                             },
                                                             {
+                                                                        "cmd": "/thread network info",
+                                                                        "desc": "View details of current connected network hub."
+                                                            },
+                                                            {
+                                                                        "cmd": "/thread network dashboard",
+                                                                        "desc": "Open network dashboard for linked servers."
+                                                            },
+                                                            {
+                                                                        "cmd": "/thread network health",
+                                                                        "desc": "Check latency and status of linked servers."
+                                                            },
+                                                            {
                                                                         "cmd": "/thread audit [thread_id]",
                                                                         "desc": "Audit a thread showing recent replies and metrics."
+                                                            },
+                                                            {
+                                                                        "cmd": "/relay create [name]",
+                                                                        "desc": "Create a cross-server relay channel connection."
+                                                            },
+                                                            {
+                                                                        "cmd": "/relay link [code]",
+                                                                        "desc": "Link local channel to remote relay network."
+                                                            },
+                                                            {
+                                                                        "cmd": "/identity set [name]",
+                                                                        "desc": "Set global network identity name."
+                                                            },
+                                                            {
+                                                                        "cmd": "/identity view",
+                                                                        "desc": "View global network identity profile."
                                                             }
                                                 ]
                                     }
@@ -1691,6 +2039,7 @@
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Commands Reference",
                                                 "items": [
                                                             {
                                                                         "cmd": "/duel",
@@ -1712,6 +2061,7 @@
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Cat Commands",
                                                 "items": [
                                                             {
                                                                         "cmd": "/cat fact",
@@ -1722,6 +2072,14 @@
                                                                         "desc": "Get a random cat picture."
                                                             },
                                                             {
+                                                                        "cmd": "/cat gif",
+                                                                        "desc": "Get a random animated cat GIF."
+                                                            },
+                                                            {
+                                                                        "cmd": "/cat search [breed]",
+                                                                        "desc": "Search cat pictures by breed."
+                                                            },
+                                                            {
                                                                         "cmd": "/cat says [text]",
                                                                         "desc": "Generate image of cat saying custom text."
                                                             }
@@ -1729,14 +2087,27 @@
                                     },
                                     {
                                                 "type": "heading",
-                                                "text": "Discord Quotes"
+                                                "text": "Discord Quotes & Slaps"
                                     },
                                     {
                                                 "type": "commands",
+                                                "title": "Fun Commands",
                                                 "items": [
                                                             {
                                                                         "cmd": "/discquote [user] [text]",
                                                                         "desc": "Generate a realistic fake Discord quote screenshot."
+                                                            },
+                                                            {
+                                                                        "cmd": "/slap [user]",
+                                                                        "desc": "Slap a user with fun randomized items."
+                                                            },
+                                                            {
+                                                                        "cmd": "/slap stats",
+                                                                        "desc": "View your slap statistics and rank."
+                                                            },
+                                                            {
+                                                                        "cmd": "/slap leaderboard",
+                                                                        "desc": "View top slappers in the server."
                                                             }
                                                 ]
                                     }
@@ -1771,6 +2142,14 @@
                                                             {
                                                                         "cmd": "/ping",
                                                                         "desc": "Check bot API latency in milliseconds."
+                                                            },
+                                                            {
+                                                                        "cmd": "/invite",
+                                                                        "desc": "Get official SeanBot server invite links."
+                                                            },
+                                                            {
+                                                                        "cmd": "/8ball [question]",
+                                                                        "desc": "Ask the Magic 8-Ball a question."
                                                             }
                                                 ]
                                     }
