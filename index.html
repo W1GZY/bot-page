@@ -1132,16 +1132,7 @@
                                                             {
                                                                         "cmd": "/reload_commands",
                                                                         "desc": "Refresh the bot's commands for your server."
-                                                            },
-                                                            {
-                                                                        "cmd": "/ram",
-                                                                        "desc": "Check bot connection speed and status."
-                                                            }
-                                                ]
-                                    }
-                        ]
-            },
-            {
+                                                            },            {
                         "id": "prefix",
                         "icon": "ph-hash",
                         "title": "Custom Prefixes",
@@ -3150,12 +3141,7 @@
                                     {
                                                 "type": "commands",
                                                 "title": "Commands",
-                                                "items": [
-                                                            {
-                                                                        "cmd": "/ram",
-                                                                        "desc": "Check bot memory and system speed."
-                                                            },
-                                                            {
+                                                "items": [                                                            {
                                                                         "cmd": "/serverinfo",
                                                                         "desc": "See server member counts, creation date, and role info."
                                                             },
@@ -3176,29 +3162,14 @@
                         ]
             },
             {
-                        "id": "faq",
-                        "icon": "ph-question",
-                        "title": "Frequently Asked Questions",
-                        "subtitle": "Helpful answers to common setup questions.",
-                        "content": [
-                                    {
-                                                "type": "heading",
-                                                "text": "Why aren't commands showing up when I type / ?"
-                                    },
-                                    {
-                                                "type": "text",
-                                                "text": "Make sure SeanBot was added with slash command permissions when invited."
-                                    },
-                                    {
-                                                "type": "heading",
-                                                "text": "Why isn't the bot giving out roles or muting members?"
-                                    },
-                                    {
-                                                "type": "text",
-                                                "text": "Make sure SeanBot's role in Server Settings -> Roles is moved above the member roles it manages."
-                                    }
-                        ]
-            }
+            "id": "faq",
+            "icon": "ph-question",
+            "title": "Frequently Asked Questions",
+            "subtitle": "Common troubleshooting questions and answers.",
+            "content": [
+                { "type": "text", "text": "Work In Progress." }
+            ]
+        }
 ];
 
         document.addEventListener('DOMContentLoaded', () => {
