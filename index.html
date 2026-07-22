@@ -446,7 +446,16 @@
             .callout-box { padding: 10px 12px; }
             code { word-break: break-all; font-size: 0.8em; }
         }
-    </style>
+    
+        /* Single Module Article View in index.html */
+        #view-docs .docs-article {
+            display: none;
+        }
+        #view-docs .docs-article.active-doc {
+            display: block;
+            animation: slideUpFade 0.25s ease-out forwards;
+        }
+</style>
 </head>
 <body>
 
