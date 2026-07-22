@@ -404,10 +404,11 @@
         .tos-section h2 { color: var(--accent); font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
         .tos-section p, .tos-section li { color: #ddd; font-size: 0.9rem; line-height: 1.5; }
 
-        /* Responsive Breakpoints */
-        .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 4px; }
-        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 45; }
-        .sidebar-overlay.show { display: block; }
+        /* Responsive Breakpoints & Phone Support */
+        .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); }
+        .hamburger:hover { background: rgba(255, 255, 255, 0.08); }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 90; }
+        .sidebar-overlay.show { display: block; animation: fadeIn 0.2s ease-out; }
 
         .tab-view { display: none; }
         .tab-view.active-tab { display: block; animation: slideUpFade 0.2s ease-out forwards; }
@@ -416,17 +417,32 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 1000px) {
-            .sidebar { transform: translateX(-100%); width: 260px; }
+            .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); width: 280px; z-index: 100; box-shadow: 4px 0 24px rgba(0,0,0,0.6); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
             .sidebar.mobile-open { transform: translateX(0); }
-            .content-wrapper { margin-left: 0; }
+            .content-wrapper { margin-left: 0; width: 100%; max-width: 100vw; overflow-x: hidden; }
             .hamburger { display: block; }
-            .top-header { padding: 0 20px; }
-            .content { padding: 24px 20px; }
+            .top-header { padding: 0 16px; }
+            .content { padding: 20px 16px; }
         }
 
-        @media (max-width: 600px) {
-            .hero-title { font-size: 1.8rem; }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .responsive-grid-2 { grid-template-columns: 1fr; gap: 14px; }
+            .hero-section { padding: 28px 16px; }
+            .hero-title { font-size: 2rem; }
+            .hero-desc { font-size: 0.95rem; }
+            .filter-pills { display: flex; overflow-x: auto; width: 100%; padding-bottom: 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+            .pill-btn { flex-shrink: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 1.65rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .btn-large { width: 100%; justify-content: center; min-height: 48px; }
             .page-footer { flex-direction: column; gap: 12px; text-align: center; }
+            .docs-article { padding: 16px; }
+            .callout-box { padding: 10px 12px; }
+            code { word-break: break-all; font-size: 0.8em; }
         }
     </style>
 </head>
@@ -2473,15 +2489,28 @@
                 if (show) {
                     sidebar?.classList.add('mobile-open');
                     overlay?.classList.add('show');
+                    document.body.style.overflow = 'hidden';
                 } else {
                     sidebar?.classList.remove('mobile-open');
                     overlay?.classList.remove('show');
+                    document.body.style.overflow = '';
                 }
             }
 
             openBtn?.addEventListener('click', () => toggleSidebar(true));
             closeBtn?.addEventListener('click', () => toggleSidebar(false));
             overlay?.addEventListener('click', () => toggleSidebar(false));
+
+            // Auto-close sidebar on mobile link click
+            sidebar?.addEventListener('click', (e) => {
+                if (e.target.closest('a') || e.target.closest('.sidebar-toc-link') || e.target.closest('.nav-link')) {
+                    if (window.innerWidth <= 1000) toggleSidebar(false);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') toggleSidebar(false);
+            });
         }
     </script>
 </body>

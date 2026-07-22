@@ -123,15 +123,23 @@
             if (show) {
                 sidebar?.classList.add('mobile-open');
                 overlay?.classList.add('show');
+                document.body.style.overflow = 'hidden';
             } else {
                 sidebar?.classList.remove('mobile-open');
                 overlay?.classList.remove('show');
+                document.body.style.overflow = '';
             }
         }
 
         openBtn?.addEventListener('click', () => toggleSidebar(true));
         closeBtn?.addEventListener('click', () => toggleSidebar(false));
         overlay?.addEventListener('click', () => toggleSidebar(false));
+
+        sidebar?.addEventListener('click', (e) => {
+            if (e.target.closest('a') || e.target.closest('.nav-link')) {
+                if (window.innerWidth <= 1000) toggleSidebar(false);
+            }
+        });
         
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') toggleSidebar(false);
