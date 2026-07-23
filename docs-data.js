@@ -1613,6 +1613,58 @@ const docsData = [
                 "text": "Draft, design, preview, and output custom rich Discord embeds directly in chat."
             },
             {
+                "type": "heading",
+                "text": "Choosing What You Are Building"
+            },
+            {
+                "type": "text",
+                "text": "Start by deciding whether the embed is a one-time message, an automated trigger, or an interactive tool. Manual embeds are best for announcements, rules, and polished staff posts. Trigger embeds are best for welcome messages, leave logs, boost alerts, recurring posts, and command responses. Ticket Creation Panel embeds are best when members should press a button to open a private support channel."
+            },
+            {
+                "type": "list",
+                "title": "Recommended Workflows",
+                "items": [
+                    "Announcement or rules post: write the content, add fields for sections, add link buttons only when users need to open external resources, then send manually.",
+                    "Welcome or event automation: write with placeholders such as `{user_mention}`, `{guild_name}`, and `{member_count}`, then select the matching trigger in the publish step.",
+                    "Ticket panel: design the support message, add one or more non-link buttons in the Button Builder, select Ticket Creation Panel in the publish step, choose the ticket category, and deploy."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Ticket Button Rule",
+                "text": "For ticket panels, Primary, Secondary, Success, and Danger buttons open tickets automatically. Do not use Link style for ticket-opening buttons. You can set the label, style, emoji, and row; SeanBot generates the internal action IDs for you."
+            },
+            {
+                "type": "heading",
+                "text": "Creating a Ticket Panel Embed"
+            },
+            {
+                "type": "list",
+                "title": "Step-by-step",
+                "items": [
+                    "Open the dashboard Embed Builder and build the message members should see, such as Support, Appeals, Bug Reports, or Partner Requests.",
+                    "Go to the Button Builder and add a button for each ticket path. Example labels: `Open Ticket`, `Report a Bug`, `Appeal Punishment`, or `Contact Staff`.",
+                    "Use Primary for the main support action, Success for positive actions, Danger for urgent reports, and Secondary for lower-priority departments.",
+                    "Leave the action payload as-is unless you are making a non-ticket interactive embed. Ticket panels ignore custom action payloads and generate persistent ticket button IDs automatically.",
+                    "Go to Broadcast & Publish, select Ticket Creation Panel, choose the deploy channel and ticket category, set naming/max-open/cooldown options, then deploy."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Common Embed Patterns"
+            },
+            {
+                "type": "list",
+                "title": "Useful examples",
+                "items": [
+                    "Support hub: title `Need help?`, description with expected response time, fields for rules before opening, buttons for `General Support`, `Bug Report`, and `Staff Contact`.",
+                    "Rules message: one embed per rule category, fields for short sections, link buttons to external policy pages if needed.",
+                    "Role picker: use buttons with role action presets when the goal is assigning roles, not opening tickets.",
+                    "Recurring reminder: keep the embed short, select Recurring in the publish step, and avoid buttons unless users need an action."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
