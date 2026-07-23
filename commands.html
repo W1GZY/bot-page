@@ -513,6 +513,46 @@
     </div>
 
     <script>
+    
+    function getDocModuleForCommand(cmdName, categoryId) {
+        const name = (cmdName || '').toLowerCase();
+        const cat = (categoryId || '').toLowerCase();
+
+        if (name.includes('w101') || name.includes('calc') || name.includes('damage')) return 'w101';
+        if (name.includes('beastmoon')) return 'beastmoon';
+        if (name.includes('pet')) return 'pet_tome';
+        if (name.includes('spell')) return 'spells';
+        if (name.includes('teamup')) return 'teamup_w101';
+        if (name.includes('reagent') || name.includes('tc') || name.includes('empower')) return 'value_reagent';
+        if (name.includes('boss') || name.includes('strategy') || name.includes('cheat')) return 'strategy';
+        if (name.includes('tapestry')) return 'tapestry';
+        if (name.includes('ticket')) return 'tickets';
+        if (name.includes('tempvc') || name.includes('voice')) return 'temp_vc';
+        if (name.includes('timezone')) return 'timezones';
+        if (name.includes('timeping') || name.includes('timestamp')) return 'timeping';
+        if (name.includes('translate')) return 'translate_cog';
+        if (name.includes('remind')) return 'reminders';
+        if (name.includes('emoji')) return 'emojis';
+        if (name.includes('reaction')) return 'reactions';
+        if (name.includes('embed')) return 'embeds';
+        if (name.includes('autopin') || name.includes('pin')) return 'autopin';
+        if (name.includes('starboard') || name.includes('star')) return 'starboard';
+        if (name.includes('loa') || name.includes('quarantine') || name.includes('diagnose') || name.includes('staff')) return 'staff_tools';
+        if (name.includes('warn')) return 'warn_cog';
+        if (name.includes('kick') || name.includes('ban') || name.includes('unban') || name.includes('mute') || name.includes('purge') || name.includes('nick')) return 'moderation';
+        if (name.includes('scam') || name.includes('antiraid') || name.includes('raid')) return 'antiraid';
+        if (name.includes('log') || name.includes('invite')) return 'logging';
+        if (name.includes('activity')) return 'activitytracker';
+        if (name.includes('stat')) return 'stats';
+
+        if (cat.includes('mod')) return 'moderation';
+        if (cat.includes('staff')) return 'staff_tools';
+        if (cat.includes('w101') || cat.includes('gaming')) return 'w101';
+        if (cat.includes('util')) return 'general_sys';
+
+        return 'quickstart';
+    }
+
     function initCommandsPage() {
         const feedContainer = document.getElementById('commandsFeedContainer');
         const tocContainer = document.getElementById('tocSidebarContainer');
@@ -551,18 +591,22 @@
                 return (order[a.type] || 99) - (order[b.type] || 99);
             });
 
-            const cardsHTML = sortedCommands.map(cmd => `
-                <div class="cmd-card">
+            const cardsHTML = sortedCommands.map(cmd => {
+                const docId = getDocModuleForCommand(cmd.name, category.id);
+                return `
+                <div class="cmd-card" onclick="switchTab('docs'); setTimeout(()=>activateDoc('${docId}'), 50);" style="cursor: pointer; transition: all var(--transition-fast);" title="Click to view ${cmd.name} documentation">
                     <div class="cmd-header">
                         <p class="cmd-name">${cmd.name}</p>
-                        <div class="badge-container">
+                        <div class="badge-container" style="display: flex; align-items: center; gap: 8px;">
                             <span class="badge ${cmd.type}">${cmd.badge}</span>
                             ${cmd.isNew ? '<span class="badge new">New!</span>' : ''}
+                            <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 3px;"><i class="ph ph-book-open"></i> Docs ➔</span>
                         </div>
                     </div>
                     <p class="cmd-desc">${cmd.desc}</p>
                 </div>
-            `).join('');
+            `;
+            }).join('');
 
             const section = document.createElement('section');
             section.className = 'cmd-section';
