@@ -43,8 +43,7 @@
     <!-- Doc Search Filter -->
     <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
         <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-        <input type="text" id="docSearch" placeholder="Search 46+ documentation modules or commands... (Press Ctrl + K)">
-        <kbd>Ctrl K</kbd>
+        <input type="text" id="docSearch" placeholder="Search documentation modules or commands...">
     </div>
 
     <!-- Documentation Layout Grid -->
@@ -2530,15 +2529,6 @@ const docsData = [
                 activateDoc(firstMatch);
             } else if (!query && docsData.length > 0) {
                 activateDoc(docsData[0].id);
-            }
-        });
-
-        // Keyboard Shortcut: Ctrl + K or Cmd + K to focus search
-        document.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-                e.preventDefault();
-                searchInput?.focus();
-                searchInput?.select();
             }
         });
     }
