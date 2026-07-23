@@ -1618,7 +1618,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Start by deciding whether the embed is a one-time message, an automated trigger, or an interactive tool. Manual embeds are best for announcements, rules, and polished staff posts. Trigger embeds are best for welcome messages, leave logs, boost alerts, recurring posts, and command responses. Ticket Creation Panel embeds are best when members should press a button to open a private support channel."
+                "text": "Start by deciding whether the embed is a one-time message, an automated trigger, or an interactive tool. Manual embeds are best for announcements, rules, and polished staff posts. Trigger embeds are best for welcome messages, leave logs, boost alerts, recurring posts, command responses, ban appeal cards, and suggestion cards. Ticket Creation Panel embeds are best when members should press a button to open a private support channel."
             },
             {
                 "type": "list",
@@ -1626,6 +1626,7 @@ const docsData = [
                 "items": [
                     "Announcement or rules post: write the content, add fields for sections, add link buttons only when users need to open external resources, then send manually.",
                     "Welcome or event automation: write with placeholders such as `{user_mention}`, `{guild_name}`, and `{member_count}`, then select the matching trigger in the publish step.",
+                    "Ban appeal or suggestion workflow: configure the channel in Staff Tools first, design the embed, then select the Ban Appeal or Suggestion trigger so SeanBot posts to the managed staff channel.",
                     "Ticket panel: design the support message, add one or more non-link buttons in the Button Builder, select Ticket Creation Panel in the publish step, choose the ticket category, and deploy."
                 ]
             },
@@ -1652,6 +1653,34 @@ const docsData = [
             },
             {
                 "type": "heading",
+                "text": "Creating Ban Appeal Embeds"
+            },
+            {
+                "type": "list",
+                "title": "Recommended setup",
+                "items": [
+                    "Open Staff Tools first and set the private ban appeal review channel. The Embed Builder uses that channel automatically for appeal review cards.",
+                    "In the Embed Builder, choose the Ban Appeal trigger. Use Staff Review Card when staff should receive a structured appeal, or Applicant Guidelines when you want a member-facing instruction embed.",
+                    "Use placeholders such as `{appeal_id}`, `{appeal_user_mention}`, `{appeal_reason}`, and `{appeal_status}` where the appeal data should appear.",
+                    "Keep action buttons minimal on appeal embeds. Staff review controls are handled by the Staff Tools appeal workflow, while Link buttons are only useful for external policies or evidence forms."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Creating Suggestion Embeds"
+            },
+            {
+                "type": "list",
+                "title": "Recommended setup",
+                "items": [
+                    "Open Staff Tools first and set the suggestion channel. The Embed Builder will lock the Suggestion trigger to that managed channel.",
+                    "Choose the Suggestion trigger, then design a reusable card with a clear title, short details, status, and staff note field.",
+                    "Use placeholders such as `{suggestion_id}`, `{suggestion_title}`, `{suggestion_details}`, `{suggestion_author_mention}`, `{suggestion_status}`, and `{suggestion_note}`.",
+                    "Avoid duplicating voting controls manually. SeanBot's suggestion workflow handles the suggestion state; the embed should make the idea easy to read and moderate."
+                ]
+            },
+            {
+                "type": "heading",
                 "text": "Common Embed Patterns"
             },
             {
@@ -1659,6 +1688,8 @@ const docsData = [
                 "title": "Useful examples",
                 "items": [
                     "Support hub: title `Need help?`, description with expected response time, fields for rules before opening, buttons for `General Support`, `Bug Report`, and `Staff Contact`.",
+                    "Ban appeal review card: title `Ban Appeal #{appeal_id}`, fields for member, reason, evidence, status, and a footer reminding staff to use the appeal workflow.",
+                    "Suggestion card: title `{suggestion_title}`, description `{suggestion_details}`, fields for author, status, and staff note.",
                     "Rules message: one embed per rule category, fields for short sections, link buttons to external policy pages if needed.",
                     "Role picker: use buttons with role action presets when the goal is assigning roles, not opening tickets.",
                     "Recurring reminder: keep the embed short, select Recurring in the publish step, and avoid buttons unless users need an action."
