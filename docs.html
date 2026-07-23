@@ -29,9 +29,22 @@
     </div>
 
     <!-- Doc Search Filter -->
+    <div style="margin-bottom: 20px;" class="auto-fade-in">
+        <div class="filter-pills" id="docsCategoryFilters">
+            <button class="pill-btn active" data-category="all">All Modules</button>
+            <button class="pill-btn" data-category="getting_started">🚀 Getting Started</button>
+            <button class="pill-btn" data-category="w101">🔮 Wizard101</button>
+            <button class="pill-btn" data-category="security">🛡️ Security & Core</button>
+            <button class="pill-btn" data-category="community">👥 Community & Events</button>
+            <button class="pill-btn" data-category="utility">🛠️ Utility & System</button>
+        </div>
+    </div>
+
+    <!-- Doc Search Filter -->
     <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
         <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-        <input type="text" id="docSearch" placeholder="Search documentation (e.g. Anti-Raid, Federation, TimePing, Pet Tome)...">
+        <input type="text" id="docSearch" placeholder="Search 46+ documentation modules or commands... (Press Ctrl + K)">
+        <kbd>Ctrl K</kbd>
     </div>
 
     <!-- Documentation Layout Grid -->
@@ -2170,6 +2183,60 @@
 
         if (!contentContainer) return;
 
+        // Category definitions
+        const categoryMap = {
+            'quickstart': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
+            'core': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
+            'serveradmin': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
+
+            'w101': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'beastmoon': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_pets': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_spells': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_teamup': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_values': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_bosses': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_tapestry': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101_roster': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+
+            'moderation': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'staff': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'reports': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'audit_logs': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'loa': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'antiraid': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'quarantine': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'appeals': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'warnings': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'suggestions': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'antiphishing': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+
+            'raid_polls': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'events': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'teamup': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'calendar': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'timeping': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'timezones': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'voicestats': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'thread_watcher': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'reaction_pings': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'dynvoice': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'reminders': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+
+            'autopin': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'activity': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'embeds': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'emojis': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'reactions': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'autoreply': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'returning_roles': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'fun': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'diagnostics': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'federation': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'faq': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' }
+        };
+
         function activateDoc(docId, scroll = true) {
             // Update page & sidebar links
             document.querySelectorAll('.docs-nav-link, .sidebar-toc-link').forEach(link => {
@@ -2179,6 +2246,272 @@
                     link.classList.remove('active');
                 }
             });
+
+            // Toggle active article display
+            document.querySelectorAll('.docs-article').forEach(article => {
+                if (article.id === docId) {
+                    article.classList.add('active-doc');
+                    article.style.display = 'block';
+                } else {
+                    article.classList.remove('active-doc');
+                    article.style.display = 'none';
+                }
+            });
+
+            if (scroll) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Build Navigation Groups
+        const groups = {};
+        docsData.forEach(doc => {
+            const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' };
+            if (!groups[meta.cat]) {
+                groups[meta.cat] = { title: meta.title, icon: meta.icon, items: [] };
+            }
+            groups[meta.cat].items.push(doc);
+        });
+
+        // Render Page Navigation Groups
+        if (navContainer) {
+            navContainer.innerHTML = '';
+            Object.keys(groups).forEach(catKey => {
+                const grp = groups[catKey];
+                const grpDiv = document.createElement('div');
+                grpDiv.className = 'docs-nav-group';
+                grpDiv.setAttribute('data-category-group', catKey);
+
+                const grpTitle = document.createElement('div');
+                grpTitle.className = 'docs-nav-group-title';
+                grpTitle.innerHTML = `<i class="ph ${grp.icon}"></i> ${grp.title}`;
+                grpDiv.appendChild(grpTitle);
+
+                grp.items.forEach(doc => {
+                    const navLink = document.createElement('a');
+                    navLink.href = `#${doc.id}`;
+                    navLink.className = `docs-nav-link ${doc.id === docsData[0].id ? 'active' : ''}`;
+                    navLink.setAttribute('data-doc', doc.id);
+                    navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
+                    navLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        activateDoc(doc.id);
+                    });
+                    grpDiv.appendChild(navLink);
+                });
+                navContainer.appendChild(grpDiv);
+            });
+        }
+
+        // Render Sidebar TOC Navigation Groups
+        if (sidebarNavContainer) {
+            sidebarNavContainer.innerHTML = '';
+            Object.keys(groups).forEach(catKey => {
+                const grp = groups[catKey];
+                const grpDiv = document.createElement('div');
+                grpDiv.className = 'docs-nav-group';
+                grpDiv.setAttribute('data-category-group', catKey);
+
+                const grpTitle = document.createElement('div');
+                grpTitle.className = 'docs-nav-group-title';
+                grpTitle.innerHTML = `<i class="ph ${grp.icon}"></i> ${grp.title}`;
+                grpDiv.appendChild(grpTitle);
+
+                grp.items.forEach(doc => {
+                    const sidebarLink = document.createElement('a');
+                    sidebarLink.className = `sidebar-toc-link ${doc.id === docsData[0].id ? 'active' : ''}`;
+                    sidebarLink.setAttribute('data-doc', doc.id);
+                    sidebarLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
+                    sidebarLink.addEventListener('click', () => {
+                        activateDoc(doc.id);
+                        if (window.innerWidth <= 1000) {
+                            const sidebar = document.getElementById('sidebar');
+                            const overlay = document.getElementById('sidebarOverlay');
+                            sidebar?.classList.remove('mobile-open');
+                            overlay?.classList.remove('show');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                    grpDiv.appendChild(sidebarLink);
+                });
+                sidebarNavContainer.appendChild(grpDiv);
+            });
+        }
+
+        // Render Articles
+        docsData.forEach((doc, idx) => {
+            const article = document.createElement('article');
+            article.className = `docs-article ${idx === 0 ? 'active-doc' : ''}`;
+            article.id = doc.id;
+            const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' };
+            article.setAttribute('data-category', meta.cat);
+
+            if (idx !== 0) article.style.display = 'none';
+
+            const prevDoc = idx > 0 ? docsData[idx - 1] : null;
+            const nextDoc = idx < docsData.length - 1 ? docsData[idx + 1] : null;
+
+            let html = `
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px;">
+                    <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
+                    <span class="badge role">${meta.title}</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0; margin-bottom: 24px;">${doc.subtitle}</p>
+            `;
+
+            doc.content.forEach(item => {
+                if (item.type === 'heading') {
+                    html += `<h3>${item.text}</h3>`;
+                } else if (item.type === 'text') {
+                    html += `<p>${item.text}</p>`;
+                } else if (item.type === 'callout') {
+                    html += `
+                        <div class="callout-box">
+                            <strong>${item.icon || '💡'} ${item.title}:</strong> ${item.text}
+                        </div>
+                    `;
+                } else if (item.type === 'list') {
+                    if (item.title) html += `<h3>${item.title}</h3>`;
+                    html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+                } else if (item.type === 'commands') {
+                    if (item.title) html += `<h3>${item.title}</h3>`;
+                    html += `<div class="cmd-item-list">`;
+                    item.items.forEach(cmd => {
+                        html += `
+                            <div class="cmd-item-box">
+                                <div class="cmd-item-left">
+                                    <code class="cmd-code">${cmd.cmd}</code>
+                                    <span class="cmd-desc-text">${cmd.desc}</span>
+                                </div>
+                                <button class="copy-btn" data-cmd="${cmd.cmd.replace(/"/g, '&quot;')}" title="Copy Command">
+                                    <i class="ph ph-copy"></i>
+                                </button>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                }
+            });
+
+            // Add Prev / Next Navigation Footer
+            html += `<div class="doc-article-nav">`;
+            if (prevDoc) {
+                html += `
+                    <button class="doc-nav-btn prev-btn" data-doc="${prevDoc.id}">
+                        <i class="ph ph-arrow-left"></i>
+                        <div>
+                            <span class="nav-label">PREVIOUS MODULE</span>
+                            <span class="nav-title">${prevDoc.title}</span>
+                        </div>
+                    </button>
+                `;
+            } else {
+                html += `<div></div>`;
+            }
+
+            if (nextDoc) {
+                html += `
+                    <button class="doc-nav-btn next-btn" data-doc="${nextDoc.id}">
+                        <div>
+                            <span class="nav-label">NEXT MODULE</span>
+                            <span class="nav-title">${nextDoc.title}</span>
+                        </div>
+                        <i class="ph ph-arrow-right"></i>
+                    </button>
+                `;
+            } else {
+                html += `<div></div>`;
+            }
+            html += `</div>`;
+
+            article.innerHTML = html;
+            contentContainer.appendChild(article);
+        });
+
+        // Add Event Listeners for Prev/Next Buttons
+        contentContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.doc-nav-btn');
+            if (btn) {
+                const targetDocId = btn.getAttribute('data-doc');
+                if (targetDocId) activateDoc(targetDocId);
+                return;
+            }
+
+            const copyBtn = e.target.closest('.copy-btn');
+            if (copyBtn) {
+                const textToCopy = copyBtn.getAttribute('data-cmd');
+                if (textToCopy) {
+                    navigator.clipboard.writeText(textToCopy);
+                    copyBtn.innerHTML = '<i class="ph ph-check" style="color: var(--accent);"></i>';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = '<i class="ph ph-copy"></i>';
+                    }, 1500);
+                }
+            }
+        });
+
+        // Category Filter Pills
+        const catFilterBtns = document.querySelectorAll('#docsCategoryFilters .pill-btn');
+        catFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const selectedCat = btn.getAttribute('data-category');
+                
+                document.querySelectorAll('.docs-nav-group').forEach(grp => {
+                    const grpCat = grp.getAttribute('data-category-group');
+                    if (selectedCat === 'all' || grpCat === selectedCat) {
+                        grp.style.display = 'block';
+                    } else {
+                        grp.style.display = 'none';
+                    }
+                });
+
+                // Activate first visible doc in selected category
+                const firstVisibleDoc = docsData.find(doc => {
+                    const meta = categoryMap[doc.id] || { cat: 'utility' };
+                    return selectedCat === 'all' || meta.cat === selectedCat;
+                });
+                if (firstVisibleDoc) {
+                    activateDoc(firstVisibleDoc.id, false);
+                }
+            });
+        });
+
+        // Live Search Input Filter
+        const searchInput = document.getElementById('docSearch');
+        searchInput?.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let firstMatch = null;
+
+            docsData.forEach(doc => {
+                const article = document.getElementById(doc.id);
+                const match = !query || doc.title.toLowerCase().includes(query) || doc.subtitle.toLowerCase().includes(query) || (article && article.textContent.toLowerCase().includes(query));
+                
+                document.querySelectorAll(`[data-doc="${doc.id}"]`).forEach(link => {
+                    link.style.display = match ? 'flex' : 'none';
+                });
+
+                if (match && !firstMatch) firstMatch = doc.id;
+            });
+
+            if (query && firstMatch) {
+                activateDoc(firstMatch, false);
+            } else if (!query && docsData.length > 0) {
+                activateDoc(docsData[0].id, false);
+            }
+        });
+
+        // Keyboard Shortcut: Ctrl + K or Cmd + K to focus search
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                searchInput?.focus();
+                searchInput?.select();
+            }
+        });
+    });
 
             // Toggle active article display
             document.querySelectorAll('.docs-article').forEach(article => {
