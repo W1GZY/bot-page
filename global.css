@@ -545,3 +545,65 @@ kbd {
   color: var(--text-muted);
   font-family: inherit;
 }
+
+/* Missing Documentation & Sidebar TOC Rules */
+.sidebar-toc-container {
+  margin-top: 10px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  max-height: calc(100vh - 240px);
+  overflow-y: auto;
+}
+.sidebar-toc-header {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sidebar-toc-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  color: var(--text-secondary);
+  font-size: 0.825rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+.sidebar-toc-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+.sidebar-toc-link.active {
+  color: var(--accent);
+  background: var(--accent-glow);
+  font-weight: 700;
+  border-left: 2px solid var(--accent);
+}
+
+.docs-article {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 20px;
+  scroll-margin-top: 80px;
+  display: none;
+}
+.docs-article.active-doc {
+  display: block !important;
+  animation: slideUpFade 0.2s ease-out forwards;
+}

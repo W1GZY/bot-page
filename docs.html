@@ -2240,7 +2240,10 @@
             'faq': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' }
         };
 
-        function highlightActiveLink(docId) {
+        function activateDoc(docId) {
+            if (!docId) return;
+
+            // 1. Highlight active link in both nav containers
             document.querySelectorAll('.docs-nav-link, .sidebar-toc-link').forEach(link => {
                 if (link.getAttribute('data-doc') === docId || link.getAttribute('href') === `#${docId}`) {
                     link.classList.add('active');
@@ -2248,14 +2251,20 @@
                     link.classList.remove('active');
                 }
             });
-        }
 
-        function scrollToDoc(docId) {
-            const article = document.getElementById(docId);
-            if (article) {
-                highlightActiveLink(docId);
-                article.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            // 2. Toggle article display: show ONLY selected article
+            document.querySelectorAll('.docs-article').forEach(article => {
+                if (article.id === docId) {
+                    article.classList.add('active-doc');
+                    article.style.setProperty('display', 'block', 'important');
+                } else {
+                    article.classList.remove('active-doc');
+                    article.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            // 3. Scroll to top smooth
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Build Navigation Groups
@@ -2290,7 +2299,7 @@
                     navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
                     navLink.addEventListener('click', (e) => {
                         e.preventDefault();
-                        scrollToDoc(doc.id);
+                        activateDoc(doc.id);
                     });
                     grpDiv.appendChild(navLink);
                 });
@@ -2319,7 +2328,7 @@
                     sidebarLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
                     sidebarLink.addEventListener('click', (e) => {
                         e.preventDefault();
-                        scrollToDoc(doc.id);
+                        activateDoc(doc.id);
                         if (window.innerWidth <= 1000) {
                             const sidebar = document.getElementById('sidebar');
                             const overlay = document.getElementById('sidebarOverlay');
@@ -2338,10 +2347,16 @@
         contentContainer.innerHTML = '';
         docsData.forEach((doc, idx) => {
             const article = document.createElement('article');
-            article.className = 'docs-article';
+            article.className = `docs-article ${idx === 0 ? 'active-doc' : ''}`;
             article.id = doc.id;
             const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' };
             article.setAttribute('data-category', meta.cat);
+
+            if (idx !== 0) {
+                article.style.setProperty('display', 'none', 'important');
+            } else {
+                article.style.setProperty('display', 'block', 'important');
+            }
 
             const prevDoc = idx > 0 ? docsData[idx - 1] : null;
             const nextDoc = idx < docsData.length - 1 ? docsData[idx + 1] : null;
@@ -2423,29 +2438,24 @@
             contentContainer.appendChild(article);
         });
 
-        // Setup Scroll Spy with IntersectionObserver
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    highlightActiveLink(entry.target.id);
-                }
-            });
-        }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
-
-        document.querySelectorAll('.docs-article').forEach(art => observer.observe(art));
-
-        // Handle direct URL Hash on load
+        // Handle initial hash parameter in URL
         if (window.location.hash) {
             const targetHash = window.location.hash.substring(1);
-            setTimeout(() => scrollToDoc(targetHash), 100);
+            if (docsData.some(d => d.id === targetHash)) {
+                activateDoc(targetHash);
+            } else {
+                activateDoc(docsData[0].id);
+            }
+        } else {
+            activateDoc(docsData[0].id);
         }
 
-        // Add Event Listeners for Prev/Next & Copy Buttons
+        // Add Event Listeners for Prev/Next & Copy Buttons inside contentContainer
         contentContainer.addEventListener('click', (e) => {
             const btn = e.target.closest('.doc-nav-btn');
             if (btn) {
                 const targetDocId = btn.getAttribute('data-doc');
-                if (targetDocId) scrollToDoc(targetDocId);
+                if (targetDocId) activateDoc(targetDocId);
                 return;
             }
 
@@ -2471,15 +2481,6 @@
 
                 const selectedCat = btn.getAttribute('data-category');
                 
-                document.querySelectorAll('.docs-article').forEach(art => {
-                    const artCat = art.getAttribute('data-category');
-                    if (selectedCat === 'all' || artCat === selectedCat) {
-                        art.style.display = 'block';
-                    } else {
-                        art.style.display = 'none';
-                    }
-                });
-
                 document.querySelectorAll('.docs-nav-group').forEach(grp => {
                     const grpCat = grp.getAttribute('data-category-group');
                     if (selectedCat === 'all' || grpCat === selectedCat) {
@@ -2489,12 +2490,12 @@
                     }
                 });
 
-                // Scroll to first visible article in selected category
+                // Activate first visible doc in selected category
                 const firstVisible = docsData.find(d => {
                     const meta = categoryMap[d.id] || { cat: 'utility' };
                     return selectedCat === 'all' || meta.cat === selectedCat;
                 });
-                if (firstVisible) scrollToDoc(firstVisible.id);
+                if (firstVisible) activateDoc(firstVisible.id);
             });
         });
 
@@ -2502,16 +2503,24 @@
         const searchInput = document.getElementById('docSearch');
         searchInput?.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
+            let firstMatch = null;
+
             docsData.forEach(doc => {
                 const article = document.getElementById(doc.id);
                 const match = !query || doc.title.toLowerCase().includes(query) || doc.subtitle.toLowerCase().includes(query) || (article && article.textContent.toLowerCase().includes(query));
                 
-                if (article) article.style.display = match ? 'block' : 'none';
-
                 document.querySelectorAll(`[data-doc="${doc.id}"]`).forEach(link => {
                     link.style.display = match ? 'flex' : 'none';
                 });
+
+                if (match && !firstMatch) firstMatch = doc.id;
             });
+
+            if (query && firstMatch) {
+                activateDoc(firstMatch);
+            } else if (!query && docsData.length > 0) {
+                activateDoc(docsData[0].id);
+            }
         });
 
         // Keyboard Shortcut: Ctrl + K or Cmd + K to focus search
