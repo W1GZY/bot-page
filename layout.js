@@ -23,11 +23,10 @@
                 
                 <div style="font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;">Menu</div>
                 
-                <a href="/" class="nav-link ${navId === 'overview' ? 'active' : ''}"><i class="ph ph-house"></i> <span>Overview</span></a>
-                <a href="/docs.html" class="nav-link ${navId === 'docs' ? 'active' : ''}"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
-                <a href="/commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
-                <a href="/pettome.html" class="nav-link ${navId === 'pettome' ? 'active' : ''}"><i class="ph ph-book-bookmark"></i> <span>Pet Tome</span></a>
-            </nav>
+                <a href="index.html" class="nav-link ${navId === 'overview' ? 'active' : ''}"><i class="ph ph-house"></i> <span>Overview</span></a>
+                <a href="docs.html" class="nav-link ${navId === 'docs' ? 'active' : ''}"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
+                <a href="commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+                            </nav>
         `);
 
         const wrapper = document.createElement('div');
@@ -39,7 +38,7 @@
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <button class="hamburger" id="openSidebarBtn"><i class="ph ph-list"></i></button>
                     <div class="breadcrumbs">
-                        <a href="/" class="breadcrumb-item" title="Dashboard">
+                        <a href="index.html" class="breadcrumb-item" title="Dashboard">
                             <i class="ph-fill ph-paw-print breadcrumb-icon"></i> 
                             <span style="font-weight: 900; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
                         </a>

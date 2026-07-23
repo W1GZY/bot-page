@@ -1,5 +1,22 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot Documentation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <script>
+        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+        document.documentElement.setAttribute('data-accent', savedAccent);
+    </script>
+    <link rel="stylesheet" href="global.css">
+    <script src="layout.js" defer></script>
+</head>
+
+<body data-nav="docs" data-title="Documentation">
 <script>
     const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
     document.documentElement.setAttribute('data-accent', savedAccent);
@@ -2221,3 +2238,6 @@
         document.querySelectorAll('.docs-article').forEach(a => observer.observe(a));
     });
 </script>
+
+</body>
+</html>
