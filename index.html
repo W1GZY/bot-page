@@ -435,100 +435,116 @@
                 </div>
 
                 <div class="grid" id="featuresGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;">                 
+                    <!-- Wizard101 Suite -->
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('w101'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-magic-wand feature-icon"></i>                     
                         <h3 class="feature-title">Wizard101 Core & Damage</h3>                     
-                        <p class="feature-desc">Calculate damage and stats effortlessly for Wizard101 battles.</p>                 
+                        <p class="feature-desc">Calculate exact damage outputs, multi-blade stacks, traps, and pierce multipliers for battles.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('beastmoon'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-moon-stars feature-icon"></i>                     
-                        <h3 class="feature-title">Beastmoon Rotations</h3>                     
-                        <p class="feature-desc">Track live schedules, forms, and maps for Beastmoon events.</p>                 
+                        <h3 class="feature-title">Beastmoon Rotations & Tiers</h3>                     
+                        <p class="feature-desc">Track live Hunt and Monster Mayhem schedules, form tiers, and Lunari upgrade costs.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('w101_pets'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('pet_tome'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-paw-print feature-icon"></i>                     
-                        <h3 class="feature-title">Wizard101 Pet Search</h3>                     
-                        <p class="feature-desc">Find pet talents, stats, and breeding details instantly.</p>                 
+                        <h3 class="feature-title">Pet Tome Database</h3>                     
+                        <p class="feature-desc">Search 1,000+ pets, talent pools, stats, and breeding recipes with instant autocomplete.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('w101_spells'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('spells'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-sparkles feature-icon"></i>                     
-                        <h3 class="feature-title">Spell Lookup</h3>                     
-                        <p class="feature-desc">Look up spell damage, pip costs, and effects quickly.</p>                 
+                        <h3 class="feature-title">Spell Tome Search</h3>                     
+                        <p class="feature-desc">Look up damage, pip costs, school requirements, and card art for all Wizard101 spells.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('w101_teamup'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('teamup_w101'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-users feature-icon"></i>                     
-                        <h3 class="feature-title">Dungeon Team-Up</h3>                     
-                        <p class="feature-desc">Create group sign-ups and party lobbies for hard boss fights.</p>                 
+                        <h3 class="feature-title">Dungeon Team-Up Lobbies</h3>                     
+                        <p class="feature-desc">Organize dungeon party lobbies, roles, and group sign-ups for major boss encounters.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('w101_bosses'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('strategy'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-skull feature-icon"></i>                     
-                        <h3 class="feature-title">Boss Cheats Guide</h3>                     
-                        <p class="feature-desc">View cheat strategies for major bosses before battle.</p>                 
+                        <h3 class="feature-title">Boss Cheats & Strategies</h3>                     
+                        <p class="feature-desc">View boss cheat mechanics, counter strategies, and recommended deck setups before battle.</p>                 
                     </div>                  
 
+                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('value_reagent'), 50);" style="cursor: pointer;">                     
+                        <i class="ph-duotone ph-coins feature-icon"></i>                     
+                        <h3 class="feature-title">TC & Reagent Values</h3>                     
+                        <p class="feature-desc">Check market prices, trade values, and community rates for rare treasure cards and reagents.</p>                 
+                    </div>                  
+
+                    <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tapestry'), 50);" style="cursor: pointer;">                     
+                        <i class="ph-duotone ph-compass feature-icon"></i>                     
+                        <h3 class="feature-title">House Tapestries</h3>                     
+                        <p class="feature-desc">Browse teleport tapestries and bobbleheads with location coordinates and recipe guides.</p>                 
+                    </div>                  
+
+                    <!-- Security & Core -->
                     <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('moderation'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-shield-check feature-icon"></i>                     
                         <h3 class="feature-title">Moderation Suite</h3>                     
-                        <p class="feature-desc">Kick, ban, timeout, and warn misbehaving users easily.</p>                 
+                        <p class="feature-desc">Execute kick, ban, timeout, softban, and nickname commands with automatic logging.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-lock-key feature-icon"></i>                     
-                        <h3 class="feature-title">Anti-Raid Protection</h3>                     
-                        <p class="feature-desc">Lock down channels and automatically block spam raids.</p>                 
+                        <h3 class="feature-title">Anti-Raid & Security</h3>                     
+                        <p class="feature-desc">Protect your server with zero-delay webhook scanning, invite locks, and automated raid shields.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('audit_logs'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('logging'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-newspaper feature-icon"></i>                     
-                        <h3 class="feature-title">Server Audit Logs</h3>                     
-                        <p class="feature-desc">Keep track of message edits, deletions, and member joins.</p>                 
+                        <h3 class="feature-title">Audit Logging & Jails</h3>                     
+                        <p class="feature-desc">Track message edits, deletions, member joins, role updates, and quarantine user isolations.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('appeals'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('staff_tools'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-gavel feature-icon"></i>                     
-                        <h3 class="feature-title">Ban Appeals</h3>                     
-                        <p class="feature-desc">Allow banned users to submit appeal forms for staff review.</p>                 
+                        <h3 class="feature-title">Staff Tools & Appeals</h3>                     
+                        <p class="feature-desc">Manage staff leave of absence (LOA), process ban appeals, and run system diagnostics.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('events'), 50);" style="cursor: pointer;">                     
+                    <!-- Community & Events -->
+                    <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('raids'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-calendar-event feature-icon"></i>                     
-                        <h3 class="feature-title">Event Manager</h3>                     
-                        <p class="feature-desc">Schedule server events with automatic reminder pings.</p>                 
+                        <h3 class="feature-title">Raid & Event Organizer</h3>                     
+                        <p class="feature-desc">Schedule community raids and events with automatic reminder pings and role sign-ups.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-ticket feature-icon"></i>                     
-                        <h3 class="feature-title">Support Tickets</h3>                     
-                        <p class="feature-desc">Private support channels for members to ask staff questions.</p>                 
+                        <h3 class="feature-title">Support Ticket System</h3>                     
+                        <p class="feature-desc">Allow members to open private support tickets with automated staff claims and transcript logging.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('timeping'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-clock feature-icon"></i>                     
-                        <h3 class="feature-title">Timezone Convert</h3>                     
-                        <p class="feature-desc">Convert event times automatically for members worldwide.</p>                 
+                        <h3 class="feature-title">TimePing Converter</h3>                     
+                        <p class="feature-desc">Automatically convert event times and dynamic timestamps for members across all timezones.</p>                 
                     </div>                  
 
+                    <!-- Utility & System -->
                     <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('embeds'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-layout feature-icon"></i>                     
-                        <h3 class="feature-title">Embed Builder</h3>                     
-                        <p class="feature-desc">Create styled announcements and colorful embed posts.</p>                 
+                        <h3 class="feature-title">Visual Embed Builder</h3>                     
+                        <p class="feature-desc">Create, save, and post rich styled embeds, custom announcements, and interactive posts.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('reactions'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-smiley feature-icon"></i>                     
-                        <h3 class="feature-title">Reaction Roles</h3>                     
-                        <p class="feature-desc">Let members pick roles by clicking emoji buttons.</p>                 
+                        <h3 class="feature-title">Reaction Roles & Pings</h3>                     
+                        <p class="feature-desc">Assign server roles automatically when members react to designated posts or buttons.</p>                 
                     </div>                  
 
-                    <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('activity'), 50);" style="cursor: pointer;">                     
+                    <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('activitytracker'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-chart-line-up feature-icon"></i>                     
                         <h3 class="feature-title">Member Activity Stats</h3>                     
-                        <p class="feature-desc">Track active chatters and assign automatic reward roles.</p>                 
+                        <p class="feature-desc">Track active chatters, voice time, and assign automatic activity reward roles.</p>                 
                     </div>         
                 </div>         
             </div>
@@ -749,6 +765,9 @@
         };
 
         window.activateDoc = function(docId) {
+            if (!docId || (typeof docsData !== 'undefined' && !docsData.some(d => d.id === docId))) {
+                docId = (typeof docsData !== 'undefined' && docsData.length > 0) ? docsData[0].id : 'quickstart';
+            }
             if (!docId) return;
 
             document.querySelectorAll('.docs-nav-link, .sidebar-toc-link').forEach(link => {
