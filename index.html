@@ -296,6 +296,16 @@
             margin-top: 6px;
             margin-bottom: 0;
         }
+    #featuresGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        @media (min-width: 1100px) {
+            #featuresGrid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
 </head>
 
@@ -434,117 +444,117 @@
                     </div>
                 </div>
 
-                <div class="grid" id="featuresGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;">                 
+                <div class="grid" id="featuresGrid">                 
                     <!-- Wizard101 Suite -->
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('w101'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-magic-wand feature-icon"></i>                     
-                        <h3 class="feature-title">Wizard101 Core & Damage</h3>                     
-                        <p class="feature-desc">Calculate exact damage outputs, multi-blade stacks, traps, and pierce multipliers for battles.</p>                 
+                        <i class="ph-duotone ph-magic-wand feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Wizard101 Core & Damage</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Precision damage calculator modeling multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('beastmoon'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-moon-stars feature-icon"></i>                     
-                        <h3 class="feature-title">Beastmoon Rotations & Tiers</h3>                     
-                        <p class="feature-desc">Track live Hunt and Monster Mayhem schedules, form tiers, and Lunari upgrade costs.</p>                 
+                        <i class="ph-duotone ph-moon-stars feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Beastmoon Rotations & Tiers</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Track your Beastmoon Hunt & Monster Mayhem form tiers, inspect Lunari and Gold Thread upgrade costs, view live rotation maps, and claim top server leaderboard ranks.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('pet_tome'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-paw-print feature-icon"></i>                     
-                        <h3 class="feature-title">Pet Tome Database</h3>                     
-                        <p class="feature-desc">Search 1,000+ pets, talent pools, stats, and breeding recipes with instant autocomplete.</p>                 
+                        <i class="ph-duotone ph-paw-print feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Pet Tome Database</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Search over 1,000+ Wizard101 pets, talent pools, stats, egg colors, hatching times, and breeding recipes with instant fuzzy autocomplete search.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('spells'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-sparkles feature-icon"></i>                     
-                        <h3 class="feature-title">Spell Tome Search</h3>                     
-                        <p class="feature-desc">Look up damage, pip costs, school requirements, and card art for all Wizard101 spells.</p>                 
+                        <i class="ph-duotone ph-sparkles feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Spell Tome Search</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Look up damage numbers, pip requirements, school restrictions, accuracy, and full card graphics for all main school and shadow spells.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('teamup_w101'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-users feature-icon"></i>                     
-                        <h3 class="feature-title">Dungeon Team-Up Lobbies</h3>                     
-                        <p class="feature-desc">Organize dungeon party lobbies, roles, and group sign-ups for major boss encounters.</p>                 
+                        <i class="ph-duotone ph-users-three feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Dungeon Team-Up Lobbies</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Organize party lobbies, assign combat roles (Hitter, Buffer, Healer, Tank), and create automated team sign-ups for major endgame boss farming.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('strategy'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-skull feature-icon"></i>                     
-                        <h3 class="feature-title">Boss Cheats & Strategies</h3>                     
-                        <p class="feature-desc">View boss cheat mechanics, counter strategies, and recommended deck setups before battle.</p>                 
+                        <i class="ph-duotone ph-skull feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Boss Cheats & Strategies</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Inspect boss cheat mechanics, counter strategies, target priorities, and recommended deck compositions before entering high-level dungeons.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('value_reagent'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-coins feature-icon"></i>                     
-                        <h3 class="feature-title">TC & Reagent Values</h3>                     
-                        <p class="feature-desc">Check market prices, trade values, and community rates for rare treasure cards and reagents.</p>                 
+                        <i class="ph-duotone ph-coins feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">TC & Reagent Values</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Look up current Empower market rates, trade values, and community prices for rare treasure cards, crafting reagents, and elixirs.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="w101" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tapestry'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-compass feature-icon"></i>                     
-                        <h3 class="feature-title">House Tapestries</h3>                     
-                        <p class="feature-desc">Browse teleport tapestries and bobbleheads with location coordinates and recipe guides.</p>                 
+                        <i class="ph-duotone ph-house-line feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">House Tapestries & Collectibles</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Comprehensive guide for Wizard101 housing teleport tapestries, bobbleheads, location coordinates, vendor locations, and crafting recipes.</p>                 
                     </div>                  
 
                     <!-- Security & Core -->
                     <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('moderation'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-shield-check feature-icon"></i>                     
-                        <h3 class="feature-title">Moderation Suite</h3>                     
-                        <p class="feature-desc">Execute kick, ban, timeout, softban, and nickname commands with automatic logging.</p>                 
+                        <i class="ph-duotone ph-shield-check feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Moderation Suite</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Execute kick, ban, unban, softban, timeout, nickname edits, and channel locks with automatic logging and moderator action records.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-lock-key feature-icon"></i>                     
-                        <h3 class="feature-title">Anti-Raid & Security</h3>                     
-                        <p class="feature-desc">Protect your server with zero-delay webhook scanning, invite locks, and automated raid shields.</p>                 
+                        <i class="ph-duotone ph-lock-key feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Anti-Raid & Security</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Protect your server with zero-delay webhook scanning, automated raid detection, invite link sweeps, and instant emergency channel locks.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('logging'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-newspaper feature-icon"></i>                     
-                        <h3 class="feature-title">Audit Logging & Jails</h3>                     
-                        <p class="feature-desc">Track message edits, deletions, member joins, role updates, and quarantine user isolations.</p>                 
+                        <i class="ph-duotone ph-newspaper feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Audit Logging & Jails</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Track deleted messages, message edits, member joins/leaves, role changes, and isolate untrusted accounts using member quarantine.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="security" onclick="switchTab('docs'); setTimeout(()=>activateDoc('staff_tools'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-gavel feature-icon"></i>                     
-                        <h3 class="feature-title">Staff Tools & Appeals</h3>                     
-                        <p class="feature-desc">Manage staff leave of absence (LOA), process ban appeals, and run system diagnostics.</p>                 
+                        <i class="ph-duotone ph-gavel feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Staff Tools & Appeals</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Manage staff Leave of Absence (LOA) requests, review banned user appeal submissions, check active points, and run diagnostic audits.</p>                 
                     </div>                  
 
                     <!-- Community & Events -->
                     <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('raids'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-calendar-event feature-icon"></i>                     
-                        <h3 class="feature-title">Raid & Event Organizer</h3>                     
-                        <p class="feature-desc">Schedule community raids and events with automatic reminder pings and role sign-ups.</p>                 
+                        <i class="ph-duotone ph-calendar-event feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Raid & Event Organizer</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Schedule community raids and events with interactive sign-up buttons, custom role pings, and automatic event reminder notifications.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-ticket feature-icon"></i>                     
-                        <h3 class="feature-title">Support Ticket System</h3>                     
-                        <p class="feature-desc">Allow members to open private support tickets with automated staff claims and transcript logging.</p>                 
+                        <i class="ph-duotone ph-ticket feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Support Ticket System</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Allow members to open private support tickets with automated staff claims, category routing, and complete HTML transcript logging.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('timeping'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-clock feature-icon"></i>                     
-                        <h3 class="feature-title">TimePing Converter</h3>                     
-                        <p class="feature-desc">Automatically convert event times and dynamic timestamps for members across all timezones.</p>                 
+                        <i class="ph-duotone ph-clock feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">TimePing Converter</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Automatically convert event times and dynamic timestamps for members across all timezones so everyone sees local schedule times.</p>                 
                     </div>                  
 
                     <!-- Utility & System -->
                     <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('embeds'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-layout feature-icon"></i>                     
-                        <h3 class="feature-title">Visual Embed Builder</h3>                     
-                        <p class="feature-desc">Create, save, and post rich styled embeds, custom announcements, and interactive posts.</p>                 
+                        <i class="ph-duotone ph-layout feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Visual Embed Builder</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Design, preview, and post rich styled embeds, custom server announcements, rules posts, and interactive button menus.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('reactions'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-smiley feature-icon"></i>                     
-                        <h3 class="feature-title">Reaction Roles & Pings</h3>                     
-                        <p class="feature-desc">Assign server roles automatically when members react to designated posts or buttons.</p>                 
+                        <i class="ph-duotone ph-smiley feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Reaction Roles & Pings</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Assign server roles automatically when members click button reactions, select dropdown menus, or trigger custom message pings.</p>                 
                     </div>                  
 
                     <div class="glass-card feature-card" data-category="utility" onclick="switchTab('docs'); setTimeout(()=>activateDoc('activitytracker'), 50);" style="cursor: pointer;">                     
-                        <i class="ph-duotone ph-chart-line-up feature-icon"></i>                     
-                        <h3 class="feature-title">Member Activity Stats</h3>                     
-                        <p class="feature-desc">Track active chatters, voice time, and assign automatic activity reward roles.</p>                 
+                        <i class="ph-duotone ph-chart-line-up feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Member Activity Stats</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Track member message activity, voice channel time, and assign automatic rank roles based on participation thresholds.</p>                 
                     </div>         
                 </div>         
             </div>
