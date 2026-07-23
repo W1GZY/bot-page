@@ -34,7 +34,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/staff diagnose",
-                        "desc": "Perform an automated audit sweep of channel permissions and bot hierarchy."
+                        "desc": "Perform an automated audit sweep of Messaging, Moderation, and Voice permissions."
                     },
                     {
                         "cmd": "/prefix [symbol]",

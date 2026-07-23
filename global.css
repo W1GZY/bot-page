@@ -291,7 +291,7 @@ code {
 .pill-btn:hover { color: #fff; border-color: var(--border-highlight); background: rgba(255, 255, 255, 0.08); }
 .pill-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 800; box-shadow: 0 0 16px var(--accent-glow); }
 
-.docs-grid { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; }
+.docs-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
 .docs-nav { position: sticky; top: 80px; background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; max-height: calc(100vh - 120px); overflow-y: auto; }
 .docs-nav-title { font-size: 0.7rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
 .docs-nav-link { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.85rem; padding: 6px 8px; border-radius: var(--radius-sm); }
