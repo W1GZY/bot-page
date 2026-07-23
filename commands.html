@@ -45,18 +45,105 @@
         document.addEventListener('DOMContentLoaded', () => {
             const feedContainer = document.getElementById('commandsFeedContainer');
             const tocContainer = document.getElementById('tocSidebarContainer');
+            if (!feedContainer || !tocContainer) return;
+
             commandsDatabase.forEach((category) => {
-                
+                // Build TOC Right-Side Sidebar Link
                 const tocLink = document.createElement('a');
                 tocLink.href = `#${category.id}`;
                 tocLink.className = 'toc-link';
+                tocLink.setAttribute('data-target', category.id);
                 tocLink.textContent = `${category.tocLabel} (${category.commands.length})`;
+                
+                tocLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetSec = document.getElementById(category.id);
+                    if (targetSec) {
+                        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active-toc'));
+                        tocLink.classList.add('active-toc');
+                        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        history.pushState(null, '', `#${category.id}`);
+                    }
+                });
+
                 tocContainer.appendChild(tocLink);
 
                 const sortedCommands = [...category.commands].sort((a, b) => {
                     const order = { "public": 1, "role": 2, "perm": 3 };
                     return (order[a.type] || 99) - (order[b.type] || 99);
                 });
+
+                const cardsHTML = sortedCommands.map(cmd => `
+                    <div class="cmd-card">
+                        <div class="cmd-header">
+                            <p class="cmd-name">${cmd.name}</p>
+                            <div class="badge-container">
+                                <span class="badge ${cmd.type}">${cmd.badge}</span>
+                                ${cmd.isNew ? '<span class="badge new">New!</span>' : ''}
+                            </div>
+                        </div>
+                        <p class="cmd-desc">${cmd.desc}</p>
+                    </div>
+                `).join('');
+
+                const section = document.createElement('section');
+                section.className = 'cmd-section';
+                section.id = category.id;
+                section.innerHTML = `
+                    <h2><i class="ph-duotone ${category.icon}"></i> ${category.title} <span class="badge public">${category.commands.length}</span></h2>
+                    <div class="cards-container">${cardsHTML}</div>
+                `;
+                
+                feedContainer.appendChild(section);
+            });
+
+            // Live Search Filter
+            const searchInput = document.getElementById('commandSearch');
+            const cmdSections = document.querySelectorAll('.cmd-section');
+
+            searchInput?.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                cmdSections.forEach(section => {
+                    let hasVisibleCard = false;
+                    const cards = section.querySelectorAll('.cmd-card');
+                    cards.forEach(card => {
+                        const textContent = card.textContent.toLowerCase();
+                        if (!term || textContent.includes(term)) {
+                            card.style.display = 'flex';
+                            hasVisibleCard = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    section.style.display = hasVisibleCard ? 'block' : 'none';
+                });
+            });
+
+            // Scroll Spy Intersection Observer
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(link => link.classList.remove('active-toc'));
+                        const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                        if (activeLink) activeLink.classList.add('active-toc');
+                    }
+                });
+            }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+            cmdSections.forEach(section => observer.observe(section));
+
+            // Handle Direct Hash Parameter on Page Load
+            if (window.location.hash) {
+                const hashId = window.location.hash.substring(1);
+                const targetSec = document.getElementById(hashId);
+                if (targetSec) {
+                    setTimeout(() => {
+                        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 150);
+                }
+            }
+        });
 
                 const cardsHTML = sortedCommands.map(cmd => `
                     <div class="cmd-card">
