@@ -576,269 +576,88 @@
             <!-- Live Feature Showcase Section -->
             <section style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
-                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Compare SeanBot's feature capabilities and module limits against Dyno, Carl-bot, MEE6, and Triton.</p>
+                    <span style="background: var(--accent-glow); color: var(--accent); font-weight: 700; font-size: 0.775rem; padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255, 215, 0, 0.2);">Live Feature Showcase</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 12px; letter-spacing: -0.5px;">See SeanBot in Action</h2>
+                    <p style="color: var(--text-secondary); max-width: 620px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Experience real-time emoji analytics, instant invite tracking, automated scam shields, and web embed builders.</p>
                 </div>
 
-                <div class="comparison-scroll-wrapper">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 25%;">Feature & Description</th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header" style="color: var(--accent); font-weight: 800;">
-                                        <img src="assets/seanbot.png" class="bot-avatar-img" style="border-color: var(--accent);" alt="SeanBot"> SeanBot
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/dyno.png" class="bot-avatar-img" alt="Dyno"> Dyno
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/carlbot.png" class="bot-avatar-img" alt="Carl-bot"> Carl-bot
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/mee6.png" class="bot-avatar-img" alt="MEE6"> MEE6
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/triton.png" class="bot-avatar-img" alt="Triton"> Triton
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>⚡ Slash / Prefix Commands</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Hybrid slash / and custom text prefix command triggers</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🛡️ Moderation System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Kick, ban, softban, timeout, and mod action logs</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>⚠️ Warning System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">User warnings, point thresholds, and automated punishments</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📜 Server Audit Logging</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Deleted messages, edits, roles, and member join events</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🔗 Invite Tracking</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Track member join sources, invite codes, and creators</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📌 Sticky Messages</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Auto-reposting pinned guidance messages at channel bottom</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>⭐ Starboard Engine</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Highlight top community messages based on star reactions</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>💡 Community Suggestions</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Structured member suggestion submissions and voting</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📊 Advanced Polls</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Interactive raid polls, multiple choices, and voting</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🎫 Support Ticket System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Private channels, multi-role claims, and HTML transcript logs</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🛡️ Server Raid & Scam Shield</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Zero-delay asset pattern scanning & auto-quarantine</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>👻 Ghost Ping Detection</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Instant alerts when users send and delete mention pings</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🔊 Temporary Voice Channels</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dynamic voice lobbies created automatically on join</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📈 Server Stats Channels</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Real-time channel counters for member counts & activity</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🏆 Member Leveling & XP</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Chat XP points, rank cards, and level reward roles</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🎨 Visual Embed Builder</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Custom rich embeds with side-by-side live preview</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>⏰ Personal Reminders</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Scheduled notification pings and timer alerts</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌐 Timezone Commands</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Timezone mapping, city lookup, and dynamic timestamps</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌐 Message Translator</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Instant multi-language translation for messages</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>😀 Emoji Management</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Top emoji stats, locks, and bulk emoji tools</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📊 Emoji Usage Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard charts tracking top used server emojis over time</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>💬 Reaction Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard charts tracking community reaction activity trends</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌍 Timezone Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard distribution charts of member timezone regions</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌴 Staff Leave of Absence (LOA)</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Staff LOA request filing, approval routing, and status list</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📌 Auto-Pin Messages</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Auto-pinning messages based on reaction vote thresholds</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🔮 Wizard101 Gaming Suite</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Damage calc, Beastmoon, 1,000+ Pet/Spell Tomes, TC rates</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                                <td><span class="badge-cross">❌ No</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌐 Web Control Dashboard</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Full browser management dashboard for server configuration</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                                <td><span class="badge-check">✅ Yes</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>💎 Premium Required for Core Features</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Subscription requirement to unlock basic functionality</span></td>
-                                <td><span class="badge-free">None (0%)</span></td>
-                                <td><span class="badge-warn">High ($15/mo)</span></td>
-                                <td><span class="badge-warn">Low ($5/mo)</span></td>
-                                <td><span class="badge-warn">Very High ($20/mo)</span></td>
-                                <td><span class="badge-free">None</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="showcase-container" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
+                    <!-- Showcase Navigation Tabs -->
+                    <div class="showcase-tabs" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
+                        <button class="showcase-tab active" onclick="switchShowcase('emoji')"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
+                        <button class="showcase-tab" onclick="switchShowcase('invite')"><i class="ph-duotone ph-user-plus"></i> Invite Tracker</button>
+                        <button class="showcase-tab" onclick="switchShowcase('scam')"><i class="ph-duotone ph-shield-warning"></i> Scam Protection</button>
+                        <button class="showcase-tab" onclick="switchShowcase('embed')"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
+                    </div>
+
+                    <!-- Showcase Content Panels -->
+                    <!-- Panel 1: Emoji Analytics -->
+                    <div id="showcase-emoji" class="showcase-panel active" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Dashboard Insights</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track Your Community's Favorite Expressions</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Monitor live emoji usage, reaction trends, and top community chatters directly from your Web Dashboard. Easily spot unused emojis to make room for new server emotes!</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">📊 Weekly & Monthly Charts</span>
+                                <span class="pill-badge">💬 Reaction Tracking</span>
+                                <span class="pill-badge">👑 Top User Leaderboards</span>
+                            </div>
+                        </div>
+                        <div class="showcase-image-frame">
+                            <img src="assets/emoji_analytics.png" alt="Emoji Analytics Dashboard">
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Invite Tracker -->
+                    <div id="showcase-invite" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Audit Logging</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Real-Time Invite & Join Tracking</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Never wonder where new members came from. SeanBot logs invite code generation, channel source, code creator, max usage limits, and expiration details instantly.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">🔗 Instant Invite Audits</span>
+                                <span class="pill-badge">👤 Creator Tracking</span>
+                                <span class="pill-badge">⏱️ Auto Expiration Logs</span>
+                            </div>
+                        </div>
+                        <div class="showcase-image-frame">
+                            <img src="assets/invite_logging.png" alt="Invite Logging in Action">
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Scam Protection -->
+                    <div id="showcase-scam" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(237, 66, 69, 0.15); color: #ED4245; border-color: rgba(237, 66, 69, 0.3);">Raid & Scam Shield</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Perceptual Scam Match Blocking</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">SeanBot scans structural scam asset patterns and malicious phishing accounts in real time, automatically placing compromised accounts in quarantine and deleting dangerous messages instantly.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">⚡ Zero-Delay Scanning</span>
+                                <span class="pill-badge">🔒 Member Quarantine</span>
+                                <span class="pill-badge">🛡️ Automated Deletion</span>
+                            </div>
+                        </div>
+                        <div class="showcase-image-frame">
+                            <img src="assets/scam_protection.png" alt="Perceptual Scam Block in Action">
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Embed Builder -->
+                    <div id="showcase-embed" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Web Dashboard</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Live Visual Embed Builder</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Build gorgeous server rules, announcements, and welcome embeds with a real-time side-by-side Discord previewer. Includes rich placeholders, color pickers, and single-click posting.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">🎨 Real-Time Preview</span>
+                                <span class="pill-badge">✨ Dynamic Placeholders</span>
+                                <span class="pill-badge">🚀 1-Click Dispatch</span>
+                            </div>
+                        </div>
+                        <div class="showcase-image-frame">
+                            <img src="assets/embed_builder.png" alt="Web Dashboard Embed Builder">
+                        </div>
+                    </div>
                 </div>
             </section>
 
