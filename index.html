@@ -543,7 +543,7 @@
             </div>         
 
             <!-- Live Stats Counter Grid -->
-            <div class="stats-grid stagger-children scroll-reveal">
+            <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">2</div>
                     <div class="stat-label">Communities</div>
@@ -562,18 +562,248 @@
                 </div>
             </div>
 
-            <!-- What Makes SeanBot Different -->
-            <div class="scroll-reveal" style="margin-bottom: 40px;">             
-                <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">                 
-                    <i class="ph-duotone ph-sparkle" style="color: var(--accent); font-size: 1.9rem;"></i> What Makes SeanBot Different?             
+            <!-- Why SeanBot Section -->
+            <div style="margin-bottom: 40px;">             
+                <h2 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">                 
+                    <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
                 </h2>             
                 <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary); padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: blur(16px);">                 
-                    <p style="margin: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace paid Discord bots with a 100% free, high-performance community toolkit.</p>                 
-                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary);">Enjoy unlimited web embeds, reaction roles, zero-delay security, timezone converters, and custom gaming modules with no hidden fees or feature caps.</p>
+                    <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace paid Discord bots with a 100% free, high-performance community toolkit.</p>                 
+                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Unlike multipurpose bots that paywall essential tools, SeanBot gives you unlimited web embeds, reaction roles, zero-delay security shields, timezone converters, and custom gaming modules with zero subscription fees or feature caps.</p>             
                 </div>         
             </div>
-                </div>         
-            </div>         
+
+            <!-- Live Feature Showcase Section -->
+            <section style="margin: 44px 0 48px 0;">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <span style="background: var(--accent-glow); color: var(--accent); font-weight: 700; font-size: 0.775rem; padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255, 215, 0, 0.2);">Live Feature Showcase</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 12px; letter-spacing: -0.5px;">See SeanBot in Action</h2>
+                    <p style="color: var(--text-secondary); max-width: 620px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Experience real-time emoji analytics, instant invite tracking, automated security shields, web embed builders, and seamless timezone scheduling.</p>
+                </div>
+
+                <div class="showcase-container" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
+                    <!-- Showcase Navigation Tabs -->
+                    <div class="showcase-tabs" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
+                        <button class="showcase-tab active" onclick="switchShowcase('emoji')"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
+                        <button class="showcase-tab" onclick="switchShowcase('invite')"><i class="ph-duotone ph-user-plus"></i> Invite Tracker</button>
+                        <button class="showcase-tab" onclick="switchShowcase('scam')"><i class="ph-duotone ph-shield-warning"></i> Scam Protection</button>
+                        <button class="showcase-tab" onclick="switchShowcase('embed')"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
+                        <button class="showcase-tab" onclick="switchShowcase('timezone')"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Registration</button>
+                    </div>
+
+                    <!-- Showcase Content Panels -->
+                    <!-- Panel 1: Emoji Analytics -->
+                    <div id="showcase-emoji" class="showcase-panel active" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Dashboard Insights</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track Your Community's Favorite Expressions</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Monitor live emoji usage, reaction trends, and top community chatters directly from your Web Dashboard. Easily spot unused emojis to make room for new server emotes!</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">📊 Weekly & Monthly Charts</span>
+                                <span class="pill-badge">💬 Reaction Tracking</span>
+                                <span class="pill-badge">👑 Top User Leaderboards</span>
+                            </div>
+                        </div>
+                        <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
+                            <img src="assets/emoji_analytics.png" alt="Emoji Analytics Dashboard" style="width: 100%; display: block; border-radius: var(--radius-md);">
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Invite Tracker -->
+                    <div id="showcase-invite" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Audit Logging</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Real-Time Invite & Join Tracking</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Never wonder where new members came from. SeanBot logs invite code generation, channel source, code creator, max usage limits, and expiration details instantly.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">🔗 Instant Invite Audits</span>
+                                <span class="pill-badge">👤 Creator Tracking</span>
+                                <span class="pill-badge">⏱️ Auto Expiration Logs</span>
+                            </div>
+                        </div>
+                        <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
+                            <img src="assets/invite_logging.png" alt="Invite Logging in Action" style="width: 100%; display: block; border-radius: var(--radius-md);">
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Scam Protection -->
+                    <div id="showcase-scam" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(237, 66, 69, 0.15); color: #ED4245; border-color: rgba(237, 66, 69, 0.3);">Raid & Scam Shield</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Perceptual Scam Match Blocking</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">SeanBot scans structural scam asset patterns and malicious phishing accounts in real time, automatically placing compromised accounts in quarantine and deleting dangerous messages instantly.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">⚡ Zero-Delay Scanning</span>
+                                <span class="pill-badge">🔒 Member Quarantine</span>
+                                <span class="pill-badge">🛡️ Automated Deletion</span>
+                            </div>
+                        </div>
+                        <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
+                            <img src="assets/scam_protection.png" alt="Perceptual Scam Block in Action" style="width: 100%; display: block; border-radius: var(--radius-md);">
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Embed Builder -->
+                    <div id="showcase-embed" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Web Dashboard</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Live Visual Embed Builder</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Build gorgeous server rules, announcements, and welcome embeds with a real-time side-by-side Discord previewer. Includes rich placeholders, color pickers, and single-click posting.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">🎨 Real-Time Preview</span>
+                                <span class="pill-badge">✨ Dynamic Placeholders</span>
+                                <span class="pill-badge">🚀 1-Click Dispatch</span>
+                            </div>
+                        </div>
+                        <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
+                            <img src="assets/embed_builder.png" alt="Web Dashboard Embed Builder" style="width: 100%; display: block; border-radius: var(--radius-md);">
+                        </div>
+                    </div>
+
+                    <!-- Panel 5: Timezone Registration -->
+                    <div id="showcase-timezone" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(0, 184, 217, 0.15); color: #00B8D9; border-color: rgba(0, 184, 217, 0.3);">Community Sync</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Interactive Timezone Registration</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Empower your server members to register their timezone with 1-click region buttons or quick city search. Event times automatically adjust for players worldwide!</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">🌍 1-Click Region Buttons</span>
+                                <span class="pill-badge">🔍 City Autocomplete</span>
+                                <span class="pill-badge">⏱️ Dynamic Discord Time</span>
+                            </div>
+                        </div>
+                        <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
+                            <img src="assets/timezone_setup.png" alt="Timezone Registration Embed & Buttons" style="width: 100%; display: block; border-radius: var(--radius-md);">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bot Feature Comparison Table -->
+            <section class="comparison-table-container">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <span style="background: var(--accent-glow); color: var(--accent); font-weight: 700; font-size: 0.775rem; padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255, 215, 0, 0.2);">Bot Feature Comparison</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 12px; letter-spacing: -0.5px;">Why Choose SeanBot?</h2>
+                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Compare SeanBot against popular Discord bots. No paywalls, no artificial limits, and zero hidden subscription fees.</p>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Feature & Paywall Caps</th>
+                                <th style="width: 15%;">
+                                    <div class="bot-col-header" style="color: var(--accent); font-weight: 800;">
+                                        <img src="assets/seanbot.png" class="bot-avatar-img" style="border-color: var(--accent);" alt="SeanBot"> SeanBot
+                                    </div>
+                                </th>
+                                <th style="width: 15%;">
+                                    <div class="bot-col-header">
+                                        <img src="assets/dyno.png" class="bot-avatar-img" alt="Dyno"> Dyno
+                                    </div>
+                                </th>
+                                <th style="width: 15%;">
+                                    <div class="bot-col-header">
+                                        <img src="assets/carlbot.png" class="bot-avatar-img" alt="Carl-bot"> Carl-bot
+                                    </div>
+                                </th>
+                                <th style="width: 15%;">
+                                    <div class="bot-col-header">
+                                        <img src="assets/mee6.png" class="bot-avatar-img" alt="MEE6"> MEE6
+                                    </div>
+                                </th>
+                                <th style="width: 15%;">
+                                    <div class="bot-col-header">
+                                        <img src="assets/sapphire.png" class="bot-avatar-img" alt="Sapphire"> Sapphire
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>🎨 Web Embed Builder Limit</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Custom rich embeds with live side-by-side preview</span></td>
+                                <td><span class="badge-check">✅ Unlimited Free</span></td>
+                                <td><span class="badge-warn">🔒 3 Free Max</span></td>
+                                <td><span class="badge-warn">⚠️ Limited Free</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($12/mo)</span></td>
+                                <td><span class="badge-warn">⚠️ Basic Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>😀 Reaction Roles Cap</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Button reactions & dropdown role assignment menus</span></td>
+                                <td><span class="badge-check">✅ Unlimited Free</span></td>
+                                <td><span class="badge-warn">🔒 10 Roles Max</span></td>
+                                <td><span class="badge-warn">⚠️ 25 Roles Max</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($12/mo)</span></td>
+                                <td><span class="badge-check">✅ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>⏰ Automatic Timezone Converter</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dynamic local timestamps, 1-click region buttons</span></td>
+                                <td><span class="badge-check">✅ Built-in Free</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>🔮 Wizard101 Gaming Suite</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Damage Calc, Beastmoon, Pet/Spell Tomes, Tapestries</span></td>
+                                <td><span class="badge-check">✅ Built-in Free</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>🛡️ Perceptual Scam & Phishing Shield</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Zero-delay asset scanning, automated member quarantine</span></td>
+                                <td><span class="badge-check">✅ Included Free</span></td>
+                                <td><span class="badge-warn">⚠️ Basic Regex</span></td>
+                                <td><span class="badge-warn">⚠️ Basic Filters</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($12/mo)</span></td>
+                                <td><span class="badge-warn">⚠️ Basic</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>📊 Emoji & Reaction Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Weekly/monthly usage charts, reaction & user leaderboards</span></td>
+                                <td><span class="badge-check">✅ Free Dashboard</span></td>
+                                <td><span class="badge-warn">🔒 Premium</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($12/mo)</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>🎫 Support Ticket System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Private channels, multi-role claims, HTML transcript logs</span></td>
+                                <td><span class="badge-check">✅ Unlimited Free</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($5/mo)</span></td>
+                                <td><span class="badge-check">✅ Included</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($12/mo)</span></td>
+                                <td><span class="badge-check">✅ Included</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>⚖️ Staff LOA & Member Quarantine</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Staff Leave of Absence manager & untrusted account isolation</span></td>
+                                <td><span class="badge-check">✅ Built-in Free</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                                <td><span class="badge-cross">❌ No</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>⚡ Custom Commands & Auto-Replies</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Automated keyword responses & custom slash triggers</span></td>
+                                <td><span class="badge-check">✅ Unlimited Free</span></td>
+                                <td><span class="badge-warn">🔒 30 Max Free</span></td>
+                                <td><span class="badge-warn">⚠️ Limited Free</span></td>
+                                <td><span class="badge-warn">🔒 Paywalled ($12/mo)</span></td>
+                                <td><span class="badge-warn">⚠️ Limited Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>💎 Monthly Subscription Fee</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Cost to unlock full server functionality</span></td>
+                                <td><span class="badge-free">💎 100% Free</span></td>
+                                <td><span class="badge-warn">🔒 $5 - $15/mo</span></td>
+                                <td><span class="badge-warn">🔒 $5 - $10/mo</span></td>
+                                <td><span class="badge-warn">🔒 $12 - $20/mo</span></td>
+                                <td><span class="badge-warn">🔒 Premium Tier</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
             <!-- Featured Modules Grid -->
             <div>             
