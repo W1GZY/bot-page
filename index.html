@@ -349,6 +349,108 @@
             }
         }
 
+    
+        /* Top Bar Invite Button */
+        .topbar-invite-btn {
+            background: var(--accent);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 7px 16px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 0 16px var(--accent-glow);
+            transition: all var(--transition-fast);
+        }
+        .topbar-invite-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 24px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Comparison Table Styling */
+        .comparison-table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            backdrop-filter: blur(16px);
+            overflow-x: auto;
+            margin: 48px 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        .bot-col-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bot-avatar-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+        .badge-check {
+            background: rgba(87, 242, 135, 0.15);
+            color: #57F287;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-cross {
+            background: rgba(237, 66, 69, 0.12);
+            color: #ED4245;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-warn {
+            background: rgba(254, 231, 92, 0.15);
+            color: #FEE75C;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-free {
+            background: var(--accent-glow);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
     </style>
 </head>
 
@@ -638,6 +740,33 @@
             </div>
         </section>
 
+        
+        <!-- ==================== TAB 4: TERMS & PRIVACY ==================== -->
+        <section id="view-tos" class="tab-view">
+            <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(16px);">
+                <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px;">Terms of Service & Privacy Policy</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 0.95rem;">Last updated: July 2026</p>
+
+                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">1. Terms of Service</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">By adding SeanBot to your Discord server or using our Web Dashboard, you agree to comply with Discord's Terms of Service and Community Guidelines. SeanBot is provided "as-is" without warranties of any kind.</p>
+
+                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">2. Data Collection & Privacy</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">We take user privacy seriously. SeanBot collects only minimal data necessary for bot functionality:</p>
+                <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px; margin-bottom: 20px;">
+                    <li><strong>Server IDs & Channel IDs:</strong> Stored to maintain server configuration settings.</li>
+                    <li><strong>User IDs:</strong> Stored for moderation points, warning history, LOA status, and timezone settings.</li>
+                    <li><strong>Command Usage Logs:</strong> Processed temporarily for analytics and error diagnostics.</li>
+                </ul>
+
+                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">3. Data Security & Storage</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">All database connections utilize encrypted channels. We do not sell, rent, or trade any user or server data to third parties.</p>
+
+                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">4. Contact & Support</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7;">If you have questions regarding these terms or wish to request data removal, please contact our staff team through the support ticket system or official Discord community server.</p>
+            </div>
+        </section>
+
+
         <!-- ==================== TAB 3: COMMANDS ==================== -->
         <section id="view-commands" class="tab-view">
             <div style="margin-bottom: 24px;">
@@ -719,7 +848,7 @@
             sidebarDocsNav.style.display = (tabId === 'docs') ? 'block' : 'none';
         }
 
-        const titles = { overview: 'Overview', docs: 'Documentation', commands: 'Commands' };
+        const titles = { overview: 'Overview', docs: 'Documentation', commands: 'Commands', tos: 'Terms & Privacy' };
         const breadcrumbTitle = document.getElementById('currentTabTitle');
         if (breadcrumbTitle) breadcrumbTitle.textContent = titles[tabId] || 'Overview';
 
