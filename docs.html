@@ -65,8 +65,7 @@
 </div>
 
 <!-- DOCUMENTATION DATA SOURCE -->
-<script>
-    const docsData = [
+const docsData = [
             {
                         "id": "quickstart",
                         "icon": "ph-rocket",
@@ -2176,6 +2175,7 @@
         }
 ];
 
+    
     function initDocsPage() {
         if (window.__seanbotDocsDone) return;
 
@@ -2184,6 +2184,10 @@
         const contentContainer = document.getElementById('docsContent');
 
         if (!contentContainer) return;
+        
+        // DO NOT EXIT EARLY if sidebarNavContainer isn't injected by layout.js yet!
+        // We will populate contentContainer & navContainer immediately, and populate sidebarNavContainer when available.
+        
         window.__seanbotDocsDone = true;
 
         // Category definitions
@@ -2308,8 +2312,10 @@
         }
 
         // Render Main Sidebar TOC Navigation Groups
-        if (sidebarNavContainer) {
-            sidebarNavContainer.innerHTML = '';
+        function renderSidebarNav() {
+            const sNav = document.getElementById('sidebarDocsNavLinks');
+            if (!sNav) return;
+            sNav.innerHTML = '';
             Object.keys(groups).forEach(catKey => {
                 const grp = groups[catKey];
                 const grpDiv = document.createElement('div');
@@ -2339,9 +2345,12 @@
                     });
                     grpDiv.appendChild(sidebarLink);
                 });
-                sidebarNavContainer.appendChild(grpDiv);
+                sNav.appendChild(grpDiv);
             });
         }
+
+        renderSidebarNav();
+        document.addEventListener('seanbotLayoutReady', renderSidebarNav);
 
         // Render Articles Feed
         contentContainer.innerHTML = '';
@@ -2446,7 +2455,7 @@
             } else {
                 activateDoc(docsData[0].id);
             }
-        } else {
+        } else if (docsData.length > 0) {
             activateDoc(docsData[0].id);
         }
 
@@ -2533,13 +2542,10 @@
         });
     }
 
-    if (window.__seanbotLayoutDone) {
-        initDocsPage();
-    } else {
-        document.addEventListener('seanbotLayoutReady', initDocsPage);
-        document.addEventListener('DOMContentLoaded', initDocsPage);
-    }
+    document.addEventListener('seanbotLayoutReady', initDocsPage);
+    document.addEventListener('DOMContentLoaded', initDocsPage);
+    setTimeout(initDocsPage, 50);
+    setTimeout(initDocsPage, 200);
 </script>
-
 </body>
 </html>
