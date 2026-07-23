@@ -15,6 +15,126 @@
     <link rel="stylesheet" href="global.css">
     <script src="layout.js" defer></script>
 </head>
+<body data-nav="docs" data-title="Documentation">
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<nav class="sidebar" id="sidebar">
+    <div class="brand">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="ph-fill ph-paw-print" style="color: var(--accent); font-size: 1.8rem;"></i>
+            <span style="font-weight: 900; font-size: 1.9rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
+        </div>
+        <button class="hamburger" id="closeSidebarBtn"><i class="ph ph-x"></i></button>
+    </div>
+    
+    <div style="font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;">Menu</div>
+    
+    <a href="index.html" class="nav-link "><i class="ph ph-house"></i> <span>Overview</span></a>
+    <a href="docs.html" class="nav-link active"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
+    <a href="commands.html" class="nav-link "><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+    <div class="sidebar-toc-container" id="sidebarDocsNav"><div class="sidebar-toc-header"><i class="ph ph-compass"></i> Docs Navigation</div><div id="sidebarDocsNavLinks"></div></div>
+</nav>
+
+<div class="content-wrapper">
+    <header class="top-header">
+    <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="hamburger" id="openSidebarBtn"><i class="ph ph-list"></i></button>
+        <div class="breadcrumbs">
+            <a href="index.html" class="breadcrumb-item" title="Dashboard">
+                <i class="ph-fill ph-paw-print breadcrumb-icon"></i> 
+                <span style="font-weight: 900; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
+            </a>
+            <i class="ph ph-caret-right breadcrumb-separator"></i>
+            <span class="breadcrumb-item active">Documentation</span>
+        </div>
+    </div>
+    
+    <div class="header-right">
+        <div class="dropdown-toggle" id="themeToggle" title="Change Theme Accent">
+            <div class="active-display"></div>
+            <i class="ph ph-caret-down"></i>
+            
+            <div class="dropdown-menu-content">
+                <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Theme Accent</div>
+                <div class="color-grid" id="colorGrid">
+                    <div class="accent-dot" data-accent="gold" style="background: #FFD700;" title="Gold"></div>
+                    <div class="accent-dot" data-accent="amber" style="background: #F59E0B;" title="Amber"></div>
+                    <div class="accent-dot" data-accent="orange" style="background: #F97316;" title="Orange"></div>
+                    <div class="accent-dot" data-accent="rose" style="background: #E11D48;" title="Rose"></div>
+                    <div class="accent-dot" data-accent="pink" style="background: #EC4899;" title="Pink"></div>
+                    <div class="accent-dot" data-accent="purple" style="background: #9333EA;" title="Purple"></div>
+                    <div class="accent-dot" data-accent="blurple" style="background: #5865F2;" title="Blurple"></div>
+                    <div class="accent-dot" data-accent="indigo" style="background: #6366F1;" title="Indigo"></div>
+                    <div class="accent-dot" data-accent="blue" style="background: #3B82F6;" title="Blue"></div>
+                    <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;" title="Cyan"></div>
+                    <div class="accent-dot" data-accent="teal" style="background: #0D9488;" title="Teal"></div>
+                    <div class="accent-dot" data-accent="emerald" style="background: #10B981;" title="Emerald"></div>
+                    <div class="accent-dot" data-accent="green" style="background: #22C55E;" title="Green"></div>
+                    <div class="accent-dot" data-accent="lime" style="background: #84CC16;" title="Lime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="content">
+    <!-- Page Header -->
+    <div class="auto-fade-in" style="margin-bottom: 24px;">
+        <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
+        <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
+            Configuring and getting the most out of SeanBot for your Discord server.
+        </p>
+    </div>
+
+    <!-- Doc Search Filter -->
+    <div style="margin-bottom: 20px;" class="auto-fade-in">
+        <div class="filter-pills" id="docsCategoryFilters">
+            <button class="pill-btn active" data-category="all">All Modules</button>
+            <button class="pill-btn" data-category="getting_started">🚀 Getting Started</button>
+            <button class="pill-btn" data-category="w101">🔮 Wizard101</button>
+            <button class="pill-btn" data-category="security">🛡️ Security & Core</button>
+            <button class="pill-btn" data-category="community">👥 Community & Events</button>
+            <button class="pill-btn" data-category="utility">🛠️ Utility & System</button>
+        </div>
+    </div>
+
+    <!-- Doc Search Filter -->
+    <div class="search-container auto-fade-in" style="animation-delay: 0.05s;">
+        <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+        <input type="text" id="docSearch" placeholder="Search documentation modules or commands...">
+    </div>
+
+    <!-- Documentation Layout Grid -->
+    <div class="docs-grid auto-fade-in" style="animation-delay: 0.1s;">
+        <!-- Sticky Navigation -->
+        <nav class="docs-nav" id="docsNav">
+            <div class="docs-nav-title">Navigation</div>
+            <div id="docsNavLinks">
+                <!-- Dynamic Nav Links populated by JS -->
+            </div>
+        </nav>
+
+        <!-- Main Articles Container -->
+        <main id="docsContent">
+            <!-- Articles dynamically generated from docsData -->
+        </main>
+    </div>
+
+    <footer class="page-footer">
+    <div>&copy; 2026 SeanBot. All rights reserved.</div>
+    <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="tos.html">Terms & Privacy</a>
+    </div>
+</footer>
+</div>
+
+<script>
+        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+        document.documentElement.setAttribute('data-accent', savedAccent);
+    </script>
+    <link rel="stylesheet" href="global.css">
+    <script src="layout.js" defer></script>
+</head>
 
 <body data-nav="docs" data-title="Documentation">
 

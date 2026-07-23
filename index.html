@@ -15,301 +15,78 @@
     <link rel="stylesheet" href="global.css">
     <script src="layout.js" defer></script>
 </head>
-
 <body data-nav="overview" data-title="Overview">
 
-    <div class="content auto-fade-in" style="max-width: 1400px;">
-        <!-- Hero Section -->
-        <div class="hero-section">             
-            <h1 class="hero-title">Meet <span style="font-weight: 900; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af;">.</span></span></h1>             
-            <p class="hero-desc">The ultimate multipurpose Discord companion built to manage your community, secure your server, and seamlessly bridge networks.</p>             
-            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">                 
-                <a href="#" class="btn-large btn-primary"><i class="ph-fill ph-discord-logo"></i> Invite to Server</a>                 
-                <a href="docs.html" class="btn-large btn-secondary"><i class="ph ph-book-open"></i> Read Documentation</a>             
-                <a href="commands.html" class="btn-large btn-secondary"><i class="ph ph-terminal-window"></i> Commands</a>             
-            </div>         
-        </div>         
-
-        <!-- Live Stats Counter Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">2</div>
-                <div class="stat-label">Communities</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">200+</div>
-                <div class="stat-label">Active Users</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Bot Commands</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">Uptime</div>
-            </div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<nav class="sidebar" id="sidebar">
+    <div class="brand">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="ph-fill ph-paw-print" style="color: var(--accent); font-size: 1.8rem;"></i>
+            <span style="font-weight: 900; font-size: 1.9rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
         </div>
+        <button class="hamburger" id="closeSidebarBtn"><i class="ph ph-x"></i></button>
+    </div>
+    
+    <div style="font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;">Menu</div>
+    
+    <a href="index.html" class="nav-link active"><i class="ph ph-house"></i> <span>Overview</span></a>
+    <a href="docs.html" class="nav-link "><i class="ph ph-book-open"></i> <span>Documentation</span></a>
+    <a href="commands.html" class="nav-link "><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+    
+</nav>
 
-        <!-- Why Choose SeanBot -->
-        <div style="margin-bottom: 40px;">             
-            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">                 
-                <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
-            </h2>             
-            <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: #ddd;">                 
-                <p style="margin-top: 0;">SeanBot is a highly specialized toolkit designed for communities that need <strong>real reliability and power</strong>.</p>                 
-                <p style="margin-bottom: 0;">Whether you are running a multi-server network, scheduling cross-timezone events, or protecting your server from raids, SeanBot gives you granular control without clutter. Tailor every module and keep your community running flawlessly.</p>             
-            </div>         
-        </div>         
-
-        <!-- Featured Modules with Filter Pills -->
-        <div>             
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
-                <h2 style="font-size: 1.6rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px;">                 
-                    <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 1.8rem;"></i> Featured Modules             
-                </h2>             
-                
-                <div class="filter-pills" id="featureFilters">
-                    <button class="pill-btn active" data-filter="all">All</button>
-                    <button class="pill-btn" data-filter="security">Security & Core</button>
-                    <button class="pill-btn" data-filter="community">Community & Events</button>
-                    <button class="pill-btn" data-filter="w101">Wizard101</button>
-                    <button class="pill-btn" data-filter="utility">Utility</button>
-                </div>
-            </div>
-
-            <div class="responsive-grid-2" id="featuresGrid">
-                        <div class="feature-card" data-category="security">
-                            <div class="feature-icon"><i class="ph ph-browser"></i></div>
-                            <div>
-                                <h3 class="feature-title">Web Control Panel</h3>
-                                <p class="feature-desc">Easily turn features on or off, set up channels, and customize SeanBot settings for your server right from your web browser.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="security">
-                            <div class="feature-icon"><i class="ph ph-gavel"></i></div>
-                            <div>
-                                <h3 class="feature-title">Server Moderation</h3>
-                                <p class="feature-desc">Easy moderation tools to kick, ban, timeout, and clear messages to keep your server friendly and clean.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="security">
-                            <div class="feature-icon"><i class="ph ph-wrench"></i></div>
-                            <div>
-                                <h3 class="feature-title">Staff Tools & Ban Appeals</h3>
-                                <p class="feature-desc">Give banned users a web form to submit ban appeals, save quick warning shortcuts, and set up community suggestion boards.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="security">
-                            <div class="feature-icon"><i class="ph ph-flag"></i></div>
-                            <div>
-                                <h3 class="feature-title">Member Reports</h3>
-                                <p class="feature-desc">Allow members to privately report bad behavior or rule breaks directly to your server moderators.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="security">
-                            <div class="feature-icon"><i class="ph ph-file-text"></i></div>
-                            <div>
-                                <h3 class="feature-title">Activity & Security Logs</h3>
-                                <p class="feature-desc">Automatically track deleted messages, edited chat, role changes, and member joins in a private staff channel.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="community">
-                            <div class="feature-icon"><i class="ph ph-calendar-check"></i></div>
-                            <div>
-                                <h3 class="feature-title">Staff Leave Requests (LOA)</h3>
-                                <p class="feature-desc">Let moderators and staff request time off. SeanBot tracks start and end dates and notifies your team automatically.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="security">                     
-                            <div class="feature-icon"><i class="ph ph-shield-warning"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Anti-Raid Protection</h3>                         
-                                <p class="feature-desc">Keep your server safe automatically. Stop raid bots, block scam picture posts, and protect your members from spammers.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="community">                     
-                            <div class="feature-icon"><i class="ph ph-users-three"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Raid & Event Polls</h3>                         
-                                <p class="feature-desc">Organize raid groups with interactive role signups. If a team fills up, new members automatically go onto a waitlist.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="community">
-                            <div class="feature-icon"><i class="ph ph-swords"></i></div>
-                            <div>
-                                <h3 class="feature-title">Raid & Event Organizer</h3>
-                                <p class="feature-desc">Schedule gaming events, set required wizard schools or gear roles, and let members sign up with one click.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="community">
-                            <div class="feature-icon"><i class="ph ph-arrows-merge"></i></div>
-                            <div>
-                                <h3 class="feature-title">Cross-Server Team-Ups</h3>
-                                <p class="feature-desc">Connect with partner Discord servers so when someone posts a dungeon team-up, it shows up on partner servers too.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="community">
-                            <div class="feature-icon"><i class="ph ph-calendar"></i></div>
-                            <div>
-                                <h3 class="feature-title">Community Calendar</h3>
-                                <p class="feature-desc">Display an auto-updating monthly event calendar in chat so everyone can see upcoming events and tournament schedules.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="utility">                     
-                            <div class="feature-icon"><i class="ph ph-push-pin"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Auto-Pin System</h3>                         
-                                <p class="feature-desc">Let your community pin popular posts! Messages that get enough reaction emojis are automatically pinned in chat.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="utility">                     
-                            <div class="feature-icon"><i class="ph ph-chart-line-up"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Activity Rewards</h3>                         
-                                <p class="feature-desc">Track member activity in chat and voice channels to reward your most active members with special roles automatically.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="utility">                     
-                            <div class="feature-icon"><i class="ph ph-layout"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Fancy Message Builder</h3>                         
-                                <p class="feature-desc">Design beautiful announcement cards with custom colors, pictures, and titles directly inside Discord.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="utility">                     
-                            <div class="feature-icon"><i class="ph ph-smiley-sticker"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Emoji Manager</h3>                         
-                                <p class="feature-desc">See which emojis get typed the most, lock special emojis to specific roles, and clean up unused emojis in your server.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="utility">
-                            <div class="feature-icon"><i class="ph ph-thumbs-up"></i></div>
-                            <div>
-                                <h3 class="feature-title">Reaction Analytics</h3>
-                                <p class="feature-desc">See popular reaction emojis in your server, react with animated custom emojis, and ping members who reacted to posts.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="utility">
-                            <div class="feature-icon"><i class="ph ph-chat-centered-text"></i></div>
-                            <div>
-                                <h3 class="feature-title">Auto Mention Replies</h3>
-                                <p class="feature-desc">Set an automatic custom reply message sent whenever another member mentions you in chat.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="utility">
-                            <div class="feature-icon"><i class="ph ph-arrow-u-down-left"></i></div>
-                            <div>
-                                <h3 class="feature-title">Returning Member Roles</h3>
-                                <p class="feature-desc">Automatically give a welcome back role to past members whenever they rejoin your server.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">                     
-                            <div class="feature-icon"><i class="ph ph-paw-print"></i></div>                     
-                            <div>                         
-                                <h3 class="feature-title">Beastmoon Tracker</h3>                         
-                                <p class="feature-desc">Track Beastmoon form levels, check how many Lunari and Idols you need for your next upgrade, and view server leaderboards.</p>                     
-                            </div>                 
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-book-bookmark"></i></div>
-                            <div>
-                                <h3 class="feature-title">Wizard101 Pet Tome</h3>
-                                <p class="feature-desc">Look up stats and hatching guides for over 1,000 Wizard101 pets to see hatch times, wow factors, and talent pools.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-fire"></i></div>
-                            <div>
-                                <h3 class="feature-title">Roshambo Battle Royale</h3>
-                                <p class="feature-desc">Host fun elemental battle royale games in chat where members duel using Fire, Ice, Storm, and Myth magic schools.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-magnifying-glass"></i></div>
-                            <div>
-                                <h3 class="feature-title">W101 Gear Lookup</h3>
-                                <p class="feature-desc">Search Wizard101 gear items to inspect level requirements, school stats, set bonuses, and drop locations.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-trend-down"></i></div>
-                            <div>
-                                <h3 class="feature-title">Level Scaling Calculator</h3>
-                                <p class="feature-desc">Check what gear stats look like at lower wizard levels when scaling down for lower-level dungeons.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-lightning"></i></div>
-                            <div>
-                                <h3 class="feature-title">Damage Calculator</h3>
-                                <p class="feature-desc">Calculate damage hits for your wizard by picking your blades, traps, aura, gear stats, and critical hits.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-cards"></i></div>
-                            <div>
-                                <h3 class="feature-title">Deck Builder & Sharing</h3>
-                                <p class="feature-desc">Create, save, and share card decks with your guild mates, generate deck pictures, and inspect share codes.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-card" data-category="w101">
-                            <div class="feature-icon"><i class="ph ph-book-open-text"></i></div>
-                            <div>
-                                <h3 class="feature-title">Spell Tome Database</h3>
-                                <p class="feature-desc">Search any Wizard101 spell to see card picture art, pip costs, damage numbers, and extra card effects.</p>
-                            </div>
-                        </div>
-                    </div>
+<div class="content-wrapper">
+    <header class="top-header">
+    <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="hamburger" id="openSidebarBtn"><i class="ph ph-list"></i></button>
+        <div class="breadcrumbs">
+            <a href="index.html" class="breadcrumb-item" title="Dashboard">
+                <i class="ph-fill ph-paw-print breadcrumb-icon"></i> 
+                <span style="font-weight: 900; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af; margin-left: 1px;">.</span></span>
+            </a>
+            <i class="ph ph-caret-right breadcrumb-separator"></i>
+            <span class="breadcrumb-item active">Overview</span>
         </div>
     </div>
+    
+    <div class="header-right">
+        <div class="dropdown-toggle" id="themeToggle" title="Change Theme Accent">
+            <div class="active-display"></div>
+            <i class="ph ph-caret-down"></i>
+            
+            <div class="dropdown-menu-content">
+                <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Theme Accent</div>
+                <div class="color-grid" id="colorGrid">
+                    <div class="accent-dot" data-accent="gold" style="background: #FFD700;" title="Gold"></div>
+                    <div class="accent-dot" data-accent="amber" style="background: #F59E0B;" title="Amber"></div>
+                    <div class="accent-dot" data-accent="orange" style="background: #F97316;" title="Orange"></div>
+                    <div class="accent-dot" data-accent="rose" style="background: #E11D48;" title="Rose"></div>
+                    <div class="accent-dot" data-accent="pink" style="background: #EC4899;" title="Pink"></div>
+                    <div class="accent-dot" data-accent="purple" style="background: #9333EA;" title="Purple"></div>
+                    <div class="accent-dot" data-accent="blurple" style="background: #5865F2;" title="Blurple"></div>
+                    <div class="accent-dot" data-accent="indigo" style="background: #6366F1;" title="Indigo"></div>
+                    <div class="accent-dot" data-accent="blue" style="background: #3B82F6;" title="Blue"></div>
+                    <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;" title="Cyan"></div>
+                    <div class="accent-dot" data-accent="teal" style="background: #0D9488;" title="Teal"></div>
+                    <div class="accent-dot" data-accent="emerald" style="background: #10B981;" title="Emerald"></div>
+                    <div class="accent-dot" data-accent="green" style="background: #22C55E;" title="Green"></div>
+                    <div class="accent-dot" data-accent="lime" style="background: #84CC16;" title="Lime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterBtns = document.querySelectorAll('#featureFilters .pill-btn');
-            const featureCards = document.querySelectorAll('#featuresGrid .feature-card');
+    <div class="content"></div>
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+    <footer class="page-footer">
+    <div>&copy; 2026 SeanBot. All rights reserved.</div>
+    <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+        <a href="tos.html">Terms & Privacy</a>
+    </div>
+</footer>
+</div>
 
-                    const category = btn.getAttribute('data-filter');
-                    featureCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+<script src="layout.js"></script>
 </body>
 </html>
