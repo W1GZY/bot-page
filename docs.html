@@ -17,12 +17,6 @@
 </head>
 
 <body data-nav="docs" data-title="Documentation">
-<script>
-    const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
-    document.documentElement.setAttribute('data-accent', savedAccent);
-</script>
-<link rel="stylesheet" href="global.css">
-<script src="layout.js" defer></script>
 
 
 <div class="content">
@@ -2171,20 +2165,76 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         const navContainer = document.getElementById('docsNavLinks');
+        const sidebarNavContainer = document.getElementById('sidebarDocsNavLinks');
         const contentContainer = document.getElementById('docsContent');
 
-        if (!navContainer || !contentContainer) return;
+        if (!contentContainer) return;
+
+        function activateDoc(docId, scroll = true) {
+            // Update page & sidebar links
+            document.querySelectorAll('.docs-nav-link, .sidebar-toc-link').forEach(link => {
+                if (link.getAttribute('data-doc') === docId || link.getAttribute('href') === `#${docId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Toggle active article display
+            document.querySelectorAll('.docs-article').forEach(article => {
+                if (article.id === docId) {
+                    article.classList.add('active-doc');
+                    article.style.display = 'block';
+                } else {
+                    article.classList.remove('active-doc');
+                    article.style.display = 'none';
+                }
+            });
+
+            if (scroll) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
 
         docsData.forEach((doc, idx) => {
-            const navLink = document.createElement('a');
-            navLink.href = `#${doc.id}`;
-            navLink.className = `docs-nav-link ${idx === 0 ? 'active' : ''}`;
-            navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
-            navContainer.appendChild(navLink);
+            // 1. Page sticky navigation link
+            if (navContainer) {
+                const navLink = document.createElement('a');
+                navLink.href = `#${doc.id}`;
+                navLink.className = `docs-nav-link ${idx === 0 ? 'active' : ''}`;
+                navLink.setAttribute('data-doc', doc.id);
+                navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
+                navLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    activateDoc(doc.id);
+                });
+                navContainer.appendChild(navLink);
+            }
 
+            // 2. Main sidebar TOC link
+            if (sidebarNavContainer) {
+                const sidebarLink = document.createElement('a');
+                sidebarLink.className = `sidebar-toc-link ${idx === 0 ? 'active' : ''}`;
+                sidebarLink.setAttribute('data-doc', doc.id);
+                sidebarLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
+                sidebarLink.addEventListener('click', () => {
+                    activateDoc(doc.id);
+                    if (window.innerWidth <= 1000) {
+                        const sidebar = document.getElementById('sidebar');
+                        const overlay = document.getElementById('sidebarOverlay');
+                        sidebar?.classList.remove('mobile-open');
+                        overlay?.classList.remove('show');
+                        document.body.style.overflow = '';
+                    }
+                });
+                sidebarNavContainer.appendChild(sidebarLink);
+            }
+
+            // 3. Render Article Card
             const article = document.createElement('article');
-            article.className = 'docs-article';
+            article.className = `docs-article ${idx === 0 ? 'active-doc' : ''}`;
             article.id = doc.id;
+            if (idx !== 0) article.style.display = 'none';
 
             let html = `
                 <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
@@ -2207,9 +2257,38 @@
                     html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
                 } else if (item.type === 'commands') {
                     if (item.title) html += `<h3>${item.title}</h3>`;
-                    html += `<ul>${item.items.map(i => `<li><code>${i.cmd}</code> —${i.desc}</li>`).join('')}</ul>`;
+                    html += `<ul>${item.items.map(i => `<li><code>${i.cmd}</code> — ${i.desc}</li>`).join('')}</ul>`;
                 }
             });
+
+            article.innerHTML = html;
+            contentContainer.appendChild(article);
+        });
+
+        // Live Search Input Filter
+        const searchInput = document.getElementById('docSearch');
+        searchInput?.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let firstMatch = null;
+
+            docsData.forEach(doc => {
+                const article = document.getElementById(doc.id);
+                const match = !query || doc.title.toLowerCase().includes(query) || doc.subtitle.toLowerCase().includes(query) || (article && article.textContent.toLowerCase().includes(query));
+                
+                document.querySelectorAll(`[data-doc="${doc.id}"]`).forEach(link => {
+                    link.style.display = match ? 'flex' : 'none';
+                });
+
+                if (match && !firstMatch) firstMatch = doc.id;
+            });
+
+            if (query && firstMatch) {
+                activateDoc(firstMatch, false);
+            } else if (!query && docsData.length > 0) {
+                activateDoc(docsData[0].id, false);
+            }
+        });
+    });
 
             article.innerHTML = html;
             contentContainer.appendChild(article);

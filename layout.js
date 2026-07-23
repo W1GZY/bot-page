@@ -26,7 +26,15 @@
                 <a href="index.html" class="nav-link ${navId === 'overview' ? 'active' : ''}"><i class="ph ph-house"></i> <span>Overview</span></a>
                 <a href="docs.html" class="nav-link ${navId === 'docs' ? 'active' : ''}"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
                 <a href="commands.html" class="nav-link ${navId === 'commands' ? 'active' : ''}"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
-                            </nav>
+                                ${navId === 'docs' ? `
+                <div class="sidebar-toc-container" id="sidebarDocsNav" style="margin-top: 14px; padding: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: var(--radius-md); max-height: calc(100vh - 280px); overflow-y: auto;">
+                    <div style="font-size: 0.65rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                        <i class="ph ph-compass"></i> Docs Navigation
+                    </div>
+                    <div id="sidebarDocsNavLinks"></div>
+                </div>
+                ` : ''}
+            </nav>
         `);
 
         const wrapper = document.createElement('div');
