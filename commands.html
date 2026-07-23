@@ -16,6 +16,90 @@
     
     <script src="commands-data.js"></script>
     <script src="layout.js" defer></script>
+    <style>
+        /* Commands Page Custom Styles */
+        .layout-with-toc {
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .layout-with-toc {
+                grid-template-columns: 1fr;
+            }
+            .toc-sidebar {
+                display: none;
+            }
+        }
+        .toc-sidebar {
+            position: sticky;
+            top: 80px;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        .toc-title {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .toc-link {
+            display: block;
+            padding: 6px 10px;
+            color: var(--text-secondary);
+            font-size: 0.825rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            margin-bottom: 4px;
+        }
+        .toc-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .toc-link.active-toc {
+            color: var(--accent);
+            background: var(--accent-glow);
+            font-weight: 700;
+        }
+        .cmd-section {
+            margin-bottom: 36px;
+            scroll-margin-top: 80px;
+        }
+        .cmd-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: transform var(--transition-fast);
+        }
+        .cmd-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .cmd-name {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0;
+        }
+        .cmd-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 6px;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body data-nav="commands" data-title="Commands">
 
@@ -115,6 +199,90 @@
     
     <script src="commands-data.js"></script>
     <script src="layout.js" defer></script>
+    <style>
+        /* Commands Page Custom Styles */
+        .layout-with-toc {
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .layout-with-toc {
+                grid-template-columns: 1fr;
+            }
+            .toc-sidebar {
+                display: none;
+            }
+        }
+        .toc-sidebar {
+            position: sticky;
+            top: 80px;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        .toc-title {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .toc-link {
+            display: block;
+            padding: 6px 10px;
+            color: var(--text-secondary);
+            font-size: 0.825rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            margin-bottom: 4px;
+        }
+        .toc-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .toc-link.active-toc {
+            color: var(--accent);
+            background: var(--accent-glow);
+            font-weight: 700;
+        }
+        .cmd-section {
+            margin-bottom: 36px;
+            scroll-margin-top: 80px;
+        }
+        .cmd-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: transform var(--transition-fast);
+        }
+        .cmd-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .cmd-name {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0;
+        }
+        .cmd-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 6px;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 
 <body data-nav="commands" data-title="Commands">

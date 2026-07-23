@@ -14,6 +14,60 @@
     </script>
     <link rel="stylesheet" href="global.css">
     <script src="layout.js" defer></script>
+    <style>
+        /* Index Overview Custom Styles */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 32px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+        }
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0 auto 28px auto;
+            line-height: 1.6;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            transition: transform var(--transition-fast);
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body data-nav="overview" data-title="Overview">
 
