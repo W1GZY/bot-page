@@ -343,9 +343,42 @@
             padding: 4px 10px;
             border-radius: 20px;
         }
+        .showcase-image-frame {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.35);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            width: 100%;
+            transition: transform var(--transition-normal), border-color var(--transition-normal);
+        }
+        .showcase-image-frame:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .showcase-image-frame img,
+        .feature-card img,
+        .doc-section img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+            display: block;
+        }
+
         @media (max-width: 850px) {
             .showcase-panel {
                 grid-template-columns: 1fr !important;
+            }
+            .showcase-image-frame img {
+                max-height: 280px;
             }
         }
 
@@ -704,87 +737,87 @@
                         <tbody>
                             <tr>
                                 <td><strong>⚡ Slash & Prefix Commands</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Hybrid slash / and custom text prefix command triggers</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>🛡️ Moderation System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Kick, ban, softban, timeout, and moderation action logs</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>⚠️ Warning System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Member warning tracking, point thresholds, and automated punishments</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">⚠️ Limited</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>📜 Server Audit Logging</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Deleted message, edit, role, and member join event logs</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>🔗 Invite Tracking</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Track member join sources, invite codes, and code creators</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">🔒 Premium</span></td>
                                 <td><span class="badge-warn">🔒 Premium</span></td>
                             </tr>
                             <tr>
                                 <td><strong>📌 Sticky Messages</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Auto-reposting pinned guidance messages at channel bottom</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>⭐ Starboard Engine</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Highlight top community messages based on star reaction count</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>💡 Community Suggestions</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Structured member suggestion submissions, voting, and status updates</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>📊 Polls</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Simple reaction polls with dashboard previews and timestamps, plus advanced raid roster polls</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
                             </tr>
                             <tr>
                                 <td><strong>🎫 Support Ticket System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Private support channels, multi-role claims, and HTML transcript logs</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                                 <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>🛡️ Server Raid & Scam Shield</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Zero-delay asset pattern scanning and automated member quarantine</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">🔒 Premium</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
@@ -792,71 +825,71 @@
                             </tr>
                             <tr>
                                 <td><strong>👻 Ghost Ping Detection</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Instant alerts when users send and delete mention pings</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🔊 Temporary Voice Channels</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dynamic voice lobbies created automatically on user join</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>📈 Server Stats Channels</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Real-time counters, structured activity views, presets, and placeholder catalog</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🏆 Member Leveling & XP</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Chat XP points, custom rank cards, and level reward roles</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>🎨 Visual Embed Builder</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Custom rich embeds with side-by-side real-time preview</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
                                 <td><strong>⏰ Personal Reminders</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Scheduled notification pings and customizable timer alerts</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🌐 Timezone Commands</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Timezone mapping, city lookup, and dynamic local timestamps</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🌐 Message Translator</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Instant multi-language translation for server messages</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>😀 Emoji Management</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Top emoji stats, locks, and bulk emoji utilities</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
                                 <td><span class="badge-warn">⚠️ Basic</span></td>
@@ -864,66 +897,66 @@
                             </tr>
                             <tr>
                                 <td><strong>📊 Emoji Usage Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard charts tracking top used server emojis over time</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>💬 Reaction Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard charts tracking community reaction activity trends</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🌍 Timezone Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard distribution charts of member timezone regions</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🌴 Staff Leave of Absence (LOA)</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Staff LOA request filing, approval routing, and status tracking</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>📌 Auto-Pin Messages</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Auto-pinning messages based on reaction vote thresholds</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🔮 Wizard101 Gaming Suite</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Damage assistant, Beastmoon tracking, pet/spell lookup, deck sharing, TC values</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
+                                <td><span class="badge-cross"><i class="ph ph-x-bold"></i></span></td>
                             </tr>
                             <tr>
                                 <td><strong>🌐 Web Control Dashboard</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Full browser management dashboard for server configuration</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
+                                <td><span class="badge-check"><i class="ph ph-check-bold"></i> Yes</span></td>
                             </tr>
                             <tr>
-                                <td><strong>💎 Premium Required for Core Features</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Subscription requirement to unlock basic core functionality</span></td>
+                                <td><strong>💎 Premium Dependency Level</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">How heavily basic core features are locked behind a paid subscription</span></td>
                                 <td><span class="badge-free">None (0%)</span></td>
-                                <td><span class="badge-warn">High ($15/mo)</span></td>
-                                <td><span class="badge-warn">Low ($5/mo)</span></td>
-                                <td><span class="badge-warn">Very High ($20/mo)</span></td>
+                                <td><span class="badge-warn">Very High</span></td>
+                                <td><span class="badge-warn">Low</span></td>
+                                <td><span class="badge-warn">High</span></td>
                                 <td><span class="badge-warn">Medium</span></td>
                             </tr>
                         </tbody>
