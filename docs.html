@@ -1938,12 +1938,16 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Deploy interactive support panels where members click to open private ticket channels. Staff members can claim tickets, set priority levels, and post internal notes."
+                                                "text": "Deploy interactive support panels where members click to open private ticket channels. Staff members can claim tickets, set priority levels, post internal notes, and close tickets from Discord or the dashboard with database-backed duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
                                     },
                                     {
                                                 "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
+                                                            {
+                                                                        "cmd": "/ticket create [reason]",
+                                                                        "desc": "Manually open a support ticket from the default panel."
+                                                            },
                                                             {
                                                                         "cmd": "/ticket panel [name]",
                                                                         "desc": "Deploy interactive support ticket panel."
@@ -1962,7 +1966,19 @@ const docsData = [
                                                             },
                                                             {
                                                                         "cmd": "/ticket priority [level]",
-                                                                        "desc": "Set priority level for active ticket (Low, Medium, High, Emergency)."
+                                                                        "desc": "Set priority level for active ticket (Low, Normal, High, Critical)."
+                                                            },
+                                                            {
+                                                                        "cmd": "/ticket add [member]",
+                                                                        "desc": "Add another member to the current ticket channel."
+                                                            },
+                                                            {
+                                                                        "cmd": "/ticket remove [member]",
+                                                                        "desc": "Remove a member from the current ticket channel."
+                                                            },
+                                                            {
+                                                                        "cmd": "/ticket info",
+                                                                        "desc": "Display creator, staff assignment, status, priority, panel, and tags."
                                                             },
                                                             {
                                                                         "cmd": "/ticket staffsay [msg]",
@@ -1970,7 +1986,7 @@ const docsData = [
                                                             },
                                                             {
                                                                         "cmd": "/ticket close [reason]",
-                                                                        "desc": "Close ticket and save transcript archive."
+                                                                        "desc": "Close the ticket with duplicate-close protection, transcript logging, optional DM delivery, and channel cleanup."
                                                             }
                                                 ]
                                     }

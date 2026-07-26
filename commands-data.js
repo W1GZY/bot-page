@@ -421,6 +421,12 @@ const commandsDatabase = [
             "tocLabel": "10.0 Tickets",
             "commands": [
                     {
+                            "name": "/ticket create [reason]",
+                            "desc": "Manually open a support ticket from the default panel.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
                             "name": "/ticket panel [panel_name]",
                             "desc": "Deploy an interactive support ticket panel.",
                             "badge": "Manage Channels",
@@ -451,6 +457,24 @@ const commandsDatabase = [
                             "type": "perm"
                     },
                     {
+                            "name": "/ticket add [member]",
+                            "desc": "Add another member to the current ticket channel.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket remove [member]",
+                            "desc": "Remove a member from the current ticket channel.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/ticket info",
+                            "desc": "Show creator, staff assignment, status, priority, panel, and tags.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
                             "name": "/ticket staffsay [msg]",
                             "desc": "Post a private staff discussion note inside ticket.",
                             "badge": "Manage Messages",
@@ -458,7 +482,7 @@ const commandsDatabase = [
                     },
                     {
                             "name": "/ticket close [reason]",
-                            "desc": "Close ticket and save transcript archive.",
+                            "desc": "Close the ticket with duplicate-close protection, transcript logging, optional DM delivery, and channel cleanup.",
                             "badge": "Manage Messages",
                             "type": "perm"
                     }
