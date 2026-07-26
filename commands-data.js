@@ -422,7 +422,7 @@ const commandsDatabase = [
                             "type": "public"
                     }
             ]
-    },,
+    },
 
     {
             "id": "ticket-system",
@@ -611,6 +611,50 @@ const commandsDatabase = [
                             "name": "/reactionping authors",
                             "desc": "Safety controls for message author pings.",
                             "badge": "Manage Server",
+                            "type": "perm"
+                    }
+            ]
+    },
+    {
+            "id": "sticky-messages",
+            "title": "14.0 Sticky Messages",
+            "icon": "ph-push-pin",
+            "tocLabel": "14.0 Sticky Messages",
+            "commands": [
+                    {
+                            "name": "/sticky set",
+                            "desc": "Create or update a sticky message for a channel.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/sticky list",
+                            "desc": "List sticky messages configured in this server.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/sticky refresh",
+                            "desc": "Repost a sticky message right now.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/sticky pause",
+                            "desc": "Pause a sticky message without deleting it.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/sticky resume",
+                            "desc": "Resume a paused sticky message.",
+                            "badge": "Manage Messages",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/sticky remove",
+                            "desc": "Remove a sticky message from a channel.",
+                            "badge": "Manage Messages",
                             "type": "perm"
                     }
             ]

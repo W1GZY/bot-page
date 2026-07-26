@@ -1663,6 +1663,67 @@ const docsData = [
         ]
     },
     {
+        "id": "sticky_messages",
+        "icon": "ph-push-pin",
+        "title": "Sticky Messages",
+        "subtitle": "Keep important channel messages visible during active chat.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Overview"
+            },
+            {
+                "type": "text",
+                "text": "Sticky Messages keeps one important message near the bottom of a channel. When enough normal messages are posted, SeanBot removes the old sticky and posts a fresh copy so members can still see it."
+            },
+            {
+                "type": "heading",
+                "text": "Beginner Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Sticky Messages in Module Settings.",
+                    "Open Sticky Messages in the dashboard, choose a channel, write the message, and save.",
+                    "Use Normal Message for plain text or Embed for a cleaner announcement look.",
+                    "Messages Before Repost controls how busy the channel must be before SeanBot moves the sticky back down.",
+                    "Repost Delay gives people a few seconds to finish chatting before the sticky is posted again.",
+                    "Allow Mentions is off by default so a sticky cannot accidentally ping everyone."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/sticky set",
+                        "desc": "Create or update a sticky message in a channel."
+                    },
+                    {
+                        "cmd": "/sticky list",
+                        "desc": "Show sticky messages configured in this server."
+                    },
+                    {
+                        "cmd": "/sticky refresh",
+                        "desc": "Post the sticky message again right now."
+                    },
+                    {
+                        "cmd": "/sticky pause",
+                        "desc": "Pause a sticky message without deleting its settings."
+                    },
+                    {
+                        "cmd": "/sticky resume",
+                        "desc": "Turn a paused sticky message back on."
+                    },
+                    {
+                        "cmd": "/sticky remove",
+                        "desc": "Remove a sticky message from a channel."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "embeds",
         "icon": "ph-layout",
         "title": "Visual Embed Builder",
