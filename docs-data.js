@@ -742,7 +742,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to isolated webhook channels."
+                "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to isolated webhook channels. Ban appeal, suggestion, and public report staff actions are handled by the Staff Workflows logging category in Log Config."
             },
             {
                 "type": "commands",
@@ -804,7 +804,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Ban Appeals and Suggestions each have their own dashboard page. Admins choose the review channel and staff log channel on those pages. Moderators only see the pages and buttons that admins allow in Server Access."
+                "text": "Ban Appeals and Suggestions each have their own dashboard page. Admins choose the review channel on those pages and choose logging destinations in Log Config under Staff Workflows. Ban Appeals can also ping selected notification roles when a new appeal arrives. Moderators only see the pages and buttons that admins allow in Server Access."
             },
             {
                 "type": "commands",
@@ -825,6 +825,18 @@ const docsData = [
                     {
                         "cmd": "/appeals setup [channel]",
                         "desc": "Enable ban appeals and set staff review channel."
+                    },
+                    {
+                        "cmd": "/appeals notify_add_role [role]",
+                        "desc": "Ping a role when a new ban appeal arrives."
+                    },
+                    {
+                        "cmd": "/appeals notify_remove_role [role]",
+                        "desc": "Stop pinging a role for new ban appeals."
+                    },
+                    {
+                        "cmd": "/appeals notify_clear_roles",
+                        "desc": "Clear all ban appeal notification roles."
                     },
                     {
                         "cmd": "/appeals submit [text]",
@@ -886,7 +898,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Give members a safe, private way to flag rule violations or harassment directly to moderators."
+                "text": "Give members a safe way to flag rule violations or harassment directly to moderators. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, and log staff actions through Log Config under Staff Workflows."
             },
             {
                 "type": "commands",
@@ -899,6 +911,22 @@ const docsData = [
                     {
                         "cmd": "Report User (Context Menu)",
                         "desc": "Right-click any user -> Apps -> Report User to submit report."
+                    },
+                    {
+                        "cmd": "/publicreport channel [channel]",
+                        "desc": "Choose where public vote reports are posted for review."
+                    },
+                    {
+                        "cmd": "/publicreport notify_add_role [role]",
+                        "desc": "Ping a role when a new public report is created."
+                    },
+                    {
+                        "cmd": "/publicreport notify_remove_role [role]",
+                        "desc": "Stop pinging a role for new public reports."
+                    },
+                    {
+                        "cmd": "/publicreport view_settings",
+                        "desc": "Show public report channels, voting rules, and notification roles."
                     }
                 ]
             }
@@ -1166,7 +1194,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. Members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. You can also add an optional poll end time and automatic answer time conversion. The dashboard can create simple polls, preview them beside the form before posting, and save common polls as templates for later."
+                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. The question is shown as the embed title, members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. You can also add an optional poll end time and turn the timestamps option on for automatic answer time conversion. The dashboard can create simple polls, preview them beside the form before posting, and save common polls as templates for later."
             },
             {
                 "type": "heading",
@@ -1198,7 +1226,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/poll create",
-                        "desc": "Create a quick reaction poll with 2-20 answers, optional poll end time, and automatic answer timestamps."
+                        "desc": "Create a quick reaction poll with 2-20 answers, optional poll end time, and the timestamps option."
                     },
                     {
                         "cmd": "/poll close",
