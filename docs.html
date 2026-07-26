@@ -838,12 +838,16 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Track your Beastmoon Hunt & Monster Mayhem form tiers, estimate exact Lunari and Gold Thread upgrade requirements, and claim top ranks on server leaderboards."
+                                                "text": "Track your Beastmoon Hunt and Monster Mayhem form tiers, estimate Lunari and Idol progress toward Tier 5, sync form data from the web converter, and post public tier-up announcements to a configured channel."
                                     },
                                     {
                                                 "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
+                                                            {
+                                                                        "cmd": "/bm stats",
+                                                                        "desc": "Open the interactive Beastmoon form spell and stats browser."
+                                                            },
                                                             {
                                                                         "cmd": "/bm add",
                                                                         "desc": "Launch the interactive Beastmoon Form Manager to log tier progress."
@@ -858,7 +862,7 @@ const docsData = [
                                                             },
                                                             {
                                                                         "cmd": "/bm forms",
-                                                                        "desc": "Render your full Beastmoon form collection as a visual badge grid."
+                                                                        "desc": "Show your saved Beastmoon forms and unlock tier chart buttons."
                                                             },
                                                             {
                                                                         "cmd": "/bm leaderboard",
@@ -877,12 +881,12 @@ const docsData = [
                                                                         "desc": "Instantly sync Beastmoon form upgrades from the Web Dashboard."
                                                             },
                                                             {
-                                                                        "cmd": "/bm forms_alt [member]",
-                                                                        "desc": "Inspect another player's public Beastmoon form collection."
+                                                                        "cmd": "/bm forms_alt",
+                                                                        "desc": "Show your saved alt-profile Beastmoon forms."
                                                             },
                                                             {
                                                                         "cmd": "/bm user [member]",
-                                                                        "desc": "View complete Beastmoon statistics for a guild member."
+                                                                        "desc": "View another member's saved Beastmoon forms."
                                                             }
                                                 ]
                                     }
@@ -892,7 +896,7 @@ const docsData = [
                         "id": "pet_tome",
                         "icon": "ph-book-bookmark",
                         "title": "W101: Pet Tome Database",
-                        "subtitle": "Instant stats, talent pools, and hatching guides for over 1,000 Wizard101 pets.",
+                        "subtitle": "Instant Wizard101 pet stats, talent pools, sources, wow factor, and hatching details.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -918,7 +922,7 @@ const docsData = [
                         "id": "spells",
                         "icon": "ph-book-open-text",
                         "title": "W101: Spell Tome Database",
-                        "subtitle": "Complete spell database with pip costs, accuracy ratings, shadow pips, and card effects.",
+                        "subtitle": "Spell card lookup by name or school from the bot's cached card-art registry.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -926,23 +930,15 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Query the master spell registry for damage ranges, shadow pip requirements, utility effects, and trained locations."
+                                                "text": "Search the spell card registry by spell name or school folder. Results show available card art and school groupings from the bot's spell cache."
                                     },
                                     {
                                                 "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
                                                             {
-                                                                        "cmd": "/spells lookup [spell_name]",
-                                                                        "desc": "Display high-res card art, pip costs, and secondary card effects."
-                                                            },
-                                                            {
-                                                                        "cmd": "/spells school [school_name]",
-                                                                        "desc": "Browse all spells belonging to a specific school of magic."
-                                                            },
-                                                            {
-                                                                        "cmd": "/spells search [keyword]",
-                                                                        "desc": "Search spells by card description text or keyword effect."
+                                                                        "cmd": "/spell [query]",
+                                                                        "desc": "Search for a spell card or choose a school list from autocomplete."
                                                             }
                                                 ]
                                     }
@@ -1005,8 +1001,8 @@ const docsData = [
             {
                         "id": "value_reagent",
                         "icon": "ph-coins",
-                        "title": "W101: Reagent & TC Values",
-                        "subtitle": "Real-time community trade valuations for reagents, snacks, and rare Treasure Cards.",
+                        "title": "W101: Treasure Card Values",
+                        "subtitle": "Treasure Card value lookups from the configured community value sheet.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1014,27 +1010,15 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Instant price checks for rare reagents (Agave Nectar, Flying Cuttlefish) and Empower TC equivalence."
+                                                "text": "Look up Treasure Card values by name. The bot refreshes its value cache from the configured sheet and displays the matching school and value."
                                     },
                                     {
                                                 "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
                                                             {
-                                                                        "cmd": "/reagent price [reagent_name]",
-                                                                        "desc": "Check average gold and Empower TC trade value for a reagent."
-                                                            },
-                                                            {
-                                                                        "cmd": "/reagent list",
-                                                                        "desc": "Browse tracked Wizard101 reagents sorted by popularity."
-                                                            },
-                                                            {
-                                                                        "cmd": "/reagent search [keyword]",
-                                                                        "desc": "Search reagents by craft category or location."
-                                                            },
-                                                            {
-                                                                        "cmd": "/tc value [card_name]",
-                                                                        "desc": "Look up community trade values for rare Treasure Cards."
+                                                                        "cmd": "/value tc [query]",
+                                                                        "desc": "Look up the current listed value for a Treasure Card."
                                                             }
                                                 ]
                                     }
@@ -1067,8 +1051,12 @@ const docsData = [
                                                                         "desc": "Save a new boss cheat guide or strategy sequence."
                                                             },
                                                             {
-                                                                        "cmd": "/strategy view [boss_name]",
-                                                                        "desc": "Display detailed strategy notes for a specific boss fight."
+                                                                        "cmd": "/strategy import [json_file]",
+                                                                        "desc": "Import strategy entries from a JSON file."
+                                                            },
+                                                            {
+                                                                        "cmd": "/strategy pending",
+                                                                        "desc": "Review pending universal strategies."
                                                             },
                                                             {
                                                                         "cmd": "/strategy delete [boss_name]",
@@ -1082,7 +1070,7 @@ const docsData = [
                         "id": "tapestry",
                         "icon": "ph-map-trifold",
                         "title": "W101: House Tapestries",
-                        "subtitle": "Interactive catalog for housing tapestries, teleports, and community bobbleheads.",
+                        "subtitle": "Personal checklist for housing tapestries and bobbleheads.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1090,7 +1078,7 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Track house tapestry collections, locate community teleports, and complete housing collections."
+                                                "text": "Track your own Wizard101 house tapestry and bobblehead collection with simple list and toggle commands."
                                     },
                                     {
                                                 "type": "commands",
@@ -1098,15 +1086,11 @@ const docsData = [
                                                 "items": [
                                                             {
                                                                         "cmd": "/tapestry list",
-                                                                        "desc": "View all cataloged house tapestries and destination links."
+                                                                        "desc": "View your saved tapestry checklist."
                                                             },
                                                             {
                                                                         "cmd": "/tapestry set [name] [status]",
-                                                                        "desc": "Toggle ownership or housing location status of a tapestry."
-                                                            },
-                                                            {
-                                                                        "cmd": "/tapestry search [location]",
-                                                                        "desc": "Find housing tapestries leading to specific worlds or dungeons."
+                                                                        "desc": "Toggle whether a tapestry is marked collected."
                                                             },
                                                             {
                                                                         "cmd": "/bobblehead list",
@@ -1124,7 +1108,7 @@ const docsData = [
                         "id": "wizard_info",
                         "icon": "ph-hat-wizard",
                         "title": "W101: Wizard Roster Check",
-                        "subtitle": "Automated guild wizard profile verifications and missing roster audits.",
+                        "subtitle": "Wizard profile channel setup, missing-list audits, and reminder DMs.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1132,7 +1116,7 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Audit guild member wizard levels, main schools, and send automated DMs to unverified members."
+                                                "text": "Configure wizard-post channels, publish missing-profile lists, and send DM reminders to members who still need wizard information."
                                     },
                                     {
                                                 "type": "commands",
@@ -1151,12 +1135,8 @@ const docsData = [
                                                                         "desc": "Dispatch friendly automated DM reminders to unverified members."
                                                             },
                                                             {
-                                                                        "cmd": "/wizard verify [member]",
-                                                                        "desc": "Manually verify a member's wizard character credentials."
-                                                            },
-                                                            {
-                                                                        "cmd": "/wizard profile [member]",
-                                                                        "desc": "Inspect full wizard profile stats for a guild member."
+                                                                        "cmd": "/wizard channel [channel]",
+                                                                        "desc": "Set the channel where wizard profile posts are expected."
                                                             }
                                                 ]
                                     }
