@@ -509,7 +509,150 @@
             }
         }
 
-    
+        /* Body & Description Font Size Increase */
+        body {
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        p {
+            font-size: 0.975rem;
+            line-height: 1.65;
+        }
+        .feature-desc {
+            font-size: 0.95rem !important;
+            line-height: 1.65 !important;
+        }
+        .hero-desc {
+            font-size: 1.125rem !important;
+            line-height: 1.65 !important;
+        }
+
+        /* Premium Micro-Animations & Dynamic Hover Effects */
+        .glass-card, .feature-card, .stat-card, .showcase-container {
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.28s ease, 
+                        box-shadow 0.28s ease,
+                        background 0.28s ease;
+        }
+        .glass-card:hover, .feature-card:hover, .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent) !important;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), 0 0 22px var(--accent-glow) !important;
+        }
+        .feature-card {
+            perspective: 1000px;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px) rotateX(1.2deg) rotateY(-1.2deg) !important;
+        }
+        .glass-card .feature-icon,
+        .feature-card .feature-icon,
+        .glass-card i,
+        .feature-card i {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+            display: inline-block;
+        }
+        .glass-card:hover .feature-icon,
+        .feature-card:hover .feature-icon,
+        .glass-card:hover > i,
+        .feature-card:hover > i {
+            transform: scale(1.05);
+        }
+
+        /* Subtle Backdrop Glow Behind Hero */
+        .hero-section {
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 70%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.55;
+            filter: blur(45px);
+        }
+
+        /* Button Hover Lift */
+        .btn-large, .btn-primary, .btn-secondary, .showcase-tab, .pill-btn, .topbar-invite-btn, .section-cta-btn {
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.22s ease !important;
+        }
+        .btn-large:hover, .btn-primary:hover, .btn-secondary:hover, .showcase-tab:hover, .pill-btn:hover, .topbar-invite-btn:hover, .section-cta-btn:hover {
+            transform: translateY(-2px) !important;
+        }
+
+        /* Viewport Section Fade-In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-in-section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Heading Rhythm Accent Line */
+        h2.section-heading,
+        .section-title-accent {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        h2.section-heading::before,
+        .section-title-accent::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 0.95em;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-glow);
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Floating Back to Top Button */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px var(--accent-glow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease;
+            z-index: 999;
+            backdrop-filter: blur(12px);
+        }
+        .back-to-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top-btn:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 24px var(--accent-glow);
+        }
+
         /* Top Bar Invite Button */
         .topbar-invite-btn {
             background: var(--accent);
@@ -631,9 +774,11 @@
     
     <div style="font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 0 8px 0;">Menu</div>
     
-    <a href="#overview" class="nav-link active" data-tab="overview"><i class="ph ph-house"></i> <span>Overview</span></a>
-    <a href="#docs" class="nav-link" data-tab="docs"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
-    <a href="#commands" class="nav-link" data-tab="commands"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
+    <a href="#overview" class="nav-link active" data-tab="overview" onclick="switchTab('overview')"><i class="ph ph-house"></i> <span>Overview</span></a>
+    <a href="#features" class="nav-link" data-tab="features" onclick="jumpToSection('features')"><i class="ph ph-squares-four"></i> <span>Features</span></a>
+    <a href="#compare" class="nav-link" data-tab="compare" onclick="jumpToSection('compare')"><i class="ph ph-scales"></i> <span>Compare</span></a>
+    <a href="#docs" class="nav-link" data-tab="docs" onclick="switchTab('docs')"><i class="ph ph-book-open"></i> <span>Documentation</span></a>
+    <a href="#commands" class="nav-link" data-tab="commands" onclick="switchTab('commands')"><i class="ph ph-terminal-window"></i> <span>Commands</span></a>
     
     <!-- Sidebar TOC for Documentation -->
     <div class="sidebar-toc-container" id="sidebarDocsNav" style="display: none;">
@@ -815,13 +960,34 @@
 
             <!-- Why SeanBot Section -->
             <div style="margin-bottom: 24px;">             
-                <h2 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">                 
-                    <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
+                <h2 class="section-title-accent" style="font-size: 1.7rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center;">                 
+                    <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem; margin-right: 8px;"></i> Why SeanBot?             
                 </h2>             
                 <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary); padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: blur(16px);">                 
                     <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace paid Discord bots with a 100% free, high-performance community toolkit.</p>                 
                     <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Unlike multipurpose bots that paywall essential tools, SeanBot gives you unlimited web embeds, reaction roles, zero-delay security shields, timezone converters, and custom gaming modules with zero subscription fees or feature caps.</p>             
                 </div>         
+            </div>
+
+            <!-- Verified Community Testimonial Card -->
+            <div class="glass-card" style="margin: 28px 0 36px 0; padding: 22px 28px; background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(20, 20, 26, 0.6) 100%); border: 1px solid rgba(255, 215, 0, 0.25); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--accent-glow); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.3rem;">
+                        <i class="ph-fill ph-quotes"></i>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.05rem; font-weight: 800; color: #fff; letter-spacing: -0.2px;">"Replaced Dyno and Carl-bot in one afternoon and don't look back!"</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 3px;">— Verified Community Administrator & Server Owner</div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 4px; color: #FFD700; font-size: 1rem;">
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <span style="font-size: 0.85rem; font-weight: 700; color: #fff; margin-left: 6px;">5.0 Rating</span>
+                </div>
             </div>
 
             <div class="section-cta-banner">
@@ -838,7 +1004,7 @@
             <section style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <span style="background: var(--accent-glow); color: var(--accent); font-weight: 700; font-size: 0.775rem; padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255, 215, 0, 0.2);">Live Feature Showcase</span>
-                    <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 12px; letter-spacing: -0.5px;">See SeanBot in Action</h2>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 12px; letter-spacing: -0.5px;">See SeanBot in Action</h2>
                     <p style="color: var(--text-secondary); max-width: 620px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Experience real-time emoji analytics, instant invite tracking, automated scam shields, and web embed builders.</p>
                 </div>
 
@@ -934,9 +1100,9 @@
 
             
             <!-- Bot Feature Comparison Table -->
-            <section class="comparison-table-container" style="margin: 44px 0;">
+            <section class="comparison-table-container" id="compare" style="margin: 44px 0; scroll-margin-top: 80px;">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
                     <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Compare SeanBot's feature capabilities and module limits against Dyno, Carl-bot, MEE6, and ProBot.</p>
                 </div>
 
@@ -1213,10 +1379,10 @@
             </section>
 
             <!-- Featured Modules Grid -->
-            <div>             
+            <div id="features" style="scroll-margin-top: 80px;">             
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
-                    <h2 style="font-size: 1.6rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px;">                 
-                        <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 1.8rem;"></i> Featured Modules             
+                    <h2 class="section-title-accent" style="font-size: 1.6rem; font-weight: 800; margin: 0; display: flex; align-items: center;">                 
+                        <i class="ph-duotone ph-plugs-connected" style="color: var(--accent); font-size: 1.8rem; margin-right: 8px;"></i> Featured Modules             
                     </h2>             
                     
                     <div class="filter-pills" id="overviewCategoryFilters">
@@ -1457,11 +1623,33 @@
     </footer>
 </div>
 
+<!-- Floating Back to Top Button -->
+<button id="backToTopBtn" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+    <i class="ph-bold ph-caret-up"></i>
+</button>
+
 <script src="commands-data.js"></script>
 <script src="layout.js"></script>
 
 <script>
-    // Master Single-Page Tab Switcher
+    // Master Single-Page Tab Switcher & Section Jumper
+    
+    function jumpToSection(sectionId) {
+        switchTab('overview');
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            if (link.getAttribute('data-tab') === sectionId) {
+                link.classList.add('active');
+            } else if (link.getAttribute('data-tab') === 'overview') {
+                link.classList.remove('active');
+            }
+        });
+        setTimeout(() => {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 60);
+    }
     
     function switchShowcase(name) {
         document.querySelectorAll('.showcase-tab').forEach(tab => {
@@ -1559,6 +1747,82 @@
                 const targetSec = document.getElementById(hash);
                 if (targetSec) setTimeout(() => targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
             }
+        }
+
+        // Back to Top Button Scroll Listener
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }, { passive: true });
+        }
+
+        // Viewport Section Fade-In Observer
+        const fadeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.glass-card, .feature-card, .stat-card, .comparison-table-container, .showcase-container, .section-cta-banner').forEach(el => {
+            el.classList.add('fade-in-section');
+            fadeObserver.observe(el);
+        });
+
+        // Stat Counter Single Animation Observer
+        let statsAnimated = false;
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    animateStatCounters();
+                }
+            }, { threshold: 0.2 });
+            statsObserver.observe(statsGrid);
+        }
+
+        function animateStatCounters() {
+            document.querySelectorAll('.stat-card').forEach(card => {
+                const numEl = card.querySelector('.stat-number');
+                if (!numEl) return;
+                const rawText = numEl.textContent.trim();
+                let target = parseFloat(rawText.replace(/[^0-9.]/g, ''));
+                let suffix = rawText.replace(/[0-9.]/g, '');
+                
+                if (isNaN(target)) return;
+
+                let start = 0;
+                let duration = 1200; // ms
+                let startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    let progress = Math.min((timestamp - startTime) / duration, 1);
+                    let easeProgress = 1 - Math.pow(1 - progress, 3);
+                    let current = start + (target - start) * easeProgress;
+                    
+                    if (Number.isInteger(target)) {
+                        numEl.textContent = Math.floor(current) + suffix;
+                    } else {
+                        numEl.textContent = current.toFixed(1) + suffix;
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        numEl.textContent = rawText;
+                    }
+                }
+                requestAnimationFrame(step);
+            });
         }
     });
 </script>
