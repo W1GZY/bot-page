@@ -1765,11 +1765,7 @@
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
                 </a>
             </div>
-        </section>
-
-    </main>
-
-    <footer class="page-footer">
+<footer class="page-footer">
         <div>&copy; 2026 SeanBot. All rights reserved.</div>
         <div style="display:flex; gap: 16px; flex-wrap: wrap;">
             <a href="tos.html">Terms & Privacy</a>
@@ -1789,20 +1785,34 @@
     // Master Single-Page Tab Switcher & Section Jumper
     
     function jumpToSection(sectionId) {
-        switchTab('overview');
+        // Ensure overview tab is active
+        document.querySelectorAll('.tab-view').forEach(view => {
+            if (view.id === 'view-overview') {
+                view.classList.add('active-view');
+                view.style.display = 'block';
+            } else {
+                view.classList.remove('active-view');
+                view.style.display = 'none';
+            }
+        });
+
         document.querySelectorAll('.sidebar .nav-link').forEach(link => {
-            if (link.getAttribute('data-tab') === sectionId) {
+            if (link.getAttribute('data-tab') === 'overview') {
                 link.classList.add('active');
-            } else if (link.getAttribute('data-tab') === 'overview') {
+            } else {
                 link.classList.remove('active');
             }
         });
+
+        const breadcrumbTitle = document.getElementById('currentTabTitle');
+        if (breadcrumbTitle) breadcrumbTitle.textContent = 'Overview';
+
         setTimeout(() => {
             const target = document.getElementById(sectionId);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        }, 60);
+        }, 50);
     }
     
     function switchShowcase(name) {
@@ -1860,7 +1870,11 @@
     document.querySelectorAll('.sidebar .nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
             const tabId = link.getAttribute('data-tab');
-            if (tabId) {
+            if (tabId === 'features' || tabId === 'compare') {
+                e.preventDefault();
+                jumpToSection(tabId);
+                history.pushState(null, '', `#${tabId}`);
+            } else if (tabId) {
                 e.preventDefault();
                 switchTab(tabId);
                 history.pushState(null, '', `#${tabId}`);
