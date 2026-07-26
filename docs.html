@@ -1461,6 +1461,14 @@ const docsData = [
                                                 "text": "Provide banned users a fair, web-authenticated appeal process while streaming review cards to staff channels."
                                     },
                                     {
+                                                "type": "heading",
+                                                "text": "Dashboard Pages"
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "Staff Tools now holds the shared setup: appeal channel, suggestion channel, staff action log channel, enable toggles, and embed design links. Ban Appeals and Suggestions have their own dashboard pages for queue work, so Server Access can allow review/delete actions without exposing unrelated administrator settings."
+                                    },
+                                    {
                                                 "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
@@ -1823,6 +1831,10 @@ const docsData = [
                                                 "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. Members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. Dashboard-created simple polls can also convert time lines into Discord timestamps using the creator's saved timezone."
                                     },
                                     {
+                                                "type": "text",
+                                                "text": "In the dashboard, set the creator timezone, add one answer per line, and use numeric date/time text such as `29.07.2026 20:00` when you want a Discord timestamp inside an answer. The preview shows the exact `<t:...>` timestamp token that will be posted; natural phrases such as `Friday 20:00 - Practice` are converted by the bot when posting."
+                                    },
+                                    {
                                                 "type": "heading",
                                                 "text": "Advanced Raid Poll Limits"
                                     },
@@ -2047,6 +2059,10 @@ const docsData = [
                                     {
                                                 "type": "text",
                                                 "text": "SeanBot automatically pins messages that receive a set number of reaction emojis."
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "Auto-Pin coalesces rapid reaction changes before touching Discord, periodically verifies managed pins, and cleans stale runtime buffers so deleted messages or old reaction bursts do not linger in memory."
                                     },
                                     {
                                                 "type": "commands",
@@ -2631,6 +2647,10 @@ const docsData = [
                                     {
                                                 "type": "text",
                                                 "text": "Automatically generate live voice counter channels displaying server member counts."
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "The dashboard includes live metric cards, top member/channel activity, one-click counter presets, active counter management, and a minimizable Counter Placeholder Catalog. Channel activity separates message counts from voice time and marks missing/deleted channels by ID."
                                     },
                                     {
                                                 "type": "commands",
