@@ -373,12 +373,74 @@
             display: block;
         }
 
-        @media (max-width: 850px) {
-            .showcase-panel {
-                grid-template-columns: 1fr !important;
+        /* Section Call to Action Banners */
+        .section-cta-banner {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 20, 25, 0.6) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 24px 32px;
+            margin: 40px 0 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+        .section-cta-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+        .section-cta-content h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0 0 4px 0;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+        .section-cta-content p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .section-cta-btn {
+            background: var(--accent);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 11px 22px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            box-shadow: 0 0 18px var(--accent-glow);
+            transition: all var(--transition-fast);
+        }
+        .section-cta-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 26px var(--accent-glow);
+            color: #000;
+        }
+        @media (max-width: 768px) {
+            .section-cta-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 22px;
             }
-            .showcase-image-frame img {
-                max-height: 280px;
+            .section-cta-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -596,7 +658,7 @@
             </div>
 
             <!-- Why SeanBot Section -->
-            <div style="margin-bottom: 40px;">             
+            <div style="margin-bottom: 24px;">             
                 <h2 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">                 
                     <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem;"></i> Why SeanBot?             
                 </h2>             
@@ -604,6 +666,16 @@
                     <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace paid Discord bots with a 100% free, high-performance community toolkit.</p>                 
                     <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Unlike multipurpose bots that paywall essential tools, SeanBot gives you unlimited web embeds, reaction roles, zero-delay security shields, timezone converters, and custom gaming modules with zero subscription fees or feature caps.</p>             
                 </div>         
+            </div>
+
+            <div class="section-cta-banner">
+                <div class="section-cta-content">
+                    <h3>Ready to improve your server?</h3>
+                    <p>Experience 100% free, high-performance Discord tools built for your community.</p>
+                </div>
+                <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
+                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                </a>
             </div>
 
             <!-- Live Feature Showcase Section -->
@@ -691,6 +763,16 @@
                             <img src="assets/embed_builder.png" alt="Web Dashboard Embed Builder">
                         </div>
                     </div>
+                </div>
+
+                <div class="section-cta-banner">
+                    <div class="section-cta-content">
+                        <h3>Ready to improve your server?</h3>
+                        <p>Upgrade your server with real-time analytics, automated scam shields, and web embed builders.</p>
+                    </div>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
+                        <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                    </a>
                 </div>
             </section>
 
@@ -962,6 +1044,16 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="section-cta-banner">
+                    <div class="section-cta-content">
+                        <h3>Ready to improve your server?</h3>
+                        <p>Get all premium Discord features unlocked for free without hidden monthly paywalls.</p>
+                    </div>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
+                        <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                    </a>
+                </div>
             </section>
 
             <!-- Featured Modules Grid -->
@@ -1094,6 +1186,16 @@
                     </div>         
                 </div>         
             </div>
+
+            <div class="section-cta-banner">
+                <div class="section-cta-content">
+                    <h3>Ready to improve your server?</h3>
+                    <p>Add SeanBot to your Discord server in seconds and start customizing your modules.</p>
+                </div>
+                <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
+                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                </a>
+            </div>
         </section>
 
         <!-- ==================== TAB 2: DOCUMENTATION ==================== -->
@@ -1176,6 +1278,16 @@
                 <aside class="toc-sidebar" id="tocSidebarContainer">
                     <div class="toc-title">Jump to Category</div>
                 </aside>
+            </div>
+
+            <div class="section-cta-banner">
+                <div class="section-cta-content">
+                    <h3>Ready to improve your server?</h3>
+                    <p>Bring 150+ custom slash and text prefix commands to your Discord server today.</p>
+                </div>
+                <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
+                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                </a>
             </div>
         </section>
 
