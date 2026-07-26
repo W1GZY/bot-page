@@ -1634,16 +1634,35 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Start by deciding whether the embed is a one-time message, an automated trigger, or an interactive tool. Manual embeds are best for announcements, rules, and polished staff posts. Trigger embeds are best for welcome messages, leave logs, boost alerts, recurring posts, command responses, ban appeal cards, and suggestion cards. Ticket Creation Panel embeds are best when members should press a button to open a private support channel."
+                "text": "Start by deciding whether the embed is a one-time message, an automated trigger, or an interactive tool. Manual embeds are best for announcements, rules, and polished staff posts. Trigger embeds are best for welcome messages, leave logs, boost alerts, anniversary posts, live stream alerts, starboard milestones, keyword replies, command responses, ban appeal cards, and suggestion cards. Ticket Creation Panel embeds are best when members should press a button to open a private support channel."
             },
             {
                 "type": "list",
                 "title": "Recommended Workflows",
                 "items": [
                     "Announcement or rules post: write the content, add fields for sections, add link buttons only when users need to open external resources, then send manually.",
-                    "Welcome or event automation: write with placeholders such as `{user_mention}`, `{guild_name}`, and `{member_count}`, then select the matching trigger in the publish step.",
+                    "Welcome or event automation: write with placeholders such as `{user_mention}`, `{guild_name}`, `{member_count}`, `{stream_title}`, `{star_count}`, or `{milestone_years}`, then select the matching trigger in the publish step.",
+                    "Keyword reply: choose Keyword Reply, enter comma-separated phrases such as `rules, verify, support`, and use `{keyword}`, `{message_author}`, `{message_content}`, or `{message_link}` when the response should reference the matched message.",
                     "Ban appeal or suggestion workflow: configure the channel in Staff Tools first, design the embed, then select the Ban Appeal or Suggestion trigger so SeanBot posts to the managed staff channel.",
                     "Ticket panel: design the support message, add one or more non-link buttons in the Button Builder, select Ticket Creation Panel in the publish step, choose the ticket category, and deploy."
+                ]
+            },
+            {
+                "type": "list",
+                "title": "Supported automation triggers",
+                "items": [
+                    "Manual Send, Member Join, Member Leave, Server Boost, Anniversary, Live Stream, Starboard Milestone, Keyword Reply, Custom Command, Recurring Schedule, Ban Appeal, Suggestion, and Ticket Creation Panel.",
+                    "Use channel and role restrictions when an automation should only react in specific areas or for specific roles.",
+                    "Keyword replies include a cooldown to reduce repeated spam when a busy channel keeps mentioning the same phrase."
+                ]
+            },
+            {
+                "type": "list",
+                "title": "Interactive button actions",
+                "items": [
+                    "Link buttons open a URL and do not need a custom action payload.",
+                    "Role buttons can add, remove, or toggle one or more role IDs.",
+                    "Reply buttons can send private replies, public replies, DMs, embed replies, random replies, or dismiss/close the bot message."
                 ]
             },
             {

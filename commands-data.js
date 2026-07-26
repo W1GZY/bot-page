@@ -187,7 +187,7 @@ const commandsDatabase = [
         icon: "ph-cards",
         tocLabel: "4.5 Embed Builder",
         commands: [
-            { name: "/embed builder", desc: "Open the in-chat embed design workspace.", badge: "Manage Messages", type: "perm" },
+            { name: "/embed builder", desc: "Open the visual embed design workspace for manual sends, automations, keyword replies, buttons, and ticket panels.", badge: "Manage Messages", type: "perm" },
             { name: "/embed clone", desc: "Clone a saved template or an existing embed message into the builder.", badge: "Manage Messages", type: "perm" },
             { name: "/embed load", desc: "Post a saved embed template into a selected channel.", badge: "Manage Server", type: "perm" },
             { name: "/embed delete", desc: "Delete a saved embed template after confirmation.", badge: "Manage Server", type: "perm" },
