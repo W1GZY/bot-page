@@ -432,6 +432,68 @@
             box-shadow: 0 0 26px var(--accent-glow);
             color: #000;
         }
+        /* Hero Section Enhancements */
+        .hero-badge-pill {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 16px rgba(255, 215, 0, 0.1);
+        }
+        .hero-feature-chips {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .hero-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all var(--transition-fast);
+        }
+        .hero-chip:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-1px);
+        }
+        .hero-mockup-container {
+            max-width: 840px;
+            margin: 36px auto 0 auto;
+            background: rgba(18, 18, 24, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.05);
+            backdrop-filter: blur(20px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .hero-mockup-container:hover {
+            transform: translateY(-4px) rotateX(1deg);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
         @media (max-width: 768px) {
             .section-cta-banner {
                 flex-direction: column;
@@ -441,6 +503,9 @@
             .section-cta-btn {
                 width: 100%;
                 justify-content: center;
+            }
+            .hero-mockup-container {
+                padding: 16px;
             }
         }
 
@@ -627,14 +692,77 @@
         <!-- ==================== TAB 1: OVERVIEW ==================== -->
         <section id="view-overview" class="tab-view active-view">
             <!-- Hero Section -->
-            <div class="hero-section">             
-                <h1 class="hero-title">Meet <span style="font-weight: 900; letter-spacing: -0.05em; color: var(--accent);">SeanBot<span style="color: #9ca3af;">.</span></span></h1>             
-                <p class="hero-desc">The ultimate multipurpose Discord companion built to manage your community, secure your server, and seamlessly bridge networks.</p>             
-                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">                 
-                    <a href="#" class="btn-large btn-primary"><i class="ph-fill ph-discord-logo"></i> Invite to Server</a>                 
-                    <button onclick="switchTab('docs')" class="btn-large btn-secondary"><i class="ph ph-book-open"></i> Read Documentation</button>             
-                    <button onclick="switchTab('commands')" class="btn-large btn-secondary"><i class="ph ph-terminal-window"></i> Commands</button>             
-                </div>         
+            <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
+                <div class="hero-badge-pill">
+                    <i class="ph-bold ph-sparkle" style="color: var(--accent);"></i> 100% Free & Uncapped Alternative to Paid Bots
+                </div>
+                <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 900px; margin: 0 auto 16px auto;">
+                    The All-in-One Discord Engine for <span style="color: var(--accent); background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Modern Communities</span>.
+                </h1>
+                <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 720px; margin: 0 auto 28px auto; line-height: 1.6;">
+                    Replace paywalled bots with zero-delay moderation, live emoji & timezone analytics, interactive gaming suites, and a visual web control dashboard — with zero subscription fees or feature caps.
+                </p>
+
+                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="btn-large btn-primary" style="box-shadow: 0 0 24px var(--accent-glow); padding: 14px 28px; font-weight: 800; font-size: 0.95rem;">
+                        <i class="ph-bold ph-discord-logo"></i> Invite SeanBot to Server
+                    </a>
+                    <button onclick="switchTab('commands')" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
+                        <i class="ph-bold ph-terminal-window"></i> View 150+ Commands
+                    </button>
+                    <button onclick="switchTab('docs')" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
+                        <i class="ph-bold ph-book-open"></i> Read Documentation
+                    </button>
+                </div>
+
+                <!-- Floating Feature Chips -->
+                <div class="hero-feature-chips">
+                    <span class="hero-chip"><i class="ph-bold ph-shield-check" style="color: #57F287;"></i> Zero-Delay Raid Shield</span>
+                    <span class="hero-chip"><i class="ph-bold ph-chart-bar" style="color: #FFD700;"></i> Live Emoji Analytics</span>
+                    <span class="hero-chip"><i class="ph-bold ph-paint-brush" style="color: #5865F2;"></i> Visual Embed Builder</span>
+                    <span class="hero-chip"><i class="ph-bold ph-magic-wand" style="color: #EB459E;"></i> Wizard101 Gaming Suite</span>
+                    <span class="hero-chip"><i class="ph-bold ph-speaker-high" style="color: #FEE75C;"></i> Dynamic Temp VCs</span>
+                </div>
+
+                <!-- Interactive Hero Mockup Card -->
+                <div class="hero-mockup-container">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ED4245;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #FEE75C;"></div>
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #57F287;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono); margin-left: 8px;">#general-chat — SeanBot Live Companion</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: #57F287; font-weight: 700;">
+                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #57F287; box-shadow: 0 0 8px #57F287;"></span> System Operational (18ms)
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 14px; text-align: left; align-items: flex-start;">
+                        <img src="assets/seanbot.png" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent); box-shadow: 0 0 12px var(--accent-glow);" alt="SeanBot">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="font-weight: 800; font-size: 0.95rem; color: #fff;">SeanBot</span>
+                                <span style="background: #5865F2; color: #fff; font-size: 0.675rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">BOT</span>
+                                <span style="font-size: 0.775rem; color: var(--text-secondary);">Today at 11:42 PM</span>
+                            </div>
+                            
+                            <!-- Embedded Card Preview -->
+                            <div style="background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--accent); border-radius: 6px; padding: 14px 18px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Server Control Center</div>
+                                <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 8px;">🚀 Server Status & Quick Actions</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                                    All <strong>200+ active members</strong> authenticated. Security shield active, zero raid threats detected in the last 24 hours.
+                                </div>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button onclick="switchTab('docs')" style="background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); color: var(--accent); font-size: 0.8rem; font-weight: 700; padding: 6px 14px; border-radius: var(--radius-sm); cursor: pointer;"><i class="ph-bold ph-sliders"></i> Open Web Control</button>
+                                    <button onclick="switchTab('docs')" style="background: rgba(88, 101, 242, 0.15); border: 1px solid rgba(88, 101, 242, 0.4); color: #5865F2; font-size: 0.8rem; font-weight: 700; padding: 6px 14px; border-radius: var(--radius-sm); cursor: pointer;"><i class="ph-bold ph-paint-brush"></i> Visual Embeds</button>
+                                    <button onclick="switchTab('docs')" style="background: rgba(87, 242, 135, 0.15); border: 1px solid rgba(87, 242, 135, 0.4); color: #57F287; font-size: 0.8rem; font-weight: 700; padding: 6px 14px; border-radius: var(--radius-sm); cursor: pointer;"><i class="ph-bold ph-shield"></i> Security Logs</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>         
 
             <!-- Live Stats Counter Grid -->
