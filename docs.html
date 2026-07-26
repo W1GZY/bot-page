@@ -1449,8 +1449,8 @@ const docsData = [
             {
                         "id": "staff_tools",
                         "icon": "ph-wrench",
-                        "title": "Staff Tools & Appeals",
-                        "subtitle": "Interactive ban appeal processing, warning presets, and community suggestion boards.",
+                        "title": "Appeals & Suggestions",
+                        "subtitle": "Review ban appeals and server suggestions from their own dashboard pages.",
                         "content": [
                                     {
                                                 "type": "heading",
@@ -1466,7 +1466,7 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Staff Tools now holds the shared setup: appeal channel, suggestion channel, staff action log channel, enable toggles, and embed design links. Ban Appeals and Suggestions have their own dashboard pages for queue work, so Server Access can allow review/delete actions without exposing unrelated administrator settings."
+                                                "text": "Ban Appeals and Suggestions each have their own dashboard page. Admins choose the review channel and staff log channel on those pages. Moderators only see the pages and buttons that admins allow in Server Access."
                                     },
                                     {
                                                 "type": "commands",
@@ -1828,11 +1828,27 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. Members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. Dashboard-created simple polls can also convert time lines into Discord timestamps using the creator's saved timezone."
-                                    },
+                                                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. Members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. You can also add an optional poll end time and automatic answer time conversion. The dashboard can create simple polls, preview them beside the form before posting, and save common polls as templates for later."
+                                            },
+                                            {
+                                                "type": "heading",
+                                                "text": "Poll Templates"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "On the Poll Manager page, write a question and answers, then save it as a template. Later, choose the template to refill the form. This is useful for weekly raids, meeting votes, event times, and repeated server questions."
+                                            },
+                                            {
+                                                "type": "heading",
+                                                "text": "Dates And Discord Timestamps"
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "When you write a date or time in /poll create or in the dashboard simple poll form, SeanBot tries to turn it into a Discord timestamp. Discord then shows the time in each member's own local time. You can write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. SeanBot uses the poll creator's saved timezone, so set your timezone first before using poll end times or timed answer choices."
+                                            },
                                     {
                                                 "type": "text",
-                                                "text": "In the dashboard, set the creator timezone, add one answer per line, and use numeric date/time text such as `29.07.2026 20:00` when you want a Discord timestamp inside an answer. The preview shows the exact `<t:...>` timestamp token that will be posted; natural phrases such as `Friday 20:00 - Practice` are converted by the bot when posting."
+                                                "text": "In the dashboard or in /poll create, make sure your timezone is saved, add one answer per line, and use date/time text such as `29.07.2026 20:00` when you want a Discord timestamp inside an answer. The preview shows the time the way Discord normally displays it; natural phrases such as `Friday 20:00 - Practice` are converted by the bot when posting."
                                     },
                                     {
                                                 "type": "heading",
@@ -1848,7 +1864,7 @@ const docsData = [
                                                 "items": [
                                                             {
                                                                         "cmd": "/poll create",
-                                                                        "desc": "Create a quick reaction poll with a question and 2-20 answer choices."
+                                                                        "desc": "Create a quick reaction poll with 2-20 answers, optional poll end time, and automatic answer timestamps."
                                                             },
                                                             {
                                                                         "cmd": "/poll close",
@@ -1954,7 +1970,7 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Deploy interactive support panels where members click to open private ticket channels. Staff members can claim tickets, set priority levels, post internal notes, and close tickets from Discord or the dashboard with database-backed duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
+                                                "text": "Deploy interactive support panels where members click to open private ticket channels. Staff members can claim tickets, assign tickets to another staff member or staff role from the dashboard, set priority levels, post internal notes, and close tickets from Discord or the dashboard with duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
                                     },
                                     {
                                                 "type": "commands",
@@ -2317,7 +2333,7 @@ const docsData = [
                                                             "Announcement or rules post: write the content, add fields for sections, add link buttons only when users need to open external resources, then send manually.",
                                                             "Welcome or event automation: write with placeholders such as `{user_mention}`, `{guild_name}`, `{member_count}`, `{stream_title}`, `{star_count}`, or `{milestone_years}`, then select the matching trigger in the publish step.",
                                                             "Keyword reply: choose Keyword Reply, enter comma-separated phrases such as `rules, verify, support`, and use `{keyword}`, `{message_author}`, `{message_content}`, or `{message_link}` when the response should reference the matched message.",
-                                                            "Ban appeal or suggestion workflow: configure the channel in Staff Tools first, design the embed, then select the Ban Appeal or Suggestion trigger so SeanBot posts to the managed staff channel.",
+                                                            "Ban appeal or suggestion workflow: configure the channel on the Ban Appeals or Suggestions dashboard page first, design the embed, then select the Ban Appeal or Suggestion trigger so SeanBot posts to the managed staff channel.",
                                                             "Ticket panel: design the support message, add one or more non-link buttons in the Button Builder, select Ticket Creation Panel in the publish step, choose the ticket category, and deploy."
                                                 ]
                                     },
@@ -2368,7 +2384,7 @@ const docsData = [
                                                 "type": "list",
                                                 "title": "Recommended setup",
                                                 "items": [
-                                                            "Open Staff Tools first and set the private ban appeal review channel. The Embed Builder uses that channel automatically for appeal review cards.",
+                                                            "Open the Ban Appeals dashboard page first and set the private ban appeal review channel. The Embed Builder uses that channel automatically for appeal review cards.",
                                                             "In the Embed Builder, choose the Ban Appeal trigger. Use Staff Review Card when staff should receive a structured appeal, or Applicant Guidelines when you want a member-facing instruction embed.",
                                                             "Use placeholders such as `{appeal_id}`, `{appeal_user_mention}`, `{appeal_reason}`, and `{appeal_status}` where the appeal data should appear.",
                                                             "Keep action buttons minimal on appeal embeds. Staff review controls are handled by the Staff Tools appeal workflow, while Link buttons are only useful for external policies or evidence forms."
@@ -2382,7 +2398,7 @@ const docsData = [
                                                 "type": "list",
                                                 "title": "Recommended setup",
                                                 "items": [
-                                                            "Open Staff Tools first and set the suggestion channel. The Embed Builder will lock the Suggestion trigger to that managed channel.",
+                                                            "Open the Suggestions dashboard page first and set the suggestion channel. The Embed Builder will lock the Suggestion trigger to that managed channel.",
                                                             "Choose the Suggestion trigger, then design a reusable card with a clear title, short details, status, and staff note field.",
                                                             "Use placeholders such as `{suggestion_id}`, `{suggestion_title}`, `{suggestion_details}`, `{suggestion_author_mention}`, `{suggestion_status}`, and `{suggestion_note}`.",
                                                             "Avoid duplicating voting controls manually. SeanBot's suggestion workflow handles the suggestion state; the embed should make the idea easy to read and moderate."

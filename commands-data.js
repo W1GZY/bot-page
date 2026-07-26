@@ -126,9 +126,9 @@ const commandsDatabase = [
 
     {
         id: "staff-tools",
-        title: "3.5 Staff Tools",
+        title: "3.5 Appeals & Suggestions",
         icon: "ph-toolbox",
-        tocLabel: "3.5 Staff Tools",
+        tocLabel: "3.5 Appeals & Suggestions",
         commands: [
             { name: "/brand set", desc: "Set staff tool embed color, footer, or icon URL.", badge: "Manage Server", type: "perm" },
             { name: "/brand view", desc: "View current staff tool response branding.", badge: "Manage Server", type: "perm" },
@@ -201,7 +201,7 @@ const commandsDatabase = [
         icon: "ph-calendar-check",
         tocLabel: "5.0 Events",
         commands: [
-            { name: "/poll create", desc: "Create a simple reaction poll with 2-20 choices.", badge: "Manage Messages", type: "perm" },
+            { name: "/poll create", desc: "Create a simple reaction poll with 2-20 choices, optional poll end time, and answer timestamps.", badge: "Manage Messages", type: "perm" },
             { name: "/poll close", desc: "Close a simple reaction poll and post final reaction totals.", badge: "Manage Messages", type: "perm" },
             { name: "/raidpoll", desc: "Quickly create advanced raid roster polls.", badge: "Manage Channels", type: "perm" },
             { name: "/teamup config", desc: "Customize matching variables, thresholds, and keyword overrides.", badge: "Administrator", type: "perm" },
