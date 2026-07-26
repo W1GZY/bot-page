@@ -622,26 +622,30 @@
             filter: blur(45px);
         }
 
-        /* Button & Card Hover Micro-Animations */
+        /* Non-Clipping Smooth Button Micro-Animations */
         .btn-large, .btn-primary, .btn-secondary, .showcase-tab, .pill-btn, .topbar-invite-btn, .section-cta-btn {
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.22s ease !important;
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background 0.22s ease, filter 0.22s ease !important;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform;
+            position: relative;
+            z-index: 2;
         }
         .btn-large:hover, .btn-primary:hover, .btn-secondary:hover, .showcase-tab:hover, .pill-btn:hover, .topbar-invite-btn:hover, .section-cta-btn:hover {
-            transform: translateY(-2px) scale(1.01) !important;
+            transform: translateY(-2px) !important;
         }
         .glass-card:hover i,
         .feature-card:hover i,
         .btn-large:hover i,
         .section-cta-btn:hover i {
-            transform: scale(1.12) rotate(4deg);
+            transform: scale(1.08) rotate(3deg);
         }
-
-        /* Button Hover Lift */
-        .btn-large, .btn-primary, .btn-secondary, .showcase-tab, .pill-btn, .topbar-invite-btn, .section-cta-btn {
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.22s ease !important;
+        .showcase-tabs, .filter-pills {
+            padding-top: 6px;
+            padding-bottom: 8px;
         }
-        .btn-large:hover, .btn-primary:hover, .btn-secondary:hover, .showcase-tab:hover, .pill-btn:hover, .topbar-invite-btn:hover, .section-cta-btn:hover {
-            transform: translateY(-2px) !important;
+        .section-cta-banner {
+            overflow: visible !important;
         }
 
         /* Viewport Section Fade-In Animation */
@@ -1036,8 +1040,8 @@
                     <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem; margin-right: 8px;"></i> Why SeanBot?             
                 </h2>             
                 <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary); padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: blur(16px);">                 
-                    <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace paid Discord bots with a 100% free, high-performance community toolkit.</p>                 
-                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Unlike multipurpose bots that paywall essential tools, SeanBot gives you unlimited web embeds, reaction roles, zero-delay security shields, timezone converters, and custom gaming modules with zero subscription fees or feature caps.</p>             
+                    <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace fragmented Discord bots with a unified, high-performance community toolkit.</p>                 
+                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Unlike multipurpose bots that split features across paywalls, SeanBot gives you complete web embeds, reaction roles, zero-delay security shields, timezone converters, and custom gaming modules in one modern platform.</p>             
                 </div>         
             </div>
 
@@ -1148,7 +1152,7 @@
             <div class="section-cta-banner">
                 <div class="section-cta-content">
                     <h3>Ready to improve your server?</h3>
-                    <p>Experience 100% free, high-performance Discord tools built for your community.</p>
+                    <p>Experience modern, high-performance Discord tools built for your community.</p>
                 </div>
                 <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
