@@ -1252,7 +1252,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Unite allied communities. Posting a Team-Up lobby automatically broadcasts synced proxy embeds to partner servers."
+                "text": "Unite allied communities. When Broadcast Team-Ups to Mesh is enabled in the source server and receiving servers, posting a Team-Up lobby broadcasts synced proxy embeds to partner boards. When the team forms, SeanBot creates linked threads so the cross-server team chat stays connected."
             },
             {
                 "type": "commands",
@@ -2092,7 +2092,27 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Connect multiple Discord servers into a unified real-time communications network."
+                "text": "Connect multiple Discord servers into a shared network. A network can share forum threads, relay normal text channels, broadcast Team-Up requests, and show Beastmoon leaderboards across allied servers. Moderation-only tools such as tickets, ban appeals, public reports, and LOA stay local by default so private staff data is not leaked to partner servers."
+            },
+            {
+                "type": "heading",
+                "text": "Beginner Setup"
+            },
+            {
+                "type": "text",
+                "text": "Start in one server and run /thread network create. Copy the invite token and give it only to trusted server admins. In every partner server, run /thread network join with that token, then choose a forum channel in the dashboard Federation page. If you want only selected threads to cross-post, create a forum tag such as Global and set it as the Global Routing Tag. New threads with that tag will be copied to the other servers."
+            },
+            {
+                "type": "text",
+                "text": "For normal text channels, create a relay with /relay create or the dashboard, then link a local text channel in each server. For Team-Up requests, enable Broadcast Team-Ups to Mesh on the Federation page in every server that should send or receive them. Cross-server team chats use threads so the live team conversation can bridge back to the host."
+            },
+            {
+                "type": "heading",
+                "text": "What Syncs"
+            },
+            {
+                "type": "text",
+                "text": "Thread networks can copy new forum threads, replies, attachments within Discord limits, thread renames, locks, archives, pins, deletions, slowmode, and matching forum tags. Network owners can turn each sync type on or off from the Federation page. Public directory, manual join approval, node permissions, identity verification, and network health tools help keep the mesh controlled."
             },
             {
                 "type": "commands",
