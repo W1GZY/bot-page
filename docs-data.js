@@ -1149,8 +1149,8 @@ const docsData = [
     {
         "id": "raidpolls",
         "icon": "ph-users-three",
-        "title": "Advanced Raid Polls",
-        "subtitle": "Interactive selection menus, dynamic waitlists, and automated roster promotions.",
+        "title": "Polls",
+        "subtitle": "Quick reaction polls for simple votes, plus advanced raid roster polls with waitlists.",
         "content": [
             {
                 "type": "heading",
@@ -1158,12 +1158,36 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Coordinate multi-slot raids with interactive dropdown menus, main roster caps, and automated waitlist promotions."
+                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need raid slots, caps, waitlists, and roster automation."
+            },
+            {
+                "type": "heading",
+                "text": "Simple Reaction Polls"
+            },
+            {
+                "type": "text",
+                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. Members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. Dashboard-created simple polls can also convert time lines into Discord timestamps using the creator's saved timezone."
+            },
+            {
+                "type": "heading",
+                "text": "Advanced Raid Poll Limits"
+            },
+            {
+                "type": "text",
+                "text": "Menu and both-mode raid polls support up to 23 raid slots per poll so Discord's dropdown remains valid. Reaction-only raid polls support up to 25 slots."
             },
             {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
+                    {
+                        "cmd": "/poll create",
+                        "desc": "Create a quick reaction poll with a question and 2-20 answer choices."
+                    },
+                    {
+                        "cmd": "/poll close",
+                        "desc": "Close a simple reaction poll and replace the embed with final vote totals."
+                    },
                     {
                         "cmd": "/raidpoll",
                         "desc": "Open setup modal to build interactive multi-role raid signup boards."

@@ -201,7 +201,9 @@ const commandsDatabase = [
         icon: "ph-calendar-check",
         tocLabel: "5.0 Events",
         commands: [
-            { name: "/raidpoll", desc: "Quickly create Raid Polls", badge: "Manage Channels", type: "perm" },
+            { name: "/poll create", desc: "Create a simple reaction poll with 2-20 choices.", badge: "Manage Messages", type: "perm" },
+            { name: "/poll close", desc: "Close a simple reaction poll and post final reaction totals.", badge: "Manage Messages", type: "perm" },
+            { name: "/raidpoll", desc: "Quickly create advanced raid roster polls.", badge: "Manage Channels", type: "perm" },
             { name: "/teamup config", desc: "Customize matching variables, thresholds, and keyword overrides.", badge: "Administrator", type: "perm" },
             { name: "/teamup alias", desc: "Add or remove a dungeon abbreviation.", badge: "Administrator", type: "perm" },
             { name: "/teamup channel", desc: "Set the Team-Up posting channel.", badge: "Administrator", type: "perm" },
