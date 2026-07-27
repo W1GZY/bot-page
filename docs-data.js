@@ -46,39 +46,6 @@ const docsData = [
     },
     {
         "id": "core",
-        "icon": "ph-browser",
-        "title": "Dashboard & Settings",
-        "subtitle": "Blazing-fast cloud control workspace for instant server configuration.",
-        "content": [
-            {
-                "type": "heading",
-                "text": "Web Dashboard Workspace"
-            },
-            {
-                "type": "text",
-                "text": "Seamlessly configure server preferences, manage feature modules, and synchronize command registries in real time with security token authentication."
-            },
-            {
-                "type": "commands",
-                "title": "Commands Reference",
-                "items": [
-                    {
-                        "cmd": "/dashboard",
-                        "desc": "Generate an encrypted, single-use login link to access the Web Control Panel."
-                    },
-                    {
-                        "cmd": "/reload_commands",
-                        "desc": "Force immediate database synchronization for all active slash command registries."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "prefix",
-        "icon": "ph-hash",
-        "title": "Custom Prefixes",
-        "subtitle": "Flexible text command prefix customization tailored for your community.",
         "content": [
             {
                 "type": "heading",
@@ -238,6 +205,8 @@ const docsData = [
             }
         ]
     },
+        ]
+    },
     {
         "id": "pet_tome",
         "icon": "ph-book-bookmark",
@@ -258,7 +227,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/pet lookup [query]",
-                        "desc": "Search for any pet by name to inspect stats, egg timer, and talents."
+                        "desc": "Search for any pet by name to check info."
                     }
                 ]
             }
@@ -1213,11 +1182,6 @@ const docsData = [
                 "text": "When you write a date or time in /poll create or in the dashboard simple poll form, SeanBot tries to turn it into a Discord timestamp. Discord then shows the time in each member's own local time. You can write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. SeanBot uses the poll creator's saved timezone, so set your timezone first before using poll end times or timed answer choices."
             },
             {
-                "type": "heading",
-                "text": "Advanced Raid Poll Limits"
-            },
-            {
-                "type": "text",
                 "text": "Menu and both-mode raid polls support up to 23 raid slots per poll so Discord's dropdown remains valid. Reaction-only raid polls support up to 25 slots."
             },
             {
@@ -2352,6 +2316,134 @@ const docsData = [
         ]
     },
     {
+        "id": "roshambo",
+        "icon": "ph-fire",
+        "title": "Roshambo Battle Royale",
+        "subtitle": "Multi-player elemental and spirit school battle game.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Overview"
+            },
+            {
+                "type": "text",
+                "text": "Multiplayer Rock-Paper-Scissors style battle royales based on Wizard101 schools."
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/duel",
+                        "desc": "Open a lobby to host a Roshambo Battle Royale match."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "fun",
+        "icon": "ph-smiley",
+        "title": "Cat Facts & Quotes",
+        "subtitle": "Cat facts, cute pictures, and fake Discord quote generators.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Cat Command Center"
+            },
+            {
+                "type": "commands",
+                "title": "Cat Commands",
+                "items": [
+                    {
+                        "cmd": "/cat fact",
+                        "desc": "Get a random cat fact."
+                    },
+                    {
+                        "cmd": "/cat image",
+                        "desc": "Get a random cat picture."
+                    },
+                    {
+                        "cmd": "/cat gif",
+                        "desc": "Get a random animated cat GIF."
+                    },
+                    {
+                        "cmd": "/cat search [breed]",
+                        "desc": "Search cat pictures by breed."
+                    },
+                    {
+                        "cmd": "/cat says [text]",
+                        "desc": "Generate image of cat saying custom text."
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Discord Quotes & Slaps"
+            },
+            {
+                "type": "commands",
+                "title": "Fun Commands",
+                "items": [
+                    {
+                        "cmd": "/discquote [user] [text]",
+                        "desc": "Generate a realistic fake Discord quote screenshot."
+                    },
+                    {
+                        "cmd": "/slap [user]",
+                        "desc": "Slap a user with fun randomized items."
+                    },
+                    {
+                        "cmd": "/slap stats",
+                        "desc": "View your slap statistics and rank."
+                    },
+                    {
+                        "cmd": "/slap leaderboard",
+                        "desc": "View top slappers in the server."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "general_sys",
+        "icon": "ph-cpu",
+        "title": "System Diagnostics",
+        "subtitle": "System monitoring, hardware statistics, and general server tools.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Overview"
+            },
+            {
+                "type": "text",
+                "text": "General utility commands providing bot latency metrics and RAM usage."
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/serverinfo",
+                        "desc": "Display server statistics including member count and roles."
+                    },
+                    {
+                        "cmd": "/ping",
+                        "desc": "Check bot API latency in milliseconds."
+                    },
+                    {
+                        "cmd": "/invite",
+                        "desc": "Get official SeanBot server invite links."
+                    },
+                    {
+                        "cmd": "/8ball [question]",
+                        "desc": "Ask the Magic 8-Ball a question."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "faq",
         "icon": "ph-question",
         "title": "Frequently Asked Questions",
@@ -2372,6 +2464,54 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Make sure SeanBot's role is placed high in the Server Settings role hierarchy."
+            }
+        ]
+    },
+    {
+        "id": "loa",
+        "icon": "ph-calendar-check",
+        "title": "Leave of Absence (LOA)",
+        "subtitle": "Streamlined, automated staff & member leave management with Discord role sync.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Overview & Functionality"
+            },
+            {
+                "type": "text",
+                "text": "The Leave of Absence (LOA) module allows staff members and community users to request temporary leave. Requests can be submitted directly via `/loa request` or through the Web Dashboard, with automatic role stripping/restoration, custom review channels, and configurable auto-approval thresholds."
+            },
+            {
+                "type": "callout",
+                "icon": "⚡",
+                "title": "In-Discord Setup & Multi-Role Permissions",
+                "text": "Use `/loa setup` to configure review channels, assign dedicated leave roles, define maximum leave durations, and set permitted user or admin role lists."
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/loa request",
+                        "desc": "Open the interactive modal to submit a new Leave of Absence request with start and end dates."
+                    },
+                    {
+                        "cmd": "/loa setup [approval_channel] [user_roles] [admin_roles] [leave_role] [max_duration] [auto_approval_hours]",
+                        "desc": "Configure LOA review channel, multi-role user/admin permissions, leave role, and auto-approval thresholds."
+                    },
+                    {
+                        "cmd": "/loa config",
+                        "desc": "Display an active summary embed of the server's LOA settings and permissions."
+                    },
+                    {
+                        "cmd": "/loa status",
+                        "desc": "View active or historical LOA requests with options to extend or cancel your leave."
+                    },
+                    {
+                        "cmd": "/loa list",
+                        "desc": "Admin command to review and manage all active and scheduled LOAs across the server."
+                    }
+                ]
             }
         ]
     }

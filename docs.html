@@ -640,6 +640,13 @@
     <!-- Documentation Layout Grid -->
     <div class="docs-grid auto-fade-in" style="animation-delay: 0.1s;">
 
+        <!-- Sidebar Navigation -->
+        <aside class="docs-sidebar">
+            <nav class="docs-nav" id="docsNav">
+                <!-- Navigation items populated dynamically -->
+            </nav>
+        </aside>
+
         <!-- Main Articles Container -->
         <main id="docsContent">
             <!-- Articles dynamically generated from docsData -->
@@ -674,7 +681,7 @@ const docsData = [
                                     },
                                     {
                                                 "type": "callout",
-                                                "icon": "\u26a1",
+                                                "icon": "⚡",
                                                 "title": "Instant Audit Diagnostics",
                                                 "text": "Run `/staff diagnose` anytime for an automated diagnostic sweep of bot channel permissions, role bindings, and command overrides."
                                     },
@@ -684,11 +691,7 @@ const docsData = [
                                                 "items": [
                                                             {
                                                                         "cmd": "/staff diagnose",
-                                                                        "desc": "Perform an automated audit sweep of channel permissions and bot hierarchy."
-                                                            },
-                                                            {
-                                                                        "cmd": "/prefix [symbol]",
-                                                                        "desc": "View or update custom legacy command prefix."
+                                                                        "desc": "Perform an automated audit sweep of Messaging, Moderation, and Voice permissions."
                                                             }
                                                 ]
                                     }
@@ -706,7 +709,7 @@ const docsData = [
                                     },
                                     {
                                                 "type": "text",
-                                                "text": "Seamlessly configure server preferences, manage feature modules, and synchronize command registries in real time with security token authentication."
+                                                "text": "Seamlessly configure server preferences, manage feature modules, and synchronize settings in real time with security token authentication."
                                     },
                                     {
                                                 "type": "commands",
@@ -715,14 +718,6 @@ const docsData = [
                                                             {
                                                                         "cmd": "/dashboard",
                                                                         "desc": "Generate an encrypted, single-use login link to access the Web Control Panel."
-                                                            },
-                                                            {
-                                                                        "cmd": "/reload_commands",
-                                                                        "desc": "Force immediate database synchronization for all active slash command registries."
-                                                            },
-                                                            {
-                                                                        "cmd": "/ram",
-                                                                        "desc": "Monitor live hardware memory usage and system response latency."
                                                             }
                                                 ]
                                     }
@@ -833,15 +828,8 @@ const docsData = [
                         "subtitle": "Form progression tracking, Lunari & Idol cost calculators, and global leaderboards.",
                         "content": [
                                     {
-                                                "type": "heading",
-                                                "text": "Overview"
-                                    },
-                                    {
                                                 "type": "text",
                                                 "text": "Track your Beastmoon Hunt and Monster Mayhem form tiers, estimate Lunari and Idol progress toward Tier 5, sync form data from the web converter, and post public tier-up announcements to a configured channel."
-                                    },
-                                    {
-                                                "type": "commands",
                                                 "title": "Commands Reference",
                                                 "items": [
                                                             {
@@ -863,6 +851,22 @@ const docsData = [
                                                             {
                                                                         "cmd": "/bm forms",
                                                                         "desc": "Show your saved Beastmoon forms and unlock tier chart buttons."
+                                                            },
+                                                            {
+                                                                        "cmd": "/bm leaderboard",
+                                                                        "desc": "View top Beastmoon players in your server or cross-server network."
+                                                            },
+                                                            {
+                                                                        "cmd": "/bm max",
+                                                                        "desc": "Display elite players who have achieved max Tier 5 form masteries."
+                                                            },
+                                                            {
+                                                                        "cmd": "/bm log_channel [channel]",
+                                                                        "desc": "Designate a channel for public Beastmoon level-up announcements."
+                                                            },
+                                                            {
+                                                                        "cmd": "/bm redeem [code]",
+                                                                        "desc": "Instantly sync Beastmoon form upgrades from the Web Dashboard."
                                                             },
                                                             {
                                                                         "cmd": "/bm leaderboard",
@@ -912,7 +916,7 @@ const docsData = [
                                                 "items": [
                                                             {
                                                                         "cmd": "/pet lookup [query]",
-                                                                        "desc": "Search for any pet by name to inspect stats, egg timer, and talents."
+                                                                        "desc": "Search for any pet by name to check info."
                                                             }
                                                 ]
                                     }
@@ -1640,6 +1644,201 @@ const docsData = [
                                                                         "cmd": "/timeping cancel [event_id]",
                                                                         "desc": "Cancel an active event or scheduled alert."
                                                             },
+                                                            {
+                                                                        "cmd": "/timeping simulate [time]",
+                                                                        "desc": "Preview exact reminder firing times in advance."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping defaults set",
+                                                                        "desc": "Update server-wide default alert preferences."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping templates list",
+                                                                        "desc": "List saved reminder interval templates."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timeping auto-watch add [channel]",
+                                                                        "desc": "Auto-watch a specific channel for event posts."
+                                                            },
+                                                            {
+                                                                        "cmd": "/countdown create [title] [time]",
+                                                                        "desc": "Create a live dynamic countdown timer in chat."
+                                                            },
+                                                            {
+                                                                        "cmd": "/countdown list",
+                                                                        "desc": "List active countdown timers in the channel."
+                                                            }
+                                                ]
+                                    }
+                        ]
+            },
+            {
+                        "id": "timezones",
+                        "icon": "ph-globe-stand",
+                        "title": "Timezones & World Clocks",
+                        "subtitle": "Seamless timezone detection, comparisons, and interactive community time maps.",
+                        "content": [
+                                    {
+                                                "type": "heading",
+                                                "text": "Global Time Synchronization"
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "Eliminate timezone math for international gaming groups. Members can detect or set their timezone to display local times and view live community time maps."
+                                    },
+                                    {
+                                                "type": "commands",
+                                                "title": "Commands Reference",
+                                                "items": [
+                                                            {
+                                                                        "cmd": "/timezone detect",
+                                                                        "desc": "Automatically detect your timezone by entering local time."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone compare [user]",
+                                                                        "desc": "Compare your local time directly with another member."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone map",
+                                                                        "desc": "Get a link to the interactive Community Timezone Map."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone admin-map",
+                                                                        "desc": "Get administrative view of community timezone map."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone admin-set [user] [tz]",
+                                                                        "desc": "Force set a member's local timezone (Admin only)."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone set [tz]",
+                                                                        "desc": "Manually set your local timezone."
+                                                            },
+                                                            {
+                                                                        "cmd": "/timezone user [member]",
+                                                                        "desc": "View a member's local time and UTC offset."
+                                                            }
+                                                ]
+                                    }
+                        ]
+            },
+            {
+                        "id": "time_converter",
+                        "icon": "ph-clock-user",
+                        "title": "Time & Timestamp Converter",
+                        "subtitle": "Convert times across timezones and generate dynamic Discord timestamp tags.",
+                        "content": [
+                                    {
+                                                "type": "heading",
+                                                "text": "Overview"
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "Convert event times between timezones and generate Discord `<t:unix:F>` dynamic timestamp markdown tags that display in every member's local time."
+                                    },
+                                    {
+                                                "type": "commands",
+                                                "title": "Commands Reference",
+                                                "items": [
+                                                            {
+                                                                        "cmd": "/time convert [time] [from_tz] [to_tz]",
+                                                                        "desc": "Convert a specific time string from one timezone to another."
+                                                            },
+                                                            {
+                                                                        "cmd": "/time timestamp [time] [timezone]",
+                                                                        "desc": "Generate dynamic Discord timestamp markdown tags."
+                                                            },
+                                                            {
+                                                                        "cmd": "/time diff [time1] [time2]",
+                                                                        "desc": "Calculate exact time difference between two times."
+                                                            }
+                                                ]
+                                    }
+                        ]
+            },
+            {
+                        "id": "calendar",
+                        "icon": "ph-calendar",
+                        "title": "Community Calendar",
+                        "subtitle": "Real-time auto-updating community event dashboard and schedule manager.",
+                        "content": [
+                                    {
+                                                "type": "heading",
+                                                "text": "Live Event Dashboard"
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "Publish a live, auto-updating community calendar directly in your server. Members can view monthly events, upcoming tournaments, and scheduled raids."
+                                    },
+                                    {
+                                                "type": "commands",
+                                                "title": "Commands Reference",
+                                                "items": [
+                                                            {
+                                                                        "cmd": "/calendar view",
+                                                                        "desc": "View current event calendar manually in chat."
+                                                            },
+                                                            {
+                                                                        "cmd": "/calendar set_channel [channel]",
+                                                                        "desc": "Set up live auto-updating event calendar dashboard."
+                                                            }
+                                                ]
+                                    }
+                        ]
+            },
+            {
+                        "id": "raids",
+                        "icon": "ph-swords",
+                        "title": "Raid & Event Organizer",
+                        "subtitle": "Multi-role raid builder with localized times and strategy signups.",
+                        "content": [
+                                    {
+                                                "type": "heading",
+                                                "text": "Overview"
+                                    },
+                                    {
+                                                "type": "text",
+                                                "text": "Schedule gaming events with role signup embeds, localized event times, and strategy requirements."
+                                    },
+                                    {
+                                                "type": "commands",
+                                                "title": "Commands Reference",
+                                                "items": [
+                                                            {
+                                                                        "cmd": "/set_raid_channel [channel]",
+                                                                        "desc": "Designate text channel where raid signup embeds publish."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid start [host]",
+                                                                        "desc": "Open modal form to build and publish a new raid signup."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid list",
+                                                                        "desc": "Display all active raid signups running in the server."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid my",
+                                                                        "desc": "View upcoming raid events you are signed up for."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid edit [msg_id]",
+                                                                        "desc": "Edit title, description, or time of an active raid."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid cancel [msg_id]",
+                                                                        "desc": "Cancel a raid event and clean up signup reactions."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid lock [msg_id]",
+                                                                        "desc": "Lock raid signups to freeze active rosters."
+                                                            },
+                                                            {
+                                                                        "cmd": "/raid unlock [msg_id]",
+                                                                        "desc": "Re-open raid signups for new players."
+                                                            }
+                                                ]
+                                    }
+                        ]
                                                             {
                                                                         "cmd": "/timeping simulate [time]",
                                                                         "desc": "Preview exact reminder firing times in advance."
@@ -3102,6 +3301,7 @@ const docsData = [
             'teamup_fed': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'temp_vc': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
 
             'activitytracker': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
             'autopin': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },

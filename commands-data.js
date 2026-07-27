@@ -497,7 +497,7 @@ const commandsDatabase = [
                             "type": "perm"
                     }
             ]
-    },,
+    },
 
     {
             "id": "voice-analytics",
@@ -536,7 +536,7 @@ const commandsDatabase = [
                             "type": "public"
                     }
             ]
-    },,
+    },
 
     {
             "id": "loa-system",
@@ -573,15 +573,25 @@ const commandsDatabase = [
                             "desc": "Deny a pending leave of absence.",
                             "badge": "Manage Server",
                             "type": "perm"
+                    },
+                    {
+                            "name": "/loa setup",
+                            "desc": "Configure review channel, multi-role user/admin permissions, leave role, and auto-approval thresholds.",
+                            "badge": "Administrator",
+                            "type": "perm"
+                    },
+                    {
+                            "name": "/loa config",
+                            "desc": "Display active summary embed of server LOA settings and permissions.",
+                            "badge": "Administrator",
+                            "type": "perm"
                     }
             ]
-    },,
+    },
 
     {
             "id": "reaction-pings",
             "title": "13.0 Reaction Pings",
-            "icon": "ph-bell-ringing",
-            "tocLabel": "13.0 Reaction Pings",
             "commands": [
                     {
                             "name": "/reactionping menu",
