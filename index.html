@@ -1700,44 +1700,97 @@
                             </div>
                         </div>
 
-                        <!-- Interactive Discord Poll Command & Output Frame -->
-                        <div style="background: #2b2d31; border-radius: 8px; padding: 16px; font-family: 'gg sans', sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+                        <!-- 100% Discord Dark UI Replica Frame -->
+                        <div style="background: #313338; border-radius: 8px; padding: 18px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
                             
-                            <!-- Slash Command Input Mockup (Image 1) -->
-                            <div style="background: #1e1f22; border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.05);">
-                                <div style="font-size: 0.725rem; color: #949ba4; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
-                                    <span>COMMAND INPUT PREVIEW</span>
-                                    <span style="color: #57F287; font-family: monospace;">/poll create</span>
+                            <!-- Slash Command Popup & Auto-Complete Bar (Pixel-Perfect Image 1 Replica) -->
+                            <div style="background: #2b2d31; border-radius: 8px 8px 0 0; padding: 8px 12px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.06); border-bottom: none; display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center; gap: 6px; color: #949ba4;">
+                                    <span style="font-weight: 700; color: #f2f3f5;">question</span>
+                                    <span>The question people are voting on.</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.8rem;">
-                                    <span style="font-weight: 800; color: #fff;">/poll create</span>
-                                    <span style="background: #313338; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); color: #dbdee1;"><strong style="color:#949ba4;">question:</strong> Raid this weekend</span>
-                                    <span style="background: #313338; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); color: #dbdee1;"><strong style="color:#949ba4;">option_1:</strong> Ghastly Conspiracy - 26. juli 2026 18:00</span>
-                                    <span style="background: #313338; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(87,242,135,0.4); color: #57F287;"><strong style="color:#57F287;">timestamps:</strong> True</span>
-                                    <span style="color: #949ba4; font-size: 0.75rem;">+19 options</span>
+                                <span style="color: #949ba4; font-size: 0.9rem; cursor: pointer;">✕</span>
+                            </div>
+                            <div style="background: #383a40; border-radius: 0 0 8px 8px; padding: 10px 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.875rem;">
+                                    <span style="width: 22px; height: 22px; background: #ed4245; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; font-weight: 900;">🐾</span>
+                                    <span style="font-weight: 700; color: #fff; font-size: 0.95rem;">/poll create</span>
+                                    
+                                    <span style="background: #2b2d31; border-radius: 4px; display: inline-flex; border: 1px solid rgba(255,255,255,0.1); font-size: 0.825rem; overflow: hidden;">
+                                        <span style="background: rgba(255,255,255,0.07); padding: 3px 8px; color: #f2f3f5; font-weight: 600;">question</span>
+                                        <span style="padding: 3px 8px; color: #949ba4;">Raid this weekend</span>
+                                    </span>
+                                    <span style="background: #2b2d31; border-radius: 4px; display: inline-flex; border: 1px solid rgba(255,255,255,0.1); font-size: 0.825rem; overflow: hidden;">
+                                        <span style="background: rgba(255,255,255,0.07); padding: 3px 8px; color: #f2f3f5; font-weight: 600;">option_1</span>
+                                        <span style="padding: 3px 8px; color: #949ba4;">Ghastly Conspiracy...</span>
+                                    </span>
+                                    <span style="background: #2b2d31; border-radius: 4px; display: inline-flex; border: 1px solid rgba(87,242,135,0.5); font-size: 0.825rem; overflow: hidden;">
+                                        <span style="background: rgba(87,242,135,0.15); padding: 3px 8px; color: #57F287; font-weight: 700;">timestamps</span>
+                                        <span style="padding: 3px 8px; color: #57F287; font-weight: 700;">True</span>
+                                    </span>
+                                    <span style="color: #949ba4; font-size: 0.8rem; font-weight: 600;">+19 more</span>
                                 </div>
+                                <span style="color: #b5bac1; font-size: 1.1rem;">😊</span>
                             </div>
 
-                            <!-- Generated Poll Embed Output with Timestamps (Image 2) -->
-                            <div style="background: #313338; border-left: 4px solid #5865F2; border-radius: 6px; padding: 14px; position: relative;">
-                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                                    <img src="assets/seanbot.png" style="width: 20px; height: 20px; border-radius: 50%;" alt="Mek">
-                                    <span style="font-size: 0.775rem; color: #949ba4;">Poll by <strong>Mek</strong></span>
+                            <!-- Generated Poll Embed Message Output (Pixel-Perfect Image 2 Replica) -->
+                            <div style="position: relative; padding-left: 50px;">
+                                <!-- User Avatar -->
+                                <img src="assets/seanbot.png" style="width: 40px; height: 40px; border-radius: 50%; position: absolute; left: 0; top: 0;" alt="Mek Avatar">
+                                
+                                <!-- Message Header -->
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                    <span style="font-weight: 700; color: #f2f3f5; font-size: 0.95rem;">Mek</span>
+                                    <span style="background: #5865F2; color: #fff; font-size: 0.625rem; font-weight: 800; padding: 1px 5px; border-radius: 3px; display: inline-flex; align-items: center; gap: 3px;">
+                                        APP
+                                    </span>
+                                    <span style="font-size: 0.725rem; color: #949ba4;">22:52</span>
                                 </div>
-                                <div style="font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 10px;">
-                                    Raid this weekend
+
+                                <!-- Poll Container Body -->
+                                <div style="background: #2b2d31; border-left: 4px solid #5865F2; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px; max-width: 540px;">
+                                    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.775rem; color: #949ba4; margin-bottom: 6px;">
+                                        <span style="font-weight: 700; color: #dbdee1;">Poll by Mek</span>
+                                    </div>
+                                    <div style="font-weight: 800; font-size: 1.05rem; color: #f2f3f5; margin-bottom: 12px;">
+                                        Raid this weekend
+                                    </div>
+                                    <div style="font-size: 0.85rem; line-height: 1.7; color: #dbdee1; display: flex; flex-direction: column; gap: 4px;">
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">A</span> Ghastly Conspiracy (Main raid) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">26. juli 2026 18:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">B</span> Ghastly Conspiracy (Main raid) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">26. juli 2026 19:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">C</span> Voracious Void (Main raid) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">søn 26. juli 2026 18:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">D</span> Voracious Void (Main raid) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">søn 26. juli 2026 19:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">E</span> Cabal's Revenge (Poison Oak) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">søn 26. juli 2026 18:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">F</span> Cabal's Revenge (Poison Oak) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">søn 26. juli 2026 19:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">G</span> Ghastly Conspiracy (Main raid) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">lørdag 25. juli 2026 18:00</span></div>
+                                        <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">H</span> Ghastly Conspiracy (Main raid) – <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">lørdag 25. juli 2026 19:00</span></div>
+                                    </div>
+                                    <div style="margin-top: 14px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #949ba4;">
+                                        Ends: <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1;">mandag 27. juli 2026 18:00</span> <span style="color: #949ba4;">( in 9 hours )</span>
+                                    </div>
                                 </div>
-                                <div style="font-size: 0.8rem; line-height: 1.6; color: #dbdee1; display: flex; flex-direction: column; gap: 4px; font-family: monospace;">
-                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">A</span> Ghastly Conspiracy (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">26. juli 2026 18:00</span></div>
-                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">B</span> Ghastly Conspiracy (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">26. juli 2026 19:00</span></div>
-                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">C</span> Voracious Void (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 18:00</span></div>
-                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">D</span> Voracious Void (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 19:00</span></div>
-                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">E</span> Cabal's Revenge (Poison Oak) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 18:00</span></div>
-                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">F</span> Cabal's Revenge (Poison Oak) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 19:00</span></div>
-                                </div>
-                                <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.775rem; color: #949ba4; display: flex; align-items: center; justify-content: space-between;">
-                                    <span>Ends: <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #fff;">man 27. juli 2026 18:00</span></span>
-                                    <span style="color: #06B6D4; font-weight: 700;">( in 9 hours )</span>
+
+                                <!-- Reaction Vote Button Row (Matching Image 2 Bottom Row) -->
+                                <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+                                    <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                                        <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">A</span> 1
+                                    </span>
+                                    <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                                        <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">B</span> 1
+                                    </span>
+                                    <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                                        <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">C</span> 1
+                                    </span>
+                                    <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                                        <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">D</span> 1
+                                    </span>
+                                    <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #b5bac1; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
+                                        <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">E</span> 1
+                                    </span>
+                                    <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #b5bac1; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
+                                        <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">F</span> 1
+                                    </span>
+                                    <span style="color: #b5bac1; font-size: 1.1rem; margin-left: 4px;">😊</span>
                                 </div>
                             </div>
                         </div>
