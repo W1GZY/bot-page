@@ -1615,6 +1615,7 @@
                         <button class="showcase-tab" onclick="switchShowcase('invite')"><i class="ph-duotone ph-user-plus"></i> Invite Tracker</button>
                         <button class="showcase-tab" onclick="switchShowcase('scam')"><i class="ph-duotone ph-shield-warning"></i> Scam Protection</button>
                         <button class="showcase-tab" onclick="switchShowcase('embed')"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
+                        <button class="showcase-tab" onclick="switchShowcase('polls')"><i class="ph-duotone ph-chart-polar"></i> Interactive Polls</button>
                     </div>
 
                     <!-- Showcase Content Panels -->
@@ -1683,6 +1684,62 @@
                         </div>
                         <div class="showcase-image-frame">
                             <img src="assets/embed_builder.png" alt="Web Dashboard Embed Builder">
+                        </div>
+                    </div>
+
+                    <!-- Panel 5: Interactive Polls & Timestamps -->
+                    <div id="showcase-polls" class="showcase-panel" style="display: none; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                        <div>
+                            <span class="pill-badge" style="background: rgba(6, 182, 212, 0.15); color: #06B6D4; border-color: rgba(6, 182, 212, 0.3);">Community & Events</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Slash Command Poll Creation & Dynamic Timestamps</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Type slash commands to generate interactive polls with automated localized timestamps for raid scheduling, event signups, and community decisions across all member timezones.</p>
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <span class="pill-badge">⏱️ Dynamic Discord Timestamps</span>
+                                <span class="pill-badge">⚔️ Raid Roster Polls</span>
+                                <span class="pill-badge">🗳️ Button Voting & Tallies</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Discord Poll Command & Output Frame -->
+                        <div style="background: #2b2d31; border-radius: 8px; padding: 16px; font-family: 'gg sans', sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+                            
+                            <!-- Slash Command Input Mockup (Image 1) -->
+                            <div style="background: #1e1f22; border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.05);">
+                                <div style="font-size: 0.725rem; color: #949ba4; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>COMMAND INPUT PREVIEW</span>
+                                    <span style="color: #57F287; font-family: monospace;">/poll create</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.8rem;">
+                                    <span style="font-weight: 800; color: #fff;">/poll create</span>
+                                    <span style="background: #313338; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); color: #dbdee1;"><strong style="color:#949ba4;">question:</strong> Raid this weekend</span>
+                                    <span style="background: #313338; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); color: #dbdee1;"><strong style="color:#949ba4;">option_1:</strong> Ghastly Conspiracy - 26. juli 2026 18:00</span>
+                                    <span style="background: #313338; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(87,242,135,0.4); color: #57F287;"><strong style="color:#57F287;">timestamps:</strong> True</span>
+                                    <span style="color: #949ba4; font-size: 0.75rem;">+19 options</span>
+                                </div>
+                            </div>
+
+                            <!-- Generated Poll Embed Output with Timestamps (Image 2) -->
+                            <div style="background: #313338; border-left: 4px solid #5865F2; border-radius: 6px; padding: 14px; position: relative;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                    <img src="assets/seanbot.png" style="width: 20px; height: 20px; border-radius: 50%;" alt="Mek">
+                                    <span style="font-size: 0.775rem; color: #949ba4;">Poll by <strong>Mek</strong></span>
+                                </div>
+                                <div style="font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 10px;">
+                                    Raid this weekend
+                                </div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #dbdee1; display: flex; flex-direction: column; gap: 4px; font-family: monospace;">
+                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">A</span> Ghastly Conspiracy (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">26. juli 2026 18:00</span></div>
+                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">B</span> Ghastly Conspiracy (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">26. juli 2026 19:00</span></div>
+                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">C</span> Voracious Void (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 18:00</span></div>
+                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">D</span> Voracious Void (Main raid) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 19:00</span></div>
+                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">E</span> Cabal's Revenge (Poison Oak) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 18:00</span></div>
+                                    <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800;">F</span> Cabal's Revenge (Poison Oak) – <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #57F287;">søn 26. juli 2026 19:00</span></div>
+                                </div>
+                                <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.775rem; color: #949ba4; display: flex; align-items: center; justify-content: space-between;">
+                                    <span>Ends: <span style="background: #2b2d31; padding: 1px 6px; border-radius: 3px; color: #fff;">man 27. juli 2026 18:00</span></span>
+                                    <span style="color: #06B6D4; font-weight: 700;">( in 9 hours )</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
