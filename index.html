@@ -24,6 +24,30 @@
             animation: fadeIn 0.2s ease-out forwards;
         }
 
+        /* GIF-Like Live Animation Keyframes */
+        @keyframes pulseGlow {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.25); box-shadow: 0 0 8px currentColor; }
+            100% { opacity: 0.4; transform: scale(0.9); }
+        }
+        @keyframes tickerScroll {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(0); }
+            25% { transform: translateY(-22px); }
+            45% { transform: translateY(-22px); }
+            50% { transform: translateY(-44px); }
+            70% { transform: translateY(-44px); }
+            75% { transform: translateY(-66px); }
+            95% { transform: translateY(-66px); }
+            100% { transform: translateY(0); }
+        }
+        .animated-threat-ticker,
+        .animated-ticket-ticker,
+        .animated-timeping-ticker,
+        .animated-federation-ticker {
+            animation: tickerScroll 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         /* Hero Section */
         .hero-section {
             text-align: center;
@@ -1033,17 +1057,18 @@
                 </div>         
             </div>
 
-            <!-- Split Feature Section 1: Raid Shield (Text Left, Visual Card Right) -->
+            <!-- Split Feature Section 1: Raid Shield (Text Left, Scrollable Visual Card Right) -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Automated Security & Anti-Raid Defense</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Protect your community from bot raids, malicious invites, spam attacks, and unauthenticated accounts instantly.
+                        Protect your community with real-time velocity scoring, perceptual dHash visual scam matching, role-strip quarantine jail, and canary mode inspection.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Real-time webhook & spam payload scanning</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Automated member quarantine & audit logs</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> One-click emergency channel lock downs</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Perceptual dHash visual scam scanner & regex payload blocks</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Leaky bucket scoring with dynamic channel sensitivity multipliers</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Role-strip quarantine jail isolation & <code>/antiraid unquarantine</code> restore</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Canary log-only mode & mass-join event pause (<code>/antiraid pause</code>)</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-shield-check"></i> Explore Security Docs
@@ -1051,26 +1076,349 @@
                 </div>
                 
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(87, 242, 135, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-shield" style="color: #57F287;"></i> Security Status
+                            <i class="ph-fill ph-shield" style="color: #57F287;"></i> Security Status & Settings
                         </div>
                         <span style="background: rgba(87, 242, 135, 0.2); color: #57F287; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">PROTECTED</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Scroll for real live cog parameters</span>
+                        <span style="color: #57F287;">● 12 Active Shields</span>
+                    </div>
+                    <!-- Scrollable Container -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Raid Defense</span>
-                            <span style="color: #57F287; font-weight: 700;">Active</span>
+                            <span style="color: var(--text-secondary);">Raid Defense Velocity</span>
+                            <span style="color: #57F287; font-weight: 700;">Active (0.5 pts/s decay)</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Spam Link Detection</span>
-                            <span style="color: #57F287; font-weight: 700;">Auto-Purge</span>
+                            <span style="color: var(--text-secondary);">Visual dHash Block</span>
+                            <span style="color: #57F287; font-weight: 700;">2,000 Signatures</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Audit Log Tracking</span>
-                            <span style="color: #fff; font-weight: 800;">Real-Time Stream</span>
+                            <span style="color: var(--text-secondary);">Role Quarantine Jail</span>
+                            <span style="color: var(--accent); font-weight: 700;">@Quarantined Role</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Canary Inspection</span>
+                            <span style="color: var(--text-muted); font-weight: 600;">Disabled (/antiraid canary)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Phishing Scanner Queue</span>
+                            <span style="color: #57F287; font-weight: 700;">5 Async Workers</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Burst Track Limit</span>
+                            <span style="color: #fff; font-weight: 700;">2,000 Tracked Users</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Spam Link & TLD Filter</span>
+                            <span style="color: #57F287; font-weight: 700;">Auto-Purge (.xyz, .top, .pw)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Discord Invite Filter</span>
+                            <span style="color: #57F287; font-weight: 700;">Enforced (Invite Scanner)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Channel Multipliers</span>
+                            <span style="color: #fff; font-weight: 700;">Custom Velocity Rates</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Mass-Join Event Pause</span>
+                            <span style="color: var(--text-muted); font-weight: 600;">Ready (/antiraid pause)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Role Whitelist Bypass</span>
+                            <span style="color: #5865F2; font-weight: 700;">2 Staff Roles</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Tiered Punishments</span>
+                            <span style="color: #fff; font-weight: 700;">15m -> Jail -> Purge</span>
                         </div>
                     </div>
+                    <!-- Live Animated Action Simulation Stream -->
+                    <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
+                        <div style="font-size: 0.725rem; font-weight: 800; color: #57F287; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #57F287; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
+                            LIVE THREAT INTERCEPTOR (ACTION FEED)
+                        </div>
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(87, 242, 135, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
+                            <div class="animated-threat-ticker">
+                                <div style="color: #57F287; line-height: 22px;">⚡ [08:28:12] BLOCKED: Nitro phishing link auto-purged</div>
+                                <div style="color: #FFD700; line-height: 22px;">🖼️ [08:28:15] dHASH MATCH: Visual scam image blocked (99% match)</div>
+                                <div style="color: #E11D48; line-height: 22px;">🔒 [08:28:19] QUARANTINED: @ScamBot99 moved to Jail</div>
+                                <div style="color: #5865F2; line-height: 22px;">🛡️ [08:28:22] DECAY: Velocity score decayed (-0.5 pts/s)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split Feature Section 2: Support Ticket System (Visual Left, Text Right) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+                            <i class="ph-fill ph-ticket" style="color: #5865F2;"></i> Support Ticket Engine
+                        </div>
+                        <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">PERSISTENT LISTENER</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Scroll ticket cog feature suite</span>
+                        <span style="color: #5865F2;">● Online Desk</span>
+                    </div>
+                    <!-- Scrollable Container -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Panel Deployment</span>
+                            <span style="color: #57F287; font-weight: 700;">Buttons & Dropdowns</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Custom Form Modals</span>
+                            <span style="color: #57F287; font-weight: 700;">Multi-Input Questions</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Staff Support Roles</span>
+                            <span style="color: #5865F2; font-weight: 700;">@Support, @Senior Staff</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Senior Escalation</span>
+                            <span style="color: var(--accent); font-weight: 700;">Restricted Channels</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Internal Staff Notes</span>
+                            <span style="color: #fff; font-weight: 700;">/ticket staffsay</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Claim & Unclaim Queue</span>
+                            <span style="color: #57F287; font-weight: 700;">/ticket claim</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">HTML Transcripts</span>
+                            <span style="color: #57F287; font-weight: 700;">MongoDB & Log Channel</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Auto Inactivity Cleanup</span>
+                            <span style="color: #57F287; font-weight: 700;">Warning & Auto-Close</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Dynamic Naming Syntax</span>
+                            <span style="color: #fff; font-weight: 700;">ticket-{username}-{id}</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Duplicate Close Lock</span>
+                            <span style="color: #57F287; font-weight: 700;">Async Concurrency Lock</span>
+                        </div>
+                    </div>
+                    <!-- Live Animated Action Simulation Stream -->
+                    <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
+                        <div style="font-size: 0.725rem; font-weight: 800; color: #5865F2; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #5865F2; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
+                            LIVE TICKET ACTION LIFECYCLE
+                        </div>
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(88, 101, 242, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
+                            <div class="animated-ticket-ticker">
+                                <div style="color: #5865F2; line-height: 22px;">📩 [STEP 1] User clicks [Open Support Ticket]</div>
+                                <div style="color: #FFD700; line-height: 22px;">📋 [STEP 2] Form Modal Submitted: "Role Issue"</div>
+                                <div style="color: #57F287; line-height: 22px;">💬 [STEP 3] Channel created: #ticket-aysee-04</div>
+                                <div style="color: #06B6D4; line-height: 22px;">👑 [STEP 4] Claimed by @SeniorMod (/ticket claim)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Modular Support Ticket System</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                        Deploy high-performance interactive support panels with custom modals, senior support escalation, internal notes, and HTML transcript archives.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Interactive Button & Dropdown ticket creation panels</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Private staff notes (<code>/ticket staffsay</code>) & <code>/ticket claim</code> queue</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> HTML transcript archiving, auto-inactivity cleanup & lock safety</li>
+                    </ul>
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                        <i class="ph-bold ph-ticket"></i> Explore Ticket Docs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Split Feature Section 3: TimePing & Event Reminders (Text Left, Visual Card Right) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Reaction TimePings & Auto-Watch</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                        Never miss a raid, community event, or boss spawn. Schedule reaction-based event pings with auto-timezone detection and channel auto-watching.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Reaction-based event pings (<code>@reactors</code>, <code>@everyone</code>, <code>@roles</code>)</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Channel Auto-Watch (<code>/timeping auto-watch</code>) detects event posts automatically</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Preset interval templates & native Discord Scheduled Event sync</li>
+                    </ul>
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('timeping'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                        <i class="ph-bold ph-clock-counter-clockwise"></i> Explore TimePing Docs
+                    </button>
+                </div>
+                
+                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+                            <i class="ph-fill ph-clock-counter-clockwise" style="color: #F59E0B;"></i> TimePing Event Dispatcher
+                        </div>
+                        <span style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">AUTO-DISPATCH</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Scroll event dispatcher options</span>
+                        <span style="color: #F59E0B;">● Active Dispatcher</span>
+                    </div>
+                    <!-- Scrollable Container -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Channel Auto-Watch</span>
+                            <span style="color: #57F287; font-weight: 700;">Active (#event-announcements)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Default Reaction Emoji</span>
+                            <span style="color: #fff; font-weight: 700;">🔔 (:bell:)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Ping Target Options</span>
+                            <span style="color: #F59E0B; font-weight: 700;">Reactors, Everyone, Roles</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Preset Interval Templates</span>
+                            <span style="color: #fff; font-weight: 700;">1h, 15m, 5m, At Start</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Timezone Engine</span>
+                            <span style="color: #57F287; font-weight: 700;">ZoneInfo IANA Database</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Discord Scheduled Events</span>
+                            <span style="color: #5865F2; font-weight: 700;">/timeping native Sync</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Recurrence Engine</span>
+                            <span style="color: #fff; font-weight: 700;">Daily, Weekly, Monthly</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Auto Post-Event Delete</span>
+                            <span style="color: #57F287; font-weight: 700;">Configurable Hours</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">User Event Hub</span>
+                            <span style="color: #fff; font-weight: 700;">/timeping my-events</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Interactive Edit Panel</span>
+                            <span style="color: #57F287; font-weight: 700;">EditPanel Modal</span>
+                        </div>
+                    </div>
+                    <!-- Live Animated Action Simulation Stream -->
+                    <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
+                        <div style="font-size: 0.725rem; font-weight: 800; color: #F59E0B; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #F59E0B; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
+                            LIVE TIMEPING DISPATCH FEED
+                        </div>
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
+                            <div class="animated-timeping-ticker">
+                                <div style="color: #F59E0B; line-height: 22px;">⏱️ [AUTO-WATCH] Event timestamp in #announcements</div>
+                                <div style="color: #57F287; line-height: 22px;">🔔 [REACTION] 14 members reacted with :bell:</div>
+                                <div style="color: #FFD700; line-height: 22px;">⏰ [COUNTDOWN] 5 Minutes Remaining until Raid</div>
+                                <div style="color: #5865F2; line-height: 22px;">🚀 [DISPATCH] Pinging 14 @reactors across timezones!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split Feature Section 4: Server Federation & Cross-Server Mesh (Visual Left, Text Right) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Federation Mesh Broker
+                        </div>
+                        <span style="background: rgba(6, 182, 212, 0.2); color: #06B6D4; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">REDIS MESH ONLINE</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Scroll federation mesh parameters</span>
+                        <span style="color: #06B6D4;">● 4 Allied Servers</span>
+                    </div>
+                    <!-- Scrollable Container -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Federation Network Mesh</span>
+                            <span style="color: #57F287; font-weight: 700;">Active (4 Allied Servers)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Pub/Sub Broker Engine</span>
+                            <span style="color: #06B6D4; font-weight: 700;">Redis Priority Queues</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Cross-Server Forum Sync</span>
+                            <span style="color: #57F287; font-weight: 700;">Global Routing Tags</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Text Channel Relays</span>
+                            <span style="color: #57F287; font-weight: 700;">Bi-Directional Relay (/relay)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Federated Team-Ups</span>
+                            <span style="color: #5865F2; font-weight: 700;">Cross-Server Mesh Broadcast</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Identity Cryptography</span>
+                            <span style="color: #57F287; font-weight: 700;">Signed Identity Claims</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Cross-Server Audit Logs</span>
+                            <span style="color: #fff; font-weight: 700;">/thread audit (Score & Activity)</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Privacy Isolation</span>
+                            <span style="color: var(--accent); font-weight: 700;">Local-Only Tickets & Staff Data</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Cross-Server Leaderboards</span>
+                            <span style="color: #fff; font-weight: 700;">Beastmoon & Event Sync</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Invite Token Handshake</span>
+                            <span style="color: #57F287; font-weight: 700;">Secure Auth Tokens</span>
+                        </div>
+                    </div>
+                    <!-- Live Animated Action Simulation Stream -->
+                    <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
+                        <div style="font-size: 0.725rem; font-weight: 800; color: #06B6D4; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #06B6D4; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
+                            LIVE REDIS MESH RELAY STREAM
+                        </div>
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
+                            <div class="animated-federation-ticker">
+                                <div style="color: #06B6D4; line-height: 22px;">🌐 [SERVER A] Published thread update (#Global)</div>
+                                <div style="color: #57F287; line-height: 22px;">⚡ [REDIS PUB/SUB] Priority broker relayed message</div>
+                                <div style="color: #5865F2; line-height: 22px;">📥 [SERVER B & C] Cross-server thread synced!</div>
+                                <div style="color: var(--accent); line-height: 22px;">🛡️ [PRIVACY ISOLATED] Staff logs kept local</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Server Federation & Cross-Server Mesh</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                        Connect multiple Discord servers into a unified real-time network to share forum threads, relay text channels, broadcast Team-Up requests, and sync leaderboards across allied communities.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Real-time Redis Pub/Sub cross-server channel & forum thread relay</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Federated Team-Up requests & cross-server leaderboard sync</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Cryptographic identity claims with local privacy isolation for staff data</li>
+                    </ul>
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('federation'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                        <i class="ph-bold ph-globe-hemisphere-west"></i> Explore Federation Docs
+                    </button>
                 </div>
             </div>
 
