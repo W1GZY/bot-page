@@ -205,8 +205,6 @@ const docsData = [
             }
         ]
     },
-        ]
-    },
     {
         "id": "pet_tome",
         "icon": "ph-book-bookmark",
@@ -913,7 +911,11 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Ensure your community never misses a raid or guild meeting. Schedule multi-interval alerts (24h, 1h, 15m) that ping designated roles automatically."
+                "text": "Ensure your community never misses a raid or guild meeting. Schedule multi-interval alerts, link native Discord events, or auto-watch selected channels for event times. Auto-watch creates TimePing events from detected future times and uses the configured reaction emoji for signups."
+            },
+            {
+                "type": "text",
+                "text": "The dashboard TimePing page manages server defaults, interval templates, auto-watch channels, active TimePings, and Time Emoji Helper settings for the clock conversion reaction."
             },
             {
                 "type": "commands",
@@ -964,6 +966,10 @@ const docsData = [
                         "desc": "Auto-watch a specific channel for event posts."
                     },
                     {
+                        "cmd": "/timeping auto-watch settings [channel]",
+                        "desc": "Configure the watched channel emoji, timezone, reminder intervals, allowed reactor roles, recurrence, and who gets pinged."
+                    },
+                    {
                         "cmd": "/countdown create [title] [time]",
                         "desc": "Create a live dynamic countdown timer in chat."
                     },
@@ -987,7 +993,11 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Eliminate timezone math for international gaming groups. Members can detect or set their timezone to display local times and view live community time maps."
+                "text": "Eliminate timezone math for international gaming groups. Members can detect, set, view, compare, or clear their timezone, then use live community time maps and local-time conversions across the server."
+            },
+            {
+                "type": "text",
+                "text": "Admins can suggest a timezone for another member with `/timezone suggest-set`. The member must approve the change with buttons before SeanBot saves it."
             },
             {
                 "type": "commands",
@@ -1018,6 +1028,14 @@ const docsData = [
                         "desc": "Manually set your local timezone."
                     },
                     {
+                        "cmd": "/timezone suggest-set [target] [timezone]",
+                        "desc": "Suggest a timezone for another member; SeanBot only saves it if that member approves."
+                    },
+                    {
+                        "cmd": "/timezone clear",
+                        "desc": "Remove your saved timezone."
+                    },
+                    {
                         "cmd": "/timezone user [member]",
                         "desc": "View a member's local time and UTC offset."
                     }
@@ -1037,23 +1055,35 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Convert event times between timezones and generate Discord `<t:unix:F>` dynamic timestamp markdown tags that display in every member's local time."
+                "text": "SeanBot can convert times mentioned in messages without guessing missing timezones. If a bare time needs the author's timezone and that timezone is not saved, SeanBot asks for setup instead of silently treating the time as UTC."
+            },
+            {
+                "type": "text",
+                "text": "When Time Emoji Helpers are enabled on the dashboard, SeanBot can add a configurable clock reaction to messages that contain a safely detected time. Members who are allowed by the dashboard permission setting can click that reaction to receive a private conversion in their saved timezone."
+            },
+            {
+                "type": "text",
+                "text": "For Timely-style timestamp creation, wrap a time in backticks or a code block, such as `8 PM EST`. SeanBot replies with Discord timestamp markup that renders in each viewer's local Discord time. Bare wrapped times require the author's saved timezone."
             },
             {
                 "type": "commands",
-                "title": "Commands Reference",
+                "title": "Ways To Use It",
                 "items": [
                     {
-                        "cmd": "/time convert [time] [from_tz] [to_tz]",
-                        "desc": "Convert a specific time string from one timezone to another."
+                        "cmd": "Message Context Menu: Convert Time",
+                        "desc": "Right-click a message and use Apps > Convert Time to get an ephemeral conversion."
                     },
                     {
-                        "cmd": "/time timestamp [time] [timezone]",
-                        "desc": "Generate dynamic Discord timestamp markdown tags."
+                        "cmd": "Message Context Menu: Convert Time (DM)",
+                        "desc": "Right-click a message and use Apps > Convert Time (DM) to receive the conversion privately."
                     },
                     {
-                        "cmd": "/time diff [time1] [time2]",
-                        "desc": "Calculate exact time difference between two times."
+                        "cmd": "Clock reaction",
+                        "desc": "Click the configured clock emoji on a message with a detected time to receive a private conversion."
+                    },
+                    {
+                        "cmd": "`8 PM EST`",
+                        "desc": "Wrap a time in backticks or a code block to have SeanBot reply with a Discord timestamp."
                     }
                 ]
             }

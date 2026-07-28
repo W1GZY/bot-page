@@ -416,6 +416,30 @@ const commandsDatabase = [
                             "type": "public"
                     },
                     {
+                            "name": "/timezone suggest-set [target] [timezone]",
+                            "desc": "Suggest a timezone for another member; the member must approve it.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone clear",
+                            "desc": "Clear your saved timezone.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone view",
+                            "desc": "View your saved timezone and local time.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
+                            "name": "/timezone list",
+                            "desc": "See saved timezones for members in the server.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
                             "name": "/timezone user [member]",
                             "desc": "View a member's local time and UTC offset.",
                             "badge": "Everyone",
