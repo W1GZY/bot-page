@@ -923,7 +923,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The dashboard TimePing page manages server defaults, reminder interval templates, auto-watch channels, active TimePings, Discord Scheduled Event links, recurrence, role targets, allowed reactor roles, timezone setup panels, automatic timezone roles, and Time Emoji Helper settings."
+                "text": "The dashboard TimePing page manages server defaults, reminder interval templates, auto-watch channels, active TimePings, Discord Scheduled Event links, recurrence, role targets, allowed reactor roles, and Time Emoji Helper settings."
             },
             {
                 "type": "heading",
@@ -1022,6 +1022,10 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Admins can suggest a timezone for another member with `/timezone suggest-set`. The member must approve the change with buttons before SeanBot saves it."
+            },
+            {
+                "type": "text",
+                "text": "The Timezone Analytics dashboard shows registered timezone coverage, active timezone groups, the optional 3D globe, the timezone setup panel deployer, and automatic timezone role controls."
             },
             {
                 "type": "commands",
