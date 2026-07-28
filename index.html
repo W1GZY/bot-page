@@ -1287,14 +1287,14 @@
             <!-- Split Feature Section 3: TimePing & Event Reminders (Text Left, Visual Card Right) -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Reaction TimePings & Auto-Watch</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Event Reminders That Understand Timezones</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Never miss a raid, community event, or boss spawn. Schedule reaction-based event pings with auto-timezone detection and channel auto-watching.
+                        Schedule raids, community events, and boss spawns with reminders that show up at the right local time for everyone.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Reaction-based event pings (<code>@reactors</code>, <code>@everyone</code>, <code>@roles</code>)</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Channel Auto-Watch (<code>/timeping auto-watch</code>) detects event posts automatically</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Preset interval templates & native Discord Scheduled Event sync</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Let members join reminders by reacting to an event post</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Watch event channels and create reminders from detected times</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Link Discord Scheduled Events, saved reminder presets, and repeat events</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('timeping'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-clock-counter-clockwise"></i> Explore TimePing Docs
@@ -1304,13 +1304,13 @@
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-clock-counter-clockwise" style="color: #F59E0B;"></i> TimePing Event Dispatcher
+                            <i class="ph-fill ph-clock-counter-clockwise" style="color: #F59E0B;"></i> TimePing Event Reminders
                         </div>
-                        <span style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">AUTO-DISPATCH</span>
+                        <span style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">AUTO-REMINDERS</span>
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Scroll event dispatcher options</span>
-                        <span style="color: #F59E0B;">● Active Dispatcher</span>
+                        <span>Reminder settings</span>
+                        <span style="color: #F59E0B;">● Active</span>
                     </div>
                     <!-- Scrollable Container -->
                     <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
@@ -1331,8 +1331,8 @@
                             <span style="color: #fff; font-weight: 700;">1h, 15m, 5m, At Start</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Timezone Engine</span>
-                            <span style="color: #57F287; font-weight: 700;">ZoneInfo IANA Database</span>
+                            <span style="color: var(--text-secondary);">Timezone Handling</span>
+                            <span style="color: #57F287; font-weight: 700;">Local Times For Members</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
                             <span style="color: var(--text-secondary);">Discord Scheduled Events</span>
@@ -1352,93 +1352,93 @@
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
                             <span style="color: var(--text-secondary);">Interactive Edit Panel</span>
-                            <span style="color: #57F287; font-weight: 700;">EditPanel Modal</span>
+                            <span style="color: #57F287; font-weight: 700;">Change Active Events</span>
                         </div>
                     </div>
                     <!-- Live Animated Action Simulation Stream -->
                     <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
                         <div style="font-size: 0.725rem; font-weight: 800; color: #F59E0B; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
                             <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #F59E0B; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
-                            LIVE TIMEPING DISPATCH FEED
+                            LIVE TIMEPING REMINDER FEED
                         </div>
                         <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
                             <div class="animated-timeping-ticker">
                                 <div style="color: #F59E0B; line-height: 22px;">⏱️ [AUTO-WATCH] Event timestamp in #announcements</div>
                                 <div style="color: #57F287; line-height: 22px;">🔔 [REACTION] 14 members reacted with :bell:</div>
                                 <div style="color: #FFD700; line-height: 22px;">⏰ [COUNTDOWN] 5 Minutes Remaining until Raid</div>
-                                <div style="color: #5865F2; line-height: 22px;">🚀 [DISPATCH] Pinging 14 @reactors across timezones!</div>
+                                <div style="color: #5865F2; line-height: 22px;">🚀 [REMINDER] Pinging 14 signed-up members</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Split Feature Section 4: Server Federation & Cross-Server Mesh (Visual Left, Text Right) -->
+            <!-- Split Feature Section 4: Server Federation (Visual Left, Text Right) -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Federation Mesh Broker
+                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Cross-Server Connections
                         </div>
-                        <span style="background: rgba(6, 182, 212, 0.2); color: #06B6D4; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">REDIS MESH ONLINE</span>
+                        <span style="background: rgba(6, 182, 212, 0.2); color: #06B6D4; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">CONNECTED</span>
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Scroll federation mesh parameters</span>
+                        <span>Connection settings</span>
                         <span style="color: #06B6D4;">● 4 Allied Servers</span>
                     </div>
                     <!-- Scrollable Container -->
                     <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Federation Network Mesh</span>
+                            <span style="color: var(--text-secondary);">Connected Servers</span>
                             <span style="color: #57F287; font-weight: 700;">Active (4 Allied Servers)</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Pub/Sub Broker Engine</span>
-                            <span style="color: #06B6D4; font-weight: 700;">Redis Priority Queues</span>
+                            <span style="color: var(--text-secondary);">Message Delivery</span>
+                            <span style="color: #06B6D4; font-weight: 700;">Fast Message Delivery</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Cross-Server Forum Sync</span>
-                            <span style="color: #57F287; font-weight: 700;">Global Routing Tags</span>
+                            <span style="color: var(--text-secondary);">Shared Forum Threads</span>
+                            <span style="color: #57F287; font-weight: 700;">Synced Across Servers</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
                             <span style="color: var(--text-secondary);">Text Channel Relays</span>
-                            <span style="color: #57F287; font-weight: 700;">Bi-Directional Relay (/relay)</span>
+                            <span style="color: #57F287; font-weight: 700;">Two-Way Sharing</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Federated Team-Ups</span>
-                            <span style="color: #5865F2; font-weight: 700;">Cross-Server Mesh Broadcast</span>
+                            <span style="color: var(--text-secondary);">Team-Up Requests</span>
+                            <span style="color: #5865F2; font-weight: 700;">Shared With Allies</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Identity Cryptography</span>
-                            <span style="color: #57F287; font-weight: 700;">Signed Identity Claims</span>
+                            <span style="color: var(--text-secondary);">Member Identity Checks</span>
+                            <span style="color: #57F287; font-weight: 700;">Trusted Member Links</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Cross-Server Audit Logs</span>
-                            <span style="color: #fff; font-weight: 700;">/thread audit (Score & Activity)</span>
+                            <span style="color: var(--text-secondary);">Shared Activity Review</span>
+                            <span style="color: #fff; font-weight: 700;">Scores & Activity</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Privacy Isolation</span>
-                            <span style="color: var(--accent); font-weight: 700;">Local-Only Tickets & Staff Data</span>
+                            <span style="color: var(--text-secondary);">Private Staff Data</span>
+                            <span style="color: var(--accent); font-weight: 700;">Kept In Its Server</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
                             <span style="color: var(--text-secondary);">Cross-Server Leaderboards</span>
                             <span style="color: #fff; font-weight: 700;">Beastmoon & Event Sync</span>
                         </div>
                         <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Invite Token Handshake</span>
-                            <span style="color: #57F287; font-weight: 700;">Secure Auth Tokens</span>
+                            <span style="color: var(--text-secondary);">Server Invites</span>
+                            <span style="color: #57F287; font-weight: 700;">Controlled Access</span>
                         </div>
                     </div>
                     <!-- Live Animated Action Simulation Stream -->
                     <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
                         <div style="font-size: 0.725rem; font-weight: 800; color: #06B6D4; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
                             <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #06B6D4; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
-                            LIVE REDIS MESH RELAY STREAM
+                            LIVE CROSS-SERVER RELAY FEED
                         </div>
                         <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
                             <div class="animated-federation-ticker">
                                 <div style="color: #06B6D4; line-height: 22px;">🌐 [SERVER A] Published thread update (#Global)</div>
-                                <div style="color: #57F287; line-height: 22px;">⚡ [REDIS PUB/SUB] Priority broker relayed message</div>
+                                <div style="color: #57F287; line-height: 22px;">⚡ [RELAY] Message shared with connected servers</div>
                                 <div style="color: #5865F2; line-height: 22px;">📥 [SERVER B & C] Cross-server thread synced!</div>
                                 <div style="color: var(--accent); line-height: 22px;">🛡️ [PRIVACY ISOLATED] Staff logs kept local</div>
                             </div>
@@ -1447,14 +1447,14 @@
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Server Federation & Cross-Server Mesh</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Connect Allied Discord Servers</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Connect multiple Discord servers into a unified real-time network to share forum threads, relay text channels, broadcast Team-Up requests, and sync leaderboards across allied communities.
+                        Link allied communities together so forum threads, relay channels, Team-Up requests, and leaderboards can be shared between trusted servers.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Real-time Redis Pub/Sub cross-server channel & forum thread relay</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Federated Team-Up requests & cross-server leaderboard sync</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Cryptographic identity claims with local privacy isolation for staff data</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Live cross-server channel and forum thread relays</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Team-Up requests and leaderboards shared between trusted communities</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Staff notes and ticket data stay private to the server that owns them</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('federation'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-globe-hemisphere-west"></i> Explore Federation Docs
@@ -2116,8 +2116,8 @@
 
                     <div class="glass-card feature-card" data-category="community" onclick="switchTab('docs'); setTimeout(()=>activateDoc('timeping'), 50);" style="cursor: pointer;">                     
                         <i class="ph-duotone ph-clock feature-icon" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px;"></i>                     
-                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">TimePing Converter</h3>                     
-                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Automatically convert event times and dynamic timestamps for members across all timezones so everyone sees local schedule times.</p>                 
+                        <h3 class="feature-title" style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">TimePing Event Reminders</h3>                     
+                        <p class="feature-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">Create event reminders, timezone-safe timestamps, and reaction signups so everyone knows when to show up.</p>                 
                     </div>                  
 
                     <!-- Utility & System -->

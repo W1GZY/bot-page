@@ -919,11 +919,27 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Ensure your community never misses a raid or guild meeting. Schedule multi-interval alerts, link native Discord events, or auto-watch selected channels for event times. Auto-watch creates TimePing events from detected future times and uses the configured reaction emoji for signups."
+                "text": "Keep raids, guild meetings, and community events on time. Admins can schedule reminders, link Discord Scheduled Events, or let SeanBot watch selected channels for event times. Members join reminder lists by reacting with the configured emoji."
             },
             {
                 "type": "text",
-                "text": "The dashboard TimePing page manages server defaults, interval templates, auto-watch channels, active TimePings, and Time Emoji Helper settings for the clock conversion reaction."
+                "text": "The dashboard TimePing page manages server defaults, reminder interval templates, auto-watch channels, active TimePings, Discord Scheduled Event links, recurrence, role targets, allowed reactor roles, timezone setup panels, automatic timezone roles, and Time Emoji Helper settings."
+            },
+            {
+                "type": "heading",
+                "text": "Dashboard Settings"
+            },
+            {
+                "type": "text",
+                "text": "Server defaults control the timezone, reminder intervals, who gets pinged, direct-message reminders, post-event cleanup time, custom reminder text, and how long notification messages stay visible."
+            },
+            {
+                "type": "text",
+                "text": "Auto-watch settings let admins pick a watched channel, default event title, timezone, signup emoji, ping target, reminder intervals, recurrence, repeat limits, allowed reactor roles, and cleanup timing. Active auto-watch channels and active TimePings can be removed from the dashboard."
+            },
+            {
+                "type": "text",
+                "text": "Time Emoji Helpers let admins choose the conversion emoji, decide who can use it, allow automatic or manual reactions, turn backtick timestamp replies on or off, and decide whether reaction results should be sent privately."
             },
             {
                 "type": "commands",
@@ -954,8 +970,8 @@ const docsData = [
                         "desc": "Open live edit panel for an active event."
                     },
                     {
-                        "cmd": "/timeping cancel [event_id]",
-                        "desc": "Cancel an active event or scheduled alert."
+                        "cmd": "/timeping remove [message_link]",
+                        "desc": "Remove an active TimePing from a message or linked Discord event."
                     },
                     {
                         "cmd": "/timeping simulate [time]",
@@ -970,11 +986,11 @@ const docsData = [
                         "desc": "List saved reminder interval templates."
                     },
                     {
-                        "cmd": "/timeping auto-watch add [channel]",
+                        "cmd": "/timeping auto add [channel]",
                         "desc": "Auto-watch a specific channel for event posts."
                     },
                     {
-                        "cmd": "/timeping auto-watch settings [channel]",
+                        "cmd": "/timeping auto settings [channel]",
                         "desc": "Configure the watched channel emoji, timezone, reminder intervals, allowed reactor roles, recurrence, and who gets pinged."
                     },
                     {
@@ -1071,7 +1087,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "For Timely-style timestamp creation, wrap a time in backticks or a code block, such as `8 PM EST`. SeanBot replies with Discord timestamp markup that renders in each viewer's local Discord time. Bare wrapped times require the author's saved timezone."
+                "text": "For quick timestamp creation, wrap a time in backticks or a code block, such as `8 PM EST`. SeanBot replies with Discord timestamp markup that renders in each viewer's local Discord time. Bare wrapped times require the author's saved timezone."
             },
             {
                 "type": "commands",
