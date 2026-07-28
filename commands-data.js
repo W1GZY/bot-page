@@ -150,6 +150,7 @@ const commandsDatabase = [
             { name: "/suggestion submit", desc: "Submit a server suggestion for staff review.", badge: "Everyone", type: "public" },
             { name: "/suggestion list", desc: "List recent suggestions by status.", badge: "Manage Messages", type: "perm" },
             { name: "/suggestion close", desc: "Accept, decline, plan, or close a suggestion.", badge: "Manage Messages", type: "perm" },
+            { name: "/report", desc: "Create a public vote report from a Discord message link and reason.", badge: "Everyone", type: "public" },
             { name: "/publicreport enable", desc: "Enable public vote reports for message review.", badge: "Manage Server", type: "perm" },
             { name: "/publicreport channel", desc: "Choose where public reports are posted for staff review.", badge: "Manage Server", type: "perm" },
             { name: "/publicreport notify_add_role", desc: "Ping a role when a public report is created.", badge: "Manage Server", type: "perm" },

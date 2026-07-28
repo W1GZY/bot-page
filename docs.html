@@ -1429,7 +1429,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Ban Appeals and Suggestions each have their own dashboard page. Admins choose the review channel on those pages and choose logging destinations in Log Config under Staff Workflows. Ban Appeals can also ping selected notification roles when a new appeal arrives. Moderators only see the pages and buttons that admins allow in Server Access."
+                "text": "Ban Appeals and Suggestions each have their own dashboard page. Admins choose the review channel on those pages and choose logging destinations in Log Config under Staff Workflows. Ban Appeals can also ping selected notification roles when a new appeal arrives. Ban notices offer the Discord appeal menu and `/appeals submit` command first, plus the public appeal dashboard at `https://dashboard-seanbo.vercel.app/appeals`. If Discord asks for app authorization or the menu cannot open, users can authorize through the website, choose a verified banned server, and submit directly to staff. Moderators only see the pages and buttons that admins allow in Server Access."
             },
             {
                 "type": "commands",
@@ -1523,19 +1523,27 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Give members a safe way to flag rule violations or harassment directly to moderators. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, and log staff actions through Log Config under Staff Workflows."
+                "text": "Give members a safe way to flag rule violations or harassment directly to moderators. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, and log staff actions through Log Config under Staff Workflows. Members can create vote reports from the message context menu, with `/report` plus a message link, or with the optional dashboard-configured report emoji shortcut."
             },
             {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/report submit [user] [reason]",
-                        "desc": "Submit a private rule violation report to staff."
+                        "cmd": "/report [message_link] [reason]",
+                        "desc": "Create a public vote report by pasting a Discord message link and adding a reason."
                     },
                     {
                         "cmd": "Report User (Context Menu)",
-                        "desc": "Right-click any user -> Apps -> Report User to submit report."
+                        "desc": "Right-click any user -> Apps -> Report User to submit a private user report to staff."
+                    },
+                    {
+                        "cmd": "Vote Report (Message Context Menu)",
+                        "desc": "Right-click or long-press a message -> Apps -> Vote Report to open the public vote report reason form."
+                    },
+                    {
+                        "cmd": "Report Emoji Shortcut",
+                        "desc": "If enabled in the dashboard, react to a message with the chosen emoji to create a vote report with the default reaction reason."
                     },
                     {
                         "cmd": "/publicreport channel [channel]",
@@ -2423,8 +2431,15 @@ const docsData = [
                 "items": [
                     "Link buttons open a URL and do not need a custom action payload.",
                     "Role buttons can add, remove, or toggle one or more role IDs.",
-                    "Reply buttons can send private replies, public replies, DMs, embed replies, random replies, or dismiss/close the bot message."
+                    "Reply buttons can send private replies, public replies, DMs, embed replies, random replies, or dismiss/close the bot message.",
+                    "Reaction Roles can be added in the dashboard for manual publishes. SeanBot adds the selected reactions to the posted message, gives the mapped role when a member reacts, and removes the mapped role when the member removes the reaction."
                 ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Reaction Roles vs Button Roles",
+                "text": "Button roles are available on interactive button messages and can add, remove, or toggle roles. Reaction roles are for manual Embed Builder publishes only; they use emoji-to-role mappings and require SeanBot to have Add Reactions and Manage Roles permissions."
             },
             {
                 "type": "callout",
@@ -2487,7 +2502,7 @@ const docsData = [
                     "Ban appeal review card: title `Ban Appeal #{appeal_id}`, fields for member, reason, evidence, status, and a footer reminding staff to use the appeal workflow.",
                     "Suggestion card: title `{suggestion_title}`, description `{suggestion_details}`, fields for author, status, and staff note.",
                     "Rules message: one embed per rule category, fields for short sections, link buttons to external policy pages if needed.",
-                    "Role picker: use buttons with role action presets when the goal is assigning roles, not opening tickets.",
+                    "Role picker: use buttons with role action presets when the goal is assigning roles through buttons, or use Reaction Roles when members should react with emoji instead.",
                     "Recurring reminder: keep the embed short, select Recurring in the publish step, and avoid buttons unless users need an action."
                 ]
             },
@@ -3167,13 +3182,13 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The Leave of Absence (LOA) module allows staff members and community users to request temporary leave. Requests can be submitted directly via `/loa request` or through the Web Dashboard, with automatic role stripping/restoration, custom review channels, and configurable auto-approval thresholds."
+                "text": "The Leave of Absence (LOA) module allows staff members and community users to request temporary leave. Requests can be submitted directly via `/loa request` or through the Web Dashboard, with automatic role assignment/removal for the configured leave role, custom review channels, configurable auto-approval thresholds, and dashboard role checkboxes for user/admin access."
             },
             {
                 "type": "callout",
                 "icon": "⚡",
                 "title": "In-Discord Setup & Multi-Role Permissions",
-                "text": "Use `/loa setup` to configure review channels, assign dedicated leave roles, define maximum leave durations, and set permitted user or admin role lists."
+                "text": "Use `/loa setup` to configure review channels, assign dedicated leave roles, define maximum leave durations, and set permitted user or admin role lists. In the dashboard, permitted user roles and permitted admin roles are selected with checkboxes instead of typed role IDs."
             },
             {
                 "type": "commands",
