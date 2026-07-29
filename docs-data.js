@@ -459,15 +459,24 @@ const docsData = [
         "id": "antiraid",
         "icon": "ph-shield-warning",
         "title": "Anti-Raid & Security",
-        "subtitle": "Next-generation raid protection, visual scam fingerprinting, and quarantine holding.",
+        "subtitle": "Raid protection, scam detection, quarantine controls, and live risk scoring.",
         "content": [
             {
                 "type": "heading",
-                "text": "Enterprise Security Engine"
+                "text": "Security Engine"
             },
             {
                 "type": "text",
-                "text": "Fortify your community against raid bots, malicious link bursts, and compromised accounts with intelligent heat scoring and visual image fingerprint matching."
+                "text": "Protect your community against raid bots, scam links, suspicious webhooks, invite abuse, and fast message bursts. SeanBot tracks temporary heat scores, supports canary mode for log-only testing, and can use quarantine roles when the bot has the needed role permissions."
+            },
+            {
+                "type": "list",
+                "title": "Dashboard Pages",
+                "items": [
+                    "Anti-Raid shows the main protection settings, trusted roles, safe domains, quarantine settings, and penalty timing.",
+                    "Anti-Nuke Risk Score shows live heat scores, saved channel multipliers, role multipliers, channel thresholds, and a reset control for active risk tracking.",
+                    "AutoMod Filters handles blocked words, link filtering, invite filtering, ignored channels, ignored roles, and repeated-match actions."
+                ]
             },
             {
                 "type": "commands",
@@ -550,6 +559,73 @@ const docsData = [
                         "desc": "Configure advanced heuristic triggers and automated bans."
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "id": "automod_filters",
+        "icon": "ph-funnel",
+        "title": "AutoMod Filters",
+        "subtitle": "Dashboard-managed word, link, invite, and repeated-ad filters.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What It Does"
+            },
+            {
+                "type": "text",
+                "text": "AutoMod Filters can delete or log messages that match your blocked word list, normal web links, or Discord invite links. Staff can choose ignored channels and ignored roles from the dashboard, so announcement channels, bot channels, and trusted roles do not get interrupted."
+            },
+            {
+                "type": "list",
+                "title": "Dashboard Settings",
+                "items": [
+                    "Enable or disable the filter without removing saved settings.",
+                    "Choose whether SeanBot should delete matched messages or only log them.",
+                    "Add blocked words or short phrases, one per line.",
+                    "Turn link and Discord invite filtering on separately.",
+                    "Pick ignored channels and ignored roles with checkboxes.",
+                    "Set repeated-match limits that can timeout, kick, or ban when a member keeps triggering filters."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Permissions",
+                "text": "SeanBot needs Manage Messages to delete matched messages. Timeout, kick, and ban actions also require the matching Discord permissions and role hierarchy."
+            }
+        ]
+    },
+    {
+        "id": "welcome_farewell",
+        "icon": "ph-hand-waving",
+        "title": "Welcome & Farewell",
+        "subtitle": "Simple join and leave automation without using the advanced embed builder.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Overview"
+            },
+            {
+                "type": "text",
+                "text": "The Welcome & Farewell dashboard can post a welcome message when someone joins, send an optional private DM, assign selected auto roles, clean or template nicknames, and post a farewell message when someone leaves."
+            },
+            {
+                "type": "list",
+                "title": "Placeholders",
+                "items": [
+                    "`{user_mention}` pings the new member in welcome messages.",
+                    "`{user_name}` shows the member display name.",
+                    "`{user_id}` shows the Discord user ID.",
+                    "`{guild_name}` or `{server_name}` shows the server name.",
+                    "`{member_count}` shows the current server member count."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Role Limits",
+                "text": "Auto roles and nickname edits follow Discord role hierarchy. SeanBot can only edit members and assign roles below SeanBot's highest role."
             }
         ]
     },
@@ -865,7 +941,19 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Give members a safe way to flag rule violations or harassment directly to moderators. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, and log staff actions through Log Config under Staff Workflows. Members can create vote reports from the message context menu, with `/report` plus a message link, or with the optional dashboard-configured report emoji shortcut."
+                "text": "Give members a safe way to flag rule violations or harassment directly to moderators. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, track weighted approve/decline votes, protect selected roles from public voting, and log staff actions through Log Config under Staff Workflows. Members can create vote reports from the message context menu, with `/report` plus a message link, or with the optional dashboard-configured report emoji shortcut."
+            },
+            {
+                "type": "list",
+                "title": "Dashboard Controls",
+                "items": [
+                    "Choose the review channel, notification roles, report cooldown, auto-close time, and report emoji.",
+                    "Pick starter roles, voter roles, protected roles, and roles blocked from using public reports.",
+                    "Set fixed or percentage approve/decline thresholds.",
+                    "Give trusted voter roles higher vote weight when needed.",
+                    "Choose what happens when a report passes: close only, delete the message, timeout, kick, or ban if SeanBot has permission.",
+                    "Set optional daily limits for the whole server or for each member."
+                ]
             },
             {
                 "type": "commands",
@@ -1757,7 +1845,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Draft, design, preview, and output custom rich Discord embeds directly in chat."
+                "text": "Draft, design, preview, and publish custom rich Discord embeds from the dashboard. The builder supports saved templates, automation triggers, buttons, reaction roles, and a server emoji picker for custom Discord emojis."
             },
             {
                 "type": "heading",
@@ -1792,16 +1880,34 @@ const docsData = [
                 "title": "Interactive button actions",
                 "items": [
                     "Link buttons open a URL and do not need a custom action payload.",
-                    "Role buttons can add, remove, or toggle one or more role IDs.",
+                    "Role buttons can add, remove, or toggle roles. The Role Menu Button option can give several roles and remove several roles from one click.",
                     "Reply buttons can send private replies, public replies, DMs, embed replies, random replies, or dismiss/close the bot message.",
-                    "Reaction Roles can be added in the dashboard for manual publishes. SeanBot adds the selected reactions to the posted message, gives the mapped role when a member reacts, and removes the mapped role when the member removes the reaction."
+                    "Reaction Roles can be added in the dashboard for manual publishes. SeanBot adds the selected reactions to the posted message, gives the configured roles when a member reacts, removes configured roles when they react, and removes the given roles when the reaction is removed."
                 ]
             },
             {
                 "type": "callout",
                 "icon": "!",
                 "title": "Reaction Roles vs Button Roles",
-                "text": "Button roles are available on interactive button messages and can add, remove, or toggle roles. Reaction roles are for manual Embed Builder publishes only; they use emoji-to-role mappings and require SeanBot to have Add Reactions and Manage Roles permissions."
+                "text": "Button roles are best when you want a clear clickable panel with labels and button colors. Reaction roles are best when members should react with emojis below a message. Both require SeanBot's role to be above the roles it manages, and reaction roles also require Add Reactions."
+            },
+            {
+                "type": "heading",
+                "text": "Role Menus"
+            },
+            {
+                "type": "text",
+                "text": "The Role Menus dashboard module is a simpler page for building role panels without opening the full embed designer. Admins choose a publish channel, pick Buttons or Reactions, select server emojis from the emoji picker, write button labels, and choose the roles each entry should give or remove."
+            },
+            {
+                "type": "list",
+                "title": "What Role Menus support",
+                "items": [
+                    "Custom server emojis and common emojis in the picker.",
+                    "Many roles on one button or reaction entry, split into roles to give and roles to remove.",
+                    "Button previews that show the emoji, label, and Discord button color before publishing.",
+                    "A separate dashboard module toggle and moderator permission named Role Menus."
+                ]
             },
             {
                 "type": "callout",
