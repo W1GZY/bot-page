@@ -1893,20 +1893,20 @@ const docsData = [
             },
             {
                 "type": "heading",
-                "text": "Role Menus"
+                "text": "Role Menu Tools"
             },
             {
                 "type": "text",
-                "text": "The Role Menus dashboard module is a simpler page for building role panels without opening the full embed designer. Admins choose a publish channel, pick Buttons or Reactions, select server emojis from the emoji picker, write button labels, and choose the roles each entry should give or remove."
+                "text": "Role menu tools live inside the Embed Builder. Admins can build the message, pick Buttons or Reactions, select server emojis from the emoji picker, write button labels, and choose the roles each entry should give or remove."
             },
             {
                 "type": "list",
-                "title": "What Role Menus support",
+                "title": "What role menu tools support",
                 "items": [
                     "Custom server emojis and common emojis in the picker.",
                     "Many roles on one button or reaction entry, split into roles to give and roles to remove.",
                     "Button previews that show the emoji, label, and Discord button color before publishing.",
-                    "A separate dashboard module toggle and moderator permission named Role Menus."
+                    "The same Embed Builder dashboard permissions and publish flow as other interactive embed controls."
                 ]
             },
             {
