@@ -785,7 +785,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to isolated webhook channels. Ban appeal, suggestion, and public report staff actions are handled by the Staff Workflows logging category in Log Config."
+                "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to Discord log channels. Log Config can route everything into one all-logs channel for simple setup, or split categories into separate webhook channels for busy servers. Ban appeal, suggestion, and public report staff actions are handled by the Staff Workflows logging category."
             },
             {
                 "type": "commands",
@@ -1028,6 +1028,22 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Time Emoji Helpers let admins choose the conversion emoji, decide who can use it, allow automatic or manual reactions, turn backtick timestamp replies on or off, and decide whether reaction results should be sent privately."
+            },
+            {
+                "type": "heading",
+                "text": "Step-by-Step Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable TimePing in Module Settings and make sure SeanBot can read messages, add reactions, manage events if using Discord Scheduled Events, and mention the roles you want pinged.",
+                    "Open the dashboard TimePing page and set Defaults first: timezone, reminder intervals, ping target, cleanup timing, and reminder text.",
+                    "Create reusable interval templates if your server repeats the same reminders, such as 24h, 1h, and 10m before an event.",
+                    "For a Discord Scheduled Event, use /timeping native or the dashboard event linker so members can join the event and still get SeanBot reminders.",
+                    "For a normal announcement message, use /timeping add with the message link and event time, then tell members to react with the signup emoji.",
+                    "For automatic event posts, add an Auto-Watch channel, choose the watched timezone and signup emoji, then test with one future event message.",
+                    "Use /timeping simulate before important events to confirm the reminder schedule, then check Active TimePings in the dashboard."
+                ]
             },
             {
                 "type": "commands",
@@ -1391,6 +1407,21 @@ const docsData = [
                 "text": "Members join a generator voice channel and SeanBot instantly creates a private, custom voice channel for them with full owner controls."
             },
             {
+                "type": "heading",
+                "text": "Beginner Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Temporary Voice Channels in Module Settings.",
+                    "Create or choose a voice channel that members will join when they want their own room.",
+                    "Open the dashboard Temp Channels page and set that channel as the Join-To-Create channel.",
+                    "Set inactivity cleanup so empty rooms are removed automatically.",
+                    "Optionally choose an owner role and max server channel limit.",
+                    "Join the generator channel with a test account and confirm SeanBot creates, transfers, and deletes rooms correctly."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
@@ -1443,6 +1474,21 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Deploy interactive support panels where members click to open private ticket channels. Ticket channels are private as soon as they are created, staff members can claim tickets, assign tickets to another staff member or staff role from the dashboard, set priority levels, post internal notes, and close tickets from Discord or the dashboard with duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
+            },
+            {
+                "type": "heading",
+                "text": "Beginner Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Ticket System in Module Settings.",
+                    "Open the dashboard Tickets page and choose the category where ticket channels should be created.",
+                    "Select support staff roles so the right staff can view, claim, assign, and close tickets.",
+                    "Choose a ticket log channel for opens, closes, staff actions, and transcript links.",
+                    "Create or edit a panel, set the button label and style, then deploy it to the channel where members should request help.",
+                    "Open a test ticket, close it, and confirm the transcript is saved or delivered the way you expect."
+                ]
             },
             {
                 "type": "commands",
@@ -1746,7 +1792,22 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Allow message authors or staff to ping users who reacted to an event announcement."
+                "text": "Reaction Pings lets staff, or approved message authors, notify everyone who reacted to a specific message. It is best for event announcements, raid signups, polls, giveaways, or any post where reacting means \"ping me when this starts.\" SeanBot can either send direct mentions or create a temporary role so the notification stays cleaner."
+            },
+            {
+                "type": "heading",
+                "text": "Beginner Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Reaction Pings in Module Settings.",
+                    "Open Reaction Pings in the dashboard and choose Direct Mentions or Temporary Role.",
+                    "Keep the user cap reasonable so one message cannot ping too many people at once.",
+                    "Add trusted staff roles that can ping reactors on any eligible message.",
+                    "Decide whether regular message authors can ping reactors on their own messages, and keep their cap lower.",
+                    "Test on a small message with a few reactions before using it on a large event post."
+                ]
             },
             {
                 "type": "commands",
@@ -1788,7 +1849,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Sticky Messages keeps one important message near the bottom of a channel. When enough normal messages are posted, SeanBot removes the old sticky and posts a fresh copy so members can still see it."
+                "text": "Sticky Messages keeps one important message near the bottom of a busy channel. When enough normal messages are posted, SeanBot removes the old sticky and posts a fresh copy so rules, forms, reminders, or channel instructions stay visible without using Discord's pinned message panel."
             },
             {
                 "type": "heading",
@@ -2287,6 +2348,23 @@ const docsData = [
             {
                 "type": "text",
                 "text": "For normal text channels, create a relay with /relay create or the dashboard, then link a local text channel in each server. For Team-Up requests, enable Broadcast Team-Ups to Mesh on the Federation page in every server that should send or receive them. Cross-server team chats use threads so the live team conversation can bridge back to the host."
+            },
+            {
+                "type": "heading",
+                "text": "Step-by-Step Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Pick one trusted server to be the network owner. Run /thread network create there and save the invite token somewhere private.",
+                    "In each partner server, enable Federation in Module Settings and run /thread network join with the private token.",
+                    "Open the dashboard Federation page in every server and choose a Federated Forum Channel. This is where incoming shared threads appear.",
+                    "If only some forum posts should federate, create a forum tag such as Global and set it as the Global Routing Tag.",
+                    "Use /thread network health or the dashboard health view to confirm every node is connected.",
+                    "Create a test forum thread with the routing tag and confirm it appears in the partner servers before using it publicly.",
+                    "For normal text relays, create the relay from one server, link the matching channel in each partner server, and test with a short message.",
+                    "For Team-Up sharing, turn on Broadcast Team-Ups to Mesh in every server that should participate."
+                ]
             },
             {
                 "type": "heading",
