@@ -2101,23 +2101,27 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Deploy interactive support panels where members click to open private ticket channels. Staff members can claim tickets, assign tickets to another staff member or staff role from the dashboard, set priority levels, post internal notes, and close tickets from Discord or the dashboard with duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
+                "text": "Deploy interactive support panels where members click to open private ticket channels. Ticket channels are private as soon as they are created, staff members can claim tickets, assign tickets to another staff member or staff role from the dashboard, set priority levels, post internal notes, and close tickets from Discord or the dashboard with duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
             },
             {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
                     {
+                        "cmd": "/ticket help",
+                        "desc": "Show the ticket command guide inside Discord."
+                    },
+                    {
                         "cmd": "/ticket create [reason]",
                         "desc": "Manually open a support ticket from the default panel."
                     },
                     {
                         "cmd": "/ticket panel [name]",
-                        "desc": "Deploy interactive support ticket panel."
+                        "desc": "Deploy a reusable support ticket panel to a text channel."
                     },
                     {
                         "cmd": "/ticket setup_channel",
-                        "desc": "Automatically create open-ticket channel with panel."
+                        "desc": "Automatically create a ticket category, panel channel, and default panel."
                     },
                     {
                         "cmd": "/ticket claim",
@@ -2133,11 +2137,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket add [member]",
-                        "desc": "Add another member to the current ticket channel."
+                        "desc": "Staff-only: add another member to the current ticket channel."
                     },
                     {
                         "cmd": "/ticket remove [member]",
-                        "desc": "Remove a member from the current ticket channel."
+                        "desc": "Staff-only: remove a member from the current ticket channel."
                     },
                     {
                         "cmd": "/ticket info",
@@ -2145,7 +2149,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket staffsay [msg]",
-                        "desc": "Post private staff discussion note inside ticket."
+                        "desc": "Staff-only: post an internal discussion note inside the ticket."
                     },
                     {
                         "cmd": "/ticket close [reason]",
@@ -2504,7 +2508,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Draft, design, preview, and publish custom rich Discord embeds from the dashboard. The builder supports saved templates, automation triggers, buttons, reaction roles, and a server emoji picker for custom Discord emojis."
+                "text": "Draft, design, preview, and publish custom rich Discord embeds from the dashboard. The builder supports saved templates, automation triggers, buttons, reaction roles, and emoji text fields."
             },
             {
                 "type": "heading",
@@ -2539,9 +2543,9 @@ const docsData = [
                 "title": "Interactive button actions",
                 "items": [
                     "Link buttons open a URL and do not need a custom action payload.",
-                    "Role buttons can add, remove, or toggle roles. The Role Menu Button option can give several roles and remove several roles from one click.",
+                    "Role buttons can add, remove, or toggle the configured role.",
                     "Reply buttons can send private replies, public replies, DMs, embed replies, random replies, or dismiss/close the bot message.",
-                    "Reaction Roles can be added in the dashboard for manual publishes. SeanBot adds the selected reactions to the posted message, gives the configured roles when a member reacts, removes configured roles when they react, and removes the given roles when the reaction is removed."
+                    "Reaction Roles can be added in the dashboard for manual publishes. SeanBot adds the selected reactions to the posted message, gives the mapped role when a member reacts, and removes that role when the reaction is removed."
                 ]
             },
             {
@@ -2549,24 +2553,6 @@ const docsData = [
                 "icon": "!",
                 "title": "Reaction Roles vs Button Roles",
                 "text": "Button roles are best when you want a clear clickable panel with labels and button colors. Reaction roles are best when members should react with emojis below a message. Both require SeanBot's role to be above the roles it manages, and reaction roles also require Add Reactions."
-            },
-            {
-                "type": "heading",
-                "text": "Role Menu Tools"
-            },
-            {
-                "type": "text",
-                "text": "Role menu tools live inside the Embed Builder. Admins can build the message, pick Buttons or Reactions, select server emojis from the emoji picker, write button labels, and choose the roles each entry should give or remove."
-            },
-            {
-                "type": "list",
-                "title": "What role menu tools support",
-                "items": [
-                    "Custom server emojis and common emojis in the picker.",
-                    "Many roles on one button or reaction entry, split into roles to give and roles to remove.",
-                    "Button previews that show the emoji, label, and Discord button color before publishing.",
-                    "The same Embed Builder dashboard permissions and publish flow as other interactive embed controls."
-                ]
             },
             {
                 "type": "callout",

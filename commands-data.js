@@ -456,6 +456,12 @@ const commandsDatabase = [
             "tocLabel": "10.0 Tickets",
             "commands": [
                     {
+                            "name": "/ticket help",
+                            "desc": "Show the ticket command guide inside Discord.",
+                            "badge": "Everyone",
+                            "type": "public"
+                    },
+                    {
                             "name": "/ticket create [reason]",
                             "desc": "Manually open a support ticket from the default panel.",
                             "badge": "Everyone",
@@ -463,13 +469,13 @@ const commandsDatabase = [
                     },
                     {
                             "name": "/ticket panel [panel_name]",
-                            "desc": "Deploy an interactive support ticket panel.",
+                            "desc": "Deploy a reusable support ticket panel to a text channel.",
                             "badge": "Manage Channels",
                             "type": "perm"
                     },
                     {
                             "name": "/ticket setup_channel",
-                            "desc": "Automatically create open-ticket channel with panel.",
+                            "desc": "Automatically create a ticket category, panel channel, and default panel.",
                             "badge": "Manage Channels",
                             "type": "perm"
                     },
@@ -493,13 +499,13 @@ const commandsDatabase = [
                     },
                     {
                             "name": "/ticket add [member]",
-                            "desc": "Add another member to the current ticket channel.",
+                            "desc": "Staff-only: add another member to the current ticket channel.",
                             "badge": "Manage Messages",
                             "type": "perm"
                     },
                     {
                             "name": "/ticket remove [member]",
-                            "desc": "Remove a member from the current ticket channel.",
+                            "desc": "Staff-only: remove a member from the current ticket channel.",
                             "badge": "Manage Messages",
                             "type": "perm"
                     },
@@ -511,7 +517,7 @@ const commandsDatabase = [
                     },
                     {
                             "name": "/ticket staffsay [msg]",
-                            "desc": "Post a private staff discussion note inside ticket.",
+                            "desc": "Staff-only: post an internal discussion note inside the ticket.",
                             "badge": "Manage Messages",
                             "type": "perm"
                     },
