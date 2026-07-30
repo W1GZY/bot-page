@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeanBot Dashboard & Documentation</title>
+    <title>SeanBot — Discord Moderation, Analytics & Community Tools</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
@@ -362,7 +362,7 @@
             }
         }
     
-        /* Interactive Showcase Component */
+        /* Dashboard showcase */
         .showcase-tab {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
@@ -404,7 +404,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: rgba(0, 0, 0, 0.35);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -414,22 +414,21 @@
         }
         .showcase-image-frame:hover {
             border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
         }
 
         .showcase-panel {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
             gap: 32px;
             align-items: center;
         }
         .showcase-dashboard-preview {
             width: 100%;
-            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.08), transparent 35%), rgba(4, 6, 12, 0.92);
+            background: rgba(4, 6, 12, 0.92);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
             padding: 18px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 12px 30px rgba(0,0,0,0.35);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
         }
         .showcase-dashboard-header {
             display: flex;
@@ -674,7 +673,7 @@
             box-shadow: 0 0 26px var(--accent-glow);
             color: #000;
         }
-        /* Hero Section Enhancements */
+        /* Hero details */
         .hero-badge-pill {
             background: rgba(255, 215, 0, 0.08);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -725,15 +724,13 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: var(--radius-lg);
             padding: 24px;
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.05);
-            backdrop-filter: blur(20px);
-            transition: transform 0.4s ease, border-color 0.4s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(16px);
+            transition: transform 0.22s ease, border-color 0.22s ease;
         }
         .hero-mockup-container:hover {
-            transform: translateY(-4px) rotateX(1deg);
-            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.18);
         }
 
         @media (max-width: 768px) {
@@ -751,7 +748,7 @@
             }
         }
 
-        /* Body & Description Font Size Increase */
+        /* Base typography */
         body {
             font-size: 15px;
             line-height: 1.65;
@@ -769,139 +766,74 @@
             line-height: 1.65 !important;
         }
 
-        /* Premium Micro-Animations & Dynamic Hover Effects */
+        /* Card hover states */
         .glass-card, .feature-card, .stat-card, .showcase-container {
-            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.28s ease, 
-                        box-shadow 0.28s ease,
-                        background 0.28s ease;
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
         }
-        .glass-card:hover, .feature-card:hover, .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent) !important;
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), 0 0 22px var(--accent-glow) !important;
-        }
-        .feature-card {
-            perspective: 1000px;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px) rotateX(1.2deg) rotateY(-1.2deg) !important;
+        .glass-card:hover, .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.16) !important;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32) !important;
         }
         .glass-card .feature-icon,
         .feature-card .feature-icon,
         .glass-card i,
         .feature-card i {
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+            transition: transform 0.2s ease, color 0.2s ease;
             display: inline-block;
         }
         .glass-card:hover .feature-icon,
         .feature-card:hover .feature-icon,
         .glass-card:hover > i,
         .feature-card:hover > i {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
-        /* Background Grid Pattern & Dual Radial Glow */
+        /* Background decoration */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
+            inset: 0;
+            background:
                 radial-gradient(circle at 50% 12%, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 55%),
-                radial-gradient(circle at 85% 65%, rgba(88, 101, 242, 0.08) 0%, rgba(0, 0, 0, 0) 50%);
+                radial-gradient(circle at 85% 65%, rgba(88, 101, 242, 0.06) 0%, rgba(0, 0, 0, 0) 48%);
             pointer-events: none;
             z-index: -2;
         }
         body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 44px 44px;
-            pointer-events: none;
-            z-index: -1;
+            content: none;
         }
 
-        /* Hero Floating Animation */
-        @keyframes heroFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-        .hero-mockup-container {
-            animation: heroFloat 6s ease-in-out infinite;
-        }
-        .hero-mockup-container:hover {
-            animation-play-state: paused;
-        }
-
-        /* Subtle Backdrop Glow Behind Hero */
-        .hero-section {
-            position: relative;
-        }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 70%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.55;
-            filter: blur(45px);
-        }
-
-        /* Non-Clipping Smooth Button Micro-Animations */
+        /* Button hover states */
         .btn-large, .btn-primary, .btn-secondary, .showcase-tab, .pill-btn, .topbar-invite-btn, .section-cta-btn {
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background 0.22s ease, filter 0.22s ease !important;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            will-change: transform;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, filter 0.2s ease !important;
             position: relative;
             z-index: 2;
         }
         .btn-large:hover, .btn-primary:hover, .btn-secondary:hover, .showcase-tab:hover, .pill-btn:hover, .topbar-invite-btn:hover, .section-cta-btn:hover {
-            transform: translateY(-2px) !important;
+            transform: translateY(-1px) !important;
         }
-        .glass-card:hover i,
-        .feature-card:hover i,
         .btn-large:hover i,
         .section-cta-btn:hover i {
-            transform: scale(1.08) rotate(3deg);
+            transform: scale(1.04);
         }
         .showcase-tabs, .filter-pills {
             padding-top: 6px;
             padding-bottom: 8px;
         }
-        .section-cta-banner {
-            overflow: visible !important;
-        }
 
-        /* Viewport Section Fade-In Animation */
+        /* Section reveal */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(22px);
-            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(16px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
         .fade-in-section.in-view {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Clean Human Heading Typography */
+        /* Section headings */
         h2.section-heading,
         .section-title-accent {
             position: relative;
@@ -909,7 +841,20 @@
             align-items: center;
         }
 
-        /* Clean & Flat Stat Cards */
+        /* Reusable split-feature layout */
+        .feature-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            align-items: center;
+            margin: 44px 0;
+        }
+        .stat-word {
+            font-size: 1.35rem !important;
+            letter-spacing: -0.3px;
+        }
+
+        /* Stat cards */
         .stat-card {
             background: #141518 !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -1485,11 +1430,11 @@
                     Stop Managing Bots. Start <span style="color: var(--accent);">Managing Your Community</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    SeanBot gives you everything you need in one modern Discord platform—advanced moderation, tickets, automation, analytics, utilities, games, and more.
+                    Moderation, tickets, timezones, federation, polls, and analytics—managed from one modular dashboard.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="btn-large btn-primary" style="box-shadow: 0 0 24px var(--accent-glow); padding: 14px 28px; font-weight: 800; font-size: 0.95rem;">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="btn-large btn-primary" style="box-shadow: 0 0 14px var(--accent-glow); padding: 14px 28px; font-weight: 800; font-size: 0.95rem;">
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot to Server
                     </a>
                     <button onclick="switchTab('commands')" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
@@ -1500,7 +1445,7 @@
                     </button>
                 </div>
 
-                <!-- Interactive Hero Mockup Card -->
+                <!-- Dashboard preview -->
                 <div class="hero-mockup-container">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; margin-bottom: 16px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -1510,7 +1455,7 @@
                             <span style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono); margin-left: 8px;">#audit-log — SeanBot Live Companion</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #57F287; font-weight: 700;">
-                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #57F287; box-shadow: 0 0 8px #57F287;"></span> Online!
+                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #57F287; box-shadow: 0 0 8px #57F287;"></span> Online
                         </div>
                     </div>
 
@@ -1525,7 +1470,7 @@
                                 <span style="font-size: 0.775rem; color: #949ba4;">Today at 18:23</span>
                             </div>
                             
-                            <!-- Authentic Discord Embedded Log Card -->
+                            <!-- Discord audit log preview -->
                             <div style="background: #2b2d31; border-left: 4px solid #57F287; border-radius: 8px; padding: 16px 18px; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
                                 
                                 <!-- Top Right Thumbnail Image -->
@@ -1581,23 +1526,23 @@
                 </div>
             </div>         
 
-            <!-- Live Stats Counter Grid -->
+            <!-- Product highlights -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Communities</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Active Users</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-number">150+</div>
-                    <div class="stat-label">Bot Commands</div>
+                    <div class="stat-label">Commands</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">99.9%</div>
-                    <div class="stat-label">Uptime</div>
+                    <div class="stat-number stat-word">Modular</div>
+                    <div class="stat-label">Enable only what you use</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number stat-word">Dashboard</div>
+                    <div class="stat-label">Browser-based configuration</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number stat-word">Federation</div>
+                    <div class="stat-label">Trusted cross-server tools</div>
                 </div>
             </div>
 
@@ -1607,30 +1552,30 @@
                     <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem; margin-right: 8px;"></i> Why SeanBot?             
                 </h2>             
                 <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary); padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: blur(16px);">                 
-                    <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot is built to replace fragmented Discord bots with a single, high-performance toolkit.</p>                 
-                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;"><strong>Fully Modular Bot:</strong> Enable only the modules you want to use. Toggle moderation, tickets, reaction roles, timezone converters, and analytics on or off anytime to keep your server bot lightweight and perfectly tailored to your community. If you dont need one feature, you just disable it and forget about it.</p>             
+                    <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot brings your core community tools into one modular system.</p>                 
+                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;"><strong>Fully modular:</strong> Enable moderation, tickets, reaction roles, timezone tools, federation, and analytics only when your server needs them. Disable unused modules without changing the rest of your setup.</p>             
                 </div>         
             </div>
 
             <!-- Split Feature Section 1: Raid Shield (Text Left, Scrollable Visual Card Right) -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+            <div class="feature-row">
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">AutoMod & Anti-Raid</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Protect your community with real-time anti-spam and flood detection. With Quarantine and jail making sure every scammer gets put in their place.
+                        Detect spam, message floods, and suspicious new accounts in real time. Start in Canary Mode to review detections before enabling quarantine, timeouts, or message deletion.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Canary Mode: Log the actions until you fine tune your settings to prevent false detections.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Instant scam detection, reduced punishment for regular users who spam on occasion.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Checks users before taking action. Your trusted users will stay safe. You can also customize roles for detection.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Fully dashboard customization for easier access.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Review detections in Canary Mode while you fine-tune thresholds and exemptions.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Apply lighter penalties to occasional spam and stronger actions to repeated or coordinated attacks.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Exclude trusted roles and configure detection rules for different member groups.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Configure protection rules directly from the dashboard.</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-shield-check"></i> Explore Security Docs
                     </button>
                 </div>
                 
-                <!-- 100% Discord Channel Replica: #security-logs -->
+                <!-- Anti-raid preview -->
                 <div style="background: #313338; border-radius: 8px; padding: 16px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
                     <!-- Channel Top Header Bar -->
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 14px;">
@@ -1641,7 +1586,7 @@
                         </div>
                     </div>
 
-                    <!-- Sequence Container (Pops in one by one and STOPS) -->
+                    <!-- Anti-raid log sequence -->
                     <div class="antiraid-sequence-container" style="background: transparent; border: none; padding: 0; box-shadow: none;">
                         <!-- Log 1: Hijacked Session Terminated -->
                         <div class="antiraid-log-card" style="border-left-color: #ed4245;">
@@ -1720,7 +1665,7 @@
             </div>
 
                         <!-- Split Feature Section 2: Interactive Support Ticket System -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+            <div class="feature-row">
                 <!-- Interactive Replica Card -->
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
@@ -1795,7 +1740,7 @@
 
                     </div>
 
-                    <!-- Action Button Container matching your button design -->
+                    <!-- Ticket controls -->
                     <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px;" id="ticket-action-area">
                         <button onclick="handleTicketStep()" style="background: #5865F2; color: #fff; border: none; cursor: pointer; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);">
                             <i class="ph-fill ph-ticket"></i> Open Ticket
@@ -1821,12 +1766,12 @@
             </div>
 
            <!-- Feature Section: Interactive Timezone Selector -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+            <div class="feature-row">
                 <!-- Description Side -->
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Global Timezone Role Sync</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Let members set their local timezone effortlessly via interactive buttons and dropdown menus. Automatically assigns corresponding regional roles for seamless scheduling.
+                        Members choose a region or search with <code>/timezone set</code>. SeanBot stores their timezone and assigns the matching regional role.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
                         <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Continent-based interactive buttons & dropdown navigation</li>
@@ -1865,7 +1810,7 @@
                                 <img src="assets/seanbot.png" style="width: 22px; height: 22px; object-fit: contain;" alt="Logo">
                             </div>
                             <p style="margin: 0 0 10px 0; color: #dbdee1; font-size: 0.8rem; line-height: 1.4;">
-                                Setting your timezone ensures you get perfectly synced and lets your friends see your local time!
+                                Setting your timezone lets SeanBot display your local time and convert event times for you.
                             </p>
                             <div style="font-size: 0.78rem; color: #949ba4; line-height: 1.5; background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 4px;">
                                 <strong style="color: #fff;">How to set it:</strong><br>
@@ -1936,7 +1881,7 @@
             </div>
 
             <!-- Split Feature Section 4: Server Federation (Visual Left, Text Right — Live Server A ↔ Server B Relay) -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+            <div class="feature-row">
                 <div class="glass-card federation-preview" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div class="federation-preview-header">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
@@ -2060,25 +2005,25 @@
                 </div>
             </div>
 
-            <!-- Split Feature Section 5: Interactive Polls & Dynamic Timestamps (Text Left, 100% Discord UI Right) -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+            <!-- Polls and dynamic timestamps -->
+            <div class="feature-row">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Polls made easy.. or Advanced if thats what you want.</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Quick polls, scheduled votes, and event sign-ups</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Create multi-option polls, roster polls, community votes and event signups with our top notch poll maker.
+                        Create polls with up to 20 options, roster slots, timezone-aware timestamps, and an automatic closing time.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
                         <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Up to 20 options in one poll.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Customize your poll if you would like to make it more advanced.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> With integrated Timezone detection so you never have to worry about timestamps.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Automatically timestamp and set and end time for the poll. Simple and effective.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Add roster slots, custom labels, and optional advanced settings.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Show event times in each member’s local timezone.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Set an automatic closing time and publish results when voting ends.</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('polls'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-chart-polar"></i> Explore Poll Docs
                     </button>
                 </div>
 
-                <!-- 100% Discord Channel Window Frame: #raid-polls -->
+                <!-- Poll preview -->
                 <div style="background: #313338; border-radius: 8px; padding: 16px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
                     <!-- Channel Top Header Bar -->
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 14px;">
@@ -2179,7 +2124,7 @@
             </div>
 
             <!-- Split Feature Section 2: Emoji Analytics (Visual Left, Text Right) -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+            <div class="feature-row">
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
@@ -2218,12 +2163,12 @@
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Emoji Tracker & Analytics</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Track community engagement patterns, spot unused emojis to free up slots, or just track whats most used emoji and who is using these weird emojis youve createed!
+                        See which emojis people actually use, which ones are taking up space, and which members drive the most activity.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Track all emojis inside server based on week, month or just everything!</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Tracks who is using the most emojis and what kind of emoji.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Seperately tracks reactions for your fun fact announcements!</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Compare weekly, monthly, and all-time emoji usage.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Rank members by emoji activity and see which emojis they use most.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Track message emojis and reactions separately.</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('emojis'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-chart-bar"></i> View Emoji Commands
@@ -2234,7 +2179,7 @@
             <div class="section-cta-banner">
                 <div class="section-cta-content">
                     <h3>Ready to replace multiple bots?</h3>
-                    <p>Replace Dyno and Carl-bot in one afternoon and don't look back.</p>
+                    <p>Start with the modules your server needs today. Add the rest when you’re ready.</p>
                 </div>
                 <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -2244,31 +2189,31 @@
             <section style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">See SeanBot in Action</h2>
-                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Preview the SeanBot dashboard in motion—from timezone intelligence and anti-raid controls to voice activity insights, server stats, event planning, emoji analytics, and the web embed builder.</p>
+                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Preview SeanBot’s dashboard tools for timezones, anti-raid controls, voice activity, events, emoji usage, and embed creation.</p>
                 </div>
 
                 <div class="showcase-container" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
                     <!-- Showcase Navigation Tabs -->
                     <div class="showcase-tabs" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
-                        <button class="showcase-tab active" onclick="switchShowcase('timezone')"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Analytics</button>
-                        <button class="showcase-tab" onclick="switchShowcase('antiraid')"><i class="ph-duotone ph-shield-check"></i> Anti-Raid</button>
-                        <button class="showcase-tab" onclick="switchShowcase('voice')"><i class="ph-duotone ph-microphone-stage"></i> Voice Analytics</button>
-                        <button class="showcase-tab" onclick="switchShowcase('serverstats')"><i class="ph-duotone ph-chart-line-up"></i> Server Statistics</button>
-                        <button class="showcase-tab" onclick="switchShowcase('events')"><i class="ph-duotone ph-calendar-check"></i> Event Manager</button>
-                        <button class="showcase-tab" onclick="switchShowcase('emoji')"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
-                        <button class="showcase-tab" onclick="switchShowcase('embed')"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
+                        <button class="showcase-tab active" onclick="switchShowcase(\'timezone\', this)"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Analytics</button>
+                        <button class="showcase-tab" onclick="switchShowcase(\'antiraid\', this)"><i class="ph-duotone ph-shield-check"></i> Anti-Raid</button>
+                        <button class="showcase-tab" onclick="switchShowcase(\'voice\', this)"><i class="ph-duotone ph-microphone-stage"></i> Voice Analytics</button>
+                        <button class="showcase-tab" onclick="switchShowcase(\'serverstats\', this)"><i class="ph-duotone ph-chart-line-up"></i> Server Statistics</button>
+                        <button class="showcase-tab" onclick="switchShowcase(\'events\', this)"><i class="ph-duotone ph-calendar-check"></i> Event Manager</button>
+                        <button class="showcase-tab" onclick="switchShowcase(\'emoji\', this)"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
+                        <button class="showcase-tab" onclick="switchShowcase(\'embed\', this)"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
                     </div>
 
                     <!-- Showcase Content Panels -->
                     <div id="showcase-timezone" class="showcase-panel active" style="display: grid;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Global Community Insights</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Timezone Analytics That Show When Your Community Is Actually Awake</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See live timezone clusters, local-time cards, active members per region, and daypart labels at a glance. This gives staff a quick read on when to host events, schedule announcements, and support members across the world.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See where your community is active</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See timezone clusters, local-time cards, and member counts by region so staff can schedule events when people are available.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">🌍 Live Timezone Buckets</span>
                                 <span class="pill-badge">👥 Region Member Counts</span>
-                                <span class="pill-badge">⏰ Morning / Afternoon / Dusk Tags</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2279,12 +2224,12 @@
                     <div id="showcase-antiraid" class="showcase-panel" style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Security Control Center</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Audit Your Security Posture Before a Raid Ever Starts</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">The anti-raid dashboard surfaces security ratings, active protections, and system recommendations so moderators can see weak spots immediately. It reads like a central command room instead of a wall of settings.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Review your server’s protection status</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Review active protections, security checks, and recommendations without digging through a long settings page.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">🛡️ Server Security Rating</span>
                                 <span class="pill-badge">✅ Active Protection Checks</span>
-                                <span class="pill-badge">⚠️ Actionable Recommendations</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2295,12 +2240,12 @@
                     <div id="showcase-voice" class="showcase-panel" style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice Session Insights</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track Voice Activity, Session Lengths, and Peak Community Hours</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Voice analytics make it easy to identify who hangs out most, which sessions run longest, and when your voice channels are busiest. It is perfect for community health checks, engagement rewards, and spotting real regulars.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Find your busiest voice hours</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See session length, member activity, and peak hours to understand how your voice channels are being used.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">🎙️ Session Duration Metrics</span>
                                 <span class="pill-badge">📈 Member Activity Charts</span>
-                                <span class="pill-badge">🔥 Peak Hour Detection</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2311,12 +2256,12 @@
                     <div id="showcase-serverstats" class="showcase-panel" style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Growth Dashboard</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See the Numbers That Matter Across Your Entire Server</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">SeanBot can surface the big-picture stats your team checks every day—member growth, online counts, message totals, and channel activity trends—all inside a dashboard that is clean enough to read in seconds.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track server growth and activity</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Check member growth, online counts, message totals, and channel activity from one overview.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">📊 Core KPI Tiles</span>
                                 <span class="pill-badge">📣 Channel Activity</span>
-                                <span class="pill-badge">📈 Growth & Retention</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2326,7 +2271,7 @@
                                         <div class="showcase-dashboard-title">Server Statistics Overview</div>
                                         <div class="showcase-dashboard-subtitle">Core health metrics across members, messages, and channels</div>
                                     </div>
-                                    <span class="showcase-status-chip">Live Sync</span>
+                                    <span class="showcase-status-chip">Sample data</span>
                                 </div>
                                 <div class="showcase-kpi-grid">
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">Members</div><div class="showcase-kpi-value">12,842</div></div>
@@ -2361,12 +2306,12 @@
                     <div id="showcase-events" class="showcase-panel" style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Community Scheduling</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Plan, Promote, and Track Community Events in One Place</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">The event manager preview highlights upcoming events, RSVP counts, reminder status, and timezone-friendly scheduling. It gives your staff a polished overview for game nights, announcements, and recurring community meetups.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Manage events, RSVPs, and reminders</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Track upcoming events, RSVP totals, reminder status, and timezone-aware schedules from one queue.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">📅 Upcoming Event Queue</span>
                                 <span class="pill-badge">🔔 Reminder Automation</span>
-                                <span class="pill-badge">🙋 RSVP Tracking</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2376,7 +2321,7 @@
                                         <div class="showcase-dashboard-title">Event Manager</div>
                                         <div class="showcase-dashboard-subtitle">Upcoming community activities, reminders, and attendance</div>
                                     </div>
-                                    <span class="showcase-status-chip">3 Upcoming</span>
+                                    <span class="showcase-status-chip">Sample data</span>
                                 </div>
                                 <div class="showcase-kpi-grid" style="margin-bottom: 16px;">
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">Total Events</div><div class="showcase-kpi-value">28</div></div>
@@ -2405,12 +2350,12 @@
                     <div id="showcase-emoji" class="showcase-panel" style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Dashboard Insights</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track Your Community's Favorite Expressions</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Monitor live emoji usage, reaction trends, and top community chatters directly from your Web Dashboard. Easily spot unused emojis to make room for new server emotes.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See which emojis people actually use</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Compare emoji usage, reaction trends, and member activity, then spot unused emojis before your server runs out of slots.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">📊 Weekly & Monthly Charts</span>
                                 <span class="pill-badge">💬 Reaction Tracking</span>
-                                <span class="pill-badge">👑 Top User Leaderboards</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2421,12 +2366,12 @@
                     <div id="showcase-embed" class="showcase-panel" style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Web Dashboard</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Live Visual Embed Builder</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Build gorgeous server rules, announcements, and welcome embeds with a real-time side-by-side Discord previewer. Includes rich placeholders, color pickers, and single-click posting.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Build and preview embeds visually</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Create rules, announcements, and welcome embeds with a side-by-side Discord preview, placeholders, color controls, and one-click posting.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">🎨 Real-Time Preview</span>
                                 <span class="pill-badge">✨ Dynamic Placeholders</span>
-                                <span class="pill-badge">🚀 1-Click Dispatch</span>
+                                
                             </div>
                         </div>
                         <div class="showcase-image-frame">
@@ -2436,269 +2381,52 @@
                 </div>
             </section>
 
-            <!-- Bot Feature Comparison Table -->
+            <!-- SeanBot capability overview -->
             <section class="comparison-table-container" id="compare" style="margin: 44px 0; scroll-margin-top: 80px;">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
-                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Compare SeanBot's feature capabilities and module limits against Dyno, Carl-bot, MEE6, and ProBot.</p>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Built around one modular system</h2>
+                    <p style="color: var(--text-secondary); max-width: 680px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Use the modules your community needs now, then add more without rebuilding your setup or managing another bot.</p>
                 </div>
 
                 <div class="comparison-scroll-wrapper">
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th style="width: 25%;">Feature & Description</th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header" style="color: var(--accent); font-weight: 800;">
-                                        <img src="assets/seanbot.png" class="bot-avatar-img" style="border-color: var(--accent);" alt="SeanBot"> SeanBot
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/dyno.png" class="bot-avatar-img" alt="Dyno"> Dyno
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/carlbot.png" class="bot-avatar-img" alt="Carl-bot"> Carl-bot
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/mee6.png" class="bot-avatar-img" alt="MEE6"> MEE6
-                                    </div>
-                                </th>
-                                <th style="width: 15%;">
-                                    <div class="bot-col-header">
-                                        <img src="assets/probot.png" class="bot-avatar-img" alt="ProBot"> ProBot
-                                    </div>
-                                </th>
+                                <th>Area</th>
+                                <th>What SeanBot handles</th>
+                                <th>How it stays flexible</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>⚡ Slash & Prefix Commands</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Hybrid slash / and custom text prefix command triggers</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><strong>Moderation & anti-raid</strong></td>
+                                <td>Spam detection, quarantine, timeouts, deletion, logging, and trusted-role exemptions.</td>
+                                <td>Start in Canary Mode, tune thresholds, and enable enforcement when your rules are ready.</td>
                             </tr>
                             <tr>
-                                <td><strong>🛡️ Moderation System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Kick, ban, softban, timeout, and moderation action logs</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><strong>Tickets & events</strong></td>
+                                <td>Private support channels, polls, sign-ups, reminders, and timezone-aware scheduling.</td>
+                                <td>Configure only the workflows your staff actually uses.</td>
                             </tr>
                             <tr>
-                                <td><strong>⚠️ Warning System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Member warning tracking, point thresholds, and automated punishments</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">⚠️ Limited</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><strong>Timezones</strong></td>
+                                <td>Member timezone setup, local-time display, regional roles, and event conversion.</td>
+                                <td>Members can use interactive panels or searchable commands.</td>
                             </tr>
                             <tr>
-                                <td><strong>📜 Server Audit Logging</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Deleted message, edit, role, and member join event logs</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
+                                <td><strong>Federation</strong></td>
+                                <td>Approved cross-server relays, shared Team-Up requests, forums, and leaderboards.</td>
+                                <td>Relay only trusted channels while staff notes and ticket data remain private.</td>
                             </tr>
                             <tr>
-                                <td><strong>🔗 Invite Tracking</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Track member join sources, invite codes, and code creators</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
+                                <td><strong>Analytics</strong></td>
+                                <td>Emoji, reaction, voice, timezone, and server activity dashboards.</td>
+                                <td>Use the views that match your community and ignore the rest.</td>
                             </tr>
                             <tr>
-                                <td><strong>📌 Sticky Messages</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Auto-reposting pinned guidance messages at channel bottom</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>⭐ Starboard Engine</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Highlight top community messages based on star reaction count</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>💡 Community Suggestions</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Structured member suggestion submissions, voting, and status updates</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📊 Polls</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Simple reaction polls with dashboard previews and timestamps, plus advanced raid roster polls</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🎫 Support Ticket System</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Private support channels, multi-role claims, and HTML transcript logs</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🛡️ Server Raid & Scam Shield</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Zero-delay asset pattern scanning and automated member quarantine</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>👻 Ghost Ping Detection</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Instant alerts when users send and delete mention pings</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🔊 Temporary Voice Channels</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dynamic voice lobbies created automatically on user join</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📈 Server Stats Channels</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Real-time counters, structured activity views, presets, and placeholder catalog</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🏆 Member Leveling & XP</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Chat XP points, custom rank cards, and level reward roles</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-warn">🔒 Premium</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🎨 Visual Embed Builder</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Custom rich embeds with side-by-side real-time preview</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>⏰ Personal Reminders</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Scheduled notification pings and customizable timer alerts</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌐 Timezone Commands</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Timezone mapping, city lookup, and dynamic local timestamps</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌐 Message Translator</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Instant multi-language translation for server messages</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>😀 Emoji Management</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Top emoji stats, locks, and bulk emoji utilities</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                                <td><span class="badge-warn">⚠️ Basic</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📊 Emoji Usage Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard charts tracking top used server emojis over time</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>💬 Reaction Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Dashboard charts tracking community reaction activity trends</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌍 Timezone Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Member timezone coverage, setup panels, and automatic timezone roles</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌴 Staff Leave of Absence (LOA)</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Staff LOA request filing, approval routing, and status tracking</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>📌 Auto-Pin Messages</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Auto-pinning messages based on reaction vote thresholds</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🔮 Wizard101 Gaming Suite</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Damage assistant, Beastmoon tracking, pet/spell lookup, deck sharing, TC values</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                                <td><span class="badge-cross">❌</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>🌐 Web Control Dashboard</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">Full browser management dashboard for server configuration</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                                <td><span class="badge-check">✅</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>💎 Premium Dependency Level</strong><br><span style="font-size: 0.8rem; color: var(--text-secondary);">How heavily basic core features are locked behind a paid subscription</span></td>
-                                <td><span class="badge-free">None (0%)</span></td>
-                                <td><span class="badge-warn">Very High</span></td>
-                                <td><span class="badge-warn">Low</span></td>
-                                <td><span class="badge-warn">High</span></td>
-                                <td><span class="badge-warn">Medium</span></td>
+                                <td><strong>Web dashboard</strong></td>
+                                <td>Module settings, security checks, embed building, and activity previews.</td>
+                                <td>Manage configuration from the browser instead of memorizing every command.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2706,8 +2434,8 @@
 
                 <div class="section-cta-banner">
                     <div class="section-cta-content">
-                        <h3>Build your community with fewer tools.</h3>
-                        <p>Ditch paywalled feature caps and simplify your server stack in one afternoon.</p>
+                        <h3>Build your setup one module at a time.</h3>
+                        <p>Start with moderation or analytics, then expand when your community needs more.</p>
                     </div>
                     <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" class="section-cta-btn">
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -3077,7 +2805,7 @@
         }, 50);
     }
     
-    function switchShowcase(name) {
+    function switchShowcase(name, button) {
         document.querySelectorAll('.showcase-tab').forEach(tab => {
             tab.classList.remove('active');
         });
@@ -3086,10 +2814,9 @@
             panel.classList.remove('active');
         });
 
-        if (event && event.currentTarget) {
-            event.currentTarget.classList.add('active');
-        }
-        const targetPanel = document.getElementById('showcase-' + name);
+        button?.classList.add('active');
+
+        const targetPanel = document.getElementById(`showcase-${name}`);
         if (targetPanel) {
             targetPanel.style.display = 'grid';
             targetPanel.classList.add('active');
@@ -3201,7 +2928,7 @@
             });
         }, { threshold: 0.08 });
 
-        document.querySelectorAll('.glass-card, .feature-card, .stat-card, .comparison-table-container, .showcase-container, .section-cta-banner').forEach(el => {
+        document.querySelectorAll('.hero-section, .showcase-container, .comparison-table-container, .section-cta-banner').forEach(el => {
             el.classList.add('fade-in-section');
             fadeObserver.observe(el);
         });
@@ -3323,30 +3050,6 @@
             'general_sys': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
             'faq': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' }
         };
-
-        
-    // MEE6-Style Scroll Reveal Observer
-    function initScrollReveal() {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px',
-            threshold: 0.1
-        };
-        const revealObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        initScrollReveal();
-    });
 
 
     window.activateDoc = function(docId) {
