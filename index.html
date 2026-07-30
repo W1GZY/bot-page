@@ -132,31 +132,61 @@
             font-weight: 600;
         }
 
-        /* Docs View Layout */
+        /* Documentation-only sidebar */
         .docs-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(230px, 270px) minmax(0, 1fr);
             gap: 24px;
             align-items: start;
         }
-        @media (max-width: 900px) {
-            .docs-grid {
-                grid-template-columns: 1fr;
-            }
-            .docs-nav {
-                display: none;
-            }
-        }
+        .docs-grid > main { min-width: 0; }
         .docs-nav {
             position: sticky;
-            top: 80px;
+            top: 88px;
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 16px;
-            max-height: calc(100vh - 100px);
+            max-height: calc(100vh - 108px);
             overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+        .docs-nav-mobile-toggle {
+            display: none;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding: 11px 14px;
+            color: #fff;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .docs-nav-mobile-toggle i { color: var(--accent); }
+        @media (max-width: 900px) {
+            .docs-grid { grid-template-columns: 1fr; }
+            .docs-nav-mobile-toggle { display: flex; }
+            .docs-nav {
+                display: none;
+                position: static;
+                max-height: min(62vh, 540px);
+                margin-bottom: 4px;
+            }
+            .docs-nav.open {
+                display: block;
+                animation: docsSidebarOpen 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+        }
+        @keyframes docsSidebarOpen {
+            from { opacity: 0; transform: translateY(-10px) scale(0.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .docs-nav-title {
             font-size: 0.7rem;
@@ -422,6 +452,100 @@
             gap: 32px;
             align-items: center;
         }
+        .showcase-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .showcase-panel.active { animation: showcasePanelIn 0.52s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .showcase-panel.active > :first-child { animation: showcaseCopyIn 0.58s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .showcase-panel.active .showcase-image-frame { animation: showcasePreviewIn 0.62s 0.06s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .showcase-panel.active .showcase-kpi-card,
+        .showcase-panel.active .showcase-event-card,
+        .showcase-panel.active .showcase-bar-row,
+        .showcase-panel.active .showcase-growth-item {
+            animation: showcaseDetailIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .showcase-panel.active .showcase-kpi-card:nth-child(2),
+        .showcase-panel.active .showcase-event-card:nth-child(2),
+        .showcase-panel.active .showcase-bar-row:nth-child(2),
+        .showcase-panel.active .showcase-growth-item:nth-child(2) { animation-delay: 0.07s; }
+        .showcase-panel.active .showcase-kpi-card:nth-child(3),
+        .showcase-panel.active .showcase-event-card:nth-child(3),
+        .showcase-panel.active .showcase-bar-row:nth-child(3),
+        .showcase-panel.active .showcase-growth-item:nth-child(3) { animation-delay: 0.14s; }
+        .showcase-panel.active .showcase-kpi-card:nth-child(4),
+        .showcase-panel.active .showcase-bar-row:nth-child(4),
+        .showcase-panel.active .showcase-growth-item:nth-child(4) { animation-delay: 0.21s; }
+        @keyframes showcasePanelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes showcaseCopyIn { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes showcasePreviewIn { from { opacity: 0; transform: translateX(24px) scale(0.975); } to { opacity: 1; transform: translateX(0) scale(1); } }
+        @keyframes showcaseDetailIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .showcase-autoplay-bar {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 10px 14px;
+            margin: -8px 0 22px;
+        }
+        .showcase-autoplay-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .showcase-auto-dot {
+            width: 7px;
+            height: 7px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+            animation: showcaseAutoPulse 1.6s ease-in-out infinite;
+        }
+        .showcase-autoplay-position { color: var(--text-muted); }
+        .showcase-autoplay-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px 10px;
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.74rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+        .showcase-autoplay-toggle:hover {
+            color: #fff;
+            border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+            transform: translateY(-1px);
+        }
+        .showcase-progress-track {
+            grid-column: 1 / -1;
+            height: 3px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.055);
+        }
+        .showcase-progress-track span {
+            display: block;
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .showcase-container.is-running .showcase-progress-track span { animation: showcaseAutoProgress 7s linear forwards; }
+        .showcase-container.is-paused .showcase-auto-dot { animation-play-state: paused; opacity: 0.55; }
+        @keyframes showcaseAutoProgress { from { width: 0; } to { width: 100%; } }
+        @keyframes showcaseAutoPulse { 0%, 100% { opacity: 0.45; transform: scale(0.82); } 50% { opacity: 1; transform: scale(1.18); } }
         .showcase-dashboard-preview {
             width: 100%;
             background: rgba(4, 6, 12, 0.92);
@@ -1350,6 +1474,10 @@
             margin-left: 0 !important;
             padding-left: 0 !important;
         }
+        @keyframes topbarDropIn {
+            from { opacity: 0; transform: translateY(-14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .site-topbar {
             position: sticky !important;
             top: 0;
@@ -1365,6 +1493,7 @@
             border-bottom: 1px solid var(--border);
             backdrop-filter: blur(18px);
             z-index: 1200;
+            animation: topbarDropIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
         .site-brand {
             display: inline-flex;
@@ -1444,6 +1573,8 @@
         }
         .scroll-pop[data-reveal="left"] { transform: translateX(-30px) scale(0.975); }
         .scroll-pop[data-reveal="right"] { transform: translateX(30px) scale(0.975); }
+        .scroll-pop[data-reveal="zoom"] { transform: translateY(18px) scale(0.94); }
+        .scroll-pop[data-reveal="down"] { transform: translateY(-24px) scale(0.985); }
         .scroll-pop.in-view {
             opacity: 1;
             transform: translate(0, 0) scale(1);
@@ -1598,6 +1729,13 @@
             font-size: 0.78rem;
             font-weight: 800;
         }
+        .module-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: color-mix(in srgb, var(--accent) 42%, var(--border)) !important;
+            box-shadow: 0 16px 34px rgba(0,0,0,0.34), 0 0 18px var(--accent-glow) !important;
+        }
+        .module-card:hover .module-icon { transform: translateY(-2px) scale(1.06); }
+        .module-icon { transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
         .module-card:hover .module-learn-more i { transform: translateX(3px); }
         .module-learn-more i { transition: transform 0.2s ease; }
         .module-empty-state {
@@ -1669,9 +1807,22 @@
             .module-card { min-height: 210px; }
         }
         @media (prefers-reduced-motion: reduce) {
+            .site-topbar,
+            .showcase-panel.active,
+            .showcase-panel.active > :first-child,
+            .showcase-panel.active .showcase-image-frame,
+            .showcase-panel.active .showcase-kpi-card,
+            .showcase-panel.active .showcase-event-card,
+            .showcase-panel.active .showcase-bar-row,
+            .showcase-panel.active .showcase-growth-item,
+            .showcase-auto-dot,
+            .showcase-progress-track span,
             .scroll-pop,
             .scroll-pop[data-reveal="left"],
-            .scroll-pop[data-reveal="right"] {
+            .scroll-pop[data-reveal="right"],
+            .scroll-pop[data-reveal="zoom"],
+            .scroll-pop[data-reveal="down"] {
+                animation: none !important;
                 opacity: 1 !important;
                 transform: none !important;
                 filter: none !important;
@@ -2515,20 +2666,32 @@
                     <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Preview SeanBot’s dashboard tools for timezones, anti-raid controls, voice activity, events, emoji usage, and embed creation.</p>
                 </div>
 
-                <div class="showcase-container" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
+                <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
                     <!-- Showcase Navigation Tabs -->
-                    <div class="showcase-tabs" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
-                        <button class="showcase-tab active" onclick="switchShowcase(\'timezone\', this)"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Analytics</button>
-                        <button class="showcase-tab" onclick="switchShowcase(\'antiraid\', this)"><i class="ph-duotone ph-shield-check"></i> Anti-Raid</button>
-                        <button class="showcase-tab" onclick="switchShowcase(\'voice\', this)"><i class="ph-duotone ph-microphone-stage"></i> Voice Analytics</button>
-                        <button class="showcase-tab" onclick="switchShowcase(\'serverstats\', this)"><i class="ph-duotone ph-chart-line-up"></i> Server Statistics</button>
-                        <button class="showcase-tab" onclick="switchShowcase(\'events\', this)"><i class="ph-duotone ph-calendar-check"></i> Event Manager</button>
-                        <button class="showcase-tab" onclick="switchShowcase(\'emoji\', this)"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
-                        <button class="showcase-tab" onclick="switchShowcase(\'embed\', this)"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
+                    <div class="showcase-tabs" role="tablist" aria-label="SeanBot dashboard previews" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
+                        <button class="showcase-tab active" type="button" role="tab" data-showcase="timezone" aria-selected="true" aria-controls="showcase-timezone"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Analytics</button>
+                        <button class="showcase-tab" type="button" role="tab" data-showcase="antiraid" aria-selected="false" aria-controls="showcase-antiraid"><i class="ph-duotone ph-shield-check"></i> Anti-Raid</button>
+                        <button class="showcase-tab" type="button" role="tab" data-showcase="voice" aria-selected="false" aria-controls="showcase-voice"><i class="ph-duotone ph-microphone-stage"></i> Voice Analytics</button>
+                        <button class="showcase-tab" type="button" role="tab" data-showcase="serverstats" aria-selected="false" aria-controls="showcase-serverstats"><i class="ph-duotone ph-chart-line-up"></i> Server Statistics</button>
+                        <button class="showcase-tab" type="button" role="tab" data-showcase="events" aria-selected="false" aria-controls="showcase-events"><i class="ph-duotone ph-calendar-check"></i> Event Manager</button>
+                        <button class="showcase-tab" type="button" role="tab" data-showcase="emoji" aria-selected="false" aria-controls="showcase-emoji"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
+                        <button class="showcase-tab" type="button" role="tab" data-showcase="embed" aria-selected="false" aria-controls="showcase-embed"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
+                    </div>
+
+                    <div class="showcase-autoplay-bar" aria-live="polite">
+                        <div class="showcase-autoplay-status">
+                            <span class="showcase-auto-dot" aria-hidden="true"></span>
+                            <span id="showcaseAutoplayLabel">Auto preview is playing</span>
+                            <span class="showcase-autoplay-position" id="showcasePosition">1 / 7</span>
+                        </div>
+                        <button class="showcase-autoplay-toggle" id="showcaseAutoplayToggle" type="button" aria-pressed="false">
+                            <i class="ph-bold ph-pause"></i><span>Pause</span>
+                        </button>
+                        <div class="showcase-progress-track" aria-hidden="true"><span id="showcaseProgress"></span></div>
                     </div>
 
                     <!-- Showcase Content Panels -->
-                    <div id="showcase-timezone" class="showcase-panel active" style="display: grid;">
+                    <div id="showcase-timezone" class="showcase-panel active" role="tabpanel" aria-label="Timezone analytics preview" style="display: grid;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Global Community Insights</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See where your community is active</h3>
@@ -2544,7 +2707,7 @@
                         </div>
                     </div>
 
-                    <div id="showcase-antiraid" class="showcase-panel" style="display: none;">
+                    <div id="showcase-antiraid" class="showcase-panel" role="tabpanel" aria-label="Anti-raid preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Security Control Center</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Review your server’s protection status</h3>
@@ -2560,7 +2723,7 @@
                         </div>
                     </div>
 
-                    <div id="showcase-voice" class="showcase-panel" style="display: none;">
+                    <div id="showcase-voice" class="showcase-panel" role="tabpanel" aria-label="Voice analytics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice Session Insights</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Find your busiest voice hours</h3>
@@ -2576,7 +2739,7 @@
                         </div>
                     </div>
 
-                    <div id="showcase-serverstats" class="showcase-panel" style="display: none;">
+                    <div id="showcase-serverstats" class="showcase-panel" role="tabpanel" aria-label="Server statistics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Growth Dashboard</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track server growth and activity</h3>
@@ -2626,7 +2789,7 @@
                         </div>
                     </div>
 
-                    <div id="showcase-events" class="showcase-panel" style="display: none;">
+                    <div id="showcase-events" class="showcase-panel" role="tabpanel" aria-label="Event manager preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Community Scheduling</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Manage events, RSVPs, and reminders</h3>
@@ -2670,7 +2833,7 @@
                         </div>
                     </div>
 
-                    <div id="showcase-emoji" class="showcase-panel" style="display: none;">
+                    <div id="showcase-emoji" class="showcase-panel" role="tabpanel" aria-label="Emoji analytics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Dashboard Insights</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See which emojis people actually use</h3>
@@ -2686,7 +2849,7 @@
                         </div>
                     </div>
 
-                    <div id="showcase-embed" class="showcase-panel" style="display: none;">
+                    <div id="showcase-embed" class="showcase-panel" role="tabpanel" aria-label="Web embed builder preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Web Dashboard</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Build and preview embeds visually</h3>
@@ -3175,7 +3338,7 @@
 
         <!-- ==================== TAB 2: DOCUMENTATION ==================== -->
         <section id="view-docs" class="tab-view">
-            <div style="margin-bottom: 24px;">
+            <div class="docs-page-header" style="margin-bottom: 24px;">
                 <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
                 <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
                     Configuring and getting the most out of SeanBot for your Discord server.
@@ -3200,8 +3363,17 @@
                 <input type="text" id="docSearch" placeholder="Search documentation modules or commands...">
             </div>
 
+            <button class="docs-nav-mobile-toggle" id="docsNavToggle" type="button" aria-expanded="false" aria-controls="docsSidebar">
+                <span><i class="ph-bold ph-list-dashes"></i> Browse documentation</span>
+                <i class="ph-bold ph-caret-down" aria-hidden="true"></i>
+            </button>
+
             <!-- Documentation Layout Grid -->
             <div class="docs-grid">
+                <aside class="docs-nav" id="docsSidebar" aria-label="Documentation modules">
+                    <div class="docs-nav-title"><i class="ph ph-compass"></i> Documentation</div>
+                    <div id="docsNavLinks"></div>
+                </aside>
 
                 <!-- Main Articles Container -->
                 <main id="docsContent"></main>
@@ -3315,20 +3487,112 @@
         }, 50);
     }
 
-    function switchShowcase(name, button) {
-        document.querySelectorAll('.showcase-tab').forEach(tab => tab.classList.remove('active'));
-        document.querySelectorAll('.showcase-panel').forEach(panel => {
-            panel.style.display = 'none';
-            panel.classList.remove('active');
-        });
+    const showcaseOrder = ['timezone', 'antiraid', 'voice', 'serverstats', 'events', 'emoji', 'embed'];
+    const SHOWCASE_INTERVAL = 7000;
+    let showcaseIndex = 0;
+    let showcaseTimer = null;
+    let showcaseIsVisible = false;
+    let showcaseUserPaused = false;
 
-        button?.classList.add('active');
-        const targetPanel = document.getElementById(`showcase-${name}`);
-        if (targetPanel) {
-            targetPanel.style.display = 'grid';
-            targetPanel.classList.add('active');
-        }
+    function restartShowcaseProgress() {
+        const progress = document.getElementById('showcaseProgress');
+        if (!progress) return;
+        progress.style.animation = 'none';
+        void progress.offsetWidth;
+        progress.style.animation = '';
     }
+
+    function updateShowcasePlaybackUI() {
+        const container = document.getElementById('showcaseRotator');
+        const toggle = document.getElementById('showcaseAutoplayToggle');
+        const label = document.getElementById('showcaseAutoplayLabel');
+        const shouldRun = showcaseIsVisible && !showcaseUserPaused && !document.hidden;
+        container?.classList.toggle('is-running', shouldRun);
+        container?.classList.toggle('is-paused', !shouldRun);
+        toggle?.setAttribute('aria-pressed', String(showcaseUserPaused));
+        if (toggle) {
+            toggle.innerHTML = showcaseUserPaused
+                ? '<i class="ph-bold ph-play"></i><span>Play</span>'
+                : '<i class="ph-bold ph-pause"></i><span>Pause</span>';
+        }
+        if (label) {
+            label.textContent = showcaseUserPaused
+                ? 'Auto preview is paused'
+                : 'Auto preview is playing';
+        }
+        return shouldRun;
+    }
+
+    function scheduleShowcaseAdvance() {
+        clearTimeout(showcaseTimer);
+        const shouldRun = updateShowcasePlaybackUI();
+        if (!shouldRun) return;
+        restartShowcaseProgress();
+        showcaseTimer = window.setTimeout(() => {
+            const nextIndex = (showcaseIndex + 1) % showcaseOrder.length;
+            setShowcase(showcaseOrder[nextIndex], { restartTimer: true });
+        }, SHOWCASE_INTERVAL);
+    }
+
+    function setShowcase(name, options = {}) {
+        const nextIndex = showcaseOrder.indexOf(name);
+        if (nextIndex === -1) return;
+        showcaseIndex = nextIndex;
+        document.querySelectorAll('.showcase-tab').forEach(tab => {
+            const active = tab.dataset.showcase === name;
+            tab.classList.toggle('active', active);
+            tab.setAttribute('aria-selected', String(active));
+            if (active && options.focusTab) tab.focus({ preventScroll: true });
+        });
+        document.querySelectorAll('.showcase-panel').forEach(panel => {
+            const active = panel.id === `showcase-${name}`;
+            panel.hidden = !active;
+            panel.style.display = active ? 'grid' : 'none';
+            panel.classList.toggle('active', active);
+        });
+        const position = document.getElementById('showcasePosition');
+        if (position) position.textContent = `${showcaseIndex + 1} / ${showcaseOrder.length}`;
+        if (options.restartTimer !== false) scheduleShowcaseAdvance();
+    }
+
+    function switchShowcase(name, button) {
+        setShowcase(name, { restartTimer: true });
+        button?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+
+    function initShowcaseRotator() {
+        const container = document.getElementById('showcaseRotator');
+        const toggle = document.getElementById('showcaseAutoplayToggle');
+        const tabs = Array.from(document.querySelectorAll('.showcase-tab'));
+        if (!container || tabs.length === 0) return;
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => switchShowcase(tab.dataset.showcase, tab));
+            tab.addEventListener('keydown', event => {
+                if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                event.preventDefault();
+                let targetIndex = index;
+                if (event.key === 'ArrowRight') targetIndex = (index + 1) % tabs.length;
+                if (event.key === 'ArrowLeft') targetIndex = (index - 1 + tabs.length) % tabs.length;
+                if (event.key === 'Home') targetIndex = 0;
+                if (event.key === 'End') targetIndex = tabs.length - 1;
+                setShowcase(tabs[targetIndex].dataset.showcase, { focusTab: true, restartTimer: true });
+            });
+        });
+        toggle?.addEventListener('click', () => {
+            showcaseUserPaused = !showcaseUserPaused;
+            scheduleShowcaseAdvance();
+        });
+        const visibilityObserver = new IntersectionObserver(entries => {
+            showcaseIsVisible = entries.some(entry => entry.isIntersecting);
+            scheduleShowcaseAdvance();
+        }, { threshold: 0.35 });
+        visibilityObserver.observe(container);
+        document.addEventListener('visibilitychange', scheduleShowcaseAdvance);
+        setShowcase(showcaseOrder[0], { restartTimer: false });
+        updateShowcasePlaybackUI();
+    }
+
+    document.addEventListener('DOMContentLoaded', initShowcaseRotator);
 
     function switchTab(tabId) {
         document.querySelectorAll('.tab-view').forEach(view => {
@@ -3340,6 +3604,12 @@
         setTopNavActive(tabId);
         closeTopNav();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.setTimeout(() => {
+            const activeView = document.getElementById(`view-${tabId}`);
+            if (activeView && typeof window.refreshScrollReveals === 'function') {
+                window.refreshScrollReveals(activeView);
+            }
+        }, 80);
     }
 
     topNavToggle?.addEventListener('click', () => {
@@ -3352,6 +3622,24 @@
     document.addEventListener('click', event => {
         if (!event.target.closest('.site-topbar')) closeTopNav();
     });
+
+    const docsNavToggle = document.getElementById('docsNavToggle');
+    const docsSidebar = document.getElementById('docsSidebar');
+
+    docsNavToggle?.addEventListener('click', () => {
+        const isOpen = docsSidebar?.classList.toggle('open');
+        docsNavToggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+        const caret = docsNavToggle.querySelector('i:last-child');
+        if (caret) caret.className = isOpen ? 'ph-bold ph-caret-up' : 'ph-bold ph-caret-down';
+    });
+
+    function closeMobileDocsNav() {
+        if (window.innerWidth > 900) return;
+        docsSidebar?.classList.remove('open');
+        docsNavToggle?.setAttribute('aria-expanded', 'false');
+        const caret = docsNavToggle?.querySelector('i:last-child');
+        if (caret) caret.className = 'ph-bold ph-caret-down';
+    }
 
     topNavLinks.forEach(link => {
         link.addEventListener('click', event => {
@@ -3425,43 +3713,59 @@
     });
 
     // Scroll-triggered pop-in reveals
-    function setupScrollReveals() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let scrollRevealObserver = null;
 
-        const targets = [];
-        const addTargets = (selector, options = {}) => {
-            document.querySelectorAll(selector).forEach((element, index) => {
-                if (element.classList.contains('scroll-pop')) return;
-                element.classList.add('scroll-pop');
-                element.dataset.reveal = typeof options.direction === 'function' ? options.direction(index) : (options.direction || 'up');
-                element.style.setProperty('--reveal-delay', `${typeof options.delay === 'function' ? options.delay(index) : (options.delay || 0)}ms`);
-                targets.push(element);
-            });
-        };
-
-        addTargets('.hero-section > h1, .hero-section > p, .hero-section > div', { delay: index => index * 90 });
-        addTargets('.stats-grid .stat-card', { delay: index => index * 75 });
-        addTargets('#view-overview .feature-row > *', {
-            direction: index => index % 2 === 0 ? 'left' : 'right',
-            delay: index => index * 80
-        });
-        addTargets('#showcase > div, #showcase > .showcase-container', { delay: index => index * 90 });
-        addTargets('#features .modules-heading, #features .modules-toolbar', { delay: index => index * 90 });
-        addTargets('#featuresGrid .module-card', { delay: index => (index % 6) * 55 });
-        addTargets('#view-overview .section-cta-banner', { delay: 60 });
-
-        const observer = new IntersectionObserver((entries, revealObserver) => {
+    function ensureScrollRevealObserver() {
+        if (scrollRevealObserver || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        scrollRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 entry.target.classList.add('in-view');
-                revealObserver.unobserve(entry.target);
+                scrollRevealObserver.unobserve(entry.target);
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -45px' });
-
-        targets.forEach(target => observer.observe(target));
+        }, { threshold: 0.08, rootMargin: '0px 0px -35px' });
     }
 
-    setupScrollReveals();
+    window.animateScrollPop = function(element, direction = 'up', delay = 0, replay = false) {
+        if (!element || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        ensureScrollRevealObserver();
+        element.classList.add('scroll-pop');
+        element.dataset.reveal = direction;
+        element.style.setProperty('--reveal-delay', `${delay}ms`);
+        if (replay) {
+            element.classList.remove('in-view');
+            void element.offsetWidth;
+        }
+        scrollRevealObserver?.observe(element);
+    };
+
+    window.refreshScrollReveals = function(root = document) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const addTargets = (selector, options = {}) => {
+            root.querySelectorAll(selector).forEach((element, index) => {
+                if (element.classList.contains('scroll-pop')) return;
+                const direction = typeof options.direction === 'function' ? options.direction(index) : (options.direction || 'up');
+                const delay = typeof options.delay === 'function' ? options.delay(index) : (options.delay || 0);
+                window.animateScrollPop(element, direction, delay);
+            });
+        };
+        addTargets('.hero-section > h1, .hero-section > p, .hero-section > div', { delay: index => index * 95 });
+        addTargets('.stats-grid .stat-card', { direction: 'zoom', delay: index => index * 75 });
+        addTargets('#view-overview .feature-row > *', { direction: index => index % 2 === 0 ? 'left' : 'right', delay: index => index * 85 });
+        addTargets('#showcase > div:first-child', { direction: 'down' });
+        addTargets('#showcase > .showcase-container', { direction: 'zoom', delay: 100 });
+        addTargets('#features .modules-heading, #features .modules-toolbar', { delay: index => index * 90 });
+        addTargets('#featuresGrid .module-card', { direction: 'zoom', delay: index => (index % 6) * 60 });
+        addTargets('#view-overview .section-cta-banner', { direction: 'zoom', delay: 60 });
+        addTargets('#view-docs .docs-page-header, #view-docs #docsCategoryFilters, #view-docs .search-container', { delay: index => index * 70 });
+        addTargets('#view-docs .docs-nav', { direction: 'left', delay: 80 });
+        addTargets('#view-docs .docs-article', { direction: 'right', delay: 100 });
+        addTargets('#view-commands > div:first-child, #view-commands > .search-container', { delay: index => index * 70 });
+        addTargets('#view-commands .cmd-section', { direction: 'zoom', delay: index => (index % 4) * 70 });
+        addTargets('#view-commands .toc-sidebar', { direction: 'right', delay: 80 });
+    };
+
+    window.refreshScrollReveals(document);
 
     // Handle Hash Navigation on Page Load
     window.addEventListener('load', () => {
@@ -3636,7 +3940,12 @@
                 }
             });
 
+            closeMobileDocsNav();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            const activeArticle = document.getElementById(docId);
+            if (activeArticle && typeof window.animateScrollPop === 'function') {
+                window.animateScrollPop(activeArticle, 'right', 0, true);
+            }
         };
 
         const groups = {};
@@ -4023,6 +4332,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         initDocsPage();
         initCommandsPage();
+        window.setTimeout(() => window.refreshScrollReveals?.(document), 60);
     });
 </script>
 <style>
