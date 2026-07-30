@@ -873,6 +873,343 @@
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
+        /* Federation Live Relay Preview */
+        .federation-preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .federation-live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(87, 242, 135, 0.12);
+            border: 1px solid rgba(87, 242, 135, 0.25);
+            color: #57F287;
+            font-size: 0.675rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .federation-live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #57F287;
+            box-shadow: 0 0 8px rgba(87, 242, 135, 0.8);
+            animation: pulseGlow 1.5s infinite;
+        }
+        .federation-route {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 0.68rem;
+            color: #949ba4;
+            text-transform: uppercase;
+            letter-spacing: 0.45px;
+        }
+        .federation-route > span:first-child { text-align: left; }
+        .federation-route > span:last-child { text-align: right; }
+        .federation-route strong { color: #fff; }
+        .federation-route-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #06B6D4;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+        .federation-chat-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
+            gap: 8px;
+            align-items: stretch;
+        }
+        .federation-server {
+            min-width: 0;
+            overflow: hidden;
+            background: #2b2d31;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+        }
+        .federation-server-topbar {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            background: #1e1f22;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding: 9px 10px;
+        }
+        .federation-server-topbar > div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+        }
+        .federation-server-topbar strong {
+            display: block;
+            color: #f2f3f5;
+            font-size: 0.76rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .federation-server-topbar small {
+            display: block;
+            color: #949ba4;
+            font-size: 0.65rem;
+            margin-top: 2px;
+        }
+        .federation-server-letter {
+            flex: 0 0 auto;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6, 182, 212, 0.2);
+            color: #67e8f9;
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            font-size: 0.72rem;
+            font-weight: 900;
+        }
+        .federation-server-letter-b {
+            background: rgba(88, 101, 242, 0.2);
+            color: #c9cdfb;
+            border-color: rgba(88, 101, 242, 0.38);
+        }
+        .federation-server-status {
+            color: #57F287;
+            font-size: 0.56rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+        .federation-chat-body {
+            min-height: 276px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .federation-message {
+            display: grid;
+            grid-template-columns: 28px minmax(0, 1fr);
+            gap: 8px;
+            opacity: 0;
+            transform: translateY(9px);
+            animation: federationMessageIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .federation-message p {
+            margin: 3px 0 0 0;
+            color: #dbdee1;
+            font-size: 0.7rem;
+            line-height: 1.42;
+            overflow-wrap: anywhere;
+        }
+        .federation-message-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            color: #949ba4;
+            font-size: 0.59rem;
+            line-height: 1.2;
+        }
+        .federation-message-meta strong {
+            color: #f2f3f5;
+            font-size: 0.7rem;
+        }
+        .federation-avatar,
+        .federation-avatar-image {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .federation-avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.58rem;
+            font-weight: 900;
+        }
+        .federation-avatar-a { background: #0e7490; }
+        .federation-avatar-b { background: #4f46e5; }
+        .federation-message-relayed {
+            background: rgba(6, 182, 212, 0.055);
+            border-left: 2px solid #06B6D4;
+            border-radius: 4px;
+            padding: 7px;
+        }
+        .federation-origin-line {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+            color: #67e8f9;
+            font-size: 0.61rem;
+            font-weight: 700;
+        }
+        .federation-origin-badge,
+        .federation-bot-badge {
+            border-radius: 3px;
+            padding: 1px 4px;
+            font-size: 0.51rem;
+            font-weight: 900;
+        }
+        .federation-origin-badge {
+            background: rgba(6, 182, 212, 0.18);
+            color: #67e8f9;
+        }
+        .federation-bot-badge {
+            background: #5865F2;
+            color: #fff;
+        }
+        .federation-system-message {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            background: rgba(0,0,0,0.22);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 5px;
+            padding: 7px 8px;
+            color: #949ba4;
+            font-size: 0.62rem;
+            line-height: 1.35;
+            opacity: 0;
+            transform: translateY(7px);
+            animation: federationMessageIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .federation-system-message i { color: #06B6D4; font-size: 0.8rem; margin-top: 1px; }
+        .federation-system-message strong { color: #dbdee1; }
+        .federation-delivered {
+            margin-left: auto;
+            color: #57F287;
+            font-size: 0.5rem;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+        .federation-bridge {
+            position: relative;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            color: #06B6D4;
+        }
+        .federation-bridge-line {
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.75), transparent);
+        }
+        .federation-bridge-icon {
+            position: relative;
+            z-index: 1;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #18191c;
+            border: 1px solid rgba(6, 182, 212, 0.45);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.18);
+        }
+        .federation-bridge-label {
+            position: relative;
+            z-index: 1;
+            writing-mode: vertical-rl;
+            background: #18191c;
+            padding: 5px 0;
+            color: #67e8f9;
+            font-size: 0.49rem;
+            font-weight: 900;
+            letter-spacing: 0.6px;
+        }
+        .federation-privacy-note {
+            margin-top: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: rgba(255, 215, 0, 0.045);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 6px;
+            padding: 9px 10px;
+            color: #a1a1aa;
+            font-size: 0.68rem;
+            line-height: 1.45;
+        }
+        .federation-privacy-note i { color: var(--accent); font-size: 0.9rem; margin-top: 1px; }
+        .federation-privacy-note strong { color: #fff; }
+        .federation-sequence-1 { animation-delay: 0.15s; }
+        .federation-sequence-2 { animation-delay: 0.75s; }
+        .federation-sequence-3 { animation-delay: 1.35s; }
+        .federation-sequence-4 { animation-delay: 2.05s; }
+        .federation-sequence-5 { animation-delay: 2.7s; }
+        @keyframes federationMessageIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 700px) {
+            .federation-preview-header,
+            .federation-route {
+                align-items: flex-start;
+            }
+            .federation-route {
+                grid-template-columns: 1fr;
+            }
+            .federation-route > span,
+            .federation-route > span:first-child,
+            .federation-route > span:last-child {
+                text-align: left;
+            }
+            .federation-chat-grid {
+                grid-template-columns: 1fr;
+            }
+            .federation-bridge {
+                min-height: 30px;
+                flex-direction: row;
+            }
+            .federation-bridge-line {
+                top: 50%;
+                bottom: auto;
+                left: 8px;
+                right: 8px;
+                width: auto;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.75), transparent);
+            }
+            .federation-bridge-label {
+                writing-mode: horizontal-tb;
+                padding: 0 5px;
+            }
+            .federation-chat-body { min-height: auto; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .federation-message,
+            .federation-system-message,
+            .federation-live-dot {
+                animation: none !important;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
     </style>
 </head>
 
@@ -1298,6 +1635,19 @@
 
            <!-- Feature Section: Interactive Timezone Selector -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
+                <!-- Description Side -->
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Global Timezone Role Sync</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                        Let members set their local timezone effortlessly via interactive buttons and dropdown menus. Automatically assigns corresponding regional roles for seamless scheduling.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Continent-based interactive buttons & dropdown navigation</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Automatic regional role assignment upon selection</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Searchable <code>/timezone set</code> command integration</li>
+                    </ul>
+                </div>
+
                 <!-- Interactive Card -->
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     
@@ -1396,91 +1746,114 @@
                     </div>
 
                 </div>
-
-                <!-- Description Side -->
-                <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Global Timezone Role Sync</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Let members set their local timezone effortlessly via interactive buttons and dropdown menus. Automatically assigns corresponding regional roles for seamless scheduling.
-                    </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Continent-based interactive buttons & dropdown navigation</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Automatic regional role assignment upon selection</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Searchable <code>/timezone set</code> command integration</li>
-                    </ul>
-                </div>
             </div>
 
-            <!-- Split Feature Section 4: Server Federation (Visual Left, Text Right) -->
+            <!-- Split Feature Section 4: Server Federation (Visual Left, Text Right — Live Server A ↔ Server B Relay) -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
-                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
+                <div class="glass-card federation-preview" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                    <div class="federation-preview-header">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Cross-Server Connections
+                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Federation Relay Preview
                         </div>
-                        <span style="background: rgba(6, 182, 212, 0.2); color: #06B6D4; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">CONNECTED</span>
+                        <span class="federation-live-badge"><span class="federation-live-dot"></span> LIVE · TWO-WAY</span>
                     </div>
-                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Connection settings</span>
-                        <span style="color: #06B6D4;">● 4 Allied Servers</span>
+
+                    <div class="federation-route" aria-label="Federation route from Server A to Server B">
+                        <span><strong>SERVER A</strong> · #alliance-chat</span>
+                        <span class="federation-route-arrow"><i class="ph-bold ph-arrows-left-right"></i> SeanBot Relay</span>
+                        <span><strong>SERVER B</strong> · #alliance-chat</span>
                     </div>
-                    <!-- Scrollable Container -->
-                    <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Connected Servers</span>
-                            <span style="color: #57F287; font-weight: 700;">Active (4 Allied Servers)</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Message Delivery</span>
-                            <span style="color: #06B6D4; font-weight: 700;">Fast Message Delivery</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Shared Forum Threads</span>
-                            <span style="color: #57F287; font-weight: 700;">Synced Across Servers</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Text Channel Relays</span>
-                            <span style="color: #57F287; font-weight: 700;">Two-Way Sharing</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Team-Up Requests</span>
-                            <span style="color: #5865F2; font-weight: 700;">Shared With Allies</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Member Identity Checks</span>
-                            <span style="color: #57F287; font-weight: 700;">Trusted Member Links</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Shared Activity Review</span>
-                            <span style="color: #fff; font-weight: 700;">Scores & Activity</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Private Staff Data</span>
-                            <span style="color: var(--accent); font-weight: 700;">Kept In Its Server</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Cross-Server Leaderboards</span>
-                            <span style="color: #fff; font-weight: 700;">Beastmoon & Event Sync</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Server Invites</span>
-                            <span style="color: #57F287; font-weight: 700;">Controlled Access</span>
-                        </div>
-                    </div>
-                    <!-- Live Animated Action Simulation Stream -->
-                    <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
-                        <div style="font-size: 0.725rem; font-weight: 800; color: #06B6D4; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #06B6D4; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
-                            LIVE CROSS-SERVER RELAY FEED
-                        </div>
-                        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
-                            <div class="animated-federation-ticker">
-                                <div style="color: #06B6D4; line-height: 22px;">🌐 [SERVER A] Published thread update (#Global)</div>
-                                <div style="color: #57F287; line-height: 22px;">⚡ [RELAY] Message shared with connected servers</div>
-                                <div style="color: #5865F2; line-height: 22px;">📥 [SERVER B & C] Cross-server thread synced!</div>
-                                <div style="color: var(--accent); line-height: 22px;">🛡️ [PRIVACY ISOLATED] Staff logs kept local</div>
+
+                    <div class="federation-chat-grid">
+                        <!-- Server A -->
+                        <section class="federation-server" aria-label="Server A chat log">
+                            <div class="federation-server-topbar">
+                                <div>
+                                    <span class="federation-server-letter">A</span>
+                                    <span><strong>Arcane Haven</strong><small># alliance-chat</small></span>
+                                </div>
+                                <span class="federation-server-status">CONNECTED</span>
                             </div>
+
+                            <div class="federation-chat-body">
+                                <div class="federation-message federation-sequence-1">
+                                    <span class="federation-avatar federation-avatar-a">LU</span>
+                                    <div>
+                                        <div class="federation-message-meta"><strong>Luna</strong><span>20:14</span></div>
+                                        <p>We need one more healer for Beastmoon at 20:30. Anyone from the allied server available?</p>
+                                    </div>
+                                </div>
+
+                                <div class="federation-system-message federation-sequence-2">
+                                    <i class="ph-fill ph-paper-plane-tilt"></i>
+                                    <span>SeanBot relayed this message to <strong>Ravenwood Network</strong>.</span>
+                                    <span class="federation-delivered">DELIVERED</span>
+                                </div>
+
+                                <div class="federation-message federation-message-relayed federation-sequence-5">
+                                    <span class="federation-avatar federation-avatar-b">KA</span>
+                                    <div>
+                                        <div class="federation-message-meta">
+                                            <strong>Kael</strong>
+                                            <span class="federation-origin-badge">FROM SERVER B</span>
+                                            <span>20:15</span>
+                                        </div>
+                                        <p>I can heal. Send the team invite and I’ll join in ten minutes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="federation-bridge" aria-hidden="true">
+                            <span class="federation-bridge-line"></span>
+                            <span class="federation-bridge-icon"><i class="ph-bold ph-lightning"></i></span>
+                            <span class="federation-bridge-label">SIGNED RELAY</span>
                         </div>
+
+                        <!-- Server B -->
+                        <section class="federation-server" aria-label="Server B chat log">
+                            <div class="federation-server-topbar">
+                                <div>
+                                    <span class="federation-server-letter federation-server-letter-b">B</span>
+                                    <span><strong>Ravenwood Network</strong><small># alliance-chat</small></span>
+                                </div>
+                                <span class="federation-server-status">CONNECTED</span>
+                            </div>
+
+                            <div class="federation-chat-body">
+                                <div class="federation-message federation-message-relayed federation-sequence-3">
+                                    <img src="assets/seanbot.png" class="federation-avatar-image" alt="SeanBot">
+                                    <div>
+                                        <div class="federation-message-meta">
+                                            <strong>SeanBot Federation</strong>
+                                            <span class="federation-bot-badge">APP</span>
+                                            <span>20:14</span>
+                                        </div>
+                                        <div class="federation-origin-line"><i class="ph-fill ph-globe"></i> Arcane Haven · Luna · #alliance-chat</div>
+                                        <p>We need one more healer for Beastmoon at 20:30. Anyone from the allied server available?</p>
+                                    </div>
+                                </div>
+
+                                <div class="federation-message federation-sequence-4">
+                                    <span class="federation-avatar federation-avatar-b">KA</span>
+                                    <div>
+                                        <div class="federation-message-meta"><strong>Kael</strong><span>20:15</span></div>
+                                        <p>I can heal. Send the team invite and I’ll join in ten minutes.</p>
+                                    </div>
+                                </div>
+
+                                <div class="federation-system-message federation-sequence-5">
+                                    <i class="ph-fill ph-check-circle"></i>
+                                    <span>Reply synced back to <strong>Arcane Haven</strong>.</span>
+                                    <span class="federation-delivered">SYNCED</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="federation-privacy-note">
+                        <i class="ph-fill ph-lock-key"></i>
+                        <span><strong>Privacy boundary:</strong> only approved relay channels are shared. Staff logs, tickets, and private channels stay inside their original server.</span>
                     </div>
                 </div>
 
