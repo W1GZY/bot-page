@@ -128,8 +128,10 @@
         .stat-label {
             color: var(--text-secondary);
             font-size: 0.85rem;
-            margin-top: 4px;
+            margin: 6px auto 0;
+            max-width: 260px;
             font-weight: 600;
+            line-height: 1.45;
         }
 
         /* Documentation-only sidebar */
@@ -480,72 +482,6 @@
         @keyframes showcaseCopyIn { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes showcasePreviewIn { from { opacity: 0; transform: translateX(24px) scale(0.975); } to { opacity: 1; transform: translateX(0) scale(1); } }
         @keyframes showcaseDetailIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .showcase-autoplay-bar {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            align-items: center;
-            gap: 10px 14px;
-            margin: -8px 0 22px;
-        }
-        .showcase-autoplay-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            min-width: 0;
-            color: var(--text-secondary);
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-        .showcase-auto-dot {
-            width: 7px;
-            height: 7px;
-            flex: 0 0 auto;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-            animation: showcaseAutoPulse 1.6s ease-in-out infinite;
-        }
-        .showcase-autoplay-position { color: var(--text-muted); }
-        .showcase-autoplay-toggle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 6px 10px;
-            color: var(--text-secondary);
-            background: rgba(255,255,255,0.035);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            font: inherit;
-            font-size: 0.74rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-        }
-        .showcase-autoplay-toggle:hover {
-            color: #fff;
-            border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-            transform: translateY(-1px);
-        }
-        .showcase-progress-track {
-            grid-column: 1 / -1;
-            height: 3px;
-            overflow: hidden;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.055);
-        }
-        .showcase-progress-track span {
-            display: block;
-            width: 0;
-            height: 100%;
-            border-radius: inherit;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .showcase-container.is-running .showcase-progress-track span { animation: showcaseAutoProgress 7s linear forwards; }
-        .showcase-container.is-paused .showcase-auto-dot { animation-play-state: paused; opacity: 0.55; }
-        @keyframes showcaseAutoProgress { from { width: 0; } to { width: 100%; } }
-        @keyframes showcaseAutoPulse { 0%, 100% { opacity: 0.45; transform: scale(0.82); } 50% { opacity: 1; transform: scale(1.18); } }
         .showcase-dashboard-preview {
             width: 100%;
             background: rgba(4, 6, 12, 0.92);
@@ -1815,8 +1751,6 @@
             .showcase-panel.active .showcase-event-card,
             .showcase-panel.active .showcase-bar-row,
             .showcase-panel.active .showcase-growth-item,
-            .showcase-auto-dot,
-            .showcase-progress-track span,
             .scroll-pop,
             .scroll-pop[data-reveal="left"],
             .scroll-pop[data-reveal="right"],
@@ -2007,16 +1941,16 @@
                     <div class="stat-label">Commands</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word">Modular</div>
-                    <div class="stat-label">Enable only what you use</div>
+                    <div class="stat-number">47+</div>
+                    <div class="stat-label">Security, community, utility and Wizard101 modules</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word">Dashboard</div>
-                    <div class="stat-label">Browser-based configuration</div>
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Dashboard views for analytics, events and configuration</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word">Federation</div>
-                    <div class="stat-label">Trusted cross-server tools</div>
+                    <div class="stat-number stat-word">2-Way</div>
+                    <div class="stat-label">Federation relays, forums, TeamUps and leaderboards</div>
                 </div>
             </div>
 
@@ -2676,18 +2610,6 @@
                         <button class="showcase-tab" type="button" role="tab" data-showcase="events" aria-selected="false" aria-controls="showcase-events"><i class="ph-duotone ph-calendar-check"></i> Event Manager</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="emoji" aria-selected="false" aria-controls="showcase-emoji"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="embed" aria-selected="false" aria-controls="showcase-embed"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
-                    </div>
-
-                    <div class="showcase-autoplay-bar" aria-live="polite">
-                        <div class="showcase-autoplay-status">
-                            <span class="showcase-auto-dot" aria-hidden="true"></span>
-                            <span id="showcaseAutoplayLabel">Auto preview is playing</span>
-                            <span class="showcase-autoplay-position" id="showcasePosition">1 / 7</span>
-                        </div>
-                        <button class="showcase-autoplay-toggle" id="showcaseAutoplayToggle" type="button" aria-pressed="false">
-                            <i class="ph-bold ph-pause"></i><span>Pause</span>
-                        </button>
-                        <div class="showcase-progress-track" aria-hidden="true"><span id="showcaseProgress"></span></div>
                     </div>
 
                     <!-- Showcase Content Panels -->
@@ -3492,51 +3414,28 @@
     let showcaseIndex = 0;
     let showcaseTimer = null;
     let showcaseIsVisible = false;
-    let showcaseUserPaused = false;
-
-    function restartShowcaseProgress() {
-        const progress = document.getElementById('showcaseProgress');
-        if (!progress) return;
-        progress.style.animation = 'none';
-        void progress.offsetWidth;
-        progress.style.animation = '';
-    }
-
-    function updateShowcasePlaybackUI() {
-        const container = document.getElementById('showcaseRotator');
-        const toggle = document.getElementById('showcaseAutoplayToggle');
-        const label = document.getElementById('showcaseAutoplayLabel');
-        const shouldRun = showcaseIsVisible && !showcaseUserPaused && !document.hidden;
-        container?.classList.toggle('is-running', shouldRun);
-        container?.classList.toggle('is-paused', !shouldRun);
-        toggle?.setAttribute('aria-pressed', String(showcaseUserPaused));
-        if (toggle) {
-            toggle.innerHTML = showcaseUserPaused
-                ? '<i class="ph-bold ph-play"></i><span>Play</span>'
-                : '<i class="ph-bold ph-pause"></i><span>Pause</span>';
-        }
-        if (label) {
-            label.textContent = showcaseUserPaused
-                ? 'Auto preview is paused'
-                : 'Auto preview is playing';
-        }
-        return shouldRun;
-    }
+    let showcaseUserSelected = false;
 
     function scheduleShowcaseAdvance() {
         clearTimeout(showcaseTimer);
-        const shouldRun = updateShowcasePlaybackUI();
+        const shouldRun = showcaseIsVisible && !showcaseUserSelected && !document.hidden;
         if (!shouldRun) return;
-        restartShowcaseProgress();
+
         showcaseTimer = window.setTimeout(() => {
             const nextIndex = (showcaseIndex + 1) % showcaseOrder.length;
-            setShowcase(showcaseOrder[nextIndex], { restartTimer: true });
+            setShowcase(showcaseOrder[nextIndex], { scheduleNext: true });
         }, SHOWCASE_INTERVAL);
     }
 
     function setShowcase(name, options = {}) {
         const nextIndex = showcaseOrder.indexOf(name);
         if (nextIndex === -1) return;
+
+        if (options.userSelected) {
+            showcaseUserSelected = true;
+            clearTimeout(showcaseTimer);
+        }
+
         showcaseIndex = nextIndex;
         document.querySelectorAll('.showcase-tab').forEach(tab => {
             const active = tab.dataset.showcase === name;
@@ -3544,52 +3443,52 @@
             tab.setAttribute('aria-selected', String(active));
             if (active && options.focusTab) tab.focus({ preventScroll: true });
         });
+
         document.querySelectorAll('.showcase-panel').forEach(panel => {
             const active = panel.id === `showcase-${name}`;
             panel.hidden = !active;
             panel.style.display = active ? 'grid' : 'none';
             panel.classList.toggle('active', active);
         });
-        const position = document.getElementById('showcasePosition');
-        if (position) position.textContent = `${showcaseIndex + 1} / ${showcaseOrder.length}`;
-        if (options.restartTimer !== false) scheduleShowcaseAdvance();
-    }
 
-    function switchShowcase(name, button) {
-        setShowcase(name, { restartTimer: true });
-        button?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+        if (options.scheduleNext) scheduleShowcaseAdvance();
     }
 
     function initShowcaseRotator() {
         const container = document.getElementById('showcaseRotator');
-        const toggle = document.getElementById('showcaseAutoplayToggle');
         const tabs = Array.from(document.querySelectorAll('.showcase-tab'));
         if (!container || tabs.length === 0) return;
+
         tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => switchShowcase(tab.dataset.showcase, tab));
+            tab.addEventListener('click', () => {
+                setShowcase(tab.dataset.showcase, { userSelected: true });
+            });
+
             tab.addEventListener('keydown', event => {
                 if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
                 event.preventDefault();
+
                 let targetIndex = index;
                 if (event.key === 'ArrowRight') targetIndex = (index + 1) % tabs.length;
                 if (event.key === 'ArrowLeft') targetIndex = (index - 1 + tabs.length) % tabs.length;
                 if (event.key === 'Home') targetIndex = 0;
                 if (event.key === 'End') targetIndex = tabs.length - 1;
-                setShowcase(tabs[targetIndex].dataset.showcase, { focusTab: true, restartTimer: true });
+
+                setShowcase(tabs[targetIndex].dataset.showcase, {
+                    focusTab: true,
+                    userSelected: true
+                });
             });
         });
-        toggle?.addEventListener('click', () => {
-            showcaseUserPaused = !showcaseUserPaused;
-            scheduleShowcaseAdvance();
-        });
+
         const visibilityObserver = new IntersectionObserver(entries => {
             showcaseIsVisible = entries.some(entry => entry.isIntersecting);
             scheduleShowcaseAdvance();
         }, { threshold: 0.35 });
+
         visibilityObserver.observe(container);
         document.addEventListener('visibilitychange', scheduleShowcaseAdvance);
-        setShowcase(showcaseOrder[0], { restartTimer: false });
-        updateShowcasePlaybackUI();
+        setShowcase(showcaseOrder[0]);
     }
 
     document.addEventListener('DOMContentLoaded', initShowcaseRotator);
@@ -3922,6 +3821,8 @@
             }
             if (!docId) return;
 
+            const previousScrollY = window.scrollY;
+
             document.querySelectorAll('.docs-nav-link, .sidebar-toc-link').forEach(link => {
                 if (link.getAttribute('data-doc') === docId || link.getAttribute('href') === `#${docId}`) {
                     link.classList.add('active');
@@ -3941,7 +3842,12 @@
             });
 
             closeMobileDocsNav();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Swapping documentation articles must not move the main page or dashboard.
+            requestAnimationFrame(() => {
+                window.scrollTo({ top: previousScrollY, left: window.scrollX, behavior: 'auto' });
+            });
+
             const activeArticle = document.getElementById(docId);
             if (activeArticle && typeof window.animateScrollPop === 'function') {
                 window.animateScrollPop(activeArticle, 'right', 0, true);
