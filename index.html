@@ -1203,7 +1203,7 @@
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
                             <i class="ph-fill ph-ticket" style="color: #5865F2;"></i> Ticket System
                         </div>
-                        <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">PURE HTML/CSS</span>
+                        <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">Customizeable</span>
                     </div>
 
                     <p id="ticket-step-text" style="font-size: 0.875rem; color: #dbdee1; margin-bottom: 16px;">
@@ -1296,92 +1296,118 @@
                 </div>
             </div>
 
-            <!-- Split Feature Section 3: TimePing & Event Reminders (Text Left, Visual Card Right) -->
+           <!-- Feature Section: Interactive Timezone Selector -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; margin: 44px 0;">
-                <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Event Reminders That Understand Timezones</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Schedule raids, community events, and boss spawns with reminders that show up at the right local time for everyone.
-                    </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Let members join reminders by reacting to an event post</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Watch event channels and create reminders from detected times</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #F59E0B; font-size: 1.2rem;"></i> Link Discord Scheduled Events, saved reminder presets, and repeat events</li>
-                    </ul>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('timeping'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
-                        <i class="ph-bold ph-clock-counter-clockwise"></i> Explore TimePing Docs
-                    </button>
-                </div>
-                
-                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                <!-- Interactive Card -->
+                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                    
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-clock-counter-clockwise" style="color: #F59E0B;"></i> TimePing Event Reminders
+                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #5865F2;"></i> Interactive Timezone Sync
                         </div>
-                        <span style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">AUTO-REMINDERS</span>
+                        <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">PURE HTML/CSS</span>
                     </div>
-                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>Reminder settings</span>
-                        <span style="color: #F59E0B;">● Active</span>
-                    </div>
-                    <!-- Scrollable Container -->
-                    <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px;">
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Channel Auto-Watch</span>
-                            <span style="color: #57F287; font-weight: 700;">Active (#event-announcements)</span>
+
+                    <!-- Discord Message Outer Container -->
+                    <div style="background: #2b2d31; border-radius: 8px; padding: 16px; margin-bottom: 12px; text-align: left; border-left: 4px solid #5865F2;">
+                        
+                        <!-- Message Header -->
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                            <img src="assets/seanbot.png" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
+                            <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">SeanBot</span>
+                            <span style="background: #5865F2; color: #fff; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; font-weight: 700;">BOT</span>
+                            <span style="font-size: 0.75rem; color: #949ba4;">Today at 18:36</span>
                         </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Default Reaction Emoji</span>
-                            <span style="color: #fff; font-weight: 700;">🔔 (:bell:)</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Ping Target Options</span>
-                            <span style="color: #F59E0B; font-weight: 700;">Reactors, Everyone, Roles</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Preset Interval Templates</span>
-                            <span style="color: #fff; font-weight: 700;">1h, 15m, 5m, At Start</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Timezone Handling</span>
-                            <span style="color: #57F287; font-weight: 700;">Local Times For Members</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Discord Scheduled Events</span>
-                            <span style="color: #5865F2; font-weight: 700;">/timeping native Sync</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Recurrence Engine</span>
-                            <span style="color: #fff; font-weight: 700;">Daily, Weekly, Monthly</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Auto Post-Event Delete</span>
-                            <span style="color: #57F287; font-weight: 700;">Configurable Hours</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">User Event Hub</span>
-                            <span style="color: #fff; font-weight: 700;">/timeping my-events</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                            <span style="color: var(--text-secondary);">Interactive Edit Panel</span>
-                            <span style="color: #57F287; font-weight: 700;">Change Active Events</span>
-                        </div>
-                    </div>
-                    <!-- Live Animated Action Simulation Stream -->
-                    <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px;">
-                        <div style="font-size: 0.725rem; font-weight: 800; color: #F59E0B; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #F59E0B; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
-                            LIVE TIMEPING REMINDER FEED
-                        </div>
-                        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; padding: 8px 10px; font-family: monospace; font-size: 0.75rem; color: #a1a1aa; height: 26px; overflow: hidden; position: relative;">
-                            <div class="animated-timeping-ticker">
-                                <div style="color: #F59E0B; line-height: 22px;">⏱️ [AUTO-WATCH] Event timestamp in #announcements</div>
-                                <div style="color: #57F287; line-height: 22px;">🔔 [REACTION] 14 members reacted with :bell:</div>
-                                <div style="color: #FFD700; line-height: 22px;">⏰ [COUNTDOWN] 5 Minutes Remaining until Raid</div>
-                                <div style="color: #5865F2; line-height: 22px;">🚀 [REMINDER] Pinging 14 signed-up members</div>
+
+                        <!-- Embed Container -->
+                        <div style="background: #1e1f22; border-left: 4px solid #5865F2; border-radius: 4px; padding: 14px; margin-bottom: 12px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                                <h4 style="margin: 0; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
+                                    🌐 Set Your Timezone
+                                </h4>
+                                <img src="logo.png" style="width: 22px; height: 22px; object-fit: contain;" alt="Logo">
+                            </div>
+                            <p style="margin: 0 0 10px 0; color: #dbdee1; font-size: 0.8rem; line-height: 1.4;">
+                                Setting your timezone ensures you get perfectly synced and lets your friends see your local time!
+                            </p>
+                            <div style="font-size: 0.78rem; color: #949ba4; line-height: 1.5; background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 4px;">
+                                <strong style="color: #fff;">How to set it:</strong><br>
+                                1. Click a <strong>Region</strong> below to select your timezone.<br>
+                                💡 <em>Or use <code style="background: #2b2d31; color: #dbdee1; padding: 1px 4px; border-radius: 3px;">/timezone set</code> to search globally!</em>
                             </div>
                         </div>
+
+                        <!-- Region Buttons Container -->
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+                            <button onclick="selectRegion('America')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                                🌎 America
+                            </button>
+                            <button onclick="selectRegion('Europe')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                                🌍 Europe
+                            </button>
+                            <button onclick="selectRegion('Asia')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                                🌏 Asia
+                            </button>
+                            <button onclick="selectRegion('Oceania')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                                🌏 Oceania
+                            </button>
+                            <button onclick="selectRegion('Africa')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                                🌍 Africa
+                            </button>
+                            <button onclick="selectRegion('Other')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                                🌐 Other
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Dropdown Select Container -->
+                        <div id="tz-dropdown-container" style="display: none; margin-top: 8px;">
+                            <select id="tz-select-menu" class="discord-select" onchange="handleTimezoneSelection()">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <!-- Typing Status -->
+                        <div id="tz-typing-status" style="display: none; align-items: center; gap: 6px; font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
+                            <span style="display: inline-flex; gap: 3px; align-items: center;">
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                            </span>
+                            <span>Registering timezone...</span>
+                        </div>
+
+                        <!-- Confirmation Result Message -->
+                        <div id="tz-status-message" style="display: none; background: rgba(35, 165, 90, 0.15); border-left: 4px solid #23a55a; border-radius: 4px; padding: 10px; margin-top: 10px;">
+                            <p style="margin: 0; color: #23a55a; font-size: 0.825rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                                <i class="ph-bold ph-check-circle"></i> Timezone registered!
+                            </p>
+                            <p style="margin: 4px 0 0 0; color: #dbdee1; font-size: 0.8rem;">
+                                You got the role: <span id="tz-role-name" style="background: rgba(88, 101, 242, 0.3); color: #5865F2; padding: 1px 6px; border-radius: 3px; font-weight: 700;"></span>
+                            </p>
+                        </div>
+
                     </div>
+
+                    <!-- Action Reset Button -->
+                    <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+                        <button onclick="resetTimezoneDemo()" style="background: rgba(255,255,255,0.08); color: #dbdee1; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-weight: 700; padding: 5px 12px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.775rem;">
+                            <i class="ph-bold ph-arrows-counter-clockwise"></i> Clear Selection
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Description Side -->
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Global Timezone Role Sync</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                        Let members set their local timezone effortlessly via interactive buttons and dropdown menus. Automatically assigns corresponding regional roles for seamless scheduling.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Continent-based interactive buttons & dropdown navigation</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Automatic regional role assignment upon selection</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Searchable <code>/timezone set</code> command integration</li>
+                    </ul>
                 </div>
             </div>
 
@@ -3092,8 +3118,8 @@
 
     // List of random usernames for the final step
     const randomUsernames = [
-        "CyberNinja", "Alex_Vibe", "PixelCraft", "NovaKnight", 
-        "ShadowGamer", "Astro_09", "LunarPulse", "ECHO_Unit"
+        "CyberNinja", "Mek", "Cool_guy", "Your_Friend", 
+        "Cool_dude", "Cool_gamer", "Admin", "Fun_guy"
     ];
 
     function handleTicketStep() {
@@ -3185,6 +3211,106 @@
         }
     }
 </script>
+<style>
+    /* Styling for Discord Dropdown Select Menu */
+    .discord-select {
+        background: #1e1f22;
+        color: #dbdee1;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+    }
+    .discord-select option {
+        background: #2b2d31;
+        color: #fff;
+    }
+</style>
 
+<script>
+    // Timezone data for each region
+    const timezoneData = {
+        America: [
+            { label: "US Eastern (UTC-5)", role: "US Eastern" },
+            { label: "US Central (UTC-6)", role: "US Central" },
+            { label: "US Pacific (UTC-8)", role: "US Pacific" }
+        ],
+        Europe: [
+            { label: "Western Europe (UTC+0)", role: "EU West" },
+            { label: "Central Europe (UTC+1)", role: "EU Central" },
+            { label: "Eastern Europe (UTC+2)", role: "EU East" }
+        ],
+        Asia: [
+            { label: "India Standard (UTC+5:30)", role: "Asia South" },
+            { label: "Japan Standard (UTC+9)", role: "Asia East" },
+            { label: "Singapore Time (UTC+8)", role: "Asia SE" }
+        ],
+        Oceania: [
+            { label: "Australian Eastern (UTC+10)", role: "Oceania East" },
+            { label: "Australian Central (UTC+9:30)", role: "Oceania Central" },
+            { label: "New Zealand Standard (UTC+12)", role: "NZ Time" }
+        ],
+        Africa: [
+            { label: "West Africa (UTC+1)", role: "Africa West" },
+            { label: "Central Africa (UTC+2)", role: "Africa Central" },
+            { label: "East Africa (UTC+3)", role: "Africa East" }
+        ],
+        Other: [
+            { label: "UTC / GMT (UTC+0)", role: "Global UTC" },
+            { label: "Atlantic Standard (UTC-4)", role: "Atlantic" },
+            { label: "Hawaii Standard (UTC-10)", role: "Hawaii" }
+        ]
+    };
+
+    function selectRegion(region) {
+        const selectContainer = document.getElementById('tz-dropdown-container');
+        const selectMenu = document.getElementById('tz-select-menu');
+        const statusMsg = document.getElementById('tz-status-message');
+
+        // Hide status message while selecting
+        statusMsg.style.display = 'none';
+
+        // Populate options
+        selectMenu.innerHTML = `<option value="" disabled selected>Select a timezone in ${region}...</option>`;
+        timezoneData[region].forEach(item => {
+            const opt = document.createElement('option');
+            opt.value = item.role;
+            opt.innerText = item.label;
+            selectMenu.appendChild(opt);
+        });
+
+        // Display the dropdown menu
+        selectContainer.style.display = 'block';
+    }
+
+    function handleTimezoneSelection() {
+        const selectMenu = document.getElementById('tz-select-menu');
+        const selectedRole = selectMenu.value;
+        const typingIndicator = document.getElementById('tz-typing-status');
+        const statusMsg = document.getElementById('tz-status-message');
+        const roleNameSpan = document.getElementById('tz-role-name');
+
+        if (!selectedRole) return;
+
+        // Show typing indicator
+        typingIndicator.style.display = 'flex';
+
+        setTimeout(() => {
+            typingIndicator.style.display = 'none';
+            roleNameSpan.innerText = selectedRole;
+            statusMsg.style.display = 'block';
+        }, 1000);
+    }
+
+    function resetTimezoneDemo() {
+        document.getElementById('tz-dropdown-container').style.display = 'none';
+        document.getElementById('tz-status-message').style.display = 'none';
+        document.getElementById('tz-typing-status').style.display = 'none';
+    }
+</script>
 </body>
 </html>
