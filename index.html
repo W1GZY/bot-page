@@ -1764,6 +1764,37 @@
             }
         }
 
+        /* Page footer */
+        .page-footer {
+            max-width: 1400px;
+            margin: 28px auto 0;
+            padding: 20px clamp(18px, 3vw, 42px) 28px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+        .page-footer a {
+            margin-left: auto;
+            color: var(--text-secondary);
+            font-weight: 700;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        .page-footer a:hover {
+            color: var(--accent);
+        }
+        @media (max-width: 620px) {
+            .page-footer {
+                align-items: flex-end;
+                flex-direction: column;
+                text-align: right;
+            }
+        }
+
     </style>
 </head>
 
@@ -1945,12 +1976,12 @@
                     <div class="stat-label">Security, community, utility and Wizard101 modules</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">7</div>
-                    <div class="stat-label">Dashboard views for analytics, events and configuration</div>
+                    <div class="stat-number stat-word">Real-Time</div>
+                    <div class="stat-label">Anti-raid alerts, audit logs and moderation actions when your server needs them</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word">2-Way</div>
-                    <div class="stat-label">Federation relays, forums, TeamUps and leaderboards</div>
+                    <div class="stat-number stat-word">Custom</div>
+                    <div class="stat-label">Permissions, workflows and automations tailored to each Discord community</div>
                 </div>
             </div>
 
@@ -3358,11 +3389,12 @@
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
                 </a>
             </div>
-<footer class="page-footer">
+        </section>
+    </main>
+
+    <footer class="page-footer">
         <div>&copy; 2026 SeanBot. All rights reserved.</div>
-        <div style="display:flex; gap: 16px; flex-wrap: wrap;">
-            <a href="tos.html">Terms & Privacy</a>
-        </div>
+        <a href="tos.html">Terms &amp; Privacy</a>
     </footer>
 </div>
 
