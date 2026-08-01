@@ -1,0 +1,345 @@
+.docs-page-heading {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
+.docs-page-subtitle {
+    color: var(--text-secondary);
+    margin: 8px 0 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.docs-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 20px 0 24px;
+    padding: 0 14px;
+    min-height: 46px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.docs-search input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+}
+
+.docs-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+}
+
+.commands-layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.docs-local-nav,
+.toc-sidebar {
+    position: sticky;
+    top: 78px;
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+}
+
+.docs-nav-title,
+.toc-title {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.docs-nav-group {
+    margin-bottom: 14px;
+}
+
+.docs-nav-group-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.docs-nav-link,
+.sidebar-toc-link,
+.toc-link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    padding: 7px 9px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.docs-nav-link:hover,
+.docs-nav-link.active,
+.sidebar-toc-link:hover,
+.sidebar-toc-link.active,
+.toc-link:hover,
+.toc-link.active-toc {
+    color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.docs-article {
+    display: none;
+    min-width: 0;
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+}
+
+.docs-article.active-doc {
+    display: block;
+}
+
+.docs-article h2 {
+    margin: 0;
+    font-size: 1.45rem;
+    letter-spacing: 0;
+}
+
+.docs-article h3 {
+    margin: 28px 0 10px;
+    font-size: 1.02rem;
+    letter-spacing: 0;
+}
+
+.docs-article p,
+.docs-article li {
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.docs-article ul {
+    margin: 8px 0 18px;
+    padding-left: 22px;
+}
+
+.docs-article li + li {
+    margin-top: 7px;
+}
+
+.callout-box {
+    margin: 18px 0;
+    padding: 14px 16px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    background: var(--accent-glow);
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.cmd-item-list {
+    display: grid;
+    gap: 8px;
+}
+
+.cmd-item-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.14);
+}
+
+.cmd-item-left {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 7px 12px;
+    min-width: 0;
+}
+
+.cmd-code,
+.cmd-name {
+    color: var(--accent);
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    overflow-wrap: anywhere;
+}
+
+.cmd-desc-text {
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.copy-btn {
+    display: grid;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.doc-article-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+
+.doc-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+}
+
+.doc-nav-btn.next-btn {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.nav-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.nav-title {
+    display: block;
+    margin-top: 2px;
+    overflow-wrap: anywhere;
+    font-size: 0.8rem;
+}
+
+.commands-feed {
+    min-width: 0;
+}
+
+.cmd-section {
+    margin-bottom: 30px;
+    scroll-margin-top: 80px;
+}
+
+.cmd-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    font-size: 1.15rem;
+    letter-spacing: 0;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+    gap: 10px;
+}
+
+.cmd-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.cmd-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.cmd-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cmd-name,
+.cmd-desc {
+    margin: 0;
+}
+
+.cmd-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 950px) {
+    .commands-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .toc-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 620px) {
+    .docs-article {
+        padding: 18px;
+    }
+
+    .doc-article-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-nav-btn.next-btn {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}

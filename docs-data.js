@@ -1,67 +1,214 @@
-// SeanBot Authentic Documentation Database
+// SeanBot documentation. Normalized by scripts/rebuild_docs_data.js.
 const docsData = [
     {
         "id": "quickstart",
-        "icon": "ph-rocket",
-        "title": "Quick Start Guide",
-        "subtitle": "Empower your community with effortless, automated server management in under 60 seconds.",
+        "icon": "ph-rocket-launch",
+        "title": "Quick Start: Set Up SeanBot from A to Z",
+        "subtitle": "A practical first-install checklist for permissions, modules, logging, security, staff access, and testing.",
         "content": [
             {
                 "type": "heading",
-                "text": "1. One-Click Authorization"
+                "text": "Before You Install"
             },
             {
-                "type": "text",
-                "text": "Add SeanBot to your Discord community with optimized administrative permissions. Elevate SeanBot's role near the top of your role hierarchy to unlock real-time moderation and role assignment power."
+                "type": "list",
+                "items": [
+                    "Use a Discord account with Manage Server. Server ownership or Administrator is recommended for the first setup.",
+                    "Create a private staff channel for testing commands and a private log channel such as #seanbot-logs.",
+                    "Decide which existing roles are administrators, moderators, support staff, event staff, and ordinary members.",
+                    "Keep Discord role hierarchy in mind: SeanBot can only manage members and roles below its highest role."
+                ]
             },
             {
                 "type": "heading",
-                "text": "2. Tailored Feature Modules"
+                "text": "1. Invite and Place the Bot Role"
             },
             {
-                "type": "text",
-                "text": "Toggle feature modules instantly with `/serveradmin module` or through your personalized Web Dashboard."
+                "type": "list",
+                "items": [
+                    "Invite SeanBot from the official website and select the server you want to configure.",
+                    "Open Server Settings > Roles and move the SeanBot role above every role it must assign, remove, quarantine, mute, or manage.",
+                    "Do not remove View Channel, Send Messages, Embed Links, Attach Files, Read Message History, or Use Application Commands from channels where the bot is expected to work.",
+                    "Add feature-specific permissions only where needed. Create Expressions is required for approved emoji suggestions; Manage Roles is required for role automation."
+                ]
             },
             {
-                "type": "callout",
-                "icon": "\u26a1",
-                "title": "Instant Audit Diagnostics",
-                "text": "Run `/staff diagnose` anytime for an automated diagnostic sweep of bot channel permissions, role bindings, and command overrides."
+                "type": "heading",
+                "text": "2. Confirm the Installation"
             },
             {
                 "type": "commands",
-                "title": "Commands Reference",
+                "title": "First Checks",
                 "items": [
                     {
-                        "cmd": "/staff diagnose",
-                        "desc": "Perform an automated audit sweep of Messaging, Moderation, and Voice permissions."
+                        "cmd": "/dashboard",
+                        "desc": "Open your server dashboard."
                     },
                     {
-                        "cmd": "/prefix [symbol]",
-                        "desc": "View or update custom legacy command prefix."
+                        "cmd": "/serverinfo",
+                        "desc": "Confirm SeanBot can read the server and member information."
+                    },
+                    {
+                        "cmd": "/staff diagnose",
+                        "desc": "Check role hierarchy, channel access, and important bot permissions."
+                    },
+                    {
+                        "cmd": "/serveradmin modules",
+                        "desc": "See which feature modules are enabled for this server."
                     }
                 ]
+            },
+            {
+                "type": "heading",
+                "text": "3. Open the Dashboard and Control Access"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Sign in with Discord, choose your server, and open Module Settings.",
+                    "New servers start with optional modules disabled. Enable only the pages and features you intend to configure.",
+                    "Open Server Access before inviting other staff into the dashboard. Assign page access and individual actions to trusted roles using least privilege.",
+                    "Use Dashboard Logs to confirm who changed settings, deleted records, approved requests, or performed dashboard actions."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "4. Configure Logging First"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Logging in Module Settings, then open Log Config.",
+                    "Choose All logs in one channel for the fastest setup, or Separate channels when moderation, security, member, voice, and staff logs must be isolated.",
+                    "Enable moderation, security, staff workflows, public reports, ban appeals, emoji suggestions, tickets, and dashboard actions as needed.",
+                    "Perform one harmless dashboard change and one test command, then verify both appear in the expected log channel."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "5. Configure Security Safely"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Anti-Raid and open its dashboard page.",
+                    "Choose trusted staff roles, safe domains, alert channels, and a quarantine role placed below SeanBot.",
+                    "Start with Canary mode so detections are logged without automatically punishing members.",
+                    "Run /antiraid audit and /antiraid simulate, review the output, then enable enforcement only after your trusted roles and thresholds are correct."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "6. Prepare Staff Workflows"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Confirm moderator roles have only the Discord permissions they need and remain below the server owner.",
+                    "Configure warnings and moderation presets before staff begin issuing cases.",
+                    "Create private review channels for ban appeals, public reports, community suggestions, emoji suggestions, tickets, and leave requests before enabling those modules.",
+                    "Assign reviewer or support roles on each feature page and submit one test request from a non-staff account."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "7. Add Optional Community Features"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Events and time: Timezones, TimePing, Calendar, Event Countdowns, Raid Polls, and Reminders.",
+                    "Engagement: Starboard, AutoPin, Reaction Pings, Sticky Messages, Polls, Team-Ups, and Returning Roles.",
+                    "Server tools: Temporary Voice Channels, Server Counters, Activity Tracking, Voice Analytics, Emoji Analytics, and Last Message tracking.",
+                    "Content tools: Embed Builder, Emoji Manager, reactions, aliases, translation, and custom replies.",
+                    "Cross-server tools: Federation thread networks, regular channel relays, identities, and federated Team-Ups.",
+                    "Wizard101 tools: damage, items, decks, Beastmoon, pets, spell lookup, strategies, raid recap, tapestries, and Team-Ups."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "8. Final Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Run /staff diagnose again after configuration.",
+                    "Test one member command, one moderator command, one dashboard change, one approval workflow, and one scheduled or automated feature.",
+                    "Verify the bot cannot manage roles above its own role and that ordinary members cannot access staff-only dashboard actions.",
+                    "Confirm logs identify the actor, action, target, and result in normal language.",
+                    "Review Module Settings and disable anything you are not using."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "If a command does not appear",
+                "text": "Check that its module is enabled, the command is allowed under Server Settings > Integrations, the user has the required role or Discord permission, and SeanBot can view the current channel. Discord may take a short time to refresh newly synchronized commands."
             }
         ]
     },
     {
         "id": "core",
+        "icon": "ph-layout",
+        "title": "Dashboard, Modules & Staff Access",
+        "subtitle": "Understand module switches, delegated dashboard permissions, audit history, and command availability.",
         "content": [
             {
                 "type": "heading",
-                "text": "Overview"
+                "text": "Module Settings"
             },
             {
                 "type": "text",
-                "text": "Customize your text command prefix to prevent conflicts with legacy bots."
+                "text": "Optional features are controlled per server. Disabling a module hides its dashboard page and blocks its protected API actions; it does not delete saved configuration. Re-enable the module to continue using the existing settings."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Open Module Settings and enable the feature before attempting its setup commands.",
+                    "Use search and Enabled Only to review the active configuration without enabling unrelated tools.",
+                    "After disabling a scheduled feature, check its guide for any messages, channels, or roles that should be removed manually."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Server Access"
+            },
+            {
+                "type": "text",
+                "text": "Server Access delegates dashboard pages and individual actions to Discord roles. A role can receive read-only access to a page without receiving approval, deletion, or configuration actions."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Keep full administrator access limited to server administrators.",
+                    "Give support roles only ticket actions, reviewers only their queue actions, and event staff only event or scheduling controls.",
+                    "Test delegated access with a non-administrator account before relying on it.",
+                    "Review Dashboard Logs regularly and remove access when a staff role changes purpose."
+                ]
             },
             {
                 "type": "commands",
-                "title": "Commands Reference",
+                "title": "Related Commands",
                 "items": [
                     {
+                        "cmd": "/dashboard",
+                        "desc": "Open the dashboard for the current server."
+                    },
+                    {
+                        "cmd": "/serveradmin modules",
+                        "desc": "List the server module states."
+                    },
+                    {
+                        "cmd": "/serveradmin module [module] [enabled]",
+                        "desc": "Enable or disable one module from Discord."
+                    },
+                    {
                         "cmd": "/prefix [new_prefix]",
-                        "desc": "Inspect active server prefix or set a custom command trigger symbol."
+                        "desc": "View or change the optional legacy text-command prefix."
+                    },
+                    {
+                        "cmd": "/staff diagnose",
+                        "desc": "Check common permission, channel, and hierarchy problems."
                     }
                 ]
             }
@@ -71,7 +218,7 @@ const docsData = [
         "id": "w101",
         "icon": "ph-magic-wand",
         "title": "W101: Core Toolkit & Damage",
-        "subtitle": "Precision hit calculators, multi-buff stack previews, gear scaling, and visual deck sharing.",
+        "subtitle": "Damage calculators, multi-buff stack previews, gear scaling, and visual deck sharing.",
         "content": [
             {
                 "type": "heading",
@@ -79,7 +226,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Eliminate math guesswork during high-stakes raids. Model multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy."
+                "text": "Calculate expected damage for raids and regular combat. Model multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy."
             },
             {
                 "type": "commands",
@@ -121,7 +268,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/decks share [deck] [user]",
-                        "desc": "Instantly dispatch a saved deck directly to a teammate via DM."
+                        "desc": "Send a saved deck directly to a teammate via DM."
                     },
                     {
                         "cmd": "/decks export [deck]",
@@ -167,7 +314,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/bm quick_add [form] [school] [tier]",
-                        "desc": "Update form tiers instantly with autocomplete."
+                        "desc": "Update form tiers with autocomplete."
                     },
                     {
                         "cmd": "/bm check",
@@ -183,7 +330,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/bm max",
-                        "desc": "Display elite players who have achieved max Tier 5 form masteries."
+                        "desc": "Display players who have achieved max Tier 5 form masteries."
                     },
                     {
                         "cmd": "/bm log_channel [channel]",
@@ -191,7 +338,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/bm redeem [code]",
-                        "desc": "Instantly sync Beastmoon form upgrades from the Web Dashboard."
+                        "desc": "Sync Beastmoon form upgrades from the Web Dashboard."
                     },
                     {
                         "cmd": "/bm forms_alt",
@@ -206,10 +353,61 @@ const docsData = [
         ]
     },
     {
+        "id": "recap_tracker",
+        "icon": "ph-notebook",
+        "title": "W101 Raid & Activity Recap",
+        "subtitle": "Record wins, losses, keys, hosted raids, school swaps, and wipe witnesses for server recap statistics.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Choose the roster or recap channel with /w101 set_roster_channel.",
+                    "Confirm event staff can use the W101 tracking commands in that channel.",
+                    "Record a test result and verify it appears in the intended recap or analytics view.",
+                    "Use /w101 remove_roster_channel before deleting or replacing the configured channel."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Tracking Commands",
+                "items": [
+                    {
+                        "cmd": "/w101 win",
+                        "desc": "Record a win."
+                    },
+                    {
+                        "cmd": "/w101 loss",
+                        "desc": "Record a loss."
+                    },
+                    {
+                        "cmd": "/w101 key_hosted",
+                        "desc": "Record a hosted key."
+                    },
+                    {
+                        "cmd": "/w101 raid_hosted",
+                        "desc": "Record a hosted raid."
+                    },
+                    {
+                        "cmd": "/w101 school_swap",
+                        "desc": "Record a school swap."
+                    },
+                    {
+                        "cmd": "/w101 wipe_witnessed",
+                        "desc": "Record a witnessed wipe."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "pet_tome",
         "icon": "ph-book-bookmark",
         "title": "W101: Pet Tome Database",
-        "subtitle": "Instant Wizard101 pet stats, talent pools, sources, wow factor, and hatching details.",
+        "subtitle": "Wizard101 pet stats, talent pools, sources, wow factor, and hatching details.",
         "content": [
             {
                 "type": "heading",
@@ -281,7 +479,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/teamup quick [dungeon] [realm]",
-                        "desc": "Instantly post a Team-Up request for a specific dungeon."
+                        "desc": "Post a Team-Up request for a specific dungeon."
                     },
                     {
                         "cmd": "/teamup list",
@@ -456,6 +654,69 @@ const docsData = [
         ]
     },
     {
+        "id": "server_admin",
+        "icon": "ph-wrench",
+        "title": "Server Administration Helpers",
+        "subtitle": "Manage modules, roles, channels, and controlled bot messages without leaving Discord.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Before Using These Commands"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Place SeanBot above every role it needs to create, edit, delete, add, or remove.",
+                    "The person running a role command must also be allowed to manage the target role.",
+                    "Use Dashboard Logs and server logs to retain an audit trail for dashboard and Discord changes.",
+                    "The say command suppresses mass mentions, but staff should still use it only in approved channels."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/serveradmin modules",
+                        "desc": "List all optional module states."
+                    },
+                    {
+                        "cmd": "/serveradmin module [module] [enabled]",
+                        "desc": "Enable or disable a module."
+                    },
+                    {
+                        "cmd": "/serveradmin addrole [name] [color]",
+                        "desc": "Create a role below SeanBot."
+                    },
+                    {
+                        "cmd": "/serveradmin editrole [role]",
+                        "desc": "Change a role name, color, display, or mentionable state."
+                    },
+                    {
+                        "cmd": "/serveradmin delrole [role]",
+                        "desc": "Delete a manageable role."
+                    },
+                    {
+                        "cmd": "/serveradmin memberrole [member] [role] [action]",
+                        "desc": "Add, remove, or toggle a member role."
+                    },
+                    {
+                        "cmd": "/serveradmin editchannel [channel]",
+                        "desc": "Edit a text channel name, topic, NSFW state, or slowmode."
+                    },
+                    {
+                        "cmd": "/serveradmin mods",
+                        "desc": "List roles that currently have moderation permissions."
+                    },
+                    {
+                        "cmd": "/serveradmin say [message]",
+                        "desc": "Send a plain message through SeanBot."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "antiraid",
         "icon": "ph-shield-warning",
         "title": "Anti-Raid & Security",
@@ -474,8 +735,21 @@ const docsData = [
                 "title": "Dashboard Pages",
                 "items": [
                     "Anti-Raid shows the main protection settings, trusted roles, safe domains, quarantine settings, and penalty timing.",
-                    "Anti-Nuke Risk Score shows live heat scores, saved channel multipliers, role multipliers, channel thresholds, and a reset control for active risk tracking.",
-                    "AutoMod Filters handles blocked words, link filtering, invite filtering, ignored channels, ignored roles, and repeated-match actions."
+                    "The integrated Risk Score view shows live heat scores, saved channel multipliers, role multipliers, channel thresholds, and a reset control for active risk tracking."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Anti-Raid in Module Settings.",
+                    "Choose trusted roles, safe domains, alert channels, and a quarantine role below SeanBot.",
+                    "Turn on Canary mode first so detections are logged without automatic punishment.",
+                    "Run /antiraid audit and /antiraid simulate, review false positives, then enable enforcement.",
+                    "Use burst levels, channel sensitivity, and role or channel multipliers only after the base setup behaves correctly."
                 ]
             },
             {
@@ -496,7 +770,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/antiraid register_scam [image]",
-                        "desc": "Register image attachments as instant visual scam blocks."
+                        "desc": "Register image attachments as visual scam blocks."
                     },
                     {
                         "cmd": "/antiraid unregister_scam [hash]",
@@ -520,7 +794,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/antiraid pause [minutes]",
-                        "desc": "Temporarily pause join detection during massive official events."
+                        "desc": "Temporarily pause join detection during large official events."
                     },
                     {
                         "cmd": "/antiraid simulate [level]",
@@ -563,73 +837,6 @@ const docsData = [
         ]
     },
     {
-        "id": "automod_filters",
-        "icon": "ph-funnel",
-        "title": "AutoMod Filters",
-        "subtitle": "Dashboard-managed word, link, invite, and repeated-ad filters.",
-        "content": [
-            {
-                "type": "heading",
-                "text": "What It Does"
-            },
-            {
-                "type": "text",
-                "text": "AutoMod Filters can delete or log messages that match your blocked word list, normal web links, or Discord invite links. Staff can choose ignored channels and ignored roles from the dashboard, so announcement channels, bot channels, and trusted roles do not get interrupted."
-            },
-            {
-                "type": "list",
-                "title": "Dashboard Settings",
-                "items": [
-                    "Enable or disable the filter without removing saved settings.",
-                    "Choose whether SeanBot should delete matched messages or only log them.",
-                    "Add blocked words or short phrases, one per line.",
-                    "Turn link and Discord invite filtering on separately.",
-                    "Pick ignored channels and ignored roles with checkboxes.",
-                    "Set repeated-match limits that can timeout, kick, or ban when a member keeps triggering filters."
-                ]
-            },
-            {
-                "type": "callout",
-                "icon": "!",
-                "title": "Permissions",
-                "text": "SeanBot needs Manage Messages to delete matched messages. Timeout, kick, and ban actions also require the matching Discord permissions and role hierarchy."
-            }
-        ]
-    },
-    {
-        "id": "welcome_farewell",
-        "icon": "ph-hand-waving",
-        "title": "Welcome & Farewell",
-        "subtitle": "Simple join and leave automation without using the advanced embed builder.",
-        "content": [
-            {
-                "type": "heading",
-                "text": "Overview"
-            },
-            {
-                "type": "text",
-                "text": "The Welcome & Farewell dashboard can post a welcome message when someone joins, send an optional private DM, assign selected auto roles, clean or template nicknames, and post a farewell message when someone leaves."
-            },
-            {
-                "type": "list",
-                "title": "Placeholders",
-                "items": [
-                    "`{user_mention}` pings the new member in welcome messages.",
-                    "`{user_name}` shows the member display name.",
-                    "`{user_id}` shows the Discord user ID.",
-                    "`{guild_name}` or `{server_name}` shows the server name.",
-                    "`{member_count}` shows the current server member count."
-                ]
-            },
-            {
-                "type": "callout",
-                "icon": "!",
-                "title": "Role Limits",
-                "text": "Auto roles and nickname edits follow Discord role hierarchy. SeanBot can only edit members and assign roles below SeanBot's highest role."
-            }
-        ]
-    },
-    {
         "id": "moderation",
         "icon": "ph-gavel",
         "title": "Server Moderation",
@@ -642,6 +849,19 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Maintain order across large servers with rapid enforcement actions, shadowbans, bulk message purges, and automated transcript exports."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Place SeanBot above every member and role it must moderate.",
+                    "Give staff the specific Discord permissions required for each action instead of Administrator where possible.",
+                    "Configure moderation and dashboard-action logs before staff begin using commands.",
+                    "Test kick, timeout, purge, lock, and archive behavior in a private channel with a test role."
+                ]
             },
             {
                 "type": "commands",
@@ -742,6 +962,19 @@ const docsData = [
                 "text": "Track member infractions, log warning histories, calculate active penalty points, and set automatic punishment thresholds."
             },
             {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Confirm the warnings database and Logging module are available.",
+                    "Use /modpreset set to create consistent reasons for common staff actions.",
+                    "Test /warn add on a test member, review /warn list, then clear the test warning.",
+                    "Limit warning management to trusted moderator roles through Discord command permissions and dashboard access."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
@@ -758,8 +991,16 @@ const docsData = [
                         "desc": "Clear all warning logs and reset penalty points."
                     },
                     {
-                        "cmd": "/warn preset [key]",
-                        "desc": "Issue a warning using a saved moderation preset."
+                        "cmd": "/modpreset set [key] [reason]",
+                        "desc": "Save a reusable moderation reason."
+                    },
+                    {
+                        "cmd": "/modpreset list",
+                        "desc": "List saved moderation reasons."
+                    },
+                    {
+                        "cmd": "/modpreset warn [member] [preset]",
+                        "desc": "Warn a member with a saved reason."
                     },
                     {
                         "cmd": "/staff points [member]",
@@ -863,7 +1104,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/modpreset warn [user] [key]",
-                        "desc": "Warn a user instantly using a saved preset key."
+                        "desc": "Warn a user using a saved preset key."
                     },
                     {
                         "cmd": "/appeals setup [channel]",
@@ -912,18 +1153,6 @@ const docsData = [
                     {
                         "cmd": "/suggestion close [id] [status]",
                         "desc": "Mark a suggestion Approved, Denied, or In Progress."
-                    },
-                    {
-                        "cmd": "/brand set [key] [value]",
-                        "desc": "Customize server branding headers on bot embeds."
-                    },
-                    {
-                        "cmd": "/brand view",
-                        "desc": "View active server embed branding configuration."
-                    },
-                    {
-                        "cmd": "/brand clear",
-                        "desc": "Reset embed branding back to SeanBot defaults."
                     }
                 ]
             }
@@ -953,6 +1182,20 @@ const docsData = [
                     "Give trusted voter roles higher vote weight when needed.",
                     "Choose what happens when a report passes: close only, delete the message, timeout, kick, or ban if SeanBot has permission.",
                     "Set optional daily limits for the whole server or for each member."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Public Reports and choose the public review channel and log channel.",
+                    "Choose which roles may start reports, vote, review, force a decision, or close a report.",
+                    "Set approval and decline thresholds in Voting & Thresholds; use Access & Actions only for who may perform each action.",
+                    "Submit a test report, vote, withdraw a vote, and confirm the status bar and dashboard detail view update.",
+                    "Verify approval and decline actions are recorded in the configured staff logs."
                 ]
             },
             {
@@ -1003,7 +1246,7 @@ const docsData = [
         "content": [
             {
                 "type": "heading",
-                "text": "Precision Event Reminders"
+                "text": "Event Reminders"
             },
             {
                 "type": "text",
@@ -1098,12 +1341,8 @@ const docsData = [
                         "desc": "Configure the watched channel emoji, timezone, reminder intervals, allowed reactor roles, recurrence, and who gets pinged."
                     },
                     {
-                        "cmd": "/countdown create [title] [time]",
-                        "desc": "Create a live dynamic countdown timer in chat."
-                    },
-                    {
-                        "cmd": "/countdown list",
-                        "desc": "List active countdown timers in the channel."
+                        "cmd": "/timeping schedule",
+                        "desc": "Schedule a timed ping through the guided command."
                     }
                 ]
             }
@@ -1113,7 +1352,7 @@ const docsData = [
         "id": "timezones",
         "icon": "ph-globe-stand",
         "title": "Timezones & World Clocks",
-        "subtitle": "Seamless timezone detection, comparisons, and interactive community time maps.",
+        "subtitle": "Timezone detection, comparisons, and interactive community time maps.",
         "content": [
             {
                 "type": "heading",
@@ -1236,6 +1475,18 @@ const docsData = [
                 "text": "Publish a live, auto-updating community calendar directly in your server. Members can view monthly events, upcoming tournaments, and scheduled raids."
             },
             {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Events and choose the calendar channel with /calendar set_channel.",
+                    "Confirm SeanBot can send embeds and read message history in that channel.",
+                    "Create or schedule a test event, then use /calendar view to verify it appears."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
@@ -1264,6 +1515,18 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Schedule gaming events with role signup embeds, localized event times, and strategy requirements."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Choose the raid channel with /set_raid_channel.",
+                    "Confirm event staff can create, edit, lock, and cancel raids.",
+                    "Create a short test raid and verify signup controls, reminders, and logs before announcing a real event."
+                ]
             },
             {
                 "type": "commands",
@@ -1308,7 +1571,7 @@ const docsData = [
     {
         "id": "raidpolls",
         "icon": "ph-users-three",
-        "title": "Polls",
+        "title": "Polls & Raid Rosters",
         "subtitle": "Quick reaction polls for simple votes, plus advanced raid roster polls with waitlists.",
         "content": [
             {
@@ -1404,7 +1667,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Members join a generator voice channel and SeanBot instantly creates a private, custom voice channel for them with full owner controls."
+                "text": "Members join a generator voice channel and SeanBot creates a private, custom voice channel for them with full owner controls."
             },
             {
                 "type": "heading",
@@ -1426,36 +1689,16 @@ const docsData = [
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/tempvc setup [category]",
-                        "desc": "Set up Join-to-Create generator voice channel."
+                        "cmd": "/vc claim",
+                        "desc": "Claim ownership of an eligible temporary voice channel."
                     },
                     {
-                        "cmd": "/tempvc claim",
-                        "desc": "Claim ownership of an orphaned temporary voice channel."
+                        "cmd": "/vc save",
+                        "desc": "Save the current temporary voice channel as a personal template."
                     },
                     {
-                        "cmd": "/tempvc save [template]",
-                        "desc": "Save your current temp channel setup as a template."
-                    },
-                    {
-                        "cmd": "/tempvc load [template]",
-                        "desc": "Create a new temp voice channel using a saved template."
-                    },
-                    {
-                        "cmd": "/tempvc name [new_name]",
-                        "desc": "Rename your active temporary voice channel."
-                    },
-                    {
-                        "cmd": "/tempvc limit [count]",
-                        "desc": "Set maximum member limit for your voice channel."
-                    },
-                    {
-                        "cmd": "/tempvc lock",
-                        "desc": "Lock temp channel to prevent new members joining."
-                    },
-                    {
-                        "cmd": "/tempvc unlock",
-                        "desc": "Unlock temp channel for everyone."
+                        "cmd": "/vc load",
+                        "desc": "Load a saved temporary voice channel template."
                     }
                 ]
             }
@@ -1561,20 +1804,25 @@ const docsData = [
                 "text": "Monitor chat messages, voice attendance, reactions, and command activity to automatically reward active members."
             },
             {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Create active and inactive roles and place both below SeanBot.",
+                    "Run /activity setup or use Server Counters > Activity Tracker Settings.",
+                    "Choose a threshold that matches how often your community normally participates.",
+                    "Review the first role update cycle before enabling the feature for a large member base."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
                     {
                         "cmd": "/activity setup [days]",
                         "desc": "Opt server into activity tracking and set inactivity threshold."
-                    },
-                    {
-                        "cmd": "/activity status",
-                        "desc": "View your current server activity ranking and score."
-                    },
-                    {
-                        "cmd": "/activity refresh",
-                        "desc": "Force immediate recalculation of active member roles."
                     },
                     {
                         "cmd": "/activity disable",
@@ -1597,6 +1845,20 @@ const docsData = [
             {
                 "type": "text",
                 "text": "SeanBot automatically pins messages that receive a set number of reaction emojis."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable the Engagement module.",
+                    "Set the default reaction threshold and trigger emoji.",
+                    "Exclude private, staff, or high-volume channels that should never auto-pin.",
+                    "Add channel overrides only where a different threshold is genuinely needed.",
+                    "Test with a staff message and remove the test pin afterward."
+                ]
             },
             {
                 "type": "commands",
@@ -1646,31 +1908,31 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "When a message receives star reactions (\u2b50), SeanBot posts a highlight embed to the starboard channel."
+                "text": "When a message receives star reactions (⭐), SeanBot posts a highlight embed to the starboard channel."
             },
             {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/starboard setup [channel]",
-                        "desc": "Set target starboard showcase channel."
+                        "cmd": "/star set [channel]",
+                        "desc": "Set the starboard channel and basic options."
                     },
                     {
-                        "cmd": "/starboard threshold [num]",
-                        "desc": "Set required star reactions to trigger highlight."
+                        "cmd": "/star advanced",
+                        "desc": "Configure star threshold, age, color, and self-star rules."
                     },
                     {
-                        "cmd": "/starboard channel",
-                        "desc": "Inspect currently configured starboard channel."
+                        "cmd": "/star info",
+                        "desc": "View the active starboard channel and settings."
                     },
                     {
-                        "cmd": "/starboard stats server",
-                        "desc": "View server-wide starboard statistics."
+                        "cmd": "/star stats dashboard",
+                        "desc": "Open server starboard statistics."
                     },
                     {
-                        "cmd": "/starboard stats user [member]",
-                        "desc": "View starboard statistics for a specific member."
+                        "cmd": "/star stats leaderboard",
+                        "desc": "View the starboard member leaderboard."
                     }
                 ]
             }
@@ -1679,8 +1941,8 @@ const docsData = [
     {
         "id": "emojis",
         "icon": "ph-smiley-sticker",
-        "title": "Emoji Suite & Locks",
-        "subtitle": "Track emoji usage, role-lock custom emojis, and manage chat cooldowns.",
+        "title": "Emoji Management & Suggestions",
+        "subtitle": "Collect emoji uploads, review them safely, track usage, and manage emoji access.",
         "content": [
             {
                 "type": "heading",
@@ -1688,7 +1950,26 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Track chat and reaction usage to purge unused emojis and restrict custom emojis to specific roles."
+                "text": "Members can upload an emoji suggestion with a name and reason. Staff review the same queue from Discord or Dashboard > Emoji Manager. Approving a suggestion creates the guild emoji, records the reviewer, logs the action, and can notify the submitter by direct message."
+            },
+            {
+                "type": "heading",
+                "text": "Emoji Suggestion Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Give SeanBot the Create Expressions permission and make sure it can Send Messages, Embed Links, and Attach Files in the review channel.",
+                    "Run /emoji suggestion_setup and choose the staff review channel. You can also choose a dedicated activity log channel and reviewer role.",
+                    "Open Dashboard > Emoji Manager to add multiple reviewer roles, change the member cooldown, enable result DMs, or review the queue.",
+                    "Members run /emoji suggest with a 2-32 character name, an image attachment, and an optional reason.",
+                    "Reviewers use Approve and add or Reject on the Discord card, or review the same item in Emoji Manager. Rejections from Discord require a reason.",
+                    "Use Log Config > Staff > Emoji Suggestion to route workflow events into your normal server logs. Dashboard changes are also recorded in Dashboard Logs."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "Uploads must be PNG, JPEG, GIF, or WebP and no larger than 256 KiB. SeanBot validates the actual file bytes and stores a durable copy so dashboard approval still works after Discord's temporary attachment link expires. Each member can have up to three suggestions awaiting review."
             },
             {
                 "type": "commands",
@@ -1701,6 +1982,18 @@ const docsData = [
                     {
                         "cmd": "/emojis top_users",
                         "desc": "Show which users type emojis the most."
+                    },
+                    {
+                        "cmd": "/emoji suggest [name] [image] [reason]",
+                        "desc": "Submit an emoji image for staff review. The reason is optional."
+                    },
+                    {
+                        "cmd": "/emoji suggestion_setup [review_channel] [log_channel] [reviewer_role]",
+                        "desc": "Enable or disable suggestions and configure the review workflow. Requires Manage Server."
+                    },
+                    {
+                        "cmd": "/emoji suggestion_queue [status]",
+                        "desc": "List pending, approved, rejected, or all suggestions. Available to expression managers and configured reviewer roles."
                     },
                     {
                         "cmd": "/emoji lock [emoji] [role]",
@@ -1743,6 +2036,19 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Track community reaction activity, ping users who reacted to a message, and sweep bot reactions."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Emoji Analytics if you want historical reaction statistics.",
+                    "Ensure SeanBot can Read Message History and Add Reactions in participating channels.",
+                    "Use the reaction commands for statistics; use Reaction Pings only when you intend to notify reactors.",
+                    "Configure ignored channels before collecting data from private areas."
+                ]
             },
             {
                 "type": "commands",
@@ -1814,24 +2120,20 @@ const docsData = [
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/reactionping menu",
-                        "desc": "Open reaction ping management panel."
+                        "cmd": "/autoping type [method]",
+                        "desc": "Choose direct mentions or a temporary role."
                     },
                     {
-                        "cmd": "/reactionping type [method]",
-                        "desc": "Set ping method to temp roles or direct mentions."
+                        "cmd": "/autoping roles",
+                        "desc": "Choose staff roles allowed to ping reactors."
                     },
                     {
-                        "cmd": "/reactionping roles",
-                        "desc": "Manage roles permitted to trigger reaction pings."
+                        "cmd": "/autoping limits",
+                        "desc": "Set reactor notification limits."
                     },
                     {
-                        "cmd": "/reactionping limits [max]",
-                        "desc": "Adjust maximum user limit for reaction pings."
-                    },
-                    {
-                        "cmd": "/reactionping authors",
-                        "desc": "Configure author permission checks for reaction pings."
+                        "cmd": "/autoping authors",
+                        "desc": "Control whether message authors may ping their own reactors."
                     }
                 ]
             }
@@ -2068,6 +2370,19 @@ const docsData = [
                 "text": "Set custom text messages sent automatically when another member mentions you in chat."
             },
             {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Each member can use /r set to define their mention reply, then /r toggle to pause or resume it.",
+                    "Use /r remove to delete the saved reply.",
+                    "Administrators can clear an inappropriate reply with /admin clear.",
+                    "Use server rules and logging to prevent replies from being used for harassment or unwanted mentions."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
@@ -2084,8 +2399,8 @@ const docsData = [
                         "desc": "Enable or disable automated mention reply."
                     },
                     {
-                        "cmd": "/r admin clear [user]",
-                        "desc": "Clear automated mention reply for a user (Admin only)."
+                        "cmd": "/admin clear [user]",
+                        "desc": "Delete another member's saved reply."
                     }
                 ]
             }
@@ -2110,12 +2425,8 @@ const docsData = [
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/remindme [time] [text]",
-                        "desc": "Set a personal reminder with natural date parsing."
-                    },
-                    {
                         "cmd": "/reminders",
-                        "desc": "View and cancel active personal reminders."
+                        "desc": "Open your reminder manager."
                     },
                     {
                         "cmd": "Remind Me (Context Menu)",
@@ -2144,12 +2455,8 @@ const docsData = [
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/translate [text] [to_lang]",
-                        "desc": "Translate custom text into target language."
-                    },
-                    {
-                        "cmd": "/translate channel [lang]",
-                        "desc": "Enable automatic message translation in channel."
+                        "cmd": "Apps > Translate",
+                        "desc": "Right-click a message and translate it from Discord's Apps menu."
                     },
                     {
                         "cmd": "Translate Message (Context Menu)",
@@ -2176,24 +2483,7 @@ const docsData = [
             {
                 "type": "commands",
                 "title": "Commands Reference",
-                "items": [
-                    {
-                        "cmd": "/threadwatch add [thread]",
-                        "desc": "Add thread to auto-unarchive watch list."
-                    },
-                    {
-                        "cmd": "/threadwatch list",
-                        "desc": "View all actively monitored server threads."
-                    },
-                    {
-                        "cmd": "/threadwatch remove [thread]",
-                        "desc": "Remove thread from watch list."
-                    },
-                    {
-                        "cmd": "/threadwatch setup",
-                        "desc": "Configure thread watcher default intervals."
-                    }
-                ]
+                "items": []
             }
         ]
     },
@@ -2210,6 +2500,19 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Rank members by voice dedication, track unbroken session records, and generate weekly graphs."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Voice Analytics in Module Settings.",
+                    "Confirm the bot can View Channels and observe voice state updates in the channels you want measured.",
+                    "Exclude or restrict private channels according to your server privacy policy.",
+                    "Allow enough activity to collect before expecting meaningful leaderboards, loyalty, streak, or graph results."
+                ]
             },
             {
                 "type": "commands",
@@ -2234,18 +2537,6 @@ const docsData = [
                     {
                         "cmd": "/voice graph [member]",
                         "desc": "Render historical weekly voice activity chart."
-                    },
-                    {
-                        "cmd": "/voice claim",
-                        "desc": "Claim ownership of an orphaned voice channel."
-                    },
-                    {
-                        "cmd": "/voice kick [member]",
-                        "desc": "Kick a member out of your temp voice channel."
-                    },
-                    {
-                        "cmd": "/voice ban [member]",
-                        "desc": "Ban a member from joining your voice channel."
                     }
                 ]
             }
@@ -2270,20 +2561,20 @@ const docsData = [
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/stats setup",
-                        "desc": "Set up live counter channels (Total Members, Humans, Bots)."
+                        "cmd": "/counter setup",
+                        "desc": "Create counters from the guided setup."
                     },
                     {
                         "cmd": "/stats growth",
                         "desc": "Generate visual server member growth chart."
                     },
                     {
-                        "cmd": "/stats channels",
-                        "desc": "View status of all configured stat counter channels."
+                        "cmd": "/counter list",
+                        "desc": "List active server counter channels."
                     },
                     {
-                        "cmd": "/stats refresh",
-                        "desc": "Force immediate refresh of all live counter channel names."
+                        "cmd": "/stats overview",
+                        "desc": "View current server statistics."
                     }
                 ]
             }
@@ -2302,6 +2593,19 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Set a specific role automatically granted to users who rejoin within a 2-year window."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Create the returning-member role and place it below SeanBot.",
+                    "Run /returning_role set with the role to assign when eligible members rejoin.",
+                    "Use /returning_role view to confirm the saved role.",
+                    "Test with a controlled account before relying on the automation."
+                ]
             },
             {
                 "type": "commands",
@@ -2497,8 +2801,8 @@ const docsData = [
                         "desc": "Generate a realistic fake Discord quote screenshot."
                     },
                     {
-                        "cmd": "/slap [user]",
-                        "desc": "Slap a user with fun randomized items."
+                        "cmd": "/slap user [member]",
+                        "desc": "Send a playful slap interaction to a member."
                     },
                     {
                         "cmd": "/slap stats",
@@ -2527,6 +2831,18 @@ const docsData = [
                 "text": "General utility commands providing bot latency metrics and RAM usage."
             },
             {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "No module setup is required for basic server lookup commands.",
+                    "Use /dashboard for configuration and /staff diagnose when a feature cannot access a channel or role.",
+                    "Use /serveradmin helpers only after checking Discord role hierarchy and audit logging."
+                ]
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
@@ -2551,128 +2867,55 @@ const docsData = [
         ]
     },
     {
-        "id": "roshambo",
-        "icon": "ph-fire",
-        "title": "Roshambo Battle Royale",
-        "subtitle": "Multi-player elemental and spirit school battle game.",
+        "id": "discord_apps",
+        "icon": "ph-cursor-click",
+        "title": "Right-Click Apps",
+        "subtitle": "Use SeanBot directly from Discord message and member context menus.",
         "content": [
             {
                 "type": "heading",
-                "text": "Overview"
+                "text": "How to Open an App"
             },
             {
-                "type": "text",
-                "text": "Multiplayer Rock-Paper-Scissors style battle royales based on Wizard101 schools."
-            },
-            {
-                "type": "commands",
-                "title": "Commands Reference",
+                "type": "list",
                 "items": [
-                    {
-                        "cmd": "/duel",
-                        "desc": "Open a lobby to host a Roshambo Battle Royale match."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "fun",
-        "icon": "ph-smiley",
-        "title": "Cat Facts & Quotes",
-        "subtitle": "Cat facts, cute pictures, and fake Discord quote generators.",
-        "content": [
-            {
-                "type": "heading",
-                "text": "Cat Command Center"
-            },
-            {
-                "type": "commands",
-                "title": "Cat Commands",
-                "items": [
-                    {
-                        "cmd": "/cat fact",
-                        "desc": "Get a random cat fact."
-                    },
-                    {
-                        "cmd": "/cat image",
-                        "desc": "Get a random cat picture."
-                    },
-                    {
-                        "cmd": "/cat gif",
-                        "desc": "Get a random animated cat GIF."
-                    },
-                    {
-                        "cmd": "/cat search [breed]",
-                        "desc": "Search cat pictures by breed."
-                    },
-                    {
-                        "cmd": "/cat says [text]",
-                        "desc": "Generate image of cat saying custom text."
-                    }
+                    "Right-click a message or member, choose Apps, then select the SeanBot action.",
+                    "On mobile, press and hold the message or open the member menu before choosing Apps.",
+                    "The same module, role, channel, and Discord permission checks used by slash commands still apply.",
+                    "Available apps include reporting, warnings, reaction tools, translation, reminders, time conversion, timezone lookup, event creation, and Wizard information."
                 ]
             },
             {
-                "type": "heading",
-                "text": "Discord Quotes & Slaps"
-            },
-            {
                 "type": "commands",
-                "title": "Fun Commands",
+                "title": "Common Apps",
                 "items": [
                     {
-                        "cmd": "/discquote [user] [text]",
-                        "desc": "Generate a realistic fake Discord quote screenshot."
+                        "cmd": "Apps > Report User",
+                        "desc": "Open a private user report form."
                     },
                     {
-                        "cmd": "/slap [user]",
-                        "desc": "Slap a user with fun randomized items."
+                        "cmd": "Apps > Vote Report",
+                        "desc": "Start a public vote report from a message."
                     },
                     {
-                        "cmd": "/slap stats",
-                        "desc": "View your slap statistics and rank."
+                        "cmd": "Apps > Translate",
+                        "desc": "Translate the selected message."
                     },
                     {
-                        "cmd": "/slap leaderboard",
-                        "desc": "View top slappers in the server."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "general_sys",
-        "icon": "ph-cpu",
-        "title": "System Diagnostics",
-        "subtitle": "System monitoring, hardware statistics, and general server tools.",
-        "content": [
-            {
-                "type": "heading",
-                "text": "Overview"
-            },
-            {
-                "type": "text",
-                "text": "General utility commands providing bot latency metrics and RAM usage."
-            },
-            {
-                "type": "commands",
-                "title": "Commands Reference",
-                "items": [
-                    {
-                        "cmd": "/serverinfo",
-                        "desc": "Display server statistics including member count and roles."
+                        "cmd": "Apps > Remind Me",
+                        "desc": "Create a reminder from a message."
                     },
                     {
-                        "cmd": "/ping",
-                        "desc": "Check bot API latency in milliseconds."
+                        "cmd": "Apps > Convert Time",
+                        "desc": "Convert times found in the selected message."
                     },
                     {
-                        "cmd": "/invite",
-                        "desc": "Get official SeanBot server invite links."
+                        "cmd": "Apps > Ping Reactors",
+                        "desc": "Notify eligible members who reacted."
                     },
                     {
-                        "cmd": "/8ball [question]",
-                        "desc": "Ask the Magic 8-Ball a question."
+                        "cmd": "Apps > React with emoji",
+                        "desc": "Add an emoji through SeanBot."
                     }
                 ]
             }

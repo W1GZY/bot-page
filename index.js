@@ -389,6 +389,7 @@ function initDocsPage() {
             'quickstart': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
             'core': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
             'prefix': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
+            'server_admin': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
 
             'w101': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
             'beastmoon': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
@@ -399,10 +400,9 @@ function initDocsPage() {
             'strategy': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
             'tapestry': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
             'wizard_info': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'recap_tracker': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
 
             'antiraid': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'automod_filters': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'welcome_farewell': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'moderation': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
             'warn_cog': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
             'logging': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
@@ -439,6 +439,7 @@ function initDocsPage() {
             'roshambo': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
             'fun': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
             'general_sys': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
+            'discord_apps': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
             'faq': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' }
         };
 
@@ -513,6 +514,7 @@ function initDocsPage() {
                     navLink.addEventListener('click', (e) => {
                         e.preventDefault();
                         activateDoc(doc.id);
+                        history.replaceState(null, '', `#${doc.id}`);
                     });
                     grpDiv.appendChild(navLink);
                 });
@@ -542,6 +544,7 @@ function initDocsPage() {
                     sidebarLink.addEventListener('click', (e) => {
                         e.preventDefault();
                         activateDoc(doc.id);
+                        history.replaceState(null, '', `#${doc.id}`);
                         if (window.innerWidth <= 1000) {
                             const sidebar = document.getElementById('sidebar');
                             const overlay = document.getElementById('sidebarOverlay');
@@ -656,7 +659,10 @@ function initDocsPage() {
             const btn = e.target.closest('.doc-nav-btn');
             if (btn) {
                 const targetDocId = btn.getAttribute('data-doc');
-                if (targetDocId) activateDoc(targetDocId);
+                if (targetDocId) {
+                    activateDoc(targetDocId);
+                    history.replaceState(null, '', `#${targetDocId}`);
+                }
                 return;
             }
 
@@ -723,7 +729,9 @@ function initDocsPage() {
             }
         });
 
-        if (docsData.length > 0) activateDoc(docsData[0].id);
+        const requestedDoc = window.location.hash.replace(/^#/, '');
+        const initialDoc = docsData.some((doc) => doc.id === requestedDoc) ? requestedDoc : docsData[0]?.id;
+        if (initialDoc) activateDoc(initialDoc);
     }
 
     // Commands Page Renderer
@@ -732,6 +740,16 @@ function initDocsPage() {
         const name = (cmdName || '').toLowerCase();
         const cat = (categoryId || '').toLowerCase();
 
+        if (name.includes('/serveradmin')) return 'server_admin';
+        if (name.includes('/thread ') || name.includes('/relay ') || name.includes('/identity ') || name.includes('teamup_federation')) return 'federation';
+        if (name.includes('/publicreport') || name === '/report' || name.includes('vote report')) return 'reports';
+        if (name.includes('/appeals ') || name.includes('/suggestion ') || name.includes('/modpreset ')) return 'staff_tools';
+        if (name.includes('/poll ') || name.includes('/raidpoll')) return 'raidpolls';
+        if (name.includes('/counter ') || name === '/stats overview' || name === '/stats growth') return 'stats';
+        if (name.includes('/sticky ')) return 'sticky_messages';
+        if (name.includes('/autoping ') || name.includes('ping reactors')) return 'reaction_pings';
+        if (name.includes('/returning_role ')) return 'returning_roles';
+        if (name.includes('/w101 ')) return 'recap_tracker';
         if (name.includes('w101') || name.includes('calc') || name.includes('damage')) return 'w101';
         if (name.includes('beastmoon')) return 'beastmoon';
         if (name.includes('pet')) return 'pet_tome';
@@ -803,17 +821,17 @@ function initDocsPage() {
             const cardsHTML = sortedCommands.map(cmd => {
                 const docId = getDocModuleForCommand(cmd.name, category.id);
                 return `
-                <div class="cmd-card" onclick="switchTab('docs'); setTimeout(()=>activateDoc('${docId}'), 50);" style="cursor: pointer; transition: all var(--transition-fast);" title="Click to view ${cmd.name} documentation">
+                <a class="cmd-card" href="docs.html#${docId}" style="cursor: pointer; transition: all var(--transition-fast); text-decoration: none;" title="Open the related setup guide for ${cmd.name}">
                     <div class="cmd-header">
                         <p class="cmd-name">${cmd.name}</p>
                         <div class="badge-container" style="display: flex; align-items: center; gap: 8px;">
                             <span class="badge ${cmd.type}">${cmd.badge}</span>
                             ${cmd.isNew ? '<span class="badge new">New!</span>' : ''}
-                            <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 3px;"><i class="ph ph-book-open"></i> Docs ➔</span>
+                            <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 3px;"><i class="ph ph-book-open"></i> Setup guide</span>
                         </div>
                     </div>
                     <p class="cmd-desc">${cmd.desc}</p>
-                </div>
+                </a>
             `;
             }).join('');
 
