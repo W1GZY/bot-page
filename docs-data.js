@@ -225,7 +225,7 @@ const docsData = [
                     {
                         "cmd": "/levelscale [item] [level]",
                         "desc": "Calculate exact gear stat scaling across lower level tiers."
-                    }
+                    },
                     {
                         "cmd": "/statcap statcaps find",
                         "desc": "View statcap by level."
