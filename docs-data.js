@@ -3,8 +3,8 @@ const docsData = [
     {
         "id": "quickstart",
         "icon": "ph-rocket-launch",
-        "title": "Quick Start: Set Up SeanBot from A to Z",
-        "subtitle": "A practical first-install checklist for permissions, modules, logging, security, staff access, and testing.",
+        "title": "Quick Start: Set Up SeanBot",
+        "subtitle": "A practical install checklist for permissions, modules, logging, security, staff access, and testing.",
         "content": [
             {
                 "type": "heading",
@@ -15,7 +15,6 @@ const docsData = [
                 "items": [
                     "Use a Discord account with Manage Server. Server ownership or Administrator is recommended for the first setup.",
                     "Create a private staff channel for testing commands and a private log channel such as #seanbot-logs.",
-                    "Decide which existing roles are administrators, moderators, support staff, event staff, and ordinary members.",
                     "Keep Discord role hierarchy in mind: SeanBot can only manage members and roles below its highest role."
                 ]
             },
@@ -27,9 +26,8 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Invite SeanBot from the official website and select the server you want to configure.",
-                    "Open Server Settings > Roles and move the SeanBot role above every role it must assign, remove, quarantine, mute, or manage.",
-                    "Do not remove View Channel, Send Messages, Embed Links, Attach Files, Read Message History, or Use Application Commands from channels where the bot is expected to work.",
-                    "Add feature-specific permissions only where needed. Create Expressions is required for approved emoji suggestions; Manage Roles is required for role automation."
+                    "Open Server Settings > Roles and move the SeanBot role above every role it must assign, higher the better.",
+                    "Giving the asked permissions from start to bot is the best practice. Do not remove permissions if you dont want the bot to break or give unexplainable errors."
                 ]
             },
             {
@@ -67,7 +65,7 @@ const docsData = [
                 "items": [
                     "Sign in with Discord, choose your server, and open Module Settings.",
                     "New servers start with optional modules disabled. Enable only the pages and features you intend to configure.",
-                    "Open Server Access before inviting other staff into the dashboard. Assign page access and individual actions to trusted roles using least privilege.",
+                    "Open Server Access before inviting other staff into the dashboard. Role Hierarchy for dashboard is, Administrator: Full Access > Manage Server: Server Access Settings.",
                     "Use Dashboard Logs to confirm who changed settings, deleted records, approved requests, or performed dashboard actions."
                 ]
             },
