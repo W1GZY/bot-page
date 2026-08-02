@@ -124,20 +124,6 @@ const docsData = [
                 ]
             },
             {
-                "type": "heading",
-                "text": "8. Final Verification"
-            },
-            {
-                "type": "list",
-                "items": [
-                    "Run /staff diagnose again after configuration.",
-                    "Test one member command, one moderator command, one dashboard change, one approval workflow, and one scheduled or automated feature.",
-                    "Verify the bot cannot manage roles above its own role and that ordinary members cannot access staff-only dashboard actions.",
-                    "Confirm logs identify the actor, action, target, and result in normal language.",
-                    "Review Module Settings and disable anything you are not using."
-                ]
-            },
-            {
                 "type": "callout",
                 "icon": "!",
                 "title": "If a command does not appear",
@@ -157,7 +143,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Optional features are controlled per server. Disabling a module hides its dashboard page and blocks its protected API actions; it does not delete saved configuration. Re-enable the module to continue using the existing settings."
+                "text": "Optional features are controlled per server. Disabling a module hides its dashboard page and blocks its actions; it does not delete saved configuration. Re-enable the module to continue using the existing settings."
             },
             {
                 "type": "list",
@@ -173,14 +159,12 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Server Access delegates dashboard pages and individual actions to Discord roles. A role can receive read-only access to a page without receiving approval, deletion, or configuration actions."
+                "text": "Server Access delegates dashboard pages and individual actions to Manage Server roles. A role can receive read-only access to a page without receiving approval, deletion, or configuration actions."
             },
             {
                 "type": "list",
                 "items": [
                     "Keep full administrator access limited to server administrators.",
-                    "Give support roles only ticket actions, reviewers only their queue actions, and event staff only event or scheduling controls.",
-                    "Test delegated access with a non-administrator account before relying on it.",
                     "Review Dashboard Logs regularly and remove access when a staff role changes purpose."
                 ]
             },
@@ -220,11 +204,11 @@ const docsData = [
         "content": [
             {
                 "type": "heading",
-                "text": "Damage & Buff Calculation Engine"
+                "text": "Damage & Buff Calculator"
             },
             {
                 "type": "text",
-                "text": "Calculate expected damage for raids and regular combat. Model multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy."
+                "text": "Calculate expected damage for raids and regular combat. Multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy."
             },
             {
                 "type": "commands",
@@ -242,6 +226,19 @@ const docsData = [
                         "cmd": "/levelscale [item] [level]",
                         "desc": "Calculate exact gear stat scaling across lower level tiers."
                     }
+                    {
+                        "cmd": "/statcap statcaps find",
+                        "desc": "View statcap by level."
+                    },
+                    {
+                        "cmd": "/statcap statcaps offschool",
+                        "desc": "View statcap for offschooling."
+                    },
+                    {
+                        "cmd": "/statcap statcaps main",
+                        "desc": "View statcap for your main school."
+                    },
+                    
                 ]
             },
             {
@@ -274,11 +271,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/deck show [code]",
-                        "desc": "Render a visual deck spread from a compact web share code."
+                        "desc": "View a deck from another user or from a shared deck code."
                     },
                     {
                         "cmd": "/deck lookup [code]",
-                        "desc": "Inspect card quantities and school breakdowns for any deck code."
+                        "desc": "View a deck from another user or from a shared deck code."
                     }
                 ]
             }
@@ -296,7 +293,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Track your Beastmoon Hunt and Monster Mayhem form tiers, estimate Lunari and Idol progress toward Tier 5, sync form data from the web converter, and post public tier-up announcements to a configured channel."
+                "text": "Track your Beastmoon Hunt and Monster Mayhem form tiers, estimate Lunari and Idol progress toward Tier 5, and post public tier-up announcements to a configured channel."
             },
             {
                 "type": "commands",
@@ -304,11 +301,11 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/bm stats",
-                        "desc": "Open the interactive Beastmoon form spell and stats browser."
+                        "desc": "Open the Beastmoon form spell and stats browser."
                     },
                     {
                         "cmd": "/bm add",
-                        "desc": "Launch the interactive Beastmoon Form Manager to log tier progress."
+                        "desc": "Launch the Beastmoon Form Add function for tier progress."
                     },
                     {
                         "cmd": "/bm quick_add [form] [school] [tier]",
@@ -320,7 +317,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/bm forms",
-                        "desc": "Show your saved Beastmoon forms and unlock tier chart buttons."
+                        "desc": "Show your saved Beastmoon forms and unlock tier chart."
                     },
                     {
                         "cmd": "/bm leaderboard",
@@ -405,7 +402,7 @@ const docsData = [
         "id": "pet_tome",
         "icon": "ph-book-bookmark",
         "title": "W101: Pet Tome Database",
-        "subtitle": "Wizard101 pet stats, talent pools, sources, wow factor, and hatching details.",
+        "subtitle": "Wizard101 pet hatching details.",
         "content": [
             {
                 "type": "heading",
@@ -413,7 +410,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Search the complete pet encyclopedia to inspect base stats, wow factors, hatching permissions, and talent pools."
+                "text": "Look up hatching information for any pet."
             },
             {
                 "type": "commands",
@@ -457,7 +454,7 @@ const docsData = [
         "id": "teamup_w101",
         "icon": "ph-users-four",
         "title": "W101: Dungeon Team-Ups",
-        "subtitle": "Automated dungeon LFG lobbies with one-click signups and private voice spawning.",
+        "subtitle": "Automated dungeon LFG lobbies with one-click signups.",
         "content": [
             {
                 "type": "heading",
@@ -465,7 +462,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Eliminate waiting at dungeon gates. Post interactive Team-Up boards for Waterworks, Darkmoor, or Novus raids. Players join with one click, select their school, and get auto-created voice channels when full."
+                "text": "Eliminate waiting at dungeon gates. Post Team-Up boards for Waterworks, Darkmoor, or raids. Players join with one click, select their school, and get auto-created voice channels when full."
             },
             {
                 "type": "commands",
@@ -473,10 +470,10 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/teamup create",
-                        "desc": "Open an interactive modal form to post a new dungeon Team-Up lobby."
+                        "desc": "Open an form to post a new dungeon Team-Up lobby."
                     },
                     {
-                        "cmd": "/teamup quick [dungeon] [realm]",
+                        "cmd": "/teamup quick [dungeon] [required players]",
                         "desc": "Post a Team-Up request for a specific dungeon."
                     },
                     {
@@ -484,8 +481,8 @@ const docsData = [
                         "desc": "Display all open Team-Up lobbies actively looking for players."
                     },
                     {
-                        "cmd": "/teamup edit [team_id]",
-                        "desc": "Modify dungeon settings, realm, or required school slots."
+                        "cmd": "/teamup edit",
+                        "desc": "Edit your Team-Up request."
                     },
                     {
                         "cmd": "/teamup extend [minutes]",
@@ -511,7 +508,7 @@ const docsData = [
         "id": "value_reagent",
         "icon": "ph-coins",
         "title": "W101: Treasure Card Values",
-        "subtitle": "Treasure Card value lookups from the configured community value sheet.",
+        "subtitle": "Treasure Card value lookups from the configured community values.",
         "content": [
             {
                 "type": "heading",
@@ -519,7 +516,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Look up Treasure Card values by name. The bot refreshes its value cache from the configured sheet and displays the matching school and value."
+                "text": "Look up Treasure Card values by name."
             },
             {
                 "type": "commands",
@@ -655,7 +652,7 @@ const docsData = [
         "id": "server_admin",
         "icon": "ph-wrench",
         "title": "Server Administration Helpers",
-        "subtitle": "Manage modules, roles, channels, and controlled bot messages without leaving Discord.",
+        "subtitle": "Manage modules, roles, channels, and bot messages without leaving Discord.",
         "content": [
             {
                 "type": "heading",
@@ -1453,48 +1450,6 @@ const docsData = [
                     {
                         "cmd": "`8 PM EST`",
                         "desc": "Wrap a time in backticks or a code block to have SeanBot reply with a Discord timestamp."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "calendar",
-        "icon": "ph-calendar",
-        "title": "Community Calendar",
-        "subtitle": "Real-time auto-updating community event dashboard and schedule manager.",
-        "content": [
-            {
-                "type": "heading",
-                "text": "Live Event Dashboard"
-            },
-            {
-                "type": "text",
-                "text": "Publish a live, auto-updating community calendar directly in your server. Members can view monthly events, upcoming tournaments, and scheduled raids."
-            },
-            {
-                "type": "heading",
-                "text": "Setup & Verification"
-            },
-            {
-                "type": "list",
-                "items": [
-                    "Enable Events and choose the calendar channel with /calendar set_channel.",
-                    "Confirm SeanBot can send embeds and read message history in that channel.",
-                    "Create or schedule a test event, then use /calendar view to verify it appears."
-                ]
-            },
-            {
-                "type": "commands",
-                "title": "Commands Reference",
-                "items": [
-                    {
-                        "cmd": "/calendar view",
-                        "desc": "View current event calendar manually in chat."
-                    },
-                    {
-                        "cmd": "/calendar set_channel [channel]",
-                        "desc": "Set up live auto-updating event calendar dashboard."
                     }
                 ]
             }
@@ -2932,14 +2887,6 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Ensure SeanBot was granted the `applications.commands` scope when invited."
-            },
-            {
-                "type": "heading",
-                "text": "How do I grant permissions for Anti-Raid or Moderation?"
-            },
-            {
-                "type": "text",
-                "text": "Make sure SeanBot's role is placed high in the Server Settings role hierarchy."
             }
         ]
     },
