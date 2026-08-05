@@ -2937,5 +2937,174 @@ const docsData = [
                 ]
             }
         ]
+    },
+    {
+        "id": "global_enforcement",
+        "icon": "ph-globe-hemisphere-west",
+        "title": "Global Enforcement: Synchronized Punishments",
+        "subtitle": "Punish a member across every server you manage with one action, and let ban appeal approvals unban them everywhere at once.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What Global Enforcement Does"
+            },
+            {
+                "type": "text",
+                "text": "Global Enforcement turns the servers you administer into a punishment network. Instead of manually kicking, timing out, or banning a member server by server, you run one action against a scope — all linked servers or the exact servers you pick — and SeanBot applies it everywhere, recording per-server results for audit."
+            },
+            {
+                "type": "heading",
+                "text": "Who Can Use It (Server Access)"
+            },
+            {
+                "type": "text",
+                "text": "The permission model is built around your existing Discord access. To link a server to a network, to run a global action in it, or to mirror an appeal unban into it, the acting staff member must hold Administrator or Manage Server in that server. The dashboard only lists servers where that access exists, and the backend re-checks the live Discord permissions before every execution. Delegated staff can be added to a network for management convenience, but they still need Administrator or Manage Server in every target server to execute."
+            },
+            {
+                "type": "heading",
+                "text": "Creating a Network"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Open Module Settings and enable Global Enforcement.",
+                    "Open the Global Enforcement page and create a network — it starts with the servers you currently manage.",
+                    "Link servers from the network settings card. Only servers where you have Administrator or Manage Server appear as options.",
+                    "Optionally add delegated staff user IDs and choose defaults: the default punishment, timeout length, whether a reason is required, and whether the punished member receives a DM.",
+                    "The Discord command /gpunish network create <name> creates a network starting with the current server, and /gpunish network add <guild_id> links more."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Running Global Actions"
+            },
+            {
+                "type": "text",
+                "text": "Actions supported: timeout, kick, ban, unban, and remove timeout. Scope is either all linked servers or the subset you check in the picker. Every action is written to the network history on the dashboard, and each affected server receives a Moderation log entry under the Global Punishment type (routed in Log Config)."
+            },
+            {
+                "type": "commands",
+                "title": "Global Enforcement Commands",
+                "items": [
+                    {
+                        "cmd": "/gpunish network create <name>",
+                        "desc": "Create a network starting with the current server."
+                    },
+                    {
+                        "cmd": "/gpunish network add <guild_id>",
+                        "desc": "Link another server where you have Administrator or Manage Server."
+                    },
+                    {
+                        "cmd": "/gpunish network remove <guild_id>",
+                        "desc": "Remove a server from your network."
+                    },
+                    {
+                        "cmd": "/gpunish network list",
+                        "desc": "List your networks with server counts and appeal sync state."
+                    },
+                    {
+                        "cmd": "/gpunish run <user> <timeout|kick|ban|unban|untimeout> [duration_minutes] [scope] [reason]",
+                        "desc": "Apply a punishment across the network (scope: all or comma-separated server IDs)."
+                    },
+                    {
+                        "cmd": "/gpunish appealsync <on|off> [server_ids]",
+                        "desc": "Toggle ban appeal unban sync and choose its server scope."
+                    },
+                    {
+                        "cmd": "/gpunish history [limit]",
+                        "desc": "Show recent global actions with per-server results."
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Ban Appeal Integration"
+            },
+            {
+                "type": "text",
+                "text": "When staff approve a ban appeal in any network server, the approval is mirrored as an unban across the appeal sync scope — every linked server, or the exact subset you selected on the Global Enforcement page. This prevents a member from being freed in one server while staying banned in the rest of the network. Appeal review channels are still configured per server on the Ban Appeals page; Global Enforcement only controls where the approved unban is mirrored. Mirror events appear in the network history with the Ban appeal approval source and are logged in each affected server."
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Safety first",
+                "text": "SeanBot only mirrors an unban to servers where the user actually has an active ban. Failed actions (missing permissions, hierarchy conflicts, user not present) are reported per server in the action history instead of being silently skipped."
+            }
+        ]
+    },
+    {
+        "id": "antiping",
+        "icon": "ph-at",
+        "title": "Anti-Ping: Customizable Ping Protection",
+        "subtitle": "Block mention floods, protect important roles and users, stop ghost pings, and enforce your own ping rules.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What Anti-Ping Protects"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Per-message limits: maximum user mentions and maximum role mentions in a single message.",
+                    "@everyone / @here blocking when you do not want mass notifications at all.",
+                    "A per-author ping cooldown that stops members from repeatedly pinging the same people.",
+                    "Protected roles and users that may never be pinged — attempts are blocked, logged, and can DM the protected person.",
+                    "Ghost ping protection: messages that mention users and are deleted within a short window are detected and can be actively punished, not just logged.",
+                    "Exemptions for trusted roles, channels, and users, so automation and staff workflows are never caught."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "How It Combines with Anti-Raid & Logging"
+            },
+            {
+                "type": "text",
+                "text": "Anti-Ping fills the gap between the two existing layers instead of duplicating them. Anti-Raid's mass-mention detector watches for floods and applies raid policies (quarantine, progressive timeouts) when many mentions arrive in a window. Logging records ghost pings and high mention volume passively. Anti-Ping adds the per-message rules staff actually configure — how many pings are allowed, who is protected, who is exempt, and what happens on violation. All three share the same Logging pipeline: Anti-Ping events are routed under the Security category (Anti-Ping log type) in Log Config, and Anti-Raid alerts stay in their own security channels."
+            },
+            {
+                "type": "heading",
+                "text": "Enforcement & Safety"
+            },
+            {
+                "type": "text",
+                "text": "Violations can be logged only, send the member a DM warning, delete the message, apply a timeout, kick, or ban. Staff and members whose highest role is at or above SeanBot's role are never punished, and neither is the bot itself — those attempts are reported in the log. Daily statistics on the dashboard show the reason breakdown, ghost ping counts, protected ping attempts, and the top offenders."
+            },
+            {
+                "type": "commands",
+                "title": "Anti-Ping Commands",
+                "items": [
+                    {
+                        "cmd": "/antiping toggle <on|off>",
+                        "desc": "Enable or disable Anti-Ping for the server."
+                    },
+                    {
+                        "cmd": "/antiping status",
+                        "desc": "Show the current limits, cooldown, and actions."
+                    },
+                    {
+                        "cmd": "/antiping protect <role|user>",
+                        "desc": "Protect a role or user from being pinged."
+                    },
+                    {
+                        "cmd": "/antiping unprotect <role|user>",
+                        "desc": "Remove protection from a role or user."
+                    },
+                    {
+                        "cmd": "/antiping exempt <role|channel|user>",
+                        "desc": "Exempt a role, channel, or user from all Anti-Ping rules."
+                    },
+                    {
+                        "cmd": "/antiping unexempt <role|channel|user>",
+                        "desc": "Remove an exemption."
+                    }
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Start gently",
+                "text": "Enable Anti-Ping with the Log only action first, review the block reasons on the dashboard for a few days, then raise enforcement to delete or timeout once the rules match your community."
+            }
+        ]
     }
 ];
