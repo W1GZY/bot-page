@@ -3143,7 +3143,8 @@ const docsData = [
                 "title": "How It Works",
                 "items": [
                     "Trap text channels — any message posted in the channel triggers a hit.",
-                    "One-click deploy — /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
+                    "One-click deploy — the dashboard Deploy Trap Channel button or /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
+                    "Quick new-account preset — one button arms the New Account Filter at 30 days so only fresh accounts are flagged.",
                     "Exemptions — roles, users, and channels can be excluded from detection at any time."
                 ]
             },
@@ -3164,10 +3165,11 @@ const docsData = [
                 "items": [
                     "Enable Honeypot in Module Settings and open the dashboard Honeypot page.",
                     "Start with the Log only action and Hits Before Action set to 1.",
-                    "Mark one or two low-traffic text channels as traps, or run /honeypot deploy to create one instantly.",
+                    "Click Deploy Trap Channel on the dashboard (or run /honeypot deploy) to create a trap channel instantly without leaving the page.",
                     "Keep trap channels visible to @everyone — that visibility is what attracts the bots. Place them somewhere out of the way.",
                     "Let it run for a few days and review the trigger breakdown and top offenders on the dashboard.",
                     "Raise enforcement to timeout or ban once you are comfortable with the results.",
+                    "Use the Quick preset button under New Account Filter to flag only accounts under 30 days old.",
                     "Check Log Config and route the Honeypot log type (Security category) to a staff channel so every hit is recorded."
                 ]
             },
