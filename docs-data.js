@@ -740,7 +740,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Protect your community against raid bots, scam links, suspicious webhooks, invite abuse, and fast message bursts. SeanBot tracks temporary heat scores, supports canary mode for log-only testing, and can use quarantine roles when the bot has the needed role permissions."
+                "text": "Protect your community against raid bots, scam links, suspicious webhooks, invite abuse, and fast message bursts. SeanBot tracks temporary heat scores, supports canary mode for log-only testing, and can use quarantine roles when the bot has the needed role permissions. Scam bots that hide in voice-channel text chats are caught too: a member whose very first message in a voice channel's text chat carries two or more images is treated as a hard detection, with its own configurable response policy (Human Verification quarantine by default) in the Threat Action Policies section."
             },
             {
                 "type": "list",
@@ -3128,7 +3128,7 @@ const docsData = [
         "id": "honeypot",
         "icon": "ph-magnet",
         "title": "Honeypot: Catch Bots & Scammers",
-        "subtitle": "Decoy trap channels, bait messages, and voice channels that flag malicious users before they reach your members.",
+        "subtitle": "Decoy trap text channels that flag malicious users before they reach your members.",
         "content": [
             {
                 "type": "heading",
@@ -3136,16 +3136,15 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Automated scam bots scan Discord servers for keywords like \"free nitro\" and \"giveaway\" to find victims. The Honeypot turns that behavior against them: staff set up trap surfaces that look irresistible to a scammer, and anyone who interacts with them is flagged and optionally punished. Your real members never see the traps, because honest users do not reply to free-Nitro bait or join suspicious-looking voice channels."
+                "text": "Automated scam bots scan Discord servers for keywords like \"free nitro\" and \"giveaway\" to find victims. The Honeypot turns that behavior against them: staff mark one or more trap text channels, and anyone who posts a message in a trap channel is flagged and optionally punished. Real members never interact with the traps, because honest users do not post in a random channel named after a free-Nitro giveaway."
             },
             {
                 "type": "list",
-                "title": "Trap Surfaces",
+                "title": "How It Works",
                 "items": [
                     "Trap text channels — any message posted in the channel triggers a hit.",
-                    "Bait messages — an embed (default: free Nitro bait) that flags anyone who replies to or reacts to it. The bait channel is armed as a trap channel automatically.",
-                    "Trap voice channels — joining the channel triggers a hit.",
-                    "One-click deploy — /honeypot deploy creates a trap channel with armed bait in a single step."
+                    "One-click deploy — /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
+                    "Exemptions — roles, users, and channels can be excluded from detection at any time."
                 ]
             },
             {
@@ -3165,8 +3164,8 @@ const docsData = [
                 "items": [
                     "Enable Honeypot in Module Settings and open the dashboard Honeypot page.",
                     "Start with the Log only action and Hits Before Action set to 1.",
-                    "Choose the trap surfaces: pick trap text channels, add voice trap channels, and deploy one or two bait messages.",
-                    "Keep trap channels visible to @everyone — that visibility is what attracts the bots. Place them somewhere low-traffic.",
+                    "Mark one or two low-traffic text channels as traps, or run /honeypot deploy to create one instantly.",
+                    "Keep trap channels visible to @everyone — that visibility is what attracts the bots. Place them somewhere out of the way.",
                     "Let it run for a few days and review the trigger breakdown and top offenders on the dashboard.",
                     "Raise enforcement to timeout or ban once you are comfortable with the results.",
                     "Check Log Config and route the Honeypot log type (Security category) to a staff channel so every hit is recorded."
@@ -3175,8 +3174,8 @@ const docsData = [
             {
                 "type": "callout",
                 "icon": "!",
-                "title": "Real members touching bait are flagged too",
-                "text": "Anyone who posts in a trap channel, replies to a bait embed, reacts to it, or joins a trap voice channel is treated as suspicious. Use exemptions for bots you control and test accounts, and tell your staff which channels are traps so nobody gets caught by accident."
+                "title": "Real members posting in traps are flagged too",
+                "text": "Anyone who posts in a trap channel is treated as suspicious. Use exemptions for bots you control and test accounts, and tell your staff which channels are traps so nobody gets caught by accident."
             },
             {
                 "type": "commands",
@@ -3188,7 +3187,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/honeypot status",
-                        "desc": "Show trap channels, armed bait, actions, and detection toggles."
+                        "desc": "Show trap channels, action, and detection settings."
                     },
                     {
                         "cmd": "/honeypot add_channel [channel]",
@@ -3199,24 +3198,8 @@ const docsData = [
                         "desc": "Unmark a trap text channel."
                     },
                     {
-                        "cmd": "/honeypot add_vc [channel]",
-                        "desc": "Mark a voice channel as a trap."
-                    },
-                    {
-                        "cmd": "/honeypot remove_vc [channel]",
-                        "desc": "Unmark a trap voice channel."
-                    },
-                    {
-                        "cmd": "/honeypot bait [channel] [label]",
-                        "desc": "Post and arm a bait message in a channel."
-                    },
-                    {
-                        "cmd": "/honeypot remove_bait [message_id]",
-                        "desc": "Disarm and delete a bait message."
-                    },
-                    {
-                        "cmd": "/honeypot deploy [name] [label]",
-                        "desc": "Create a trap channel with armed bait in one step."
+                        "cmd": "/honeypot deploy [name]",
+                        "desc": "Create a trap channel and arm it as a honeypot in one step."
                     },
                     {
                         "cmd": "/honeypot exempt <role|user|channel>",

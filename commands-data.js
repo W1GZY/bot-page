@@ -471,20 +471,8 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/honeypot add_vc",
-            "desc": "Mark a voice channel as a honeypot trap channel.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot bait",
-            "desc": "Post and arm a bait message that flags anyone who replies or reacts.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
             "name": "/honeypot deploy",
-            "desc": "Create a trap channel with armed bait in one step.",
+            "desc": "Create a trap channel and arm it as a honeypot in one step.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -495,20 +483,8 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/honeypot remove_bait",
-            "desc": "Disarm and delete a bait message.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
             "name": "/honeypot remove_channel",
             "desc": "Unmark a honeypot trap text channel.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot remove_vc",
-            "desc": "Unmark a honeypot trap voice channel.",
             "badge": "Manage Server",
             "type": "perm"
         },
