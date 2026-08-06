@@ -3,8 +3,8 @@ const docsData = [
     {
         "id": "quickstart",
         "icon": "ph-rocket-launch",
-        "title": "Quick Start: Set Up SeanBot",
-        "subtitle": "A practical install checklist for permissions, modules, logging, security, staff access, and testing.",
+        "title": "Quick Start: Set Up SeanBot from A to Z",
+        "subtitle": "A practical first-install checklist for permissions, modules, logging, security, staff access, and testing.",
         "content": [
             {
                 "type": "heading",
@@ -15,6 +15,7 @@ const docsData = [
                 "items": [
                     "Use a Discord account with Manage Server. Server ownership or Administrator is recommended for the first setup.",
                     "Create a private staff channel for testing commands and a private log channel such as #seanbot-logs.",
+                    "Decide which existing roles are administrators, moderators, support staff, event staff, and ordinary members.",
                     "Keep Discord role hierarchy in mind: SeanBot can only manage members and roles below its highest role."
                 ]
             },
@@ -26,8 +27,9 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Invite SeanBot from the official website and select the server you want to configure.",
-                    "Open Server Settings > Roles and move the SeanBot role above every role it must assign, higher the better.",
-                    "Giving the asked permissions from start to bot is the best practice. Do not remove permissions if you dont want the bot to break or give unexplainable errors."
+                    "Open Server Settings > Roles and move the SeanBot role above every role it must assign, remove, quarantine, mute, or manage.",
+                    "Do not remove View Channel, Send Messages, Embed Links, Attach Files, Read Message History, or Use Application Commands from channels where the bot is expected to work.",
+                    "Add feature-specific permissions only where needed. Create Expressions is required for approved emoji suggestions; Manage Roles is required for role automation."
                 ]
             },
             {
@@ -65,7 +67,7 @@ const docsData = [
                 "items": [
                     "Sign in with Discord, choose your server, and open Module Settings.",
                     "New servers start with optional modules disabled. Enable only the pages and features you intend to configure.",
-                    "Open Server Access before inviting other staff into the dashboard. Role Hierarchy for dashboard is, Administrator: Full Access > Manage Server: Server Access Settings.",
+                    "Open Server Access before inviting other staff into the dashboard. Assign page access and individual actions to trusted roles using least privilege.",
                     "Use Dashboard Logs to confirm who changed settings, deleted records, approved requests, or performed dashboard actions."
                 ]
             },
@@ -124,6 +126,20 @@ const docsData = [
                 ]
             },
             {
+                "type": "heading",
+                "text": "8. Final Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Run /staff diagnose again after configuration.",
+                    "Test one member command, one moderator command, one dashboard change, one approval workflow, and one scheduled or automated feature.",
+                    "Verify the bot cannot manage roles above its own role and that ordinary members cannot access staff-only dashboard actions.",
+                    "Confirm logs identify the actor, action, target, and result in normal language.",
+                    "Review Module Settings and disable anything you are not using."
+                ]
+            },
+            {
                 "type": "callout",
                 "icon": "!",
                 "title": "If a command does not appear",
@@ -143,7 +159,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Optional features are controlled per server. Disabling a module hides its dashboard page and blocks its actions; it does not delete saved configuration. Re-enable the module to continue using the existing settings."
+                "text": "Optional features are controlled per server. Disabling a module hides its dashboard page and blocks its protected API actions; it does not delete saved configuration. Re-enable the module to continue using the existing settings."
             },
             {
                 "type": "list",
@@ -159,12 +175,14 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Server Access delegates dashboard pages and individual actions to Manage Server roles. A role can receive read-only access to a page without receiving approval, deletion, or configuration actions."
+                "text": "Server Access delegates dashboard pages and individual actions to Discord roles. A role can receive read-only access to a page without receiving approval, deletion, or configuration actions."
             },
             {
                 "type": "list",
                 "items": [
                     "Keep full administrator access limited to server administrators.",
+                    "Give support roles only ticket actions, reviewers only their queue actions, and event staff only event or scheduling controls.",
+                    "Test delegated access with a non-administrator account before relying on it.",
                     "Review Dashboard Logs regularly and remove access when a staff role changes purpose."
                 ]
             },
@@ -237,8 +255,7 @@ const docsData = [
                     {
                         "cmd": "/statcap statcaps main",
                         "desc": "View statcap for your main school."
-                    },
-                    
+                    }
                 ]
             },
             {
@@ -3104,6 +3121,112 @@ const docsData = [
                 "icon": "!",
                 "title": "Start gently",
                 "text": "Enable Anti-Ping with the Log only action first, review the block reasons on the dashboard for a few days, then raise enforcement to delete or timeout once the rules match your community."
+            }
+        ]
+    },
+    {
+        "id": "honeypot",
+        "icon": "ph-magnet",
+        "title": "Honeypot: Catch Bots & Scammers",
+        "subtitle": "Decoy trap channels, bait messages, and voice channels that flag malicious users before they reach your members.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What a Honeypot Does"
+            },
+            {
+                "type": "text",
+                "text": "Automated scam bots scan Discord servers for keywords like \"free nitro\" and \"giveaway\" to find victims. The Honeypot turns that behavior against them: staff set up trap surfaces that look irresistible to a scammer, and anyone who interacts with them is flagged and optionally punished. Your real members never see the traps, because honest users do not reply to free-Nitro bait or join suspicious-looking voice channels."
+            },
+            {
+                "type": "list",
+                "title": "Trap Surfaces",
+                "items": [
+                    "Trap text channels — any message posted in the channel triggers a hit.",
+                    "Bait messages — an embed (default: free Nitro bait) that flags anyone who replies to or reacts to it. The bait channel is armed as a trap channel automatically.",
+                    "Trap voice channels — joining the channel triggers a hit.",
+                    "One-click deploy — /honeypot deploy creates a trap channel with armed bait in a single step."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Enforcement & Safety"
+            },
+            {
+                "type": "text",
+                "text": "Each member accumulates hits per day. Set Hits Before Action to 1 for an immediate response, or raise it to warn repeat offenders first. Enforcement can be log only, a DM warning, a timeout, a kick, or a ban. Triggering messages can be deleted automatically, flagged members can be DM'd, and an optional New Account Filter only flags accounts younger than the configured age. Staff, exempt roles, exempt users, and exempt channels are never flagged, and members whose role is at or above SeanBot's role are never punished."
+            },
+            {
+                "type": "heading",
+                "text": "Beginner Setup"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Enable Honeypot in Module Settings and open the dashboard Honeypot page.",
+                    "Start with the Log only action and Hits Before Action set to 1.",
+                    "Choose the trap surfaces: pick trap text channels, add voice trap channels, and deploy one or two bait messages.",
+                    "Keep trap channels visible to @everyone — that visibility is what attracts the bots. Place them somewhere low-traffic.",
+                    "Let it run for a few days and review the trigger breakdown and top offenders on the dashboard.",
+                    "Raise enforcement to timeout or ban once you are comfortable with the results.",
+                    "Check Log Config and route the Honeypot log type (Security category) to a staff channel so every hit is recorded."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Real members touching bait are flagged too",
+                "text": "Anyone who posts in a trap channel, replies to a bait embed, reacts to it, or joins a trap voice channel is treated as suspicious. Use exemptions for bots you control and test accounts, and tell your staff which channels are traps so nobody gets caught by accident."
+            },
+            {
+                "type": "commands",
+                "title": "Honeypot Commands",
+                "items": [
+                    {
+                        "cmd": "/honeypot toggle <on|off>",
+                        "desc": "Enable or disable the Honeypot for the server."
+                    },
+                    {
+                        "cmd": "/honeypot status",
+                        "desc": "Show trap channels, armed bait, actions, and detection toggles."
+                    },
+                    {
+                        "cmd": "/honeypot add_channel [channel]",
+                        "desc": "Mark a text channel as a trap."
+                    },
+                    {
+                        "cmd": "/honeypot remove_channel [channel]",
+                        "desc": "Unmark a trap text channel."
+                    },
+                    {
+                        "cmd": "/honeypot add_vc [channel]",
+                        "desc": "Mark a voice channel as a trap."
+                    },
+                    {
+                        "cmd": "/honeypot remove_vc [channel]",
+                        "desc": "Unmark a trap voice channel."
+                    },
+                    {
+                        "cmd": "/honeypot bait [channel] [label]",
+                        "desc": "Post and arm a bait message in a channel."
+                    },
+                    {
+                        "cmd": "/honeypot remove_bait [message_id]",
+                        "desc": "Disarm and delete a bait message."
+                    },
+                    {
+                        "cmd": "/honeypot deploy [name] [label]",
+                        "desc": "Create a trap channel with armed bait in one step."
+                    },
+                    {
+                        "cmd": "/honeypot exempt <role|user|channel>",
+                        "desc": "Exempt a role, user, or channel from all Honeypot rules."
+                    },
+                    {
+                        "cmd": "/honeypot unexempt <role|user|channel>",
+                        "desc": "Remove an exemption."
+                    }
+                ]
             }
         ]
     }

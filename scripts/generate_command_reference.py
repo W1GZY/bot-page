@@ -44,6 +44,7 @@ PATH_CATEGORY_RULES = [
     ("thread_watcher", "federation"),
     ("federated_teamups", "federation"),
     ("antiraid", "security"),
+    ("honeypot", "security"),
     ("logging_voice_analytics", "server"),
     ("logging", "security"),
     ("moderation", "moderation"),

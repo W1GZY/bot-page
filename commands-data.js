@@ -463,6 +463,72 @@ const commandsDatabase = [{
             "desc": "Quarantine a member, optionally for duration",
             "badge": "Kick Members",
             "type": "perm"
+        },
+        {
+            "name": "/honeypot add_channel",
+            "desc": "Mark a text channel as a honeypot trap channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot add_vc",
+            "desc": "Mark a voice channel as a honeypot trap channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot bait",
+            "desc": "Post and arm a bait message that flags anyone who replies or reacts.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot deploy",
+            "desc": "Create a trap channel with armed bait in one step.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot exempt",
+            "desc": "Exempt a role, user, or channel from all Honeypot rules.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot remove_bait",
+            "desc": "Disarm and delete a bait message.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot remove_channel",
+            "desc": "Unmark a honeypot trap text channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot remove_vc",
+            "desc": "Unmark a honeypot trap voice channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot status",
+            "desc": "Show the current Honeypot configuration.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot toggle",
+            "desc": "Enable or disable the Honeypot for the server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot unexempt",
+            "desc": "Remove a Honeypot exemption.",
+            "badge": "Manage Server",
+            "type": "perm"
         }
     ]
 },{
