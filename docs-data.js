@@ -3132,16 +3132,16 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Automated scam bots scan Discord servers for keywords like \"free nitro\" and \"giveaway\" to find victims. The Honeypot turns that behavior against them: staff mark one or more trap text channels, and anyone who posts a message in a trap channel is flagged and optionally punished. Real members never interact with the traps, because honest users do not post in a random channel named after a free-Nitro giveaway."
+                "text": "Automated scam bots scan Discord servers for keywords like \"free nitro\" and \"giveaway\" to find victims. The Honeypot turns that behavior against them: staff mark one or more trap text channels, and anyone who posts a message in a trap channel is flagged and immediately acted on. Real members never interact with the traps, because honest users do not post in a random channel named after a free-Nitro giveaway."
             },
             {
                 "type": "list",
                 "title": "How It Works",
                 "items": [
-                    "Trap text channels — any message posted in the channel triggers a hit.",
+                    "Trap text channels — any message posted in the channel triggers the action immediately.",
                     "One-click deploy — the dashboard Deploy Trap Channel button or /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
-                    "Quick new-account preset — one button arms the New Account Filter at 30 days so only fresh accounts are flagged.",
-                    "Exemptions — roles, users, and channels can be excluded from detection at any time."
+                    "Who to Flag — flag anyone who posts in a trap, or only brand-new accounts.",
+                    "Exemptions — roles and users can be excluded from detection at any time."
                 ]
             },
             {
@@ -3150,7 +3150,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Each member accumulates hits per day. Set Hits Before Action to 1 for an immediate response, or raise it to warn repeat offenders first. Enforcement can be log only, a DM warning, a timeout, a kick, or a ban. Triggering messages can be deleted automatically, flagged members can be DM'd, and an optional New Account Filter only flags accounts younger than the configured age. Staff, exempt roles, exempt users, and exempt channels are never flagged, and members whose role is at or above SeanBot's role are never punished."
+                "text": "Any message in a trap channel triggers the chosen action immediately — there is no hit counter. Enforcement can be Quarantine (the recommended default, which isolates the member in a verification channel until they verify), a timeout, a kick, a ban, a DM warning, or log only. Triggering messages can be deleted automatically, and an optional New Account Filter only flags accounts younger than the configured age. Staff, exempt roles, and exempt users are never flagged, and members whose role is at or above SeanBot's role are never punished."
             },
             {
                 "type": "heading",
@@ -3160,12 +3160,12 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Enable Honeypot in Module Settings and open the dashboard Honeypot page.",
-                    "Start with the Log only action and Hits Before Action set to 1.",
+                    "Start with the Log only action to watch hits before raising enforcement.",
                     "Click Deploy Trap Channel on the dashboard (or run /honeypot deploy) to create a trap channel instantly without leaving the page.",
                     "Keep trap channels visible to @everyone — that visibility is what attracts the bots. Place them somewhere out of the way.",
-                    "Let it run for a few days and review the trigger breakdown and top offenders on the dashboard.",
-                    "Raise enforcement to timeout or ban once you are comfortable with the results.",
-                    "Use the Quick preset button under New Account Filter to flag only accounts under 30 days old.",
+                    "Let it run for a few days and review the trigger breakdown on the dashboard.",
+                    "Switch to Quarantine, timeout, or ban once you are comfortable with the results.",
+                    "Set Who to Flag to Only new accounts to flag accounts under 30 days old.",
                     "Check Log Config and route the Honeypot log type (Security category) to a staff channel so every hit is recorded."
                 ]
             },
@@ -3200,11 +3200,11 @@ const docsData = [
                         "desc": "Create a trap channel and arm it as a honeypot in one step."
                     },
                     {
-                        "cmd": "/honeypot exempt <role|user|channel>",
-                        "desc": "Exempt a role, user, or channel from all Honeypot rules."
+                        "cmd": "/honeypot exempt <role|user>",
+                        "desc": "Exempt a role or user from all Honeypot rules."
                     },
                     {
-                        "cmd": "/honeypot unexempt <role|user|channel>",
+                        "cmd": "/honeypot unexempt <role|user>",
                         "desc": "Remove an exemption."
                     }
                 ]
