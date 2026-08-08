@@ -3140,7 +3140,7 @@ const docsData = [
                 "items": [
                     "Trap text channels — any message posted in the channel triggers the action immediately.",
                     "One-click deploy — the dashboard Deploy Trap Channel button or /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
-                    "Who to Flag — flag anyone who posts in a trap, or only brand-new accounts.",
+                    "Who to Flag — flag anyone, only new accounts, only members without a profile picture, or a combination.",
                     "Exemptions — roles and users can be excluded from detection at any time."
                 ]
             },
@@ -3150,7 +3150,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Any message in a trap channel triggers the chosen action immediately — there is no hit counter. Enforcement can be Quarantine (the recommended default, which isolates the member in a verification channel until they verify), a timeout, a kick, a ban, a DM warning, or log only. Triggering messages can be deleted automatically, and an optional New Account Filter only flags accounts younger than the configured age. Staff, exempt roles, and exempt users are never flagged, and members whose role is at or above SeanBot's role are never punished."
+                "text": "Any message in a trap channel triggers the chosen action immediately — there is no hit counter. Enforcement can be Quarantine (the recommended default, which isolates the member in a verification channel until they verify), a timeout, a kick, a ban, a DM warning, or log only. Triggering messages can be deleted automatically, and the Who to Flag mode can limit hits to new accounts, members without a profile picture, or both. Staff, exempt roles, and exempt users are never flagged, and members whose role is at or above SeanBot's role are never punished."
             },
             {
                 "type": "heading",
