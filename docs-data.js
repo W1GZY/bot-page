@@ -740,7 +740,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Protect your community against raid bots, scam links, suspicious webhooks, invite abuse, and fast message bursts. SeanBot tracks temporary heat scores, supports canary mode for log-only testing, and can use quarantine roles when the bot has the needed role permissions. Scam bots that hide in voice-channel text chats are caught too: a member whose very first message in a voice channel's text chat carries two or more images is treated as a hard detection, with its own configurable response policy (Human Verification quarantine by default) in the Threat Action Policies section."
+                "text": "Protect your community against raid bots, scam links, suspicious webhooks, invite abuse, and fast message bursts. SeanBot tracks temporary heat scores, supports canary mode for log-only testing, and can use quarantine roles when the bot has the needed role permissions. Scam bots that hide in voice-channel text chats are caught too: a member whose very first message in a voice channel's text chat carries two or more images is treated as a hard detection, with its own configurable response policy (quarantine by default) in the Threat Action Policies section."
             },
             {
                 "type": "list",
@@ -761,7 +761,7 @@ const docsData = [
                     "Choose trusted roles, safe domains, alert channels, and a quarantine role below SeanBot.",
                     "Turn on Canary mode first so detections are logged without automatic punishment.",
                     "Run /antiraid audit and /antiraid simulate, review false positives, then enable enforcement.",
-                    "Use burst levels, channel sensitivity, and role or channel multipliers only after the base setup behaves correctly."
+                    "Use channel sensitivity and role or channel multipliers only after the base setup behaves correctly."
                 ]
             },
             {
@@ -770,7 +770,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/antiraid dashboard",
-                        "desc": "Display live threat indicators, burst levels, and active security rules."
+                        "desc": "Display live threat indicators, multipliers, and active security rules."
                     },
                     {
                         "cmd": "/antiraid audit",
@@ -797,12 +797,12 @@ const docsData = [
                         "desc": "Grant trusted roles bypass immunity from security checks."
                     },
                     {
-                        "cmd": "/antiraid quarantine [user]",
-                        "desc": "Isolate a suspect user into restricted quarantine holding."
+                        "cmd": "/antiraid quarantine [role] [enable]",
+                        "desc": "Open the dedicated Quarantine setup."
                     },
                     {
                         "cmd": "/antiraid unquarantine [user]",
-                        "desc": "Release a user from quarantine and restore original roles."
+                        "desc": "Restore a quarantined user's saved roles."
                     },
                     {
                         "cmd": "/antiraid pause [minutes]",
@@ -831,10 +831,6 @@ const docsData = [
                     {
                         "cmd": "/antiraid multiplier_role [role]",
                         "desc": "Adjust threat sensitivity multipliers for unverified roles."
-                    },
-                    {
-                        "cmd": "/antiraid burstlevel [level]",
-                        "desc": "Set message frequency threshold for burst detection."
                     },
                     {
                         "cmd": "/antiraid channelsensitivity [channel]",

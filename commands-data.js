@@ -273,12 +273,6 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/antiraid burstlevel",
-            "desc": "Set concurrent threats tracked limit to defend memory.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
             "name": "/antiraid canary",
             "desc": "Toggles Canary mode (Logging Only).",
             "badge": "Administrator",
@@ -322,7 +316,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid quarantine",
-            "desc": "Configure a locked jail quarantine mode for threat isolation.",
+            "desc": "Open the dedicated Quarantine setup.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -358,7 +352,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid unquarantine",
-            "desc": "Restores strip-safe roles to a quarantined user.",
+            "desc": "Restore a quarantined user's saved roles.",
             "badge": "Administrator",
             "type": "perm"
         },
