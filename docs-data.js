@@ -2316,6 +2316,225 @@ const docsData = [
             },
             {
                 "type": "heading",
+                "text": "All Button Action Types and Their Payloads"
+            },
+            {
+                "type": "text",
+                "text": "Every button you add has two fields that decide what it does: the Action Type (what kind of behavior) and the small URL / Action Payload box below it (the exact instructions). This is the complete reference for every action type, the payload format, and what happens when someone clicks."
+            },
+            {
+                "type": "commands",
+                "title": "Quick Copy: Button Payloads",
+                "items": [
+                    {
+                        "cmd": "role:ROLE_ID",
+                        "desc": "Toggle Role - adds if missing, removes if present. List several IDs with spaces."
+                    },
+                    {
+                        "cmd": "role_add:ROLE_ID",
+                        "desc": "Add Role - only ever adds the role."
+                    },
+                    {
+                        "cmd": "role_remove:ROLE_ID",
+                        "desc": "Remove Role - only ever removes the role."
+                    },
+                    {
+                        "cmd": "msg:TEXT",
+                        "desc": "Private Reply - visible only to the person who clicked."
+                    },
+                    {
+                        "cmd": "public_msg:TEXT",
+                        "desc": "Public Reply - visible to everyone in the channel."
+                    },
+                    {
+                        "cmd": "dm:TEXT",
+                        "desc": "DM Reply - sends the clicker a direct message."
+                    },
+                    {
+                        "cmd": "embed_reply:Title|Text",
+                        "desc": "Private Embed Reply - ephemeral gold embed with a title and description."
+                    },
+                    {
+                        "cmd": "random_msg:Option A|Option B|Option C",
+                        "desc": "Random Reply - picks one option at random."
+                    },
+                    {
+                        "cmd": "dismiss",
+                        "desc": "Dismiss Message - removes the bot message when clicked."
+                    }
+                ]
+            },
+            {
+                "type": "list",
+                "title": "Action type reference",
+                "items": [
+                    "Open Link - payload: a URL, for example https://sean.bot.nu. The style automatically switches to Link Out and the button opens that page in the browser. No bot permissions needed and nothing is sent to the server.",
+                    "Toggle Role - payload: role:ROLE_ID, for example role:123456789012345678. Adds the role if the member does not have it and removes it if they do. You can list several roles in one payload, for example role:111 222 333.",
+                    "Add Role - payload: role_add:ROLE_ID. Only ever adds the role; clicking again does nothing. Several role IDs can be listed the same way.",
+                    "Remove Role - payload: role_remove:ROLE_ID. Only ever removes the role. Several role IDs can be listed the same way.",
+                    "Role Menu Button - no payload text needed. A panel appears under the button with Roles to give and Roles to remove checkboxes. SeanBot saves the choice and one click applies every checked role at once.",
+                    "Private Reply - payload: msg:TEXT, for example msg:Thanks for clicking!. Shows the text only to the person who clicked.",
+                    "Public Reply - payload: public_msg:TEXT. Posts the text in the channel where the button was clicked, visible to everyone.",
+                    "DM Reply - payload: dm:TEXT. Sends the text to the clicker as a direct message. If their DMs are closed, they get a friendly notice instead of an error.",
+                    "Private Embed Reply - payload: embed_reply:Title|Text, for example embed_reply:Server Guidelines|Thank you for reading. Shows a small gold embed with a title and description, only to the person who clicked.",
+                    "Random Reply - payload: random_msg:Option A|Option B|Option C. Picks one of the options at random and shows it to the clicker. Great for fun giveaways or daily rewards.",
+                    "Dismiss Message - payload: dismiss. Removes the bot's message entirely when clicked. Good for closing welcome screens or temporary notices.",
+                    "Custom Action ID - payload: any ID string, for example btn_action. Only useful when another part of your setup listens for that exact ID; a plain custom ID does nothing by default and is meant for advanced integrations."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Ticket panel buttons are different",
+                "text": "When the embed is a Ticket Creation Panel, buttons do not use action types or payloads at all - the button STYLE decides the behavior. Primary, Success, Danger, and Secondary buttons each open a ticket (use different styles or labels to make one ticket per department), while Link Out opens a URL instead. SeanBot generates the internal ticket action IDs for you, so ignore the Custom Action ID field on ticket panels and never use Link style for a ticket-opening button."
+            },
+            {
+                "type": "heading",
+                "text": "Setting Up a Button Step by Step"
+            },
+            {
+                "type": "list",
+                "title": "How to configure any button",
+                "items": [
+                    "In the Buttons step, add a button (or click an existing one to edit it).",
+                    "Pick a style: Blurple, Grey, Green, Red, or Link Out. Link Out is only for Open Link buttons.",
+                    "Choose the Action Type from the dropdown.",
+                    "Fill in the URL / Action Payload box using the formats above, or pick from the Quick Action Presets & Role Picker dropdown right below it - it fills in ready-made payloads and lists every server role for the role actions.",
+                    "Choose which row the button sits on. Each row holds up to five buttons.",
+                    "Publish the embed, or re-publish an existing one to apply the change."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Role buttons and permissions",
+                "text": "For any role button to work, SeanBot's role must be placed above the roles it manages in Server Settings > Roles. If a role change fails, the clicker gets a message saying SeanBot lacks permission or role position."
+            },
+            {
+                "type": "heading",
+                "text": "Example Embed Recipes"
+            },
+            {
+                "type": "text",
+                "text": "Ready-made button layouts you can copy and adapt. In each recipe, replace the placeholder role IDs with your own roles using the Role Picker dropdown under the payload box."
+            },
+            {
+                "type": "heading",
+                "text": "Recipe 1: Rules Panel"
+            },
+            {
+                "type": "text",
+                "text": "A rules message every member should read. One button hands out the Member role once they agree, another opens the full rules page, and a close button hides the message when they are done."
+            },
+            {
+                "type": "list",
+                "title": "Buttons to add",
+                "items": [
+                    "Agree and Get Access - Primary style - Toggle Role - payload role:YOUR_MEMBER_ROLE. Grants the Member role the first time and does nothing if they already have it.",
+                    "Read Full Rules - Secondary style - Open Link - payload the URL of your rules page or a pastebin.",
+                    "Done Reading - Secondary style - Dismiss Message - payload dismiss. Removes the message so it does not clutter the channel."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Copy payloads for this recipe",
+                "items": [
+                    {
+                        "cmd": "role:YOUR_MEMBER_ROLE",
+                        "desc": "Agree and Get Access - Toggle Role"
+                    },
+                    {
+                        "cmd": "dismiss",
+                        "desc": "Done Reading - Dismiss Message"
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Recipe 2: Giveaway"
+            },
+            {
+                "type": "text",
+                "text": "A fun event panel. Entering adds an entry role so staff can roll a winner at the end, a random button gives instant luck, and a leave button lets members back out anytime."
+            },
+            {
+                "type": "list",
+                "title": "Buttons to add",
+                "items": [
+                    "Enter Giveaway - Success style - Add Role - payload role_add:YOUR_ENTRY_ROLE. Only ever adds, so entering twice cannot create duplicates.",
+                    "Try Your Luck - Primary style - Random Reply - payload random_msg:You won 100 Gold Coins!|Try again next time!|You found a rare gem!.",
+                    "How to Enter - Secondary style - Private Reply - payload msg:React to this message with the giveaway emoji. Winners are picked when the giveaway ends.",
+                    "Leave Giveaway - Secondary style - Remove Role - payload role_remove:YOUR_ENTRY_ROLE."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Copy payloads for this recipe",
+                "items": [
+                    {
+                        "cmd": "role_add:YOUR_ENTRY_ROLE",
+                        "desc": "Enter Giveaway - Add Role"
+                    },
+                    {
+                        "cmd": "random_msg:You won 100 Gold Coins!|Try again next time!|You found a rare gem!",
+                        "desc": "Try Your Luck - Random Reply"
+                    },
+                    {
+                        "cmd": "role_remove:YOUR_ENTRY_ROLE",
+                        "desc": "Leave Giveaway - Remove Role"
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Recipe 3: Support Hub"
+            },
+            {
+                "type": "text",
+                "text": "A help panel that points members to the right team. As a Ticket Creation Panel, the colored buttons open a ticket channel each; as a normal embed, swap them for reply buttons instead."
+            },
+            {
+                "type": "list",
+                "title": "Buttons to add (ticket panel)",
+                "items": [
+                    "General Support - Primary style - opens a Support ticket. No payload needed on a ticket panel.",
+                    "Report a Bug - Danger style - opens a Bug Report ticket.",
+                    "Appeal a Punishment - Success style - opens an Appeal ticket.",
+                    "Knowledge Base - Link Out style - Open Link - payload the URL of your help page or wiki."
+                ]
+            },
+            {
+                "type": "list",
+                "title": "Buttons to add (normal embed instead)",
+                "items": [
+                    "General Support - Primary style - DM Reply - payload dm:Please describe your issue and a staff member will reply shortly.",
+                    "Report a Bug - Danger style - Private Embed Reply - payload embed_reply:Bug Report|Please tell us what happened, what you expected, and any error text.",
+                    "Appeal a Punishment - Success style - DM Reply - payload dm:Appeals are reviewed in order. Include your case ID if you have one.",
+                    "Knowledge Base - Link Out style - Open Link - payload the URL of your help page or wiki."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Copy payloads for this recipe (normal embed)",
+                "items": [
+                    {
+                        "cmd": "dm:Please describe your issue and a staff member will reply shortly.",
+                        "desc": "General Support - DM Reply"
+                    },
+                    {
+                        "cmd": "embed_reply:Bug Report|Please tell us what happened, what you expected, and any error text.",
+                        "desc": "Report a Bug - Private Embed Reply"
+                    }
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Making recipes your own",
+                "text": "The styles and labels are suggestions - the important part is the payload. Pick the style that fits your look, write a label that makes sense for your server, and swap the role IDs and texts for your own. Use the Quick Action Presets dropdown to fill payloads without typing."
+            },
+            {
+                "type": "heading",
                 "text": "Viewing Embeds You Already Posted"
             },
             {
