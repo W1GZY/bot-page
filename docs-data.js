@@ -2290,6 +2290,119 @@ const docsData = [
                 ]
             },
             {
+                "type": "heading",
+                "text": "Role Buttons: Toggle, Add, or Remove"
+            },
+            {
+                "type": "text",
+                "text": "Whether a role button toggles or only adds is decided per button by the Action Type you choose in the Buttons step - not by Discord. Every button remembers its own behavior."
+            },
+            {
+                "type": "list",
+                "title": "Button action types",
+                "items": [
+                    "Toggle Role: adds the role if the member does not have it and removes it if they already do. Best for opt-in / opt-out choices such as ping roles.",
+                    "Add Role: only ever adds the role; clicking again does nothing. Best for one-way sign-ups such as a contest-entered role.",
+                    "Remove Role: only ever removes the role. Best for a leave-this-group button.",
+                    "Role Menu Button: opens a small picker with checkboxes so members can take several roles from one button. Toggle-style.",
+                    "Reaction Roles: added below the buttons; members react with an emoji to gain a role and un-react to lose it. Toggle-style by nature."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Changing a button's behavior",
+                "text": "Open the embed in the builder, go to Buttons, change that button's Action Type, then re-publish. Older embeds may show Custom Action ID in the dropdown even though the button still toggles or adds - the small action text on the button is the source of truth."
+            },
+            {
+                "type": "heading",
+                "text": "Viewing Embeds You Already Posted"
+            },
+            {
+                "type": "text",
+                "text": "Open the Embed Builder page and click Published Embeds in the top-right. A window lists everything SeanBot has posted for the server, newest first, showing the channel, sender, embed and button counts, and when it was posted."
+            },
+            {
+                "type": "list",
+                "title": "What you can do from the list",
+                "items": [
+                    "Jump to message opens the exact message in Discord.",
+                    "Broadcasts show an N copies badge - those rows are the same embed posted in different channels.",
+                    "Load into builder drops any embed back into the editor for editing.",
+                    "Save as template saves any published embed as a reusable design, named Imported: <title>."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "History starts at deployment",
+                "text": "Publish history records embeds from the moment the feature was deployed. Older embeds are found with the trace tools below."
+            },
+            {
+                "type": "heading",
+                "text": "Tracing Old Embeds"
+            },
+            {
+                "type": "text",
+                "text": "In the Published Embeds window, the Trace old embeds toolbar reads recent messages in a channel and rebuilds embeds SeanBot posted there."
+            },
+            {
+                "type": "list",
+                "title": "Scan vs Import to history",
+                "items": [
+                    "Scan previews found embeds so you can load or save them.",
+                    "Import to history writes them permanently into the Published Embeds list alongside new ones.",
+                    "Imports are idempotent - running it again skips embeds already tracked, so duplicates never appear."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The bot needs Read Message History in the channel, and only messages posted by SeanBot are picked up."
+            },
+            {
+                "type": "heading",
+                "text": "Editing and Replacing Posted Embeds"
+            },
+            {
+                "type": "text",
+                "text": "Load an embed into the builder and the publish step switches to replacement mode. A banner explains exactly what will happen before anything is changed."
+            },
+            {
+                "type": "list",
+                "title": "Replacement options",
+                "items": [
+                    "Update the original message: replaces the posted message in place; no duplicate is created. A confirmation popup always asks first.",
+                    "Update all copies: if the embed was broadcast to several channels, update every copy across all channels in one click.",
+                    "Post as a new message: keeps the old message untouched and sends a fresh one instead."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Safety",
+                "text": "SeanBot only updates messages it posted itself. If the original was deleted, the update is skipped with a clear message and never reported as success."
+            },
+            {
+                "type": "heading",
+                "text": "Saving and Reusing Your Work"
+            },
+            {
+                "type": "list",
+                "title": "Four ways to keep an embed",
+                "items": [
+                    "Autosaved draft: the current workspace autosaves to your browser as you build and returns automatically; drafts are per-device.",
+                    "Save as template: saves the design to the server under a name; templates appear in the template dropdown and load on any device.",
+                    "Export / Import JSON: download the design as a file or load one back in, for backups and sharing.",
+                    "Automation triggers: non-manual publishes such as join, boost, command, or recurring are saved as live triggers you can disable or delete in the Publish step."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Short version",
+                "text": "Templates are reusable designs you load anytime; drafts are automatic per-device autosave; publishing actually sends to Discord; history is a record of what you sent."
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
