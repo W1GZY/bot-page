@@ -2622,6 +2622,41 @@ const docsData = [
                 "text": "Templates are reusable designs you load anytime; drafts are automatic per-device autosave; publishing actually sends to Discord; history is a record of what you sent."
             },
             {
+                "type": "heading",
+                "text": "Mentioning People in Your Embeds"
+            },
+            {
+                "type": "text",
+                "text": "You can ping anyone straight from the embed. Mentions work everywhere text appears: the title, description, field names and values, footer, or the message text above the embed. Discord renders them as normal clickable mentions and sends a notification, just like a mention in regular chat."
+            },
+            {
+                "type": "list",
+                "title": "Writing a mention by hand",
+                "items": [
+                    "Person: <@USER_ID>, for example <@123456789012345678>. This notifies that member.",
+                    "Role: <@&ROLE_ID>. This notifies everyone who has that role.",
+                    "Channel: <#CHANNEL_ID>. This links a channel without pinging anyone.",
+                    "To get an ID: turn on Developer Mode in Discord (User Settings, Advanced, Developer Mode), then right-click the user, role, or channel and choose Copy User ID, Copy Role ID, or Copy Channel ID."
+                ]
+            },
+            {
+                "type": "list",
+                "title": "Placeholders that mention for you",
+                "items": [
+                    "{user_mention}: the person the message is about. On automatic triggers like joins or keyword replies it becomes that member; on a manual send it points to SeanBot itself, so use it in triggers, not manual posts.",
+                    "{owner_mention}: the server owner.",
+                    "{message_author}: the author of the message that triggered a keyword reply.",
+                    "{channel_mention}: links the target channel.",
+                    "{applicant_mention} and {suggestion_author_mention}: the applicant or suggestion author on those workflows."
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "Good to know",
+                "text": "A mention only pings when the person or role exists in the server. SeanBot sends embeds with mentions fully enabled, so <@USER_ID> really notifies that member, and @everyone or @here would also go through - use them sparingly."
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
