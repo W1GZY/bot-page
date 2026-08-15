@@ -3577,5 +3577,143 @@ const docsData = [
                 ]
             }
         ]
+    },
+    {
+        "id": "giveaways",
+        "icon": "ph-gift",
+        "title": "Giveaways: Native Hosting & GiveawayBot Support",
+        "subtitle": "Host SeanBot-native giveaways with full entry tracking, winner vetting, reminders, and archive summaries — plus companion support for the open-source GiveawayBot.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Native Giveaways (Recommended)"
+            },
+            {
+                "type": "text",
+                "text": "SeanBot hosts giveaways on its own entry buttons, so every entrant is recorded and visible to moderators. Giveaways end on time, pick winners automatically, reroll cleanly, and post a permanent summary to your archive channel."
+            },
+            {
+                "type": "heading",
+                "text": "Core Commands"
+            },
+            {
+                "type": "commands",
+                "title": "Giveaway Commands",
+                "items": [
+                    {
+                        "cmd": "/giveaway start <time> <winners> <prize> [description] [channel]",
+                        "desc": "Start a giveaway. Time accepts 30s, 2h, 45m, 1d, or 2h30m."
+                    },
+                    {
+                        "cmd": "/giveaway end <id>",
+                        "desc": "End a giveaway early and pick winners now."
+                    },
+                    {
+                        "cmd": "/giveaway reroll <id>",
+                        "desc": "Pick new winners from the remaining entrants."
+                    },
+                    {
+                        "cmd": "/giveaway cancel <id>",
+                        "desc": "Cancel and delete a running giveaway."
+                    },
+                    {
+                        "cmd": "/giveaway list",
+                        "desc": "See every giveaway running in the server."
+                    },
+                    {
+                        "cmd": "/giveaway entrants <id>",
+                        "desc": "See exactly who entered a giveaway (moderators only)."
+                    },
+                    {
+                        "cmd": "/giveaway embed",
+                        "desc": "Design a custom giveaway embed from the preset or a saved template."
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Safety: Entry & Winner Vetting"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "New or flagged accounts can be blocked from entering giveaways at all (minimum account age, quarantine sessions, Global Enforcement punishments).",
+                    "Announced winners are run through SeanBot's safety stack and a ✅/⚠️/🚫 verdict is posted to the vetting channel.",
+                    "Rerolls exclude the previous winners, and the reroll count is tracked on every giveaway summary."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Settings"
+            },
+            {
+                "type": "commands",
+                "title": "Giveaway Settings",
+                "items": [
+                    {
+                        "cmd": "/giveaway config logchannel <channel>",
+                        "desc": "Audit log for lifecycle events and 📊 summaries."
+                    },
+                    {
+                        "cmd": "/giveaway config vetchannel <channel>",
+                        "desc": "Channel for winner vetting reports."
+                    },
+                    {
+                        "cmd": "/giveaway config archivechannel <channel>",
+                        "desc": "Permanent record of every ended giveaway."
+                    },
+                    {
+                        "cmd": "/giveaway config reminder <minutes>",
+                        "desc": "Ping the log channel N minutes before giveaways end (0 = off)."
+                    },
+                    {
+                        "cmd": "/giveaway config remindrole <role>",
+                        "desc": "Role pinged by ending-soon reminders."
+                    },
+                    {
+                        "cmd": "/giveaway config button <emoji/text>",
+                        "desc": "Custom entry-button emoji or text."
+                    },
+                    {
+                        "cmd": "/giveaway config color <hex/name>",
+                        "desc": "Custom giveaway embed color."
+                    },
+                    {
+                        "cmd": "/giveaway config show",
+                        "desc": "Show every per-server giveaway setting."
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "GiveawayBot Companion Support"
+            },
+            {
+                "type": "text",
+                "text": "The botsupport module watches an installed GiveawayBot (official or self-hosted) and turns its public messages into an audit trail: created, ended, rerolled, and deleted giveaways, plus winner vetting. GiveawayBot keeps its entrant list private — for full entry tracking, use SeanBot's native giveaways."
+            },
+            {
+                "type": "commands",
+                "title": "Bot Support Commands",
+                "items": [
+                    {
+                        "cmd": "/botsupport giveawaybot show",
+                        "desc": "Show watcher status and configuration."
+                    },
+                    {
+                        "cmd": "/botsupport giveawaybot enable | disable",
+                        "desc": "Turn the GiveawayBot watcher on or off."
+                    },
+                    {
+                        "cmd": "/botsupport giveawaybot logchannel <channel>",
+                        "desc": "Where GiveawayBot lifecycle events are logged."
+                    },
+                    {
+                        "cmd": "/botsupport giveawaybot botid <id>",
+                        "desc": "Watch a custom GiveawayBot user ID."
+                    }
+                ]
+            }
+        ]
     }
 ];
