@@ -896,8 +896,8 @@ let ticketStep = 1;
 
     // List of random usernames for the final step
     const randomUsernames = [
-        "CyberNinja", "Mek", "Cool_guy", "Your_Friend", 
-        "Cool_dude", "Cool_gamer", "Admin", "Fun_guy"
+        "Mek", "PvPGhost", "StarShard", "Krokopatra",
+        "WolfBlade77", "LilPwny", "NightMist", "SunWizard"
     ];
 
     function handleTicketStep() {
