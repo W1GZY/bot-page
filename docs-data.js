@@ -848,7 +848,7 @@ const docsData = [
         "id": "moderation",
         "icon": "ph-gavel",
         "title": "Server Moderation",
-        "subtitle": "Robust staff enforcement suite respecting Discord role hierarchy constraints.",
+        "subtitle": "Staff enforcement commands that respect Discord's role hierarchy.",
         "content": [
             {
                 "type": "heading",
@@ -1678,7 +1678,7 @@ const docsData = [
         "content": [
             {
                 "type": "heading",
-                "text": "Streamlined Support Workflows"
+                "text": "Support Workflows"
             },
             {
                 "type": "text",
@@ -3274,7 +3274,7 @@ const docsData = [
         "id": "loa",
         "icon": "ph-calendar-check",
         "title": "Leave of Absence (LOA)",
-        "subtitle": "Streamlined, automated staff & member leave management with Discord role sync.",
+        "subtitle": "Staff & member leave management with automatic Discord role sync.",
         "content": [
             {
                 "type": "heading",

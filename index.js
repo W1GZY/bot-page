@@ -949,7 +949,8 @@ let ticketStep = 1;
                 step2.style.display = 'none';
                 step3.style.display = 'block';
 
-                if (textElement) textElement.innerHTML = '<strong>Ticket flow complete!</strong> Here is your invite link:';
+                // Step 3: the invite button below follows the user's request message directly.
+                if (textElement) textElement.innerHTML = '';
                 
                 actionArea.innerHTML = `
                     <a href="invite.html" target="_blank" style="background: #5865F2; color: #fff; text-decoration: none; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);">
