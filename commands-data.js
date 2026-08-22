@@ -286,7 +286,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid dashboard",
-            "desc": "Displays a comprehensive security overview.",
+            "desc": "Displays a full security overview.",
             "badge": "Administrator",
             "type": "perm"
         },
