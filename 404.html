@@ -9,6 +9,13 @@
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
     <script>
+        // GitHub Pages serves 404.html for unknown paths, so route the
+        // pretty /invite URL to the redirect page here.
+        if (location.pathname.replace(/\/+$/, '') === '/invite') {
+            location.replace('/invite.html');
+        }
+    </script>
+    <script>
         const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
         document.documentElement.setAttribute('data-accent', savedAccent);
     </script>
