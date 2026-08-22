@@ -952,7 +952,7 @@ let ticketStep = 1;
                 if (textElement) textElement.innerHTML = '<strong>Ticket flow complete!</strong> Here is your invite link:';
                 
                 actionArea.innerHTML = `
-                    <a href="https://discord.com/oauth2/authorize?client_id=1477759885822365738" target="_blank" style="background: #5865F2; color: #fff; text-decoration: none; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1361721001120895114" target="_blank" style="background: #5865F2; color: #fff; text-decoration: none; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);">
                         <i class="ph-fill ph-discord-logo"></i> Invite SeanBot to Your Server
                     </a>
                     <button onclick="resetTicketDemo()" style="background: rgba(255,255,255,0.08); color: #dbdee1; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-weight: 700; padding: 7px 14px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem;">
