@@ -312,6 +312,10 @@ code {
 
 .cmd-section { margin-bottom: 32px; scroll-margin-top: 80px; }
 .cmd-section h2 { color: var(--accent); margin: 0 0 14px 0; font-size: 1.2rem; font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+
+.tos-title { color: #fff; margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: 0; }
+.tos-date { color: var(--text-secondary); font-size: 0.85rem; margin: 8px 0 24px; }
+
 .cards-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
 .cmd-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 18px; display: flex; flex-direction: column; transition: all var(--transition-fast); }
 .cmd-card:hover { border-color: var(--border-highlight); transform: translateY(-2px); background: var(--bg-card-hover); }

@@ -143,7 +143,52 @@
 
 <body data-nav="none" data-title="Terms & Privacy">
 
-    <div class="content auto-fade-in">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <i class="ph-fill ph-paw-print" style="color:var(--accent); font-size:1.8rem;"></i>
+                <span style="font-weight:900; font-size:1.9rem; color:var(--accent);">SeanBot<span style="color:#9ca3af;">.</span></span>
+            </div>
+            <button class="hamburger" id="closeSidebarBtn" aria-label="Close navigation"><i class="ph ph-x"></i></button>
+        </div>
+        <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
+        <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
+        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+        <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="top-header">
+            <div style="display:flex; align-items:center; gap:16px;">
+                <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a href="index.html" class="breadcrumb-item"><i class="ph-fill ph-paw-print breadcrumb-icon"></i><span style="font-weight:900; color:var(--accent);">SeanBot.</span></a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">Terms & Privacy</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle" title="Change theme accent">
+                    <div class="active-display"></div><i class="ph ph-caret-down"></i>
+                    <div class="dropdown-menu-content">
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin-bottom:8px;">Theme Accent</div>
+                        <div class="color-grid" id="colorGrid">
+                            <div class="accent-dot" data-accent="gold" style="background:#FFD700;" title="Gold"></div>
+                            <div class="accent-dot" data-accent="orange" style="background:#F97316;" title="Orange"></div>
+                            <div class="accent-dot" data-accent="rose" style="background:#E11D48;" title="Rose"></div>
+                            <div class="accent-dot" data-accent="purple" style="background:#9333EA;" title="Purple"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background:#5865F2;" title="Blurple"></div>
+                            <div class="accent-dot" data-accent="blue" style="background:#3B82F6;" title="Blue"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background:#06B6D4;" title="Cyan"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background:#10B981;" title="Emerald"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content auto-fade-in">
         <div class="glass-card">
             <h1 class="tos-title">Terms of Service & Privacy Policy</h1>
             <div class="tos-date">Last Updated: 15. April 2025</div>
@@ -298,6 +343,11 @@
             </div>
 
         </div>
+
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div><a href="index.html"><i class="ph ph-arrow-left"></i> Back to Home</a></div>
+        </footer>
     </div>
 
 </body>
