@@ -668,6 +668,14 @@ code {
     border-bottom: 1px solid var(--border);
     font-size: 0.9rem;
 }
+.comparison-detail {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
 .comparison-table thead th {
     position: sticky;
     top: 0;
