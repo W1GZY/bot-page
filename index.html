@@ -85,7 +85,7 @@
                     Stop Managing Bots. Start <span style="color: var(--accent);">Managing Your Community</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Moderation, community tools, Wizard101 integrations, fun analytics, event organization, and automation — all in one bot.
+                    Start with the tools you need today: moderation, events, analytics, Wizard101 utilities, and the small quality-of-life features that keep a server moving.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -93,10 +93,10 @@
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot to Server
                     </a>
                     <button onclick="switchTab('commands')" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
-                        <i class="ph-bold ph-terminal-window"></i> View 250+ Commands
+                        <i class="ph-bold ph-terminal-window"></i> Browse the commands
                     </button>
                     <button onclick="switchTab('docs')" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
-                        <i class="ph-bold ph-book-open"></i> Read Documentation
+                        <i class="ph-bold ph-book-open"></i> See how setup works
                     </button>
                 </div>
 
@@ -201,15 +201,57 @@
                 </div>
             </div>
 
+            <!-- Server profile selector -->
+            <section class="server-fit" id="serverFit" aria-labelledby="serverFitTitle">
+                <div class="server-fit-heading">
+                    <span class="section-eyebrow">A better first step</span>
+                    <h2 id="serverFitTitle">What kind of server are you running?</h2>
+                    <p>Pick the closest match and SeanBot will show a sensible place to start. Nothing is enabled automatically.</p>
+                </div>
+                <div class="server-fit-layout">
+                    <div class="profile-choice-list" role="tablist" aria-label="Server profiles">
+                        <button class="profile-choice active" type="button" role="tab" aria-selected="true" data-profile="w101">
+                            <i class="ph-duotone ph-magic-wand"></i>
+                            <span><strong>Wizard101 guild</strong><small>Team-ups, raids, timezones, and W101 tools</small></span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                        <button class="profile-choice" type="button" role="tab" aria-selected="false" data-profile="gaming">
+                            <i class="ph-duotone ph-game-controller"></i>
+                            <span><strong>Gaming &amp; events</strong><small>Sign-ups, polls, reminders, and activity</small></span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                        <button class="profile-choice" type="button" role="tab" aria-selected="false" data-profile="community">
+                            <i class="ph-duotone ph-users-three"></i>
+                            <span><strong>Growing community</strong><small>Tickets, reports, moderation, and logs</small></span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                        <button class="profile-choice" type="button" role="tab" aria-selected="false" data-profile="friends">
+                            <i class="ph-duotone ph-smiley"></i>
+                            <span><strong>Friends &amp; social</strong><small>Fun commands, polls, reminders, and stats</small></span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="server-fit-result" role="tabpanel" aria-live="polite" aria-labelledby="serverFitTitle">
+                        <div class="server-fit-result-topline"><span id="profileResultEyebrow">Recommended starting point</span><span class="profile-result-dot"></span></div>
+                        <h3 id="profileResultTitle">Wizard101 guild</h3>
+                        <p id="profileResultText">Keep team-ups, raid sign-ups, timezone roles, and Wizard101 lookups in the same server without turning setup into a project.</p>
+                        <div class="profile-module-list" id="profileModuleList"></div>
+                        <div class="profile-command-row">
+                            <div><span>Try this first</span><code id="profileCommand">/teamup create</code></div>
+                            <button class="profile-copy-btn" id="profileCopyCommand" type="button" aria-label="Copy suggested command" title="Copy command"><i class="ph ph-copy"></i></button>
+                        </div>
+                        <button class="btn-large btn-primary profile-demo-btn" id="profileDemoButton" type="button"><i class="ph-bold ph-play"></i> See this setup in action</button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Why SeanBot Section -->
-            <div style="margin-bottom: 32px;">             
-                <h2 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center;">                 
-                    <i class="ph-duotone ph-question" style="color: var(--accent); font-size: 1.8rem; margin-right: 8px;"></i> Why SeanBot?             
-                </h2>             
-                <div class="glass-card" style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary); padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); backdrop-filter: blur(16px);">                 
-                    <p style="margin-top: 0; color: #fff; font-size: 1.05rem; font-weight: 700; line-height: 1.5;">SeanBot keeps all your server tools in one place.</p>                 
-                    <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;"><strong>Fully modular:</strong> Enable moderation, tickets, reaction roles, timezone tools, federation, and analytics only when your server needs them. Disable unused modules without changing the rest of your setup.</p>             
-                </div>         
+            <div class="plain-intro-section">
+                <h2><i class="ph-duotone ph-wrench"></i> Built for actual servers</h2>
+                <div class="plain-intro-copy">
+                    <p class="plain-intro-lead">SeanBot keeps the useful parts close at hand.</p>
+                    <p>Turn on moderation, tickets, reaction roles, timezone tools, federation, analytics, or Wizard101 features when they make sense for your server. Leave the rest alone until you need them.</p>
+                </div>
             </div>
 
             <!-- Split Feature Section 1: Raid Shield (Text Left, Scrollable Visual Card Right) -->
@@ -832,8 +874,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Ready to replace multiple bots?</h3>
-                    <p>Start with the modules your server needs today. Add the rest when you’re ready.</p>
+                    <h3>Add what you need. Leave the rest off.</h3>
+                    <p>See the workflows first, then invite SeanBot when you know which pieces fit your server.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -842,8 +884,8 @@
             <!-- Live Feature Showcase Section -->
             <section id="showcase" style="margin: 44px 0 48px 0; scroll-margin-top: 96px;">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">See SeanBot in Action</h2>
-                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Preview SeanBot’s dashboard tools for timezones, anti-raid controls, voice activity, events, emoji usage, and embed creation.</p>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Open a live preview</h2>
+                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Click through the same kinds of dashboards and Discord workflows your staff will use: security, timezones, voice activity, events, emojis, and embeds.</p>
                 </div>
 
                 <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
@@ -857,11 +899,15 @@
                         <button class="showcase-tab" type="button" role="tab" data-showcase="emoji" aria-selected="false" aria-controls="showcase-emoji"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="embed" aria-selected="false" aria-controls="showcase-embed"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
                     </div>
+                    <div class="showcase-toolbar">
+                        <span><i class="ph ph-cursor-click"></i> Pick a preview to inspect it</span>
+                        <button class="showcase-auto-toggle" id="showcaseAutoToggle" type="button" aria-pressed="false"><i class="ph ph-pause"></i> Pause rotation</button>
+                    </div>
 
                     <!-- Showcase Content Panels -->
                     <div id="showcase-timezone" class="showcase-panel active" role="tabpanel" aria-label="Timezone analytics preview" style="display: grid;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Global Community Insights</span>
+                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Timezone dashboard</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See where your community is active</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See timezone clusters, local-time cards, and member counts by region so staff can schedule events when people are available.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -877,7 +923,7 @@
 
                     <div id="showcase-antiraid" class="showcase-panel" role="tabpanel" aria-label="Anti-raid preview" hidden style="display: none;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Security Control Center</span>
+                            <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Security dashboard</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Review your server’s protection status</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Review active protections, security checks, and recommendations without digging through a long settings page.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -893,7 +939,7 @@
 
                     <div id="showcase-voice" class="showcase-panel" role="tabpanel" aria-label="Voice analytics preview" hidden style="display: none;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice Session Insights</span>
+                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice activity</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Find your busiest voice hours</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See session length, member activity, and peak hours to understand how your voice channels are being used.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -909,7 +955,7 @@
 
                     <div id="showcase-serverstats" class="showcase-panel" role="tabpanel" aria-label="Server statistics preview" hidden style="display: none;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Growth Dashboard</span>
+                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Server stats</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track server growth and activity</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Check member growth, online counts, message totals, and channel activity from one overview.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -959,7 +1005,7 @@
 
                     <div id="showcase-events" class="showcase-panel" role="tabpanel" aria-label="Event manager preview" hidden style="display: none;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Community Scheduling</span>
+                            <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Events and reminders</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Manage events, RSVPs, and reminders</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Track upcoming events, RSVP totals, reminder status, and timezone-aware schedules from one queue.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -1003,7 +1049,7 @@
 
                     <div id="showcase-emoji" class="showcase-panel" role="tabpanel" aria-label="Emoji analytics preview" hidden style="display: none;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Dashboard Insights</span>
+                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Emoji usage</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See which emojis people actually use</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Compare emoji usage, reaction trends, and member activity, then spot unused emojis before your server runs out of slots.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -1019,7 +1065,7 @@
 
                     <div id="showcase-embed" class="showcase-panel" role="tabpanel" aria-label="Web embed builder preview" hidden style="display: none;">
                         <div>
-                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Web Dashboard</span>
+                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Embed builder</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Build and preview embeds visually</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Create rules, announcements, and welcome embeds with a side-by-side Discord preview, placeholders, color controls, and one-click posting.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
@@ -1038,9 +1084,9 @@
             <section id="features" class="modules-section" style="scroll-margin-top: 96px;">
                 <div class="modules-heading">
                     <div>
-                        <span class="section-eyebrow">Pick only what your server needs</span>
-                        <h2 class="section-title-accent"><i class="ph-duotone ph-plugs-connected"></i> Featured Modules</h2>
-                        <p>Browse all 47 SeanBot modules. Search by name or filter by the kind of tools your community needs.</p>
+                        <span class="section-eyebrow">Choose your own mix</span>
+                        <h2 class="section-title-accent"><i class="ph-duotone ph-plugs-connected"></i> Explore the modules</h2>
+                        <p>Browse the 47 modules, filter by server type, or search for one feature you want to see.</p>
                     </div>
                     <span class="module-count-badge" id="moduleResultsSummary">47 modules</span>
                 </div>
