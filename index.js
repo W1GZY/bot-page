@@ -42,11 +42,10 @@
     let showcaseTimer = null;
     let showcaseIsVisible = false;
     let showcaseUserSelected = false;
-    let showcaseRotationPaused = false;
 
     function scheduleShowcaseAdvance() {
         clearTimeout(showcaseTimer);
-        const shouldRun = showcaseIsVisible && !showcaseUserSelected && !showcaseRotationPaused && !document.hidden;
+        const shouldRun = showcaseIsVisible && !showcaseUserSelected && !document.hidden;
         if (!shouldRun) return;
 
         showcaseTimer = window.setTimeout(() => {
@@ -120,132 +119,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', initShowcaseRotator);
-
-    const serverProfiles = {
-        w101: {
-            title: 'Wizard101 guild',
-            text: 'Keep team-ups, raid sign-ups, timezone roles, and Wizard101 lookups in the same server without turning setup into a project.',
-            command: '/teamup create',
-            modules: ['Team-Ups', 'Wizard101 tools', 'Timezone roles'],
-            showcase: 'events'
-        },
-        gaming: {
-            title: 'Gaming & events',
-            text: 'Give players one place to find a group, vote on plans, get reminders, and see what is happening next.',
-            command: '/raid start',
-            modules: ['Raid sign-ups', 'Polls', 'Reminders'],
-            showcase: 'events'
-        },
-        community: {
-            title: 'Growing community',
-            text: 'Keep staff work easy to review with tickets, moderation logs, reports, and protection controls that can be enabled separately.',
-            command: '/ticket setup_channel',
-            modules: ['Ticket system', 'Audit logs', 'Anti-Raid'],
-            showcase: 'antiraid'
-        },
-        friends: {
-            title: 'Friends & social',
-            text: 'Start light with fun commands, reminders, polls, emoji stats, and server activity without a heavy setup process.',
-            command: '/poll create',
-            modules: ['Fun commands', 'Simple polls', 'Emoji stats'],
-            showcase: 'emoji'
-        }
-    };
-
-    function setServerProfile(profileId) {
-        const profile = serverProfiles[profileId] || serverProfiles.w101;
-        document.querySelectorAll('.profile-choice').forEach(choice => {
-            const active = choice.dataset.profile === profileId;
-            choice.classList.toggle('active', active);
-            choice.setAttribute('aria-selected', String(active));
-        });
-
-        const title = document.getElementById('profileResultTitle');
-        const text = document.getElementById('profileResultText');
-        const command = document.getElementById('profileCommand');
-        const moduleList = document.getElementById('profileModuleList');
-        if (title) title.textContent = profile.title;
-        if (text) text.textContent = profile.text;
-        if (command) command.textContent = profile.command;
-        if (moduleList) {
-            moduleList.innerHTML = profile.modules.map(module => `<span><i class="ph-fill ph-check"></i>${module}</span>`).join('');
-        }
-
-        const result = document.querySelector('.server-fit-result');
-        if (result) {
-            result.classList.remove('profile-result-refresh');
-            void result.offsetWidth;
-            result.classList.add('profile-result-refresh');
-        }
-    }
-
-    function initServerFit() {
-        const choices = document.querySelectorAll('.profile-choice');
-        if (!choices.length) return;
-
-        choices.forEach(choice => {
-            choice.addEventListener('click', () => setServerProfile(choice.dataset.profile));
-            choice.addEventListener('keydown', event => {
-                if (!['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
-                event.preventDefault();
-                const index = Array.from(choices).indexOf(choice);
-                const nextIndex = event.key === 'ArrowDown' ? (index + 1) % choices.length
-                    : event.key === 'ArrowUp' ? (index - 1 + choices.length) % choices.length
-                    : event.key === 'Home' ? 0 : choices.length - 1;
-                choices[nextIndex].focus();
-                setServerProfile(choices[nextIndex].dataset.profile);
-            });
-        });
-
-        document.getElementById('profileCopyCommand')?.addEventListener('click', async () => {
-            const command = document.getElementById('profileCommand')?.textContent || '';
-            const copyButton = document.getElementById('profileCopyCommand');
-            try {
-                await navigator.clipboard.writeText(command);
-                if (copyButton) {
-                    copyButton.innerHTML = '<i class="ph-bold ph-check"></i>';
-                    copyButton.setAttribute('aria-label', 'Command copied');
-                    window.setTimeout(() => {
-                        copyButton.innerHTML = '<i class="ph ph-copy"></i>';
-                        copyButton.setAttribute('aria-label', 'Copy suggested command');
-                    }, 1400);
-                }
-            } catch {
-                // Clipboard access can be unavailable on local file previews.
-            }
-        });
-
-        document.getElementById('profileDemoButton')?.addEventListener('click', () => {
-            const selected = document.querySelector('.profile-choice.active')?.dataset.profile || 'w101';
-            const profile = serverProfiles[selected];
-            const showcase = document.getElementById('showcase');
-            showcase?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            window.setTimeout(() => {
-                if (typeof setShowcase === 'function') setShowcase(profile.showcase, { userSelected: true });
-            }, 250);
-        });
-
-        setServerProfile('w101');
-    }
-
-    document.addEventListener('DOMContentLoaded', initServerFit);
-
-    function initShowcaseControls() {
-        const toggle = document.getElementById('showcaseAutoToggle');
-        if (!toggle) return;
-        toggle.addEventListener('click', () => {
-            showcaseRotationPaused = !showcaseRotationPaused;
-            if (!showcaseRotationPaused) showcaseUserSelected = false;
-            toggle.setAttribute('aria-pressed', String(showcaseRotationPaused));
-            toggle.innerHTML = showcaseRotationPaused
-                ? '<i class="ph ph-play"></i> Resume rotation'
-                : '<i class="ph ph-pause"></i> Pause rotation';
-            if (showcaseRotationPaused) clearTimeout(showcaseTimer);
-            else scheduleShowcaseAdvance();
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', initShowcaseControls);
 
     function switchTab(tabId) {
         document.querySelectorAll('.tab-view').forEach(view => {
@@ -686,6 +559,34 @@ function initDocsPage() {
             });
         }
 
+        function shortenGuideText(value, maxLength = 128) {
+            const text = String(value || '').replace(/\s+/g, ' ').trim();
+            if (text.length <= maxLength) return text;
+            return `${text.slice(0, maxLength - 1).trimEnd()}…`;
+        }
+
+        function getGuideSummary(doc) {
+            const content = Array.isArray(doc.content) ? doc.content : [];
+            const commandBlock = content.find(item => item.type === 'commands' && item.items?.length);
+            const firstCommand = commandBlock?.items?.[0]?.cmd || '';
+            const setupIndex = content.findIndex(item =>
+                item.type === 'heading' && /setup|verify|before|permission|access|configur|check/i.test(item.text || '')
+            );
+            const setupBlock = setupIndex >= 0
+                ? content.slice(setupIndex + 1).find(item => item.type === 'list' && item.items?.length)
+                : content.find(item => item.type === 'list' && item.items?.length);
+            const setupText = setupBlock?.items?.[0] || '';
+            const accessText = content
+                .flatMap(item => item.type === 'list' ? (item.items || []) : item.type === 'text' ? [item.text] : [])
+                .find(text => /permission|role|access|manage server|administrator|hierarchy|channel/i.test(text || '')) || '';
+
+            return {
+                command: firstCommand || 'Read the overview first',
+                access: shortenGuideText(accessText || 'Use the Discord access listed in this guide.'),
+                firstCheck: shortenGuideText(setupText || 'Follow the guide from top to bottom.')
+            };
+        }
+
         // Render Articles Feed
         contentContainer.innerHTML = '';
         docsData.forEach((doc, idx) => {
@@ -703,13 +604,36 @@ function initDocsPage() {
 
             const prevDoc = idx > 0 ? docsData[idx - 1] : null;
             const nextDoc = idx < docsData.length - 1 ? docsData[idx + 1] : null;
+            const guideSummary = getGuideSummary(doc);
 
             let html = `
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px;">
-                    <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
+                <div class="docs-article-heading">
+                    <div>
+                        <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
+                        <p class="docs-article-subtitle">${doc.subtitle}</p>
+                    </div>
                     <span class="badge role">${meta.title}</span>
                 </div>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0; margin-bottom: 24px;">${doc.subtitle}</p>
+                <div class="guide-summary" aria-label="Guide at a glance">
+                    <div class="guide-summary-heading">
+                        <span class="guide-summary-label">Guide at a glance</span>
+                        <span class="guide-summary-note">Use this as the short path</span>
+                    </div>
+                    <div class="guide-summary-grid">
+                        <div class="guide-summary-item">
+                            <span>Run first</span>
+                            <code>${guideSummary.command}</code>
+                        </div>
+                        <div class="guide-summary-item">
+                            <span>Access</span>
+                            <p>${guideSummary.access}</p>
+                        </div>
+                        <div class="guide-summary-item">
+                            <span>First check</span>
+                            <p>${guideSummary.firstCheck}</p>
+                        </div>
+                    </div>
+                </div>
             `;
 
             doc.content.forEach(item => {

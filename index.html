@@ -201,50 +201,6 @@
                 </div>
             </div>
 
-            <!-- Server profile selector -->
-            <section class="server-fit" id="serverFit" aria-labelledby="serverFitTitle">
-                <div class="server-fit-heading">
-                    <span class="section-eyebrow">A better first step</span>
-                    <h2 id="serverFitTitle">What kind of server are you running?</h2>
-                    <p>Pick the closest match and SeanBot will show a sensible place to start. Nothing is enabled automatically.</p>
-                </div>
-                <div class="server-fit-layout">
-                    <div class="profile-choice-list" role="tablist" aria-label="Server profiles">
-                        <button class="profile-choice active" type="button" role="tab" aria-selected="true" data-profile="w101">
-                            <i class="ph-duotone ph-magic-wand"></i>
-                            <span><strong>Wizard101 guild</strong><small>Team-ups, raids, timezones, and W101 tools</small></span>
-                            <i class="ph-bold ph-arrow-right"></i>
-                        </button>
-                        <button class="profile-choice" type="button" role="tab" aria-selected="false" data-profile="gaming">
-                            <i class="ph-duotone ph-game-controller"></i>
-                            <span><strong>Gaming &amp; events</strong><small>Sign-ups, polls, reminders, and activity</small></span>
-                            <i class="ph-bold ph-arrow-right"></i>
-                        </button>
-                        <button class="profile-choice" type="button" role="tab" aria-selected="false" data-profile="community">
-                            <i class="ph-duotone ph-users-three"></i>
-                            <span><strong>Growing community</strong><small>Tickets, reports, moderation, and logs</small></span>
-                            <i class="ph-bold ph-arrow-right"></i>
-                        </button>
-                        <button class="profile-choice" type="button" role="tab" aria-selected="false" data-profile="friends">
-                            <i class="ph-duotone ph-smiley"></i>
-                            <span><strong>Friends &amp; social</strong><small>Fun commands, polls, reminders, and stats</small></span>
-                            <i class="ph-bold ph-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="server-fit-result" role="tabpanel" aria-live="polite" aria-labelledby="serverFitTitle">
-                        <div class="server-fit-result-topline"><span id="profileResultEyebrow">Recommended starting point</span><span class="profile-result-dot"></span></div>
-                        <h3 id="profileResultTitle">Wizard101 guild</h3>
-                        <p id="profileResultText">Keep team-ups, raid sign-ups, timezone roles, and Wizard101 lookups in the same server without turning setup into a project.</p>
-                        <div class="profile-module-list" id="profileModuleList"></div>
-                        <div class="profile-command-row">
-                            <div><span>Try this first</span><code id="profileCommand">/teamup create</code></div>
-                            <button class="profile-copy-btn" id="profileCopyCommand" type="button" aria-label="Copy suggested command" title="Copy command"><i class="ph ph-copy"></i></button>
-                        </div>
-                        <button class="btn-large btn-primary profile-demo-btn" id="profileDemoButton" type="button"><i class="ph-bold ph-play"></i> See this setup in action</button>
-                    </div>
-                </div>
-            </section>
-
             <!-- Why SeanBot Section -->
             <div class="plain-intro-section">
                 <h2><i class="ph-duotone ph-wrench"></i> Built for actual servers</h2>
@@ -898,10 +854,6 @@
                         <button class="showcase-tab" type="button" role="tab" data-showcase="events" aria-selected="false" aria-controls="showcase-events"><i class="ph-duotone ph-calendar-check"></i> Event Manager</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="emoji" aria-selected="false" aria-controls="showcase-emoji"><i class="ph-duotone ph-chart-bar"></i> Emoji Analytics</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="embed" aria-selected="false" aria-controls="showcase-embed"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
-                    </div>
-                    <div class="showcase-toolbar">
-                        <span><i class="ph ph-cursor-click"></i> Pick a preview to inspect it</span>
-                        <button class="showcase-auto-toggle" id="showcaseAutoToggle" type="button" aria-pressed="false"><i class="ph ph-pause"></i> Pause rotation</button>
                     </div>
 
                     <!-- Showcase Content Panels -->
