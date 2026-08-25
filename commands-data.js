@@ -13,10 +13,262 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "/add",
+            "desc": "Add a server to your network.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/antiping exempt",
+            "desc": "Exempt a role, user, or channel from Anti-Ping.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/antiping protect",
+            "desc": "Protect a role or user from being pinged.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/antiping status",
+            "desc": "Show the current Anti-Ping configuration.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/antiping toggle",
+            "desc": "Enable or disable Anti-Ping for this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/antiping unexempt",
+            "desc": "Remove an exemption from a role, user, or channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/antiping unprotect",
+            "desc": "Remove protection from a role or user.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/archivechannel",
+            "desc": "Dedicated channel for permanent giveaway summaries (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay disable",
+            "desc": "Stop relaying DMs and logging third-party mod actions.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay enable",
+            "desc": "Start the ban DM relay + third-party kick/timeout logging.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay kicks",
+            "desc": "Log kicks by other bots/staff to the relay channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay logchannel",
+            "desc": "Set the relay/mod-feed channel (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay masslimit",
+            "desc": "Max appeal DMs per minute before the burst guard pauses relay.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay show",
+            "desc": "Show ban relay status.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/banrelay timeouts",
+            "desc": "Log timeouts by other bots/staff to the relay channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/blockrules",
+            "desc": "Toggle which users are blocked from entering giveaways.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/botid",
+            "desc": "Set which bot to watch (default: GiveawayBot's public bot).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/button",
+            "desc": "Set the entry button emoji/text (leave empty to reset to default).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot botid",
+            "desc": "Set which bot to watch (default: Carl-bot's public bot).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot disable",
+            "desc": "Stop watching Carl-bot in this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot drift",
+            "desc": "Show or set the parse-drift threshold (0 disables drift alerts).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot enable",
+            "desc": "Start watching Carl-bot in this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot logchannel",
+            "desc": "Set the Carl-bot audit-log channel (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot minaccountage",
+            "desc": "Flag winners with accounts younger than this many days.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot show",
+            "desc": "Show Carl-bot support status.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot vetchannel",
+            "desc": "Set the winner-vetting report channel (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/carlbot vetting",
+            "desc": "Enable or disable automatic winner vetting.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/color",
+            "desc": "Set the giveaway embed color (leave empty to reset to blurple).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/dashboard",
             "desc": "Get a link to view server stats",
             "badge": "Manage Server",
             "type": "perm"
+        },
+        {
+            "name": "/delete",
+            "desc": "Delete your network permanently.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/disable",
+            "desc": "Stop watching GiveawayBot in this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/enable",
+            "desc": "Start watching GiveawayBot in this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/giveaway cancel",
+            "desc": "Cancel and delete a running giveaway.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/giveaway embed",
+            "desc": "Design a custom giveaway embed — from the preset or a saved template.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/giveaway end",
+            "desc": "End a giveaway early and pick winners now.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/giveaway entrants",
+            "desc": "See who has entered a giveaway (mods only).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/giveaway list",
+            "desc": "List giveaways currently running in this server.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/giveaway reroll",
+            "desc": "Pick new winner(s) for an ended giveaway.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/giveaway start",
+            "desc": "Start a new giveaway.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/gpunish appealsync",
+            "desc": "Toggle ban appeal unban sync for your network.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/gpunish history",
+            "desc": "Show recent global actions for your network.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/gpunish run",
+            "desc": "Run a global punishment across your network.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/help",
+            "desc": "Interactive help, quick tour, and server setup",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/invite",
@@ -25,8 +277,50 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "/list",
+            "desc": "List your networks.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/logchannel",
+            "desc": "Set the GiveawayBot audit-log channel (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/minaccountage",
+            "desc": "Flag winners with accounts younger than this many days.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/permissions",
+            "desc": "Check SeanBot's role hierarchy and moderation permissions in this server.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/prefix",
             "desc": "View or change this server's text command prefix.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/quarantine deploy",
+            "desc": "Create or refresh the Quarantine role in a selected verification channel.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/quarantine release",
+            "desc": "Restore a quarantined member's saved roles.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/quarantine status",
+            "desc": "Show a member's quarantine and high-risk status.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -43,8 +337,26 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "/reminder",
+            "desc": "Send an ending-soon reminder to the log channel N minutes before giveaways end (0 = off).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/reminders",
             "desc": "View and cancel your active message reminders",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/remindrole",
+            "desc": "Role pinged by ending-soon reminders (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/remove",
+            "desc": "Remove a server from your network.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -91,10 +403,46 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "/server whois",
+            "desc": "View a member's profile and server details.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/serverinfo",
             "desc": "Show this server’s information.",
             "badge": "Everyone",
             "type": "public"
+        },
+        {
+            "name": "/setup",
+            "desc": "One-click server setup — pick a server type and the features to turn on",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/show",
+            "desc": "Show GiveawayBot support status.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/toggle",
+            "desc": "Enable or disable giveaways in this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/vetchannel",
+            "desc": "Set the winner-vetting report channel (leave empty to clear).",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/vetting",
+            "desc": "Enable or disable automatic winner vetting.",
+            "badge": "Manage Server",
+            "type": "perm"
         }
     ]
 },{
@@ -104,45 +452,15 @@ const commandsDatabase = [{
     "tocLabel": "2.0 Moderation",
     "commands": [
         {
-            "name": "/archive",
-            "desc": "Archive and dump message logs directly to DB.",
-            "badge": "Manage Messages",
-            "type": "perm"
-        },
-        {
-            "name": "/archive_get",
+            "name": "/archive get",
             "desc": "Retrieve messages from an existing archive.",
             "badge": "Manage Messages",
-            "type": "perm"
-        },
-        {
-            "name": "/ban",
-            "desc": "Ban a user from the server.",
-            "badge": "Ban Members",
-            "type": "perm"
-        },
-        {
-            "name": "/kick",
-            "desc": "Kick a member from the server.",
-            "badge": "Kick Members",
-            "type": "perm"
-        },
-        {
-            "name": "/lock",
-            "desc": "Toggle write access (Lock/Unlock) for a role in a channel.",
-            "badge": "Manage Channels",
             "type": "perm"
         },
         {
             "name": "/nick",
             "desc": "Change the nickname of a user on the server.",
             "badge": "Manage Nicknames",
-            "type": "perm"
-        },
-        {
-            "name": "/purge",
-            "desc": "Delete messages in the channel.",
-            "badge": "Manage Messages",
             "type": "perm"
         },
         {
@@ -218,12 +536,6 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/timeout",
-            "desc": "Apply timeout to a member.",
-            "badge": "Moderate Members",
-            "type": "perm"
-        },
-        {
             "name": "/unban",
             "desc": "Unban a user by their user ID.",
             "badge": "Ban Members",
@@ -286,7 +598,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid dashboard",
-            "desc": "Displays a full security overview.",
+            "desc": "Shows every protection toggle in plain language.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -315,8 +627,20 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/antiraid policy",
+            "desc": "Choose what happens when a detection category triggers.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/antiraid quarantine",
             "desc": "Open the dedicated Quarantine setup.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/antiraid register_local_scam",
+            "desc": "Registers scam screenshots for this server only.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -339,6 +663,12 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/antiraid setup",
+            "desc": "Guided setup wizard for anti-raid protection.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/antiraid simulate",
             "desc": "Simulates the heat score of a hypothetical message.",
             "badge": "Administrator",
@@ -351,8 +681,14 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/antiraid toggle",
+            "desc": "Enable or disable a single protection detector.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/antiraid unquarantine",
-            "desc": "Restore a quarantined user's saved roles.",
+            "desc": "Restores a quarantined user's saved roles.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -366,6 +702,66 @@ const commandsDatabase = [{
             "name": "/antiraid whitelist",
             "desc": "Toggles a role to bypass all detection.",
             "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot add_channel",
+            "desc": "Mark a text channel as a honeypot trap channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot deploy",
+            "desc": "Create a trap channel and arm it as a honeypot in one step.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot exempt",
+            "desc": "Exempt a role or member from the Honeypot.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot remove_channel",
+            "desc": "Unmark a text channel as a honeypot trap channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot status",
+            "desc": "Show the current Honeypot configuration.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/honeypot toggle",
+            "desc": "Enable or disable the Honeypot for this server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot unexempt",
+            "desc": "Remove an exemption from the Honeypot.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/legacy_quarantine remove",
+            "desc": "Restore roles to a quarantined user",
+            "badge": "Kick Members",
+            "type": "perm"
+        },
+        {
+            "name": "/legacy_quarantine user",
+            "desc": "Quarantine a member, optionally for duration",
+            "badge": "Kick Members",
+            "type": "perm"
+        },
+        {
+            "name": "/log health",
+            "desc": "Enable or disable SeanBot permission-health alert notifications",
+            "badge": "Manage Server",
             "type": "perm"
         },
         {
@@ -424,79 +820,25 @@ const commandsDatabase = [{
         },
         {
             "name": "/log status",
-            "desc": "Check active logging setup",
+            "desc": "Check active logging setup (per-event allowlist)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/log toggle",
-            "desc": "Enable or Disable a specific log type",
+            "desc": "Enable or disable a single log event (per-event toggles)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/log toggle_batch",
-            "desc": "Enable multiple log types at once (Presets)",
+            "desc": "Enable or disable a category's log events (same as dashboard categories)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/log webhook",
             "desc": "Set the webhook URL for logging events",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/quarantine remove",
-            "desc": "Restore roles to a quarantined user",
-            "badge": "Kick Members",
-            "type": "perm"
-        },
-        {
-            "name": "/quarantine user",
-            "desc": "Quarantine a member, optionally for duration",
-            "badge": "Kick Members",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot add_channel",
-            "desc": "Mark a text channel as a honeypot trap channel.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot deploy",
-            "desc": "Create a trap channel and arm it as a honeypot in one step.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot exempt",
-            "desc": "Exempt a role, user, or channel from all Honeypot rules.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot remove_channel",
-            "desc": "Unmark a honeypot trap text channel.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot status",
-            "desc": "Show the current Honeypot configuration.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot toggle",
-            "desc": "Enable or disable the Honeypot for the server.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/honeypot unexempt",
-            "desc": "Remove a Honeypot exemption.",
             "badge": "Manage Server",
             "type": "perm"
         }
@@ -832,6 +1174,12 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/ticket reopen",
+            "desc": "Reopen a solved ticket back to the open queue",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/ticket setup_channel",
             "desc": "Admin: create a ticket category, panel channel, and default panel",
             "badge": "Ticket Administrator",
@@ -844,10 +1192,28 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/ticket sync",
+            "desc": "Staff: rebuild permissions for all active tickets",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/ticket unclaim",
             "desc": "Staff: release the current ticket back to the queue",
             "badge": "Ticket Staff",
             "type": "perm"
+        },
+        {
+            "name": "/ticket waiting_staff",
+            "desc": "Mark the ticket as waiting on staff",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/ticket waiting_user",
+            "desc": "Staff: mark the ticket as waiting on the user",
+            "badge": "Everyone",
+            "type": "public"
         }
     ]
 },{
@@ -867,18 +1233,6 @@ const commandsDatabase = [{
             "desc": "Opt-in to activity tracking or update threshold.",
             "badge": "Manage Server",
             "type": "perm"
-        },
-        {
-            "name": "/calendar set_channel",
-            "desc": "Set up the live auto-updating calendar dashboard in this channel.",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/calendar view",
-            "desc": "View the current event calendar manually.",
-            "badge": "Everyone",
-            "type": "public"
         },
         {
             "name": "/poll close",
@@ -1050,32 +1404,86 @@ const commandsDatabase = [{
     "tocLabel": "6.0 Time & Scheduling",
     "commands": [
         {
+            "name": "/admin dlq_clear",
+            "desc": "Clear all dead-letter queue items.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/admin dlq_list",
+            "desc": "List dead-letter queue items.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/admin dlq_retry",
+            "desc": "Retry/replay dead-letter queue items.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/auto add",
+            "desc": "Add a channel to auto-watch for events.",
+            "badge": "Manage Channels",
+            "type": "perm"
+        },
+        {
+            "name": "/auto list",
+            "desc": "List channels currently being auto-watched.",
+            "badge": "Manage Channels",
+            "type": "perm"
+        },
+        {
+            "name": "/auto remove",
+            "desc": "Remove a channel from auto-watch.",
+            "badge": "Manage Channels",
+            "type": "perm"
+        },
+        {
+            "name": "/auto settings",
+            "desc": "Configure settings for an auto-watched channel.",
+            "badge": "Manage Channels",
+            "type": "perm"
+        },
+        {
+            "name": "/config clean",
+            "desc": "Permanently delete old event/poll history from the database.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/config event",
+            "desc": "Set the default category for creating Event Voice Channels",
+            "badge": "Manage Channels",
+            "type": "perm"
+        },
+        {
+            "name": "/config poll",
+            "desc": "Set the default category for creating Poll Voice Channels",
+            "badge": "Manage Channels",
+            "type": "perm"
+        },
+        {
             "name": "/create",
             "desc": "Create an Event or Poll",
             "badge": "Everyone",
             "type": "public"
         },
         {
+            "name": "/defaults set",
+            "desc": "Set Server defaults.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/defaults view",
+            "desc": "View Server defaults.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/event cancel",
             "desc": "Cancel an active event or poll.",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/event config clean",
-            "desc": "Permanently delete old event/poll history from the database.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/event config event",
-            "desc": "Set the default category for creating Event Voice Channels",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/event config poll",
-            "desc": "Set the default category for creating Poll Voice Channels",
             "badge": "Manage Channels",
             "type": "perm"
         },
@@ -1092,64 +1500,28 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/templates add",
+            "desc": "Add a new interval template (e.g. 'tournament' -> '24,2,0.5').",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/templates list",
+            "desc": "List all saved interval templates for the server.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/templates remove",
+            "desc": "Remove an existing interval template.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/timeping add",
             "desc": "Attach an event to a message and ping reactors.",
             "badge": "Everyone",
             "type": "public"
-        },
-        {
-            "name": "/timeping admin dlq_clear",
-            "desc": "Clear all dead-letter queue items.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping admin dlq_list",
-            "desc": "List dead-letter queue items.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping admin dlq_retry",
-            "desc": "Retry/replay dead-letter queue items.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping auto add",
-            "desc": "Add a channel to auto-watch for events.",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping auto list",
-            "desc": "List channels currently being auto-watched.",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping auto remove",
-            "desc": "Remove a channel from auto-watch.",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping auto settings",
-            "desc": "Configure settings for an auto-watched channel.",
-            "badge": "Manage Channels",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping defaults set",
-            "desc": "Set Server defaults.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping defaults view",
-            "desc": "View Server defaults.",
-            "badge": "Manage Server",
-            "type": "perm"
         },
         {
             "name": "/timeping edit",
@@ -1204,24 +1576,6 @@ const commandsDatabase = [{
             "desc": "Preview exact reminder firing times before creating an event.",
             "badge": "Everyone",
             "type": "public"
-        },
-        {
-            "name": "/timeping templates add",
-            "desc": "Add a new interval template (e.g. 'tournament' -> '24,2,0.5').",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping templates list",
-            "desc": "List all saved interval templates for the server.",
-            "badge": "Manage Server",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping templates remove",
-            "desc": "Remove an existing interval template.",
-            "badge": "Manage Server",
-            "type": "perm"
         },
         {
             "name": "/timezone admin-map",
@@ -1561,24 +1915,6 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/star stats dashboard",
-            "desc": "Advanced Starboard Metrics & Analytics",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/star stats leaderboard",
-            "desc": "Top users who GAVE the most stars",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/star stats top_message",
-            "desc": "Most starred message",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "/star toggle",
             "desc": "Turn the starboard completely on or off",
             "badge": "Manage Server",
@@ -1589,6 +1925,24 @@ const commandsDatabase = [{
             "desc": "Remove a channel from ignore list",
             "badge": "Manage Server",
             "type": "perm"
+        },
+        {
+            "name": "/stats dashboard",
+            "desc": "Advanced Starboard Metrics & Analytics",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/stats leaderboard",
+            "desc": "Top users who GAVE the most stars",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/stats top_message",
+            "desc": "Most starred message",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/sticky list",
@@ -1779,6 +2133,60 @@ const commandsDatabase = [{
     "tocLabel": "9.0 Federation & Cross-Server Tools",
     "commands": [
         {
+            "name": "/apply",
+            "desc": "Request to join a public network",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/archive",
+            "desc": "Archive this thread across the federation",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/audit",
+            "desc": "Audit a thread - shows recent activity",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/ban",
+            "desc": "Ban a user from the entire network",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/config",
+            "desc": "Configure network settings (Owner only)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/debug",
+            "desc": "Developer system inspection tools",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/directory",
+            "desc": "List discoverable public networks",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/dissolve",
+            "desc": "Delete the network (Owner only - CRITICAL)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/health",
+            "desc": "View network health statistics",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/identity clear",
             "desc": "Clear your custom identity",
             "badge": "Everyone",
@@ -1817,6 +2225,60 @@ const commandsDatabase = [{
         {
             "name": "/identity view",
             "desc": "View your current identity",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/info",
+            "desc": "View current network info",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/join",
+            "desc": "Join a thread network using a token",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/kick",
+            "desc": "Remove a guild from the network (Owner only - CRITICAL)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/leave",
+            "desc": "Leave the current network",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/lock",
+            "desc": "Lock this thread across the federation",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/metrics",
+            "desc": "View global cross-server metrics",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/observer",
+            "desc": "Set a guild to Observer Mode (Receive only)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/permission",
+            "desc": "Set permissions for a member guild (Owner only)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/purge",
+            "desc": "Purge messages across the federation",
             "badge": "Everyone",
             "type": "public"
         },
@@ -1875,190 +2337,70 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/reputation",
+            "desc": "View reputation scores for network members",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/requests",
+            "desc": "Manage join requests (Owner only)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/role",
+            "desc": "Manage user roles in the network (Owner/Admin only)",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/rotate_secret",
+            "desc": "Rotate the network cryptographic secret (Admin only - CRITICAL)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/rotate_token",
+            "desc": "Rotate the join token (Owner only)",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/set_admin_channel",
+            "desc": "Set a guild channel where connection requests will be posted",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/set_federated_forum",
+            "desc": "Set the Forum channel used for cross-guild federation",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/set_global_tag",
+            "desc": "Only federate threads with this Forum Tag",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/teamup_federation",
             "desc": "[Admin] Open the Team-Up Federation settings",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/thread admin debug",
-            "desc": "Developer system inspection tools",
-            "badge": "Network Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread admin metrics",
-            "desc": "View global cross-server metrics",
-            "badge": "Network Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread admin set_admin_channel",
-            "desc": "Set a guild channel where connection requests will be posted",
-            "badge": "Network Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread admin set_federated_forum",
-            "desc": "Set the Forum channel used for cross-guild federation",
-            "badge": "Network Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread admin set_global_tag",
-            "desc": "Only federate threads with this Forum Tag",
-            "badge": "Network Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread admin unset_global_tag",
-            "desc": "Remove global tag requirement (Federate ALL threads)",
-            "badge": "Network Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread audit",
-            "desc": "Audit a thread - shows recent activity",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/thread mod archive",
-            "desc": "Archive this thread across the federation",
-            "badge": "Network Moderator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread mod ban",
-            "desc": "Ban a user from the entire network",
-            "badge": "Network Moderator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread mod lock",
-            "desc": "Lock this thread across the federation",
-            "badge": "Network Moderator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread mod purge",
-            "desc": "Purge messages across the federation",
-            "badge": "Network Moderator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread mod timeout",
+            "name": "/timeout",
             "desc": "Timeout a user across the federation",
-            "badge": "Network Moderator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network apply",
-            "desc": "Request to join a public network",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network config",
-            "desc": "Configure network settings (Owner only)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network create",
-            "desc": "Create a new Thread network",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network dashboard",
-            "desc": "View federation health and config dashboard",
             "badge": "Everyone",
             "type": "public"
         },
         {
-            "name": "/thread network directory",
-            "desc": "List discoverable public networks",
+            "name": "/unset_global_tag",
+            "desc": "Remove global tag requirement (Federate ALL threads)",
             "badge": "Everyone",
             "type": "public"
-        },
-        {
-            "name": "/thread network dissolve",
-            "desc": "Delete the network (Owner only - CRITICAL)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network health",
-            "desc": "View network health statistics",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/thread network info",
-            "desc": "View current network info",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/thread network join",
-            "desc": "Join a thread network using a token",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network kick",
-            "desc": "Remove a guild from the network (Owner only - CRITICAL)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network leave",
-            "desc": "Leave the current network",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network observer",
-            "desc": "Set a guild to Observer Mode (Receive only)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network permission",
-            "desc": "Set permissions for a member guild (Owner only)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network reputation",
-            "desc": "View reputation scores for network members",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/thread network requests",
-            "desc": "Manage join requests (Owner only)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network role",
-            "desc": "Manage user roles in the network (Owner/Admin only)",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/thread network rotate_secret",
-            "desc": "Rotate the network cryptographic secret (Admin only - CRITICAL)",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/thread network rotate_token",
-            "desc": "Rotate the join token (Owner only)",
-            "badge": "Administrator",
-            "type": "perm"
         }
     ]
 },{
@@ -2081,19 +2423,25 @@ const commandsDatabase = [{
         },
         {
             "name": "/bm forms",
-            "desc": "View your Beastmoon forms",
+            "desc": "View your Beastmoon rank image automatically",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/bm forms_alt",
-            "desc": "View your saved Beastmoon alt forms",
+            "desc": "View your Beastmoon alt rank image automatically",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/bm leaderboard",
             "desc": "See top list of upgraded Beastmoon forms",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/bm list",
+            "desc": "View your saved Beastmoon forms",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2129,7 +2477,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/bm user",
-            "desc": "View another user's Beastmoon forms",
+            "desc": "View another user's Beastmoon rank image",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2564,6 +2912,12 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: Report User",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "Right-click: Reroll Giveaway",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"

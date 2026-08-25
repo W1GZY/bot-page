@@ -1,0 +1,24 @@
+/* ==========================================================================
+   CANONICAL SEANBOT PAW-PRINT MARK
+   Single source of truth for the site brand. Keep in sync with
+   dashboardv2/static/css/brand.css (same class names and values).
+   Use <div class="brand-mark"><i class="ph-fill ph-paw-print"></i><span>SeanBot<span class="brand-mark-dot">.</span></span></div>
+   ========================================================================== */
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--accent);
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.brand-mark i { font-size: 1.15em; line-height: 1; }
+.brand-mark > span { -webkit-text-stroke: 1px currentColor; }
+.brand-mark-dot { color: #9ca3af; margin-left: 1px; -webkit-text-stroke: 0; }
+.sidebar .brand-mark { font-size: 1.9rem; }
+
+/* Breadcrumb wordmark text */
+.breadcrumb-brand-text { font-weight: 900; color: var(--accent); -webkit-text-stroke: 1px currentColor; }
