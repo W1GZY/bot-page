@@ -1167,6 +1167,112 @@ const docsData = [
         ]
     },
     {
+        "id": "invites",
+        "icon": "ph-link-simple",
+        "title": "Invite Links & Tracking",
+        "subtitle": "Create tracked invite links with join perks, view join analytics, and guard against join spikes.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Enable the Invites Module"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Open the dashboard, go to Module Settings, and enable Invite Links.",
+                    "Confirm SeanBot has the Manage Server permission — it is required to list and track invites.",
+                    "Open the Invite Links page. Every active invite appears with its code, target channel, creator, usage count, and expiry.",
+                    "Delegated staff access is configured on Server Access: the Invite Links card controls who may create, edit, revoke, and duplicate invites."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Creating Invites from the Dashboard"
+            },
+            {
+                "type": "text",
+                "text": "Use Create a new invite on the Invite Links page to generate a tracked invite. Choose the target channel, set a maximum use count (0-100), set an expiry (up to 7 days, or never), mark it as a unique invite, and optionally enable temporary membership so Discord removes joiners when they disconnect. Invites created here are attributed to the dashboard admin who made them, not to the bot, so invite logs stay accurate."
+            },
+            {
+                "type": "heading",
+                "text": "Join Perks per Invite"
+            },
+            {
+                "type": "text",
+                "text": "Each invite can carry its own perks, stored per invite code and applied automatically when a member joins through it."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Reward roles: grant up to 10 roles below SeanBot's highest role, each optionally auto-removed after 1-365 days.",
+                    "Welcome message: sent to the joiner by DM first, then posted in a channel you choose. Text tags work in both.",
+                    "Nickname template: set the joiner's nickname, for example [{invite}] {name}.",
+                    "Text tags: {name}, {user}, {inviter}, {inviter_name}, {server}, {invite}, {member_count}, and {date}. DMs do not render mentions, so prefer {name} and {inviter_name} there.",
+                    "Edit or clear perks any time from the invite's row; emptying the perk fields removes the rule."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Analytics & Leaderboard"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Each invite shows joins over the last 7 days, the previous 7 days, and the last 30 days, plus the most recent tracked join date.",
+                    "The Top Inviters card ranks members by tracked joins; members with zero tracked joins are hidden.",
+                    "Open an invite's member list to see exactly who joined through it and whether they are still in the server.",
+                    "Joiner records and perk audits are kept for 90 days."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Expiry Alerts & Join-Spike Guard"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Expiry alerts warn staff in the invite logs 12, 24, or 48 hours before an invite expires; set to Off to silence them.",
+                    "Join-spike guard watches each invite for burst joins: Off, Alert only, or Alert + auto-revoke.",
+                    "Choose the trigger sensitivity: 10 joins in 10 minutes (standard) or 25 joins in 10 minutes (high). Repeated alerts for the same invite are suppressed with a cooldown.",
+                    "Auto-revoke deletes the invite and needs Manage Server; if the revoke fails, the alert says so and the invite stays active."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Managing Existing Invites"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Search by code, channel, or creator, and sort by soonest expiry; expiring invites list before never-expiring ones.",
+                    "Duplicate copies an invite together with its perks into a new invite with the same lifetime.",
+                    "Revoke deletes the invite immediately and removes any stored perks.",
+                    "The server's vanity URL is shown separately when one is set."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/invite",
+                        "desc": "Get the bot's own invite link."
+                    },
+                    {
+                        "cmd": "/server invite [code]",
+                        "desc": "Show details about a Discord invite code or URL."
+                    }
+                ]
+            },
+            {
+                "type": "callout",
+                "icon": "!",
+                "title": "No invites listed?",
+                "text": "Invite tracking needs the Manage Server permission. If the page reports it could not load invites, grant Manage Server to SeanBot and refresh."
+            }
+        ]
+    },
+    {
         "id": "reports",
         "icon": "ph-flag",
         "title": "Member Reports",

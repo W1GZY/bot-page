@@ -221,6 +221,10 @@
 
     moduleSearch?.addEventListener('input', applyModuleFilters);
 
+    // Sync the module-count badge with the actual grid on load instead of
+    // trusting a hardcoded number that drifts as cards are added or removed.
+    applyModuleFilters();
+
     moduleCards.forEach(card => {
         const openDoc = () => {
             const docId = card.dataset.doc;
@@ -408,6 +412,7 @@ function initDocsPage() {
             'logging': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
             'staff_tools': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
             'reports': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'invites': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
 
             'timeping': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'timezones': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
