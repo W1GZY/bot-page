@@ -1,0 +1,5 @@
+# https://sean.bot.nu/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://sean.bot.nu/sitemap.xml

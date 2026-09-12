@@ -245,15 +245,15 @@ const docsData = [
                         "desc": "Calculate exact gear stat scaling across lower level tiers."
                     },
                     {
-                        "cmd": "/statcap statcaps find",
+                        "cmd": "/statcaps find",
                         "desc": "View statcap by level."
                     },
                     {
-                        "cmd": "/statcap statcaps offschool",
+                        "cmd": "/statcaps offschool",
                         "desc": "View statcap for offschooling."
                     },
                     {
-                        "cmd": "/statcap statcaps main",
+                        "cmd": "/statcaps main",
                         "desc": "View statcap for your main school."
                     }
                 ]
@@ -629,7 +629,7 @@ const docsData = [
     },
     {
         "id": "wizard_info",
-        "icon": "ph-hat-wizard",
+        "icon": "ph-user-list",
         "title": "W101: Wizard Roster Check",
         "subtitle": "Wizard profile channel setup, missing-list audits, and reminder DMs.",
         "content": [
@@ -924,7 +924,7 @@ const docsData = [
                         "desc": "Export complete channel message logs to file archive."
                     },
                     {
-                        "cmd": "/archive_get [id]",
+                        "cmd": "/archive get [id]",
                         "desc": "Retrieve a previously archived channel transcript."
                     },
                     {
@@ -1073,11 +1073,11 @@ const docsData = [
                         "desc": "Reset audit logging configurations back to server defaults."
                     },
                     {
-                        "cmd": "/quarantine user [member]",
+                        "cmd": "/legacy_quarantine user [member] [duration]",
                         "desc": "Jail a member and safely back up their original roles."
                     },
                     {
-                        "cmd": "/quarantine remove [member]",
+                        "cmd": "/legacy_quarantine remove [member]",
                         "desc": "Release a jailed member and restore all saved roles."
                     }
                 ]
@@ -1575,8 +1575,98 @@ const docsData = [
         ]
     },
     {
+        "id": "events",
+        "icon": "ph-hourglass-medium",
+        "title": "Live Event Countdowns & Polls",
+        "subtitle": "Run countdown channels that update themselves for game updates, tournaments, raid sign-ups, and server events.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What It Does"
+            },
+            {
+                "type": "text",
+                "text": "SeanBot creates a voice channel whose name is the countdown, then renames it as the clock runs down, so members can see the time left without opening anything. The channel is removed about an hour after the event ends. The same system runs polls and raid sign-ups, with a fill bar showing how many spots are taken."
+            },
+            {
+                "type": "heading",
+                "text": "Creating One"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Run /create. It asks whether you are making a countdown timer, a poll, or a raid sign-up.",
+                    "Give it a short name. The name appears in the countdown channel, so keep it under 25 characters.",
+                    "Set the time. For events, also set the duration in minutes; the default is 60.",
+                    "For raid sign-ups, set the raid size to show how many spots there are. Leave it empty for a plain countdown.",
+                    "Optionally pick a standard emoji to show in the channel name, such as a calendar or a trophy.",
+                    "Already have a post describing the event? Run /create with that message link and the name and time are filled in for you."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "While It Is Running"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Run /event refresh if a countdown looks stuck. It forces every active event and poll to update right away.",
+                    "Run /event cancel with the message link or the countdown channel when an event is called off.",
+                    "Run /event extend to add minutes to a running timer.",
+                    "Choose where new countdowns go with /event config event and /event config poll.",
+                    "Run /event config clean to delete old event and poll records. It keeps the last 30 days unless you pass a different number."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Who Can Use It"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Creating, cancelling, and extending need Manage Channels.",
+                    "Cleaning old records and forcing a refresh need Administrator."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/create [message_link]",
+                        "desc": "Start a new event countdown, poll, or raid sign-up."
+                    },
+                    {
+                        "cmd": "/event refresh",
+                        "desc": "Update every active event and poll immediately."
+                    },
+                    {
+                        "cmd": "/event cancel [message_id]",
+                        "desc": "Cancel a running event or poll."
+                    },
+                    {
+                        "cmd": "/event extend [message_id] [minutes]",
+                        "desc": "Add minutes to a running timer."
+                    },
+                    {
+                        "cmd": "/event config event [category]",
+                        "desc": "Set the default category for event countdown channels."
+                    },
+                    {
+                        "cmd": "/event config poll [category]",
+                        "desc": "Set the default category for poll countdown channels."
+                    },
+                    {
+                        "cmd": "/event config clean [days]",
+                        "desc": "Delete event and poll history older than the chosen number of days."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "raids",
-        "icon": "ph-swords",
+        "icon": "ph-sword",
         "title": "Raid & Event Organizer",
         "subtitle": "Multi-role raid builder with localized times and strategy signups.",
         "content": [
@@ -2817,7 +2907,7 @@ const docsData = [
                 "items": [
                     "Each member can use /r set to define their mention reply, then /r toggle to pause or resume it.",
                     "Use /r remove to delete the saved reply.",
-                    "Administrators can clear an inappropriate reply with /admin clear.",
+                    "Administrators can clear an inappropriate reply with /r admin clear.",
                     "Use server rules and logging to prevent replies from being used for harassment or unwanted mentions."
                 ]
             },
@@ -2838,7 +2928,7 @@ const docsData = [
                         "desc": "Enable or disable automated mention reply."
                     },
                     {
-                        "cmd": "/admin clear [user]",
+                        "cmd": "/r admin clear [user]",
                         "desc": "Delete another member's saved reply."
                     }
                 ]

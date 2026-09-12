@@ -4,15 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeanBot — Discord Moderation, Analytics & Community Tools</title>
+    <meta name="description" content="A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.">
+    <link rel="canonical" href="https://sean.bot.nu/">
+    <meta name="theme-color" content="#09090b">
+
+    <!-- Link previews (Discord, Slack, X, iMessage…) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SeanBot">
+    <meta property="og:title" content="SeanBot — Discord Moderation, Analytics & Community Tools">
+    <meta property="og:description" content="A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.">
+    <meta property="og:url" content="https://sean.bot.nu/">
+    <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The SeanBot home page, showing its heading and command buttons">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeanBot — Discord Moderation, Analytics & Community Tools">
+    <meta name="twitter:description" content="A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.">
+    <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png">
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="brand.css">
 
     <link rel="stylesheet" href="index.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SeanBot",
+        "url": "https://sean.bot.nu/",
+        "image": "https://sean.bot.nu/assets/og-image.png",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Discord",
+        "description": "A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+            "Moderation and anti-raid protection",
+            "Support ticket system",
+            "Reaction roles and timezone role sync",
+            "Cross-server federation",
+            "Server analytics and audit logging",
+            "Wizard101 utilities"
+        ]
+    }
+    </script>
 </head>
 
 <body data-nav="overview" data-title="Overview">
@@ -88,10 +140,10 @@
             <!-- Hero Section -->
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    Stop Managing Bots. Start <span style="color: var(--accent);">Managing Your Community</span>.
+                    A modular Discord bot for <span style="color: var(--accent);">moderation, community and Wizard101</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Start with the tools you need today: moderation, events, analytics, Wizard101 utilities, and the small quality-of-life features that keep a server moving.
+                    SeanBot is one bot made of 47 modules you switch on individually: moderation and anti-raid, tickets, reaction roles, timezones, analytics, events, embeds, and Wizard101 tools. 250+ slash and prefix commands, no premium tier.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -209,10 +261,10 @@
 
             <!-- Why SeanBot Section -->
             <div class="plain-intro-section">
-                <h2><i class="ph-duotone ph-wrench"></i> Built for actual servers</h2>
+                <h2><i class="ph-duotone ph-wrench"></i> 47 modules, each one optional</h2>
                 <div class="plain-intro-copy">
-                    <p class="plain-intro-lead">SeanBot keeps the useful parts close at hand.</p>
-                    <p>Turn on moderation, tickets, reaction roles, timezone tools, federation, analytics, or Wizard101 features when they make sense for your server. Leave the rest alone until you need them.</p>
+                    <p class="plain-intro-lead">Turn on what your server needs. Nothing else runs.</p>
+                    <p>Moderation, tickets, reaction roles, timezones, events, analytics, federation and the Wizard101 tools each run on their own. Run <code>/setup</code> to pick the ones you want, then add more from the dashboard whenever you need them.</p>
                 </div>
             </div>
 
@@ -836,8 +888,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Add what you need. Leave the rest off.</h3>
-                    <p>See the workflows first, then invite SeanBot when you know which pieces fit your server.</p>
+                    <h3>Every module is off until you turn it on.</h3>
+                    <p>Pick the ones your server needs; the rest stay out of the way.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1097,15 +1149,15 @@
                             <tr><td><strong>🎮 Event &amp; Roster Management</strong><br><span class="comparison-detail">Raid rosters, Team-Ups, sign-up roles, reminders, calendars, and event recaps</span></td><td><span class="badge-check">Advanced</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
                             <tr><td><strong>🔮 Wizard101 Gaming Suite</strong><br><span class="comparison-detail">Damage assistant, Beastmoon tracking, pet/spell lookup, deck sharing, TC values</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🌐 Web Control Dashboard</strong><br><span class="comparison-detail">Full browser management dashboard for server configuration</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>💎 Premium Dependency Level</strong><br><span class="comparison-detail">How heavily basic core features are locked behind a paid subscription</span></td><td><span class="badge-free">None (0%)</span></td><td><span class="badge-warn">Very High</span></td><td><span class="badge-warn">Low</span></td><td><span class="badge-warn">High</span></td><td><span class="badge-warn">Medium</span></td></tr>
+                            <tr><td><strong>💎 Premium Dependency Level</strong><br><span class="comparison-detail">How much of the core feature set sits behind a paid subscription, based on each bot's public pricing</span></td><td><span class="badge-free">None (0%)</span></td><td><span class="badge-warn">Very High</span></td><td><span class="badge-warn">Low</span></td><td><span class="badge-warn">High</span></td><td><span class="badge-warn">Medium</span></td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="section-cta-banner">
                     <div class="section-cta-content">
-                        <h3>Build your community with fewer tools.</h3>
-                        <p>Ditch paywalled feature caps and simplify your server stack in one afternoon.</p>
+                        <h3>47 modules, one bot.</h3>
+                        <p>No premium tier and no feature caps: everything listed on that table is included.</p>
                     </div>
                     <a href="invite.html" target="_blank" rel="noopener" class="section-cta-btn">
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1202,15 +1254,6 @@
                         <p class="feature-desc">Configure automatic replies for keywords, phrases, or mentions so common responses happen instantly.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="security" data-search="automod filters moderation &amp; safety block words, links, and invites with ignored channels, trusted roles, and repeated-match actions." data-doc="automod_filters">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-funnel-simple"></i></span>
-                            <span class="module-category">Moderation &amp; Safety</span>
-                        </div>
-                        <h3 class="feature-title">AutoMod Filters</h3>
-                        <p class="feature-desc">Block words, links, and invites with ignored channels, trusted roles, and repeated-match actions.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
                     <article class="glass-card feature-card module-card" data-category="w101" data-search="beastmoon wizard101 track beastmoon hunt and monster mayhem form tiers, inspect lunari and idol progress, sync web converter data, announce tier-ups, and rank server leaderboards." data-doc="beastmoon">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-moon-stars"></i></span>
@@ -1231,7 +1274,7 @@
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="counters utility &amp; automation add custom counters to your server and keep important totals visible in channel names or dashboard views." data-doc="stats">
                         <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-counter-clockwise"></i></span>
+                            <span class="module-icon"><i class="ph-duotone ph-list-numbers"></i></span>
                             <span class="module-category">Utility &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Counters</h3>
@@ -1274,13 +1317,13 @@
                         <p class="feature-desc">Create tracked invites with per-invite reward roles, welcome perks, join analytics, expiry alerts, and join-spike protection.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="community" data-search="live event countdowns community &amp; events generate dynamic countdown embeds for game updates, tournaments, and server events with automated start alerts." data-doc="calendar">
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="live event countdowns community &amp; events run self-updating countdown channels for game updates, tournaments, raid sign-ups, and server events." data-doc="events">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-hourglass-medium"></i></span>
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Live Event Countdowns</h3>
-                        <p class="feature-desc">Generate dynamic countdown embeds for game updates, tournaments, and server events with automated start alerts.</p>
+                        <p class="feature-desc">Run self-updating countdown channels for game updates, tournaments, raid sign-ups, and server events.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="member activity stats utility &amp; automation track member message activity and voice channel time, then assign automatic rank roles based on participation thresholds." data-doc="activitytracker">
@@ -1301,7 +1344,7 @@
                         <p class="feature-desc">Execute kicks, bans, unbans, softbans, timeouts, nickname edits, and channel locks with automatic logging and moderator action records.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="utility" data-search="prefix commands utility &amp; automation choose your own command prefix and keep familiar text commands available alongside modern interactions." data-doc="prefix">
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="prefix commands utility &amp; automation choose your own command prefix and keep familiar text commands available alongside modern interactions." data-doc="core">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-terminal-window"></i></span>
                             <span class="module-category">Utility &amp; Automation</span>
@@ -1472,7 +1515,7 @@
                         <p class="feature-desc">Translate messages inside Discord when members need help communicating across languages.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="community" data-search="welcome &amp; farewell community &amp; events greet new members, send optional welcome dms, assign auto roles, clean nicknames, and post leave messages." data-doc="welcome_farewell">
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="welcome &amp; farewell community &amp; events greet new members, post farewells, and celebrate boosts, streams, and milestones with embed triggers." data-doc="embeds">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-hand-waving"></i></span>
                             <span class="module-category">Community &amp; Events</span>
@@ -1490,7 +1533,7 @@
                         <p class="feature-desc">Calculate expected damage with blades, traps, auras, pierce, critical, resist, and other combat modifiers.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 deck builder wizard101 build wizard101 decks, render them clearly, and share complete setups with other players through discord." data-doc="decks">
+                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 deck builder wizard101 build wizard101 decks, render them clearly, and share complete setups with other players through discord." data-doc="w101">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-cards"></i></span>
                             <span class="module-category">Wizard101</span>
@@ -1583,8 +1626,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>One click, and SeanBot is on your server.</h3>
-                    <p>Add SeanBot to your Discord server in seconds and start customizing your modules.</p>
+                    <h3>Add SeanBot to your server.</h3>
+                    <p>Setup takes a few minutes, and nothing changes in your server until you enable a module.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1685,8 +1728,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Start using SeanBot today.</h3>
-                    <p>250+ custom slash and text prefix commands for your Discord server.</p>
+                    <h3>250+ slash and prefix commands.</h3>
+                    <p>Browse the list above, or open the documentation for setup steps.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot

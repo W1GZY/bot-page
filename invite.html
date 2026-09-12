@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invite SeanBot</title>
+    <!-- Redirect target: keep redirect pages out of search results. -->
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#09090b">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <!--
         ═══════════════════════════════════════════════════════════════════
         SINGLE SOURCE OF TRUTH for SeanBot's invite link.
@@ -21,7 +27,16 @@
     </script>
     <!-- ★ Meta refresh fallback (works even with JavaScript disabled). -->
     <meta http-equiv="refresh" content="0; url=https://discord.com/oauth2/authorize?client_id=1361721001120895114">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
     <link rel="stylesheet" href="global.css">
 </head>
 <body data-nav="none" data-title="Invite SeanBot" style="background: #1c1c21;">
@@ -33,7 +48,6 @@
             <a id="manual-link" class="btn-large btn-primary" href="https://discord.com/oauth2/authorize?client_id=1361721001120895114" target="_blank" rel="noopener"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot</a>
         </div>
     </div>
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <script>
         // Keep the manual fallback link in sync with INVITE_URL above.
         document.getElementById('manual-link').href = INVITE_URL;
