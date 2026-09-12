@@ -16,9 +16,12 @@
   text-decoration: none;
 }
 .brand-mark i { font-size: 1.15em; line-height: 1; }
-.brand-mark > span { -webkit-text-stroke: 1px currentColor; }
-.brand-mark-dot { color: #9ca3af; margin-left: 1px; -webkit-text-stroke: 0; }
+/* The wordmark is Inter 900. A 1px -webkit-text-stroke on top of that weight
+   filled the counters of e/a/o and fused letters together at header size, so
+   the mark carries no stroke — pick a heavier real weight instead of
+   re-adding one. */
+.brand-mark-dot { color: #9ca3af; margin-left: 1px; }
 .sidebar .brand-mark { font-size: 1.9rem; }
 
 /* Breadcrumb wordmark text */
-.breadcrumb-brand-text { font-weight: 900; color: var(--accent); -webkit-text-stroke: 1px currentColor; }
+.breadcrumb-brand-text { font-weight: 900; color: var(--accent); }

@@ -1859,6 +1859,59 @@
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
+/* Live status strip under the hero. Populated from the dashboard's public
+   stats bridge; hidden via the [hidden] attribute until a number arrives. */
+.status-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 28px;
+    padding: 8px 18px;
+    background: rgba(18, 18, 24, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.status-strip[hidden] {
+    display: none;
+}
+
+.status-strip-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #57F287;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.status-strip-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #57F287;
+    color: #57F287;
+    animation: pulseGlow 1.5s infinite;
+}
+
+.status-strip-fact strong {
+    color: #fff;
+    font-weight: 800;
+}
+
+.status-strip-fact[hidden] {
+    display: none;
+}
+
 .stats-grid {
     max-width: 1100px;
     margin: 0 auto 48px;
@@ -1982,6 +2035,13 @@
 
     .stats-grid {
         margin-bottom: 36px;
+    }
+
+    .status-strip {
+        width: 100%;
+        border-radius: 14px;
+        gap: 4px 16px;
+        padding: 8px 14px;
     }
 
     .feature-row {

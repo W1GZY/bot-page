@@ -305,6 +305,20 @@ code {
 .docs-article p, .docs-article li { color: #ddd; font-size: 0.9rem; line-height: 1.55; }
 .callout-box { background: rgba(26, 26, 34, 0.8); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 14px 0; font-size: 0.85rem; color: #ccc; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
 
+/* Callout variants — an accent border on every box made notes, tips and warnings
+   read identically. Compound selectors so the variant wins over the base
+   .callout-box rules in docs.css and index.css regardless of load order.
+   note follows the theme accent; tip and warning are fixed so their meaning does
+   not change when a reader picks a different accent. */
+.callout-box.callout-note { border-left-color: var(--accent); background: var(--accent-glow); }
+.callout-box.callout-tip { border-left-color: #57F287; background: rgba(87, 242, 135, 0.08); }
+.callout-box.callout-warning { border-left-color: #ED4245; background: rgba(237, 66, 69, 0.08); }
+
+.callout-box strong i { margin-right: 6px; font-size: 1.05em; vertical-align: -1px; }
+.callout-box.callout-note strong i { color: var(--accent); }
+.callout-box.callout-tip strong i { color: #57F287; }
+.callout-box.callout-warning strong i { color: #ED4245; }
+
 .layout-with-toc { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: start; }
 .toc-sidebar { position: sticky; top: 80px; background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; }
 .toc-title { font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
@@ -599,6 +613,12 @@ code {
   margin-bottom: 20px;
   scroll-margin-top: 80px;
   display: none;
+  /* Keep prose at a readable measure (~70 characters/line); wide screens
+     otherwise stretch lines past 100 characters. Narrow screens stay
+     unaffected (the article just fills its column). Centering balances
+     the leftover space on wide screens. */
+  max-width: 60ch;
+  margin-inline: auto;
 }
 .docs-article.active-doc {
   display: block !important;

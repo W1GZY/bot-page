@@ -382,6 +382,17 @@
    DOCUMENTATION AND COMMAND RENDERING
    Extracted from index.html inline script block 3
    ========================================================================== */
+
+// Callout variants. The border colour and the icon both come from the variant so
+// a guide cannot reintroduce an ad-hoc '!' or emoji marker, and so readers learn
+// one visual language: accent = neutral note, green = tip, red = warning. An
+// unknown or missing variant falls back to a plain note.
+const CALLOUT_VARIANTS = {
+    note: { className: 'callout-note', icon: 'ph-info' },
+    tip: { className: 'callout-tip', icon: 'ph-lightbulb' },
+    warning: { className: 'callout-warning', icon: 'ph-warning' }
+};
+
 function initDocsPage() {
         const navContainer = document.getElementById('docsNavLinks');
         const sidebarNavContainer = document.getElementById('sidebarDocsNavLinks');
@@ -392,7 +403,6 @@ function initDocsPage() {
         const categoryMap = {
             'quickstart': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
             'core': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
-            'prefix': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
             'server_admin': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
 
             'w101': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
@@ -413,17 +423,21 @@ function initDocsPage() {
             'staff_tools': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
             'reports': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
             'invites': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'honeypot': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'antiping': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'global_enforcement': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
 
             'timeping': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'timezones': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'time_converter': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
-            'calendar': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'events': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'raids': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'raidpolls': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'teamup_fed': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'temp_vc': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'giveaways': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
 
             'activitytracker': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
             'autopin': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
@@ -449,11 +463,13 @@ function initDocsPage() {
         };
 
 
-    window.activateDoc = function(docId) {
+    window.activateDoc = function(docId, options = {}) {
             if (!docId || (typeof docsData !== 'undefined' && !docsData.some(d => d.id === docId))) {
                 docId = (typeof docsData !== 'undefined' && docsData.length > 0) ? docsData[0].id : 'quickstart';
             }
             if (!docId) return;
+
+            const updateHistory = options.updateHistory || 'replace';
 
             const previousScrollY = window.scrollY;
 
@@ -477,6 +493,14 @@ function initDocsPage() {
 
             closeMobileDocsNav();
 
+            if (updateHistory !== 'skip') {
+                if (updateHistory === 'push') {
+                    history.pushState({ doc: docId }, '', `#${docId}`);
+                } else {
+                    history.replaceState({ doc: docId }, '', `#${docId}`);
+                }
+            }
+
             // Swapping documentation articles must not move the main page or dashboard.
             requestAnimationFrame(() => {
                 window.scrollTo({ top: previousScrollY, left: window.scrollX, behavior: 'auto' });
@@ -487,6 +511,15 @@ function initDocsPage() {
                 window.animateScrollPop(activeArticle, 'right', 0, true);
             }
         };
+
+        // Browser Back/Forward must restore the previously viewed doc module.
+        window.addEventListener('popstate', () => {
+            if (typeof docsData === 'undefined' || !Array.isArray(docsData)) return;
+            const hash = window.location.hash.replace(/^#/, '');
+            if (docsData.some(d => d.id === hash)) {
+                activateDoc(hash, { updateHistory: 'skip' });
+            }
+        });
 
         const groups = {};
         docsData.forEach(doc => {
@@ -515,11 +548,11 @@ function initDocsPage() {
                     const navLink = document.createElement('a');
                     navLink.className = `docs-nav-link ${doc.id === docsData[0].id ? 'active' : ''}`;
                     navLink.setAttribute('data-doc', doc.id);
+                    navLink.href = `#${doc.id}`;
                     navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
                     navLink.addEventListener('click', (e) => {
                         e.preventDefault();
-                        activateDoc(doc.id);
-                        history.replaceState(null, '', `#${doc.id}`);
+                        activateDoc(doc.id, { updateHistory: 'push' });
                     });
                     grpDiv.appendChild(navLink);
                 });
@@ -545,11 +578,11 @@ function initDocsPage() {
                     const sidebarLink = document.createElement('a');
                     sidebarLink.className = `sidebar-toc-link ${doc.id === docsData[0].id ? 'active' : ''}`;
                     sidebarLink.setAttribute('data-doc', doc.id);
+                    sidebarLink.href = `#${doc.id}`;
                     sidebarLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
                     sidebarLink.addEventListener('click', (e) => {
                         e.preventDefault();
-                        activateDoc(doc.id);
-                        history.replaceState(null, '', `#${doc.id}`);
+                        activateDoc(doc.id, { updateHistory: 'push' });
                         if (window.innerWidth <= 1000) {
                             const sidebar = document.getElementById('sidebar');
                             const overlay = document.getElementById('sidebarOverlay');
@@ -562,34 +595,6 @@ function initDocsPage() {
                 });
                 sidebarNavContainer.appendChild(grpDiv);
             });
-        }
-
-        function shortenGuideText(value, maxLength = 128) {
-            const text = String(value || '').replace(/\s+/g, ' ').trim();
-            if (text.length <= maxLength) return text;
-            return `${text.slice(0, maxLength - 1).trimEnd()}…`;
-        }
-
-        function getGuideSummary(doc) {
-            const content = Array.isArray(doc.content) ? doc.content : [];
-            const commandBlock = content.find(item => item.type === 'commands' && item.items?.length);
-            const firstCommand = commandBlock?.items?.[0]?.cmd || '';
-            const setupIndex = content.findIndex(item =>
-                item.type === 'heading' && /setup|verify|before|permission|access|configur|check/i.test(item.text || '')
-            );
-            const setupBlock = setupIndex >= 0
-                ? content.slice(setupIndex + 1).find(item => item.type === 'list' && item.items?.length)
-                : content.find(item => item.type === 'list' && item.items?.length);
-            const setupText = setupBlock?.items?.[0] || '';
-            const accessText = content
-                .flatMap(item => item.type === 'list' ? (item.items || []) : item.type === 'text' ? [item.text] : [])
-                .find(text => /permission|role|access|manage server|administrator|hierarchy|channel/i.test(text || '')) || '';
-
-            return {
-                command: firstCommand || 'Read the overview first',
-                access: shortenGuideText(accessText || 'Use the Discord access listed in this guide.'),
-                firstCheck: shortenGuideText(setupText || 'Follow the guide from top to bottom.')
-            };
         }
 
         // Render Articles Feed
@@ -609,7 +614,6 @@ function initDocsPage() {
 
             const prevDoc = idx > 0 ? docsData[idx - 1] : null;
             const nextDoc = idx < docsData.length - 1 ? docsData[idx + 1] : null;
-            const guideSummary = getGuideSummary(doc);
 
             let html = `
                 <div class="docs-article-heading">
@@ -619,26 +623,6 @@ function initDocsPage() {
                     </div>
                     <span class="badge role">${meta.title}</span>
                 </div>
-                <div class="guide-summary" aria-label="Guide at a glance">
-                    <div class="guide-summary-heading">
-                        <span class="guide-summary-label">Guide at a glance</span>
-                        <span class="guide-summary-note">Use this as the short path</span>
-                    </div>
-                    <div class="guide-summary-grid">
-                        <div class="guide-summary-item">
-                            <span>Run first</span>
-                            <code>${guideSummary.command}</code>
-                        </div>
-                        <div class="guide-summary-item">
-                            <span>Access</span>
-                            <p>${guideSummary.access}</p>
-                        </div>
-                        <div class="guide-summary-item">
-                            <span>First check</span>
-                            <p>${guideSummary.firstCheck}</p>
-                        </div>
-                    </div>
-                </div>
             `;
 
             doc.content.forEach(item => {
@@ -647,9 +631,10 @@ function initDocsPage() {
                 } else if (item.type === 'text') {
                     html += `<p>${item.text}</p>`;
                 } else if (item.type === 'callout') {
+                    const callout = CALLOUT_VARIANTS[item.variant] || CALLOUT_VARIANTS.note;
                     html += `
-                        <div class="callout-box">
-                            <strong>${item.icon || '💡'} ${item.title}:</strong> ${item.text}
+                        <div class="callout-box ${callout.className}">
+                            <strong><i class="ph-fill ${callout.icon}"></i>${item.title}:</strong> ${item.text}
                         </div>
                     `;
                 } else if (item.type === 'list') {
@@ -716,8 +701,7 @@ function initDocsPage() {
             if (btn) {
                 const targetDocId = btn.getAttribute('data-doc');
                 if (targetDocId) {
-                    activateDoc(targetDocId);
-                    history.replaceState(null, '', `#${targetDocId}`);
+                    activateDoc(targetDocId, { updateHistory: 'push' });
                 }
                 return;
             }
@@ -743,45 +727,66 @@ function initDocsPage() {
                 btn.classList.add('active');
 
                 const selectedCat = btn.getAttribute('data-category');
-                
-                document.querySelectorAll('.docs-nav-group').forEach(grp => {
-                    const grpCat = grp.getAttribute('data-category-group');
-                    if (selectedCat === 'all' || grpCat === selectedCat) {
-                        grp.style.display = 'block';
-                    } else {
-                        grp.style.display = 'none';
-                    }
-                });
+
+                // Category switches restart search filtering from a clean slate.
+                activeDocsCategory = selectedCat;
+                if (searchInput) searchInput.value = '';
+                applyDocSearchFilter('');
 
                 const firstVisible = docsData.find(d => {
                     const meta = categoryMap[d.id] || { cat: 'utility' };
                     return selectedCat === 'all' || meta.cat === selectedCat;
                 });
-                if (firstVisible) activateDoc(firstVisible.id);
+                if (firstVisible) activateDoc(firstVisible.id, { updateHistory: 'skip' });
             });
         });
 
         // Live Search Input Filter
         const searchInput = document.getElementById('docSearch');
-        searchInput?.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            let firstMatch = null;
+        let activeDocsCategory = 'all';
+
+        // Search filters the sidebar only: links must match BOTH the active
+        // category pill and the search query; empty groups are hidden. The
+        // open article never changes while typing.
+        function applyDocSearchFilter(rawQuery) {
+            const normalized = String(rawQuery || '').toLowerCase().trim();
+            const groupVisibility = {};
 
             docsData.forEach(doc => {
+                const meta = categoryMap[doc.id] || { cat: 'utility' };
                 const article = document.getElementById(doc.id);
-                const match = !query || doc.title.toLowerCase().includes(query) || doc.subtitle.toLowerCase().includes(query) || (article && article.textContent.toLowerCase().includes(query));
-                
+                const searchMatch = !normalized || doc.title.toLowerCase().includes(normalized) || doc.subtitle.toLowerCase().includes(normalized) || (article && article.textContent.toLowerCase().includes(normalized));
+                const categoryMatch = activeDocsCategory === 'all' || meta.cat === activeDocsCategory;
+                const visible = searchMatch && categoryMatch;
+
                 document.querySelectorAll(`[data-doc="${doc.id}"]`).forEach(link => {
-                    link.style.display = match ? 'flex' : 'none';
+                    link.style.display = visible ? 'flex' : 'none';
                 });
 
-                if (match && !firstMatch) firstMatch = doc.id;
+                groupVisibility[meta.cat] = Boolean(groupVisibility[meta.cat] || visible);
             });
 
-            if (query && firstMatch) {
-                activateDoc(firstMatch);
-            } else if (!query && docsData.length > 0) {
-                activateDoc(docsData[0].id);
+            document.querySelectorAll('.docs-nav-group').forEach(grp => {
+                const grpCat = grp.getAttribute('data-category-group');
+                grp.style.display = groupVisibility[grpCat] ? 'block' : 'none';
+            });
+        }
+
+        searchInput?.addEventListener('input', (e) => {
+            applyDocSearchFilter(e.target.value);
+        });
+
+        // Enter opens the best match; typing only filters the sidebar.
+        searchInput?.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter') return;
+            const query = e.target.value.toLowerCase().trim();
+            if (!query) return;
+            const titleMatch = doc => doc.title.toLowerCase().includes(query) || doc.subtitle.toLowerCase().includes(query);
+            const contentMatch = doc => (document.getElementById(doc.id)?.textContent || '').toLowerCase().includes(query);
+            const best = docsData.find(titleMatch) || docsData.find(contentMatch);
+            if (best) {
+                activateDoc(best.id, { updateHistory: 'push' });
+                document.getElementById(best.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
 
@@ -1130,3 +1135,96 @@ let ticketStep = 1;
         document.getElementById('tz-status-message').style.display = 'none';
         document.getElementById('tz-typing-status').style.display = 'none';
     }
+
+/* ==========================================================================
+   LIVE STATUS STRIP
+   Fills the hero strip and the "Communities" stat card from the dashboard's
+   public stats bridge, which signs the request to the bot server-side. Every
+   failure path (offline, CORS, bot down, timeout) leaves the existing static
+   copy untouched, so the page never shows an invented or stale number.
+   ========================================================================== */
+(function () {
+    // Dashboard route that proxies get_public_stats for the static site.
+    const STATS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/stats';
+    const CACHE_KEY = 'seanbot.publicStats';
+    const CACHE_TTL_MS = 60 * 1000;
+    const REQUEST_TIMEOUT_MS = 4000;
+
+    function readCachedStats() {
+        try {
+            const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+            if (!cached || typeof cached.servers !== 'number') return null;
+            if (Date.now() - Number(cached.fetchedAt || 0) > CACHE_TTL_MS) return null;
+            return cached;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function writeCachedStats(stats) {
+        try {
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+                servers: stats.servers,
+                shards: stats.shards,
+                connected_shards: stats.connected_shards,
+                fetchedAt: Date.now()
+            }));
+        } catch (error) {
+            // Private mode or a full quota: the next visit just re-fetches.
+        }
+    }
+
+    function applyStats(stats) {
+        if (!stats || typeof stats.servers !== 'number' || stats.servers < 0) return;
+
+        const stripCount = document.getElementById('statusServers');
+        const cardCount = document.getElementById('liveServerCount');
+        if (stripCount) stripCount.textContent = stats.servers.toLocaleString();
+        // Plain digits here: the stat-counter animation parses this text and a
+        // thousands separator would turn into an odd suffix mid-animation.
+        if (cardCount) cardCount.textContent = String(stats.servers);
+
+        const shardsFact = document.getElementById('statusShardsFact');
+        const shardsCount = document.getElementById('statusShards');
+        if (shardsFact && shardsCount && typeof stats.shards === 'number' && typeof stats.connected_shards === 'number') {
+            shardsCount.textContent = stats.connected_shards + '/' + stats.shards;
+            shardsFact.hidden = false;
+        }
+
+        const strip = document.getElementById('statusStrip');
+        if (strip) strip.hidden = false;
+    }
+
+    async function loadLiveStats() {
+        if (!document.getElementById('statusStrip')) return;
+
+        const cached = readCachedStats();
+        if (cached) {
+            applyStats(cached);
+            return;
+        }
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+        try {
+            const response = await fetch(STATS_ENDPOINT, {
+                signal: controller.signal,
+                headers: { Accept: 'application/json' }
+            });
+            if (!response.ok) return;
+            const stats = await response.json();
+            applyStats(stats);
+            writeCachedStats(stats);
+        } catch (error) {
+            // Offline, blocked, or the bot is unreachable: keep the static copy.
+        } finally {
+            clearTimeout(timeout);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadLiveStats);
+    } else {
+        loadLiveStats();
+    }
+})();

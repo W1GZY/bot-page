@@ -143,72 +143,6 @@
     line-height: 1.55;
 }
 
-.guide-summary {
-    margin: 0 0 26px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.018);
-}
-
-.guide-summary-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.guide-summary-label {
-    color: var(--accent);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.guide-summary-note {
-    color: var(--text-muted);
-    font-size: 0.75rem;
-}
-
-.guide-summary-grid {
-    display: grid;
-    grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.15fr) minmax(0, 1.15fr);
-    gap: 10px;
-}
-
-.guide-summary-item {
-    min-width: 0;
-    padding: 10px;
-    border-left: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
-    background: rgba(0, 0, 0, 0.12);
-}
-
-.guide-summary-item > span {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--text-muted);
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-.guide-summary-item code {
-    display: inline-block;
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    font-size: 0.78rem;
-}
-
-.guide-summary-item p {
-    margin: 0;
-    color: var(--text-secondary);
-    font-size: 0.78rem;
-    line-height: 1.45;
-}
-
 .docs-article h3 {
     margin: 28px 0 10px;
     font-size: 1.02rem;
@@ -413,16 +347,6 @@
 @media (max-width: 720px) {
     .docs-article-heading {
         flex-direction: column;
-    }
-
-    .guide-summary-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .guide-summary-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 3px;
     }
 }
 

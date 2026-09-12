@@ -27,7 +27,7 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Invite SeanBot from the official website and select the server you want to configure.",
-                    "Open Server Settings > Roles and move the SeanBot role above every role it must assign, remove, quarantine, mute, or manage.",
+                    "Open Server Settings &gt; Roles and move the SeanBot role above every role it must assign, remove, quarantine, mute, or manage.",
                     "Do not remove View Channel, Send Messages, Embed Links, Attach Files, Read Message History, or Use Application Commands from channels where the bot is expected to work.",
                     "Add feature-specific permissions only where needed. Create Expressions is required for approved emoji suggestions; Manage Roles is required for role automation."
                 ]
@@ -141,9 +141,9 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "If a command does not appear",
-                "text": "Check that its module is enabled, the command is allowed under Server Settings > Integrations, the user has the required role or Discord permission, and SeanBot can view the current channel. Discord may take a short time to refresh newly synchronized commands."
+                "text": "Check that its module is enabled, the command is allowed under Server Settings &gt; Integrations, the user has the required role or Discord permission, and SeanBot can view the current channel. Discord may take a short time to refresh newly synchronized commands."
             }
         ]
     },
@@ -1266,7 +1266,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "No invites listed?",
                 "text": "Invite tracking needs the Manage Server permission. If the page reports it could not load invites, grant Manage Server to SeanBot and refresh."
             }
@@ -1322,11 +1322,11 @@ const docsData = [
                     },
                     {
                         "cmd": "Report User (Context Menu)",
-                        "desc": "Right-click any user -> Apps -> Report User to submit a private user report to staff."
+                        "desc": "Right-click any user -&gt; Apps -&gt; Report User to submit a private user report to staff."
                     },
                     {
                         "cmd": "Vote Report (Message Context Menu)",
-                        "desc": "Right-click or long-press a message -> Apps -> Vote Report to open the public vote report reason form."
+                        "desc": "Right-click or long-press a message -&gt; Apps -&gt; Vote Report to open the public vote report reason form."
                     },
                     {
                         "cmd": "Report Emoji Shortcut",
@@ -1556,11 +1556,11 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "Message Context Menu: Convert Time",
-                        "desc": "Right-click a message and use Apps > Convert Time to get an ephemeral conversion."
+                        "desc": "Right-click a message and use Apps &gt; Convert Time to get an ephemeral conversion."
                     },
                     {
                         "cmd": "Message Context Menu: Convert Time (DM)",
-                        "desc": "Right-click a message and use Apps > Convert Time (DM) to receive the conversion privately."
+                        "desc": "Right-click a message and use Apps &gt; Convert Time (DM) to receive the conversion privately."
                     },
                     {
                         "cmd": "Clock reaction",
@@ -1973,7 +1973,7 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Create active and inactive roles and place both below SeanBot.",
-                    "Run /activity setup or use Server Counters > Activity Tracker Settings.",
+                    "Run /activity setup or use Server Counters &gt; Activity Tracker Settings.",
                     "Choose a threshold that matches how often your community normally participates.",
                     "Review the first role update cycle before enabling the feature for a large member base."
                 ]
@@ -2112,7 +2112,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Members can upload an emoji suggestion with a name and reason. Staff review the same queue from Discord or Dashboard > Emoji Manager. Approving a suggestion creates the guild emoji, records the reviewer, logs the action, and can notify the submitter by direct message."
+                "text": "Members can upload an emoji suggestion with a name and reason. Staff review the same queue from Discord or Dashboard &gt; Emoji Manager. Approving a suggestion creates the guild emoji, records the reviewer, logs the action, and can notify the submitter by direct message."
             },
             {
                 "type": "heading",
@@ -2123,10 +2123,10 @@ const docsData = [
                 "items": [
                     "Give SeanBot the Create Expressions permission and make sure it can Send Messages, Embed Links, and Attach Files in the review channel.",
                     "Run /emoji suggestion_setup and choose the staff review channel. You can also choose a dedicated activity log channel and reviewer role.",
-                    "Open Dashboard > Emoji Manager to add multiple reviewer roles, change the member cooldown, enable result DMs, or review the queue.",
+                    "Open Dashboard &gt; Emoji Manager to add multiple reviewer roles, change the member cooldown, enable result DMs, or review the queue.",
                     "Members run /emoji suggest with a 2-32 character name, an image attachment, and an optional reason.",
                     "Reviewers use Approve and add or Reject on the Discord card, or review the same item in Emoji Manager. Rejections from Discord require a reason.",
-                    "Use Log Config > Staff > Emoji Suggestion to route workflow events into your normal server logs. Dashboard changes are also recorded in Dashboard Logs."
+                    "Use Log Config &gt; Staff &gt; Emoji Suggestion to route workflow events into your normal server logs. Dashboard changes are also recorded in Dashboard Logs."
                 ]
             },
             {
@@ -2416,13 +2416,13 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "tip",
                 "title": "Reaction Roles vs Button Roles",
                 "text": "Button roles are best when you want a clear clickable panel with labels and button colors. Reaction roles are best when members should react with emojis below a message. Both require SeanBot's role to be above the roles it manages, and reaction roles also require Add Reactions."
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "warning",
                 "title": "Ticket Button Rule",
                 "text": "For ticket panels, Primary, Secondary, Success, and Danger buttons open tickets automatically. Do not use Link style for ticket-opening buttons. You can set the label, style, emoji, and row; SeanBot generates the internal action IDs for you."
             },
@@ -2506,7 +2506,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "tip",
                 "title": "Changing a button's behavior",
                 "text": "Open the embed in the builder, go to Buttons, change that button's Action Type, then re-publish. Older embeds may show Custom Action ID in the dropdown even though the button still toggles or adds - the small action text on the button is the source of truth."
             },
@@ -2580,7 +2580,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "warning",
                 "title": "Ticket panel buttons are different",
                 "text": "When the embed is a Ticket Creation Panel, buttons do not use action types or payloads at all - the button STYLE decides the behavior. Primary, Success, Danger, and Secondary buttons each open a ticket (use different styles or labels to make one ticket per department), while Link Out opens a URL instead. SeanBot generates the internal ticket action IDs for you, so ignore the Custom Action ID field on ticket panels and never use Link style for a ticket-opening button."
             },
@@ -2602,9 +2602,9 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "warning",
                 "title": "Role buttons and permissions",
-                "text": "For any role button to work, SeanBot's role must be placed above the roles it manages in Server Settings > Roles. If a role change fails, the clicker gets a message saying SeanBot lacks permission or role position."
+                "text": "For any role button to work, SeanBot's role must be placed above the roles it manages in Server Settings &gt; Roles. If a role change fails, the clicker gets a message saying SeanBot lacks permission or role position."
             },
             {
                 "type": "heading",
@@ -2725,7 +2725,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "tip",
                 "title": "Making recipes your own",
                 "text": "The styles and labels are suggestions - the important part is the payload. Pick the style that fits your look, write a label that makes sense for your server, and swap the role IDs and texts for your own. Use the Quick Action Presets dropdown to fill payloads without typing."
             },
@@ -2744,12 +2744,12 @@ const docsData = [
                     "Jump to message opens the exact message in Discord.",
                     "Broadcasts show an N copies badge - those rows are the same embed posted in different channels.",
                     "Load into builder drops any embed back into the editor for editing.",
-                    "Save as template saves any published embed as a reusable design, named Imported: <title>."
+                    "Save as template saves any published embed as a reusable design, named Imported: &lt;title&gt;."
                 ]
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "History starts at deployment",
                 "text": "Publish history records embeds from the moment the feature was deployed. Older embeds are found with the trace tools below."
             },
@@ -2793,7 +2793,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "Safety",
                 "text": "SeanBot only updates messages it posted itself. If the original was deleted, the update is skipped with a clear message and never reported as success."
             },
@@ -2813,7 +2813,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "Short version",
                 "text": "Templates are reusable designs you load anytime; drafts are automatic per-device autosave; publishing actually sends to Discord; history is a record of what you sent."
             },
@@ -2829,9 +2829,9 @@ const docsData = [
                 "type": "list",
                 "title": "Writing a mention by hand",
                 "items": [
-                    "Person: <@USER_ID>, for example <@123456789012345678>. This notifies that member.",
-                    "Role: <@&ROLE_ID>. This notifies everyone who has that role.",
-                    "Channel: <#CHANNEL_ID>. This links a channel without pinging anyone.",
+                    "Person: &lt;@USER_ID&gt;, for example &lt;@123456789012345678&gt;. This notifies that member.",
+                    "Role: &lt;@&ROLE_ID&gt;. This notifies everyone who has that role.",
+                    "Channel: &lt;#CHANNEL_ID&gt;. This links a channel without pinging anyone.",
                     "To get an ID: turn on Developer Mode in Discord (User Settings, Advanced, Developer Mode), then right-click the user, role, or channel and choose Copy User ID, Copy Role ID, or Copy Channel ID."
                 ]
             },
@@ -2848,9 +2848,9 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "Good to know",
-                "text": "A mention only pings when the person or role exists in the server. SeanBot sends embeds with mentions fully enabled, so <@USER_ID> really notifies that member, and @everyone or @here would also go through - use them sparingly."
+                "text": "A mention only pings when the person or role exists in the server. SeanBot sends embeds with mentions fully enabled, so &lt;@USER_ID&gt; really notifies that member, and @everyone or @here would also go through - use them sparingly."
             },
             {
                 "type": "commands",
@@ -2959,7 +2959,7 @@ const docsData = [
                     },
                     {
                         "cmd": "Remind Me (Context Menu)",
-                        "desc": "Right-click message -> Apps -> Remind Me."
+                        "desc": "Right-click message -&gt; Apps -&gt; Remind Me."
                     }
                 ]
             }
@@ -2984,12 +2984,12 @@ const docsData = [
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "Apps > Translate",
+                        "cmd": "Apps &gt; Translate",
                         "desc": "Right-click a message and translate it from Discord's Apps menu."
                     },
                     {
                         "cmd": "Translate Message (Context Menu)",
-                        "desc": "Right-click message -> Apps -> Translate Message."
+                        "desc": "Right-click message -&gt; Apps -&gt; Translate Message."
                     }
                 ]
             }
@@ -3419,31 +3419,31 @@ const docsData = [
                 "title": "Common Apps",
                 "items": [
                     {
-                        "cmd": "Apps > Report User",
+                        "cmd": "Apps &gt; Report User",
                         "desc": "Open a private user report form."
                     },
                     {
-                        "cmd": "Apps > Vote Report",
+                        "cmd": "Apps &gt; Vote Report",
                         "desc": "Start a public vote report from a message."
                     },
                     {
-                        "cmd": "Apps > Translate",
+                        "cmd": "Apps &gt; Translate",
                         "desc": "Translate the selected message."
                     },
                     {
-                        "cmd": "Apps > Remind Me",
+                        "cmd": "Apps &gt; Remind Me",
                         "desc": "Create a reminder from a message."
                     },
                     {
-                        "cmd": "Apps > Convert Time",
+                        "cmd": "Apps &gt; Convert Time",
                         "desc": "Convert times found in the selected message."
                     },
                     {
-                        "cmd": "Apps > Ping Reactors",
+                        "cmd": "Apps &gt; Ping Reactors",
                         "desc": "Notify eligible members who reacted."
                     },
                     {
-                        "cmd": "Apps > React with emoji",
+                        "cmd": "Apps &gt; React with emoji",
                         "desc": "Add an emoji through SeanBot."
                     }
                 ]
@@ -3482,7 +3482,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "⚡",
+                "variant": "tip",
                 "title": "In-Discord Setup & Multi-Role Permissions",
                 "text": "Use `/loa setup` to configure review channels, assign dedicated leave roles, define maximum leave durations, and set permitted user or admin role lists. In the dashboard, permitted user roles and permitted admin roles are selected with checkboxes instead of typed role IDs."
             },
@@ -3547,7 +3547,7 @@ const docsData = [
                     "Open the Global Enforcement page and create a network — it starts with the servers you currently manage.",
                     "Link servers from the network settings card. Only servers where you have Administrator or Manage Server appear as options.",
                     "Optionally add delegated staff user IDs and choose defaults: the default punishment, timeout length, whether a reason is required, and whether the punished member receives a DM.",
-                    "The Discord command /gpunish network create <name> creates a network starting with the current server, and /gpunish network add <guild_id> links more."
+                    "The Discord command /gpunish network create &lt;name&gt; creates a network starting with the current server, and /gpunish network add &lt;guild_id&gt; links more."
                 ]
             },
             {
@@ -3563,15 +3563,15 @@ const docsData = [
                 "title": "Global Enforcement Commands",
                 "items": [
                     {
-                        "cmd": "/gpunish network create <name>",
+                        "cmd": "/gpunish network create &lt;name&gt;",
                         "desc": "Create a network starting with the current server."
                     },
                     {
-                        "cmd": "/gpunish network add <guild_id>",
+                        "cmd": "/gpunish network add &lt;guild_id&gt;",
                         "desc": "Link another server where you have Administrator or Manage Server."
                     },
                     {
-                        "cmd": "/gpunish network remove <guild_id>",
+                        "cmd": "/gpunish network remove &lt;guild_id&gt;",
                         "desc": "Remove a server from your network."
                     },
                     {
@@ -3579,11 +3579,11 @@ const docsData = [
                         "desc": "List your networks with server counts and appeal sync state."
                     },
                     {
-                        "cmd": "/gpunish run <user> <timeout|kick|ban|unban|untimeout> [duration_minutes] [scope] [reason]",
+                        "cmd": "/gpunish run &lt;user&gt; &lt;timeout|kick|ban|unban|untimeout&gt; [duration_minutes] [scope] [reason]",
                         "desc": "Apply a punishment across the network (scope: all or comma-separated server IDs)."
                     },
                     {
-                        "cmd": "/gpunish appealsync <on|off> [server_ids]",
+                        "cmd": "/gpunish appealsync &lt;on|off&gt; [server_ids]",
                         "desc": "Toggle ban appeal unban sync and choose its server scope."
                     },
                     {
@@ -3602,7 +3602,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "note",
                 "title": "Safety first",
                 "text": "SeanBot only mirrors an unban to servers where the user actually has an active ban. Failed actions (missing permissions, hierarchy conflicts, user not present) are reported per server in the action history instead of being silently skipped."
             }
@@ -3650,7 +3650,7 @@ const docsData = [
                 "title": "Anti-Ping Commands",
                 "items": [
                     {
-                        "cmd": "/antiping toggle <on|off>",
+                        "cmd": "/antiping toggle &lt;on|off&gt;",
                         "desc": "Enable or disable Anti-Ping for the server."
                     },
                     {
@@ -3658,26 +3658,26 @@ const docsData = [
                         "desc": "Show the current limits, cooldown, and actions."
                     },
                     {
-                        "cmd": "/antiping protect <role|user>",
+                        "cmd": "/antiping protect &lt;role|user&gt;",
                         "desc": "Protect a role or user from being pinged."
                     },
                     {
-                        "cmd": "/antiping unprotect <role|user>",
+                        "cmd": "/antiping unprotect &lt;role|user&gt;",
                         "desc": "Remove protection from a role or user."
                     },
                     {
-                        "cmd": "/antiping exempt <role|channel|user>",
+                        "cmd": "/antiping exempt &lt;role|channel|user&gt;",
                         "desc": "Exempt a role, channel, or user from all Anti-Ping rules."
                     },
                     {
-                        "cmd": "/antiping unexempt <role|channel|user>",
+                        "cmd": "/antiping unexempt &lt;role|channel|user&gt;",
                         "desc": "Remove an exemption."
                     }
                 ]
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "tip",
                 "title": "Start gently",
                 "text": "Enable Anti-Ping with the Log only action first, review the block reasons on the dashboard for a few days, then raise enforcement to delete or timeout once the rules match your community."
             }
@@ -3734,7 +3734,7 @@ const docsData = [
             },
             {
                 "type": "callout",
-                "icon": "!",
+                "variant": "warning",
                 "title": "Real members posting in traps are flagged too",
                 "text": "Anyone who posts in a trap channel is treated as suspicious. Use exemptions for bots you control and test accounts, and tell your staff which channels are traps so nobody gets caught by accident."
             },
@@ -3743,7 +3743,7 @@ const docsData = [
                 "title": "Honeypot Commands",
                 "items": [
                     {
-                        "cmd": "/honeypot toggle <on|off>",
+                        "cmd": "/honeypot toggle &lt;on|off&gt;",
                         "desc": "Enable or disable the Honeypot for the server."
                     },
                     {
@@ -3763,11 +3763,11 @@ const docsData = [
                         "desc": "Create a trap channel and arm it as a honeypot in one step."
                     },
                     {
-                        "cmd": "/honeypot exempt <role|user>",
+                        "cmd": "/honeypot exempt &lt;role|user&gt;",
                         "desc": "Exempt a role or user from all Honeypot rules."
                     },
                     {
-                        "cmd": "/honeypot unexempt <role|user>",
+                        "cmd": "/honeypot unexempt &lt;role|user&gt;",
                         "desc": "Remove an exemption."
                     }
                 ]
@@ -3797,19 +3797,19 @@ const docsData = [
                 "title": "Giveaway Commands",
                 "items": [
                     {
-                        "cmd": "/giveaway start <time> <winners> <prize> [description] [channel]",
+                        "cmd": "/giveaway start &lt;time&gt; &lt;winners&gt; &lt;prize&gt; [description] [channel]",
                         "desc": "Start a giveaway. Time accepts 30s, 2h, 45m, 1d, or 2h30m."
                     },
                     {
-                        "cmd": "/giveaway end <id>",
+                        "cmd": "/giveaway end &lt;id&gt;",
                         "desc": "End a giveaway early and pick winners now."
                     },
                     {
-                        "cmd": "/giveaway reroll <id>",
+                        "cmd": "/giveaway reroll &lt;id&gt;",
                         "desc": "Pick new winners from the remaining entrants."
                     },
                     {
-                        "cmd": "/giveaway cancel <id>",
+                        "cmd": "/giveaway cancel &lt;id&gt;",
                         "desc": "Cancel and delete a running giveaway."
                     },
                     {
@@ -3817,7 +3817,7 @@ const docsData = [
                         "desc": "See every giveaway running in the server."
                     },
                     {
-                        "cmd": "/giveaway entrants <id>",
+                        "cmd": "/giveaway entrants &lt;id&gt;",
                         "desc": "See exactly who entered a giveaway (moderators only)."
                     },
                     {
@@ -3847,31 +3847,31 @@ const docsData = [
                 "title": "Giveaway Settings",
                 "items": [
                     {
-                        "cmd": "/giveaway config logchannel <channel>",
+                        "cmd": "/giveaway config logchannel &lt;channel&gt;",
                         "desc": "Audit log for lifecycle events and 📊 summaries."
                     },
                     {
-                        "cmd": "/giveaway config vetchannel <channel>",
+                        "cmd": "/giveaway config vetchannel &lt;channel&gt;",
                         "desc": "Channel for winner vetting reports."
                     },
                     {
-                        "cmd": "/giveaway config archivechannel <channel>",
+                        "cmd": "/giveaway config archivechannel &lt;channel&gt;",
                         "desc": "Permanent record of every ended giveaway."
                     },
                     {
-                        "cmd": "/giveaway config reminder <minutes>",
+                        "cmd": "/giveaway config reminder &lt;minutes&gt;",
                         "desc": "Ping the log channel N minutes before giveaways end (0 = off)."
                     },
                     {
-                        "cmd": "/giveaway config remindrole <role>",
+                        "cmd": "/giveaway config remindrole &lt;role&gt;",
                         "desc": "Role pinged by ending-soon reminders."
                     },
                     {
-                        "cmd": "/giveaway config button <emoji/text>",
+                        "cmd": "/giveaway config button &lt;emoji/text&gt;",
                         "desc": "Custom entry-button emoji or text."
                     },
                     {
-                        "cmd": "/giveaway config color <hex/name>",
+                        "cmd": "/giveaway config color &lt;hex/name&gt;",
                         "desc": "Custom giveaway embed color."
                     },
                     {
@@ -3901,11 +3901,11 @@ const docsData = [
                         "desc": "Turn the GiveawayBot watcher on or off."
                     },
                     {
-                        "cmd": "/botsupport giveawaybot logchannel <channel>",
+                        "cmd": "/botsupport giveawaybot logchannel &lt;channel&gt;",
                         "desc": "Where GiveawayBot lifecycle events are logged."
                     },
                     {
-                        "cmd": "/botsupport giveawaybot botid <id>",
+                        "cmd": "/botsupport giveawaybot botid &lt;id&gt;",
                         "desc": "Watch a custom GiveawayBot user ID."
                     }
                 ]

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeanBot — Discord Moderation, Analytics & Community Tools</title>
-    <meta name="description" content="A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.">
+    <meta name="description" content="Moderation, events, analytics, Wizard101 utilities and the small quality-of-life features that keep a Discord server moving.">
     <link rel="canonical" href="https://sean.bot.nu/">
     <meta name="theme-color" content="#09090b">
 
@@ -12,15 +12,15 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SeanBot">
     <meta property="og:title" content="SeanBot — Discord Moderation, Analytics & Community Tools">
-    <meta property="og:description" content="A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.">
+    <meta property="og:description" content="Moderation, events, analytics, Wizard101 utilities and the small quality-of-life features that keep a Discord server moving.">
     <meta property="og:url" content="https://sean.bot.nu/">
     <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="The SeanBot home page, showing its heading and command buttons">
+    <meta property="og:image:alt" content="The SeanBot home page, showing its tagline and command buttons">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SeanBot — Discord Moderation, Analytics & Community Tools">
-    <meta name="twitter:description" content="A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.">
+    <meta name="twitter:description" content="Moderation, events, analytics, Wizard101 utilities and the small quality-of-life features that keep a Discord server moving.">
     <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png">
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -53,7 +53,7 @@
         "image": "https://sean.bot.nu/assets/og-image.png",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Discord",
-        "description": "A modular Discord bot for moderation, tickets, reaction roles, timezones, analytics, events and Wizard101 tools.",
+        "description": "Moderation, events, analytics, Wizard101 utilities and the small quality-of-life features that keep a Discord server moving.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
             "Moderation and anti-raid protection",
@@ -140,10 +140,10 @@
             <!-- Hero Section -->
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    A modular Discord bot for <span style="color: var(--accent);">moderation, community and Wizard101</span>.
+                    Stop Managing Bots. Start <span style="color: var(--accent);">Managing Your Community</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    SeanBot is one bot made of 47 modules you switch on individually: moderation and anti-raid, tickets, reaction roles, timezones, analytics, events, embeds, and Wizard101 tools. 250+ slash and prefix commands, no premium tier.
+                    Start with the tools you need today: moderation, events, analytics, Wizard101 utilities, and the small quality-of-life features that keep a server moving.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -239,6 +239,14 @@
                 </div>
             </div>         
 
+            <!-- Live status strip. Filled by index.js; it stays hidden when the
+                 stats endpoint is unreachable so the page never shows a guess. -->
+            <div class="status-strip" id="statusStrip" hidden>
+                <span class="status-strip-live"><span class="status-strip-dot"></span>Live</span>
+                <span class="status-strip-fact"><strong id="statusServers">&mdash;</strong> servers running SeanBot</span>
+                <span class="status-strip-fact" id="statusShardsFact" hidden><strong id="statusShards">&mdash;</strong> shards connected</span>
+            </div>
+
             <!-- Product highlights -->
             <div class="stats-grid">
                 <div class="stat-card">
@@ -250,7 +258,7 @@
                     <div class="stat-label">Security, community, utility and Wizard101 modules</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word">5</div>
+                    <div class="stat-number stat-word" id="liveServerCount">5</div>
                     <div class="stat-label">Communities</div>
                 </div>
                 <div class="stat-card">
@@ -261,10 +269,10 @@
 
             <!-- Why SeanBot Section -->
             <div class="plain-intro-section">
-                <h2><i class="ph-duotone ph-wrench"></i> 47 modules, each one optional</h2>
+                <h2><i class="ph-duotone ph-wrench"></i> Built for actual servers</h2>
                 <div class="plain-intro-copy">
-                    <p class="plain-intro-lead">Turn on what your server needs. Nothing else runs.</p>
-                    <p>Moderation, tickets, reaction roles, timezones, events, analytics, federation and the Wizard101 tools each run on their own. Run <code>/setup</code> to pick the ones you want, then add more from the dashboard whenever you need them.</p>
+                    <p class="plain-intro-lead">SeanBot keeps the useful parts close at hand.</p>
+                    <p>Turn on moderation, tickets, reaction roles, timezone tools, federation, analytics, or Wizard101 features when they make sense for your server. Leave the rest alone until you need them.</p>
                 </div>
             </div>
 
@@ -728,7 +736,7 @@
                         <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Show event times in each member’s local timezone.</li>
                         <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Set an automatic closing time and publish results when voting ends.</li>
                     </ul>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('polls'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('raidpolls'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-chart-polar"></i> Explore Poll Docs
                     </button>
                 </div>
@@ -888,8 +896,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Every module is off until you turn it on.</h3>
-                    <p>Pick the ones your server needs; the rest stay out of the way.</p>
+                    <h3>Add what you need. Leave the rest off.</h3>
+                    <p>See the workflows first, then invite SeanBot when you know which pieces fit your server.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1123,19 +1131,22 @@
                             <tr><td><strong>👋 Welcome, Farewell &amp; Auto Roles</strong><br><span class="comparison-detail">Join and leave messages plus automatic role assignment</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Partial</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
                             <tr><td><strong>💬 Custom Commands &amp; Auto-Replies</strong><br><span class="comparison-detail">Keyword responses, reusable custom commands, and triggered messages</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
                             <tr><td><strong>📡 Social &amp; Feed Alerts</strong><br><span class="comparison-detail">Twitch, YouTube, Reddit, RSS, or other external feed notifications</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🔐 Permission &amp; Access Controls</strong><br><span class="comparison-detail">Role, channel, command, or dashboard-level staff access restrictions</span></td><td><span class="badge-check">Advanced</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
+                            <tr><td><strong>🔐 Permission &amp; Access Controls</strong><br><span class="comparison-detail">Role, channel, command, or dashboard-level staff access restrictions</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
                             <tr><td><strong>⭐ Starboard Engine</strong><br><span class="comparison-detail">Highlight top community messages based on star reaction count</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td></tr>
                             <tr><td><strong>💡 Community Suggestions</strong><br><span class="comparison-detail">Structured member suggestion submissions, voting, and status updates</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
+                            <tr><td><strong>🎁 Giveaways</strong><br><span class="comparison-detail">Native giveaway hosting with full entry tracking, entry vetting, rerolls, and audit logs</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>📊 Polls</strong><br><span class="comparison-detail">Simple reaction polls with dashboard previews and timestamps, plus advanced raid roster polls</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>📝 Forms &amp; Structured Submissions</strong><br><span class="comparison-detail">Guided intake for reports, appeals, suggestions, staff requests, and support</span></td><td><span class="badge-check">Advanced</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
+                            <tr><td><strong>📝 Forms &amp; Structured Submissions</strong><br><span class="comparison-detail">Guided intake for reports, appeals, suggestions, staff requests, and support</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
                             <tr><td><strong>🎫 Support Ticket System</strong><br><span class="comparison-detail">Private support channels, multi-role claims, and HTML transcript logs</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
                             <tr><td><strong>🛡️ Server Raid &amp; Scam Shield</strong><br><span class="comparison-detail">Zero-delay asset pattern scanning and automated member quarantine</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
+                            <tr><td><strong>🍯 Honeypot Trap Channels</strong><br><span class="comparison-detail">Decoy channels that instantly catch and quarantine scam bots and malicious posters</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>👻 Ghost Ping Detection</strong><br><span class="comparison-detail">Instant alerts when users send and delete mention pings</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🔊 Temporary Voice Channels</strong><br><span class="comparison-detail">Dynamic voice lobbies created automatically on user join</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td></tr>
+                            <tr><td><strong>🗣️ Voice Analytics</strong><br><span class="comparison-detail">Server and per-user voice statistics with voice leaderboards</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>📈 Server Stats Channels</strong><br><span class="comparison-detail">Real-time counters, structured activity views, presets, and placeholder catalog</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🏆 Member Leveling &amp; XP</strong><br><span class="comparison-detail">Chat XP points, custom rank cards, and level reward roles</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
                             <tr><td><strong>🎨 Visual Embed Builder</strong><br><span class="comparison-detail">Custom rich embeds with side-by-side real-time preview</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>⏰ Scheduled &amp; Recurring Automation</strong><br><span class="comparison-detail">Reminders, countdowns, calendars, TimePing events, and recurring triggered messages</span></td><td><span class="badge-check">Advanced</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
+                            <tr><td><strong>⏰ Scheduled &amp; Recurring Automation</strong><br><span class="comparison-detail">Reminders, countdowns, calendars, TimePing events, and recurring triggered messages</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
                             <tr><td><strong>⏰ Personal Reminders</strong><br><span class="comparison-detail">Scheduled notification pings and customizable timer alerts</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🌐 Timezone Commands</strong><br><span class="comparison-detail">Timezone mapping, city lookup, and dynamic local timestamps</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🌐 Message Translator</strong><br><span class="comparison-detail">Instant multi-language translation for server messages</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td></tr>
@@ -1146,18 +1157,19 @@
                             <tr><td><strong>🌍 Timezone Analytics</strong><br><span class="comparison-detail">Member timezone coverage, setup panels, and automatic timezone roles</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🌴 Staff Leave of Absence (LOA)</strong><br><span class="comparison-detail">Staff LOA request filing, approval routing, and status tracking</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>📌 Auto-Pin Messages</strong><br><span class="comparison-detail">Auto-pinning messages based on reaction vote thresholds</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🎮 Event &amp; Roster Management</strong><br><span class="comparison-detail">Raid rosters, Team-Ups, sign-up roles, reminders, calendars, and event recaps</span></td><td><span class="badge-check">Advanced</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
+                            <tr><td><strong>🎮 Event &amp; Roster Management</strong><br><span class="comparison-detail">Raid rosters, Team-Ups, sign-up roles, reminders, calendars, and event recaps</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
                             <tr><td><strong>🔮 Wizard101 Gaming Suite</strong><br><span class="comparison-detail">Damage assistant, Beastmoon tracking, pet/spell lookup, deck sharing, TC values</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
                             <tr><td><strong>🌐 Web Control Dashboard</strong><br><span class="comparison-detail">Full browser management dashboard for server configuration</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>💎 Premium Dependency Level</strong><br><span class="comparison-detail">How much of the core feature set sits behind a paid subscription, based on each bot's public pricing</span></td><td><span class="badge-free">None (0%)</span></td><td><span class="badge-warn">Very High</span></td><td><span class="badge-warn">Low</span></td><td><span class="badge-warn">High</span></td><td><span class="badge-warn">Medium</span></td></tr>
+                            <tr><td><strong>🌐 Cross-Server Federation</strong><br><span class="comparison-detail">Networked servers with shared moderation, relays, and synced identity</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
+                            <tr><td><strong>💎 Premium Dependency Level</strong><br><span class="comparison-detail">How heavily basic core features are locked behind a paid subscription</span></td><td><span class="badge-free">None (0%)</span></td><td><span class="badge-warn">Very High</span></td><td><span class="badge-warn">Low</span></td><td><span class="badge-warn">High</span></td><td><span class="badge-warn">Medium</span></td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="section-cta-banner">
                     <div class="section-cta-content">
-                        <h3>47 modules, one bot.</h3>
-                        <p>No premium tier and no feature caps: everything listed on that table is included.</p>
+                        <h3>Build your community with fewer tools.</h3>
+                        <p>Ditch paywalled feature caps and simplify your server stack in one afternoon.</p>
                     </div>
                     <a href="invite.html" target="_blank" rel="noopener" class="section-cta-btn">
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1626,8 +1638,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Add SeanBot to your server.</h3>
-                    <p>Setup takes a few minutes, and nothing changes in your server until you enable a module.</p>
+                    <h3>One click, and SeanBot is on your server.</h3>
+                    <p>Add SeanBot to your Discord server in seconds and start customizing your modules.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1728,8 +1740,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>250+ slash and prefix commands.</h3>
-                    <p>Browse the list above, or open the documentation for setup steps.</p>
+                    <h3>Start using SeanBot today.</h3>
+                    <p>250+ custom slash and text prefix commands for your Discord server.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
