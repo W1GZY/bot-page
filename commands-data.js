@@ -819,14 +819,8 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/antiraid multiplier_channel",
-            "desc": "Sets the threat multiplier for a specific channel.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/antiraid multiplier_role",
-            "desc": "Sets the threat multiplier for a specific role.",
+            "name": "/antiraid multiplier",
+            "desc": "Sets the threat multiplier for a channel or a role.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -874,7 +868,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid scam_list",
-            "desc": "Lists the scam images currently blocked.",
+            "desc": "Lists blocked scam images, or rebuilds the library from past detections.",
             "badge": "Administrator",
             "type": "perm"
         },

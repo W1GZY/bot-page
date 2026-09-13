@@ -789,8 +789,8 @@ const docsData = [
                         "desc": "Remove an image hash from the visual scam blocker."
                     },
                     {
-                        "cmd": "/antiraid scam_list",
-                        "desc": "Inspect all active visual scam fingerprints on your server."
+                        "cmd": "/antiraid scam_list [recover] [days]",
+                        "desc": "Inspect active visual scam fingerprints, or rebuild the library by re-registering scam images Anti-Raid caught in the past."
                     },
                     {
                         "cmd": "/antiraid whitelist [role]",
@@ -825,12 +825,8 @@ const docsData = [
                         "desc": "Reset server anti-raid parameters back to default security levels."
                     },
                     {
-                        "cmd": "/antiraid multiplier_channel [channel]",
-                        "desc": "Configure risk score multipliers for high-exposure channels."
-                    },
-                    {
-                        "cmd": "/antiraid multiplier_role [role]",
-                        "desc": "Adjust threat sensitivity multipliers for unverified roles."
+                        "cmd": "/antiraid multiplier [channel|role] [multiplier]",
+                        "desc": "Configure risk score multipliers for high-exposure channels or roles."
                     },
                     {
                         "cmd": "/antiraid channelsensitivity [channel]",
