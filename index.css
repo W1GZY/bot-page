@@ -1,5 +1,5 @@
 /* ==========================================================================
-   EXTRACTED FROM INDEX.HTML — STYLE BLOCK 1
+   Styles ported out of index.html's inline <style> blocks, in order.
    ========================================================================== */
 /* Tab Views Control */
         .tab-view {
@@ -128,19 +128,8 @@
             align-items: start;
         }
         .docs-grid > main { min-width: 0; }
-        .docs-nav {
-            position: sticky;
-            top: 88px;
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 16px;
-            max-height: calc(100vh - 108px);
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent) transparent;
-        }
+        /* Landing page only: the two-column docs grid and its mobile nav
+           toggle. The nav box, links and article come from docs.css. */
         .docs-nav-mobile-toggle {
             display: none;
             width: 100%;
@@ -176,117 +165,6 @@
             from { opacity: 0; transform: translateY(-10px) scale(0.985); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .docs-nav-title {
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .docs-nav-group {
-            margin-bottom: 14px;
-        }
-        .docs-nav-group-title {
-            font-size: 0.725rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .docs-nav-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 10px;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            border-radius: var(--radius-sm);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            cursor: pointer;
-        }
-        .docs-nav-link:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .docs-nav-link.active {
-            color: var(--accent);
-            background: var(--accent-glow);
-            font-weight: 700;
-        }
-        .docs-article {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            margin-bottom: 20px;
-            display: none;
-        }
-        .docs-article.active-doc {
-            display: block !important;
-            animation: slideUpFade 0.2s ease-out forwards;
-        }
-        .callout-box {
-            background: rgba(255, 215, 0, 0.04);
-            border-left: 3px solid var(--accent);
-            padding: 14px 16px;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            margin: 16px 0;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .cmd-item-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-            padding: 10px 14px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 8px;
-            gap: 12px;
-        }
-        .copy-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: color var(--transition-fast);
-        }
-        .copy-btn:hover {
-            color: #fff;
-        }
-        .doc-article-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            gap: 12px;
-        }
-        .doc-nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            padding: 10px 16px;
-            border-radius: var(--radius-md);
-            color: #fff;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-        .doc-nav-btn:hover {
-            border-color: var(--accent);
-            background: var(--accent-glow);
-        }
-
         /* Commands View Layout */
         .layout-with-toc {
             display: grid;
@@ -294,80 +172,12 @@
             gap: 24px;
             align-items: start;
         }
-        @media (max-width: 900px) {
+        /* Same breakpoint as the .toc-sidebar hide in docs.css, so the column
+           goes with it. */
+        @media (max-width: 1000px) {
             .layout-with-toc {
                 grid-template-columns: 1fr;
             }
-            .toc-sidebar {
-                display: none;
-            }
-        }
-        .toc-sidebar {
-            position: sticky;
-            top: 80px;
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 16px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-        }
-        .toc-title {
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .toc-link {
-            display: block;
-            padding: 6px 10px;
-            color: var(--text-secondary);
-            font-size: 0.825rem;
-            border-radius: var(--radius-sm);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            margin-bottom: 4px;
-        }
-        .toc-link:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .toc-link.active-toc {
-            color: var(--accent);
-            background: var(--accent-glow);
-            font-weight: 700;
-        }
-        .cmd-section {
-            margin-bottom: 36px;
-            scroll-margin-top: 80px;
-        }
-        .cmd-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 12px;
-            transition: transform var(--transition-fast);
-        }
-        .cmd-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-        .cmd-name {
-            font-family: monospace;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 0;
-        }
-        .cmd-desc {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-top: 6px;
-            margin-bottom: 0;
         }
     #featuresGrid {
             display: grid;
@@ -649,8 +459,7 @@
         }
 
         .showcase-image-frame img,
-        .feature-card img,
-        .doc-section img {
+        .feature-card img {
             width: 100%;
             max-width: 100%;
             height: auto;
@@ -794,11 +603,7 @@
             }
         }
 
-        /* Base typography */
-        body {
-            font-size: 15px;
-            line-height: 1.65;
-        }
+        /* Body size and leading live in global.css. */
         p {
             font-size: 0.975rem;
             line-height: 1.65;
@@ -1400,6 +1205,8 @@
             from { opacity: 0; transform: translateY(-14px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* 8px taller than the shared header, so the jump clearance follows it. */
+        :root { --header-height: 68px; }
         .site-topbar {
             position: sticky !important;
             top: 0;
@@ -1467,7 +1274,6 @@
         .site-nav-mobile-invite { display: none; }
         .site-nav-mobile-brand { display: none; }
         .content { margin-inline: auto !important; }
-        #overview, #showcase, #features, #docs, #commands { scroll-margin-top: 96px; }
 
         .plain-intro-section {
             margin: 0 0 36px;
@@ -1805,10 +1611,7 @@
         }
 
 
-/* ==========================================================================
-   EXTRACTED FROM INDEX.HTML — STYLE BLOCK 2
-   ========================================================================== */
-/* Discord Bouncing Typing Dots Animation */
+/* Discord bouncing typing dots */
     @keyframes discordDotBounce {
         0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
         40% { transform: translateY(-4px); opacity: 1; }
@@ -1824,8 +1627,7 @@
     .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 
 /* ========================================================================
-   Restrained landing-page polish
-   Keep the existing content and interactions; reduce visual competition.
+   Landing page overrides
    ======================================================================== */
 .content {
     max-width: 1180px !important;
@@ -1857,59 +1659,6 @@
 .hero-mockup-container {
     margin-top: 30px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
-}
-
-/* Live status strip under the hero. Populated from the dashboard's public
-   stats bridge; hidden via the [hidden] attribute until a number arrives. */
-.status-strip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px 20px;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto 28px;
-    padding: 8px 18px;
-    background: rgba(18, 18, 24, 0.72);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-}
-
-.status-strip[hidden] {
-    display: none;
-}
-
-.status-strip-live {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: #57F287;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-}
-
-.status-strip-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #57F287;
-    color: #57F287;
-    animation: pulseGlow 1.5s infinite;
-}
-
-.status-strip-fact strong {
-    color: #fff;
-    font-weight: 800;
-}
-
-.status-strip-fact[hidden] {
-    display: none;
 }
 
 .stats-grid {
@@ -2037,13 +1786,6 @@
         margin-bottom: 36px;
     }
 
-    .status-strip {
-        width: 100%;
-        border-radius: 14px;
-        gap: 4px 16px;
-        padding: 8px 14px;
-    }
-
     .feature-row {
         margin-top: 48px;
         margin-bottom: 48px;
@@ -2064,10 +1806,7 @@
     .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
 
-/* ==========================================================================
-   EXTRACTED FROM INDEX.HTML — STYLE BLOCK 3
-   ========================================================================== */
-/* Styling for Discord Dropdown Select Menu */
+/* Discord dropdown select menu */
     .discord-select {
         background: #1e1f22;
         color: #dbdee1;

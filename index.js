@@ -1,6 +1,5 @@
 /* ==========================================================================
-   PAGE NAVIGATION, SHOWCASE, FILTERS, REVEALS, AND COUNTERS
-   Extracted from index.html inline script block 2
+   Page navigation, showcase, filters, reveals, counters
    ========================================================================== */
 // Single-page navigation and section jumping
     const topNavLinks = document.querySelectorAll('.site-nav-link');
@@ -221,8 +220,7 @@
 
     moduleSearch?.addEventListener('input', applyModuleFilters);
 
-    // Sync the module-count badge with the actual grid on load instead of
-    // trusting a hardcoded number that drifts as cards are added or removed.
+    // Keep the module-count badge in sync with the grid.
     applyModuleFilters();
 
     moduleCards.forEach(card => {
@@ -297,19 +295,17 @@
 
     window.refreshScrollReveals(document);
 
-    // Only move tabs when the requested one is not already showing. switchTab
-    // scrolls to the top, so re-running it on back/forward would undo the
-    // reading position the browser just restored.
+    // switchTab scrolls to the top, so only switch when the tab is not already
+    // showing; back/forward has just restored the reader's position.
     function ensureTab(tabId) {
         const view = document.getElementById(`view-${tabId}`);
         if (!view || view.classList.contains('active-view')) return;
         switchTab(tabId);
     }
 
-    // Single source of truth for the URL fragment: tab hashes (#docs), section
-    // hashes (#features), guide ids (#tickets) and command category ids
-    // (#moderation). Routing a fragment therefore behaves the same whether it
-    // arrives with a page load or is typed into the address bar afterwards.
+    // One route table for every fragment: tab (#docs), section (#features),
+    // guide id (#tickets), command category (#moderation). A fragment behaves
+    // the same whether it arrives with a page load or is typed in.
     function applyHashRoute() {
         const hash = window.location.hash.replace(/^#/, '');
         if (!hash) return;
@@ -337,8 +333,8 @@
         }
     }
 
-    // Back/forward fires popstate *and* hashchange, and the fragment is what
-    // actually carries the route, so hashchange covers traversal too.
+    // Back/forward fires popstate and hashchange; the fragment carries the
+    // route, so hashchange covers traversal as well.
     window.addEventListener('hashchange', applyHashRoute);
 
     // Handle Hash Navigation on Page Load
@@ -409,14 +405,11 @@
 
 
 /* ==========================================================================
-   DOCUMENTATION AND COMMAND RENDERING
-   Extracted from index.html inline script block 3
+   Documentation and command rendering
    ========================================================================== */
 
-// Callout variants. The border colour and the icon both come from the variant so
-// a guide cannot reintroduce an ad-hoc '!' or emoji marker, and so readers learn
-// one visual language: accent = neutral note, green = tip, red = warning. An
-// unknown or missing variant falls back to a plain note.
+// Callout colour and icon both come from the variant (note = accent,
+// tip = green, warning = red). Unknown or missing falls back to a plain note.
 const CALLOUT_VARIANTS = {
     note: { className: 'callout-note', icon: 'ph-info' },
     tip: { className: 'callout-tip', icon: 'ph-lightbulb' },
@@ -716,7 +709,7 @@ function initDocsPage() {
             contentContainer.appendChild(article);
         });
 
-        // Event Listeners for Prev/Next & Copy Buttons inside contentContainer
+        // Prev/Next and copy buttons inside the article.
         contentContainer.addEventListener('click', (e) => {
             const btn = e.target.closest('.doc-nav-btn');
             if (btn) {
@@ -749,7 +742,7 @@ function initDocsPage() {
 
                 const selectedCat = btn.getAttribute('data-category');
 
-                // Category switches restart search filtering from a clean slate.
+                // Category switches restart search filtering.
                 activeDocsCategory = selectedCat;
                 if (searchInput) searchInput.value = '';
                 applyDocSearchFilter('');
@@ -766,9 +759,8 @@ function initDocsPage() {
         const searchInput = document.getElementById('docSearch');
         let activeDocsCategory = 'all';
 
-        // Search filters the sidebar only: links must match BOTH the active
-        // category pill and the search query; empty groups are hidden. The
-        // open article never changes while typing.
+        // Sidebar filter only: a link needs the active category and the query.
+        // Empty groups hide; the open article does not change while typing.
         function applyDocSearchFilter(rawQuery) {
             const normalized = String(rawQuery || '').toLowerCase().trim();
             const groupVisibility = {};
@@ -811,10 +803,8 @@ function initDocsPage() {
             }
         });
 
-        // Auto-open the first guide (or the one named in the URL) so the docs
-        // pane is never blank, but never write that choice into the address
-        // bar. Otherwise merely landing on the site rewrites the URL to
-        // #quickstart even while the Overview tab is the one on screen.
+        // Open the first guide (or the one in the URL) so the pane is not
+        // blank, without writing that choice into the address bar.
         const requestedDoc = window.location.hash.replace(/^#/, '');
         const initialDoc = docsData.some((doc) => doc.id === requestedDoc) ? requestedDoc : docsData[0]?.id;
         if (initialDoc) activateDoc(initialDoc, { updateHistory: 'skip' });
@@ -975,12 +965,11 @@ function initDocsPage() {
 
 
 /* ==========================================================================
-   TICKET DEMO
-   Extracted from index.html inline script block 4
+   Ticket demo
    ========================================================================== */
 let ticketStep = 1;
 
-    // List of random usernames for the final step
+    // Random usernames for the final step
     const randomUsernames = [
         "Mek", "PvPGhost", "StarShard", "Krokopatra",
         "WolfBlade77", "LilPwny", "NightMist", "SunWizard"
@@ -1035,7 +1024,7 @@ let ticketStep = 1;
                 step2.style.display = 'none';
                 step3.style.display = 'block';
 
-                // Step 3: the invite button below follows the user's request message directly.
+                // Step 3: the invite button follows the user's request message.
                 if (textElement) textElement.innerHTML = '';
                 
                 actionArea.innerHTML = `
@@ -1078,8 +1067,7 @@ let ticketStep = 1;
 
 
 /* ==========================================================================
-   TIMEZONE DEMO
-   Extracted from index.html inline script block 5
+   Timezone demo
    ========================================================================== */
 // Timezone data for each region
     const timezoneData = {
@@ -1162,11 +1150,10 @@ let ticketStep = 1;
     }
 
 /* ==========================================================================
-   LIVE STATUS STRIP
-   Fills the hero strip and the "Communities" stat card from the dashboard's
-   public stats bridge, which signs the request to the bot server-side. Every
-   failure path (offline, CORS, bot down, timeout) leaves the existing static
-   copy untouched, so the page never shows an invented or stale number.
+   Live server count
+   Fills the "Communities" stat card from the dashboard's public stats bridge.
+   Any failure (offline, CORS, bot down, timeout) leaves the static copy in
+   place instead of showing a number that may be wrong.
    ========================================================================== */
 (function () {
     // Dashboard route that proxies get_public_stats for the static site.
@@ -1190,8 +1177,6 @@ let ticketStep = 1;
         try {
             sessionStorage.setItem(CACHE_KEY, JSON.stringify({
                 servers: stats.servers,
-                shards: stats.shards,
-                connected_shards: stats.connected_shards,
                 fetchedAt: Date.now()
             }));
         } catch (error) {
@@ -1202,26 +1187,13 @@ let ticketStep = 1;
     function applyStats(stats) {
         if (!stats || typeof stats.servers !== 'number' || stats.servers < 0) return;
 
-        const stripCount = document.getElementById('statusServers');
+        // Plain digits: the counter animation parses this text.
         const cardCount = document.getElementById('liveServerCount');
-        if (stripCount) stripCount.textContent = stats.servers.toLocaleString();
-        // Plain digits here: the stat-counter animation parses this text and a
-        // thousands separator would turn into an odd suffix mid-animation.
         if (cardCount) cardCount.textContent = String(stats.servers);
-
-        const shardsFact = document.getElementById('statusShardsFact');
-        const shardsCount = document.getElementById('statusShards');
-        if (shardsFact && shardsCount && typeof stats.shards === 'number' && typeof stats.connected_shards === 'number') {
-            shardsCount.textContent = stats.connected_shards + '/' + stats.shards;
-            shardsFact.hidden = false;
-        }
-
-        const strip = document.getElementById('statusStrip');
-        if (strip) strip.hidden = false;
     }
 
     async function loadLiveStats() {
-        if (!document.getElementById('statusStrip')) return;
+        if (!document.getElementById('liveServerCount')) return;
 
         const cached = readCachedStats();
         if (cached) {
@@ -1241,7 +1213,7 @@ let ticketStep = 1;
             applyStats(stats);
             writeCachedStats(stats);
         } catch (error) {
-            // Offline, blocked, or the bot is unreachable: keep the static copy.
+            // Offline, CORS-blocked or unreachable: keep the static copy.
         } finally {
             clearTimeout(timeout);
         }

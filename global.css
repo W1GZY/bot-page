@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DESIGN TOKENS & DYNAMIC ACCENT ENGINE
+   Design tokens
    ========================================================================== */
 :root {
   --bg-dark: #09090b;
@@ -23,6 +23,12 @@
 
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Jump clearance: header height plus the gap below it. index.css raises
+     --header-height for the taller landing topbar. */
+  --header-height: 60px;
+  --anchor-gap: 20px;
+  --anchor-offset: calc(var(--header-height) + var(--anchor-gap));
 }
 
 /* Accent Themes */
@@ -47,6 +53,9 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Set once here. Inherited sizes must not differ per page. */
+  font-size: 15px;
+  line-height: 1.65;
   margin: 0;
   display: flex;
   min-height: 100vh;
@@ -132,6 +141,12 @@ code {
   position: sticky;
   top: 0;
   z-index: 40;
+}
+
+/* Scroll targets (sections, guides, command categories) share one clearance.
+   scroll-margin only affects elements that are actually scrolled to. */
+[id] {
+  scroll-margin-top: var(--anchor-offset);
 }
 
 .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
@@ -292,58 +307,8 @@ code {
 .pill-btn:hover { color: #fff; border-color: var(--border-highlight); background: rgba(255, 255, 255, 0.08); }
 .pill-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 800; box-shadow: 0 0 16px var(--accent-glow); }
 
-.docs-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
-.docs-nav { position: sticky; top: 80px; background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; max-height: calc(100vh - 120px); overflow-y: auto; }
-.docs-nav-title { font-size: 0.7rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.docs-nav-link { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.85rem; padding: 6px 8px; border-radius: var(--radius-sm); }
-.docs-nav-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
-.docs-nav-link.active { color: var(--accent); background: var(--accent-glow); font-weight: 700; }
-
-.docs-article { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px; scroll-margin-top: 80px; }
-.docs-article h2 { color: #fff; margin-top: 0; font-size: 1.3rem; font-weight: 800; border-bottom: 1px solid var(--border); padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.docs-article h3 { color: var(--accent); font-size: 1rem; font-weight: 700; margin: 18px 0 6px 0; }
-.docs-article p, .docs-article li { color: #ddd; font-size: 0.9rem; line-height: 1.55; }
-.callout-box { background: rgba(26, 26, 34, 0.8); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 14px 0; font-size: 0.85rem; color: #ccc; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
-
-/* Callout variants — an accent border on every box made notes, tips and warnings
-   read identically. Compound selectors so the variant wins over the base
-   .callout-box rules in docs.css and index.css regardless of load order.
-   note follows the theme accent; tip and warning are fixed so their meaning does
-   not change when a reader picks a different accent. */
-.callout-box.callout-note { border-left-color: var(--accent); background: var(--accent-glow); }
-.callout-box.callout-tip { border-left-color: #57F287; background: rgba(87, 242, 135, 0.08); }
-.callout-box.callout-warning { border-left-color: #ED4245; background: rgba(237, 66, 69, 0.08); }
-
-.callout-box strong i { margin-right: 6px; font-size: 1.05em; vertical-align: -1px; }
-.callout-box.callout-note strong i { color: var(--accent); }
-.callout-box.callout-tip strong i { color: #57F287; }
-.callout-box.callout-warning strong i { color: #ED4245; }
-
-.layout-with-toc { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: start; }
-.toc-sidebar { position: sticky; top: 80px; background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; }
-.toc-title { font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-.toc-link { display: block; color: var(--text-secondary); font-size: 0.8rem; padding: 4px 0; border-left: 2px solid transparent; padding-left: 8px; }
-.toc-link.active-toc { color: var(--accent); border-left-color: var(--accent); font-weight: 700; }
-
-.cmd-section { margin-bottom: 32px; scroll-margin-top: 80px; }
-.cmd-section h2 { color: var(--accent); margin: 0 0 14px 0; font-size: 1.2rem; font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-
 .tos-title { color: #fff; margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: 0; }
 .tos-date { color: var(--text-secondary); font-size: 0.85rem; margin: 8px 0 24px; }
-
-.cards-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-.cmd-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 18px; display: flex; flex-direction: column; transition: all var(--transition-fast); }
-.cmd-card:hover { border-color: var(--border-highlight); transform: translateY(-2px); background: var(--bg-card-hover); }
-.cmd-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
-.cmd-name { color: #fff; font-size: 0.9rem; font-weight: 700; margin: 0; font-family: monospace; background: rgba(255,255,255,0.05); padding: 3px 6px; border-radius: 4px; }
-.cmd-desc { font-size: 0.825rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.45; }
-
-.badge-container { display: flex; gap: 4px; }
-.badge { font-size: 0.6rem; padding: 3px 8px; border-radius: var(--radius-full); font-weight: 800; text-transform: uppercase; }
-.badge.public { background: rgba(255,255,255,0.08); color: #ccc; }
-.badge.role { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-.badge.perm { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-.badge.new { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
 
 .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); }
 .hamburger:hover { background: rgba(255, 255, 255, 0.08); }
@@ -360,8 +325,6 @@ code {
   .hamburger { display: block; }
   .top-header { padding: 0 16px; }
   .content { padding: 20px 16px; }
-  .docs-grid, .layout-with-toc { grid-template-columns: 1fr; }
-  .docs-nav, .toc-sidebar { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -376,8 +339,6 @@ code {
   .stats-grid { grid-template-columns: 1fr; }
   .btn-large { width: 100%; justify-content: center; min-height: 48px; }
   .page-footer { flex-direction: column; gap: 12px; text-align: center; }
-  .docs-article { padding: 16px; }
-  .callout-box { padding: 10px 12px; }
   code { word-break: break-all; font-size: 0.8em; }
 }
 /* Hero & Overview Layout Components */
@@ -413,224 +374,6 @@ code {
   outline: none;
   margin-left: 10px;
   font-family: inherit;
-}
-
-/* ==========================================================================
-   CARL-BOT STYLE ENHANCED DOCUMENTATION & NAVIGATION SYSTEM
-   ========================================================================== */
-
-.docs-nav-group {
-  margin-bottom: 14px;
-}
-.docs-nav-group-title {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  padding: 6px 8px 4px 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  margin-bottom: 4px;
-}
-
-.cmd-item-list {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.cmd-item-box {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  transition: all var(--transition-fast);
-}
-.cmd-item-box:hover {
-  border-color: var(--border-highlight);
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.cmd-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  flex-wrap: wrap;
-}
-
-.cmd-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  background: rgba(255, 215, 0, 0.08);
-  color: var(--accent);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.cmd-desc-text {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-}
-
-.copy-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  flex-shrink: 0;
-}
-.copy-btn:hover {
-  background: var(--accent);
-  color: #000;
-  border-color: var(--accent);
-}
-
-.doc-article-nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
-}
-
-.doc-nav-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  flex: 1;
-  min-width: 200px;
-}
-.doc-nav-btn:hover {
-  border-color: var(--accent);
-  background: var(--accent-glow);
-  transform: translateY(-2px);
-}
-.doc-nav-btn.next-btn {
-  justify-content: flex-end;
-  text-align: right;
-}
-.doc-nav-btn .nav-label {
-  display: block;
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.doc-nav-btn .nav-title {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-top: 2px;
-}
-
-
-
-/* Missing Documentation & Sidebar TOC Rules */
-.sidebar-toc-container {
-  margin-top: 10px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  max-height: calc(100vh - 240px);
-  overflow-y: auto;
-}
-.sidebar-toc-header {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.sidebar-toc-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 10px;
-  color: var(--text-secondary);
-  font-size: 0.825rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-decoration: none;
-}
-.sidebar-toc-link:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-}
-.sidebar-toc-link.active {
-  color: var(--accent);
-  background: var(--accent-glow);
-  font-weight: 700;
-  border-left: 2px solid var(--accent);
-}
-
-.docs-article {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  margin-bottom: 20px;
-  scroll-margin-top: 80px;
-  display: none;
-  /* Reading measure. Long lines are hard to track, so the article is capped
-     rather than stretched across the whole column -- but the cap only takes
-     effect once the column is genuinely wider than the measure. Narrow and
-     mid-size windows fill their column instead of showing a centred strip. */
-  max-width: 100%;
-  margin-inline: auto;
-}
-
-/* The measure only crops the article on wide viewports, where the column
-   would otherwise run past a comfortable line length. */
-@media (min-width: 1200px) {
-  .docs-article {
-    max-width: 76ch;
-  }
-}
-.docs-article.active-doc {
-  display: block !important;
-  animation: slideUpFade 0.2s ease-out forwards;
 }
 
 

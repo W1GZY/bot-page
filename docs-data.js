@@ -1180,7 +1180,7 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Open the dashboard, go to Module Settings, and enable Invite Links.",
-                    "Confirm SeanBot has the Manage Server permission — it is required to list and track invites.",
+                    "Confirm SeanBot has the Manage Server permission. It is required to list and track invites.",
                     "Open the Invite Links page. Every active invite appears with its code, target channel, creator, usage count, and expiry.",
                     "Delegated staff access is configured on Server Access: the Invite Links card controls who may create, edit, revoke, and duplicate invites."
                 ]
@@ -1734,7 +1734,7 @@ const docsData = [
         "id": "raidpolls",
         "icon": "ph-users-three",
         "title": "Polls & Event Rosters",
-        "subtitle": "Quick reaction polls for simple votes, plus advanced signup polls with slots, caps, and waitlists — for any game.",
+        "subtitle": "Quick reaction polls for simple votes, plus advanced signup polls with slots, caps, and waitlists, for any game.",
         "content": [
             {
                 "type": "heading",
@@ -1742,7 +1742,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids as well as any other game, activity, or community night. /raidpoll opens a guided wizard that walks you through the poll step by step — you set the title, the schedule, and when the poll closes, and each step shows live feedback so you can fix problems before posting. Experienced users can pick the Quick Form option in the wizard for the classic all-in-one form."
+                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids as well as any other game, activity, or community night. /raidpoll opens a guided wizard that walks you through the poll step by step: you set the title, the schedule, and when the poll closes, and each step shows live feedback so you can fix problems before posting. The wizard survives bot restarts: progress is saved automatically, running /raidpoll again offers to resume where you left off, and the buttons on an old wizard message keep working even after a restart or a pause. Experienced users can pick the Quick Form option in the wizard for the classic all-in-one form."
             },
             {
                 "type": "heading",
@@ -1774,7 +1774,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "In /raidpoll and the dashboard advanced poll form, each slot is one line: a time, a separator, the event name, and an optional player cap in brackets. Separators can be a dash, pipe, tilde, semicolon, or a colon right after a clock time, and relative times like tomorrow 20:00 or Friday 21:00 work just as well as full dates — for example: tomorrow 20:00 - Weekly Boss [8], Saturday 18:00 | Big Raid, or 2026-12-20 15:00 ~ Endgame Run [6]. Caps are optional and any event name works, whatever game it comes from."
+                "text": "In /raidpoll and the dashboard advanced poll form, each slot is one line: a time, a separator, the event name, and an optional player cap in brackets. Separators can be a dash, pipe, tilde, semicolon, or a colon right after a clock time, and relative times like tomorrow 20:00 or Friday 21:00 work just as well as full dates; for example: tomorrow 20:00 - Weekly Boss [8], Saturday 18:00 | Big Raid, or 2026-12-20 15:00 ~ Endgame Run [6]. Caps are optional and any event name works, whatever game it comes from."
             },
             {
                 "type": "heading",
@@ -3543,7 +3543,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Global Enforcement turns the servers you administer into a punishment network. Instead of manually kicking, timing out, or banning a member server by server, you run one action against a scope — all linked servers or the exact servers you pick — and SeanBot applies it everywhere, recording per-server results for audit."
+                "text": "Global Enforcement turns the servers you administer into a punishment network. Instead of manually kicking, timing out, or banning a member server by server, you run one action against a scope (all linked servers or the exact servers you pick) and SeanBot applies it everywhere, recording per-server results for audit."
             },
             {
                 "type": "heading",
@@ -3561,7 +3561,7 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Open Module Settings and enable Global Enforcement.",
-                    "Open the Global Enforcement page and create a network — it starts with the servers you currently manage.",
+                    "Open the Global Enforcement page and create a network. It starts with the servers you currently manage.",
                     "Link servers from the network settings card. Only servers where you have Administrator or Manage Server appear as options.",
                     "Optionally add delegated staff user IDs and choose defaults: the default punishment, timeout length, whether a reason is required, and whether the punished member receives a DM.",
                     "The Discord command /gpunish network create &lt;name&gt; creates a network starting with the current server, and /gpunish network add &lt;guild_id&gt; links more."
@@ -3615,7 +3615,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "When staff approve a ban appeal in any network server, the approval is mirrored as an unban across the appeal sync scope — every linked server, or the exact subset you selected on the Global Enforcement page. This prevents a member from being freed in one server while staying banned in the rest of the network. Appeal review channels are still configured per server on the Ban Appeals page; Global Enforcement only controls where the approved unban is mirrored. Mirror events appear in the network history with the Ban appeal approval source and are logged in each affected server."
+                "text": "When staff approve a ban appeal in any network server, the approval is mirrored as an unban across the appeal sync scope: every linked server, or the exact subset you selected on the Global Enforcement page. This prevents a member from being freed in one server while staying banned in the rest of the network. Appeal review channels are still configured per server on the Ban Appeals page; Global Enforcement only controls where the approved unban is mirrored. Mirror events appear in the network history with the Ban appeal approval source and are logged in each affected server."
             },
             {
                 "type": "callout",
@@ -3641,7 +3641,7 @@ const docsData = [
                     "Per-message limits: maximum user mentions and maximum role mentions in a single message.",
                     "@everyone / @here blocking when you do not want mass notifications at all.",
                     "A per-author ping cooldown that stops members from repeatedly pinging the same people.",
-                    "Protected roles and users that may never be pinged — attempts are blocked, logged, and can DM the protected person.",
+                    "Protected roles and users that may never be pinged. Attempts are blocked, logged, and can DM the protected person.",
                     "Ghost ping protection: messages that mention users and are deleted within a short window are detected and can be actively punished, not just logged.",
                     "Exemptions for trusted roles, channels, and users, so automation and staff workflows are never caught."
                 ]
@@ -3652,7 +3652,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Anti-Ping fills the gap between the two existing layers instead of duplicating them. Anti-Raid's mass-mention detector watches for floods and applies raid policies (quarantine, progressive timeouts) when many mentions arrive in a window. Logging records ghost pings and high mention volume passively. Anti-Ping adds the per-message rules staff actually configure — how many pings are allowed, who is protected, who is exempt, and what happens on violation. All three share the same Logging pipeline: Anti-Ping events are routed under the Security category (Anti-Ping log type) in Log Config, and Anti-Raid alerts stay in their own security channels."
+                "text": "Anti-Ping fills the gap between the two existing layers instead of duplicating them. Anti-Raid's mass-mention detector watches for floods and applies raid policies (quarantine, progressive timeouts) when many mentions arrive in a window. Logging records ghost pings and high mention volume passively. Anti-Ping adds the per-message rules staff actually configure: how many pings are allowed, who is protected, who is exempt, and what happens on violation. All three share the same Logging pipeline: Anti-Ping events are routed under the Security category (Anti-Ping log type) in Log Config, and Anti-Raid alerts stay in their own security channels."
             },
             {
                 "type": "heading",
@@ -3660,7 +3660,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Violations can be logged only, send the member a DM warning, delete the message, apply a timeout, kick, or ban. Staff and members whose highest role is at or above SeanBot's role are never punished, and neither is the bot itself — those attempts are reported in the log. Daily statistics on the dashboard show the reason breakdown, ghost ping counts, protected ping attempts, and the top offenders."
+                "text": "Violations can be logged only, send the member a DM warning, delete the message, apply a timeout, kick, or ban. Staff and members whose highest role is at or above SeanBot's role are never punished, and neither is the bot itself; those attempts are reported in the log. Daily statistics on the dashboard show the reason breakdown, ghost ping counts, protected ping attempts, and the top offenders."
             },
             {
                 "type": "commands",
@@ -3718,10 +3718,10 @@ const docsData = [
                 "type": "list",
                 "title": "How It Works",
                 "items": [
-                    "Trap text channels — any message posted in the channel triggers the action immediately.",
-                    "One-click deploy — the dashboard Deploy Trap Channel button or /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
-                    "Who to Flag — flag anyone, only new accounts, only members without a profile picture, or a combination.",
-                    "Exemptions — roles and users can be excluded from detection at any time."
+                    "Trap text channels: any message posted in the channel triggers the action immediately.",
+                    "One-click deploy: the dashboard Deploy Trap Channel button or /honeypot deploy creates a ready-made trap channel and arms it in a single step.",
+                    "Who to Flag: flag anyone, only new accounts, only members without a profile picture, or a combination.",
+                    "Exemptions: roles and users can be excluded from detection at any time."
                 ]
             },
             {
@@ -3730,7 +3730,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Any message in a trap channel triggers the chosen action immediately — there is no hit counter. Enforcement can be Quarantine (the recommended default, which isolates the member in a verification channel until they verify), a timeout, a kick, a ban, a DM warning, or log only. Triggering messages can be deleted automatically, and the Who to Flag mode can limit hits to new accounts, members without a profile picture, or both. Staff, exempt roles, and exempt users are never flagged, and members whose role is at or above SeanBot's role are never punished."
+                "text": "Any message in a trap channel triggers the chosen action immediately. There is no hit counter. Enforcement can be Quarantine (the recommended default, which isolates the member in a verification channel until they verify), a timeout, a kick, a ban, a DM warning, or log only. Triggering messages can be deleted automatically, and the Who to Flag mode can limit hits to new accounts, members without a profile picture, or both. Staff, exempt roles, and exempt users are never flagged, and members whose role is at or above SeanBot's role are never punished."
             },
             {
                 "type": "heading",
@@ -3742,7 +3742,7 @@ const docsData = [
                     "Enable Honeypot in Module Settings and open the dashboard Honeypot page.",
                     "Start with the Log only action to watch hits before raising enforcement.",
                     "Click Deploy Trap Channel on the dashboard (or run /honeypot deploy) to create a trap channel instantly without leaving the page.",
-                    "Keep trap channels visible to @everyone — that visibility is what attracts the bots. Place them somewhere out of the way.",
+                    "Keep trap channels visible to @everyone; that visibility is what attracts the bots. Place them somewhere out of the way.",
                     "Let it run for a few days and review the trigger breakdown on the dashboard.",
                     "Switch to Quarantine, timeout, or ban once you are comfortable with the results.",
                     "Set Who to Flag to Only new accounts to flag accounts under 30 days old.",
@@ -3795,7 +3795,7 @@ const docsData = [
         "id": "giveaways",
         "icon": "ph-gift",
         "title": "Giveaways: Native Hosting & GiveawayBot Support",
-        "subtitle": "Host SeanBot-native giveaways with full entry tracking, winner vetting, reminders, and archive summaries — plus companion support for the open-source GiveawayBot.",
+        "subtitle": "Host SeanBot-native giveaways with full entry tracking, winner vetting, reminders, and archive summaries, plus companion support for the open-source GiveawayBot.",
         "content": [
             {
                 "type": "heading",
@@ -3903,7 +3903,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The botsupport module watches an installed GiveawayBot (official or self-hosted) and turns its public messages into an audit trail: created, ended, rerolled, and deleted giveaways, plus winner vetting. GiveawayBot keeps its entrant list private — for full entry tracking, use SeanBot's native giveaways."
+                "text": "The botsupport module watches an installed GiveawayBot (official or self-hosted) and turns its public messages into an audit trail: created, ended, rerolled, and deleted giveaways, plus winner vetting. GiveawayBot keeps its entrant list private. For full entry tracking, use SeanBot's native giveaways."
             },
             {
                 "type": "commands",

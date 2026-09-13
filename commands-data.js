@@ -230,7 +230,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/giveaway embed",
-            "desc": "Design a custom giveaway embed — from the preset or a saved template.",
+            "desc": "Design a custom giveaway embed from a preset or a saved template.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -320,7 +320,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/invite",
-            "desc": "Get the bot’s invite link.",
+            "desc": "Get the bot's invite link.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -434,13 +434,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/serverinfo",
-            "desc": "Show this server’s information.",
+            "desc": "Show this server's information.",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/setup",
-            "desc": "One-click server setup — pick a server type and the features to turn on",
+            "desc": "One-click server setup: pick a server type and the features to turn on",
             "badge": "Manage Server",
             "type": "perm"
         }
