@@ -1733,8 +1733,8 @@ const docsData = [
     {
         "id": "raidpolls",
         "icon": "ph-users-three",
-        "title": "Polls & Raid Rosters",
-        "subtitle": "Quick reaction polls for simple votes, plus advanced raid roster polls with waitlists.",
+        "title": "Polls & Event Rosters",
+        "subtitle": "Quick reaction polls for simple votes, plus advanced signup polls with slots, caps, and waitlists — for any game.",
         "content": [
             {
                 "type": "heading",
@@ -1742,7 +1742,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need raid slots, caps, waitlists, and roster automation."
+                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids as well as any other game, activity, or community night."
             },
             {
                 "type": "heading",
@@ -1769,7 +1769,24 @@ const docsData = [
                 "text": "When you write a date or time in /poll create or in the dashboard simple poll form, SeanBot tries to turn it into a Discord timestamp. Discord then shows the time in each member's own local time. You can write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. SeanBot uses the poll creator's saved timezone, so set your timezone first before using poll end times or timed answer choices."
             },
             {
-                "text": "Menu and both-mode raid polls support up to 23 raid slots per poll so Discord's dropdown remains valid. Reaction-only raid polls support up to 25 slots."
+                "type": "heading",
+                "text": "Flexible Schedule Format"
+            },
+            {
+                "type": "text",
+                "text": "In /raidpoll and the dashboard advanced poll form, each slot is one line: a time, a separator, the event name, and an optional player cap in brackets. Separators can be a dash, pipe, tilde, semicolon, or a colon right after a clock time, and relative times like tomorrow 20:00 or Friday 21:00 work just as well as full dates — for example: tomorrow 20:00 - Weekly Boss [8], Saturday 18:00 | Big Raid, or 2026-12-20 15:00 ~ Endgame Run [6]. Caps are optional and any event name works, whatever game it comes from."
+            },
+            {
+                "type": "heading",
+                "text": "Banners"
+            },
+            {
+                "type": "text",
+                "text": "Every poll accepts an optional custom banner URL. When you split a schedule into separate polls, each poll automatically uses matching preset banner art when one exists for that event name; otherwise the poll is posted without a banner instead of borrowing another game's artwork. Combined polls use your custom banner or a banner-free embed by default."
+            },
+            {
+                "type": "text",
+                "text": "Menu and both-mode polls support up to 23 slots per poll so Discord's dropdown remains valid. Reaction-only polls support up to 25 slots."
             },
             {
                 "type": "commands",
@@ -1785,7 +1802,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/raidpoll",
-                        "desc": "Open setup modal to build interactive multi-role raid signup boards."
+                        "desc": "Open setup modal to build interactive signup boards with slots, caps, and waitlists for any game or event."
                     }
                 ]
             }
