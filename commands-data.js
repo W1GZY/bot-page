@@ -1380,7 +1380,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/raidpoll",
-            "desc": "Quickly create signup polls with rosters, caps, and waitlists for any game",
+            "desc": "Guided step-by-step creation of signup polls with rosters, caps, and waitlists for any game",
             "badge": "Manage Channels",
             "type": "perm"
         },

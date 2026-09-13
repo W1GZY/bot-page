@@ -613,12 +613,20 @@ code {
   margin-bottom: 20px;
   scroll-margin-top: 80px;
   display: none;
-  /* Keep prose at a readable measure (~70 characters/line); wide screens
-     otherwise stretch lines past 100 characters. Narrow screens stay
-     unaffected (the article just fills its column). Centering balances
-     the leftover space on wide screens. */
-  max-width: 60ch;
+  /* Reading measure. Long lines are hard to track, so the article is capped
+     rather than stretched across the whole column -- but the cap only takes
+     effect once the column is genuinely wider than the measure. Narrow and
+     mid-size windows fill their column instead of showing a centred strip. */
+  max-width: 100%;
   margin-inline: auto;
+}
+
+/* The measure only crops the article on wide viewports, where the column
+   would otherwise run past a comfortable line length. */
+@media (min-width: 1200px) {
+  .docs-article {
+    max-width: 76ch;
+  }
 }
 .docs-article.active-doc {
   display: block !important;

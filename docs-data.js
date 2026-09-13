@@ -1742,7 +1742,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids as well as any other game, activity, or community night."
+                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids as well as any other game, activity, or community night. /raidpoll opens a guided wizard that walks you through the poll step by step — you set the title, the schedule, and when the poll closes, and each step shows live feedback so you can fix problems before posting. Experienced users can pick the Quick Form option in the wizard for the classic all-in-one form."
             },
             {
                 "type": "heading",

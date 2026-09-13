@@ -297,23 +297,53 @@
 
     window.refreshScrollReveals(document);
 
+    // Only move tabs when the requested one is not already showing. switchTab
+    // scrolls to the top, so re-running it on back/forward would undo the
+    // reading position the browser just restored.
+    function ensureTab(tabId) {
+        const view = document.getElementById(`view-${tabId}`);
+        if (!view || view.classList.contains('active-view')) return;
+        switchTab(tabId);
+    }
+
+    // Single source of truth for the URL fragment: tab hashes (#docs), section
+    // hashes (#features), guide ids (#tickets) and command category ids
+    // (#moderation). Routing a fragment therefore behaves the same whether it
+    // arrives with a page load or is typed into the address bar afterwards.
+    function applyHashRoute() {
+        const hash = window.location.hash.replace(/^#/, '');
+        if (!hash) return;
+
+        if (['overview', 'docs', 'commands'].includes(hash)) {
+            ensureTab(hash);
+            return;
+        }
+
+        if (['showcase', 'features'].includes(hash)) {
+            jumpToSection(hash);
+            return;
+        }
+
+        if (typeof docsData !== 'undefined' && docsData.some(d => d.id === hash)) {
+            ensureTab('docs');
+            setTimeout(() => window.activateDoc?.(hash, { updateHistory: 'skip' }), 50);
+            return;
+        }
+
+        if (typeof commandsDatabase !== 'undefined' && commandsDatabase.some(c => c.id === hash)) {
+            ensureTab('commands');
+            const targetSec = document.getElementById(hash);
+            if (targetSec) setTimeout(() => targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        }
+    }
+
+    // Back/forward fires popstate *and* hashchange, and the fragment is what
+    // actually carries the route, so hashchange covers traversal too.
+    window.addEventListener('hashchange', applyHashRoute);
+
     // Handle Hash Navigation on Page Load
     window.addEventListener('load', () => {
-        if (window.location.hash) {
-            const hash = window.location.hash.substring(1);
-            if (['overview', 'docs', 'commands'].includes(hash)) {
-                switchTab(hash);
-            } else if (['showcase', 'features'].includes(hash)) {
-                jumpToSection(hash);
-            } else if (typeof docsData !== 'undefined' && docsData.some(d => d.id === hash)) {
-                switchTab('docs');
-                setTimeout(() => activateDoc(hash), 50);
-            } else if (typeof commandsDatabase !== 'undefined' && commandsDatabase.some(c => c.id === hash)) {
-                switchTab('commands');
-                const targetSec = document.getElementById(hash);
-                if (targetSec) setTimeout(() => targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-            }
-        }
+        applyHashRoute();
 
         // Back to Top Button Scroll Listener
         const backToTopBtn = document.getElementById('backToTopBtn');
@@ -511,15 +541,6 @@ function initDocsPage() {
                 window.animateScrollPop(activeArticle, 'right', 0, true);
             }
         };
-
-        // Browser Back/Forward must restore the previously viewed doc module.
-        window.addEventListener('popstate', () => {
-            if (typeof docsData === 'undefined' || !Array.isArray(docsData)) return;
-            const hash = window.location.hash.replace(/^#/, '');
-            if (docsData.some(d => d.id === hash)) {
-                activateDoc(hash, { updateHistory: 'skip' });
-            }
-        });
 
         const groups = {};
         docsData.forEach(doc => {
@@ -790,9 +811,13 @@ function initDocsPage() {
             }
         });
 
+        // Auto-open the first guide (or the one named in the URL) so the docs
+        // pane is never blank, but never write that choice into the address
+        // bar. Otherwise merely landing on the site rewrites the URL to
+        // #quickstart even while the Overview tab is the one on screen.
         const requestedDoc = window.location.hash.replace(/^#/, '');
         const initialDoc = docsData.some((doc) => doc.id === requestedDoc) ? requestedDoc : docsData[0]?.id;
-        if (initialDoc) activateDoc(initialDoc);
+        if (initialDoc) activateDoc(initialDoc, { updateHistory: 'skip' });
     }
 
     // Commands Page Renderer
