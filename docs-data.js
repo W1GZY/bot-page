@@ -630,8 +630,8 @@ const docsData = [
     {
         "id": "wizard_info",
         "icon": "ph-user-list",
-        "title": "W101: Wizard Roster Check",
-        "subtitle": "Wizard profile channel setup, missing-list audits, and reminder DMs.",
+        "title": "W101: Wizard Registry",
+        "subtitle": "Members register their own wizards; staff work the exceptions.",
         "content": [
             {
                 "type": "heading",
@@ -639,29 +639,77 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Configure wizard-post channels, publish missing-profile lists, and send DM reminders to members who still need wizard information."
+                "text": "The registry keeps every member's Wizard101 wizards: name, school, level, and whether that wizard is still in your in-game guild. Members enter their own through a guided flow, so nobody has to collect wizard posts from a channel and paste them in."
+            },
+            {
+                "type": "text",
+                "text": "Bulk entry still works. One wizard per line as name, school, level, for example \"Sean IronStone myth 175\". Separators, an optional Level prefix, and several wizards on one line are all accepted."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Open the Wizard Config page in the dashboard and switch member self-service on.",
+                    "Choose the panel channel and press Post panel. Posting leaves that channel read-only for @everyone, so the panel stays something members press rather than chat under; clear the checkbox on the page to leave the channel open.",
+                    "Ask members to press the panel, or to run /wizard setup themselves.",
+                    "Use /wizard unregistered to see who has registered nothing, then /wizard remind to DM them.",
+                    "Work the roster with /wizard unassigned, or paste a whole list as staff with /wizard register.",
+                    "Once a month, paste your in-game guild roster on the Wizard Config page: levels move in place, and wizards that dropped out are flagged as removed in-game."
+                ]
             },
             {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
                     {
-                        "cmd": "/wizard missing-channel [channel]",
-                        "desc": "Designate staff channel where missing profile audits publish."
+                        "cmd": "/wizard setup",
+                        "desc": "Register, update, or remove your own wizards one step at a time."
                     },
                     {
-                        "cmd": "/wizard missing-list",
-                        "desc": "Generate a real-time list of unverified guild members."
+                        "cmd": "/wizard list [member]",
+                        "desc": "Show the wizards registered to a member."
                     },
                     {
-                        "cmd": "/wizard check",
-                        "desc": "Dispatch friendly automated DM reminders to unverified members."
+                        "cmd": "/wizard all [school]",
+                        "desc": "Show every member and their wizards, optionally filtered to one school."
                     },
                     {
-                        "cmd": "/wizard channel [channel]",
-                        "desc": "Set the channel where wizard profile posts are expected."
+                        "cmd": "/wizard register [member]",
+                        "desc": "Register wizards for a member by pasting lines."
+                    },
+                    {
+                        "cmd": "/wizard remove [name] [member]",
+                        "desc": "Remove one of a member's wizards by name."
+                    },
+                    {
+                        "cmd": "/wizard panel [channel]",
+                        "desc": "Post the permanent panel members press to register."
+                    },
+                    {
+                        "cmd": "/wizard unregistered [role]",
+                        "desc": "List the members who have registered no wizards."
+                    },
+                    {
+                        "cmd": "/wizard remind [role] [limit]",
+                        "desc": "DM the members who still have no wizards registered."
+                    },
+                    {
+                        "cmd": "/wizard unassigned",
+                        "desc": "Show the wizards nobody is registered to, and assign them."
+                    },
+                    {
+                        "cmd": "/wizard assign [wizard] [member]",
+                        "desc": "Move one unassigned wizard onto the member it belongs to."
                     }
                 ]
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "text": "Staff can mark a wizard as gone from the in-game guild from /wizard unassigned, from /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Nothing is deleted either way: the wizard keeps its place and is listed under the members who are no longer in the guild."
             }
         ]
     },

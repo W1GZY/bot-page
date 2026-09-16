@@ -100,6 +100,7 @@
             <a href="#showcase" class="site-nav-link" data-section="showcase"><i class="ph ph-monitor-play"></i><span>In Action</span></a>
             <a href="#features" class="site-nav-link" data-section="features"><i class="ph ph-squares-four"></i><span>Modules</span></a>
             <a href="#compare" class="site-nav-link" data-section="compare"><i class="ph ph-scales"></i><span>Compare</span></a>
+            <a href="#whats-new" class="site-nav-link" data-section="whats-new"><i class="ph ph-sparkle"></i><span>What's New</span></a>
             <a href="#docs" class="site-nav-link" data-tab="docs"><i class="ph ph-book-open"></i><span>Documentation</span></a>
             <a href="#commands" class="site-nav-link" data-tab="commands"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
             <a href="invite.html" target="_blank" rel="noopener" class="site-nav-mobile-invite"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot</a>
@@ -1174,6 +1175,50 @@
                 </div>
             </section>
 
+            <!-- What's New -->
+            <section id="whats-new" style="margin: 44px 0 8px 0;">
+                <div style="text-align: center; margin-bottom: 26px;">
+                    <span class="section-eyebrow">Recently shipped</span>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin: 8px 0 0 0; letter-spacing: -0.5px;">What's new</h2>
+                    <p style="color: var(--text-secondary); max-width: 720px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">The latest user-visible changes, newest first. Each one is written up in the guides.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+                    <article class="glass-card feature-card module-card">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-user-list"></i></span>
+                            <span class="module-category">September 16, 2026</span>
+                        </div>
+                        <h3 class="feature-title">Members register their own wizards</h3>
+                        <p class="feature-desc">Post the registration panel in a channel and members add, update, and check their own Wizard101 wizards with three buttons. Nobody has to collect wizard posts by hand any more.</p>
+                    </article>
+                    <article class="glass-card feature-card module-card">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-lock-simple"></i></span>
+                            <span class="module-category">September 16, 2026</span>
+                        </div>
+                        <h3 class="feature-title">The panel channel stays a panel</h3>
+                        <p class="feature-desc">Posting the panel leaves that channel read-only for @everyone, so it stays something members press rather than chat under. Prefer to keep the conversation? Clear one checkbox on the Wizard Config page.</p>
+                    </article>
+                    <article class="glass-card feature-card module-card">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-list-checks"></i></span>
+                            <span class="module-category">September 16, 2026</span>
+                        </div>
+                        <h3 class="feature-title">Work the roster from Discord</h3>
+                        <p class="feature-desc">/wizard unassigned groups the wizards nobody is registered to, shows the matches the name matcher is sure about, and assigns them in one press. /wizard assign moves a single wizard by name.</p>
+                    </article>
+                    <article class="glass-card feature-card module-card">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-door-open"></i></span>
+                            <span class="module-category">September 16, 2026</span>
+                        </div>
+                        <h3 class="feature-title">Tick wizards off the in-game guild</h3>
+                        <p class="feature-desc">A wizard registered here is not always still in your in-game guild. Staff now mark that from /wizard unassigned, /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info.</p>
+                    </article>
+                </div>
+            </section>
+
             <!-- Featured Modules -->
             <section id="features" class="modules-section">
                 <div class="modules-heading">
@@ -1270,6 +1315,15 @@
                         </div>
                         <h3 class="feature-title">Beastmoon</h3>
                         <p class="feature-desc">Track Beastmoon Hunt and Monster Mayhem form tiers, inspect Lunari and Idol progress, sync web converter data, announce tier-ups, and rank server leaderboards.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard registry wizard101 let members register their own wizards, keep names, schools and levels in sync, assign the unassigned roster, and mark wizards that left the in-game guild." data-doc="wizard_info">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-user-list"></i></span>
+                            <span class="module-category">Wizard101</span>
+                        </div>
+                        <h3 class="feature-title">Wizard Registry</h3>
+                        <p class="feature-desc">Members register their own wizards from a panel, staff assign the rest, and whoever left the in-game guild gets ticked off.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="cat facts community &amp; events serve random cat facts on demand. this module is mandatory for every server—no exceptions." data-doc="fun">

@@ -807,6 +807,12 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/antiraid image_check",
+            "desc": "Explains why the scam-image scan did or did not fire on a message.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/antiraid list_patterns",
             "desc": "Lists all registered dynamic scam text patterns.",
             "badge": "Administrator",
@@ -1374,7 +1380,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/raidpoll",
-            "desc": "Guided step-by-step creation of signup polls with rosters, caps, and waitlists for any game",
+            "desc": "Create signup polls step by step, guided wizard for any game",
             "badge": "Manage Channels",
             "type": "perm"
         },
@@ -2812,26 +2818,62 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "/wizard channel",
-            "desc": "Set the wizard-post channel",
+            "name": "/wizard all",
+            "desc": "Show every member and the wizards registered to them",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/wizard assign",
+            "desc": "Assign one unassigned wizard to a member",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/wizard check",
-            "desc": "DM missing users",
+            "name": "/wizard list",
+            "desc": "Show the wizards registered to a member",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/wizard panel",
+            "desc": "Post the panel members use to register their own wizards",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/wizard missing-channel",
-            "desc": "Set the missing list channel",
+            "name": "/wizard register",
+            "desc": "Register one or more wizards by pasting lines",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/wizard remind",
+            "desc": "DM the members who still have no wizards registered",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/wizard missing-list",
-            "desc": "Post missing users list",
+            "name": "/wizard remove",
+            "desc": "Remove one of a member's wizards by name",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/wizard setup",
+            "desc": "Register or update your own wizards, one step at a time",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/wizard unassigned",
+            "desc": "Show the wizards nobody is registered to, and assign them",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/wizard unregistered",
+            "desc": "List members who have no wizards registered",
             "badge": "Manage Server",
             "type": "perm"
         }
@@ -2982,6 +3024,12 @@ const commandsDatabase = [{
     "icon": "ph-cursor-click",
     "tocLabel": "13.0 Right-Click Apps",
     "commands": [
+        {
+            "name": "Right-click: Add Wizard",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
         {
             "name": "Right-click: Clear Reactions",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
