@@ -643,7 +643,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Bulk entry still works. One wizard per line as name, school, level, for example \"Sean IronStone myth 175\". Separators, an optional Level prefix, and several wizards on one line are all accepted."
+                "text": "Bulk entry still works. One wizard per line as name, school, level, for example \"Sean IronStone death 170\". Separators, an optional Level prefix, and several wizards on one line are all accepted."
             },
             {
                 "type": "heading",
@@ -666,7 +666,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/wizard setup",
-                        "desc": "Register, update, or remove your own wizards one step at a time."
+                        "desc": "Register your own wizards, or update and remove the ones on file."
                     },
                     {
                         "cmd": "/wizard list [member]",

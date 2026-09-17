@@ -2861,7 +2861,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/wizard setup",
-            "desc": "Register or update your own wizards, one step at a time",
+            "desc": "Register your own wizards, or update the ones on file",
             "badge": "Everyone",
             "type": "public"
         },
