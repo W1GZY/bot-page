@@ -1495,6 +1495,88 @@
         .module-empty-state i { color: var(--accent); font-size: 2rem; }
         .module-empty-state strong { color: #fff; }
 
+        /* Featured module cards - larger, with accent border and badge */
+        .module-card.featured {
+            grid-column: span 2;
+            min-height: 260px;
+            padding: 24px 28px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, color-mix(in srgb, var(--accent) 6%, var(--bg-card)) 100%);
+            border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+            position: relative;
+        }
+        .module-card.featured::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #fff), var(--accent));
+            opacity: 0.8;
+        }
+        .module-card.featured .module-icon {
+            width: 52px;
+            height: 52px;
+            font-size: 1.6rem;
+            background: var(--accent-glow);
+            border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+        .module-card.featured .feature-title {
+            font-size: 1.25rem;
+        }
+        .module-card.featured .feature-desc {
+            font-size: 0.92rem !important;
+            line-height: 1.62 !important;
+        }
+        .module-card.featured .module-learn-more {
+            font-size: 0.82rem;
+            padding-top: 18px;
+        }
+
+        /* Wizard101 suite card - expands to show all W101 tools */
+        .module-card.w101-suite {
+            grid-column: span 2;
+            min-height: 240px;
+            padding: 22px 26px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(147, 51, 234, 0.04) 100%);
+            border: 1px solid color-mix(in srgb, #9333EA 30%, var(--border));
+            position: relative;
+        }
+        .module-card.w101-suite .module-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 1.5rem;
+            background: rgba(147, 51, 234, 0.2);
+            border-color: rgba(147, 51, 234, 0.4);
+            color: #9333EA;
+        }
+        .module-card.w101-suite .w101-tool-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+        .module-card.w101-suite .w101-tool-tag {
+            background: rgba(147, 51, 234, 0.12);
+            color: #C4A0FF;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(147, 51, 234, 0.2);
+        }
+        .module-card.w101-suite:hover {
+            border-color: color-mix(in srgb, #9333EA 50%, var(--border)) !important;
+            box-shadow: 0 16px 34px rgba(0,0,0,0.34), 0 0 18px rgba(147, 51, 234, 0.15) !important;
+        }
+
+        @media (max-width: 820px) {
+            .module-card.featured,
+            .module-card.w101-suite {
+                grid-column: span 1;
+            }
+            .plain-intro-copy { padding-left: 0; }
+
         @media (max-width: 820px) {
             .plain-intro-copy { padding-left: 0; }
         }

@@ -100,7 +100,6 @@
             <a href="#showcase" class="site-nav-link" data-section="showcase"><i class="ph ph-monitor-play"></i><span>In Action</span></a>
             <a href="#features" class="site-nav-link" data-section="features"><i class="ph ph-squares-four"></i><span>Modules</span></a>
             <a href="#compare" class="site-nav-link" data-section="compare"><i class="ph ph-scales"></i><span>Compare</span></a>
-            <a href="#whats-new" class="site-nav-link" data-section="whats-new"><i class="ph ph-sparkle"></i><span>What's New</span></a>
             <a href="#docs" class="site-nav-link" data-tab="docs"><i class="ph ph-book-open"></i><span>Documentation</span></a>
             <a href="#commands" class="site-nav-link" data-tab="commands"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
             <a href="invite.html" target="_blank" rel="noopener" class="site-nav-mobile-invite"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot</a>
@@ -1175,50 +1174,6 @@
                 </div>
             </section>
 
-            <!-- What's New -->
-            <section id="whats-new" style="margin: 44px 0 8px 0;">
-                <div style="text-align: center; margin-bottom: 26px;">
-                    <span class="section-eyebrow">Recently shipped</span>
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin: 8px 0 0 0; letter-spacing: -0.5px;">What's new</h2>
-                    <p style="color: var(--text-secondary); max-width: 720px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">The latest user-visible changes, newest first. Each one is written up in the guides.</p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
-                    <article class="glass-card feature-card module-card">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-user-list"></i></span>
-                            <span class="module-category">September 16, 2026</span>
-                        </div>
-                        <h3 class="feature-title">Members register their own wizards</h3>
-                        <p class="feature-desc">Post the registration panel in a channel and members add, update, and check their own Wizard101 wizards with three buttons. Nobody has to collect wizard posts by hand any more.</p>
-                    </article>
-                    <article class="glass-card feature-card module-card">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-lock-simple"></i></span>
-                            <span class="module-category">September 16, 2026</span>
-                        </div>
-                        <h3 class="feature-title">The panel channel stays a panel</h3>
-                        <p class="feature-desc">Posting the panel leaves that channel read-only for @everyone, so it stays something members press rather than chat under. Prefer to keep the conversation? Clear one checkbox on the Wizard Config page.</p>
-                    </article>
-                    <article class="glass-card feature-card module-card">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-list-checks"></i></span>
-                            <span class="module-category">September 16, 2026</span>
-                        </div>
-                        <h3 class="feature-title">Work the roster from Discord</h3>
-                        <p class="feature-desc">/wizard unassigned groups the wizards nobody is registered to, shows the matches the name matcher is sure about, and assigns them in one press. /wizard assign moves a single wizard by name.</p>
-                    </article>
-                    <article class="glass-card feature-card module-card">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-door-open"></i></span>
-                            <span class="module-category">September 16, 2026</span>
-                        </div>
-                        <h3 class="feature-title">Tick wizards off the in-game guild</h3>
-                        <p class="feature-desc">A wizard registered here is not always still in your in-game guild. Staff now mark that from /wizard unassigned, /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info.</p>
-                    </article>
-                </div>
-            </section>
-
             <!-- Featured Modules -->
             <section id="features" class="modules-section">
                 <div class="modules-heading">
@@ -1254,7 +1209,7 @@
                         <p class="feature-desc">Build signup polls for any game or activity — slots, caps, waitlists, flexible time formats, and optional banner art.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="security" data-search="anti-nuke risk score moderation &amp; safety watch active risk heat, adjust channel thresholds, and tune trusted-role sensitivity from the dashboard." data-doc="antiraid">
+                    <article class="glass-card feature-card module-card featured" data-category="security" data-search="anti-nuke risk score moderation &amp; safety watch active risk heat, adjust channel thresholds, and tune trusted-role sensitivity from the dashboard." data-doc="antiraid">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-gauge"></i></span>
                             <span class="module-category">Moderation &amp; Safety</span>
@@ -1263,7 +1218,7 @@
                         <p class="feature-desc">Watch active risk heat, adjust channel thresholds, and tune trusted-role sensitivity from the dashboard.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="security" data-search="anti-raid moderation &amp; safety protect your server with zero-delay webhook scanning, automated raid detection, invite-link sweeps, and instant emergency channel locks." data-doc="antiraid">
+                    <article class="glass-card feature-card module-card featured" data-category="security" data-search="anti-raid moderation &amp; safety protect your server with zero-delay webhook scanning, automated raid detection, invite-link sweeps, and instant emergency channel locks." data-doc="antiraid">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-shield-check"></i></span>
                             <span class="module-category">Moderation &amp; Safety</span>
@@ -1281,7 +1236,7 @@
                         <p class="feature-desc">Review ban appeals and community suggestions from dedicated dashboard pages, with staff logs and Server Access controls.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="security" data-search="audit logging &amp; jails moderation &amp; safety track deleted messages, message edits, member joins and leaves, role changes, and isolate untrusted accounts using member quarantine." data-doc="logging">
+                    <article class="glass-card feature-card module-card featured" data-category="security" data-search="audit logging &amp; jails moderation &amp; safety track deleted messages, message edits, member joins and leaves, role changes, and isolate untrusted accounts using member quarantine." data-doc="logging">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-notebook"></i></span>
                             <span class="module-category">Moderation &amp; Safety</span>
@@ -1308,23 +1263,27 @@
                         <p class="feature-desc">Configure automatic replies for keywords, phrases, or mentions so common responses happen instantly.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="beastmoon wizard101 track beastmoon hunt and monster mayhem form tiers, inspect lunari and idol progress, sync web converter data, announce tier-ups, and rank server leaderboards." data-doc="beastmoon">
+                    <article class="glass-card feature-card module-card w101-suite" data-category="w101" data-search="wizard101 suite wizard101 complete wizard101 tools for guilds, teams, events, deck building, damage calculation, pets, spells, tapestries, roshambo, value checks, and more." data-doc="w101">
                         <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-moon-stars"></i></span>
-                            <span class="module-category">Wizard101</span>
+                            <span class="module-icon"><i class="ph-duotone ph-magic-wand"></i></span>
+                            <span class="module-category">Wizard101 Suite</span>
                         </div>
-                        <h3 class="feature-title">Beastmoon</h3>
-                        <p class="feature-desc">Track Beastmoon Hunt and Monster Mayhem form tiers, inspect Lunari and Idol progress, sync web converter data, announce tier-ups, and rank server leaderboards.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard registry wizard101 let members register their own wizards, keep names, schools and levels in sync, assign the unassigned roster, and mark wizards that left the in-game guild." data-doc="wizard_info">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-user-list"></i></span>
-                            <span class="module-category">Wizard101</span>
+                        <h3 class="feature-title">Wizard101 Suite</h3>
+                        <p class="feature-desc">A complete collection of Wizard101 tools for guilds, teams, and everyday play — all in one place.</p>
+                        <div class="w101-tool-list">
+                            <span class="w101-tool-tag">Beastmoon</span>
+                            <span class="w101-tool-tag">Wizard Registry</span>
+                            <span class="w101-tool-tag">Damage Calculator</span>
+                            <span class="w101-tool-tag">Deck Builder</span>
+                            <span class="w101-tool-tag">Pets</span>
+                            <span class="w101-tool-tag">Spell Lookup</span>
+                            <span class="w101-tool-tag">Statcaps</span>
+                            <span class="w101-tool-tag">Tapestries</span>
+                            <span class="w101-tool-tag">Roshambo</span>
+                            <span class="w101-tool-tag">Value Check</span>
+                            <span class="w101-tool-tag">TeamUps</span>
                         </div>
-                        <h3 class="feature-title">Wizard Registry</h3>
-                        <p class="feature-desc">Members register their own wizards from a panel, staff assign the rest, and whoever left the in-game guild gets ticked off.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                        <span class="module-learn-more">Explore all Wizard101 tools <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="cat facts community &amp; events serve random cat facts on demand. this module is mandatory for every server—no exceptions." data-doc="fun">
                         <div class="module-card-header">
@@ -1353,7 +1312,7 @@
                         <p class="feature-desc">Design announcements, rules, reaction-role panels, and custom Discord embeds with a live visual preview.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="community" data-search="federation community &amp; events connect allied servers and communicate across approved channels without constantly switching communities." data-doc="federation">
+                    <article class="glass-card feature-card module-card featured" data-category="community" data-search="federation community &amp; events connect allied servers and communicate across approved channels without constantly switching communities." data-doc="federation">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-globe-hemisphere-west"></i></span>
                             <span class="module-category">Community &amp; Events</span>
@@ -1533,7 +1492,7 @@
                         <p class="feature-desc">Let members create and manage temporary voice channels with their own names, limits, and permissions.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="community" data-search="ticket system community &amp; events run a customizable ticket panel with private channels, staff controls, transcripts, and organized support flows." data-doc="tickets">
+                    <article class="glass-card feature-card module-card featured" data-category="community" data-search="ticket system community &amp; events run a customizable ticket panel with private channels, staff controls, transcripts, and organized support flows." data-doc="tickets">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-ticket"></i></span>
                             <span class="module-category">Community &amp; Events</span>
@@ -1587,96 +1546,7 @@
                         <p class="feature-desc">Greet new members, send optional welcome DMs, assign auto roles, clean nicknames, and post leave messages.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 damage calculator wizard101 calculate expected damage with blades, traps, auras, pierce, critical, resist, and other combat modifiers." data-doc="w101">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-calculator"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Damage Calculator</h3>
-                        <p class="feature-desc">Calculate expected damage with blades, traps, auras, pierce, critical, resist, and other combat modifiers.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 deck builder wizard101 build wizard101 decks, render them clearly, and share complete setups with other players through discord." data-doc="w101">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-cards"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Deck Builder</h3>
-                        <p class="feature-desc">Build Wizard101 decks, render them clearly, and share complete setups with other players through Discord.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 integration wizard101 bring a wide collection of wizard101 tools into your server for guilds, teams, events, and everyday play." data-doc="w101">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-magic-wand"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Integration</h3>
-                        <p class="feature-desc">Bring a wide collection of Wizard101 tools into your server for guilds, teams, events, and everyday play.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 pets wizard101 look up actively tracked pet information and useful details for hatching, talents, and pet planning." data-doc="pet_tome">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-paw-print"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Pets</h3>
-                        <p class="feature-desc">Look up actively tracked pet information and useful details for hatching, talents, and pet planning.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 roshambo fight wizard101 play a wizard101-inspired roshambo battle game with other members directly inside discord." data-doc="roshambo">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-hand-fist"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Roshambo Fight</h3>
-                        <p class="feature-desc">Play a Wizard101-inspired Roshambo battle game with other members directly inside Discord.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 spell lookup wizard101 search wizard101 spells inside discord and quickly view the details players need." data-doc="spells">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-book-open-text"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Spell Lookup</h3>
-                        <p class="feature-desc">Search Wizard101 spells inside Discord and quickly view the details players need.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 statcaps wizard101 check how your wizard101 stats are capped and understand the effective values behind your build." data-doc="w101">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-gauge"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Statcaps</h3>
-                        <p class="feature-desc">Check how your Wizard101 stats are capped and understand the effective values behind your build.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 tapestries wizard101 track your owned wizard101 house tapestries and bobbleheads." data-doc="tapestry">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-map-trifold"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Tapestries</h3>
-                        <p class="feature-desc">Track your owned Wizard101 house tapestries and bobbleheads.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 teamups wizard101 create teamup requests or find players who can help without losing requests in busy chat channels." data-doc="teamup_w101">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-users-four"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 TeamUps</h3>
-                        <p class="feature-desc">Create TeamUp requests or find players who can help without losing requests in busy chat channels.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
-                    <article class="glass-card feature-card module-card" data-category="w101" data-search="wizard101 value check wizard101 check what a treasure card is worth and make faster, clearer trading decisions inside discord." data-doc="value_reagent">
-                        <div class="module-card-header">
-                            <span class="module-icon"><i class="ph-duotone ph-scales"></i></span>
-                            <span class="module-category">Wizard101</span>
-                        </div>
-                        <h3 class="feature-title">Wizard101 Value Check</h3>
-                        <p class="feature-desc">Check what a treasure card is worth and make faster, clearer trading decisions inside Discord.</p>
-                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
-                    </article>
+
                 </div>
 
                 <div class="module-empty-state" id="moduleEmptyState" hidden>
@@ -1689,11 +1559,11 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Add it, then enable modules as needed.</h3>
-                    <p>Configuration happens in the web dashboard rather than through a wall of commands.</p>
+                    <h3>Start with safety. Add what your community needs.</h3>
+                    <p>Moderation, anti-raid, and tickets are ready out of the box. Everything else is there when you want it — no bloat, no paywalls, no setup headaches.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
-                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot Free
                 </a>
             </div>
         </section>

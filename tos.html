@@ -260,7 +260,7 @@
             <div class="tos-section">
                 <h2>1.5 Intellectual Property and License</h2>
                 <p><strong>Ownership.</strong> All rights, titles, and interests in and to the Bot, including its source code, design, features, and content, are and will remain the exclusive property of SeanBot and its developers. You may not copy, modify, distribute, sell, or lease any part of the Bot or its included software, nor may you reverse-engineer or attempt to extract the source code.</p>
-                <p><strong>User Content License.</strong> By submitting content (e.g., commands, messages, saved profile data) to the Bot, you grant SeanBot a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, modify, and display that content solely for the purpose of operating, improving, and promoting the Bot.</p>
+                <p><strong>User Content License.</strong> By submitting content to the Bot, such as commands, messages, appeal or report text, ticket content, or saved profile data, you grant SeanBot a worldwide, non-exclusive, royalty-free license to use, reproduce, and display that content solely as necessary to operate, maintain, and improve the Bot for that server, including processing commands, generating logs or transcripts where enabled, and providing the feature you used. This license ends when the data is no longer needed for that purpose or is deleted under this policy, and does not give SeanBot any right to use your content for unrelated purposes.</p>
             </div>
 
             <div class="tos-section">
@@ -282,6 +282,9 @@
             <div class="tos-section">
                 <h2>1.9 Relationship to Discord</h2>
                 <p>SeanBot is an independent, third-party application developed solely by Mek. The Bot is not affiliated with, endorsed, or sponsored by Discord, Inc. Discord is not responsible for the Bot's content, operation, or any liability arising from your use of the Bot. All rights and responsibilities related to the Discord platform itself remain governed by Discord's own terms and policies.</p>
+
+                <h3>Dependency on Discord and other services</h3>
+                <p>The Bot depends on the Discord API and on the permissions granted to it by the server owners who add it and by the users who interact with it. The Bot also depends on third-party hosting, database, and other service providers needed to run it. If Discord changes its API, permissions model, or rules, or if a server changes its settings, or if a third-party service is unavailable, the Bot may lose features, behave differently, or be temporarily unable to function in part or in whole. We are not responsible for changes or interruptions caused by those third parties.</p>
             </div>
 
             <div class="tos-section">
@@ -303,24 +306,68 @@
             <div class="tos-section" style="margin-top: 48px;">
                 <h1 class="tos-title" style="font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">2. Privacy Policy</h1>
                 <p>SeanBot is an application running on the Discord platform. Use of the Bot is also subject to <strong>Discord's Terms of Service and Privacy Policy</strong>, which we are not responsible for. This policy outlines the types of information we collect, how we use it, and your rights regarding your data.</p>
-            </div>
 
-            <div class="tos-section">
-                <h2>2.1 Information Collected</h2>
-                <p>We only collect data necessary for the Bot's functionality, primarily via the Discord API. <strong>No sensitive personal information</strong> (e.g., real names, addresses) is collected beyond what is listed. SeanBot stores the following data:</p>
-                <ul>
-                    <li><strong>Discord User Data:</strong> Usernames, numerical Discord IDs, avatar hashes, public flags, message metadata and messages/commands sent directly to or processed by SeanBot.</li>
-                    <li><strong>Server Data:</strong> Server IDs, channel IDs, and server configurations (e.g., roles, strategy/deck data relevant to bot features).</li>
-                    <li><strong>Usage & Feature Data:</strong> User-provided data like timezones, log timestamps, feature usage (e.g., commands used, interactions), and data saved in our database (e.g., saved profiles, leveling statistics, event sign-ups).</li>
-                    <li><strong>Third-Party Data:</strong> We may use services like Google Analytics or Discord APIs, which may collect anonymized usage data under their own respective policies. We do not control these third-party policies.</li>
-                </ul>
+                <h3 style="margin-top: 0;">Our role for server data</h3>
+                <p>For data that belongs to a particular Discord server, SeanBot generally acts as a service provider for that server. The server owner and staff decide which features to enable, how to configure them, and where logs or transcripts are sent. SeanBot provides the tools and processes the data needed to run those features, but it does not control the server itself and does not decide how the server uses its own data.</p>
+
+                <h3>What we do not collect</h3>
+                <p>We do not ask for or store your Discord password or authentication tokens. We do not keep your full message history across servers. We do not sell personal data. We do not use your content or activity data for advertising or unrelated promotional purposes. We do not build cross-server profiles about individual members from unrelated servers.</p>
+
+                <div style="background: rgba(88, 101, 242, 0.08); border-left: 3px solid var(--accent); border-radius: 6px; padding: 14px 18px; margin-bottom: 24px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 700; color: #fff;">In short</p>
+                    <ul style="margin: 0; padding-left: 18px; color: var(--text-secondary); line-height: 1.6;">
+                        <li>This policy covers SeanBot the Discord bot and the SeanBot website.</li>
+                        <li>We collect different things depending on which features a server turns on.</li>
+                        <li>Server staff control which features are enabled in their own server.</li>
+                        <li>We do not sell personal data.</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 0;">Security</h3>
+                <p>We use reasonable administrative, technical, and physical measures to protect the data we hold against unauthorized access, loss, and misuse. We do not represent or warrant that our measures will prevent every breach, leak, or unauthorized access. If we become aware of a security incident that may affect personal data, we will take reasonable steps to address it and will notify affected users or server owners where appropriate and where required by law.
+
+                <h3>Legal requests and disclosures</h3>
+                <p>We may disclose data where we are required to do so by law, where necessary to protect the safety of people or servers, or where another legally valid request applies. We do not publish or advertise involuntary disclosures, and any such disclosure is limited to what is necessary for the purpose at issue.</p></p>
+            </div>            <div class="tos-section">
+                <h2>2.1 What we collect</h2>
+                <p>We only collect data that a feature needs in order to work. Most of it comes from the Discord API, from the server's settings, or from information you or a server enter into a feature. We do not collect extra personal data from you or from server members just because it is available through the Discord API.</p>
+
+                <h3>Identity data from Discord</h3>
+                <p>When a feature needs it, we may use Discord identity information such as a username, numerical Discord ID, avatar hash, or public flags. We do not take more identity data than the feature needs.</p>
+
+<h3>Server and configuration data</h3>
+<p>Each server that adds SeanBot has its own settings. We store the server IDs, channel IDs, role IDs, and other configuration needed to run the features that server enabled. That can include things like log channel choices, ticket settings, report settings, timezone settings, and server-specific module settings.</p>
+
+<h3>What you tell the bot</h3>
+<p>Some features rely on information you submit directly. Examples include timezone choices, event sign-ups, ticket text, report text, appeal text, and Wizard101 profile details such as wizard names, schools, and levels. We store that information only for the server and feature it was submitted to.</p>
+
+<h3>Activity summaries and timestamps</h3>
+<p>Some features keep usage information for a server. This is usually metadata or summaries rather than the full text of everything said in the server. Examples include last-message timestamps, voice or message activity summaries, emoji usage summaries, server counters, and command or interaction records used by that server.</p>
+
+<h3>Short-lived deletion and edit snapshots</h3>
+<p>If a server enables message-deletion or edit logging, and where message content storage is allowed by the Bot's configuration, we may keep a short-lived snapshot of recently deleted messages so the log can reconstruct what was removed. Depending on that server's settings, a snapshot may include a truncated version of the message text, embed titles or descriptions, attachment links, and counts of mentions, role mentions, or @everyone/@here usage. We do not store your full message history across the server. These snapshots are not kept for every server or every feature, they expire automatically after a configured retention period, and they are removed once they have been used for a deletion log.</p>
+
+<h3>Website and operational data</h3>
+<p>The SeanBot website and the Bot itself may generate technical and operational data needed to run them, such as connection, usage, or error data. If any such data is collected, it is limited to what is needed for operation, debugging, security, or service improvement, and is handled under the same approach described in this policy. We do not use this data to build profiles about you beyond what the related feature requires.</p>
+
+<h3>Third-party services</h3>
+<p>The Bot and the SeanBot website may rely on third-party services such as Discord, hosting providers, database providers, analytics or error-reporting services, and security providers. Those third parties collect and handle their own data under their own terms and privacy practices, which this policy does not cover. Where a third-party service collects usage data, it does so under its own policy, not under this one. If you use the Bot, you are also subject to the terms and privacy practices of any third-party services it depends on.</p>
+
+                <p style="margin-top: 16px; color: var(--text-secondary);"><strong>Quick note on retention.</strong> Different kinds of data are kept for different lengths of time. Server configuration and feature data is generally kept while the bot remains in that server and may persist briefly after removal so things like moderation or ticket history stay usable to the server. Deletion/edit snapshots are short-lived and expire automatically. User-specific data is generally deleted or de-linked when the bot leaves the user&rsquo;s last shared server or on a valid deletion request, subject to the limits in this policy. Anonymized and aggregated usage data may be kept longer. The full retention details are in section 2.2.</p>
             </div>
 
             <div class="tos-section">
                 <h2>2.2 Use of Data</h2>
-                <p>Your data is used solely to <strong>operate, maintain, and improve</strong> the Bot’s core features, including: responding to user requests, running commands, managing events/tracking, saving user preferences, and maintaining security to prevent abuse.</p>
+                <p>Your data is used solely to <strong>operate, maintain, and improve</strong> the Bot’s core features, including: responding to user requests, running commands, managing events and tracking, saving user preferences, and maintaining security to prevent abuse. We do not use your content or activity data for advertising or unrelated promotional purposes.</p>
                 <p>We <strong>do not sell</strong> your personal data. We may share limited data with Discord, our hosting, database, analytics, and security providers, authorized Server Administrators, and public authorities where required by law. These parties receive only the information necessary for their relevant purpose.</p>
-                <p><strong>Data Retention.</strong> We retain data only for as long as necessary to provide the service or comply with legal obligations. User-specific data will typically be deleted 1 year after the Bot is removed from the user's last shared server. We may retain anonymized and aggregated usage data indefinitely for statistical analysis and service improvement.</p>
+                <p><strong>Data Retention.</strong> We retain data only for as long as necessary to provide the service or comply with legal obligations. Different kinds of data are retained differently:</p>
+                <ul>
+                    <li><strong>Server configuration and feature data</strong> is generally kept for as long as the bot remains in that server, and may persist briefly after removal so that features such as moderation or ticket history remain usable to the server.</li>
+                    <li><strong>Snapshots used for deletion/edit logging</strong> are short-lived. They are stored only where a server has enabled that logging, and they expire automatically after a per-server retention period. They are also removed once they have been used for a deletion log.</li>
+                    <li><strong>User-specific data</strong> is generally deleted or de-linked when the bot is removed from the user's last shared server or upon a valid deletion request, subject to applicable legal exceptions and to data that a server has separately exported or stored through its own staff tools.</li>
+                    <li><strong>Anonymized and aggregated usage data</strong> may be retained longer for statistical analysis and service improvement.</li>
+                </ul>
+                <p>Retention settings for some features are controlled at the server level. For example, a server may configure how long message-deletion snapshots are kept. Those server-level settings are separate from SeanBot&rsquo;s own retention practices.</p>
             </div>
 
             <div class="tos-section">
@@ -333,24 +380,40 @@
                     <li><strong>Stop new server data collection:</strong> A Server Administrator may remove the Bot from their server to stop the collection of new Server Data and associated Usage Data for that server.</li>
                     <li><strong>Make a complaint:</strong> Contact the Norwegian Data Protection Authority (Datatilsynet) or another relevant supervisory authority.</li>
                 </ul>
-                <p>Requests are handled manually. We may ask you to verify that you control the relevant Discord account before completing a request. Removing the Bot does not automatically delete data already stored.</p>
+                <p>Requests are handled manually. We may ask you to verify that you control the relevant Discord account before completing a request, and response times depend on the request and the verification needed. Removing the Bot does not automatically delete data already stored.</p>
                 <p>For formal legal inquiries, please contact us via Discord DM: <strong style="color: var(--accent);">@energetic_starfish_67605</strong>.</p>
             </div>
 
             <div class="tos-section">
                 <h2>2.4 Children's Privacy and Age Restriction</h2>
-                <p>The Bot is not directed at children under the age of 13. By using the Bot, you affirm that you are either over the age of 18, or an emancipated minor, or possess legal parental or guardian consent, and are fully able and competent to enter into these terms. We do not knowingly collect Personal Information from children under 13. If you believe we have inadvertently collected such data, please contact us immediately via Discord DM to have it deleted.</p>
+                <p>The Bot is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are under the age of majority in your country, or if you are using the Bot on behalf of a server that includes members under the applicable age, you are responsible for ensuring that use of the Bot complies with Discord's rules and any applicable parental-consent requirements. If you believe we have inadvertently collected personal information from a child under 13, please contact us immediately via Discord DM and we will take reasonable steps to delete it.</p>
             </div>
 
             <div class="tos-section">
-                <h2>2.5 Data Sharing With Server Admins</h2>
-                <p>Because SeanBot operates within specific Discord servers, <strong>Server Administrators</strong> may configure the Bot to track, log, and manage user activity strictly within their own community. This means Server Admins may have access to data regarding your interactions inside their server, which may include:</p>
+                <h2>2.5 What Server Staff Can See</h2>
+                <p>SeanBot is configured, controlled, and observed by the administrators and staff of each individual Discord server that adds it. Those server staff members are <strong>not</strong> SeanBot owners or developers; they are the community running the server. When you join or interact with a server using SeanBot, that server's staff may be able to see some of your activity through the bot. What they can see depends on which features that server enabled, and where they chose to send logs.</p>
+
+                <h3>Data visible to server staff through SeanBot</h3>
                 <ul>
-                    <li><strong>Server Activity Tracking:</strong> Logs of messages sent, voice channel participation, and analytics of uses of SeanBot inside the server.</li>
-                    <li><strong>Command Usage & Interactions:</strong> Records of public commands you execute and buttons or menus you interact with inside their server.</li>
-                    <li><strong>Moderation & Community Management:</strong> Infraction logs, moderation actions, event sign-ups, and custom server profiles (e.g., Beastmoon) managed by the Bot.</li>
+                    <li><strong>Moderation actions and warnings.</strong> If a server uses moderation, warnings, timeouts, kicks, bans, or related logging, staff can view warning history and moderation points for members of that server, along with the reason, timestamp, and staff member who issued each action. Those records are stored for that server, not across all servers you join.</li>
+                    <li><strong>Event, sign-up, and roster data.</strong> If you sign up for raids, events, polls, team-ups, or register a Wizard101 wizard, that server's staff can see the information you submitted through those features inside their server (for example your chosen name, school, level, or event sign-up).</li>
+                    <li><strong>Reports and ticket content.</strong> If you file a report, appeal, or support ticket in a server, the staff members with access to that review process may be able to read what you wrote, including any message content, attachments, or reason you provided. Ticket transcripts may be saved as HTML archives and shared with assigned staff or the ticket creator, depending on that server's settings.</li>
+                    <li><strong>Server activity, voice, and analytics.</strong> If a server enables activity, voice, emoji, or server statistics features, staff may see aggregated or per-member usage information for that server, such as message or voice participation, emoji usage trends, server counters, or last-message timestamps. These are typically summaries or timestamps rather than the full text of what you said.</li>
+                    <li><strong>Deleted and edited message logs.</strong> If a server turns on message-deletion or edit logging, SeanBot may keep a short-lived snapshot of recently deleted messages so it can reconstruct what was removed. Depending on that server's settings and the bot's configuration, those snapshots may include a truncated version of the message text, embed titles or descriptions, attachment links, and counts of mentions, role mentions, or @everyone/@here usage. They do not include your full message history across the server, they are not stored for every server or every feature, and they expire automatically after a configured retention period. They are also removed once they have been used for a deletion log.</li>
+                    <li><strong>Timezones and personal settings.</strong> If you set a timezone or similar personal preference in a server, staff with access to that server's configuration may see that setting as it exists in that server.</li>
                 </ul>
-                <p>Server Admins <strong>cannot</strong> access your private data from other servers, nor can they access direct messages you send to the Bot with a public server feature. We do not control and are not responsible for how Server Administrators use, store, or share the server-specific activity data exposed to them within their own communities.</p>
+
+                <h3>What server staff generally cannot see through SeanBot</h3>
+                <ul>
+                    <li><strong>Your activity in other servers.</strong> A server's staff can only see data that SeanBot recorded inside their own server. They do not get a view of your activity in other servers that also use SeanBot.</li>
+                    <li><strong>Your private DMs with the bot for public server features.</strong> Where a feature is meant to be public to a server, private bot DMs are not a hidden channel for staff to read. Server-specific data is tied to that server's configuration.</li>
+                    <li><strong>Your account credentials or Discord login.</strong> SeanBot never receives or stores your Discord password or authentication tokens. Server staff do not get those either.</li>
+                    <li><strong>More than the server enabled.</strong> If a server does not enable a feature, the related data is generally not collected for that server. Staff visibility is limited to the features and logging channels that server actually configured.</li>
+                </ul>
+
+                <p><strong>Important:</strong> Server owners and staff are responsible for the server they run. SeanBot provides the tools and logs; we do not control how a server's staff use, store, export, or share the data their own server generates. If a server enables transcript archives, moderation logs, or report reviews, those materials may be readable by the staff members with access to them, and may be exported or retained outside of SeanBot at that server's discretion. We are not responsible for misuse by server staff. If you are concerned about a specific server, the most direct remedy is to leave that server or ask its staff what they log and how long they keep it.</p>
+
+                <p>Nothing in these Terms or this Privacy Policy creates any right, obligation, or contract between you and the staff or owners of any individual server, or any promise by SeanBot about how a server will use the tools we provide. Disputes about a particular server's conduct are separate from any dispute with SeanBot.</p>
             </div>
 
             <!-- General Provisions Header -->

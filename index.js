@@ -316,7 +316,7 @@
         }
 
         // Scroll targets are read off the nav's own data-section values, so a
-        // new section (#whats-new) routes without a second list to keep in step.
+        // new section routes without a second list to keep in step.
         if ([...topNavLinks].some(link => link.getAttribute('data-section') === hash)) {
             jumpToSection(hash);
             return;
