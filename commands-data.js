@@ -1326,7 +1326,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/poll close",
-            "desc": "Close a simple reaction poll and show final totals.",
+            "desc": "Close a simple reaction poll and show final totals. Reactions are kept so votes stay attributable.",
             "badge": "Manage Messages",
             "type": "perm"
         },
