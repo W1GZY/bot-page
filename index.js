@@ -355,7 +355,7 @@
             }, { passive: true });
         }
 
-        // Stat Counter Single Animation Observer
+        // Stat counter single animation observer
         let statsAnimated = false;
         const statsGrid = document.querySelector('.stats-grid');
         if (statsGrid) {
@@ -546,7 +546,7 @@ function initDocsPage() {
             groups[meta.cat].items.push(doc);
         });
 
-        // Render Sticky Page Nav
+        // Render sticky page nav
         if (navContainer) {
             navContainer.innerHTML = '';
             Object.keys(groups).forEach(catKey => {
@@ -576,7 +576,7 @@ function initDocsPage() {
             });
         }
 
-        // Render Sidebar TOC Nav
+        // Render sidebar TOC nav
         if (sidebarNavContainer) {
             sidebarNavContainer.innerHTML = '';
             Object.keys(groups).forEach(catKey => {
@@ -613,7 +613,7 @@ function initDocsPage() {
             });
         }
 
-        // Render Articles Feed
+        // Render articles feed
         contentContainer.innerHTML = '';
         docsData.forEach((doc, idx) => {
             const article = document.createElement('article');
@@ -735,7 +735,7 @@ function initDocsPage() {
             }
         });
 
-        // Category Filter Pills
+        // Category filter pills
         const catFilterBtns = document.querySelectorAll('#docsCategoryFilters .pill-btn');
         catFilterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -757,7 +757,7 @@ function initDocsPage() {
             });
         });
 
-        // Live Search Input Filter
+        // Live search input filter
         const searchInput = document.getElementById('docSearch');
         let activeDocsCategory = 'all';
 
@@ -812,7 +812,7 @@ function initDocsPage() {
         if (initialDoc) activateDoc(initialDoc, { updateHistory: 'skip' });
     }
 
-    // Commands Page Renderer
+    // Commands page renderer
     
     function getDocModuleForCommand(cmdName, categoryId) {
         const name = (cmdName || '').toLowerCase();
@@ -990,7 +990,7 @@ let ticketStep = 1;
         actionArea.style.opacity = "0.6";
 
         if (ticketStep === 1) {
-            // Show Typing Indicator
+            // Show typing indicator
             typingIndicator.style.display = 'flex';
             if (textElement) textElement.innerText = 'SeanBot is processing your request...';
 
@@ -1017,7 +1017,7 @@ let ticketStep = 1;
             const randomUser = randomUsernames[Math.floor(Math.random() * randomUsernames.length)];
             document.getElementById('random-user-name').innerText = randomUser;
 
-            // Show Typing Indicator
+            // Show typing indicator
             typingIndicator.style.display = 'flex';
             if (textElement) textElement.innerText = `${randomUser} is typing...`;
 

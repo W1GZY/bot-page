@@ -1,2 +1,8 @@
 .freebuff/desktop-v2.db
 *.md
+
+# Local dev output: the preview server and its log are regenerated on demand.
+preview-server.tmp.mjs
+server-preview.log
+__pycache__/
+*.pyc
