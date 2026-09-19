@@ -240,6 +240,52 @@
         });
     });
 
+    // Stat count-up: hero numbers roll from a low value to their target the
+    // first time the stats grid enters the viewport. Non-numeric labels like
+    // "Guild friendly" and the live-updating server count (id=liveServerCount)
+    // are skipped so nothing overwrites data set elsewhere. Respects
+    // prefers-reduced-motion by leaving the numbers as written.
+    function runStatCountUps() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.querySelectorAll('.stats-grid .stat-number').forEach(el => {
+            if (el.dataset.countUpDone || el.classList.contains('stat-word') || el.id === 'liveServerCount') return;
+            const match = el.textContent.trim().match(/^(\d[\d,.]*)(.*)$/);
+            if (!match) return;
+            // Only animate pure integers. A value like "99.9%" would lose its
+            // decimal point to the strip below, so decimals stay as written.
+            if (/[.,]/.test(match[1])) return;
+            const target = parseInt(match[1], 10);
+            if (!Number.isFinite(target) || target < 2) return;
+            const suffix = match[2] || '';
+            el.dataset.countUpDone = 'true';
+            el.classList.add('is-counting');
+            const duration = 1100;
+            const start = performance.now();
+            const easeOut = t => 1 - Math.pow(1 - t, 3);
+            const tick = now => {
+                const progress = Math.min((now - start) / duration, 1);
+                el.textContent = `${Math.round(target * easeOut(progress))}${suffix}`;
+                if (progress < 1) requestAnimationFrame(tick);
+                else el.classList.remove('is-counting');
+            };
+            requestAnimationFrame(tick);
+        });
+    }
+
+    const statsGrid = document.querySelector('.stats-grid');
+    if (statsGrid && 'IntersectionObserver' in window) {
+        const statsObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                runStatCountUps();
+                statsObserver.disconnect();
+            });
+        }, { threshold: 0.4 });
+        statsObserver.observe(statsGrid);
+    } else {
+        runStatCountUps();
+    }
+
     // Scroll-triggered pop-in reveals
     let scrollRevealObserver = null;
 
@@ -458,6 +504,7 @@ function initDocsPage() {
             'events': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'raids': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'raidpolls': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'simple_poll_timestamps': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'teamup_fed': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'temp_vc': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },

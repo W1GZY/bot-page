@@ -666,7 +666,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/wizard setup",
-                        "desc": "Register your own wizards, or update and remove the ones on file."
+                        "desc": "Register, update, or remove your own wizards one step at a time."
                     },
                     {
                         "cmd": "/wizard list [member]",
@@ -1794,7 +1794,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. The question is shown as the embed title, members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. You can also add an optional poll end time and turn the timestamps option on for automatic answer time conversion. The dashboard can create simple polls, preview them beside the form before posting, and save common polls as templates for later."
+                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. The question is shown as the embed title, members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. You can also add an optional poll end time, and date-like answer text is rewritten into Discord timestamps by default (the timestamps option turns that off). The Simple Poll Timestamps guide explains exactly when timestamps appear. The dashboard can create simple polls, preview them beside the form before posting, and save common polls as templates for later."
             },
             {
                 "type": "heading",
@@ -1810,7 +1810,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "When you write a date or time in /poll create or in the dashboard simple poll form, SeanBot tries to turn it into a Discord timestamp. Discord then shows the time in each member's own local time. You can write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. SeanBot uses the poll creator's saved timezone, so set your timezone first before using poll end times or timed answer choices."
+                "text": "When you write a date or time in /poll create or in the dashboard simple poll form, SeanBot tries to turn it into a Discord timestamp. Discord then shows the time in each member's own local time. You can write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. SeanBot uses the poll creator's saved timezone, so set your timezone first before using poll end times or timed answer choices. The Simple Poll Timestamps guide explains exactly when timestamps appear, what happens when a poll is closed, and how to turn conversion off."
             },
             {
                 "type": "heading",
@@ -1842,13 +1842,59 @@ const docsData = [
                     },
                     {
                         "cmd": "/poll close",
-                        "desc": "Close a simple reaction poll and replace the embed with final vote totals."
+                        "desc": "Close a simple reaction poll and replace the embed with final vote totals (the Ends line is dropped; timestamps inside answers stay)."
                     },
                     {
                         "cmd": "/raidpoll",
                         "desc": "Open setup modal to build interactive signup boards with slots, caps, and waitlists for any game or event."
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "id": "simple_poll_timestamps",
+        "icon": "ph-clock-countdown",
+        "title": "Simple Poll Timestamps",
+        "subtitle": "Every place a timestamp can appear on a simple reaction poll, and what the timestamps option controls.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "The Three Sources"
+            },
+            {
+                "type": "text",
+                "text": "A simple reaction poll, from /poll create or the dashboard simple poll form, can show a Discord timestamp in three places, and each behaves differently. Discord renders every timestamp in the reading member's own local time, so a poll written in one timezone reads correctly for everyone."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "The Ends line. Fill in the optional Poll Time / Close Time field, or the poll end time in /poll create, and SeanBot posts an Ends line under the answers: the full date and time plus a live countdown. This line always renders as a timestamp and ignores the timestamps option, because a close time you picked must be announced. Clear the Poll Time field if you want a poll with no end date at all.",
+                    "Timestamps you typed yourself. If an answer already contains Discord timestamp markup, such as something copied from the Time Converter, SeanBot posts it untouched. The timestamps option and saved templates never alter or strip this markup, so anyone can paste a time they copied elsewhere.",
+                    "Converted answers. With the timestamps option on, the default for new polls, SeanBot reads the poll creator's saved timezone and rewrites date-like answer text as timestamps: explicit forms such as 29.07.2026 20:00 or 2026-07-29 20:00, and natural forms such as tomorrow 8 PM or Friday 20:00 - Beastmoon practice. A time-and-label answer becomes a timestamp followed by its label, a date-only answer becomes a date-only timestamp, and text that does not look like a date is left alone."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Turning Conversion Off"
+            },
+            {
+                "type": "text",
+                "text": "Set the timestamps option to false in /poll create, or pick Leave answers exactly as typed in the dashboard's Timestamps dropdown, and answers are posted exactly as written. Saved templates remember this choice per template. Neither setting touches the other two sources: the Ends line from a Poll Time field always renders as a timestamp, and pasted timestamp markup is always passed through."
+            },
+            {
+                "type": "heading",
+                "text": "Closing A Poll"
+            },
+            {
+                "type": "text",
+                "text": "/poll close rebuilds the poll embed with final vote totals, which drops the Ends line, while converted timestamps inside answers survive closing because only the vote counts are added. The dashboard preview mirrors all of this live: the Ends line, the per-answer conversions, and a warning when you fill in a close time without having set a timezone."
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "Timezone first",
+                "text": "Every conversion uses the poll creator's saved timezone. Set yours with /timezone set, or /timezone detect to let SeanBot work it out. Without a saved timezone, answers are posted exactly as typed, and a poll with an end time or date-like answers is held back until you set one."
             }
         ]
     },

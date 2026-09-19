@@ -19,10 +19,20 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Premium easing: fast-out, gentle landing. Use for anything that moves
+     in response to the cursor or enters the viewport. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layered surface shadows: tight contact shadow plus a soft ambient one.
+     Cards and buttons lift between these instead of toggling a single shadow. */
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.22);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 16px 40px -8px rgba(0, 0, 0, 0.55);
+  --shadow-lift-accent: 0 2px 4px rgba(0, 0, 0, 0.45), 0 12px 32px -6px var(--accent-glow);
 
   /* Jump clearance: header height plus the gap below it. index.css raises
      --header-height for the taller landing topbar. */
@@ -81,6 +91,177 @@ code {
 ::-webkit-scrollbar-track { background: var(--bg-dark); }
 ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+/* Accent-tinted text selection: a small, free signal of craft. */
+::selection { background: var(--accent-glow); color: #fff; }
+
+/* Keyboard focus rings that match the accent instead of the UA default.
+   :focus-visible only draws for keyboard users, so mouse clicks stay clean. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Premium finishing layer
+   Ambience, typography and tactile feedback. Everything here degrades to
+   the base styles above when the property is unsupported, and the whole
+   layer is inert for prefers-reduced-motion users.
+   ========================================================================== */
+
+/* -- Ambient background: two soft accent auroras fixed behind the page. --
+   The pseudo-elements hang off <body> so every page gets the same depth
+   without touching markup. Pure color washes, no blur cost. */
+body::before {
+  content: "";
+  position: fixed;
+  top: -18vh;
+  left: 8vw;
+  width: 55vw;
+  height: 55vh;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 65%);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: -1;
+}
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -22vh;
+  right: -10vw;
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.045) 0%, transparent 62%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* -- Metallic accent text: slow gradient shimmer on brand-colored words. --
+   .accent-shine works on any inline element; the color falls back to the
+   plain accent when background-clip is unsupported. */
+.accent-shine {
+  color: var(--accent);
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .accent-shine {
+    background: linear-gradient(100deg, var(--accent) 20%, #fff 50%, var(--accent) 80%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: accentShine 7s ease-in-out infinite;
+  }
+}
+@keyframes accentShine {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 100% 0; }
+}
+
+/* -- Tactile buttons: light sheen sweeps across on hover; press sinks. -- */
+.btn-primary, .btn-secondary {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0); /* clip the sheen to the rounded corners */
+}
+.btn-primary::after, .btn-secondary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.55s var(--ease-out-expo);
+  pointer-events: none;
+}
+.btn-primary:hover::after, .btn-secondary:hover::after { left: 130%; }
+.btn-primary:active, .btn-secondary:active { transform: translateY(0) scale(0.98); }
+.btn-primary { transition: transform var(--transition-fast), box-shadow var(--transition-normal), filter var(--transition-fast); }
+.btn-secondary { transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast); }
+.btn-secondary:hover { box-shadow: var(--shadow-lift); }
+
+/* -- Card elevation: real depth instead of a border flip. Gradient ring
+   draws a subtle accent-tinted edge on hover via the ::before overlay. -- */
+.glass-card, .feature-card, .stat-card, .module-card {
+  position: relative;
+}
+.glass-card, .feature-card, .stat-card { box-shadow: var(--shadow-rest); }
+.feature-card:hover, .stat-card:hover { box-shadow: var(--shadow-lift); }
+.feature-card::before, .glass-card::before, .stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--border-highlight), transparent 38%, transparent 62%, var(--accent-glow));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+.feature-card:hover::before, .glass-card:hover::before, .stat-card:hover::before { opacity: 1; }
+
+/* -- Nav links and breadcrumbs: animated accent underline. -- */
+.nav-link, .breadcrumb-item {
+  position: relative;
+}
+.nav-link::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+.nav-link:hover::before { transform: scaleX(1); }
+.nav-link.active::before { transform: scaleX(1); opacity: 0.55; }
+
+/* -- Hero aurora: a larger, breathing accent wash behind the hero panel. -- */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(ellipse 38% 45% at 22% 30%, var(--accent-glow), transparent 70%),
+    radial-gradient(ellipse 30% 40% at 78% 68%, rgba(255, 255, 255, 0.05), transparent 70%);
+  animation: heroAurora 16s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes heroAurora {
+  from { transform: rotate(-2.5deg) scale(1); opacity: 0.8; }
+  to { transform: rotate(2.5deg) scale(1.08); opacity: 1; }
+}
+.hero-section > * { position: relative; } /* keep content above the aurora */
+
+/* -- Animated stat numbers: tabular figures stop layout shift while the
+   count-up runs, and a subtle text glow sells the accent. -- */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 22px var(--accent-glow);
+}
+.stat-number.is-counting { opacity: 0.92; }
+
+@media (prefers-reduced-motion: reduce) {
+  .accent-shine { animation: none; }
+  .hero-section::before { animation: none; }
+  .btn-primary::after, .btn-secondary::after { display: none; }
+  .nav-link::before { transition: none; }
+}
 
 .sidebar {
   width: 260px;
