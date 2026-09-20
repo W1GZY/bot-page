@@ -21,4 +21,4 @@
      invite  - invite URL; without one the card has no join button
    ========================================================================== */
 
-const featuredServers = [];
+const featuredServers = [{ name: 'Preview Test Server', members: 1234, tagline: 'Temporary seed for preview verification.' }];
