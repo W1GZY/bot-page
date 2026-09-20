@@ -41,6 +41,10 @@
     let showcaseTimer = null;
     let showcaseIsVisible = false;
     let showcaseUserSelected = false;
+    // Screenshots stay deferred (data-src) until the carousel is near the
+    // viewport, so the first paint is not held up by images nobody has reached
+    // yet.
+    let showcaseIsWarm = false;
 
     function scheduleShowcaseAdvance() {
         clearTimeout(showcaseTimer);
@@ -51,6 +55,37 @@
             const nextIndex = (showcaseIndex + 1) % showcaseOrder.length;
             setShowcase(showcaseOrder[nextIndex], { scheduleNext: true });
         }, SHOWCASE_INTERVAL);
+    }
+
+    // Screenshots inside inactive panels ship as data-src so a page visit does
+    // not download ~850 KB of images nobody can see yet. The panel is hydrated
+    // the moment it is shown, which keeps the swap deterministic (unlike
+    // loading="lazy", which never fires for images revealed out of display:none
+    // in some engines).
+    function hydratePanelImages(panel) {
+        panel.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            delete img.dataset.src;
+        });
+    }
+
+    // Once the rotator is on screen, warm the next panel's screenshot so the
+    // automatic advance never shows an empty frame.
+    function preloadNextPanelImage() {
+        const nextName = showcaseOrder[(showcaseIndex + 1) % showcaseOrder.length];
+        const nextImg = document.querySelector(`#showcase-${nextName} img[data-src]`);
+        if (!nextImg) return;
+        const preloader = new Image();
+        preloader.src = nextImg.dataset.src;
+    }
+
+    // Load the panel on screen plus the one after it. Idempotent, so it is safe
+    // to call from the warmup observer, the visibility observer and a tab click.
+    function warmShowcaseImages() {
+        showcaseIsWarm = true;
+        const activePanel = document.getElementById(`showcase-${showcaseOrder[showcaseIndex]}`);
+        if (activePanel) hydratePanelImages(activePanel);
+        preloadNextPanelImage();
     }
 
     function setShowcase(name, options = {}) {
@@ -75,7 +110,12 @@
             panel.hidden = !active;
             panel.style.display = active ? 'grid' : 'none';
             panel.classList.toggle('active', active);
+            // A click is deliberate, so it always loads its screenshot; the
+            // automatic rotation waits for the warmup observer instead.
+            if (active && (showcaseIsWarm || options.userSelected)) hydratePanelImages(panel);
         });
+
+        if (showcaseIsWarm) preloadNextPanelImage();
 
         if (options.scheduleNext) scheduleShowcaseAdvance();
     }
@@ -109,17 +149,49 @@
 
         const visibilityObserver = new IntersectionObserver(entries => {
             showcaseIsVisible = entries.some(entry => entry.isIntersecting);
+            if (showcaseIsVisible) warmShowcaseImages();
             scheduleShowcaseAdvance();
         }, { threshold: 0.35 });
 
         visibilityObserver.observe(container);
+
+        // The carousel screenshots are the heaviest assets on the page, so they
+        // wait until the section is about one screen away and then load ahead of
+        // the visitor instead of competing with the hero for bandwidth.
+        const warmupObserver = new IntersectionObserver((entries, observer) => {
+            if (!entries.some(entry => entry.isIntersecting)) return;
+            observer.disconnect();
+            warmShowcaseImages();
+        }, { rootMargin: '600px 0px', threshold: 0 });
+        warmupObserver.observe(container);
+
         document.addEventListener('visibilitychange', scheduleShowcaseAdvance);
         setShowcase(showcaseOrder[0]);
     }
 
     document.addEventListener('DOMContentLoaded', initShowcaseRotator);
 
+    // The docs and commands markup lives on the landing page too, hidden behind
+    // tabs. Building both at load put ~10k nodes of DOM behind the first paint
+    // for content the visitor had not opened, so each tab is built the first
+    // time it is shown instead.
+    const tabInitializers = {
+        docs: initDocsPage,
+        commands: initCommandsPage
+    };
+    const builtTabs = new Set();
+
+    function initTab(tabId) {
+        if (builtTabs.has(tabId)) return;
+        const build = tabInitializers[tabId];
+        if (!build) return;
+        // Marked before the build so a re-entrant call cannot double-render.
+        builtTabs.add(tabId);
+        build();
+    }
+
     function switchTab(tabId) {
+        initTab(tabId);
         document.querySelectorAll('.tab-view').forEach(view => {
             const isTarget = view.id === `view-${tabId}`;
             view.classList.toggle('active-view', isTarget);
@@ -264,9 +336,16 @@
             const easeOut = t => 1 - Math.pow(1 - t, 3);
             const tick = now => {
                 const progress = Math.min((now - start) / duration, 1);
+                // The last frame writes the exact target text, so a dropped or
+                // throttled animation still lands on the real number instead of
+                // being left mid-roll.
+                if (progress >= 1) {
+                    el.textContent = `${target}${suffix}`;
+                    el.classList.remove('is-counting');
+                    return;
+                }
                 el.textContent = `${Math.round(target * easeOut(progress))}${suffix}`;
-                if (progress < 1) requestAnimationFrame(tick);
-                else el.classList.remove('is-counting');
+                requestAnimationFrame(tick);
             };
             requestAnimationFrame(tick);
         });
@@ -274,14 +353,23 @@
 
     const statsGrid = document.querySelector('.stats-grid');
     if (statsGrid && 'IntersectionObserver' in window) {
+        // 0.4 never fires when the cards stack vertically on a short screen
+        // (the grid grows taller than the viewport), so trigger on a quarter
+        // of the grid and disconnect after the single run.
         const statsObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 runStatCountUps();
                 statsObserver.disconnect();
             });
-        }, { threshold: 0.4 });
+        }, { threshold: 0.25 });
         statsObserver.observe(statsGrid);
+        // Safety net: if the tab was hidden or the observer never delivered a
+        // qualifying entry, make sure the real numbers still appear.
+        window.setTimeout(() => {
+            statsObserver.disconnect();
+            runStatCountUps();
+        }, 4000);
     } else {
         runStatCountUps();
     }
@@ -375,9 +463,24 @@
         }
 
         if (typeof commandsDatabase !== 'undefined' && commandsDatabase.some(c => c.id === hash)) {
+            // ensureTab builds the tab, so this category section only exists from
+            // here on: the browser's own fragment scroll already looked for it in
+            // empty markup, which means this path has to scroll it into view.
             ensureTab('commands');
             const targetSec = document.getElementById(hash);
-            if (targetSec) setTimeout(() => targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+            if (!targetSec) return;
+            setTimeout(() => {
+                const before = window.scrollY;
+                targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // A smooth move can be skipped outright (reduced motion, a page
+                // that never composites, a very long jump). If the page has not
+                // moved at all, jump to the section for real.
+                setTimeout(() => {
+                    if (Math.abs(window.scrollY - before) < 2) {
+                        targetSec.scrollIntoView({ block: 'start' });
+                    }
+                }, 800);
+            }, 100);
         }
     }
 
@@ -400,55 +503,9 @@
                 }
             }, { passive: true });
         }
-
-        // Stat counter single animation observer
-        let statsAnimated = false;
-        const statsGrid = document.querySelector('.stats-grid');
-        if (statsGrid) {
-            const statsObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !statsAnimated) {
-                    statsAnimated = true;
-                    animateStatCounters();
-                }
-            }, { threshold: 0.2 });
-            statsObserver.observe(statsGrid);
-        }
-
-        function animateStatCounters() {
-            document.querySelectorAll('.stat-card').forEach(card => {
-                const numEl = card.querySelector('.stat-number');
-                if (!numEl) return;
-                const rawText = numEl.textContent.trim();
-                let target = parseFloat(rawText.replace(/[^0-9.]/g, ''));
-                let suffix = rawText.replace(/[0-9.]/g, '');
-                
-                if (isNaN(target)) return;
-
-                let start = 0;
-                let duration = 1200; // ms
-                let startTime = null;
-
-                function step(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    let progress = Math.min((timestamp - startTime) / duration, 1);
-                    let easeProgress = 1 - Math.pow(1 - progress, 3);
-                    let current = start + (target - start) * easeProgress;
-                    
-                    if (Number.isInteger(target)) {
-                        numEl.textContent = Math.floor(current) + suffix;
-                    } else {
-                        numEl.textContent = current.toFixed(1) + suffix;
-                    }
-
-                    if (progress < 1) {
-                        requestAnimationFrame(step);
-                    } else {
-                        numEl.textContent = rawText;
-                    }
-                }
-                requestAnimationFrame(step);
-            });
-        }
+        // Stat count-ups live in runStatCountUps() further up; there is exactly
+        // one animation per number so nothing can read another loop's midpoint
+        // and freeze there.
     });
 
 
@@ -1007,8 +1064,10 @@ function initDocsPage() {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        initDocsPage();
-        initCommandsPage();
+        // docs.html and commands.html are a single tab with no tab wrapper
+        // (body[data-nav]), so their content builds right away. The landing page
+        // wraps all three views in .tab-view and builds each one on first open.
+        if (!document.querySelector('.tab-view')) initTab(document.body.dataset.nav);
         window.setTimeout(() => window.refreshScrollReveals?.(document), 60);
     });
 
@@ -1197,6 +1256,376 @@ let ticketStep = 1;
         document.getElementById('tz-status-message').style.display = 'none';
         document.getElementById('tz-typing-status').style.display = 'none';
     }
+
+/* ==========================================================================
+   Recommended communities deck
+
+   Fills the landing page card stack from the dashboard's public API, which
+   serves exactly the servers whose admins opted in on the Server Access
+   page (toggle + their own short description). The static featuredServers
+   list from servers-data.js is a local dev seed only and ships empty, so
+   the site never shows a server that did not opt in. The section stays
+   hidden whenever the final list is empty.
+   ========================================================================== */
+(function () {
+    const DECK_INTERVAL = 6000;  // ms between automatic shuffles
+    const DECK_VISIBLE = 3;      // front card plus two peeking behind it
+    const LEAVE_MS = 340;        // keep in step with .server-card.is-leaving
+    const SERVERS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/servers';
+    const CACHE_KEY = 'seanbot.publicServers';
+    const CACHE_TTL_MS = 60 * 1000;
+    const REQUEST_TIMEOUT_MS = 4000;
+
+    function serverList() {
+        if (typeof featuredServers === 'undefined' || !Array.isArray(featuredServers)) return [];
+        // A nameless entry would render an empty card, so it is dropped rather
+        // than shipped as a blank slot.
+        return featuredServers.filter(server => server && String(server.name || '').trim());
+    }
+
+    function initialsFor(name) {
+        return String(name).trim().split(/\s+/).slice(0, 2)
+            .map(part => part.charAt(0)).join('').toUpperCase();
+    }
+
+    function memberLabel(count) {
+        const total = Number(count);
+        if (!Number.isFinite(total) || total < 1) return '';
+        return `${Math.round(total).toLocaleString()} members`;
+    }
+
+    function buildIcon(server) {
+        const icon = document.createElement('div');
+        icon.className = 'server-card-icon';
+        const iconUrl = String(server.icon || '').trim();
+        if (!iconUrl) {
+            icon.textContent = initialsFor(server.name);
+            return icon;
+        }
+        const img = document.createElement('img');
+        img.alt = '';
+        img.decoding = 'async';
+        // A dead CDN link should still leave a readable card.
+        img.addEventListener('error', () => {
+            img.remove();
+            icon.textContent = initialsFor(server.name);
+        });
+        img.src = iconUrl;
+        icon.appendChild(img);
+        return icon;
+    }
+
+    function buildCard(server, index) {
+        const card = document.createElement('article');
+        card.className = 'server-card';
+        card.dataset.index = String(index);
+
+        card.appendChild(buildIcon(server));
+
+        const body = document.createElement('div');
+        body.className = 'server-card-body';
+
+        const top = document.createElement('div');
+        top.className = 'server-card-top';
+        const name = document.createElement('h3');
+        name.className = 'server-card-name';
+        name.textContent = String(server.name).trim();
+        top.appendChild(name);
+        const members = memberLabel(server.members);
+        if (members) {
+            const badge = document.createElement('span');
+            badge.className = 'server-card-members';
+            const badgeIcon = document.createElement('i');
+            badgeIcon.className = 'ph-fill ph-users-three';
+            badge.appendChild(badgeIcon);
+            badge.appendChild(document.createTextNode(members));
+            top.appendChild(badge);
+        }
+        body.appendChild(top);
+
+        const tagline = String(server.tagline || '').trim();
+        if (tagline) {
+            const line = document.createElement('p');
+            line.className = 'server-card-tagline';
+            line.textContent = tagline;
+            body.appendChild(line);
+        }
+
+        const tags = Array.isArray(server.tags) ? server.tags.filter(Boolean).slice(0, 3) : [];
+        if (tags.length) {
+            const row = document.createElement('div');
+            row.className = 'server-card-tags';
+            tags.forEach(tag => {
+                const pill = document.createElement('span');
+                pill.className = 'pill-badge';
+                pill.textContent = String(tag);
+                row.appendChild(pill);
+            });
+            body.appendChild(row);
+        }
+
+        // Rendered on every card so the row keeps its space when a card moves
+        // to the back; CSS hides it on the cards that are not in front.
+        const actions = document.createElement('div');
+        actions.className = 'server-card-actions';
+        const invite = String(server.invite || '').trim();
+        if (invite) {
+            const join = document.createElement('a');
+            join.className = 'server-card-join';
+            join.href = invite;
+            join.target = '_blank';
+            join.rel = 'noopener';
+            const joinIcon = document.createElement('i');
+            joinIcon.className = 'ph-fill ph-discord-logo';
+            join.appendChild(joinIcon);
+            join.appendChild(document.createTextNode('Join server'));
+            actions.appendChild(join);
+        }
+        body.appendChild(actions);
+
+        card.appendChild(body);
+        return card;
+    }
+
+    let deckRuntime = null;
+
+    function buildDeck(servers) {
+        const deck = document.getElementById('serverDeck');
+        const section = document.getElementById('servers');
+        if (!deck || !section) return;
+
+        // A live refresh replaces the whole deck: timers and observers from a
+        // previous build are torn down so only the current one drives it.
+        if (deckRuntime) {
+            deckRuntime.destroy();
+            deckRuntime = null;
+        }
+
+        const shell = deck.closest('.server-deck-shell');
+        const controls = document.getElementById('serverDeckControls');
+        const dotRow = document.getElementById('serverDeckDots');
+
+        if (servers.length === 0) {
+            deck.replaceChildren();
+            if (dotRow) dotRow.replaceChildren();
+            section.hidden = true;
+            return;
+        }
+
+        deck.replaceChildren();
+        if (dotRow) dotRow.replaceChildren();
+
+        let activeIndex = 0;
+        let deckVisible = false;
+        let deckHovered = false;
+        let deckFocused = false;
+        let deckTimer = null;
+        let leaveTimer = null;
+        let leavingCard = null;
+
+        const cards = servers.map((server, index) => {
+            const card = buildCard(server, index);
+            deck.appendChild(card);
+            card.addEventListener('click', () => selectServer(index, { fromUser: true }));
+            return card;
+        });
+
+        // One dot per server: the peeking cards are pointer affordances, so the
+        // dots (and the arrows) are the keyboard and screen-reader way through
+        // the deck.
+        const dots = servers.map((server, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'server-deck-dot';
+            dot.setAttribute('aria-label', `Show ${server.name}`);
+            dot.addEventListener('click', () => selectServer(index, { fromUser: true }));
+            if (dotRow) dotRow.appendChild(dot);
+            return dot;
+        });
+
+        if (servers.length < 2 && controls) controls.hidden = true;
+
+        function layoutDeck() {
+            cards.forEach((card, index) => {
+                const offset = (index - activeIndex + cards.length) % cards.length;
+                card.style.setProperty('--deck-offset', String(offset));
+                card.classList.toggle('is-front', offset === 0);
+                // A leaving card stays on screen until its slide finishes, even
+                // though the new order has already pushed it off the deck.
+                card.hidden = offset >= DECK_VISIBLE && card !== leavingCard;
+                if (offset === 0) {
+                    card.removeAttribute('aria-hidden');
+                } else {
+                    // Not focusable (the action row is visibility:hidden off the
+                    // front card) and redundant with the dots, so it is hidden
+                    // from assistive tech rather than announced twice.
+                    card.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                if (index === activeIndex) dot.setAttribute('aria-current', 'true');
+                else dot.removeAttribute('aria-current');
+            });
+        }
+
+        function scheduleDeckAdvance() {
+            clearTimeout(deckTimer);
+            const shouldRun = deckVisible && !deckHovered && !deckFocused &&
+                !document.hidden && cards.length > 1;
+            if (!shouldRun) return;
+            deckTimer = window.setTimeout(() => selectServer(activeIndex + 1), DECK_INTERVAL);
+        }
+
+        // Ends a shuffle: the card drops back onto the pile (or off it) and
+        // transitions to whatever slot the new order gives it.
+        function finishLeave() {
+            if (!leavingCard) return;
+            leavingCard.classList.remove('is-leaving');
+            leavingCard = null;
+        }
+
+        function selectServer(index, options = {}) {
+            const target = ((index % cards.length) + cards.length) % cards.length;
+            if (target === activeIndex) return;
+
+            const outgoingIndex = activeIndex;
+            activeIndex = target;
+
+            // The front card always slides away, then settles into its new spot
+            // in the stack. Landing a previous shuffle first keeps rapid clicks
+            // from stranding a card mid-slide at zero opacity.
+            clearTimeout(leaveTimer);
+            finishLeave();
+            leavingCard = cards[outgoingIndex];
+            leavingCard.classList.add('is-leaving');
+            layoutDeck();
+            leaveTimer = window.setTimeout(() => {
+                finishLeave();
+                layoutDeck();
+            }, LEAVE_MS);
+
+            // A pick restarts the clock rather than stopping it: the deck still
+            // shuffles on its own, just not immediately after someone chose.
+            if (options.fromUser) scheduleDeckAdvance();
+        }
+
+        function stepDeck(delta, fromUser) {
+            selectServer(activeIndex + delta, { fromUser });
+        }
+
+        // The deck takes itself off the clock while it is off-screen, hovered,
+        // focused or in a background tab, same as the showcase rotator.
+        const deckObserver = new IntersectionObserver(entries => {
+            deckVisible = entries.some(entry => entry.isIntersecting);
+            scheduleDeckAdvance();
+        }, { threshold: 0.35 });
+        deckObserver.observe(deck);
+
+        shell?.addEventListener('mouseenter', () => { deckHovered = true; scheduleDeckAdvance(); });
+        shell?.addEventListener('mouseleave', () => { deckHovered = false; scheduleDeckAdvance(); });
+        shell?.addEventListener('focusin', () => { deckFocused = true; scheduleDeckAdvance(); });
+        shell?.addEventListener('focusout', () => { deckFocused = false; scheduleDeckAdvance(); });
+        document.addEventListener('visibilitychange', scheduleDeckAdvance);
+
+        deck.addEventListener('keydown', event => {
+            if (event.key === 'ArrowRight') { event.preventDefault(); stepDeck(1, true); }
+            else if (event.key === 'ArrowLeft') { event.preventDefault(); stepDeck(-1, true); }
+            else if (event.key === 'Home') { event.preventDefault(); selectServer(0, { fromUser: true }); }
+            else if (event.key === 'End') { event.preventDefault(); selectServer(cards.length - 1, { fromUser: true }); }
+        });
+
+        document.getElementById('serverDeckPrev')?.addEventListener('click', () => stepDeck(-1, true));
+        document.getElementById('serverDeckNext')?.addEventListener('click', () => stepDeck(1, true));
+
+        layoutDeck();
+        section.hidden = false;
+        shell?.classList.add('is-live');
+
+        deckRuntime = {
+            destroy() {
+                clearTimeout(deckTimer);
+                clearTimeout(leaveTimer);
+                deckObserver.disconnect();
+            }
+        };
+    }
+
+    function readCachedServers() {
+        try {
+            const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+            if (!cached || !Array.isArray(cached.servers)) return null;
+            if (Date.now() - Number(cached.fetchedAt || 0) > CACHE_TTL_MS) return null;
+            return cached.servers;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function writeCachedServers(servers) {
+        try {
+            sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+                servers: servers,
+                fetchedAt: Date.now()
+            }));
+        } catch (error) {
+            // Private mode or a full quota: the next visit just re-fetches.
+        }
+    }
+
+    // The API serves display-safe fields; this mirrors the caps the backend
+    // applies so a hand-crafted response cannot inject anything longer.
+    function sanitizeServers(raw) {
+        if (!Array.isArray(raw)) return [];
+        return raw
+            .filter(server => server && typeof server === 'object' && String(server.name || '').trim())
+            .slice(0, 24)
+            .map(server => ({
+                name: String(server.name).trim().slice(0, 100),
+                icon: String(server.icon || '').trim().slice(0, 300),
+                members: Number(server.members) || 0,
+                tagline: String(server.description || '').trim().slice(0, 140),
+                tags: [],
+                invite: String(server.invite || '').trim().slice(0, 200)
+            }));
+    }
+
+    async function fetchLiveServers() {
+        const cached = readCachedServers();
+        if (cached) {
+            buildDeck(cached);
+            return;
+        }
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+        try {
+            const response = await fetch(SERVERS_ENDPOINT, { signal: controller.signal });
+            clearTimeout(timeout);
+            if (!response.ok) return;
+            const data = await response.json();
+            const servers = sanitizeServers(data && data.servers);
+            // An empty list is cached too: it is a valid state (nobody has
+            // opted in yet), not a failure worth retrying every view.
+            writeCachedServers(servers);
+            buildDeck(servers);
+        } catch (error) {
+            clearTimeout(timeout);
+            // Offline, CORS, bot down: whatever the static seed built stays.
+        }
+    }
+
+    function initServerDeck() {
+        const staticServers = serverList();
+        if (staticServers.length) buildDeck(staticServers);
+        fetchLiveServers();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initServerDeck);
+    } else {
+        initServerDeck();
+    }
+})();
 
 /* ==========================================================================
    Live server count

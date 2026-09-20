@@ -23,9 +23,9 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
+         The @font-face rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
     <link rel="preconnect" href="https://unpkg.com">
@@ -348,7 +348,7 @@
 <p>If a server enables message-deletion or edit logging, and where message content storage is allowed by the Bot's configuration, we may keep a short-lived snapshot of recently deleted messages so the log can reconstruct what was removed. Depending on that server's settings, a snapshot may include a truncated version of the message text, embed titles or descriptions, attachment links, and counts of mentions, role mentions, or @everyone/@here usage. We do not store your full message history across the server. These snapshots are not kept for every server or every feature, they expire automatically after a configured retention period, and they are removed once they have been used for a deletion log.</p>
 
 <h3>Website and operational data</h3>
-<p>The SeanBot website and the Bot itself may generate technical and operational data needed to run them, such as connection, usage, or error data. If any such data is collected, it is limited to what is needed for operation, debugging, security, or service improvement, and is handled under the same approach described in this policy. We do not use this data to build profiles about you beyond what the related feature requires.</p>
+<p>The SeanBot website and the Bot itself may generate technical and operational data needed to run them, such as connection, usage, or error data. If any such data is collected, it is limited to what is needed for operation, debugging, security, or service improvement, and is handled under the same approach described in this policy. We do not use this data to build profiles about you beyond what the related feature requires. Cookies and other browser storage are covered separately in the <a href="cookies.html">Cookie Policy</a>.</p>
 
 <h3>Third-party services</h3>
 <p>The Bot and the SeanBot website may rely on third-party services such as Discord, hosting providers, database providers, analytics or error-reporting services, and security providers. Those third parties collect and handle their own data under their own terms and privacy practices, which this policy does not cover. Where a third-party service collects usage data, it does so under its own policy, not under this one. If you use the Bot, you are also subject to the terms and privacy practices of any third-party services it depends on.</p>
@@ -436,7 +436,7 @@
 
         <footer class="page-footer">
             <div>&copy; 2026 SeanBot. All rights reserved.</div>
-            <div><a href="index.html"><i class="ph ph-arrow-left"></i> Back to Home</a></div>
+            <div style="display: flex; gap: 18px;"><a href="cookies.html">Cookie Policy</a><a href="index.html"><i class="ph ph-arrow-left"></i> Back to Home</a></div>
         </footer>
     </div>
 

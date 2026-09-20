@@ -829,8 +829,8 @@ const docsData = [
                         "desc": "Toggle Silent Canary Mode (log threats without taking action)."
                     },
                     {
-                        "cmd": "/antiraid register_scam [image]",
-                        "desc": "Register image attachments as visual scam blocks."
+                        "cmd": "/antiraid register_scam [image] [message]",
+                        "desc": "Register scam images as visual blocks: upload the files, or pass a message link and the bot fingerprints the picture that is already posted, which keeps re-crops and re-renders of it matchable."
                     },
                     {
                         "cmd": "/antiraid unregister_scam [hash]",

@@ -27,9 +27,9 @@
     </script>
     <!-- ★ Meta refresh fallback (works even with JavaScript disabled). -->
     <meta http-equiv="refresh" content="0; url=https://discord.com/oauth2/authorize?client_id=1361721001120895114">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
+         The @font-face rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
     <link rel="preconnect" href="https://unpkg.com">

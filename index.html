@@ -27,9 +27,9 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
+         The @font-face rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
     <link rel="preconnect" href="https://unpkg.com">
@@ -98,6 +98,7 @@
             </a>
             <a href="#overview" class="site-nav-link active" data-tab="overview"><i class="ph ph-house"></i><span>Overview</span></a>
             <a href="#showcase" class="site-nav-link" data-section="showcase"><i class="ph ph-monitor-play"></i><span>In Action</span></a>
+            <a href="#servers" class="site-nav-link" data-section="servers"><i class="ph ph-users-three"></i><span>Communities</span></a>
             <a href="#features" class="site-nav-link" data-section="features"><i class="ph ph-squares-four"></i><span>Modules</span></a>
             <a href="#compare" class="site-nav-link" data-section="compare"><i class="ph ph-scales"></i><span>Compare</span></a>
             <a href="#docs" class="site-nav-link" data-tab="docs"><i class="ph ph-book-open"></i><span>Documentation</span></a>
@@ -931,7 +932,7 @@
                             </div>
                         </div>
                         <div class="showcase-image-frame">
-                            <img src="assets/timezone_analytics.png" alt="Timezone Analytics Dashboard">
+                            <img data-src="assets/timezone_analytics.png" alt="Timezone Analytics Dashboard" decoding="async">
                         </div>
                     </div>
 
@@ -947,7 +948,7 @@
                             </div>
                         </div>
                         <div class="showcase-image-frame">
-                            <img src="assets/antiraid_dashboard.png" alt="Anti-Raid Dashboard">
+                            <img data-src="assets/antiraid_dashboard.png" alt="Anti-Raid Dashboard" decoding="async">
                         </div>
                     </div>
 
@@ -963,7 +964,7 @@
                             </div>
                         </div>
                         <div class="showcase-image-frame">
-                            <img src="assets/voice_analytics.png" alt="Voice Analytics Dashboard">
+                            <img data-src="assets/voice_analytics.png" alt="Voice Analytics Dashboard" decoding="async">
                         </div>
                     </div>
 
@@ -1073,7 +1074,7 @@
                             </div>
                         </div>
                         <div class="showcase-image-frame">
-                            <img src="assets/emoji_analytics.png" alt="Emoji Analytics Dashboard">
+                            <img data-src="assets/emoji_analytics.png" alt="Emoji Analytics Dashboard" decoding="async">
                         </div>
                     </div>
 
@@ -1089,8 +1090,28 @@
                             </div>
                         </div>
                         <div class="showcase-image-frame">
-                            <img src="assets/embed_builder.png" alt="Web Dashboard Embed Builder">
+                            <img data-src="assets/embed_builder.png" alt="Web Dashboard Embed Builder" decoding="async">
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommended communities. The entries live in servers-data.js;
+                 nothing is invented here, and the whole section stays hidden
+                 until index.js finds at least one entry to show. -->
+            <section id="servers" hidden style="margin: 44px 0 48px 0;">
+                <div style="text-align: center; margin-bottom: 28px;">
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Recommended communities</h2>
+                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Servers that run SeanBot and opted in to be listed here. Click a card to bring it to the front, or let the deck shuffle on its own.</p>
+                </div>
+
+                <div class="server-deck-shell">
+                    <div class="server-deck" id="serverDeck" role="group" tabindex="0" aria-label="Recommended servers"></div>
+
+                    <div class="server-deck-controls" id="serverDeckControls">
+                        <button class="server-deck-arrow" type="button" id="serverDeckPrev" aria-label="Previous server"><i class="ph-bold ph-caret-left"></i></button>
+                        <div class="server-deck-dots" id="serverDeckDots"></div>
+                        <button class="server-deck-arrow" type="button" id="serverDeckNext" aria-label="Next server"><i class="ph-bold ph-caret-right"></i></button>
                     </div>
                 </div>
             </section>
@@ -1672,7 +1693,10 @@
 
     <footer class="page-footer">
         <div>&copy; 2026 SeanBot. All rights reserved.</div>
-        <a href="tos.html">Terms &amp; Privacy</a>
+        <div class="footer-links">
+            <a href="tos.html">Terms &amp; Privacy</a>
+            <a href="cookies.html">Cookie Policy</a>
+        </div>
     </footer>
 </div>
 
@@ -1681,6 +1705,7 @@
     <i class="ph-bold ph-caret-up"></i>
 </button>
 
+<script src="servers-data.js"></script>
 <script src="commands-data.js"></script>
 <script src="layout.js"></script>
 

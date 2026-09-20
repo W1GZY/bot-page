@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot Cookie Policy</title>
+    <meta name="description" content="SeanBot cookie policy: what this website stores in your browser, the one essential cookie the dashboard sets after sign-in, and how to clear either.">
+    <link rel="canonical" href="https://sean.bot.nu/cookies.html">
+    <meta name="theme-color" content="#09090b">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SeanBot">
+    <meta property="og:title" content="SeanBot Cookie Policy">
+    <meta property="og:description" content="What this website stores in your browser, and the one essential cookie the dashboard sets after sign-in.">
+    <meta property="og:url" content="https://sean.bot.nu/cookies.html">
+    <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png">
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
+         The @font-face rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+
+    <script>
+        const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
+        document.documentElement.setAttribute('data-accent', savedAccent);
+    </script>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="brand.css">
+    <script src="layout.js" defer></script>
+    <style>
+        /* Cookie Policy Custom Styles */
+        .cookie-note {
+            background: rgba(88, 101, 242, 0.08);
+            border-left: 3px solid var(--accent);
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+        }
+        .cookie-note p {
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            color: #fff;
+        }
+        .cookie-note ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .cookie-table-wrap {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            margin: 16px 0 24px;
+        }
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            table-layout: fixed;
+            min-width: 560px;
+        }
+        .cookie-table th, .cookie-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            vertical-align: top;
+            line-height: 1.55;
+        }
+        .cookie-table tr:last-child th, .cookie-table tr:last-child td {
+            border-bottom: none;
+        }
+        .cookie-table td:first-child code {
+            overflow-wrap: anywhere;
+        }
+        .cookie-table th {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .cookie-table td:first-child {
+            font-weight: 700;
+            /* A storage key is one long token, so it breaks rather than pushing
+               into the next column on a narrow screen. */
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body data-nav="none" data-title="Cookie Policy">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+            <div class="brand-mark">
+                <i class="ph-fill ph-paw-print"></i>
+                <span>SeanBot<span class="brand-mark-dot">.</span></span>
+            </div>
+            <button class="hamburger" id="closeSidebarBtn" aria-label="Close navigation"><i class="ph ph-x"></i></button>
+        </div>
+        <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
+        <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
+        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+        <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="top-header">
+            <div style="display:flex; align-items:center; gap:16px;">
+                <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a href="index.html" class="breadcrumb-item"><i class="ph-fill ph-paw-print breadcrumb-icon"></i><span class="breadcrumb-brand-text">SeanBot.</span></a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">Cookie Policy</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle" title="Change theme accent">
+                    <div class="active-display"></div><i class="ph ph-caret-down"></i>
+                    <div class="dropdown-menu-content">
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin-bottom:8px;">Theme Accent</div>
+                        <div class="color-grid" id="colorGrid">
+                            <div class="accent-dot" data-accent="gold" style="background:#FFD700;" title="Gold"></div>
+                            <div class="accent-dot" data-accent="orange" style="background:#F97316;" title="Orange"></div>
+                            <div class="accent-dot" data-accent="rose" style="background:#E11D48;" title="Rose"></div>
+                            <div class="accent-dot" data-accent="purple" style="background:#9333EA;" title="Purple"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background:#5865F2;" title="Blurple"></div>
+                            <div class="accent-dot" data-accent="blue" style="background:#3B82F6;" title="Blue"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background:#06B6D4;" title="Cyan"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background:#10B981;" title="Emerald"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content auto-fade-in">
+        <div class="glass-card">
+            <h1 class="tos-title">Cookie Policy</h1>
+            <div class="tos-date">Last Updated: 20. September 2026</div>
+
+            <div class="tos-section">
+                <p style="color: var(--text-secondary);">This page covers cookies and browser storage for <strong>sean.bot.nu</strong> and the SeanBot dashboard. It sits alongside the <a href="tos.html">Terms of Service &amp; Privacy Policy</a>, which covers what the bot stores on Discord; this page is only about your browser.</p>
+            </div>
+
+            <div class="tos-section" style="margin-top: 48px;">
+                <h1 class="tos-title" style="font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">1. Cookies and this site</h1>
+                <p>A cookie is a small file a site asks your browser to keep and send back with later requests. Sites use them for things like sign-in, preferences, and tracking. This policy says which of those, if any, apply here, because the answer is shorter than most cookie policies.</p>
+
+                <div class="cookie-note">
+                    <p>In short</p>
+                    <ul>
+                        <li>This website sets <strong>no cookies at all</strong>.</li>
+                        <li>The theme accent you pick is kept in your browser's <strong>localStorage</strong>, not in a cookie, and is never sent to us.</li>
+                        <li>We use <strong>no analytics, advertising, or tracking</strong> cookies or pixels.</li>
+                        <li>The dashboard sets <strong>one essential session cookie</strong> after you sign in with Discord. Without it you cannot stay signed in.</li>
+                        <li>That is the whole list, which is why this site shows no cookie banner.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tos-section">
+                <h2>1.1 Cookies on this website</h2>
+                <p>sean.bot.nu is a set of static files hosted on GitHub Pages. There is no login, no server-side session, and no personalisation stored on a server, so there is nothing for us to put in a cookie. You can confirm this yourself: open your browser's developer tools, go to the Application panel (Storage in Firefox), and look under Cookies for sean.bot.nu after loading a page. The list is empty.</p>
+                <p>Two small values are stored in your browser instead. Neither is a cookie: they stay on your device, they are never sent to our servers, and nothing else can read them.</p>
+
+                <!-- The gate in scripts/check_cookie_inventory.py reads the rows of
+                     the data-site-inventory table below and compares them with what the
+                     shipped HTML and JS actually touch, so a new key fails the check
+                     until it is listed here. -->
+                <div class="cookie-table-wrap">
+                    <table class="cookie-table" data-site-inventory>
+                        <colgroup>
+                            <col style="width: 22%;">
+                            <col style="width: 19%;">
+                            <col style="width: 37%;">
+                            <col style="width: 22%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Stored in</th>
+                                <th>What it does</th>
+                                <th>Lasts until</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>seanbotAccent</code></td>
+                                <td>localStorage</td>
+                                <td>Remembers the theme accent you choose in the header colour picker, so every page opens with the accent you picked instead of the default gold.</td>
+                                <td>You clear site data for sean.bot.nu</td>
+                            </tr>
+                            <tr>
+                                <td><code>seanbot.publicStats</code></td>
+                                <td>sessionStorage</td>
+                                <td>Caches the live server count for one minute, so the Communities card does not call the dashboard on every page view.</td>
+                                <td>You close the tab</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Both are strictly functional and both exist only because they make the page work better for you. You can delete either at any time (see section 1.4), and the site keeps working without them: the accent falls back to gold and the server count is simply fetched again.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>1.2 Third-party services the pages load</h2>
+                <p>Loading a page here also means your browser requests a few files from other companies. The site serves the Inter typeface itself, so no font request leaves this origin. We do not control the requests that do leave, and we do not receive anything back from them:</p>
+                <ul>
+                    <li><strong>unpkg</strong> (unpkg.com) serves the Phosphor icon stylesheets.</li>
+                    <li><strong>Discord</strong> (cdn.discordapp.com) serves any community icon a card shows in the Communities section, when that card has one.</li>
+                    <li><strong>The SeanBot dashboard</strong> (dashboard-seanbo.vercel.app) answers the request for the live server count. That request is anonymous: it sends no cookies and no credentials, and it asks only for a public total.</li>
+                </ul>
+                <p>These are ordinary requests for files and data, not embedded widgets, and they do not set cookies in the context of our pages as far as we can tell. The providers do see your IP address and browser string while serving the request, and they handle that under their own privacy policies, not this one. If you block these requests, the site still works, though icons or the live count may be missing.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>1.3 Cookies on the dashboard</h2>
+                <p>The dashboard is the signed-in web panel for server admins and staff, and it runs at <strong>dashboard-seanbo.vercel.app</strong>, a different address from this site. It needs one cookie to work, and that is the only one it sets. The dashboard also serves its own copy of this section at <a href="https://dashboard-seanbo.vercel.app/cookies">dashboard-seanbo.vercel.app/cookies</a>, so you can read it without leaving the panel.</p>
+
+                <div class="cookie-table-wrap">
+                    <table class="cookie-table">
+                        <colgroup>
+                            <col style="width: 18%;">
+                            <col style="width: 18%;">
+                            <col style="width: 42%;">
+                            <col style="width: 22%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Stored in</th>
+                                <th>What it does</th>
+                                <th>Lasts until</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>session</code></td>
+                                <td>Cookie (strictly necessary)</td>
+                                <td>Keeps you signed in after you authorize with Discord, and carries the CSRF token that protects dashboard actions against cross-site requests. It is set as HttpOnly, Secure, and SameSite=Lax, so page scripts cannot read it, it is only sent over HTTPS, and it is not attached to cross-site requests.</td>
+                                <td>Eight hours have passed since sign-in, or you sign out, or you clear your cookies</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Signing in goes through Discord's own OAuth page on discord.com. Anything Discord stores in your browser during that step is a Discord cookie governed by Discord's policies, not this one. If you block the <code>session</code> cookie, the dashboard cannot keep you signed in; the rest of the site is unaffected.</p>
+                <p>Like this website, the dashboard sets no analytics, advertising, or "remember me" cookies, and no third-party tracker runs on it.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>1.4 Managing cookies and site data</h2>
+                <p>You are in control of everything described above, and none of it is required to read this site:</p>
+                <ul>
+                    <li><strong>See what is stored.</strong> Open your browser's developer tools and use the Application (Chrome, Edge) or Storage (Firefox) panel. Cookies and storage for the current site are listed there.</li>
+                    <li><strong>Clear it.</strong> In your browser settings, find the cookies and site data section, search for sean.bot.nu and dashboard-seanbo.vercel.app, and delete what you find. Clearing the site data resets your theme accent to the default gold.</li>
+                    <li><strong>Block it.</strong> Blocking cookies for the dashboard means you will have to sign in again on every visit, or you may not be able to sign in at all. Blocking storage for this site only costs you the remembered accent and a slightly slower live server count.</li>
+                    <li><strong>Private windows.</strong> Anything stored is discarded when the private window closes, and nothing about the site's behaviour changes while it is open.</li>
+                </ul>
+            </div>
+
+            <div class="tos-section">
+                <h2>1.5 Changes to this policy</h2>
+                <p>If we ever add a cookie or a tracker that is not strictly necessary, this page and the date at the top will be updated before it goes live, and it will be opt-in rather than silent. Material changes follow the same notice period as the Terms of Service: at least 30 days, announced by the updated date on this page.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>1.6 Contact</h2>
+                <p>Questions about this page, or a request about your data, go to the same place as everything else: Discord DM <strong style="color: var(--accent);">@energetic_starfish_67605</strong>. Your data rights and the contact details for formal requests are set out in section 2.3 of the <a href="tos.html">Terms of Service &amp; Privacy Policy</a>.</p>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div style="display: flex; gap: 18px;">
+                <a href="tos.html">Terms &amp; Privacy</a>
+                <a href="index.html"><i class="ph ph-arrow-left"></i> Back to Home</a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

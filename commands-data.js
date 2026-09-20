@@ -489,7 +489,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/banrelay masslimit",
-            "desc": "Max appeal DMs per minute before the burst guard pauses relay.",
+            "desc": "Moderation actions per 30s before appeal DMs pause and Server Security alerts.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -862,7 +862,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid register_scam",
-            "desc": "Registers multiple scam screenshots as universal visual blocks.",
+            "desc": "Registers scam images as universal visual blocks, from uploads or from an existing post.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1326,13 +1326,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/poll close",
-            "desc": "Close a simple reaction poll and show final totals. Reactions are kept so votes stay attributable.",
+            "desc": "Close a simple reaction poll and show final totals.",
             "badge": "Manage Messages",
             "type": "perm"
         },
         {
             "name": "/poll create",
-            "desc": "Create a simple reaction poll.",
+            "desc": "Create a simple reaction poll from a comma-separated list of answers.",
             "badge": "Manage Messages",
             "type": "perm"
         },
@@ -1345,6 +1345,12 @@ const commandsDatabase = [{
         {
             "name": "/raid edit",
             "desc": "Edit an existing raid event.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/raid history",
+            "desc": "Show one board's whole story: its lifecycle and signups.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -1380,7 +1386,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/raidpoll",
-            "desc": "Create signup polls step by step, guided wizard for any game",
+            "desc": "Create signup polls step by step - guided wizard for any game",
             "badge": "Manage Channels",
             "type": "perm"
         },

@@ -1580,7 +1580,20 @@
         @media (max-width: 820px) {
             .plain-intro-copy { padding-left: 0; }
         }
-        @media (max-width: 1040px) {
+        /* Compact topbar row: between the width where the full row stops
+           fitting and the width where the hamburger takes over, the link
+           icons and padding are dropped so all seven links still fit.
+           Measured on the live header: the full row needs ~1100-1250px
+           depending on the visitor's fonts, the compact row ~1000-1100px,
+           so 1560/1240 leave margin on both sides. The hamburger block
+           below must stay after this one so it wins at narrow widths. */
+        @media (max-width: 1560px) {
+            .site-nav-link:not(.brand-mark) i { display: none; }
+            .site-nav-link:not(.brand-mark) { padding: 9px 8px; }
+            .top-nav-links { gap: 2px; }
+            .site-topbar { gap: 14px; padding: 10px clamp(14px, 2vw, 24px) !important; }
+        }
+        @media (max-width: 1240px) {
             .site-topbar { grid-template-columns: auto auto 1fr; }
             .top-nav-toggle { display: inline-flex; order: 2; }
             .brand-mark { order: 1; }
@@ -1680,6 +1693,16 @@
             font-weight: 700;
             text-decoration: none;
             transition: color var(--transition-fast);
+        }
+        /* Two footer links share the row, so the wrapper carries the push to the
+           right and each link keeps an even gap. */
+        .page-footer .footer-links {
+            margin-left: auto;
+            display: flex;
+            gap: 18px;
+        }
+        .page-footer .footer-links a {
+            margin-left: 0;
         }
         .page-footer a:hover {
             color: var(--accent);
@@ -1905,3 +1928,249 @@
         background: #2b2d31;
         color: #fff;
     }
+
+/* ==========================================================================
+   Recommended communities deck (entries come from servers-data.js)
+   The stack is pure CSS: index.js only sets --deck-offset per card, so one
+   property drives offset, scale, fade and stacking order.
+   ========================================================================== */
+.server-deck-shell {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 34px 24px 22px;
+    backdrop-filter: blur(16px);
+}
+.server-deck-shell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 70%;
+    height: 200px;
+    transform: translateX(-50%);
+    background: radial-gradient(60% 100% at 50% 0%, var(--accent-glow), transparent 72%);
+    pointer-events: none;
+}
+@keyframes serverDeckIn {
+    0% { opacity: 0; transform: translateY(20px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.server-deck-shell.is-live { animation: serverDeckIn 0.6s var(--ease-out-expo) both; }
+
+.server-deck {
+    position: relative;
+    display: grid;
+    grid-template-areas: 'stack';
+    place-items: center;
+    min-height: 236px;
+    perspective: 1500px;
+    outline: none;
+}
+.server-deck:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+    border-radius: var(--radius-lg);
+}
+
+.server-card {
+    grid-area: stack;
+    width: min(620px, 100%);
+    display: flex;
+    gap: 16px;
+    padding: 20px 22px;
+    background: linear-gradient(160deg, rgba(28, 28, 34, 0.96), rgba(15, 15, 19, 0.96));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-rest);
+    text-align: left;
+    cursor: pointer;
+    transform-origin: 50% 100%;
+    transform:
+        translateY(calc(var(--deck-offset, 0) * -20px))
+        scale(calc(1 - var(--deck-offset, 0) * 0.06));
+    opacity: calc(1 - var(--deck-offset, 0) * 0.35);
+    z-index: calc(10 - var(--deck-offset, 0));
+    transition:
+        transform 0.6s var(--ease-out-expo),
+        opacity 0.45s ease,
+        border-color var(--transition-fast),
+        box-shadow 0.45s ease;
+    will-change: transform, opacity;
+}
+.server-card:not(.is-front):hover { border-color: var(--border-highlight); }
+.server-card.is-front {
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+    box-shadow: var(--shadow-lift);
+    cursor: default;
+}
+/* Front card slides off the deck before the next one steps up. Its height is
+   kept until the timer drops it back onto the pile (see LEAVE_MS in index.js). */
+.server-card.is-leaving {
+    transform: translateX(-56px) rotate(-4deg) scale(0.9);
+    opacity: 0;
+    transition: transform 0.34s ease-in, opacity 0.28s ease-in;
+}
+
+.server-card-icon {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+.server-card-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.server-card-body { flex: 1; min-width: 0; }
+.server-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.server-card-name {
+    margin: 0;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+}
+.server-card-members {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: var(--radius-full);
+    background: var(--accent-faint);
+    color: var(--accent);
+    font-size: 0.775rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.server-card-tagline {
+    margin: 8px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+.server-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+.server-card-tags .pill-badge {
+    padding: 3px 9px;
+    font-size: 0.72rem;
+}
+.server-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+/* Reserved space, not removed space: a card keeps its own height when it moves
+   to the back of the deck. */
+.server-card:not(.is-front) .server-card-actions { visibility: hidden; }
+.server-card-join {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border-radius: var(--radius-sm);
+    background: #5865F2;
+    color: #fff;
+    font-size: 0.825rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.server-card-join:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(88, 101, 242, 0.5);
+}
+
+.server-deck-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+.server-deck-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.server-deck-arrow:hover {
+    border-color: var(--border-highlight);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+.server-deck-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.server-deck-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.server-deck-dot:hover { background: rgba(255, 255, 255, 0.3); }
+.server-deck-dot[aria-current="true"] {
+    width: 22px;
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+@media (max-width: 700px) {
+    .server-deck-shell { padding: 26px 16px 18px; }
+    .server-deck { min-height: 268px; }
+    .server-card {
+        gap: 12px;
+        padding: 16px;
+        transform:
+            translateY(calc(var(--deck-offset, 0) * -14px))
+            scale(calc(1 - var(--deck-offset, 0) * 0.05));
+    }
+    .server-card-icon { width: 46px; height: 46px; font-size: 0.95rem; }
+    .server-card-name { font-size: 1.05rem; }
+    .server-card-tagline { font-size: 0.85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .server-deck-shell.is-live { animation: none; }
+    .server-card,
+    .server-card.is-leaving { transition: none; }
+}

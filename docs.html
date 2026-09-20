@@ -26,9 +26,9 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <script src="theme-init.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
+         The @font-face rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
     <link rel="preconnect" href="https://unpkg.com">
@@ -109,7 +109,7 @@
 
         <footer class="page-footer">
             <div>&copy; 2026 SeanBot. All rights reserved.</div>
-            <div><a href="tos.html">Terms & Privacy</a></div>
+            <div style="display: flex; gap: 18px;"><a href="tos.html">Terms & Privacy</a><a href="cookies.html">Cookie Policy</a></div>
         </footer>
     </div>
 </body>
