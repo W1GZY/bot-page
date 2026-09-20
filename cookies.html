@@ -179,7 +179,7 @@
 
             <div class="tos-section">
                 <h2>1.1 Cookies on this website</h2>
-                <p>sean.bot.nu is a set of static files. There is no login, no server-side session, and no personalisation stored on a server, so there is nothing for us to put in a cookie.</p>
+                <p>sean.bot.nu is a static page. There is no login, no server-side session, and no personalisation stored on a server, so there is nothing for us to put in a cookie.</p>
                 <p>Two small values are stored in your browser instead. Neither is a cookie: they stay on your device, they are never sent to our servers, and nothing else can read them.</p>
 
                 <!-- The gate in scripts/check_cookie_inventory.py reads the rows of
@@ -235,7 +235,7 @@
 
             <div class="tos-section">
                 <h2>1.3 Cookies on the dashboard</h2>
-                <p>The dashboard is the signed-in web panel for server admins and staff, and it runs at <strong>dashboard-seanbo.vercel.app</strong>, a different address from this site. It needs one cookie to work, and that is the only one it sets. The dashboard also serves its own copy of this section at <a href="https://dashboard-seanbo.vercel.app/cookies">dashboard-seanbo.vercel.app/cookies</a>, so you can read it without leaving the panel.</p>
+                <p>The dashboard is the signed-in web panel for server admins and staff, and it runs at a different address from this site. It needs one cookie to work, and that is the only one it sets.</p>
 
                 <div class="cookie-table-wrap">
                     <table class="cookie-table">
@@ -257,7 +257,7 @@
                             <tr>
                                 <td><code>session</code></td>
                                 <td>Cookie (strictly necessary)</td>
-                                <td>Keeps you signed in after you authorize with Discord, and carries the CSRF token that protects dashboard actions against cross-site requests. It is set as HttpOnly, Secure, and SameSite=Lax, so page scripts cannot read it, it is only sent over HTTPS, and it is not attached to cross-site requests.</td>
+                                <td>Keeps you signed in after you authorize with Discord</td>
                                 <td>Eight hours have passed since sign-in, or you sign out, or you clear your cookies</td>
                             </tr>
                         </tbody>
