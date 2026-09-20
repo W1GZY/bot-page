@@ -1258,7 +1258,7 @@ let ticketStep = 1;
     }
 
 /* ==========================================================================
-   Recommended communities deck
+   Communities using SeanBot deck
 
    Fills the landing page card stack from the dashboard's public API, which
    serves exactly the servers whose admins opted in on the Server Access
@@ -1269,8 +1269,6 @@ let ticketStep = 1;
    ========================================================================== */
 (function () {
     const DECK_INTERVAL = 6000;  // ms between automatic shuffles
-    const DECK_VISIBLE = 3;      // front card plus two peeking behind it
-    const LEAVE_MS = 340;        // keep in step with .server-card.is-leaving
     const SERVERS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/servers';
     const CACHE_KEY = 'seanbot.publicServers';
     const CACHE_TTL_MS = 60 * 1000;
@@ -1420,8 +1418,6 @@ let ticketStep = 1;
         let deckHovered = false;
         let deckFocused = false;
         let deckTimer = null;
-        let leaveTimer = null;
-        let leavingCard = null;
 
         const cards = servers.map((server, index) => {
             const card = buildCard(server, index);
@@ -1448,12 +1444,18 @@ let ticketStep = 1;
         function layoutDeck() {
             cards.forEach((card, index) => {
                 const offset = (index - activeIndex + cards.length) % cards.length;
-                card.style.setProperty('--deck-offset', String(offset));
-                card.classList.toggle('is-front', offset === 0);
-                // A leaving card stays on screen until its slide finishes, even
-                // though the new order has already pushed it off the deck.
-                card.hidden = offset >= DECK_VISIBLE && card !== leavingCard;
-                if (offset === 0) {
+                // Carousel geometry: signed distance from the centre, so the
+                // neighbours sit at -1/+1 and anything further out is off to
+                // a side, invisible, waiting to slide in.
+                let shift = offset;
+                if (shift > cards.length / 2) shift -= cards.length;
+                card.style.setProperty('--deck-shift', String(shift));
+                const absShift = Math.abs(shift);
+                card.classList.toggle('deck-pos-front', absShift === 0);
+                card.classList.toggle('deck-pos-side', absShift === 1);
+                card.classList.toggle('deck-pos-far', absShift >= 2);
+                card.classList.toggle('is-front', absShift === 0);
+                if (absShift === 0) {
                     card.removeAttribute('aria-hidden');
                 } else {
                     // Not focusable (the action row is visibility:hidden off the
@@ -1477,33 +1479,15 @@ let ticketStep = 1;
             deckTimer = window.setTimeout(() => selectServer(activeIndex + 1), DECK_INTERVAL);
         }
 
-        // Ends a shuffle: the card drops back onto the pile (or off it) and
-        // transitions to whatever slot the new order gives it.
-        function finishLeave() {
-            if (!leavingCard) return;
-            leavingCard.classList.remove('is-leaving');
-            leavingCard = null;
-        }
-
+        // Carousel moves are pure transitions: the outgoing front card simply
+        // animates to its new side slot, so there is no leaving state to
+        // babysit and rapid clicks always land on a consistent layout.
         function selectServer(index, options = {}) {
             const target = ((index % cards.length) + cards.length) % cards.length;
             if (target === activeIndex) return;
 
-            const outgoingIndex = activeIndex;
             activeIndex = target;
-
-            // The front card always slides away, then settles into its new spot
-            // in the stack. Landing a previous shuffle first keeps rapid clicks
-            // from stranding a card mid-slide at zero opacity.
-            clearTimeout(leaveTimer);
-            finishLeave();
-            leavingCard = cards[outgoingIndex];
-            leavingCard.classList.add('is-leaving');
             layoutDeck();
-            leaveTimer = window.setTimeout(() => {
-                finishLeave();
-                layoutDeck();
-            }, LEAVE_MS);
 
             // A pick restarts the clock rather than stopping it: the deck still
             // shuffles on its own, just not immediately after someone chose.
@@ -1545,7 +1529,6 @@ let ticketStep = 1;
         deckRuntime = {
             destroy() {
                 clearTimeout(deckTimer);
-                clearTimeout(leaveTimer);
                 deckObserver.disconnect();
             }
         };

@@ -440,7 +440,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/setup",
-            "desc": "One-click server setup: pick a server type and the features to turn on",
+            "desc": "Set up SeanBot: pick a server type and the features to turn on",
             "badge": "Manage Server",
             "type": "perm"
         }
@@ -941,6 +941,18 @@ const commandsDatabase = [{
         {
             "name": "/honeypot exempt",
             "desc": "Exempt a role or member from the Honeypot.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot list",
+            "desc": "List the armed trap channels and where each one lives.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/honeypot move",
+            "desc": "Move an armed trap channel into a category (or to the top level).",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -1476,7 +1488,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/teamup quick",
-            "desc": "Quickly create a team-up request.",
+            "desc": "Create a team-up request with options instead of the form.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2573,7 +2585,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/bm forms_alt",
-            "desc": "View your Beastmoon alt rank image automatically",
+            "desc": "View your alt profile's Beastmoon form tiers",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2603,7 +2615,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/bm quick_add",
-            "desc": "Quickly update Beastmoon forms",
+            "desc": "Update a Beastmoon form with options instead of the menu",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2645,7 +2657,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/deck lookup",
-            "desc": "Instantly render and inspect any compact deck code",
+            "desc": "Render and inspect a compact deck code",
             "badge": "Everyone",
             "type": "public"
         },

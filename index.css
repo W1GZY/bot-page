@@ -1930,9 +1930,13 @@
     }
 
 /* ==========================================================================
-   Recommended communities deck (entries come from servers-data.js)
-   The stack is pure CSS: index.js only sets --deck-offset per card, so one
-   property drives offset, scale, fade and stacking order.
+   Communities deck (entries come from the dashboard's public API)
+   A three-slot carousel: the featured card sits centred, its neighbours
+   peek in from each side, dimmed. index.js gives every card a signed
+   --deck-shift (0 = centre, negative = left, positive = right) plus one
+   deck-pos-* class; CSS turns that into position, depth and dimming, so
+   every move - click, arrow, dot or auto-shuffle - is one transform
+   transition.
    ========================================================================== */
 .server-deck-shell {
     position: relative;
@@ -1977,7 +1981,7 @@
 
 .server-card {
     grid-area: stack;
-    width: min(620px, 100%);
+    width: min(560px, 88%);
     display: flex;
     gap: 16px;
     padding: 20px 22px;
@@ -1987,31 +1991,42 @@
     box-shadow: var(--shadow-rest);
     text-align: left;
     cursor: pointer;
-    transform-origin: 50% 100%;
-    transform:
-        translateY(calc(var(--deck-offset, 0) * -20px))
-        scale(calc(1 - var(--deck-offset, 0) * 0.06));
-    opacity: calc(1 - var(--deck-offset, 0) * 0.35);
-    z-index: calc(10 - var(--deck-offset, 0));
+    transform-origin: 50% 50%;
+    /* Base state is "parked off to a side, invisible": neighbours slide in
+       from here, so entering cards never pop in at the centre. */
+    transform: translateX(calc(var(--deck-shift, 0) * var(--deck-side-shift, 56%))) scale(0.84);
+    opacity: 0;
+    filter: brightness(0.42) saturate(0.85);
+    z-index: 1;
+    pointer-events: none;
     transition:
-        transform 0.6s var(--ease-out-expo),
-        opacity 0.45s ease,
+        transform 0.55s var(--ease-out-expo),
+        opacity 0.4s ease,
+        filter 0.4s ease,
         border-color var(--transition-fast),
         box-shadow 0.45s ease;
-    will-change: transform, opacity;
+    will-change: transform, opacity, filter;
+}
+/* Visible neighbour on one side: same transform as the base state (the
+   position comes from --deck-shift), just lit up enough to read as a card. */
+.server-card.deck-pos-side {
+    opacity: 0.6;
+    filter: brightness(0.52) saturate(0.9);
+    z-index: 5;
+    pointer-events: auto;
+}
+.server-card.deck-pos-front {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: none;
+    z-index: 10;
+    pointer-events: auto;
 }
 .server-card:not(.is-front):hover { border-color: var(--border-highlight); }
 .server-card.is-front {
     border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
     box-shadow: var(--shadow-lift);
     cursor: default;
-}
-/* Front card slides off the deck before the next one steps up. Its height is
-   kept until the timer drops it back onto the pile (see LEAVE_MS in index.js). */
-.server-card.is-leaving {
-    transform: translateX(-56px) rotate(-4deg) scale(0.9);
-    opacity: 0;
-    transition: transform 0.34s ease-in, opacity 0.28s ease-in;
 }
 
 .server-card-icon {
@@ -2156,13 +2171,11 @@
 
 @media (max-width: 700px) {
     .server-deck-shell { padding: 26px 16px 18px; }
-    .server-deck { min-height: 268px; }
+    .server-deck { min-height: 268px; --deck-side-shift: 38%; }
     .server-card {
         gap: 12px;
         padding: 16px;
-        transform:
-            translateY(calc(var(--deck-offset, 0) * -14px))
-            scale(calc(1 - var(--deck-offset, 0) * 0.05));
+        width: min(560px, 94%);
     }
     .server-card-icon { width: 46px; height: 46px; font-size: 0.95rem; }
     .server-card-name { font-size: 1.05rem; }
@@ -2171,6 +2184,5 @@
 
 @media (prefers-reduced-motion: reduce) {
     .server-deck-shell.is-live { animation: none; }
-    .server-card,
-    .server-card.is-leaving { transition: none; }
+    .server-card { transition: none; }
 }

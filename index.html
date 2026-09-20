@@ -1096,17 +1096,16 @@
                 </div>
             </section>
 
-            <!-- Recommended communities. The entries live in servers-data.js;
-                 nothing is invented here, and the whole section stays hidden
-                 until index.js finds at least one entry to show. -->
+            <!-- Communities deck. Entries come from the dashboard's public API
+                 and are strictly opt-in; the whole section stays hidden until
+                 index.js finds at least one opted-in server. -->
             <section id="servers" hidden style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Recommended communities</h2>
-                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Servers that run SeanBot and opted in to be listed here. Click a card to bring it to the front, or let the deck shuffle on its own.</p>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Communities using SeanBot</h2>
                 </div>
 
                 <div class="server-deck-shell">
-                    <div class="server-deck" id="serverDeck" role="group" tabindex="0" aria-label="Recommended servers"></div>
+                    <div class="server-deck" id="serverDeck" role="group" tabindex="0" aria-label="Communities using SeanBot"></div>
 
                     <div class="server-deck-controls" id="serverDeckControls">
                         <button class="server-deck-arrow" type="button" id="serverDeckPrev" aria-label="Previous server"><i class="ph-bold ph-caret-left"></i></button>
