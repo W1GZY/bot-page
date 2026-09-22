@@ -148,7 +148,7 @@
                     A Discord bot you switch on <span style="color: var(--accent);">one module at a time</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation, analytics, and a Wizard101 suite that is far larger than any Discord bot needs to have. Nothing runs until you turn it on.
+                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation, analytics, and a Wizard101 suite deeper than anything else in the bot. Every module is optional, and nothing runs until you turn it on.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -379,7 +379,6 @@
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
                             <i class="ph-fill ph-ticket" style="color: #5865F2;"></i> Ticket System
                         </div>
-                        <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">BETA</span>
                     </div>
 
                     <p id="ticket-step-text" style="font-size: 0.875rem; color: #dbdee1; margin-bottom: 16px;">
@@ -459,7 +458,7 @@
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Support tickets stay private</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        A member opens a ticket from a button or a dropdown and lands in a private channel with the staff roles you pick. Whoever gets there first can claim it, so two moderators stop answering the same question twice. Notes added with <code>/ticket staffsay</code> never show up in the transcript the member can read. It is still labelled BETA on this page, which is the honest label for it.
+                        A member opens a ticket from a button or a dropdown and lands in a private channel with the staff roles you pick. Whoever gets there first can claim it, so two moderators stop answering the same question twice. Notes added with <code>/ticket staffsay</code> never show up in the transcript the member can read, so your staff can be candid about a case.
                     </p>
                     <p style="margin: 0;">
                         <button type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.9rem; font-family: inherit;">Read the ticket guide <i class="ph-bold ph-arrow-right"></i></button>
@@ -869,7 +868,7 @@
             <section id="showcase" style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Look at the dashboard first</h2>
-                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Seven previews, all clickable: security, timezones, voice activity, server stats, events, emoji and the embed builder. These are the same screens your staff will open. The member counts and message totals in them are made up, because this is a demo and not somebody's real server.</p>
+                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Seven previews, all clickable: security, timezones, voice activity, server stats, events, emoji and the embed builder. These are the same screens your staff will open, filled with sample numbers rather than a real community's data.</p>
                 </div>
 
                 <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
@@ -1074,10 +1073,11 @@
                 <div class="server-carousel" id="serverCarousel">
                     <div class="server-track" id="serverTrack" role="group" tabindex="0" aria-label="Communities using SeanBot. It moves through them on its own; the left and right arrow keys move it too."></div>
 
+                    <!-- No arrows: the slots either side of the front one are
+                         the control, and the dots are how a reader jumps
+                         straight to a server without stepping through the row. -->
                     <div class="server-carousel-controls" id="serverCarouselControls">
-                        <button class="server-carousel-arrow" type="button" id="serverCarouselPrev" aria-label="Previous server"><i class="ph-bold ph-caret-left"></i></button>
                         <div class="server-carousel-dots" id="serverCarouselDots"></div>
-                        <button class="server-carousel-arrow" type="button" id="serverCarouselNext" aria-label="Next server"><i class="ph-bold ph-caret-right"></i></button>
                     </div>
 
                     <!-- Filled only when the list could not be fetched at all,
@@ -1091,7 +1091,7 @@
             <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
-                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">This table was written by the person who maintains SeanBot, so read the SeanBot column as a claim rather than a survey. The competitor columns are here because the point of the table is the paywall, not the feature list.</p>
+                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Every row below is included in SeanBot, because there is no premium tier. The other columns show what the competition puts behind a paid plan, or does not offer at all.</p>
                 </div>
 
                 <div class="comparison-scroll-wrapper">
@@ -1163,15 +1163,6 @@
                     </a>
                 </div>
             </section>
-
-            <!-- Every claim in this block is a row in the table above. -->
-            <div class="plain-intro-section">
-                <h2><i class="ph-duotone ph-warning-circle"></i> What it does not do</h2>
-                <div class="plain-intro-copy">
-                    <p class="plain-intro-lead">No bot covers everything, and pretending otherwise is how the other columns in that table got filled in.</p>
-                    <p>There is no leveling or XP system here. If rank cards are what your members actually want, MEE6 already does that and running two bots for it is a waste of your time. There are no Twitch, YouTube or RSS feed alerts either, so raids and streams still need their own bot. Ticket transcripts are labelled BETA and occasionally still are. And the Wizard101 suite is genuinely deep, which also means it is worth nothing at all to you if your server has never heard of Wizard101.</p>
-                </div>
-            </div>
 
             <!-- Featured Modules -->
             <section id="features" class="modules-section">
@@ -1497,7 +1488,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Ticket System</h3>
-                        <p class="feature-desc">A ticket panel with private channels, staff claiming and HTML transcripts. Still marked BETA, because it is.</p>
+                        <p class="feature-desc">A ticket panel with private channels, staff claiming and searchable HTML transcripts.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="time converters utility &amp; automation convert mentioned times directly inside discord so every member sees the correct local time." data-doc="time_converter">
@@ -1559,7 +1550,7 @@
             <div class="section-cta-banner">
                 <div class="section-cta-content">
                     <h3>Start with anti-raid, add the rest when someone asks</h3>
-                    <p>Moderation and tickets work as soon as you configure them. Everything else can sit switched off until you want it. There is no premium tier, and nothing here needs a second bot to cover the gaps.</p>
+                    <p>Moderation and tickets work as soon as you configure them. Everything else can sit switched off until you want it, and every module is included from the day you add the bot: no premium tier, no per-feature unlock.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot Free

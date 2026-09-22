@@ -1999,13 +1999,25 @@
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-rest);
     opacity: 0.55;
+    /* Clicking a neighbour is what brings it to the front, so it advertises
+       that with a pointer. The front slot does not: a click there belongs to
+       whatever it landed on. */
+    cursor: pointer;
     transition: opacity 0.3s ease, border-color var(--transition-fast), box-shadow 0.4s ease;
+}
+.server-slide:not(.is-active):hover {
+    opacity: 0.8;
+    border-color: var(--border-highlight);
 }
 .server-slide.is-active {
     opacity: 1;
+    cursor: default;
     border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
     box-shadow: var(--shadow-lift);
 }
+/* Dragging the picture would start an image drag instead of a click, which is
+   how a card that should have come forward simply sticks to the cursor. */
+.server-slide-hero img { -webkit-user-drag: none; }
 
 /* The hero: the server's own avatar filling the top of the slot. A square icon
    is cropped to the frame rather than letterboxed, because the frame reads as
@@ -2127,24 +2139,6 @@
     gap: 14px;
     margin-top: 6px;
 }
-.server-carousel-arrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-.server-carousel-arrow:hover {
-    border-color: var(--border-highlight);
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
 .server-carousel-dots {
     display: flex;
     align-items: center;
@@ -2221,8 +2215,6 @@
     .server-slide-hero { aspect-ratio: 16 / 11; }
     .server-slide-body { padding: 14px 15px 16px; }
     .server-slide-name { font-size: 1rem; }
-    /* Thumb-sized. 34px is a fine mouse target and a fiddly one for a finger. */
-    .server-carousel-arrow { width: 42px; height: 42px; }
     /* The dots stay 8px wide so a long row of them cannot overlap into one
        target, but they grow vertically, which is where a fingertip lands. */
     .server-carousel-dot { position: relative; }

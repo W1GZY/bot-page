@@ -1447,9 +1447,29 @@ let ticketStep = 1;
 
         const runtime = () => carouselRuntime;
 
+        // A gesture that scrolled the track is not a pick, so the click that
+        // ends a swipe or a drag is ignored for a moment after any scroll.
+        let lastScrollAt = 0;
         track.addEventListener('scroll', () => {
+            lastScrollAt = Date.now();
             const carousel = runtime();
             if (carousel) carousel.handleScroll();
+        });
+
+        // Clicking a slot that is not the one in front brings it forward, so
+        // the neighbours peeking at either side are the way back and forward
+        // through the row: they are the control, in place of arrow buttons.
+        // Anything inside the front slot is left alone, which is what keeps
+        // the invite link working.
+        track.addEventListener('click', event => {
+            const carousel = runtime();
+            if (!carousel) return;
+            if (Date.now() - lastScrollAt < 300) return;
+            const target = event.target instanceof Element ? event.target : null;
+            if (!target || target.closest('a')) return;
+            const slide = target.closest('.server-slide');
+            if (!slide) return;
+            carousel.pick(Number(slide.dataset.index));
         });
         track.addEventListener('keydown', event => {
             const carousel = runtime();
@@ -1465,8 +1485,6 @@ let ticketStep = 1;
         panel.addEventListener('mouseleave', () => { const c = runtime(); if (c) c.setHovered(false); });
         panel.addEventListener('focusin', () => { const c = runtime(); if (c) c.setFocused(true); });
         panel.addEventListener('focusout', () => { const c = runtime(); if (c) c.setFocused(false); });
-        document.getElementById('serverCarouselPrev')?.addEventListener('click', () => { const c = runtime(); if (c) c.prev(); });
-        document.getElementById('serverCarouselNext')?.addEventListener('click', () => { const c = runtime(); if (c) c.next(); });
         document.addEventListener('visibilitychange', () => { const c = runtime(); if (c) c.resume(); });
     }
 
@@ -1618,6 +1636,9 @@ let ticketStep = 1;
             prev() { goTo(activeIndex - 1); },
             first() { goTo(0); },
             last() { goTo(slides.length - 1); },
+            // A click on the slot that is already in front is not a move: it
+            // belongs to whatever it landed on, such as the invite link.
+            pick(index) { if (index !== activeIndex) goTo(index); },
             handleScroll,
             resume: schedule,
             setHovered(value) { hovered = value; schedule(); },
