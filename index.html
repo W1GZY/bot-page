@@ -1059,20 +1059,30 @@
                 </div>
             </section>
 
-            <!-- Communities grid. Entries come from the dashboard's public API
-                 and are strictly opt-in; the whole section stays hidden until
-                 index.js finds at least one opted-in server. A tile carries
-                 only the avatar and name, and the shared strip below the grid
-                 fills with the description of whichever tile is being read. -->
+            <!-- Communities carousel. Entries come from the dashboard's public
+                 API and are strictly opt-in; the whole section stays hidden
+                 until index.js finds at least one opted-in server. Each slot
+                 is one server - its avatar as the hero, its name, the
+                 description the admin wrote and its member count - and the
+                 track moves on by itself until the reader takes over. -->
             <section id="servers" hidden style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Communities using SeanBot</h2>
                     <p style="color: var(--text-secondary); max-width: 620px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Here are some of the featured servers using SeanBot!</p>
                 </div>
 
-                <div class="server-grid-shell">
-                    <div class="server-grid" id="serverGrid" role="group" aria-label="Communities using SeanBot. Hover, focus or tap a server to read its description."></div>
-                    <div class="server-detail" id="serverDetail" aria-live="polite"></div>
+                <div class="server-carousel" id="serverCarousel">
+                    <div class="server-track" id="serverTrack" role="group" tabindex="0" aria-label="Communities using SeanBot. It moves through them on its own; the left and right arrow keys move it too."></div>
+
+                    <div class="server-carousel-controls" id="serverCarouselControls">
+                        <button class="server-carousel-arrow" type="button" id="serverCarouselPrev" aria-label="Previous server"><i class="ph-bold ph-caret-left"></i></button>
+                        <div class="server-carousel-dots" id="serverCarouselDots"></div>
+                        <button class="server-carousel-arrow" type="button" id="serverCarouselNext" aria-label="Next server"><i class="ph-bold ph-caret-right"></i></button>
+                    </div>
+
+                    <!-- Filled only when the list could not be fetched at all,
+                         so a blocked or offline visit is not a blank page. -->
+                    <div class="server-carousel-notice" id="serverCarouselNotice" aria-live="polite"></div>
                 </div>
             </section>
 

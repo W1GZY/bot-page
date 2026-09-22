@@ -1931,182 +1931,157 @@
     }
 
 /* ==========================================================================
-   Communities grid (entries come from the dashboard's public API)
-   A compact wall of tiles, one per server, carrying only the avatar and the
-   server name so a long list stays scannable. The description the admin wrote,
-   the member count and the invite live in one shared strip under the grid,
-   filled with whichever tile is hovered, focused or tapped. index.js builds a
-   tile per server from the same opt-in payload the old card stack used, and
-   the strip is selected up front so it is never an empty box.
+   Communities carousel (entries come from the dashboard's public API)
+   Every server gets the same slot: its own avatar as the hero image, then the
+   name, the description its admin wrote and its member count. The row is a
+   scroll-snap track, so a phone swipe and a trackpad drag both move it for
+   free; index.js adds the automatic advance, the arrows, the dots and the
+   keyboard. The slot that is left of centre is dimmed, so the row reads as
+   one community being featured rather than a wall of equals.
    ========================================================================== */
-.server-grid-shell {
+.server-carousel {
+    --slide-gap: 16px;
+    --slide-width: min(340px, 84%);
     position: relative;
     overflow: hidden;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 20px;
+    padding: 20px 20px 16px;
     backdrop-filter: blur(16px);
 }
-.server-grid-shell::before {
+.server-carousel::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     width: 70%;
-    height: 150px;
+    height: 180px;
     transform: translateX(-50%);
     background: radial-gradient(60% 100% at 50% 0%, var(--accent-glow), transparent 72%);
     pointer-events: none;
 }
-@keyframes serverGridIn {
-    0% { opacity: 0; transform: translateY(20px) scale(0.97); }
+@keyframes serverCarouselIn {
+    0% { opacity: 0; transform: translateY(20px) scale(0.98); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
 }
-.server-grid-shell.is-live { animation: serverGridIn 0.6s var(--ease-out-expo) both; }
+.server-carousel.is-live { animation: serverCarouselIn 0.6s var(--ease-out-expo) both; }
 
-.server-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
-    gap: 10px;
-}
-
-/* One server per tile: avatar and name only. A button rather than a link,
-   because the tile selects the strip below instead of leaving the page. */
-.server-tile {
-    appearance: none;
+/* The inline padding is what lets the first and last slot sit centred in the
+   panel instead of pinned to its edges. */
+.server-track {
     position: relative;
     display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-    padding: 8px 12px;
-    font: inherit;
-    text-align: left;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    gap: var(--slide-gap);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 4px calc((100% - var(--slide-width)) / 2) 10px;
+    outline: none;
 }
-.server-tile:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--border-highlight); }
-/* The hovered tab and the keyboard focus land on the same look, so the strip
-   below always belongs to a tile that is visibly the current one. */
-.server-tile.is-active {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
-}
-.server-tile:focus-visible {
+.server-track::-webkit-scrollbar { display: none; }
+.server-track:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: 2px;
+    outline-offset: 4px;
+    border-radius: var(--radius-lg);
 }
 
-.server-tile-avatar {
-    flex: 0 0 auto;
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
+.server-slide {
+    position: relative;
+    flex: 0 0 var(--slide-width);
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
     border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--accent);
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.3px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-rest);
+    opacity: 0.55;
+    transition: opacity 0.3s ease, border-color var(--transition-fast), box-shadow 0.4s ease;
 }
-.server-tile-avatar img {
+.server-slide.is-active {
+    opacity: 1;
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+    box-shadow: var(--shadow-lift);
+}
+
+/* The hero: the server's own avatar filling the top of the slot. A square icon
+   is cropped to the frame rather than letterboxed, because the frame reads as
+   the community's own picture. A server without one gets its initials on a
+   gradient in its own hue instead of an empty box. */
+.server-slide-hero {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: linear-gradient(140deg, hsl(var(--slide-hue, 45) 45% 28%), hsl(var(--slide-hue, 45) 40% 12%));
+}
+.server-slide-hero img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-/* A server with no icon still gets a deliberate tile: its initials sit on a
-   gradient in its own hue instead of on a flat grey square. */
-.server-tile-avatar.is-initials {
-    background: linear-gradient(140deg, hsl(var(--tile-hue, 45) 48% 36%), hsl(var(--tile-hue, 45) 48% 17%));
-    border-color: hsl(var(--tile-hue, 45) 48% 52% / 0.4);
+.server-slide-hero.is-initials { display: grid; place-items: center; }
+.server-slide-initials {
     color: #fff;
-}
-.server-tile-avatar.is-detail {
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
-    font-size: 0.85rem;
-}
-.server-tile-name {
-    min-width: 0;
-    overflow: hidden;
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: -0.1px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    opacity: 0.9;
 }
 
-/* The shared strip: one server's description, member count and invite. The
-   reserved min-height keeps the page from shifting as the reader moves across
-   tiles of different description lengths. */
-.server-detail {
-    position: relative;
+.server-slide-body {
     display: flex;
-    align-items: center;
-    min-height: 84px;
-    margin-top: 14px;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-}
-.server-detail-body {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    width: 100%;
-    min-width: 0;
-}
-.server-detail-text { flex: 1; min-width: 0; }
-.server-detail-head {
-    display: flex;
-    align-items: center;
+    flex: 1;
+    flex-direction: column;
     gap: 10px;
-    flex-wrap: wrap;
+    padding: 16px 18px 18px;
 }
-.server-detail-name {
+.server-slide-name {
+    margin: 0;
     color: #fff;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 800;
     letter-spacing: -0.2px;
 }
-.server-detail-members {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 10px;
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-    border-radius: var(--radius-full);
-    background: var(--accent-faint);
-    color: var(--accent);
-    font-size: 0.72rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-.server-detail-description {
-    margin: 6px 0 0;
+.server-slide-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin: 0;
     color: var(--text-secondary);
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.875rem;
+    line-height: 1.55;
 }
-.server-detail-join {
+.server-slide-foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: auto;
+    padding-top: 4px;
+}
+.server-slide-stat { display: flex; flex-direction: column; }
+.server-slide-stat-value {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+.server-slide-stat-label {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+.server-slide-join {
     display: inline-flex;
     align-items: center;
     gap: 7px;
     flex: 0 0 auto;
-    margin-left: auto;
-    padding: 7px 16px;
+    padding: 7px 14px;
     border-radius: var(--radius-sm);
     background: #5865F2;
     color: #fff;
@@ -2116,24 +2091,104 @@
     box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-.server-detail-join:hover {
+.server-slide-join:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(88, 101, 242, 0.5);
 }
 
-/* The one state for a list that could not be fetched at all, sat in the strip
-   where a server would be. It is deliberately not the hidden section: a page
-   with nothing on it cannot say whether nobody opted in or the request never
-   arrived. */
+/* How long the front slot has left before the track moves on. Built on every
+   slot and shown on one, so it reads as "this community, and then the next". */
+.server-slide-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+    transform: scaleX(0);
+    transform-origin: left center;
+    opacity: 0;
+    pointer-events: none;
+}
+.server-slide.is-active .server-slide-progress { opacity: 1; }
+.server-slide.is-running .server-slide-progress {
+    animation: serverSlideProgress var(--slide-interval, 6000ms) linear forwards;
+}
+@keyframes serverSlideProgress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+.server-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 6px;
+}
+.server-carousel-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.server-carousel-arrow:hover {
+    border-color: var(--border-highlight);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+.server-carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.server-carousel-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.server-carousel-dot:hover { background: rgba(255, 255, 255, 0.3); }
+.server-carousel-dot[aria-current="true"] {
+    width: 22px;
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* The one state for a list that could not be fetched at all. It replaces the
+   track rather than hiding the section: a page with nothing on it cannot say
+   whether nobody opted in or the request never arrived. */
+/* Each of these is a flex box, so the bare `hidden` attribute would lose to
+   the display rule above it. */
+.server-track[hidden],
+.server-carousel-controls[hidden],
+.server-carousel-dots[hidden] { display: none; }
+.server-carousel-notice:empty { display: none; }
 .server-load-failure {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
     margin: 0;
+    padding: 26px 10px;
     color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
+    text-align: center;
 }
 .server-load-retry {
     appearance: none;
@@ -2159,27 +2214,35 @@
 }
 
 @media (max-width: 700px) {
-    .server-grid-shell { padding: 14px; }
-    .server-grid {
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr));
-        gap: 8px;
+    .server-carousel {
+        --slide-width: min(300px, 86%);
+        padding: 14px 12px 12px;
     }
-    .server-tile { padding: 7px 10px; }
-    .server-tile-avatar { width: 30px; height: 30px; font-size: 0.65rem; }
-    .server-tile-name { font-size: 0.78rem; }
-    .server-detail { padding: 12px; }
-    .server-detail-body { gap: 10px; }
+    .server-slide-hero { aspect-ratio: 16 / 11; }
+    .server-slide-body { padding: 14px 15px 16px; }
+    .server-slide-name { font-size: 1rem; }
+    /* Thumb-sized. 34px is a fine mouse target and a fiddly one for a finger. */
+    .server-carousel-arrow { width: 42px; height: 42px; }
+    /* The dots stay 8px wide so a long row of them cannot overlap into one
+       target, but they grow vertically, which is where a fingertip lands. */
+    .server-carousel-dot { position: relative; }
+    .server-carousel-dot::after {
+        content: '';
+        position: absolute;
+        inset: -14px 0;
+    }
 }
 
-/* Phone-width tile, where the strip runs out of room and the join button drops
-   below the text rather than squeezing it. */
-@media (max-width: 440px) {
-    .server-detail-body { flex-wrap: wrap; }
-    .server-detail-join { margin-left: 0; }
+@media (max-width: 420px) {
+    .server-slide-foot { flex-direction: column; align-items: stretch; }
+    .server-slide-join { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .server-grid-shell.is-live { animation: none; }
-    .server-tile { transition: none; }
+    .server-carousel.is-live { animation: none; }
+    .server-slide { transition: none; }
+    /* A bar that fills on its own is exactly what this preference is about; the
+       dots already say where you are. */
+    .server-slide-progress { display: none; }
 }
 

@@ -1262,11 +1262,11 @@ let ticketStep = 1;
 /* ==========================================================================
    Communities using SeanBot deck
 
-   A compact wall of tiles, one per opted-in server, carrying only the avatar
-   and the server name so a long list stays scannable. The dashboard's public
-   API serves exactly the servers whose admins turned the showcase on, and the
-   shared strip under the grid fills with whichever tile is hovered, focused
-   or tapped. The static featuredServers list from servers-data.js is a local
+   One full slot per opted-in server: its own avatar as the hero image, then
+   the name, the description its admin wrote and its member count, with the
+   track moving on by itself until the reader takes over. The dashboard's
+   public API serves exactly the servers whose admins turned the showcase on.
+   The static featuredServers list from servers-data.js is a local
    dev seed only and ships empty, so the site never shows a server that did
    not opt in. The section stays hidden when the list is genuinely empty, and
    shows one line with a retry when the list could not be fetched at all, so
@@ -1290,12 +1290,6 @@ let ticketStep = 1;
             .map(part => part.charAt(0)).join('').toUpperCase();
     }
 
-    function memberLabel(count) {
-        const total = Number(count);
-        if (!Number.isFinite(total) || total < 1) return '';
-        return `${Math.round(total).toLocaleString()} members`;
-    }
-
     // A colour of its own for each community, derived from the name so it is
     // the same on every visit and on every machine. Purely decorative: it
     // tints the avatar of a server that has no icon, and nothing reads it back.
@@ -1308,83 +1302,64 @@ let ticketStep = 1;
         return hash;
     }
 
-    function buildAvatar(server, variantClass) {
-        const avatar = document.createElement('div');
-        avatar.className = 'server-tile-avatar';
-        if (variantClass) avatar.classList.add(variantClass);
+    // The initials plate for a server with no icon, or one whose icon link is
+    // dead. Shared by both paths so a slot can never render as an empty frame.
+    function fillInitials(hero, name) {
+        hero.classList.add('is-initials');
+        const initials = document.createElement('span');
+        initials.className = 'server-slide-initials';
+        initials.textContent = initialsFor(name);
+        hero.appendChild(initials);
+    }
+
+    // The hero for one slot: the server's own avatar, filling the top of the
+    // card. It is cropped to the frame rather than letterboxed, because the
+    // frame is meant to read as the community's own picture.
+    function buildHero(server) {
+        const hero = document.createElement('div');
+        hero.className = 'server-slide-hero';
         const iconUrl = String(server.icon || '').trim();
         if (!iconUrl) {
-            avatar.classList.add('is-initials');
-            avatar.textContent = initialsFor(server.name);
-            return avatar;
+            fillInitials(hero, server.name);
+            return hero;
         }
         const img = document.createElement('img');
         img.alt = '';
         img.decoding = 'async';
-        // A dead CDN link should still leave a readable tile.
         img.addEventListener('error', () => {
             img.remove();
-            avatar.classList.add('is-initials');
-            avatar.textContent = initialsFor(server.name);
+            fillInitials(hero, server.name);
         });
         img.src = iconUrl;
-        avatar.appendChild(img);
-        return avatar;
+        hero.appendChild(img);
+        return hero;
     }
 
-    function buildTile(server, index, onSelect) {
-        const tile = document.createElement('button');
-        tile.type = 'button';
-        tile.className = 'server-tile';
-        tile.style.setProperty('--tile-hue', String(hueFor(server.name)));
-        // The name is the tile's visible label, so the button's own accessible
-        // name says what selecting it does instead of repeating the label.
-        tile.setAttribute('aria-label', `Read about ${String(server.name).trim()}`);
+    // One full slot: the hero, then the name, the description and the members
+    // the API serves for that same server. Unlike the tile wall, everything a
+    // server has to say is on its own card, because the member count and the
+    // invite only mean anything next to the avatar they belong to.
+    function buildSlide(server, index) {
+        const slide = document.createElement('article');
+        slide.className = 'server-slide';
+        slide.dataset.index = String(index);
+        // The initials plate reads its hue off the slot.
+        slide.style.setProperty('--slide-hue', String(hueFor(server.name)));
 
-        tile.appendChild(buildAvatar(server));
+        const progress = document.createElement('span');
+        progress.className = 'server-slide-progress';
+        progress.setAttribute('aria-hidden', 'true');
+        slide.appendChild(progress);
 
-        const name = document.createElement('span');
-        name.className = 'server-tile-name';
-        name.textContent = String(server.name).trim();
-        tile.appendChild(name);
+        slide.appendChild(buildHero(server));
 
-        // Hover, keyboard focus and tap all select, so every way of reading the
-        // grid fills the same strip below it.
-        tile.addEventListener('mouseenter', () => onSelect(index));
-        tile.addEventListener('focus', () => onSelect(index));
-        tile.addEventListener('click', () => onSelect(index));
-        return tile;
-    }
-
-    // The shared strip. One body is built per selection and swapped in whole,
-    // so a tile can never leave a stale invite or a previous server's members.
-    function buildDetail(server) {
         const body = document.createElement('div');
-        body.className = 'server-detail-body';
-        // The avatar's fallback initials read their hue off the body.
-        body.style.setProperty('--tile-hue', String(hueFor(server.name)));
-        body.appendChild(buildAvatar(server, 'is-detail'));
+        body.className = 'server-slide-body';
 
-        const text = document.createElement('div');
-        text.className = 'server-detail-text';
-
-        const head = document.createElement('div');
-        head.className = 'server-detail-head';
-        const name = document.createElement('span');
-        name.className = 'server-detail-name';
+        const name = document.createElement('h3');
+        name.className = 'server-slide-name';
         name.textContent = String(server.name).trim();
-        head.appendChild(name);
-        const members = memberLabel(server.members);
-        if (members) {
-            const badge = document.createElement('span');
-            badge.className = 'server-detail-members';
-            const badgeIcon = document.createElement('i');
-            badgeIcon.className = 'ph-fill ph-users-three';
-            badge.appendChild(badgeIcon);
-            badge.appendChild(document.createTextNode(members));
-            head.appendChild(badge);
-        }
-        text.appendChild(head);
+        body.appendChild(name);
 
         // The server's own short description, read under the name the public
         // API serves it by. There is deliberately no second local name for it:
@@ -1395,16 +1370,33 @@ let ticketStep = 1;
         const description = String(server.description || '').trim();
         if (description) {
             const line = document.createElement('p');
-            line.className = 'server-detail-description';
+            line.className = 'server-slide-desc';
             line.textContent = description;
-            text.appendChild(line);
+            body.appendChild(line);
         }
-        body.appendChild(text);
+
+        const foot = document.createElement('div');
+        foot.className = 'server-slide-foot';
+
+        const members = Number(server.members) || 0;
+        if (members > 0) {
+            const stat = document.createElement('div');
+            stat.className = 'server-slide-stat';
+            const value = document.createElement('span');
+            value.className = 'server-slide-stat-value';
+            value.textContent = Math.round(members).toLocaleString();
+            const label = document.createElement('span');
+            label.className = 'server-slide-stat-label';
+            label.textContent = 'Members';
+            stat.appendChild(value);
+            stat.appendChild(label);
+            foot.appendChild(stat);
+        }
 
         const invite = String(server.invite || '').trim();
         if (invite) {
             const join = document.createElement('a');
-            join.className = 'server-detail-join';
+            join.className = 'server-slide-join';
             join.href = invite;
             join.target = '_blank';
             join.rel = 'noopener';
@@ -1412,64 +1404,230 @@ let ticketStep = 1;
             joinIcon.className = 'ph-fill ph-discord-logo';
             join.appendChild(joinIcon);
             join.appendChild(document.createTextNode('Join server'));
-            body.appendChild(join);
+            foot.appendChild(join);
         }
-        return body;
+        if (foot.childElementCount) body.appendChild(foot);
+
+        slide.appendChild(body);
+        return slide;
     }
 
-    // The wall reads biggest first: the largest opted-in community leads the
-    // grid and opens the strip. The bot already sorts its payload this way and
-    // the route republishes it untouched, but the site sorts again so the
-    // order still holds for the local dev seed and for a cached response, and
-    // a reordering upstream cannot quietly change what is featured.
+    // The row reads biggest first: the largest opted-in community opens the
+    // carousel. The bot already sorts its payload this way and the route
+    // republishes it untouched, but the site sorts again so the order still
+    // holds for the local dev seed and for a cached response, and a reordering
+    // upstream cannot quietly change which community is featured.
     function sortByMembers(entries) {
         return entries.slice().sort((left, right) =>
             (Number(right.members) || 0) - (Number(left.members) || 0));
     }
 
-    function buildGrid(serverEntries) {
-        const servers = sortByMembers(serverEntries);
-        const grid = document.getElementById('serverGrid');
+    // How long one community holds the front before the row moves on.
+    const SLIDE_INTERVAL = 6000;
+
+    // The running carousel, or null. Kept here rather than inside the build so
+    // the controls can be wired once: the track and the panel are emptied and
+    // refilled on a rebuild, never replaced, so a listener added per build
+    // would stack and make one click step twice.
+    let carouselRuntime = null;
+
+    function stopCarousel() {
+        if (carouselRuntime) {
+            carouselRuntime.destroy();
+            carouselRuntime = null;
+        }
+    }
+
+    function wireCarouselOnce() {
+        if (wireCarouselOnce.done) return;
+        wireCarouselOnce.done = true;
+        const track = document.getElementById('serverTrack');
+        const panel = track && track.closest('.server-carousel');
+        if (!track || !panel) return;
+
+        const runtime = () => carouselRuntime;
+
+        track.addEventListener('scroll', () => {
+            const carousel = runtime();
+            if (carousel) carousel.handleScroll();
+        });
+        track.addEventListener('keydown', event => {
+            const carousel = runtime();
+            if (!carousel) return;
+            if (event.key === 'ArrowRight') { event.preventDefault(); carousel.next(); }
+            else if (event.key === 'ArrowLeft') { event.preventDefault(); carousel.prev(); }
+            else if (event.key === 'Home') { event.preventDefault(); carousel.first(); }
+            else if (event.key === 'End') { event.preventDefault(); carousel.last(); }
+        });
+        // The row stops moving while it is being read, the same way the rest of
+        // the page's motion does.
+        panel.addEventListener('mouseenter', () => { const c = runtime(); if (c) c.setHovered(true); });
+        panel.addEventListener('mouseleave', () => { const c = runtime(); if (c) c.setHovered(false); });
+        panel.addEventListener('focusin', () => { const c = runtime(); if (c) c.setFocused(true); });
+        panel.addEventListener('focusout', () => { const c = runtime(); if (c) c.setFocused(false); });
+        document.getElementById('serverCarouselPrev')?.addEventListener('click', () => { const c = runtime(); if (c) c.prev(); });
+        document.getElementById('serverCarouselNext')?.addEventListener('click', () => { const c = runtime(); if (c) c.next(); });
+        document.addEventListener('visibilitychange', () => { const c = runtime(); if (c) c.resume(); });
+    }
+
+    function buildCarousel(serverEntries) {
+        const track = document.getElementById('serverTrack');
         const section = document.getElementById('servers');
-        const shell = grid && grid.closest('.server-grid-shell');
-        const detail = document.getElementById('serverDetail');
-        if (!grid || !section || !detail) return;
+        const panel = track && track.closest('.server-carousel');
+        const controls = document.getElementById('serverCarouselControls');
+        const dotRow = document.getElementById('serverCarouselDots');
+        const notice = document.getElementById('serverCarouselNotice');
+        if (!track || !section || !panel) return;
 
-        grid.replaceChildren();
+        // A rebuild (the seed first, then the live payload) tears the previous
+        // run down, so exactly one timer and one observer drive the track.
+        stopCarousel();
+        track.replaceChildren();
+        if (dotRow) dotRow.replaceChildren();
+        if (notice) notice.replaceChildren();
 
+        const servers = sortByMembers(serverEntries);
         if (servers.length === 0) {
-            detail.replaceChildren();
             section.hidden = true;
             return;
         }
 
-        let activeIndex = -1;
-        const tiles = [];
+        track.style.setProperty('--slide-interval', `${SLIDE_INTERVAL}ms`);
+        // One community needs no controls: the arrows and dots would only say
+        // "there is more" where there is not.
+        if (dotRow) dotRow.hidden = servers.length < 2;
+        if (controls) controls.hidden = servers.length < 2;
 
-        function selectServer(index) {
-            const target = ((index % servers.length) + servers.length) % servers.length;
-            if (target === activeIndex) return;
-            activeIndex = target;
-            tiles.forEach((tile, position) => {
-                const current = position === target;
-                tile.classList.toggle('is-active', current);
-                if (current) tile.setAttribute('aria-current', 'true');
-                else tile.removeAttribute('aria-current');
-            });
-            detail.replaceChildren(buildDetail(servers[target]));
-        }
-
-        servers.forEach((server, index) => {
-            const tile = buildTile(server, index, selectServer);
-            tiles.push(tile);
-            grid.appendChild(tile);
+        const slides = servers.map((server, index) => {
+            const slide = buildSlide(server, index);
+            track.appendChild(slide);
+            return slide;
         });
 
+        // One dot per community: the peeking slots are a pointer affordance, so
+        // the dots (and the arrows) are the keyboard and screen-reader way
+        // through the row.
+        const dots = servers.map((server, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'server-carousel-dot';
+            dot.setAttribute('aria-label', `Show ${String(server.name).trim()}`);
+            dot.addEventListener('click', () => goTo(index));
+            if (dotRow) dotRow.appendChild(dot);
+            return dot;
+        });
+
+        let activeIndex = 0;
+        let timer = null;
+        let visible = false;
+        let hovered = false;
+        let focused = false;
+        let scrollFrame = null;
+
+        function prefersReducedMotion() {
+            return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+        }
+
+        function setActive(index) {
+            activeIndex = index;
+            slides.forEach((slide, position) => {
+                const current = position === index;
+                slide.classList.toggle('is-active', current);
+                // Only the front slot is announced; the rest are still read by
+                // the dots' labels and reachable through them.
+                if (current) slide.removeAttribute('aria-hidden');
+                else slide.setAttribute('aria-hidden', 'true');
+            });
+            dots.forEach((dot, position) => {
+                if (position === index) dot.setAttribute('aria-current', 'true');
+                else dot.removeAttribute('aria-current');
+            });
+        }
+
+        // Which slot is nearest the middle of the visible track. Read from the
+        // scroll position rather than tracked alongside it, so a finger swipe
+        // and the timer cannot disagree about where the row is.
+        function nearestIndex() {
+            const centre = track.scrollLeft + track.clientWidth / 2;
+            let best = 0;
+            let bestDistance = Infinity;
+            slides.forEach((slide, index) => {
+                const distance = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - centre);
+                if (distance < bestDistance) {
+                    bestDistance = distance;
+                    best = index;
+                }
+            });
+            return best;
+        }
+
+        function goTo(index) {
+            const target = ((index % slides.length) + slides.length) % slides.length;
+            const slide = slides[target];
+            track.scrollTo({
+                left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
+                behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+            });
+            setActive(target);
+            schedule();
+        }
+
+        // The countdown bar is dropped and re-added a frame later so it replays
+        // from zero after every move, and it only runs while the row is on
+        // screen, unhovered, unfocused and in the foreground tab.
+        function schedule() {
+            window.clearTimeout(timer);
+            slides.forEach(slide => slide.classList.remove('is-running'));
+            const running = visible && !hovered && !focused && !document.hidden && slides.length > 1;
+            if (!running) return;
+            const front = slides[activeIndex];
+            window.requestAnimationFrame(() => front.classList.add('is-running'));
+            timer = window.setTimeout(() => goTo(activeIndex + 1), SLIDE_INTERVAL);
+        }
+
+        // A swipe or a trackpad drag is the reader's own move, so the dots
+        // follow the track instead of the track being snapped back. Throttled
+        // to one read per frame; a scroll fires far more often than that.
+        function handleScroll() {
+            if (scrollFrame) return;
+            scrollFrame = window.requestAnimationFrame(() => {
+                scrollFrame = null;
+                const index = nearestIndex();
+                if (index === activeIndex) return;
+                setActive(index);
+                schedule();
+            });
+        }
+
+        const observer = new IntersectionObserver(entries => {
+            visible = entries.some(entry => entry.isIntersecting);
+            schedule();
+        }, { threshold: 0.4 });
+        observer.observe(track);
+
+        wireCarouselOnce();
         section.hidden = false;
-        shell?.classList.add('is-live');
-        // The first server is selected up front so the strip is never an empty
-        // box, and moving across the grid simply hands it the new one.
-        selectServer(0);
+        panel.classList.add('is-live');
+        // Painted only once the section is on screen: a hidden section reports
+        // a width of zero, which would park every slot off centre.
+        setActive(0);
+        goTo(0);
+
+        carouselRuntime = {
+            next() { goTo(activeIndex + 1); },
+            prev() { goTo(activeIndex - 1); },
+            first() { goTo(0); },
+            last() { goTo(slides.length - 1); },
+            handleScroll,
+            resume: schedule,
+            setHovered(value) { hovered = value; schedule(); },
+            setFocused(value) { focused = value; schedule(); },
+            destroy() {
+                window.clearTimeout(timer);
+                if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+                observer.disconnect();
+            }
+        };
     }
 
     function readCachedServers() {
@@ -1559,31 +1717,34 @@ let ticketStep = 1;
     }
 
     function showLoadFailure() {
-        const grid = document.getElementById('serverGrid');
+        const track = document.getElementById('serverTrack');
         const section = document.getElementById('servers');
-        const detail = document.getElementById('serverDetail');
-        if (!grid || !section || !detail) return;
+        const notice = document.getElementById('serverCarouselNotice');
+        const controls = document.getElementById('serverCarouselControls');
+        if (!track || !section || !notice) return;
         // Anything already on screen wins: a seed, or a payload built by an
         // earlier attempt on this page.
-        if (grid.childElementCount) return;
-        detail.replaceChildren(buildLoadFailure());
+        if (track.childElementCount) return;
+        if (controls) controls.hidden = true;
+        track.hidden = true;
+        notice.replaceChildren(buildLoadFailure());
         section.hidden = false;
     }
 
     function hideSection() {
         const section = document.getElementById('servers');
-        const detail = document.getElementById('serverDetail');
-        if (detail) detail.replaceChildren();
+        const notice = document.getElementById('serverCarouselNotice');
+        if (notice) notice.replaceChildren();
         if (section) section.hidden = true;
     }
 
     async function fetchLiveServers(force) {
         if (!force) {
-            const cached = readCachedServers();
-            if (cached) {
-                buildGrid(cached);
-                return;
-            }
+        const cached = readCachedServers();
+        if (cached) {
+            buildCarousel(cached);
+            return;
+        }
         }
         for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt += 1) {
             const controller = new AbortController();
@@ -1597,7 +1758,7 @@ let ticketStep = 1;
                 // An empty list is cached too: it is a valid state (nobody has
                 // opted in yet), not a failure worth retrying every view.
                 writeCachedServers(servers);
-                if (servers.length) buildGrid(servers);
+                if (servers.length) buildCarousel(servers);
                 else hideSection();
                 return;
             } catch (error) {
@@ -1612,7 +1773,7 @@ let ticketStep = 1;
 
     function initServerDeck() {
         const staticServers = serverList();
-        if (staticServers.length) buildGrid(staticServers);
+        if (staticServers.length) buildCarousel(staticServers);
         fetchLiveServers();
     }
 
