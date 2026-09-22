@@ -1262,16 +1262,15 @@ let ticketStep = 1;
 /* ==========================================================================
    Communities using SeanBot deck
 
-   Fills the landing page card stack from the dashboard's public API, which
-   serves exactly the servers whose admins opted in on the Server Access
-   page (toggle + their own short description). The static featuredServers
-   list from servers-data.js is a local dev seed only and ships empty, so
-   the site never shows a server that did not opt in. The section stays
-   hidden whenever the final list is empty.
+   A compact wall of tiles, one per opted-in server, carrying only the avatar
+   and the server name so a long list stays scannable. The dashboard's public
+   API serves exactly the servers whose admins turned the showcase on, and the
+   shared strip under the grid fills with whichever tile is hovered, focused
+   or tapped. The static featuredServers list from servers-data.js is a local
+   dev seed only and ships empty, so the site never shows a server that did
+   not opt in. The section stays hidden whenever the final list is empty.
    ========================================================================== */
 (function () {
-    const DECK_INTERVAL = 6000;  // ms between automatic shuffles
-    const SHOULDER_INSET = 8;    // px of daylight between a shoulder's outer edge and the panel
     const SERVERS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/servers';
     const CACHE_KEY = 'seanbot.publicServers';
     const CACHE_TTL_MS = 60 * 1000;
@@ -1279,7 +1278,7 @@ let ticketStep = 1;
 
     function serverList() {
         if (typeof featuredServers === 'undefined' || !Array.isArray(featuredServers)) return [];
-        // A nameless entry would render an empty card, so it is dropped rather
+        // A nameless entry would render an empty tile, so it is dropped rather
         // than shipped as a blank slot.
         return featuredServers.filter(server => server && String(server.name || '').trim());
     }
@@ -1297,7 +1296,7 @@ let ticketStep = 1;
 
     // A colour of its own for each community, derived from the name so it is
     // the same on every visit and on every machine. Purely decorative: it
-    // tints the card and the initials, and nothing reads it back.
+    // tints the avatar of a server that has no icon, and nothing reads it back.
     function hueFor(name) {
         const text = String(name);
         let hash = 0;
@@ -1307,93 +1306,103 @@ let ticketStep = 1;
         return hash;
     }
 
-    function buildIcon(server) {
-        const icon = document.createElement('div');
-        icon.className = 'server-card-icon';
+    function buildAvatar(server, variantClass) {
+        const avatar = document.createElement('div');
+        avatar.className = 'server-tile-avatar';
+        if (variantClass) avatar.classList.add(variantClass);
         const iconUrl = String(server.icon || '').trim();
         if (!iconUrl) {
-            icon.classList.add('is-initials');
-            icon.textContent = initialsFor(server.name);
-            return icon;
+            avatar.classList.add('is-initials');
+            avatar.textContent = initialsFor(server.name);
+            return avatar;
         }
         const img = document.createElement('img');
         img.alt = '';
         img.decoding = 'async';
-        // A dead CDN link should still leave a readable card.
+        // A dead CDN link should still leave a readable tile.
         img.addEventListener('error', () => {
             img.remove();
-            icon.classList.add('is-initials');
-            icon.textContent = initialsFor(server.name);
+            avatar.classList.add('is-initials');
+            avatar.textContent = initialsFor(server.name);
         });
         img.src = iconUrl;
-        icon.appendChild(img);
-        return icon;
+        avatar.appendChild(img);
+        return avatar;
     }
 
-    function buildCard(server, index) {
-        const card = document.createElement('article');
-        card.className = 'server-card';
-        card.dataset.index = String(index);
-        card.style.setProperty('--card-hue', String(hueFor(server.name)));
+    function buildTile(server, index, onSelect) {
+        const tile = document.createElement('button');
+        tile.type = 'button';
+        tile.className = 'server-tile';
+        tile.style.setProperty('--tile-hue', String(hueFor(server.name)));
+        // The name is the tile's visible label, so the button's own accessible
+        // name says what selecting it does instead of repeating the label.
+        tile.setAttribute('aria-label', `Read about ${String(server.name).trim()}`);
 
-        card.appendChild(buildIcon(server));
+        tile.appendChild(buildAvatar(server));
 
-        const body = document.createElement('div');
-        body.className = 'server-card-body';
-
-        const top = document.createElement('div');
-        top.className = 'server-card-top';
-        const name = document.createElement('h3');
-        name.className = 'server-card-name';
+        const name = document.createElement('span');
+        name.className = 'server-tile-name';
         name.textContent = String(server.name).trim();
-        top.appendChild(name);
+        tile.appendChild(name);
+
+        // Hover, keyboard focus and tap all select, so every way of reading the
+        // grid fills the same strip below it.
+        tile.addEventListener('mouseenter', () => onSelect(index));
+        tile.addEventListener('focus', () => onSelect(index));
+        tile.addEventListener('click', () => onSelect(index));
+        return tile;
+    }
+
+    // The shared strip. One body is built per selection and swapped in whole,
+    // so a tile can never leave a stale invite or a previous server's members.
+    function buildDetail(server) {
+        const body = document.createElement('div');
+        body.className = 'server-detail-body';
+        // The avatar's fallback initials read their hue off the body.
+        body.style.setProperty('--tile-hue', String(hueFor(server.name)));
+        body.appendChild(buildAvatar(server, 'is-detail'));
+
+        const text = document.createElement('div');
+        text.className = 'server-detail-text';
+
+        const head = document.createElement('div');
+        head.className = 'server-detail-head';
+        const name = document.createElement('span');
+        name.className = 'server-detail-name';
+        name.textContent = String(server.name).trim();
+        head.appendChild(name);
         const members = memberLabel(server.members);
         if (members) {
             const badge = document.createElement('span');
-            badge.className = 'server-card-members';
+            badge.className = 'server-detail-members';
             const badgeIcon = document.createElement('i');
             badgeIcon.className = 'ph-fill ph-users-three';
             badge.appendChild(badgeIcon);
             badge.appendChild(document.createTextNode(members));
-            top.appendChild(badge);
+            head.appendChild(badge);
         }
-        body.appendChild(top);
+        text.appendChild(head);
 
-        // The card's short description, read under the name the public API
-        // serves it by. There is deliberately no second local name for it: a
-        // page that reads its own name for a served field renders a blank card
-        // the day the two drift apart, with nothing raised anywhere. That is
-        // how this shipped broken once, the builder looking for "tagline"
-        // while the API served "description".
-        const tagline = String(server.description || '').trim();
-        if (tagline) {
+        // The server's own short description, read under the name the public
+        // API serves it by. There is deliberately no second local name for it:
+        // a page that reads its own name for a served field renders blank the
+        // day the two drift apart, with nothing raised anywhere. That is how
+        // this shipped broken once, the builder looking for "tagline" while
+        // the API served "description".
+        const description = String(server.description || '').trim();
+        if (description) {
             const line = document.createElement('p');
-            line.className = 'server-card-tagline';
-            line.textContent = tagline;
-            body.appendChild(line);
+            line.className = 'server-detail-description';
+            line.textContent = description;
+            text.appendChild(line);
         }
+        body.appendChild(text);
 
-        const tags = Array.isArray(server.tags) ? server.tags.filter(Boolean).slice(0, 3) : [];
-        if (tags.length) {
-            const row = document.createElement('div');
-            row.className = 'server-card-tags';
-            tags.forEach(tag => {
-                const pill = document.createElement('span');
-                pill.className = 'pill-badge';
-                pill.textContent = String(tag);
-                row.appendChild(pill);
-            });
-            body.appendChild(row);
-        }
-
-        // Rendered on every card so the row keeps its space when a card moves
-        // to the back; CSS hides it on the cards that are not in front.
-        const actions = document.createElement('div');
-        actions.className = 'server-card-actions';
         const invite = String(server.invite || '').trim();
         if (invite) {
             const join = document.createElement('a');
-            join.className = 'server-card-join';
+            join.className = 'server-detail-join';
             join.href = invite;
             join.target = '_blank';
             join.rel = 'noopener';
@@ -1401,267 +1410,53 @@ let ticketStep = 1;
             joinIcon.className = 'ph-fill ph-discord-logo';
             join.appendChild(joinIcon);
             join.appendChild(document.createTextNode('Join server'));
-            actions.appendChild(join);
+            body.appendChild(join);
         }
-        body.appendChild(actions);
-
-        // The countdown to the next community. Built on every card and shown
-        // only on the front one, so the bar always belongs to the card being
-        // read rather than to the deck as a whole.
-        const progress = document.createElement('span');
-        progress.className = 'server-card-progress';
-        progress.setAttribute('aria-hidden', 'true');
-        card.appendChild(progress);
-
-        card.appendChild(body);
-        return card;
+        return body;
     }
 
-    let deckRuntime = null;
-
-    function buildDeck(servers) {
-        const deck = document.getElementById('serverDeck');
+    function buildGrid(servers) {
+        const grid = document.getElementById('serverGrid');
         const section = document.getElementById('servers');
-        if (!deck || !section) return;
+        const shell = grid && grid.closest('.server-grid-shell');
+        const detail = document.getElementById('serverDetail');
+        if (!grid || !section || !detail) return;
 
-        // A live refresh replaces the whole deck: timers and observers from a
-        // previous build are torn down so only the current one drives it.
-        if (deckRuntime) {
-            deckRuntime.destroy();
-            deckRuntime = null;
-        }
-
-        const shell = deck.closest('.server-deck-shell');
-        const controls = document.getElementById('serverDeckControls');
-        const dotRow = document.getElementById('serverDeckDots');
-        const counter = document.getElementById('serverDeckCounter');
-        const hint = document.getElementById('serverDeckHint');
-        // The countdown bar reads its duration from here, so the animation and
-        // the timer that drives it cannot drift apart.
-        deck.style.setProperty('--deck-interval', `${DECK_INTERVAL}ms`);
+        grid.replaceChildren();
 
         if (servers.length === 0) {
-            deck.replaceChildren();
-            if (dotRow) dotRow.replaceChildren();
-            if (counter) counter.textContent = '';
-            if (hint) hint.hidden = true;
+            detail.replaceChildren();
             section.hidden = true;
             return;
         }
 
-        deck.replaceChildren();
-        if (dotRow) dotRow.replaceChildren();
+        let activeIndex = -1;
+        const tiles = [];
 
-        let activeIndex = 0;
-        let deckVisible = false;
-        let deckHovered = false;
-        let deckFocused = false;
-        let deckTimer = null;
-        // A drag that ends on a card also fires a click, so the click handler
-        // ignores anything that arrives just after a swipe.
-        let lastSwipeAt = 0;
-        let hintDismissed = false;
-
-        // The hint earns its place once. The first deliberate move anywhere in
-        // the deck retires it, and an automatic advance does not count.
-        function dismissHint() {
-            if (hintDismissed) return;
-            hintDismissed = true;
-            hint?.classList.add('is-dismissed');
-        }
-
-        const cards = servers.map((server, index) => {
-            const card = buildCard(server, index);
-            deck.appendChild(card);
-            card.addEventListener('click', () => {
-                if (Date.now() - lastSwipeAt < 400) return;
-                dismissHint();
-                selectServer(index);
-            });
-            return card;
-        });
-
-        // One dot per server: the peeking cards are pointer affordances, so the
-        // dots (and the arrows) are the keyboard and screen-reader way through
-        // the deck.
-        const dots = servers.map((server, index) => {
-            const dot = document.createElement('button');
-            dot.type = 'button';
-            dot.className = 'server-deck-dot';
-            dot.setAttribute('aria-label', `Show ${server.name}`);
-            dot.addEventListener('click', () => { dismissHint(); selectServer(index); });
-            if (dotRow) dotRow.appendChild(dot);
-            return dot;
-        });
-
-        if (servers.length < 2 && controls) controls.hidden = true;
-        if (servers.length < 2 && hint) hint.hidden = true;
-
-        // The shoulders slide out until their outer edge just clears the panel.
-        // How much room there is beside the front card depends on the deck's
-        // width, so the distance has to be measured; a percentage of the card
-        // cannot express it. The scale is read back out of CSS so the rendered
-        // pose and this measurement cannot drift apart.
-        function syncShoulderPeek() {
-            const card = cards[0];
-            if (!card) return;
-            const scale = parseFloat(getComputedStyle(deck).getPropertyValue('--deck-side-scale')) || 0.9;
-            const room = deck.clientWidth - card.offsetWidth * scale;
-            deck.style.setProperty('--deck-side-shift', `${Math.max(0, Math.round(room / 2) - SHOULDER_INSET)}px`);
-        }
-
-        function layoutDeck() {
-            cards.forEach((card, index) => {
-                const offset = (index - activeIndex + cards.length) % cards.length;
-                // Signed distance from the front card. Only 0, -1 and 1 are on
-                // screen, so anything further out is collapsed onto the parked
-                // pose: a card crossing the wrap point then fades up from behind
-                // the front card instead of sliding across the whole stack.
-                let shift = offset;
-                if (shift > cards.length / 2) shift -= cards.length;
-                const absShift = Math.abs(shift);
-                card.style.setProperty('--deck-shift', absShift === 1 ? String(shift) : '0');
-                card.classList.toggle('deck-pos-front', absShift === 0);
-                card.classList.toggle('deck-pos-side', absShift === 1);
-                card.classList.toggle('is-front', absShift === 0);
-                if (absShift === 0) {
-                    // Replayable on purpose: the class is dropped the moment a
-                    // card leaves the front, so the icon pops again on its
-                    // next turn instead of animating once and never again.
-                    card.classList.add('is-arriving');
-                    card.removeAttribute('aria-hidden');
-                } else {
-                    card.classList.remove('is-arriving');
-                    // Only the front card counts down, so a card that has just
-                    // left the front drops the class here rather than carrying a
-                    // stopped countdown bar around behind the stack.
-                    card.classList.remove('deck-running');
-                    // Not focusable (the action row is visibility:hidden off the
-                    // front card) and redundant with the dots, so it is hidden
-                    // from assistive tech rather than announced twice.
-                    card.setAttribute('aria-hidden', 'true');
-                }
-            });
-
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) dot.setAttribute('aria-current', 'true');
-                else dot.removeAttribute('aria-current');
-            });
-
-            // Zero-padded so the width never jitters as the count passes ten.
-            if (counter) {
-                const pad = value => String(value).padStart(2, '0');
-                counter.textContent = `${pad(activeIndex + 1)} / ${pad(cards.length)}`;
-            }
-        }
-
-        function scheduleDeckAdvance() {
-            clearTimeout(deckTimer);
-            const front = cards[activeIndex];
-            const shouldRun = deckVisible && !deckHovered && !deckFocused &&
-                !document.hidden && cards.length > 1;
-            // Removed and re-added on the next frame so the bar replays from
-            // zero rather than resuming wherever it had got to.
-            if (front) front.classList.remove('deck-running');
-            if (!shouldRun) return;
-            if (front) window.requestAnimationFrame(() => front.classList.add('deck-running'));
-            deckTimer = window.setTimeout(() => selectServer(activeIndex + 1), DECK_INTERVAL);
-        }
-
-        // Carousel moves are pure transitions: the outgoing front card simply
-        // animates to its new side slot, so there is no leaving state to
-        // babysit and rapid clicks always land on a consistent layout.
         function selectServer(index) {
-            const target = ((index % cards.length) + cards.length) % cards.length;
+            const target = ((index % servers.length) + servers.length) % servers.length;
             if (target === activeIndex) return;
-
             activeIndex = target;
-            layoutDeck();
-
-            // Re-armed on every move, automatic ones included. Re-arming only
-            // on a pick meant the timer was never set again after the first
-            // automatic advance, so the deck moved once and then sat still
-            // until something else poked it.
-            scheduleDeckAdvance();
+            tiles.forEach((tile, position) => {
+                const current = position === target;
+                tile.classList.toggle('is-active', current);
+                if (current) tile.setAttribute('aria-current', 'true');
+                else tile.removeAttribute('aria-current');
+            });
+            detail.replaceChildren(buildDetail(servers[target]));
         }
 
-        function stepDeck(delta) {
-            selectServer(activeIndex + delta);
-        }
-
-        // The deck takes itself off the clock while it is off-screen, hovered,
-        // focused or in a background tab, same as the showcase rotator.
-        const deckObserver = new IntersectionObserver(entries => {
-            deckVisible = entries.some(entry => entry.isIntersecting);
-            scheduleDeckAdvance();
-        }, { threshold: 0.35 });
-        deckObserver.observe(deck);
-
-        // The shoulder distance is a function of the deck's width, so it is
-        // re-measured whenever that width changes: viewport resize, rotation,
-        // or a layout shift above the deck.
-        const peekObserver = typeof ResizeObserver === 'function'
-            ? new ResizeObserver(() => syncShoulderPeek())
-            : null;
-        if (peekObserver) peekObserver.observe(deck);
-        else window.addEventListener('resize', syncShoulderPeek);
-
-        shell?.addEventListener('mouseenter', () => { deckHovered = true; scheduleDeckAdvance(); });
-        shell?.addEventListener('mouseleave', () => { deckHovered = false; scheduleDeckAdvance(); });
-        shell?.addEventListener('focusin', () => { deckFocused = true; scheduleDeckAdvance(); });
-        shell?.addEventListener('focusout', () => { deckFocused = false; scheduleDeckAdvance(); });
-        document.addEventListener('visibilitychange', scheduleDeckAdvance);
-
-        deck.addEventListener('keydown', event => {
-            if (event.key === 'ArrowRight') { event.preventDefault(); dismissHint(); stepDeck(1); }
-            else if (event.key === 'ArrowLeft') { event.preventDefault(); dismissHint(); stepDeck(-1); }
-            else if (event.key === 'Home') { event.preventDefault(); dismissHint(); selectServer(0); }
-            else if (event.key === 'End') { event.preventDefault(); dismissHint(); selectServer(cards.length - 1); }
+        servers.forEach((server, index) => {
+            const tile = buildTile(server, index, selectServer);
+            tiles.push(tile);
+            grid.appendChild(tile);
         });
 
-        // Touch: a sideways drag steps the deck. A mostly vertical drag is left
-        // alone so scrolling past the deck still works, and the threshold is
-        // wide enough that a tap does not register as a swipe.
-        let touchStartX = 0;
-        let touchStartY = 0;
-        deck.addEventListener('touchstart', event => {
-            const touch = event.changedTouches[0];
-            if (!touch) return;
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-        }, { passive: true });
-        deck.addEventListener('touchmove', event => {
-            const touch = event.changedTouches[0];
-            if (!touch) return;
-            const dx = touch.clientX - touchStartX;
-            const dy = touch.clientY - touchStartY;
-            if (Math.abs(dx) < 46 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
-            lastSwipeAt = Date.now();
-            dismissHint();
-            stepDeck(dx < 0 ? 1 : -1);
-            // Re-anchored so one long drag cannot fire repeatedly.
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-        }, { passive: true });
-
-        document.getElementById('serverDeckPrev')?.addEventListener('click', () => { dismissHint(); stepDeck(-1); });
-        document.getElementById('serverDeckNext')?.addEventListener('click', () => { dismissHint(); stepDeck(1); });
-
-        layoutDeck();
         section.hidden = false;
         shell?.classList.add('is-live');
-        // Measured only once the deck is on screen: a hidden section reports a
-        // width of zero, which would park the shoulders behind the front card.
-        syncShoulderPeek();
-
-        deckRuntime = {
-            destroy() {
-                clearTimeout(deckTimer);
-                deckObserver.disconnect();
-                if (peekObserver) peekObserver.disconnect();
-                else window.removeEventListener('resize', syncShoulderPeek);
-            }
-        };
+        // The first server is selected up front so the strip is never an empty
+        // box, and moving across the grid simply hands it the new one.
+        selectServer(0);
     }
 
     function readCachedServers() {
@@ -1697,11 +1492,10 @@ let ticketStep = 1;
                 name: String(server.name).trim().slice(0, 100),
                 icon: String(server.icon || '').trim().slice(0, 300),
                 members: Number(server.members) || 0,
-                // Kept under the API's own name so the shape the deck renders
+                // Kept under the API's own name so the shape the grid renders
                 // is the shape the API serves, rather than a second vocabulary
                 // that a rename on either side would break silently.
                 description: String(server.description || '').trim().slice(0, 140),
-                tags: [],
                 invite: String(server.invite || '').trim().slice(0, 200)
             }));
     }
@@ -1709,7 +1503,7 @@ let ticketStep = 1;
     async function fetchLiveServers() {
         const cached = readCachedServers();
         if (cached) {
-            buildDeck(cached);
+            buildGrid(cached);
             return;
         }
         const controller = new AbortController();
@@ -1723,7 +1517,7 @@ let ticketStep = 1;
             // An empty list is cached too: it is a valid state (nobody has
             // opted in yet), not a failure worth retrying every view.
             writeCachedServers(servers);
-            buildDeck(servers);
+            buildGrid(servers);
         } catch (error) {
             clearTimeout(timeout);
             // Offline, CORS, bot down: whatever the static seed built stays.
@@ -1732,7 +1526,7 @@ let ticketStep = 1;
 
     function initServerDeck() {
         const staticServers = serverList();
-        if (staticServers.length) buildDeck(staticServers);
+        if (staticServers.length) buildGrid(staticServers);
         fetchLiveServers();
     }
 
