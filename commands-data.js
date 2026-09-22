@@ -355,12 +355,6 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "/ram",
-            "desc": "Check the bot's current RAM usage.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "/react",
             "desc": "React to a message with an animated emoji",
             "badge": "Everyone",
@@ -2760,12 +2754,6 @@ const commandsDatabase = [{
         {
             "name": "/strategy list",
             "desc": "View existing strategies",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "/strategy pending",
-            "desc": "Review pending universal strategies",
             "badge": "Everyone",
             "type": "public"
         },

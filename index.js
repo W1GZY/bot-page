@@ -1269,6 +1269,7 @@ let ticketStep = 1;
    ========================================================================== */
 (function () {
     const DECK_INTERVAL = 6000;  // ms between automatic shuffles
+    const SHOULDER_INSET = 8;    // px of daylight between a shoulder's outer edge and the panel
     const SERVERS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/servers';
     const CACHE_KEY = 'seanbot.publicServers';
     const CACHE_TTL_MS = 60 * 1000;
@@ -1341,7 +1342,13 @@ let ticketStep = 1;
         }
         body.appendChild(top);
 
-        const tagline = String(server.tagline || '').trim();
+        // The card's short description, read under the name the public API
+        // serves it by. There is deliberately no second local name for it: a
+        // page that reads its own name for a served field renders a blank card
+        // the day the two drift apart, with nothing raised anywhere. That is
+        // how this shipped broken once, the builder looking for "tagline"
+        // while the API served "description".
+        const tagline = String(server.description || '').trim();
         if (tagline) {
             const line = document.createElement('p');
             line.className = 'server-card-tagline';
@@ -1441,19 +1448,32 @@ let ticketStep = 1;
 
         if (servers.length < 2 && controls) controls.hidden = true;
 
+        // The shoulders slide out until their outer edge just clears the panel.
+        // How much room there is beside the front card depends on the deck's
+        // width, so the distance has to be measured; a percentage of the card
+        // cannot express it. The scale is read back out of CSS so the rendered
+        // pose and this measurement cannot drift apart.
+        function syncShoulderPeek() {
+            const card = cards[0];
+            if (!card) return;
+            const scale = parseFloat(getComputedStyle(deck).getPropertyValue('--deck-side-scale')) || 0.9;
+            const room = deck.clientWidth - card.offsetWidth * scale;
+            deck.style.setProperty('--deck-side-shift', `${Math.max(0, Math.round(room / 2) - SHOULDER_INSET)}px`);
+        }
+
         function layoutDeck() {
             cards.forEach((card, index) => {
                 const offset = (index - activeIndex + cards.length) % cards.length;
-                // Carousel geometry: signed distance from the centre, so the
-                // neighbours sit at -1/+1 and anything further out is off to
-                // a side, invisible, waiting to slide in.
+                // Signed distance from the front card. Only 0, -1 and 1 are on
+                // screen, so anything further out is collapsed onto the parked
+                // pose: a card crossing the wrap point then fades up from behind
+                // the front card instead of sliding across the whole stack.
                 let shift = offset;
                 if (shift > cards.length / 2) shift -= cards.length;
-                card.style.setProperty('--deck-shift', String(shift));
                 const absShift = Math.abs(shift);
+                card.style.setProperty('--deck-shift', absShift === 1 ? String(shift) : '0');
                 card.classList.toggle('deck-pos-front', absShift === 0);
                 card.classList.toggle('deck-pos-side', absShift === 1);
-                card.classList.toggle('deck-pos-far', absShift >= 2);
                 card.classList.toggle('is-front', absShift === 0);
                 if (absShift === 0) {
                     card.removeAttribute('aria-hidden');
@@ -1506,6 +1526,15 @@ let ticketStep = 1;
         }, { threshold: 0.35 });
         deckObserver.observe(deck);
 
+        // The shoulder distance is a function of the deck's width, so it is
+        // re-measured whenever that width changes: viewport resize, rotation,
+        // or a layout shift above the deck.
+        const peekObserver = typeof ResizeObserver === 'function'
+            ? new ResizeObserver(() => syncShoulderPeek())
+            : null;
+        if (peekObserver) peekObserver.observe(deck);
+        else window.addEventListener('resize', syncShoulderPeek);
+
         shell?.addEventListener('mouseenter', () => { deckHovered = true; scheduleDeckAdvance(); });
         shell?.addEventListener('mouseleave', () => { deckHovered = false; scheduleDeckAdvance(); });
         shell?.addEventListener('focusin', () => { deckFocused = true; scheduleDeckAdvance(); });
@@ -1525,11 +1554,16 @@ let ticketStep = 1;
         layoutDeck();
         section.hidden = false;
         shell?.classList.add('is-live');
+        // Measured only once the deck is on screen: a hidden section reports a
+        // width of zero, which would park the shoulders behind the front card.
+        syncShoulderPeek();
 
         deckRuntime = {
             destroy() {
                 clearTimeout(deckTimer);
                 deckObserver.disconnect();
+                if (peekObserver) peekObserver.disconnect();
+                else window.removeEventListener('resize', syncShoulderPeek);
             }
         };
     }
@@ -1567,7 +1601,10 @@ let ticketStep = 1;
                 name: String(server.name).trim().slice(0, 100),
                 icon: String(server.icon || '').trim().slice(0, 300),
                 members: Number(server.members) || 0,
-                tagline: String(server.description || '').trim().slice(0, 140),
+                // Kept under the API's own name so the shape the deck renders
+                // is the shape the API serves, rather than a second vocabulary
+                // that a rename on either side would break silently.
+                description: String(server.description || '').trim().slice(0, 140),
                 tags: [],
                 invite: String(server.invite || '').trim().slice(0, 200)
             }));

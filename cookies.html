@@ -180,7 +180,7 @@
             <div class="tos-section">
                 <h2>1.1 Cookies on this website</h2>
                 <p>sean.bot.nu is a static page. There is no login, no server-side session, and no personalisation stored on a server, so there is nothing for us to put in a cookie.</p>
-                <p>Two small values are stored in your browser instead. Neither is a cookie: they stay on your device, they are never sent to our servers, and nothing else can read them.</p>
+                <p>Three small values are stored in your browser instead. None is a cookie: they stay on your device, they are never sent to our servers, and nothing else can read them.</p>
 
                 <!-- The gate in scripts/check_cookie_inventory.py reads the rows of
                      the data-site-inventory table below and compares them with what the
@@ -215,11 +215,17 @@
                                 <td>Caches the live server count for one minute, so the Communities card does not call the dashboard on every page view.</td>
                                 <td>You close the tab</td>
                             </tr>
+                            <tr>
+                                <td><code>seanbot.publicServers</code></td>
+                                <td>sessionStorage</td>
+                                <td>Caches the list of communities shown in the Communities deck for one minute, so that section does not call the dashboard on every page view.</td>
+                                <td>You close the tab</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <p>Both are strictly functional and both exist only because they make the page work better for you. You can delete either at any time (see section 1.4), and the site keeps working without them: the accent falls back to gold and the server count is simply fetched again.</p>
+                <p>All three are strictly functional and exist only because they make the page work better for you. You can delete any of them at any time (see section 1.4), and the site keeps working without them: the accent falls back to gold and the two caches are simply filled again.</p>
             </div>
 
             <div class="tos-section">
@@ -274,7 +280,7 @@
                 <ul>
                     <li><strong>See what is stored.</strong> Open your browser's developer tools and use the Application (Chrome, Edge) or Storage (Firefox) panel. Cookies and storage for the current site are listed there.</li>
                     <li><strong>Clear it.</strong> In your browser settings, find the cookies and site data section, search for sean.bot.nu and dashboard-seanbo.vercel.app, and delete what you find. Clearing the site data resets your theme accent to the default gold.</li>
-                    <li><strong>Block it.</strong> Blocking cookies for the dashboard means you will have to sign in again on every visit, or you may not be able to sign in at all. Blocking storage for this site only costs you the remembered accent and a slightly slower live server count.</li>
+                    <li><strong>Block it.</strong> Blocking cookies for the dashboard means you will have to sign in again on every visit, or you may not be able to sign in at all. Blocking storage for this site only costs you the remembered accent and a slower live server count and Communities deck.</li>
                     <li><strong>Private windows.</strong> Anything stored is discarded when the private window closes, and nothing about the site's behaviour changes while it is open.</li>
                 </ul>
             </div>

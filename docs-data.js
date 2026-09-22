@@ -59,6 +59,14 @@ const docsData = [
                 ]
             },
             {
+                "type": "text",
+                "text": "Adding SeanBot sends a short direct message to whoever invited it. Set up SeanBot asks one question - what kind of server is this - and turns on the features that fit, Quick tour walks through what the bot does, and Open dashboard is a one-time sign-in link. If that account has direct messages closed, the same menu is posted in the first channel SeanBot can write in."
+            },
+            {
+                "type": "text",
+                "text": "Nothing has to be turned on for SeanBot to work: every optional feature is already available when it joins, and setup is about switching off what this server does not want. Setup ends with an Access check naming anything genuinely wrong - channels SeanBot cannot post in, or a role placed below the member roles - so those are fixed before a feature fails. Run /permissions at any time for the same audit with more detail."
+            },
+            {
                 "type": "heading",
                 "text": "3. Open the Dashboard and Control Access"
             },
@@ -66,7 +74,7 @@ const docsData = [
                 "type": "list",
                 "items": [
                     "Sign in with Discord, choose your server, and open Module Settings.",
-                    "New servers start with optional modules disabled. Enable only the pages and features you intend to configure.",
+                    "A server that has never saved a module choice shows a getting-started card pointing at Module Settings, because every feature is on by default. Switching one off is a deliberate choice and is remembered from then on.",
                     "Open Server Access before inviting other staff into the dashboard. Assign page access and individual actions to trusted roles using least privilege.",
                     "Use Dashboard Logs to confirm who changed settings, deleted records, approved requests, or performed dashboard actions."
                 ]
@@ -81,6 +89,7 @@ const docsData = [
                     "Enable Logging in Module Settings, then open Log Config.",
                     "Choose All logs in one channel for the fastest setup, or Separate channels when moderation, security, member, voice, and staff logs must be isolated.",
                     "Enable moderation, security, staff workflows, public reports, ban appeals, emoji suggestions, tickets, and dashboard actions as needed.",
+                    "Changes to the logging settings themselves are always recorded, including the change that turns logging off, so the configuration cannot be altered without a trace.",
                     "Perform one harmless dashboard change and one test command, then verify both appear in the expected log channel."
                 ]
             },
@@ -576,10 +585,6 @@ const docsData = [
                     {
                         "cmd": "/strategy import [json_file]",
                         "desc": "Import strategy entries from a JSON file."
-                    },
-                    {
-                        "cmd": "/strategy pending",
-                        "desc": "Review pending universal strategies."
                     },
                     {
                         "cmd": "/strategy delete [boss_name]",
@@ -1079,6 +1084,22 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to Discord log channels. Log Config can route everything into one all-logs channel for simple setup, or split categories into separate webhook channels for busy servers. Ban appeal, suggestion, and public report staff actions are handled by the Staff Workflows logging category."
+            },
+            {
+                "type": "heading",
+                "text": "Who Changed The Logging Settings"
+            },
+            {
+                "type": "text",
+                "text": "Every change to the logging configuration is recorded, whether it was made with a /log command or on this page. The entry says who made it and what actually moved: which events went off or came back on, where each category now reports, which channels were muted, and whether invite tracking, the deep-log archive, the integrity channel or the permission-health alerts changed. Webhook URLs are deliberately left out, because holding one is enough to post into the channel."
+            },
+            {
+                "type": "text",
+                "text": "The record is written even when the change was to turn logging off. Logging config is an always-on event: /log toggle, /log toggle_batch and the Event Toggles panels cannot switch it off, so silencing the log leaves an entry naming who silenced it and what they silenced. It is stored where no log channel is needed to hold it - the server's log archive, which the Server Logs page reads, and the change history kept for the server - so a server that never configured a destination still has the trail."
+            },
+            {
+                "type": "text",
+                "text": "A server that has gone quiet can see what happened and undo it. /log reset turns every event back on and records how many had been off, and /log status marks the always-on events inside their category, so the panel and the log channel agree about what is arriving."
             },
             {
                 "type": "commands",
@@ -1778,7 +1799,7 @@ const docsData = [
         "id": "raidpolls",
         "icon": "ph-users-three",
         "title": "Polls & Event Rosters",
-        "subtitle": "Quick reaction polls for simple votes, plus advanced signup polls with slots, caps, and waitlists, for any game.",
+        "subtitle": "Quick reaction polls for simple votes, plus signup polls with slots, caps, waitlists, and one-tap sign-up for any game.",
         "content": [
             {
                 "type": "heading",
@@ -1786,7 +1807,67 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids as well as any other game, activity, or community night. /raidpoll opens a guided wizard that walks you through the poll step by step: you set the title, the schedule, and when the poll closes, and each step shows live feedback so you can fix problems before posting. The wizard survives bot restarts: progress is saved automatically, running /raidpoll again offers to resume where you left off, and the buttons on an old wizard message keep working even after a restart or a pause. Experienced users can pick the Quick Form option in the wizard for the classic all-in-one form."
+                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids and for any other game, activity, or community night. /raidpoll opens a guided wizard that builds the poll one piece at a time, with live feedback at every step before anything is posted. The wizard survives bot restarts: progress is saved as you go, running /raidpoll again offers to resume where you left off, and the buttons on an older wizard message keep working. Press Quick Form (experts) if you would rather fill the whole thing in at once."
+            },
+            {
+                "type": "heading",
+                "text": "Building Slots One At A Time"
+            },
+            {
+                "type": "text",
+                "text": "Add Slot on the wizard message opens a three-field form: When?, What?, and Spots (optional). Enter a time such as Friday 20:00, tomorrow 18:00 or 2026-10-02 19:30, any event name, and a cap; leave Spots empty for unlimited signups. There is no format to separate by hand, and a time SeanBot cannot read is refused with the shape it wanted instead of being accepted silently. Every slot is listed back with its time and cap, and Manage Slots edits or removes the one you choose, so a full week can be checked before it is posted."
+            },
+            {
+                "type": "text",
+                "text": "One form can build several nights. A raid that runs on three nights usually starts at the same hour each night, so name the nights and the clock once - Fri, Sat, Sun 20:00 - and all three slots are added together, sharing the name and cap you gave them. Different start times work the same way: Fri 20:00, Sat 21:00. Six nights is still one form, and the reply tells you how many slots landed."
+            },
+            {
+                "type": "text",
+                "text": "A time SeanBot cannot read never costs you the rest of the form. The entry is kept, the wizard says which part it could not read, and pressing Add Slot again opens with your name, cap and attempt already filled in, so only the time needs fixing. If you have a raid on the list already, Add Another Night on the Manage Slots panel copies its name, cap and time for you to change the one field that differs."
+            },
+            {
+                "type": "text",
+                "text": "Paste List opens the schedule box instead, one slot per line, for a schedule you already have written down. It is the fastest path once you know the format, and it is the same format the dashboard advanced poll form takes. Menu polls carry a sign-up button; reaction polls also add one reaction per slot."
+            },
+            {
+                "type": "heading",
+                "text": "Schedule Format For Pasted Lists"
+            },
+            {
+                "type": "text",
+                "text": "Each line is a time, a separator, the event name, and an optional cap in brackets: tomorrow 20:00 - Weekly Boss [8], Saturday 18:00 | Big Raid, Friday 21:00: Community Night [12], or 2026-12-20 15:00 ~ Endgame Run [6]. Separators can be a dash, pipe, tilde, semicolon, or a colon right after a clock time. Relative times such as tomorrow 20:00 or Friday 21:00 work as well as full dates, and a time in the past is reported as an error rather than scheduled."
+            },
+            {
+                "type": "heading",
+                "text": "Signing Up: What Members See"
+            },
+            {
+                "type": "text",
+                "text": "Every event poll message carries a Sign Up button. Pressing it opens a private menu built for the member who pressed it, so one member signing up never changes what anyone else is looking at. Each entry shows the slot name and its time in that member's own timezone, and says how full the slot is: spots free, full with a waitlist, or unlimited. A member who has never saved a timezone sees UTC and a pointer to /timezone set."
+            },
+            {
+                "type": "text",
+                "text": "The slots a member already holds arrive ticked, including waitlist places, and a tick saves straight away, so there is no Save button to forget. Untick a slot to drop out of it, or press Clear My Signups to leave everything at once. A ticked list means \"these are the slots I can attend\", so the menu always shows that member's complete current set."
+            },
+            {
+                "type": "heading",
+                "text": "Caps, Waitlists, And Promotions"
+            },
+            {
+                "type": "text",
+                "text": "A cap fills first come, first served. Once it is full, further signups join the waitlist and the member is told they are on it. When somebody leaves a capped slot, the next member on its waitlist is promoted automatically and SeanBot sends them a direct message naming the slot they are now in. Raising a slot cap does the same thing: the freed places go to the waitlist in order, and lifting a cap altogether lets everyone who was waiting in. Lowering a cap works in reverse - the members past the new limit move to the waitlist and are told, because a cap that does not move anyone is only a number - and they take the front of the queue, so they are the first back in if the cap rises again. If a promoted or moved member has their direct messages closed, the poll channel is used instead, because finding out where you stand is the whole point of the notice."
+            },
+            {
+                "type": "heading",
+                "text": "The Roster"
+            },
+            {
+                "type": "text",
+                "text": "The poll message is the roster. Each slot is listed with its number emoji, name, time, and a count such as [8/8] or [5] for an uncapped slot, with the signed-up members beneath it (up to twelve names, then a count) and the waitlist on its own line below that. The count is always exact, so a long member list never hides how full a slot really is."
+            },
+            {
+                "type": "text",
+                "text": "Large polls keep every slot. A roster too long for one embed continues onto further embeds in the same message, and a slot is never split between them. If a schedule is so large that even that cannot hold it, the last embed says how many slots are missing and points at the Sign Up menu, which always lists all of them."
             },
             {
                 "type": "heading",
@@ -1794,7 +1875,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "/poll create posts one embed with 2-20 answer choices and letter reactions. The question is shown as the embed title, members vote by reacting, and staff can use /poll close with the poll message ID to lock in final totals. You can also add an optional poll end time, and date-like answer text is rewritten into Discord timestamps by default (the timestamps option turns that off). The Simple Poll Timestamps guide explains exactly when timestamps appear. The dashboard can create simple polls, preview them beside the form before posting, and save common polls as templates for later."
+                "text": "/poll create posts one embed with 2-20 answer choices and number reactions. The question is the embed title, members vote by reacting, and staff can close it with /poll close plus the poll message ID to lock in the final totals. You can add an optional poll end time, and date-like answer text is rewritten into Discord timestamps by default (the timestamps option turns that off). The dashboard can create simple polls, preview them beside the form, and save common polls as templates for later."
             },
             {
                 "type": "heading",
@@ -1802,7 +1883,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "On the Poll Manager page, write a question and answers, then save it as a template. Later, choose the template to refill the form. This is useful for weekly raids, meeting votes, event times, and repeated server questions."
+                "text": "On the Poll Manager page, write a question and its answers, then save them as a template. Later, choose the template to refill the form. This suits weekly raids, meeting votes, event times, and repeated server questions."
             },
             {
                 "type": "heading",
@@ -1810,27 +1891,82 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "When you write a date or time in /poll create or in the dashboard simple poll form, SeanBot tries to turn it into a Discord timestamp. Discord then shows the time in each member's own local time. You can write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. SeanBot uses the poll creator's saved timezone, so set your timezone first before using poll end times or timed answer choices. The Simple Poll Timestamps guide explains exactly when timestamps appear, what happens when a poll is closed, and how to turn conversion off."
+                "text": "In /poll create, in a slot you add, and in the dashboard forms, SeanBot turns a date or time into a Discord timestamp, which Discord renders in each reader's own local time. Write dates like 29.07.2026 20:00, 2026-07-29 20:00, July 29 2026 8 PM, 29 July 20:00, tomorrow 8 PM, Friday 20:00, or Sunday 26 July 2026 18:00. Conversion uses the creator's saved timezone, so set yours with /timezone set (or let /timezone detect work it out) before building a poll. The Simple Poll Timestamps guide covers exactly when timestamps appear, what happens when a poll closes, and how to turn conversion off."
             },
             {
                 "type": "heading",
-                "text": "Flexible Schedule Format"
+                "text": "Splitting Into Separate Polls"
             },
             {
                 "type": "text",
-                "text": "In /raidpoll and the dashboard advanced poll form, each slot is one line: a time, a separator, the event name, and an optional player cap in brackets. Separators can be a dash, pipe, tilde, semicolon, or a colon right after a clock time, and relative times like tomorrow 20:00 or Friday 21:00 work just as well as full dates; for example: tomorrow 20:00 - Weekly Boss [8], Saturday 18:00 | Big Raid, or 2026-12-20 15:00 ~ Endgame Run [6]. Caps are optional and any event name works, whatever game it comes from."
+                "text": "A schedule often covers more than one raid, and one long signup list is hard to read. On the review screen, Post as Separate Polls makes one poll per raid name instead: every Big Raid night becomes a poll of its own, with its own roster, its own caps, and its own banner. Post as One Combined Poll keeps the whole week on a single embed with one running numbering. The review lists what splitting would make before you choose it - the raid names, how many slots each holds, and whether each one has artwork - so the choice is made with the result in sight."
+            },
+            {
+                "type": "text",
+                "text": "Grouping follows the name you gave each slot, and only the name: spelling, capitals, and extra spaces do not matter, so Big Raid and big  raid are the same raid and land in one poll. Give slots names you actually use in the game and the polls come out the way you would have drawn them by hand. The dashboard advanced poll form offers the same choice, and groups by the same rule."
             },
             {
                 "type": "heading",
-                "text": "Banners"
+                "text": "Per-Raid Banners"
             },
             {
                 "type": "text",
-                "text": "Every poll accepts an optional custom banner URL. When you split a schedule into separate polls, each poll automatically uses matching preset banner art when one exists for that event name; otherwise the poll is posted without a banner instead of borrowing another game's artwork. Combined polls use your custom banner or a banner-free embed by default."
+                "text": "Raid Banners on the review screen is where separate polls get their artwork. It lists every raid in the schedule with how many slots it holds and which banner it will use, and picking one shows that banner so you can see what members will see before anything is posted. Set Banner URL takes any image link, Forget Choice drops your pick so the raid falls back to what the server normally uses, and Clear Choice removes the raid's remembered banner as well."
             },
             {
                 "type": "text",
-                "text": "Menu and both-mode polls support up to 23 slots per poll so Discord's dropdown remains valid. Reaction-only polls support up to 25 slots."
+                "text": "A banner is chosen by how specific it is: the one you set for this poll wins, then the banner this server has used for that raid before, then the single banner typed for the whole poll, then the built-in preset art for that event name. A raid with none of those is posted without a banner rather than borrowing another game's artwork, and choosing no banner on purpose sticks: it is never quietly replaced by a preset."
+            },
+            {
+                "type": "text",
+                "text": "A banner you set is remembered for the server, keyed by the raid name, so next week's schedule arrives already dressed and setting it up is a one-time job per raid. Clearing one is remembered too, so a raid you deliberately left plain stays plain. Combined polls use the banner you gave the poll in the wizard, or a banner-free embed if you did not set one."
+            },
+            {
+                "type": "heading",
+                "text": "Slot Limits"
+            },
+            {
+                "type": "text",
+                "text": "An event poll holds up to 20 slots whatever its sign-up style, whether it uses the sign-up menu, reactions, or both. A simple reaction poll holds 2-20 answers. Extra lines pasted into a schedule are reported and truncated rather than dropped in silence."
+            },
+            {
+                "type": "heading",
+                "text": "Editing A Posted Poll"
+            },
+            {
+                "type": "text",
+                "text": "Admin Options on a live poll opens the panel that edits its title, its close time, and its schedule. A slot that keeps its time keeps its signups too, so renaming an event or changing a cap does not disturb the roster; a slot you delete takes its signups with it, so check the roster afterwards. Export Roster lists the members of a slot for copy-paste, Integrations turns a slot into a TimePing or voice countdown, and Clone Poll repeats the poll for next week. A closed poll's message carries Finalize Roster, Repost and Delete Poll, so its schedule can be repeated straight from the poll itself."
+            },
+            {
+                "type": "heading",
+                "text": "Posting The Same Schedule Again"
+            },
+            {
+                "type": "text",
+                "text": "A weekly schedule is nearly always last week's schedule with the dates moved on, so SeanBot remembers the last schedule a server posted and offers it back. Run /raidpoll and it asks Same as last time? before opening a fresh wizard: one button posts the whole thing again - title, close time, every slot, every cap, and the raid banners - and Start a fresh poll instead builds a new one. The offer is only made for a schedule posted in the last 90 days, so a schedule the server has moved on from cannot come back by accident."
+            },
+            {
+                "type": "text",
+                "text": "Dates move on by whole weeks, so every weekday, clock time and gap between slots is exactly as it was - a Friday-to-Sunday run stays a Friday-to-Sunday run instead of being torn apart by the first date that is already in the past. The review above the buttons shows which dates each choice would post, and warns how many of the original dates have gone if you choose to keep them. A schedule that went out as one poll per raid comes back the same way, and each raid's banner is looked up fresh, so a raid gets this week's artwork rather than last week's."
+            },
+            {
+                "type": "text",
+                "text": "Any poll can also be repeated from its own message. On a closed poll - the one people actually repeat - the message buttons offer Repost beside Finalize Roster and Delete Poll, with the same choice between next week's dates and the originals. Reposting makes that schedule the new same as last time, so the offer always moves you forward one week."
+            },
+            {
+                "type": "heading",
+                "text": "Setup & Verification"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Set your own timezone first with /timezone set, or let SeanBot work it out with /timezone detect. Slot times, close times, and every member menu read from saved timezones.",
+                    "Confirm SeanBot can Send Messages, Embed Links, and Add Reactions where polls are posted, and that everyone who posts polls has Manage Channels, which /raidpoll requires. Manage Messages lets SeanBot tidy the reaction fallback on a reaction poll.",
+                    "Run /raidpoll, give the poll a title and a signups-close time, then press Add Slot once per event and post it with Review & Post. If one raid runs several nights on the same hour, put them in the one When box - `Fri, Sat, Sun 20:00` - and it adds all of them.",
+                    "Name slots after the activity you actually run, then press Raid Banners on the review screen and give each raid its artwork once - the server remembers it for every later schedule.",
+                    "Test the waitlist before you rely on it: cap one slot at 1, sign two members up, then have the first leave and watch the promotion notice arrive.",
+                    "Next week, run /raidpoll and take the Same as last time? offer: it reuses the title, the close time, every slot, every cap and the raid banners, and moves the dates on by whole weeks. Keep Paste List for a schedule you have written down by hand."
+                ]
             },
             {
                 "type": "commands",
@@ -1838,7 +1974,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/poll create",
-                        "desc": "Create a quick reaction poll with 2-20 answers, optional poll end time, and the timestamps option."
+                        "desc": "Create a quick reaction poll with 2-20 answers, an optional poll end time, and the timestamps option."
                     },
                     {
                         "cmd": "/poll close",
@@ -1846,9 +1982,15 @@ const docsData = [
                     },
                     {
                         "cmd": "/raidpoll",
-                        "desc": "Open setup modal to build interactive signup boards with slots, caps, and waitlists for any game or event."
+                        "desc": "Open the guided wizard for an event poll: title, close time, and one slot at a time with caps and waitlists, for any game."
                     }
                 ]
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "Set your timezone first",
+                "text": "Set your timezone before you build a poll. /raidpoll reads times like Friday 20:00 through your saved timezone, and each member sees their own version of every slot in the sign-up menu."
             }
         ]
     },

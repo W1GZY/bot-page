@@ -1931,12 +1931,18 @@
 
 /* ==========================================================================
    Communities deck (entries come from the dashboard's public API)
-   A three-slot carousel: the featured card sits centred, its neighbours
-   peek in from each side, dimmed. index.js gives every card a signed
-   --deck-shift (0 = centre, negative = left, positive = right) plus one
-   deck-pos-* class; CSS turns that into position, depth and dimming, so
-   every move - click, arrow, dot or auto-shuffle - is one transform
-   transition.
+   A three-slot carousel: the featured card sits centred and square to the
+   reader, the two beside it are scaled back and tilted toward the middle, and
+   every other card waits behind the front one, invisible. index.js gives each
+   card a --deck-shift (0 = parked or centred, -1 = left shoulder, 1 = right
+   shoulder) plus one deck-pos-* class; CSS turns that into position, depth and
+   dimming, so every move - click, arrow, dot or auto-shuffle - is one
+   transform transition.
+
+   The shoulders slide out by --deck-side-shift, which index.js measures in px
+   so their outer edge always lands just inside the panel. A fixed percentage
+   cannot do that: on a narrow screen it pushes the card's edge past the panel
+   border, which slices its text in half mid-word.
    ========================================================================== */
 .server-deck-shell {
     position: relative;
@@ -1969,9 +1975,21 @@
     display: grid;
     grid-template-areas: 'stack';
     place-items: center;
+    /* Every card takes the tallest card's height. A shorter one would
+       otherwise sit inside a taller neighbour's outline and let that
+       neighbour's name and tagline show above and below it, which reads as
+       two cards printed on top of each other. It also keeps the deck a fixed
+       height, so advancing to a shorter card cannot shift the page. */
+    align-items: stretch;
     min-height: 236px;
     perspective: 1500px;
     outline: none;
+    /* Shoulder pose, read back by index.js so the measured peek and the
+       rendered card agree. --deck-side-shift is replaced with a px value on
+       the first layout; the percentage is only a no-JS fallback. */
+    --deck-side-scale: 0.9;
+    --deck-tilt: -7deg;
+    --deck-side-shift: 46%;
 }
 .server-deck:focus-visible {
     outline: 2px solid var(--accent);
@@ -1983,6 +2001,10 @@
     grid-area: stack;
     width: min(560px, 88%);
     display: flex;
+    /* Centred, not top-aligned: cards share one height, so a card with only a
+       name and a button would otherwise carry all of the slack as one empty
+       block under its text. */
+    align-items: center;
     gap: 16px;
     padding: 20px 22px;
     background: linear-gradient(160deg, rgba(28, 28, 34, 0.96), rgba(15, 15, 19, 0.96));
@@ -1991,38 +2013,85 @@
     box-shadow: var(--shadow-rest);
     text-align: left;
     cursor: pointer;
+    position: relative;
     transform-origin: 50% 50%;
-    /* Base state is "parked off to a side, invisible": neighbours slide in
-       from here, so entering cards never pop in at the centre. */
-    transform: translateX(calc(var(--deck-shift, 0) * var(--deck-side-shift, 56%))) scale(0.84);
+    /* Parked: the pose for every card that is neither the front one nor one of
+       its two shoulders. It waits directly behind the front card instead of
+       off to a side, so a card crossing the wrap point fades up from the
+       middle rather than skating the width of the whole deck. */
+    transform: scale(0.82);
     opacity: 0;
-    filter: brightness(0.42) saturate(0.85);
     z-index: 1;
     pointer-events: none;
+    /* Arriving here means leaving the deck, so the fade is prompt. The two
+       roles below override the timing and carry the choreography: the new
+       front card lights up at once, and everything else waits until it has
+       arrived before it becomes readable. Without that stagger a card sliding
+       out of the middle and the card sliding in both sit legible at the same
+       time, and their text reads as one paragraph. */
     transition:
-        transform 0.55s var(--ease-out-expo),
-        opacity 0.4s ease,
-        filter 0.4s ease,
+        transform 0.62s var(--ease-out-expo),
+        opacity 0.3s ease,
         border-color var(--transition-fast),
         box-shadow 0.45s ease;
-    will-change: transform, opacity, filter;
+    will-change: transform, opacity;
 }
-/* Visible neighbour on one side: same transform as the base state (the
-   position comes from --deck-shift), just lit up enough to read as a card. */
+/* Scrim: one sheet across the whole card, so a shoulder darkens as a single
+   object instead of showing half-lit text that competes with the front card.
+   An overlay can be animated on the compositor; a brightness() filter repaints
+   the card on every frame of the move. */
+.server-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(8, 8, 12, 0.34), rgba(8, 8, 12, 0.62));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+/* Shoulders: the cards either side of the front one, scaled back and tilted
+   toward the middle so the deck reads as a stack rather than three flat
+   panels. --deck-shift carries only which side the card is on. */
 .server-card.deck-pos-side {
-    opacity: 0.6;
-    filter: brightness(0.52) saturate(0.9);
+    transform:
+        translateX(calc(var(--deck-shift, 0) * var(--deck-side-shift, 46%)))
+        rotateY(calc(var(--deck-shift, 0) * var(--deck-tilt, -7deg)))
+        scale(var(--deck-side-scale, 0.9));
+    opacity: 0.74;
     z-index: 5;
     pointer-events: auto;
+    transition:
+        transform 0.62s var(--ease-out-expo),
+        opacity 0.34s ease 0.3s,
+        border-color var(--transition-fast),
+        box-shadow 0.45s ease;
 }
-.server-card.deck-pos-front {
-    transform: translateX(0) scale(1);
+.server-card.deck-pos-side::after {
     opacity: 1;
-    filter: none;
+    transition: opacity 0.34s ease 0.3s;
+}
+.server-card.deck-pos-side:hover {
+    opacity: 0.95;
+    border-color: var(--border-highlight);
+    transform:
+        translateX(calc(var(--deck-shift, 0) * var(--deck-side-shift, 46%)))
+        rotateY(calc(var(--deck-shift, 0) * var(--deck-tilt, -7deg)))
+        scale(calc(var(--deck-side-scale, 0.9) + 0.03));
+}
+.server-card.deck-pos-side:hover::after { opacity: 0.4; transition: opacity 0.3s ease; }
+/* Front: square to the reader, full strength, and above the rest of the stack. */
+.server-card.deck-pos-front {
+    transform: scale(1);
+    opacity: 1;
     z-index: 10;
     pointer-events: auto;
+    transition:
+        transform 0.62s var(--ease-out-expo),
+        opacity 0.22s ease,
+        border-color var(--transition-fast),
+        box-shadow 0.5s ease;
 }
-.server-card:not(.is-front):hover { border-color: var(--border-highlight); }
 .server-card.is-front {
     border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
     box-shadow: var(--shadow-lift);
@@ -2171,7 +2240,7 @@
 
 @media (max-width: 700px) {
     .server-deck-shell { padding: 26px 16px 18px; }
-    .server-deck { min-height: 268px; --deck-side-shift: 38%; }
+    .server-deck { min-height: 268px; }
     .server-card {
         gap: 12px;
         padding: 16px;
@@ -2184,5 +2253,5 @@
 
 @media (prefers-reduced-motion: reduce) {
     .server-deck-shell.is-live { animation: none; }
-    .server-card { transition: none; }
+    .server-card, .server-card::after { transition: none; }
 }
