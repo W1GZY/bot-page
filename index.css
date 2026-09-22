@@ -2121,6 +2121,43 @@
     box-shadow: 0 4px 14px rgba(88, 101, 242, 0.5);
 }
 
+/* The one state for a list that could not be fetched at all, sat in the strip
+   where a server would be. It is deliberately not the hidden section: a page
+   with nothing on it cannot say whether nobody opted in or the request never
+   arrived. */
+.server-load-failure {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+.server-load-retry {
+    appearance: none;
+    flex: 0 0 auto;
+    padding: 6px 14px;
+    border: 1px solid var(--border-highlight);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.server-load-retry:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--accent);
+}
+.server-load-retry:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
 @media (max-width: 700px) {
     .server-grid-shell { padding: 14px; }
     .server-grid {

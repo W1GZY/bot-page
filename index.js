@@ -1268,7 +1268,9 @@ let ticketStep = 1;
    shared strip under the grid fills with whichever tile is hovered, focused
    or tapped. The static featuredServers list from servers-data.js is a local
    dev seed only and ships empty, so the site never shows a server that did
-   not opt in. The section stays hidden whenever the final list is empty.
+   not opt in. The section stays hidden when the list is genuinely empty, and
+   shows one line with a retry when the list could not be fetched at all, so
+   an offline or blocked visit is not mistaken for a feature that is gone.
    ========================================================================== */
 (function () {
     const SERVERS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/servers';
@@ -1415,7 +1417,18 @@ let ticketStep = 1;
         return body;
     }
 
-    function buildGrid(servers) {
+    // The wall reads biggest first: the largest opted-in community leads the
+    // grid and opens the strip. The bot already sorts its payload this way and
+    // the route republishes it untouched, but the site sorts again so the
+    // order still holds for the local dev seed and for a cached response, and
+    // a reordering upstream cannot quietly change what is featured.
+    function sortByMembers(entries) {
+        return entries.slice().sort((left, right) =>
+            (Number(right.members) || 0) - (Number(left.members) || 0));
+    }
+
+    function buildGrid(serverEntries) {
+        const servers = sortByMembers(serverEntries);
         const grid = document.getElementById('serverGrid');
         const section = document.getElementById('servers');
         const shell = grid && grid.closest('.server-grid-shell');
@@ -1500,28 +1513,101 @@ let ticketStep = 1;
             }));
     }
 
-    async function fetchLiveServers() {
-        const cached = readCachedServers();
-        if (cached) {
-            buildGrid(cached);
-            return;
+    // Two attempts, because the first one is the one that meets a cold Vercel
+    // instance plus the bot's own round-trip. A single 4s try was enough to
+    // blank the whole section on a slow first paint.
+    const FETCH_ATTEMPTS = 2;
+    const RETRY_DELAY_MS = 900;
+
+    function wait(ms) {
+        return new Promise(resolve => window.setTimeout(resolve, ms));
+    }
+
+    // True when the page is being served off a developer's machine rather than
+    // from the site's own origin.
+    function isLocalPreview() {
+        const host = window.location.hostname;
+        return host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '';
+    }
+
+    // The failure state, built into the detail strip. Before this, a request
+    // that could not complete at all (offline, CORS, the bot down, a timeout)
+    // left the section hidden, which is indistinguishable from a feature that
+    // was never built - and it is what a local preview always hits, because
+    // the dashboard's CORS policy only answers the live site's own origin.
+    function buildLoadFailure() {
+        const wrap = document.createElement('p');
+        wrap.className = 'server-load-failure';
+        let message = 'The community list could not be loaded right now. ';
+        if (isLocalPreview()) {
+            message += 'A local preview is refused by the dashboard, which only answers its own '
+                + 'origin (sean.bot.nu). Paste a response from /api/public/servers into '
+                + 'servers-data.js to preview the grid here. ';
         }
-        const controller = new AbortController();
-        const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-        try {
-            const response = await fetch(SERVERS_ENDPOINT, { signal: controller.signal });
-            clearTimeout(timeout);
-            if (!response.ok) return;
-            const data = await response.json();
-            const servers = sanitizeServers(data && data.servers);
-            // An empty list is cached too: it is a valid state (nobody has
-            // opted in yet), not a failure worth retrying every view.
-            writeCachedServers(servers);
-            buildGrid(servers);
-        } catch (error) {
-            clearTimeout(timeout);
-            // Offline, CORS, bot down: whatever the static seed built stays.
+        wrap.appendChild(document.createTextNode(message));
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.className = 'server-load-retry';
+        retry.textContent = 'Try again';
+        retry.addEventListener('click', () => {
+            retry.disabled = true;
+            retry.textContent = 'Trying...';
+            fetchLiveServers(true);
+        });
+        wrap.appendChild(retry);
+        return wrap;
+    }
+
+    function showLoadFailure() {
+        const grid = document.getElementById('serverGrid');
+        const section = document.getElementById('servers');
+        const detail = document.getElementById('serverDetail');
+        if (!grid || !section || !detail) return;
+        // Anything already on screen wins: a seed, or a payload built by an
+        // earlier attempt on this page.
+        if (grid.childElementCount) return;
+        detail.replaceChildren(buildLoadFailure());
+        section.hidden = false;
+    }
+
+    function hideSection() {
+        const section = document.getElementById('servers');
+        const detail = document.getElementById('serverDetail');
+        if (detail) detail.replaceChildren();
+        if (section) section.hidden = true;
+    }
+
+    async function fetchLiveServers(force) {
+        if (!force) {
+            const cached = readCachedServers();
+            if (cached) {
+                buildGrid(cached);
+                return;
+            }
         }
+        for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt += 1) {
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+            try {
+                const response = await fetch(SERVERS_ENDPOINT, { signal: controller.signal });
+                clearTimeout(timeout);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                const servers = sanitizeServers(data && data.servers);
+                // An empty list is cached too: it is a valid state (nobody has
+                // opted in yet), not a failure worth retrying every view.
+                writeCachedServers(servers);
+                if (servers.length) buildGrid(servers);
+                else hideSection();
+                return;
+            } catch (error) {
+                clearTimeout(timeout);
+                // Offline, CORS, bot down, timeout: try once more, then say so
+                // rather than leaving the section invisible.
+                if (attempt < FETCH_ATTEMPTS) await wait(RETRY_DELAY_MS);
+            }
+        }
+        showLoadFailure();
     }
 
     function initServerDeck() {
