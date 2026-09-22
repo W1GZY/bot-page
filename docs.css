@@ -96,7 +96,7 @@
     max-height: calc(100vh - 240px);
 }
 
-/* Sidebar title: "Documentation", "Guides" or "Jump to Category". */
+/* Sidebar title: "Guides" or "Jump to a category". */
 .docs-nav-title,
 .toc-title,
 .sidebar-toc-header {

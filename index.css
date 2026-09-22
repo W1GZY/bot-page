@@ -1576,6 +1576,7 @@
                 grid-column: span 1;
             }
             .plain-intro-copy { padding-left: 0; }
+        }
 
         @media (max-width: 820px) {
             .plain-intro-copy { padding-left: 0; }
@@ -1950,7 +1951,13 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 34px 24px 22px;
+    /* The top band is reserved space: the counter lives in it, above the deck,
+       so the two can never overlap. The counter reads its own offset back out
+       of these two variables rather than hard-coding numbers that quietly
+       collide the moment either padding changes. */
+    --deck-pad-top: 34px;
+    --deck-pad-x: 24px;
+    padding: var(--deck-pad-top) var(--deck-pad-x) 22px;
     backdrop-filter: blur(16px);
 }
 .server-deck-shell::before {
@@ -2014,6 +2021,9 @@
     text-align: left;
     cursor: pointer;
     position: relative;
+    /* Clips the countdown bar to the card's own radius. Nothing inside needs
+       to escape the card: the icon is already sized and cropped. */
+    overflow: hidden;
     transform-origin: 50% 50%;
     /* Parked: the pose for every card that is neither the front one nor one of
        its two shoulders. It waits directly behind the front card instead of
@@ -2050,6 +2060,20 @@
     transition: opacity 0.3s ease;
     pointer-events: none;
 }
+/* A wash of the community's own colour, sitting behind the text. Two adjacent
+   cards otherwise read as the same panel with different words in it. Held
+   near 12% so it never fights whichever theme accent the visitor picked. */
+.server-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(130% 110% at 10% 0%, hsl(var(--card-hue, 45) 58% 58% / 0.13), transparent 64%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+}
+.server-card.is-front::before { opacity: 1; }
 /* Shoulders: the cards either side of the front one, scaled back and tilted
    toward the middle so the deck reads as a stack rather than three flat
    panels. --deck-shift carries only which side the card is on. */
@@ -2092,10 +2116,41 @@
         border-color var(--transition-fast),
         box-shadow 0.5s ease;
 }
+/* A lift rather than a tilt: the shoulders already own the rotation, so the
+   front card stays square to the reader and only rises a little. */
+.server-card.deck-pos-front:hover {
+    transform: scale(1.015);
+    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.5);
+    transition: transform 0.24s var(--ease-out-expo), box-shadow 0.24s ease;
+}
 .server-card.is-front {
     border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
     box-shadow: var(--shadow-lift);
     cursor: default;
+}
+/* Time remaining on the front card before the deck moves on. Built on every
+   card and shown on one, so it reads as "this community, and then the next"
+   rather than as a progress bar for the page. */
+.server-card-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+    transform: scaleX(0);
+    transform-origin: left center;
+    opacity: 0;
+    pointer-events: none;
+}
+.server-card.is-front .server-card-progress { opacity: 1; }
+.server-card.deck-running .server-card-progress {
+    animation: serverCardCountdown var(--deck-interval, 6000ms) linear forwards;
+}
+@keyframes serverCardCountdown {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
 }
 
 .server-card-icon {
@@ -2118,6 +2173,23 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+/* A server with no icon still gets a card that looks deliberate: its initials
+   sit on a gradient in its own hue instead of on a flat grey square. */
+.server-card-icon.is-initials {
+    background: linear-gradient(140deg, hsl(var(--card-hue, 45) 48% 36%), hsl(var(--card-hue, 45) 48% 17%));
+    border-color: hsl(var(--card-hue, 45) 48% 52% / 0.4);
+    color: #fff;
+}
+/* The icon gives a small pop as its card takes the front, so advancing has a
+   beat to it rather than being a silent swap of two static panels. */
+@keyframes serverCardIconPop {
+    0% { transform: scale(0.84); }
+    62% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.server-card.is-arriving .server-card-icon {
+    animation: serverCardIconPop 0.44s var(--ease-out-expo) both;
 }
 .server-card-body { flex: 1; min-width: 0; }
 .server-card-top {
@@ -2237,21 +2309,128 @@
     background: var(--accent);
     box-shadow: 0 0 10px var(--accent-glow);
 }
+/* Where you are in the deck, for the case the dots cannot cover on their own:
+   past a handful of servers they are too small to count. */
+.server-deck-counter {
+    position: absolute;
+    /* The box is the reserved band above the deck (less a little daylight) and
+       centres its own line with flex, so the counter cannot end up on the card
+       and the spacing cannot drift if this font size ever changes. Doing it
+       with a hard-coded top came apart on phones, where the panel's top
+       padding shrinks and the offset no longer cleared the card. */
+    top: 0;
+    right: var(--deck-pad-x);
+    display: flex;
+    align-items: center;
+    height: calc(var(--deck-pad-top) - 6px);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    opacity: 0.75;
+}
+/* Collapses rather than just fading, so retiring it does not leave a line of
+   dead space at the bottom of the panel. */
+.server-deck-hint {
+    margin: 16px 0 0;
+    max-height: 44px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    transition: opacity 0.35s ease, max-height 0.35s ease, margin-top 0.35s ease;
+}
+.server-deck-hint.is-dismissed {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+}
+@media (hover: none) {
+    .server-deck-hint { display: none; }
+}
 
 @media (max-width: 700px) {
-    .server-deck-shell { padding: 26px 16px 18px; }
-    .server-deck { min-height: 268px; }
+    .server-deck-shell {
+        --deck-pad-top: 32px;
+        --deck-pad-x: 14px;
+        padding: var(--deck-pad-top) var(--deck-pad-x) 18px;
+    }
+    .server-deck {
+        min-height: 268px;
+        /* Shoulders sit further back on a phone so the front card still reads
+           as the front card in a much smaller panel, and so more of each
+           neighbour shows. */
+        --deck-side-scale: 0.86;
+        --deck-tilt: -6deg;
+    }
+    /* A percentage of the panel and nothing else. This used to carry a 280px
+       floor, which at a 320-360px viewport was wider than the panel itself:
+       the front card covered both shoulders completely and the fan vanished,
+       leaving a single card with odd edges and no hint that there was a stack
+       behind it. A share of the panel keeps the peek at every width. */
     .server-card {
         gap: 12px;
         padding: 16px;
-        width: min(560px, 94%);
+        width: min(560px, 78%);
     }
     .server-card-icon { width: 46px; height: 46px; font-size: 0.95rem; }
     .server-card-name { font-size: 1.05rem; }
     .server-card-tagline { font-size: 0.85rem; }
+    /* Thumb-sized. 34px is a fine mouse target and a fiddly one for a finger. */
+    .server-deck-arrow { width: 42px; height: 42px; }
+    /* The dots stay 8px wide so fifteen of them cannot overlap into one target,
+       but they grow vertically, which is where a fingertip lands anyway. */
+    .server-deck-dot { position: relative; }
+    .server-deck-dot::after {
+        content: '';
+        position: absolute;
+        inset: -14px 0;
+    }
+}
+
+/* Phone-width card, where the horizontal arrangement runs out of room. */
+@media (max-width: 440px) {
+    /* Icon above the text rather than beside it. Beside the text it took 58px
+       of a 200px card and left the description about 110px wide, which turned
+       an 88-character description into ten narrow lines and a 458px tall card
+       - taller than the panel it sits in, and worse to read than not showing
+       the neighbours at all. Above the text the same description needs three
+       lines, so the fan stays and the card gets shorter. */
+    .server-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /* Three lines is the whole teaser on a phone; the icon, name, member count
+       and join button are what a reader actually picks from. This also caps
+       how tall the card can get, so one long description cannot stretch the
+       panel: every card in the deck shares the tallest card's height. */
+    .server-card-tagline {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+    /* The peek down here is 20-35px, which is inside the neighbour's own
+       padding, so its icon and text arrived sliced down the middle of a
+       letter. A shoulder keeps its shape, colour and shade and loses the
+       contents: a clean edge reads as "there is another card" where half a
+       word reads as a rendering fault. hidden rather than removed, so the
+       peek's width and the card's height are unchanged. */
+    .server-card.deck-pos-side .server-card-icon,
+    .server-card.deck-pos-side .server-card-body { visibility: hidden; }
+    /* Ahead of the front card's wash of its own colour, so the edge that peeks
+       out still says which community is back there. */
+    .server-card.deck-pos-side::before { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .server-deck-shell.is-live { animation: none; }
-    .server-card, .server-card::after { transition: none; }
+    .server-card, .server-card::after, .server-card::before { transition: none; }
+    .server-card.is-arriving .server-card-icon { animation: none; }
+    /* A bar that fills on its own with no way to stop it is exactly what this
+       preference is about. The dots already say where you are. */
+    .server-card-progress { display: none; }
+    .server-deck-hint { transition: none; }
 }

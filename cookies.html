@@ -118,7 +118,7 @@
         </div>
         <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
         <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
-        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Guides</span></a>
         <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
     </nav>
 
@@ -232,7 +232,7 @@
                 <h2>1.2 Third-party services the pages load</h2>
                 <p>Loading a page here also means your browser requests a few files from other companies. The site serves the Inter typeface itself, so no font request leaves this origin. We do not control the requests that do leave, and we do not receive anything back from them:</p>
                 <ul>
-                    <li><strong>unpkg</strong> serves the Phosphor icon stylesheets.</li>
+                    <li><strong>unpkg</strong> (unpkg.com) serves the Phosphor icon stylesheets.</li>
                     <li><strong>Discord</strong> serves any community icon a card shows in the Communities section, when that card has one.</li>
                     <li><strong>The SeanBot dashboard</strong> answers the request for the live server count. That request is anonymous: it sends no cookies and no credentials, and it asks only for a public total.</li>
                 </ul>
@@ -263,7 +263,7 @@
                             <tr>
                                 <td><code>session</code></td>
                                 <td>Cookie (strictly necessary)</td>
-                                <td>Keeps you signed in after you authorize with Discord</td>
+                                <td>Keeps you signed in after you authorize with Discord, and carries the CSRF token that protects dashboard actions against cross-site requests. It is set as HttpOnly, Secure, and SameSite=Lax, so page scripts cannot read it, it is only sent over HTTPS, and it is not attached to cross-site requests.</td>
                                 <td>Eight hours have passed since sign-in, or you sign out</td>
                             </tr>
                         </tbody>

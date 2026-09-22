@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeanBot - Discord Moderation, Analytics & Community Tools</title>
-    <meta name="description" content="Discord moderation, anti-raid, tickets, events, timezone roles, analytics and Wizard101 tools in one bot. Turn on only the modules your server needs.">
+    <meta name="description" content="Discord moderation, anti-raid, tickets, events, timezone roles, cross-server federation, analytics and Wizard101 tools, switched on one module at a time. No premium tier.">
     <link rel="canonical" href="https://sean.bot.nu/">
     <meta name="theme-color" content="#09090b">
 
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SeanBot">
     <meta property="og:title" content="SeanBot - Discord Moderation, Analytics & Community Tools">
-    <meta property="og:description" content="Discord moderation, anti-raid, tickets, events, timezone roles, analytics and Wizard101 tools in one bot. Turn on only the modules your server needs.">
+    <meta property="og:description" content="Discord moderation, anti-raid, tickets, events, timezone roles, cross-server federation, analytics and Wizard101 tools, switched on one module at a time. No premium tier.">
     <meta property="og:url" content="https://sean.bot.nu/">
     <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
     <meta property="og:image:alt" content="The SeanBot home page, showing its tagline and command buttons">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SeanBot - Discord Moderation, Analytics & Community Tools">
-    <meta name="twitter:description" content="Discord moderation, anti-raid, tickets, events, timezone roles, analytics and Wizard101 tools in one bot. Turn on only the modules your server needs.">
+    <meta name="twitter:description" content="Discord moderation, anti-raid, tickets, events, timezone roles, cross-server federation, analytics and Wizard101 tools, switched on one module at a time. No premium tier.">
     <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png">
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -57,7 +57,7 @@
         "image": "https://sean.bot.nu/assets/og-image.png",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Discord",
-        "description": "Discord moderation, anti-raid, tickets, events, timezone roles, analytics and Wizard101 tools in one bot. Turn on only the modules your server needs.",
+        "description": "Discord moderation, anti-raid, tickets, events, timezone roles, cross-server federation, analytics and Wizard101 tools, switched on one module at a time. No premium tier.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
             "Moderation and anti-raid protection",
@@ -101,7 +101,7 @@
             <a href="#servers" class="site-nav-link" data-section="servers"><i class="ph ph-users-three"></i><span>Communities</span></a>
             <a href="#features" class="site-nav-link" data-section="features"><i class="ph ph-squares-four"></i><span>Modules</span></a>
             <a href="#compare" class="site-nav-link" data-section="compare"><i class="ph ph-scales"></i><span>Compare</span></a>
-            <a href="#docs" class="site-nav-link" data-tab="docs"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+            <a href="#docs" class="site-nav-link" data-tab="docs"><i class="ph ph-book-open"></i><span>Guides</span></a>
             <a href="#commands" class="site-nav-link" data-tab="commands"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
             <a href="invite.html" target="_blank" rel="noopener" class="site-nav-mobile-invite"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot</a>
         </nav>
@@ -145,14 +145,14 @@
             <!-- Hero Section -->
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    A Discord bot for <span class="accent-shine">moderation, events and community tools</span>.
+                    A Discord bot you switch on <span style="color: var(--accent);">one module at a time</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Anti-raid, tickets, reaction roles, timezone roles, federation, analytics and a full Wizard101 suite, enabled one module at a time.
+                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation, analytics, and a Wizard101 suite that is far larger than any Discord bot needs to have. Nothing runs until you turn it on.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-                    <a href="invite.html" target="_blank" class="btn-large btn-primary" style="box-shadow: 0 0 14px var(--accent-glow); padding: 14px 28px; font-weight: 800; font-size: 0.95rem;">
+                    <a href="invite.html" target="_blank" class="btn-large btn-primary" style="padding: 14px 28px; font-weight: 800; font-size: 0.95rem;">
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot to Server
                     </a>
                     <button onclick="switchTab('commands')" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
@@ -167,13 +167,10 @@
                 <div class="hero-mockup-container">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; margin-bottom: 16px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ED4245;"></div>
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #FEE75C;"></div>
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #57F287;"></div>
-                            <span style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono); margin-left: 8px;">#audit-log</span>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono);">#audit-log</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #57F287; font-weight: 700;">
-                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #57F287; box-shadow: 0 0 8px #57F287;"></span> Online
+                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #57F287;"></span> Online
                         </div>
                     </div>
 
@@ -229,11 +226,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Action Button -->
-                                <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px;">
-                                    <a href="invite.html" target="_blank" style="background: #5865F2; color: #fff; text-decoration: none; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot to Your Server</a>
-                                </div>
-
                                 <!-- Footer Line -->
                                 <div style="font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
                                     INSTANT AUDIT LOGGING • INVITE CREATED • TODAY AT 18:23
@@ -249,46 +241,45 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">250+</div>
-                    <div class="stat-label">Commands</div>
+                    <div class="stat-label">Slash and prefix commands</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">47+</div>
-                    <div class="stat-label">Security, community, utility and Wizard101 modules</div>
+                    <div class="stat-label">Modules, every one of them optional</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number stat-word" id="liveServerCount">5</div>
-                    <div class="stat-label">Communities</div>
+                    <div class="stat-label">Communities running it</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word">Guild friendly</div>
-                    <div class="stat-label">Perfect for small communities and game guilds/clans</div>
+                    <div class="stat-number stat-word">No premium tier</div>
+                    <div class="stat-label">Nothing in the comparison table further down is locked behind a subscription</div>
                 </div>
             </div>
 
             <!-- Why SeanBot section -->
             <div class="plain-intro-section">
-                <h2><i class="ph-duotone ph-wrench"></i> Built for actual servers</h2>
+                <h2><i class="ph-duotone ph-wrench"></i> Why it is built in pieces</h2>
                 <div class="plain-intro-copy">
-                    <p class="plain-intro-lead">SeanBot keeps the useful parts close at hand.</p>
-                    <p>Turn on moderation, tickets, reaction roles, timezone tools, federation, analytics, or Wizard101 features when they make sense for your server. Leave the rest alone until you need them.</p>
+                    <p class="plain-intro-lead">A bot that does everything by default is a bot you spend a weekend undoing.</p>
+                    <p>SeanBot ships as separate modules. Anti-raid and moderation are worth switching on before you tell anyone the server exists. Tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools can wait until a member actually asks for one of them. Plenty of servers run this bot with four modules on and never touch the other forty.</p>
                 </div>
             </div>
 
             <!-- Split Feature Section 1: Raid Shield (Text Left, Scrollable Visual Card Right) -->
             <div class="feature-row">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">AutoMod & Anti-Raid</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Anti-Raid and AutoMod</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Detect spam, message floods, and suspicious new accounts in real time. Start in Canary Mode to review detections before enabling quarantine, timeouts, or message deletion.
+                        Spam floods and brand new accounts get flagged as they arrive. A burst of a dozen joins in a short window trips the raid threshold, and the accounts get timed out and swept before a moderator has to notice. Canary Mode shows you the detections first, with quarantine, timeouts and message deletion left switched off until you trust the thresholds.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Review detections in Canary Mode while you fine-tune thresholds and exemptions.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Apply lighter penalties to occasional spam and stronger actions to repeated or coordinated attacks.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Exclude trusted roles and configure detection rules for different member groups.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Configure protection rules directly from the dashboard.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Canary Mode logs the detections without acting on them, so you can tune thresholds against your own traffic.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> A stray spam message gets a lighter penalty than a coordinated raid. Repeat offenders escalate on their own.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> Trusted roles are exempt, and every rule can be scoped to the channels that actually need it.</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
-                        <i class="ph-bold ph-shield-check"></i> Explore Security Docs
+                        <i class="ph-bold ph-shield-check"></i> Read the anti-raid guide
                     </button>
                 </div>
                 
@@ -466,18 +457,13 @@
 
                 <!-- Description Side -->
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Support Ticket System</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Support tickets stay private</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Deploy support panels with custom modals, role permissions, internal notes, and HTML transcript archives.
+                        A member opens a ticket from a button or a dropdown and lands in a private channel with the staff roles you pick. Whoever gets there first can claim it, so two moderators stop answering the same question twice. Notes added with <code>/ticket staffsay</code> never show up in the transcript the member can read. It is still labelled BETA on this page, which is the honest label for it.
                     </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Button & Dropdown ticket creation panels with your embeds</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Private staff notes (<code>/ticket staffsay</code>) & <code>/ticket claim</code> queue</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Ticket archiving, auto-inactivity cleanup & lock safety</li>
-                    </ul>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
-                        <i class="ph-bold ph-ticket"></i> Explore Ticket Docs
-                    </button>
+                    <p style="margin: 0;">
+                        <button type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.9rem; font-family: inherit;">Read the ticket guide <i class="ph-bold ph-arrow-right"></i></button>
+                    </p>
                 </div>
             </div>
 
@@ -485,15 +471,13 @@
             <div class="feature-row">
                 <!-- Description Side -->
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Global Timezone Role Sync</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Timezone roles</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Members choose a region or search with <code>/timezone set</code>. SeanBot stores their timezone and assigns the matching regional role.
+                        Members pick a continent from the panel or search for their city with <code>/timezone set</code>, and the matching regional role is applied for them. That role is what makes the rest of the bot usable: poll closing times, event reminders and raid sign-ups show up in each member's own local time rather than the server owner's.
                     </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Continent-based interactive buttons & dropdown navigation</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Automatic regional role assignment upon selection</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #5865F2; font-size: 1.2rem;"></i> Searchable <code>/timezone set</code> command integration</li>
-                    </ul>
+                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin: 0;">
+                        If a member never sets one, nothing breaks. They just see event times in the server default like they always did.
+                    </p>
                 </div>
 
                 <!-- Interactive Card -->
@@ -603,7 +587,7 @@
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
                             <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Federation Relay Preview
                         </div>
-                        <span class="federation-live-badge"><span class="federation-live-dot"></span> LIVE · TWO-WAY</span>
+                        <span class="federation-live-badge">Two-way</span>
                     </div>
 
                     <div class="federation-route" aria-label="Federation route from Server A to Server B">
@@ -706,17 +690,15 @@
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Connect Allied Discord Servers</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Running two servers as one</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Link allied communities together so forum threads, relay channels, Team-Up requests, and leaderboards can be shared between trusted servers.
+                        Federation links servers you already trust. A channel in one becomes readable in the other, so an alliance-chat thread, a forum post, a Team-Up request or a leaderboard can be shared without asking everyone to join a second Discord.
                     </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Live cross-server channel and forum thread relays</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Team-Up requests and leaderboards shared between trusted communities</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Staff notes and ticket data stay private to the server that owns them</li>
-                    </ul>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; margin: 0 0 20px 0;">
+                        Pairing is per channel, so a share can be as narrow as the one channel you both agreed on.
+                    </p>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('federation'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
-                        <i class="ph-bold ph-globe-hemisphere-west"></i> Explore Federation Docs
+                        <i class="ph-bold ph-globe-hemisphere-west"></i> How pairing works
                     </button>
                 </div>
             </div>
@@ -724,18 +706,16 @@
             <!-- Polls and dynamic timestamps -->
             <div class="feature-row">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Quick polls, scheduled votes, and event sign-ups</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Polls and raid sign-ups</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Create polls with up to 20 options, roster slots, timezone-aware timestamps, and an automatic closing time.
+                        A poll is a question, a comma separated list of answers and an optional closing time. That is the whole setup. Raid sign-ups reuse the same panel with slot caps and waitlists, so when someone drops out the next person on the list gets the slot instead of a moderator having to reshuffle it by hand.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Up to 20 options in one poll.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Build roster slots one at a time, with caps, waitlists, and one-tap sign-up.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Show event times in each member's local timezone.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Set an automatic closing time and publish results when voting ends.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Up to 20 answers, each with its own numbered reaction, so voting is one click.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Closing time is optional. When it passes, the results post themselves.</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('raidpolls'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
-                        <i class="ph-bold ph-chart-polar"></i> Explore Poll Docs
+                        <i class="ph-bold ph-chart-polar"></i> Read the poll guide
                     </button>
                 </div>
 
@@ -748,9 +728,8 @@
                             <span>raid-polls</span>
                             <span style="color: #949ba4; font-size: 0.8rem; font-weight: 400; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 8px;">SeanBot Interactive Poll Builder</span>
                         </div>
-                        <div style="font-size: 0.75rem; color: #57F287; font-weight: 700; display: flex; align-items: center; gap: 6px;">
-                            <span class="live-pulse-dot" style="width: 8px; height: 8px; background: #57F287; border-radius: 50%; display: inline-block; animation: pulseGlow 1.5s infinite;"></span>
-                            Listening for /poll create
+                        <div style="font-size: 0.75rem; color: #b5bac1; font-weight: 600;">
+                            Waiting for a command
                         </div>
                     </div>
 
@@ -876,35 +855,21 @@
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Emoji Tracker & Analytics</h2>
+                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Which emoji are still earning their slot</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        See which emojis people actually use, which ones are taking up space, and which members drive the most activity.
+                        Discord caps how many emoji a server can hold, and half of what you added is usually still sitting there unused. This counts message emoji and reactions separately, over a week, a month or all time, and ranks members by how much they actually use them. Worth a look before you decide what to delete.
                     </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Compare weekly, monthly, and all-time emoji usage.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Rank members by emoji activity and see which emojis they use most.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Track message emojis and reactions separately.</li>
-                    </ul>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('emojis'), 50);" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
-                        <i class="ph-bold ph-chart-bar"></i> View Emoji Commands
-                    </button>
+                    <p style="margin: 0;">
+                        <button type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('emojis'), 50);" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.9rem; font-family: inherit;">Emoji commands and dashboard views <i class="ph-bold ph-arrow-right"></i></button>
+                    </p>
                 </div>
             </div>
 
-            <div class="section-cta-banner">
-                <div class="section-cta-content">
-                    <h3>Every module is optional.</h3>
-                    <p>Have a look at the workflows first, then invite SeanBot once you know which pieces fit.</p>
-                </div>
-                <a href="invite.html" target="_blank" class="section-cta-btn">
-                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
-                </a>
-            </div>
             <!-- Live feature showcase section -->
             <section id="showcase" style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Open a live preview</h2>
-                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Click through the same kinds of dashboards and Discord workflows your staff will use: security, timezones, voice activity, events, emojis, and embeds.</p>
+                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Look at the dashboard first</h2>
+                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Seven previews, all clickable: security, timezones, voice activity, server stats, events, emoji and the embed builder. These are the same screens your staff will open. The member counts and message totals in them are made up, because this is a demo and not somebody's real server.</p>
                 </div>
 
                 <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
@@ -923,11 +888,11 @@
                     <div id="showcase-timezone" class="showcase-panel active" role="tabpanel" aria-label="Timezone analytics preview" style="display: grid;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Timezone dashboard</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See where your community is active</h3>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Where your community actually is</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See timezone clusters, local-time cards, and member counts by region so staff can schedule events when people are available.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">🌍 Live Timezone Buckets</span>
-                                <span class="pill-badge">👥 Region Member Counts</span>
+                                <span class="pill-badge">Timezone buckets</span>
+                                <span class="pill-badge">Member counts by region</span>
                                 
                             </div>
                         </div>
@@ -942,8 +907,8 @@
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Review your server's protection status</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Review active protections, security checks, and recommendations without digging through a long settings page.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">🛡️ Server Security Rating</span>
-                                <span class="pill-badge">✅ Active Protection Checks</span>
+                                <span class="pill-badge">Security rating</span>
+                                <span class="pill-badge">Active protection checks</span>
                                 
                             </div>
                         </div>
@@ -955,11 +920,11 @@
                     <div id="showcase-voice" class="showcase-panel" role="tabpanel" aria-label="Voice analytics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice activity</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Find your busiest voice hours</h3>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Busiest voice hours</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">See session length, member activity, and peak hours to understand how your voice channels are being used.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">🎙️ Session Duration Metrics</span>
-                                <span class="pill-badge">📈 Member Activity Charts</span>
+                                <span class="pill-badge">Session durations</span>
+                                <span class="pill-badge">Member activity</span>
                                 
                             </div>
                         </div>
@@ -971,11 +936,11 @@
                     <div id="showcase-serverstats" class="showcase-panel" role="tabpanel" aria-label="Server statistics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Server stats</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track server growth and activity</h3>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Growth, in numbers</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Check member growth, online counts, message totals, and channel activity from one overview.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">📊 Core KPI Tiles</span>
-                                <span class="pill-badge">📣 Channel Activity</span>
+                                <span class="pill-badge">Core stats</span>
+                                <span class="pill-badge">Channel activity</span>
                                 
                             </div>
                         </div>
@@ -986,7 +951,6 @@
                                         <div class="showcase-dashboard-title">Server Statistics Overview</div>
                                         <div class="showcase-dashboard-subtitle">Core health metrics across members, messages, and channels</div>
                                     </div>
-                                    <span class="showcase-status-chip">Sample data</span>
                                 </div>
                                 <div class="showcase-kpi-grid">
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">Members</div><div class="showcase-kpi-value">12,842</div></div>
@@ -1021,11 +985,11 @@
                     <div id="showcase-events" class="showcase-panel" role="tabpanel" aria-label="Event manager preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Events and reminders</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Manage events, RSVPs, and reminders</h3>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">The event queue</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Track upcoming events, RSVP totals, reminder status, and timezone-aware schedules from one queue.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">📅 Upcoming Event Queue</span>
-                                <span class="pill-badge">🔔 Reminder Automation</span>
+                                <span class="pill-badge">Upcoming events</span>
+                                <span class="pill-badge">Reminders</span>
                                 
                             </div>
                         </div>
@@ -1036,7 +1000,6 @@
                                         <div class="showcase-dashboard-title">Event Manager</div>
                                         <div class="showcase-dashboard-subtitle">Upcoming community activities, reminders, and attendance</div>
                                     </div>
-                                    <span class="showcase-status-chip">Sample data</span>
                                 </div>
                                 <div class="showcase-kpi-grid" style="margin-bottom: 16px;">
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">Total Events</div><div class="showcase-kpi-value">28</div></div>
@@ -1065,11 +1028,11 @@
                     <div id="showcase-emoji" class="showcase-panel" role="tabpanel" aria-label="Emoji analytics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Emoji usage</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">See which emojis people actually use</h3>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Emoji usage over time</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Compare emoji usage, reaction trends, and member activity, then spot unused emojis before your server runs out of slots.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">📊 Weekly & Monthly Charts</span>
-                                <span class="pill-badge">💬 Reaction Tracking</span>
+                                <span class="pill-badge">Weekly and monthly</span>
+                                <span class="pill-badge">Reaction tracking</span>
                                 
                             </div>
                         </div>
@@ -1084,8 +1047,8 @@
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Build and preview embeds visually</h3>
                             <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Create rules, announcements, and welcome embeds with a side-by-side Discord preview, placeholders, color controls, and one-click posting.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <span class="pill-badge">🎨 Real-Time Preview</span>
-                                <span class="pill-badge">✨ Dynamic Placeholders</span>
+                                <span class="pill-badge">Live preview</span>
+                                <span class="pill-badge">Placeholders</span>
                                 
                             </div>
                         </div>
@@ -1102,16 +1065,20 @@
             <section id="servers" hidden style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Communities using SeanBot</h2>
+                    <p style="color: var(--text-secondary); max-width: 620px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Every server here switched this on themselves in their dashboard. Nothing is listed that did not ask to be.</p>
                 </div>
 
                 <div class="server-deck-shell">
-                    <div class="server-deck" id="serverDeck" role="group" tabindex="0" aria-label="Communities using SeanBot"></div>
+                    <span class="server-deck-counter" id="serverDeckCounter" aria-hidden="true"></span>
+                    <div class="server-deck" id="serverDeck" role="group" tabindex="0" aria-label="Communities using SeanBot. Use the left and right arrow keys to browse."></div>
 
                     <div class="server-deck-controls" id="serverDeckControls">
                         <button class="server-deck-arrow" type="button" id="serverDeckPrev" aria-label="Previous server"><i class="ph-bold ph-caret-left"></i></button>
                         <div class="server-deck-dots" id="serverDeckDots"></div>
                         <button class="server-deck-arrow" type="button" id="serverDeckNext" aria-label="Next server"><i class="ph-bold ph-caret-right"></i></button>
                     </div>
+
+                    <p class="server-deck-hint" id="serverDeckHint">Arrow keys work here. It moves on its own every few seconds, and stops while you are reading.</p>
                 </div>
             </section>
 
@@ -1120,7 +1087,7 @@
             <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
-                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">Compare SeanBot's features and module limits against Dyno, Carl-bot, MEE6 and ProBot.</p>
+                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">This table was written by the person who maintains SeanBot, so read the SeanBot column as a claim rather than a survey. The competitor columns are here because the point of the table is the paywall, not the feature list.</p>
                 </div>
 
                 <div class="comparison-scroll-wrapper">
@@ -1136,48 +1103,48 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>⚡ Slash &amp; Prefix Commands</strong><br><span class="comparison-detail">Hybrid slash / and custom text prefix command triggers</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🛡️ Moderation System</strong><br><span class="comparison-detail">Kick, ban, softban, timeout, and moderation action logs</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>⚠️ Warning System</strong><br><span class="comparison-detail">Member warning tracking, point thresholds, and automated punishments</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Limited</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>📜 Server Audit Logging</strong><br><span class="comparison-detail">Deleted message, edit, role, and member join event logs</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🔗 Invite Tracking</strong><br><span class="comparison-detail">Track member join sources, invite codes, and code creators</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">🔒 Premium</span></td></tr>
-                            <tr><td><strong>🔗 Invite Links &amp; Join Perks</strong><br><span class="comparison-detail">Create tracked invites with per-invite reward roles, welcome perks, join analytics, and spike protection</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">🔒 Premium</span></td></tr>
-                            <tr><td><strong>📌 Sticky Messages</strong><br><span class="comparison-detail">Auto-reposting pinned guidance messages at channel bottom</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🎭 Reaction Roles &amp; Role Menus</strong><br><span class="comparison-detail">Button, select-menu, or reaction-based self-assignable roles</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>👋 Welcome, Farewell &amp; Auto Roles</strong><br><span class="comparison-detail">Join and leave messages plus automatic role assignment</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Partial</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>💬 Custom Commands &amp; Auto-Replies</strong><br><span class="comparison-detail">Keyword responses, reusable custom commands, and triggered messages</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>📡 Social &amp; Feed Alerts</strong><br><span class="comparison-detail">Twitch, YouTube, Reddit, RSS, or other external feed notifications</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🔐 Permission &amp; Access Controls</strong><br><span class="comparison-detail">Role, channel, command, or dashboard-level staff access restrictions</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>⭐ Starboard Engine</strong><br><span class="comparison-detail">Highlight top community messages based on star reaction count</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>💡 Community Suggestions</strong><br><span class="comparison-detail">Structured member suggestion submissions, voting, and status updates</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🎁 Giveaways</strong><br><span class="comparison-detail">Native giveaway hosting with full entry tracking, entry vetting, rerolls, and audit logs</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>📊 Polls</strong><br><span class="comparison-detail">Simple reaction polls with dashboard previews and timestamps, plus advanced raid roster polls</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>📝 Forms &amp; Structured Submissions</strong><br><span class="comparison-detail">Guided intake for reports, appeals, suggestions, staff requests, and support</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>🎫 Support Ticket System</strong><br><span class="comparison-detail">Private support channels, multi-role claims, and HTML transcript logs</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🛡️ Server Raid &amp; Scam Shield</strong><br><span class="comparison-detail">Zero-delay asset pattern scanning and automated member quarantine</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>🍯 Honeypot Trap Channels</strong><br><span class="comparison-detail">Decoy channels that instantly catch and quarantine scam bots and malicious posters</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>👻 Ghost Ping Detection</strong><br><span class="comparison-detail">Instant alerts when users send and delete mention pings</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🔊 Temporary Voice Channels</strong><br><span class="comparison-detail">Dynamic voice lobbies created automatically on user join</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🗣️ Voice Analytics</strong><br><span class="comparison-detail">Server and per-user voice statistics with voice leaderboards</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>📈 Server Stats Channels</strong><br><span class="comparison-detail">Real-time counters, structured activity views, presets, and placeholder catalog</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🏆 Member Leveling &amp; XP</strong><br><span class="comparison-detail">Chat XP points, custom rank cards, and level reward roles</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">🔒 Premium</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🎨 Visual Embed Builder</strong><br><span class="comparison-detail">Custom rich embeds with side-by-side real-time preview</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>⏰ Scheduled &amp; Recurring Automation</strong><br><span class="comparison-detail">Reminders, countdowns, calendars, TimePing events, and recurring triggered messages</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>⏰ Personal Reminders</strong><br><span class="comparison-detail">Scheduled notification pings and customizable timer alerts</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🌐 Timezone Commands</strong><br><span class="comparison-detail">Timezone mapping, city lookup, and dynamic local timestamps</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🌐 Message Translator</strong><br><span class="comparison-detail">Instant multi-language translation for server messages</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>😀 Emoji Management</strong><br><span class="comparison-detail">Top emoji stats, locks, and bulk emoji utilities</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>📊 Emoji Usage Analytics</strong><br><span class="comparison-detail">Dashboard charts tracking top used server emojis over time</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>💬 Reaction Analytics</strong><br><span class="comparison-detail">Dashboard charts tracking community reaction activity trends</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🖱️ Discord Context-Menu Apps</strong><br><span class="comparison-detail">Right-click actions for reports, translation, reminders, and time conversion</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Limited</span></td><td><span class="badge-warn">⚠️ Limited</span></td><td><span class="badge-warn">⚠️ Limited</span></td><td><span class="badge-warn">⚠️ Limited</span></td></tr>
-                            <tr><td><strong>🌍 Timezone Analytics</strong><br><span class="comparison-detail">Member timezone coverage, setup panels, and automatic timezone roles</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🌴 Staff Leave of Absence (LOA)</strong><br><span class="comparison-detail">Staff LOA request filing, approval routing, and status tracking</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>📌 Auto-Pin Messages</strong><br><span class="comparison-detail">Auto-pinning messages based on reaction vote thresholds</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🎮 Event &amp; Roster Management</strong><br><span class="comparison-detail">Raid rosters, Team-Ups, sign-up roles, reminders, calendars, and event recaps</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-warn">⚠️ Basic</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-warn">⚠️ Basic</span></td></tr>
-                            <tr><td><strong>🔮 Wizard101 Gaming Suite</strong><br><span class="comparison-detail">Damage assistant, Beastmoon tracking, pet/spell lookup, deck sharing, TC values</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>🌐 Web Control Dashboard</strong><br><span class="comparison-detail">Full browser management dashboard for server configuration</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-check">✅</span></td></tr>
-                            <tr><td><strong>🌐 Cross-Server Federation</strong><br><span class="comparison-detail">Networked servers with shared moderation, relays, and synced identity</span></td><td><span class="badge-check">✅</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td><td><span class="badge-cross">❌</span></td></tr>
-                            <tr><td><strong>💎 Premium Dependency Level</strong><br><span class="comparison-detail">How heavily basic core features are locked behind a paid subscription</span></td><td><span class="badge-free">None (0%)</span></td><td><span class="badge-warn">Very High</span></td><td><span class="badge-warn">Low</span></td><td><span class="badge-warn">High</span></td><td><span class="badge-warn">Medium</span></td></tr>
+                            <tr><td><strong>Slash and prefix commands</strong><br><span class="comparison-detail">Slash commands, plus whatever text prefix you decide to set</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Moderation system</strong><br><span class="comparison-detail">Kick, ban, softban, timeout, and moderation action logs</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Warning system</strong><br><span class="comparison-detail">Member warning tracking, point thresholds, and automated punishments</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Limited</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Server audit logging</strong><br><span class="comparison-detail">Deleted message, edit, role, and member join event logs</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Invite tracking</strong><br><span class="comparison-detail">Track member join sources, invite codes, and code creators</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td></tr>
+                            <tr><td><strong>Invite links and join perks</strong><br><span class="comparison-detail">Create tracked invites with per-invite reward roles, welcome perks, join analytics, and spike protection</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td></tr>
+                            <tr><td><strong>Sticky messages</strong><br><span class="comparison-detail">Auto-reposting pinned guidance messages at channel bottom</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Reaction roles and role menus</strong><br><span class="comparison-detail">Button, select-menu, or reaction-based self-assignable roles</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Welcome, farewell and auto roles</strong><br><span class="comparison-detail">Join and leave messages plus automatic role assignment</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Partial</span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Custom commands and auto-replies</strong><br><span class="comparison-detail">Keyword responses, reusable custom commands, and triggered messages</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Social and feed alerts</strong><br><span class="comparison-detail">Twitch, YouTube, Reddit, RSS, or other external feed notifications</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Permission and access controls</strong><br><span class="comparison-detail">Role, channel, command, or dashboard-level staff access restrictions</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Starboard</strong><br><span class="comparison-detail">Highlight top community messages based on star reaction count</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Community suggestions</strong><br><span class="comparison-detail">Structured member suggestion submissions, voting, and status updates</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Giveaways</strong><br><span class="comparison-detail">Native giveaway hosting with full entry tracking, entry vetting, rerolls, and audit logs</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Polls</strong><br><span class="comparison-detail">Simple reaction polls with dashboard previews and timestamps, plus advanced raid roster polls</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Forms and structured submissions</strong><br><span class="comparison-detail">Guided intake for reports, appeals, suggestions, staff requests, and support</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Support ticket system</strong><br><span class="comparison-detail">Private support channels, multi-role claims, and HTML transcript logs</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Raid and scam shield</strong><br><span class="comparison-detail">Scans messages and attachments for known scam patterns and quarantines whatever trips it</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Honeypot trap channels</strong><br><span class="comparison-detail">Decoy channels that instantly catch and quarantine scam bots and malicious posters</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Ghost ping detection</strong><br><span class="comparison-detail">Instant alerts when users send and delete mention pings</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Temporary voice channels</strong><br><span class="comparison-detail">Dynamic voice lobbies created automatically on user join</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Voice analytics</strong><br><span class="comparison-detail">Server and per-user voice statistics with voice leaderboards</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Server stats channels</strong><br><span class="comparison-detail">Counters in channel names, with presets and a placeholder catalog</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Member leveling and XP</strong><br><span class="comparison-detail">Chat XP points, custom rank cards, and level reward roles</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-lock" aria-hidden="true"></i> Premium</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Visual embed builder</strong><br><span class="comparison-detail">Custom rich embeds with side-by-side real-time preview</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Scheduled and recurring automation</strong><br><span class="comparison-detail">Reminders, countdowns, calendars, TimePing events, and recurring triggered messages</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Personal reminders</strong><br><span class="comparison-detail">Scheduled notification pings and customizable timer alerts</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Timezone commands</strong><br><span class="comparison-detail">Timezone mapping, city lookup, and dynamic local timestamps</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Message translator</strong><br><span class="comparison-detail">Instant multi-language translation for server messages</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Emoji management</strong><br><span class="comparison-detail">Top emoji stats, locks, and bulk emoji utilities</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Emoji usage analytics</strong><br><span class="comparison-detail">Dashboard charts tracking top used server emojis over time</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Reaction analytics</strong><br><span class="comparison-detail">Dashboard charts tracking community reaction activity trends</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Discord context-menu apps</strong><br><span class="comparison-detail">Right-click actions for reports, translation, reminders, and time conversion</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Limited</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Limited</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Limited</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Limited</span></td></tr>
+                            <tr><td><strong>Timezone analytics</strong><br><span class="comparison-detail">Member timezone coverage, setup panels, and automatic timezone roles</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Staff leave of absence (LOA)</strong><br><span class="comparison-detail">Staff LOA request filing, approval routing, and status tracking</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Auto-pin messages</strong><br><span class="comparison-detail">Auto-pinning messages based on reaction vote thresholds</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Event and roster management</strong><br><span class="comparison-detail">Raid rosters, Team-Ups, sign-up roles, reminders, calendars, and event recaps</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-warn"><i class="ph-bold ph-warning" aria-hidden="true"></i> Basic</span></td></tr>
+                            <tr><td><strong>Wizard101 suite</strong><br><span class="comparison-detail">Damage assistant, Beastmoon tracking, pet/spell lookup, deck sharing, TC values</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Web control dashboard</strong><br><span class="comparison-detail">Configure it in a browser instead of typing commands</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Cross-server federation</strong><br><span class="comparison-detail">Share channels, moderation and member identity across servers you trust</span></td><td><span class="badge-check" role="img" aria-label="Yes"><i class="ph-bold ph-check" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td><td><span class="badge-cross" role="img" aria-label="No"><i class="ph-bold ph-x" aria-hidden="true"></i></span></td></tr>
+                            <tr><td><strong>Paywall on basic features</strong><br><span class="comparison-detail">How much of the basic feature set needs a paid plan</span></td><td><span class="badge-free">None</span></td><td><span class="badge-warn">Very High</span></td><td><span class="badge-warn">Low</span></td><td><span class="badge-warn">High</span></td><td><span class="badge-warn">Medium</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -1192,6 +1159,15 @@
                     </a>
                 </div>
             </section>
+
+            <!-- Every claim in this block is a row in the table above. -->
+            <div class="plain-intro-section">
+                <h2><i class="ph-duotone ph-warning-circle"></i> What it does not do</h2>
+                <div class="plain-intro-copy">
+                    <p class="plain-intro-lead">No bot covers everything, and pretending otherwise is how the other columns in that table got filled in.</p>
+                    <p>There is no leveling or XP system here. If rank cards are what your members actually want, MEE6 already does that and running two bots for it is a waste of your time. There are no Twitch, YouTube or RSS feed alerts either, so raids and streams still need their own bot. Ticket transcripts are labelled BETA and occasionally still are. And the Wizard101 suite is genuinely deep, which also means it is worth nothing at all to you if your server has never heard of Wizard101.</p>
+                </div>
+            </div>
 
             <!-- Featured Modules -->
             <section id="features" class="modules-section">
@@ -1225,7 +1201,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Advanced Polls</h3>
-                        <p class="feature-desc">Build signup polls for any game or activity - add slots one at a time, cap them, and let waitlists promote members automatically.</p>
+                        <p class="feature-desc">Sign-up polls with named slots, caps and a waitlist. When someone drops out the next person in line gets the slot without a moderator reshuffling anything.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card featured" data-category="security" data-search="anti-nuke risk score moderation &amp; safety watch active risk heat, adjust channel thresholds, and tune trusted-role sensitivity from the dashboard." data-doc="antiraid">
@@ -1234,7 +1210,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Anti-Nuke Risk Score</h3>
-                        <p class="feature-desc">Watch active risk heat, adjust channel thresholds, and tune trusted-role sensitivity from the dashboard.</p>
+                        <p class="feature-desc">A running risk score for the server, with per-channel thresholds and sensitivity you can loosen for staff roles.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card featured" data-category="security" data-search="anti-raid moderation &amp; safety protect your server with zero-delay webhook scanning, automated raid detection, invite-link sweeps, and instant emergency channel locks." data-doc="antiraid">
@@ -1243,7 +1219,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Anti-Raid</h3>
-                        <p class="feature-desc">Protect your server with zero-delay webhook scanning, automated raid detection, invite-link sweeps, and instant emergency channel locks.</p>
+                        <p class="feature-desc">Webhook scanning, join-spike detection, invite sweeps, and an emergency channel lock you can hit while an attack is still going.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="appeals &amp; suggestions moderation &amp; safety review ban appeals and community suggestions from dedicated dashboard pages, with staff logs and server access controls." data-doc="reports">
@@ -1252,7 +1228,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Appeals &amp; Suggestions</h3>
-                        <p class="feature-desc">Review ban appeals and community suggestions from dedicated dashboard pages, with staff logs and Server Access controls.</p>
+                        <p class="feature-desc">Ban appeals and community suggestions get their own dashboard pages, with staff logs and Server Access controls attached.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card featured" data-category="security" data-search="audit logging &amp; jails moderation &amp; safety track deleted messages, message edits, member joins and leaves, role changes, and isolate untrusted accounts using member quarantine." data-doc="logging">
@@ -1261,7 +1237,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Audit Logging &amp; Jails</h3>
-                        <p class="feature-desc">Track deleted messages, message edits, member joins and leaves, role changes, and isolate untrusted accounts using member quarantine.</p>
+                        <p class="feature-desc">Deleted messages, edits, joins, leaves and role changes, all logged. Member quarantine moves an untrusted account out of the way without a ban.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="auto-pin &amp; sticky messages community &amp; events auto-pin channel announcements when vote thresholds are met and keep active sticky messages at the bottom of busy chat channels." data-doc="autopin">
@@ -1270,25 +1246,25 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Auto-Pin &amp; Sticky Messages</h3>
-                        <p class="feature-desc">Auto-pin channel announcements when vote thresholds are met and keep active sticky messages at the bottom of busy chat channels.</p>
+                        <p class="feature-desc">Pins a message once it has collected enough reactions, and keeps one active sticky message sitting at the bottom of a busy channel.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="auto-reply utility &amp; automation configure automatic replies for keywords, phrases, or mentions so common responses happen instantly." data-doc="autoreply">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-chat-centered-dots"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Auto-Reply</h3>
-                        <p class="feature-desc">Configure automatic replies for keywords, phrases, or mentions so common responses happen instantly.</p>
+                        <p class="feature-desc">Keyword, phrase and mention triggers. Most servers end up using it for the four questions staff answer every single day.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card w101-suite" data-category="w101" data-search="wizard101 suite wizard101 complete wizard101 tools for guilds, teams, events, deck building, damage calculation, pets, spells, tapestries, roshambo, value checks, and more." data-doc="w101">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-magic-wand"></i></span>
-                            <span class="module-category">Wizard101 Suite</span>
+                            <span class="module-category">Wizard101</span>
                         </div>
                         <h3 class="feature-title">Wizard101 Suite</h3>
-                        <p class="feature-desc">A complete collection of Wizard101 tools for guilds, teams, and everyday play - all in one place.</p>
+                        <p class="feature-desc">Eleven Wizard101 tools in one bundle: damage calculation, deck building, pets, spells, statcaps, tapestries, roshambo, TeamUps, value checks and the rest. This is larger than everything else in the bot put together.</p>
                         <div class="w101-tool-list">
                             <span class="w101-tool-tag">Beastmoon</span>
                             <span class="w101-tool-tag">Wizard Registry</span>
@@ -1310,25 +1286,25 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Cat Facts</h3>
-                        <p class="feature-desc">Serve random cat facts on demand. This module is mandatory for every server - no exceptions.</p>
+                        <p class="feature-desc">Serves a random cat fact on demand. There is no good reason to switch this one off.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="counters utility &amp; automation add custom counters to your server and keep important totals visible in channel names or dashboard views." data-doc="stats">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-list-numbers"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Counters</h3>
-                        <p class="feature-desc">Add custom counters to your server and keep important totals visible in channel names or dashboard views.</p>
+                        <p class="feature-desc">Counters you can put in a channel name or watch on the dashboard.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="embed builder utility &amp; automation design announcements, rules, reaction-role panels, and custom discord embeds with a live visual preview." data-doc="embeds">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-paint-brush"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Embed Builder</h3>
-                        <p class="feature-desc">Design announcements, rules, reaction-role panels, and custom Discord embeds with a live visual preview.</p>
+                        <p class="feature-desc">Build an embed in the dashboard with a real Discord preview beside it, then post it without touching JSON.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card featured" data-category="community" data-search="federation community &amp; events connect allied servers and communicate across approved channels without constantly switching communities." data-doc="federation">
@@ -1337,16 +1313,16 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Federation</h3>
-                        <p class="feature-desc">Connect allied servers and communicate across approved channels without constantly switching communities.</p>
+                        <p class="feature-desc">Share approved channels with servers you trust, so an alliance does not have to live in one Discord or five browser tabs.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="ghost ping &amp; reaction sweeper utility &amp; automation detect ghost pings when deleted messages mention users, and automatically sweep unwanted or spam reaction emojis from messages." data-doc="reactions">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-ghost"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Ghost Ping &amp; Reaction Sweeper</h3>
-                        <p class="feature-desc">Detect ghost pings when deleted messages mention users, and automatically sweep unwanted or spam reaction emojis from messages.</p>
+                        <p class="feature-desc">Tells you when a member was pinged and the message was deleted straight after. Also sweeps spam reactions off a post.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="invite links moderation &amp; safety create tracked invites with per-invite reward roles, welcome perks, join analytics, expiry alerts, and join-spike protection." data-doc="invites">
@@ -1355,7 +1331,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Invite Links</h3>
-                        <p class="feature-desc">Create tracked invites with per-invite reward roles, welcome perks, join analytics, expiry alerts, and join-spike protection.</p>
+                        <p class="feature-desc">Tracked invites with reward roles, join analytics, expiry warnings, and a brake for join spikes.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="live event countdowns community &amp; events run self-updating countdown channels for game updates, tournaments, raid sign-ups, and server events." data-doc="events">
@@ -1364,16 +1340,16 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Live Event Countdowns</h3>
-                        <p class="feature-desc">Run self-updating countdown channels for game updates, tournaments, raid sign-ups, and server events.</p>
+                        <p class="feature-desc">A channel whose name counts down and renames itself as the clock runs out. Removed about an hour after the event ends.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="member activity stats utility &amp; automation track member message activity and voice channel time, then assign automatic rank roles based on participation thresholds." data-doc="activitytracker">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-chart-line-up"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Member Activity Stats</h3>
-                        <p class="feature-desc">Track member message activity and voice channel time, then assign automatic rank roles based on participation thresholds.</p>
+                        <p class="feature-desc">Message counts and voice time per member, with rank roles handed out automatically once someone passes a threshold.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="moderation moderation &amp; safety execute kicks, bans, unbans, softbans, timeouts, nickname edits, and channel locks with automatic logging and moderator action records." data-doc="moderation">
@@ -1382,16 +1358,16 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Moderation</h3>
-                        <p class="feature-desc">Execute kicks, bans, unbans, softbans, timeouts, nickname edits, and channel locks with automatic logging and moderator action records.</p>
+                        <p class="feature-desc">Kick, ban, softban, timeout, rename and lock, each one logged next to the moderator who ran it.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="prefix commands utility &amp; automation choose your own command prefix and keep familiar text commands available alongside modern interactions." data-doc="core">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-terminal-window"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Prefix Commands</h3>
-                        <p class="feature-desc">Choose your own command prefix and keep familiar text commands available alongside modern interactions.</p>
+                        <p class="feature-desc">Pick your own text prefix. Anything the slash commands do is still available the old way.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="public reports moderation &amp; safety give trusted community members a structured way to review reports and help make responsible decisions." data-doc="reports">
@@ -1400,7 +1376,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Public Reports</h3>
-                        <p class="feature-desc">Give trusted community members a structured way to review reports and help make responsible decisions.</p>
+                        <p class="feature-desc">Lets trusted members see reports and weigh in, so every decision does not come down to one moderator.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="quote maker community &amp; events turn memorable discord messages into shareable quote cards for your community's amusement." data-doc="fun">
@@ -1409,7 +1385,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Quote Maker</h3>
-                        <p class="feature-desc">Turn memorable Discord messages into shareable quote cards for your community's amusement.</p>
+                        <p class="feature-desc">Turns a message into a shareable quote card.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="raid &amp; event organizer community &amp; events schedule community raids and events with interactive sign-up buttons, custom role pings, and automatic event reminder notifications." data-doc="raids">
@@ -1418,7 +1394,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Raid &amp; Event Organizer</h3>
-                        <p class="feature-desc">Schedule community raids and events with interactive sign-up buttons, custom role pings, and automatic event reminder notifications.</p>
+                        <p class="feature-desc">Schedule an event, let people sign up on a button, and let the reminders fire themselves.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="reaction roles &amp; pings community &amp; events let members pick roles from clear button or reaction panels that are easy for staff to publish and members to use." data-doc="reaction_pings">
@@ -1427,16 +1403,16 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Reaction Roles &amp; Pings</h3>
-                        <p class="feature-desc">Let members pick roles from clear button or reaction panels that are easy for staff to publish and members to use.</p>
+                        <p class="feature-desc">Self-assign roles from a button panel or a reaction panel, published with one command.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="remind me utility &amp; automation set personal reminders inside discord. in case you forget, seanbot does not." data-doc="reminders">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-alarm"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Remind Me</h3>
-                        <p class="feature-desc">Set personal reminders inside Discord. In case you forget, SeanBot does not.</p>
+                        <p class="feature-desc">Personal reminders inside Discord. You will forget. The bot will not.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="report moderation &amp; safety let users report members or messages through a clear workflow that gives staff the context they need." data-doc="reports">
@@ -1445,16 +1421,16 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Report</h3>
-                        <p class="feature-desc">Let users report members or messages through a clear workflow that gives staff the context they need.</p>
+                        <p class="feature-desc">Members report a message or a user, and the report arrives with the context attached instead of a bare ping for staff to chase down.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="returning roles utility &amp; automation automatically restore saved roles when a veteran member leaves and later returns to the server." data-doc="returning_roles">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-arrow-u-up-left"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Returning Roles</h3>
-                        <p class="feature-desc">Automatically restore saved roles when a veteran member leaves and later returns to the server.</p>
+                        <p class="feature-desc">Saves a member's roles on the way out and hands them back if the same member returns.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="simple polls community &amp; events create quick, easy-to-use polls when you just need a straightforward community vote." data-doc="raidpolls">
@@ -1463,7 +1439,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Simple Polls</h3>
-                        <p class="feature-desc">Create quick, easy-to-use polls when you just need a straightforward community vote.</p>
+                        <p class="feature-desc">The one-question version. Ask it and count the reactions.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="slap community &amp; events slap users who do not behave, but be careful, because they may slap back." data-doc="fun">
@@ -1472,7 +1448,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Slap</h3>
-                        <p class="feature-desc">Slap users who do not behave, but be careful, because they may slap back.</p>
+                        <p class="feature-desc">Slaps whoever deserves it. Retaliation is expected.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="staff leave of absence (loa) moderation &amp; safety manage moderator and staff leave requests with interactive approval forms, active loa status tracking, and welcome-back role restores." data-doc="loa">
@@ -1481,7 +1457,7 @@
                             <span class="module-category">Moderation &amp; Safety</span>
                         </div>
                         <h3 class="feature-title">Staff Leave of Absence (LOA)</h3>
-                        <p class="feature-desc">Manage moderator and staff leave requests with interactive approval forms, active LOA status tracking, and welcome-back role restores.</p>
+                        <p class="feature-desc">Staff file a leave request, somebody approves it, and the leave role comes off by itself when they are due back.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="starboard community &amp; events build a fully customizable starboard with flexible thresholds, channels, reactions, and no artificial limits." data-doc="starboard">
@@ -1490,16 +1466,16 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Starboard</h3>
-                        <p class="feature-desc">Build a fully customizable starboard with flexible thresholds, channels, reactions, and no artificial limits.</p>
+                        <p class="feature-desc">Starboard with your own threshold, channel and reaction. No cap on how many posts it holds.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="stats utility &amp; automation track server activity, growth, messages, voice sessions, and engagement so your staff does not have to." data-doc="stats">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-chart-line-up"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Stats</h3>
-                        <p class="feature-desc">Track server activity, growth, messages, voice sessions, and engagement so your staff does not have to.</p>
+                        <p class="feature-desc">Charts for messages, growth, voice time and which channels people actually use. Useful the next time somebody tells you the server is dying.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="temporary vc community &amp; events let members create and manage temporary voice channels with their own names, limits, and permissions." data-doc="temp_vc">
@@ -1508,7 +1484,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Temporary VC</h3>
-                        <p class="feature-desc">Let members create and manage temporary voice channels with their own names, limits, and permissions.</p>
+                        <p class="feature-desc">Members create their own voice channel, name it, cap it and lock it. It disappears when the last person leaves.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card featured" data-category="community" data-search="ticket system community &amp; events run a customizable ticket panel with private channels, staff controls, transcripts, and organized support flows." data-doc="tickets">
@@ -1517,16 +1493,16 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Ticket System</h3>
-                        <p class="feature-desc">Run a customizable ticket panel with private channels, staff controls, transcripts, and organized support flows.</p>
+                        <p class="feature-desc">A ticket panel with private channels, staff claiming and HTML transcripts. Still marked BETA, because it is.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="time converters utility &amp; automation convert mentioned times directly inside discord so every member sees the correct local time." data-doc="time_converter">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-arrows-left-right"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Time Converters</h3>
-                        <p class="feature-desc">Convert mentioned times directly inside Discord so every member sees the correct local time.</p>
+                        <p class="feature-desc">Converts a time somebody mentions into everybody else's local time.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="timeping event reminders community &amp; events create event reminders, timezone-safe timestamps, and reaction sign-ups so everyone knows when to show up." data-doc="timeping">
@@ -1535,25 +1511,25 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">TimePing Event Reminders</h3>
-                        <p class="feature-desc">Create event reminders, timezone-safe timestamps, and reaction sign-ups so everyone knows when to show up.</p>
+                        <p class="feature-desc">Event reminders that ping the right people at the right local time, with a reaction sign-up on the same message.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="timezones utility &amp; automation let users set their timezone, receive regional roles, and display local times throughout the server." data-doc="timezones">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-clock"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Timezones</h3>
-                        <p class="feature-desc">Let users set their timezone, receive regional roles, and display local times throughout the server.</p>
+                        <p class="feature-desc">Members set a timezone, get a regional role, and see local clock times wherever the bot prints one.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="translation utility &amp; automation translate messages inside discord when members need help communicating across languages." data-doc="translate_cog">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-translate"></i></span>
-                            <span class="module-category">Utility &amp; Automation</span>
+                            <span class="module-category">Utilities &amp; Automation</span>
                         </div>
                         <h3 class="feature-title">Translation</h3>
-                        <p class="feature-desc">Translate messages inside Discord when members need help communicating across languages.</p>
+                        <p class="feature-desc">Translates a message in place when two members do not share a language.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="welcome &amp; farewell community &amp; events greet new members, post farewells, and celebrate boosts, streams, and milestones with embed triggers." data-doc="embeds">
@@ -1562,7 +1538,7 @@
                             <span class="module-category">Community &amp; Events</span>
                         </div>
                         <h3 class="feature-title">Welcome &amp; Farewell</h3>
-                        <p class="feature-desc">Greet new members, send optional welcome DMs, assign auto roles, clean nicknames, and post leave messages.</p>
+                        <p class="feature-desc">Welcome and farewell messages, optional welcome DMs, auto roles and nickname cleanup.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
 
@@ -1578,8 +1554,8 @@
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Start with safety. Add what your community needs.</h3>
-                    <p>Moderation, anti-raid, and tickets are ready out of the box. Everything else is there when you want it - no bloat, no paywalls, no setup headaches.</p>
+                    <h3>Start with anti-raid, add the rest when someone asks</h3>
+                    <p>Moderation and tickets work as soon as you configure them. Everything else can sit switched off until you want it. There is no premium tier, and nothing here needs a second bot to cover the gaps.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot Free
@@ -1590,39 +1566,39 @@
         <!-- ==================== TAB 2: DOCUMENTATION ==================== -->
         <section id="view-docs" class="tab-view">
             <div class="docs-page-header" style="margin-bottom: 24px;">
-                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation & Guides</h1>
+                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Setup guides</h1>
                 <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
-                    Setup guides for server admins, moderators and members.
+                    One page per module, in roughly the order you would actually configure them. Written for whoever has to do the configuring.
                 </p>
             </div>
 
             <!-- Doc search category filters -->
             <div style="margin-bottom: 20px;">
                 <div class="filter-pills" id="docsCategoryFilters">
-                    <button class="pill-btn active" data-category="all">All Modules</button>
-                    <button class="pill-btn" data-category="getting_started">🚀 Getting Started</button>
-                    <button class="pill-btn" data-category="w101">🔮 Wizard101</button>
-                    <button class="pill-btn" data-category="security">🛡️ Security & Core</button>
-                    <button class="pill-btn" data-category="community">👥 Community & Events</button>
-                    <button class="pill-btn" data-category="utility">🛠️ Utility & System</button>
+                    <button class="pill-btn active" data-category="all">All modules</button>
+                    <button class="pill-btn" data-category="getting_started">Getting started</button>
+                    <button class="pill-btn" data-category="w101">Wizard101</button>
+                    <button class="pill-btn" data-category="security">Moderation & Safety</button>
+                    <button class="pill-btn" data-category="community">Community & Events</button>
+                    <button class="pill-btn" data-category="utility">Utilities & Automation</button>
                 </div>
             </div>
 
             <!-- Doc search input filter -->
             <div class="search-container" style="margin-bottom: 24px;">
                 <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
-                <input type="text" id="docSearch" placeholder="Search documentation modules or commands...">
+                <input type="text" id="docSearch" placeholder="Search the guides, or a command name...">
             </div>
 
             <button class="docs-nav-mobile-toggle" id="docsNavToggle" type="button" aria-expanded="false" aria-controls="docsSidebar">
-                <span><i class="ph-bold ph-list-dashes"></i> Browse documentation</span>
+                <span><i class="ph-bold ph-list-dashes"></i> Browse the guides</span>
                 <i class="ph-bold ph-caret-down" aria-hidden="true"></i>
             </button>
 
             <!-- Documentation layout grid -->
             <div class="docs-grid">
                 <aside class="docs-nav" id="docsSidebar" aria-label="Documentation modules">
-                    <div class="docs-nav-title"><i class="ph ph-compass"></i> Documentation</div>
+                    <div class="docs-nav-title"><i class="ph ph-compass"></i> Guides</div>
                     <div id="docsNavLinks"></div>
                 </aside>
 
@@ -1661,7 +1637,7 @@
         <!-- ==================== TAB 3: COMMANDS ==================== -->
         <section id="view-commands" class="tab-view">
             <div style="margin-bottom: 24px;">
-                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Command List</h1>
+                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Commands</h1>
                 <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">Every command SeanBot ships with, each linked to its setup guide.</p>
             </div>
 
@@ -1674,7 +1650,7 @@
                 <div class="commands-feed" id="commandsFeedContainer"></div>
 
                 <aside class="toc-sidebar" id="tocSidebarContainer">
-                    <div class="toc-title">Jump to Category</div>
+                    <div class="toc-title">Jump to a category</div>
                 </aside>
             </div>
 

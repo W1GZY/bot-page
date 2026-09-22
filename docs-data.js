@@ -3,8 +3,8 @@ const docsData = [
     {
         "id": "quickstart",
         "icon": "ph-rocket-launch",
-        "title": "Quick Start: Set Up SeanBot from A to Z",
-        "subtitle": "A practical first-install checklist for permissions, modules, logging, security, staff access, and testing.",
+        "title": "Install and set up",
+        "subtitle": "Invite, role position, module switches, logging, then a test in a private channel. This is the order that avoids problems later.",
         "content": [
             {
                 "type": "heading",
@@ -160,7 +160,7 @@ const docsData = [
         "id": "core",
         "icon": "ph-layout",
         "title": "Dashboard, Modules & Staff Access",
-        "subtitle": "Understand module switches, delegated dashboard permissions, audit history, and command availability.",
+        "subtitle": "How module switches and dashboard permissions actually behave, and why a command might be missing.",
         "content": [
             {
                 "type": "heading",
@@ -227,7 +227,7 @@ const docsData = [
         "id": "w101",
         "icon": "ph-magic-wand",
         "title": "W101: Core Toolkit & Damage",
-        "subtitle": "Damage calculators, multi-buff stack previews, gear scaling, and visual deck sharing.",
+        "subtitle": "Damage calculation with buff stacking and gear scaling, plus deck images you can share.",
         "content": [
             {
                 "type": "heading",
@@ -311,7 +311,7 @@ const docsData = [
         "id": "beastmoon",
         "icon": "ph-paw-print",
         "title": "W101: Beastmoon Suite",
-        "subtitle": "Form progression tracking, Lunari & Idol cost calculators, and global leaderboards.",
+        "subtitle": "Track form progress, price out Lunari and Idols, and compare against the global boards.",
         "content": [
             {
                 "type": "heading",
@@ -377,7 +377,7 @@ const docsData = [
         "id": "recap_tracker",
         "icon": "ph-notebook",
         "title": "W101 Raid & Activity Recap",
-        "subtitle": "Record wins, losses, keys, hosted raids, school swaps, and wipe witnesses for server recap statistics.",
+        "subtitle": "Log a raid after the fact: win or loss, keys used, who hosted, who swapped schools, and who saw the wipe happen.",
         "content": [
             {
                 "type": "heading",
@@ -480,7 +480,7 @@ const docsData = [
         "id": "teamup_w101",
         "icon": "ph-users-four",
         "title": "W101: Dungeon Team-Ups",
-        "subtitle": "Automated dungeon LFG lobbies with one-click signups.",
+        "subtitle": "A dungeon LFG post that people can join with one button.",
         "content": [
             {
                 "type": "heading",
@@ -560,7 +560,7 @@ const docsData = [
         "id": "strategy",
         "icon": "ph-scroll",
         "title": "W101: Boss Strategies",
-        "subtitle": "Curated boss cheat sheets, blade turn orders, and raid position guides.",
+        "subtitle": "Boss cheat sheets, blade turn orders and position guides, written for the raids your guild actually runs.",
         "content": [
             {
                 "type": "heading",
@@ -722,7 +722,7 @@ const docsData = [
         "id": "server_admin",
         "icon": "ph-wrench",
         "title": "Server Administration Helpers",
-        "subtitle": "Manage modules, roles, channels, and bot messages without leaving Discord.",
+        "subtitle": "Modules, roles, channels and bot messages, all from inside Discord.",
         "content": [
             {
                 "type": "heading",
@@ -785,7 +785,7 @@ const docsData = [
         "id": "antiraid",
         "icon": "ph-shield-warning",
         "title": "Anti-Raid & Security",
-        "subtitle": "Raid protection, scam detection, quarantine controls, and live risk scoring.",
+        "subtitle": "Raid protection, scam detection, quarantine, and a live risk score you can watch.",
         "content": [
             {
                 "type": "heading",
@@ -897,7 +897,7 @@ const docsData = [
         "id": "moderation",
         "icon": "ph-gavel",
         "title": "Server Moderation",
-        "subtitle": "Staff enforcement commands that respect Discord's role hierarchy.",
+        "subtitle": "The enforcement commands, which respect Discord's role hierarchy so staff cannot act on somebody above them by accident.",
         "content": [
             {
                 "type": "heading",
@@ -1008,7 +1008,7 @@ const docsData = [
         "id": "warn_cog",
         "icon": "ph-warning-octagon",
         "title": "Warnings & Points",
-        "subtitle": "Infraction tracking, active penalty point calculations, and automatic escalations.",
+        "subtitle": "Warnings with points attached, and escalations that fire on their own once the points stack up.",
         "content": [
             {
                 "type": "heading",
@@ -1075,7 +1075,7 @@ const docsData = [
         "id": "logging",
         "icon": "ph-file-text",
         "title": "Audit Logging & Jails",
-        "subtitle": "Asynchronous audit event logging to external webhooks without latency impact.",
+        "subtitle": "Audit events go to your webhook after the fact, so a slow log endpoint cannot lag the bot.",
         "content": [
             {
                 "type": "heading",
@@ -1153,7 +1153,7 @@ const docsData = [
         "id": "staff_tools",
         "icon": "ph-wrench",
         "title": "Appeals & Suggestions",
-        "subtitle": "Review ban appeals and server suggestions from their own dashboard pages.",
+        "subtitle": "Ban appeals and suggestions each get a dashboard page, instead of a channel thread nobody can find again.",
         "content": [
             {
                 "type": "heading",
@@ -1235,7 +1235,7 @@ const docsData = [
         "id": "invites",
         "icon": "ph-link-simple",
         "title": "Invite Links & Tracking",
-        "subtitle": "Create tracked invite links with join perks, view join analytics, and guard against join spikes.",
+        "subtitle": "Create an invite, attach a reward role, then see who actually joined through it.",
         "content": [
             {
                 "type": "heading",
@@ -1341,7 +1341,7 @@ const docsData = [
         "id": "reports",
         "icon": "ph-flag",
         "title": "Member Reports",
-        "subtitle": "Discreet, single-click report submissions for moderation review.",
+        "subtitle": "One click to report a message or a member, without anyone in chat seeing it happen.",
         "content": [
             {
                 "type": "heading",
@@ -1421,7 +1421,7 @@ const docsData = [
         "id": "timeping",
         "icon": "ph-clock-countdown",
         "title": "TimePing & Event Pings",
-        "subtitle": "Automated role pings, Discord event synchronization, and dynamic countdown timers.",
+        "subtitle": "Role pings and countdowns for events, kept in step with Discord's own scheduled events.",
         "content": [
             {
                 "type": "heading",
@@ -1531,7 +1531,7 @@ const docsData = [
         "id": "timezones",
         "icon": "ph-globe-stand",
         "title": "Timezones & World Clocks",
-        "subtitle": "Timezone detection, comparisons, and interactive community time maps.",
+        "subtitle": "Members set a timezone, and staff get a map of where everyone actually is.",
         "content": [
             {
                 "type": "heading",
@@ -1597,7 +1597,7 @@ const docsData = [
         "id": "time_converter",
         "icon": "ph-clock-user",
         "title": "Time & Timestamp Converter",
-        "subtitle": "Convert times across timezones and generate dynamic Discord timestamp tags.",
+        "subtitle": "Turns a time somebody typed into a tag every reader sees in their own timezone.",
         "content": [
             {
                 "type": "heading",
@@ -1643,7 +1643,7 @@ const docsData = [
         "id": "events",
         "icon": "ph-hourglass-medium",
         "title": "Live Event Countdowns & Polls",
-        "subtitle": "Run countdown channels that update themselves for game updates, tournaments, raid sign-ups, and server events.",
+        "subtitle": "Countdown channels for game updates, tournaments, raid nights and server events. They rename themselves as the clock runs down.",
         "content": [
             {
                 "type": "heading",
@@ -1733,7 +1733,7 @@ const docsData = [
         "id": "raids",
         "icon": "ph-sword",
         "title": "Raid & Event Organizer",
-        "subtitle": "Multi-role raid builder with localized times and strategy signups.",
+        "subtitle": "Build a raid, ping the roles that matter, and let people sign up in their own timezone.",
         "content": [
             {
                 "type": "heading",
@@ -1799,7 +1799,7 @@ const docsData = [
         "id": "raidpolls",
         "icon": "ph-users-three",
         "title": "Polls & Event Rosters",
-        "subtitle": "Quick reaction polls for simple votes, plus signup polls with slots, caps, waitlists, and one-tap sign-up for any game.",
+        "subtitle": "Simple reaction polls, and sign-up polls with slots, caps and waitlists for anything that needs a roster.",
         "content": [
             {
                 "type": "heading",
@@ -2044,7 +2044,7 @@ const docsData = [
         "id": "teamup_fed",
         "icon": "ph-arrows-merge",
         "title": "Team-Up Federation Mesh",
-        "subtitle": "Broadcast LFG dungeon lobbies across allied server networks with proxy threads.",
+        "subtitle": "Push a dungeon lobby out to allied servers, with a proxy thread so the replies come back to you.",
         "content": [
             {
                 "type": "heading",
@@ -2070,7 +2070,7 @@ const docsData = [
         "id": "temp_vc",
         "icon": "ph-microphone",
         "title": "Temporary Voice Channels",
-        "subtitle": "Join-to-Create voice channels with complete owner customization controls.",
+        "subtitle": "A join-to-create voice channel, with the creator holding the controls for name, limit and lock.",
         "content": [
             {
                 "type": "heading",
@@ -2119,7 +2119,7 @@ const docsData = [
         "id": "tickets",
         "icon": "ph-ticket",
         "title": "Support Ticket System",
-        "subtitle": "Private support tickets with claim controls, priority tags, and transcript archives.",
+        "subtitle": "Private tickets, staff claiming, priority tags and archived transcripts. Still in beta.",
         "content": [
             {
                 "type": "heading",
@@ -2204,7 +2204,7 @@ const docsData = [
         "id": "activitytracker",
         "icon": "ph-chart-line-up",
         "title": "Activity Tracker",
-        "subtitle": "Track member engagement and automate Active/Inactive role assignments.",
+        "subtitle": "Message and voice activity per member, with Active and Inactive roles handed out on a schedule.",
         "content": [
             {
                 "type": "heading",
@@ -2247,7 +2247,7 @@ const docsData = [
         "id": "autopin",
         "icon": "ph-push-pin",
         "title": "Auto-Pin System",
-        "subtitle": "Community-driven message pinning based on reaction thresholds.",
+        "subtitle": "Pins a message once enough people react to it.",
         "content": [
             {
                 "type": "heading",
@@ -2310,8 +2310,8 @@ const docsData = [
     {
         "id": "starboard",
         "icon": "ph-star",
-        "title": "Starboard Engine",
-        "subtitle": "Highlight top-reacted community messages in a starboard showcase channel.",
+        "title": "Starboard",
+        "subtitle": "A channel that collects whatever the community reacted to the most.",
         "content": [
             {
                 "type": "heading",
@@ -2353,7 +2353,7 @@ const docsData = [
         "id": "emojis",
         "icon": "ph-smiley-sticker",
         "title": "Emoji Management & Suggestions",
-        "subtitle": "Collect emoji uploads, review them safely, track usage, and manage emoji access.",
+        "subtitle": "Members submit emoji, staff approve them, and usage gets counted so you know what to delete.",
         "content": [
             {
                 "type": "heading",
@@ -2438,7 +2438,7 @@ const docsData = [
         "id": "reactions",
         "icon": "ph-thumbs-up",
         "title": "Reaction Suite & Pings",
-        "subtitle": "Reaction statistics, animated emoji previews, and reactor pings.",
+        "subtitle": "Reaction counts, animated emoji previews, and a ping for whoever reacted.",
         "content": [
             {
                 "type": "heading",
@@ -2615,7 +2615,7 @@ const docsData = [
         "id": "embeds",
         "icon": "ph-layout",
         "title": "Visual Embed Builder",
-        "subtitle": "Interactive rich embed designer and template automation triggers.",
+        "subtitle": "A visual embed designer, plus template triggers for things like welcome messages.",
         "content": [
             {
                 "type": "heading",
@@ -3137,7 +3137,7 @@ const docsData = [
         "id": "autoreply",
         "icon": "ph-chat-centered-text",
         "title": "Auto Mention Replies",
-        "subtitle": "Automated custom replies triggered when members mention you in chat.",
+        "subtitle": "Replies that fire when somebody mentions you, in your own words.",
         "content": [
             {
                 "type": "heading",
@@ -3188,7 +3188,7 @@ const docsData = [
         "id": "reminders",
         "icon": "ph-bell",
         "title": "Personal Reminders",
-        "subtitle": "Right-click message reminders with natural language time parsing.",
+        "subtitle": "Right-click a message to be reminded about it later. Times can be written the way you would say them out loud.",
         "content": [
             {
                 "type": "heading",
@@ -3218,7 +3218,7 @@ const docsData = [
         "id": "translate_cog",
         "icon": "ph-translate",
         "title": "Message Translator",
-        "subtitle": "Translate chat messages, text channels, or user posts into any language.",
+        "subtitle": "Translate a message, a whole channel, or everything one member posts.",
         "content": [
             {
                 "type": "heading",
@@ -3247,7 +3247,7 @@ const docsData = [
     {
         "id": "thread_watcher",
         "icon": "ph-chats-teardrop",
-        "title": "Thread Watcher Engine",
+        "title": "Thread watcher",
         "subtitle": "Keep critical forum threads and text threads unarchived automatically.",
         "content": [
             {
@@ -3269,7 +3269,7 @@ const docsData = [
         "id": "voicestats",
         "icon": "ph-waveform",
         "title": "Voice Analytics",
-        "subtitle": "Member voice participation, unbroken session records, and heatmaps.",
+        "subtitle": "How long each member spends in voice, session records, and a heatmap of when voice is busy.",
         "content": [
             {
                 "type": "heading",
@@ -3323,8 +3323,8 @@ const docsData = [
     {
         "id": "stats",
         "icon": "ph-chart-line-up",
-        "title": "Server Live Counters",
-        "subtitle": "Live voice counter channels and member growth charts.",
+        "title": "Live counters",
+        "subtitle": "Counter channels that update themselves, plus member growth charts.",
         "content": [
             {
                 "type": "heading",
@@ -3362,7 +3362,7 @@ const docsData = [
         "id": "returning_roles",
         "icon": "ph-arrow-u-down-left",
         "title": "Returning Member Roles",
-        "subtitle": "Automatically re-assign designated roles to returning members.",
+        "subtitle": "Hands back the roles you marked as returnable when a member rejoins.",
         "content": [
             {
                 "type": "heading",
@@ -3409,7 +3409,7 @@ const docsData = [
         "id": "federation",
         "icon": "ph-globe-hemisphere-west",
         "title": "Server Federation",
-        "subtitle": "Connect multiple Discord servers together into a real-time network.",
+        "subtitle": "Links servers you trust so that chosen channels relay between them in real time.",
         "content": [
             {
                 "type": "heading",
@@ -3508,7 +3508,7 @@ const docsData = [
         "id": "roshambo",
         "icon": "ph-fire",
         "title": "Roshambo Battle Royale",
-        "subtitle": "Multi-player elemental and spirit school battle game.",
+        "subtitle": "A school-versus-school battle game for voice chat.",
         "content": [
             {
                 "type": "heading",
@@ -3534,7 +3534,7 @@ const docsData = [
         "id": "fun",
         "icon": "ph-smiley",
         "title": "Cat Facts & Quotes",
-        "subtitle": "Cat facts, cute pictures, and fake Discord quote generators.",
+        "subtitle": "Cat facts, cat pictures, and quote cards made from your own chat.",
         "content": [
             {
                 "type": "heading",
@@ -3598,7 +3598,7 @@ const docsData = [
         "id": "general_sys",
         "icon": "ph-cpu",
         "title": "System Diagnostics",
-        "subtitle": "System monitoring, hardware statistics, and general server tools.",
+        "subtitle": "Host stats for the machine the bot runs on, for when something feels slow.",
         "content": [
             {
                 "type": "heading",
@@ -3719,7 +3719,7 @@ const docsData = [
         "id": "loa",
         "icon": "ph-calendar-check",
         "title": "Leave of Absence (LOA)",
-        "subtitle": "Staff & member leave management with automatic Discord role sync.",
+        "subtitle": "Leave requests with approval, and an automatic role change while somebody is away.",
         "content": [
             {
                 "type": "heading",
@@ -3766,7 +3766,7 @@ const docsData = [
     {
         "id": "global_enforcement",
         "icon": "ph-globe-hemisphere-west",
-        "title": "Global Enforcement: Synchronized Punishments",
+        "title": "Global enforcement",
         "subtitle": "Punish a member across every server you manage with one action, and let ban appeal approvals unban them everywhere at once.",
         "content": [
             {
@@ -3860,7 +3860,7 @@ const docsData = [
     {
         "id": "antiping",
         "icon": "ph-at",
-        "title": "Anti-Ping: Customizable Ping Protection",
+        "title": "Anti-Ping",
         "subtitle": "Block mention floods, protect important roles and users, stop ghost pings, and enforce your own ping rules.",
         "content": [
             {
@@ -3935,7 +3935,7 @@ const docsData = [
     {
         "id": "honeypot",
         "icon": "ph-magnet",
-        "title": "Honeypot: Catch Bots & Scammers",
+        "title": "Honeypot channels",
         "subtitle": "Decoy trap text channels that flag malicious users before they reach your members.",
         "content": [
             {
@@ -4026,7 +4026,7 @@ const docsData = [
     {
         "id": "giveaways",
         "icon": "ph-gift",
-        "title": "Giveaways: Native Hosting & GiveawayBot Support",
+        "title": "Giveaways",
         "subtitle": "Host SeanBot-native giveaways with full entry tracking, winner vetting, reminders, and archive summaries, plus companion support for the open-source GiveawayBot.",
         "content": [
             {

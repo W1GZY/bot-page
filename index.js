@@ -269,7 +269,9 @@
 
         moduleCards.forEach(card => {
             const categoryMatches = activeModuleCategory === 'all' || card.dataset.category === activeModuleCategory;
-            const searchMatches = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
+            // Visible copy is authoritative; data-search only adds keywords the card does not spell out.
+            const haystack = `${card.textContent} ${card.dataset.search || ''}`.toLowerCase();
+            const searchMatches = !query || haystack.includes(query);
             const visible = categoryMatches && searchMatches;
             card.style.display = visible ? 'flex' : 'none';
             if (visible) visibleCount += 1;
@@ -529,31 +531,31 @@ function initDocsPage() {
         if (!contentContainer) return;
 
         const categoryMap = {
-            'quickstart': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
-            'core': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
-            'server_admin': { cat: 'getting_started', title: 'Getting Started', icon: 'ph-rocket' },
+            'quickstart': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
+            'core': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
+            'server_admin': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
 
-            'w101': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'beastmoon': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'pet_tome': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'spells': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'teamup_w101': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'value_reagent': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'strategy': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'tapestry': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'wizard_info': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
-            'recap_tracker': { cat: 'w101', title: 'Wizard101 Suite', icon: 'ph-magic-wand' },
+            'w101': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'beastmoon': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'pet_tome': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'spells': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'teamup_w101': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'value_reagent': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'strategy': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'tapestry': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'wizard_info': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
+            'recap_tracker': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
 
-            'antiraid': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'moderation': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'warn_cog': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'logging': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'staff_tools': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'reports': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'invites': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'honeypot': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'antiping': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
-            'global_enforcement': { cat: 'security', title: 'Security & Core', icon: 'ph-shield-check' },
+            'antiraid': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'moderation': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'warn_cog': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'logging': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'staff_tools': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'reports': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'invites': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'honeypot': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'antiping': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'global_enforcement': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
 
             'timeping': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'timezones': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
@@ -568,27 +570,27 @@ function initDocsPage() {
             'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaways': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
 
-            'activitytracker': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'autopin': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'starboard': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'emojis': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'reactions': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'reaction_pings': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'sticky_messages': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'embeds': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'autoreply': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'reminders': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'translate_cog': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'thread_watcher': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'voicestats': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'stats': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'returning_roles': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'federation': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'roshambo': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'fun': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'general_sys': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'discord_apps': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' },
-            'faq': { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' }
+            'activitytracker': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'autopin': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'starboard': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'emojis': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'reactions': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'reaction_pings': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'sticky_messages': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'embeds': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'autoreply': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'reminders': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'translate_cog': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'thread_watcher': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'voicestats': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'stats': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'returning_roles': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'federation': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'roshambo': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'fun': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'general_sys': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'discord_apps': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'faq': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' }
         };
 
 
@@ -643,7 +645,7 @@ function initDocsPage() {
 
         const groups = {};
         docsData.forEach(doc => {
-            const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' };
+            const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' };
             if (!groups[meta.cat]) {
                 groups[meta.cat] = { title: meta.title, icon: meta.icon, items: [] };
             }
@@ -723,7 +725,7 @@ function initDocsPage() {
             const article = document.createElement('article');
             article.className = `docs-article ${idx === 0 ? 'active-doc' : ''}`;
             article.id = doc.id;
-            const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utility & System', icon: 'ph-gear-six' };
+            const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' };
             article.setAttribute('data-category', meta.cat);
 
             if (idx !== 0) {
@@ -1293,11 +1295,24 @@ let ticketStep = 1;
         return `${Math.round(total).toLocaleString()} members`;
     }
 
+    // A colour of its own for each community, derived from the name so it is
+    // the same on every visit and on every machine. Purely decorative: it
+    // tints the card and the initials, and nothing reads it back.
+    function hueFor(name) {
+        const text = String(name);
+        let hash = 0;
+        for (let index = 0; index < text.length; index += 1) {
+            hash = (hash * 31 + text.charCodeAt(index)) % 360;
+        }
+        return hash;
+    }
+
     function buildIcon(server) {
         const icon = document.createElement('div');
         icon.className = 'server-card-icon';
         const iconUrl = String(server.icon || '').trim();
         if (!iconUrl) {
+            icon.classList.add('is-initials');
             icon.textContent = initialsFor(server.name);
             return icon;
         }
@@ -1307,6 +1322,7 @@ let ticketStep = 1;
         // A dead CDN link should still leave a readable card.
         img.addEventListener('error', () => {
             img.remove();
+            icon.classList.add('is-initials');
             icon.textContent = initialsFor(server.name);
         });
         img.src = iconUrl;
@@ -1318,6 +1334,7 @@ let ticketStep = 1;
         const card = document.createElement('article');
         card.className = 'server-card';
         card.dataset.index = String(index);
+        card.style.setProperty('--card-hue', String(hueFor(server.name)));
 
         card.appendChild(buildIcon(server));
 
@@ -1388,6 +1405,14 @@ let ticketStep = 1;
         }
         body.appendChild(actions);
 
+        // The countdown to the next community. Built on every card and shown
+        // only on the front one, so the bar always belongs to the card being
+        // read rather than to the deck as a whole.
+        const progress = document.createElement('span');
+        progress.className = 'server-card-progress';
+        progress.setAttribute('aria-hidden', 'true');
+        card.appendChild(progress);
+
         card.appendChild(body);
         return card;
     }
@@ -1409,10 +1434,17 @@ let ticketStep = 1;
         const shell = deck.closest('.server-deck-shell');
         const controls = document.getElementById('serverDeckControls');
         const dotRow = document.getElementById('serverDeckDots');
+        const counter = document.getElementById('serverDeckCounter');
+        const hint = document.getElementById('serverDeckHint');
+        // The countdown bar reads its duration from here, so the animation and
+        // the timer that drives it cannot drift apart.
+        deck.style.setProperty('--deck-interval', `${DECK_INTERVAL}ms`);
 
         if (servers.length === 0) {
             deck.replaceChildren();
             if (dotRow) dotRow.replaceChildren();
+            if (counter) counter.textContent = '';
+            if (hint) hint.hidden = true;
             section.hidden = true;
             return;
         }
@@ -1425,11 +1457,27 @@ let ticketStep = 1;
         let deckHovered = false;
         let deckFocused = false;
         let deckTimer = null;
+        // A drag that ends on a card also fires a click, so the click handler
+        // ignores anything that arrives just after a swipe.
+        let lastSwipeAt = 0;
+        let hintDismissed = false;
+
+        // The hint earns its place once. The first deliberate move anywhere in
+        // the deck retires it, and an automatic advance does not count.
+        function dismissHint() {
+            if (hintDismissed) return;
+            hintDismissed = true;
+            hint?.classList.add('is-dismissed');
+        }
 
         const cards = servers.map((server, index) => {
             const card = buildCard(server, index);
             deck.appendChild(card);
-            card.addEventListener('click', () => selectServer(index, { fromUser: true }));
+            card.addEventListener('click', () => {
+                if (Date.now() - lastSwipeAt < 400) return;
+                dismissHint();
+                selectServer(index);
+            });
             return card;
         });
 
@@ -1441,12 +1489,13 @@ let ticketStep = 1;
             dot.type = 'button';
             dot.className = 'server-deck-dot';
             dot.setAttribute('aria-label', `Show ${server.name}`);
-            dot.addEventListener('click', () => selectServer(index, { fromUser: true }));
+            dot.addEventListener('click', () => { dismissHint(); selectServer(index); });
             if (dotRow) dotRow.appendChild(dot);
             return dot;
         });
 
         if (servers.length < 2 && controls) controls.hidden = true;
+        if (servers.length < 2 && hint) hint.hidden = true;
 
         // The shoulders slide out until their outer edge just clears the panel.
         // How much room there is beside the front card depends on the deck's
@@ -1476,8 +1525,17 @@ let ticketStep = 1;
                 card.classList.toggle('deck-pos-side', absShift === 1);
                 card.classList.toggle('is-front', absShift === 0);
                 if (absShift === 0) {
+                    // Replayable on purpose: the class is dropped the moment a
+                    // card leaves the front, so the icon pops again on its
+                    // next turn instead of animating once and never again.
+                    card.classList.add('is-arriving');
                     card.removeAttribute('aria-hidden');
                 } else {
+                    card.classList.remove('is-arriving');
+                    // Only the front card counts down, so a card that has just
+                    // left the front drops the class here rather than carrying a
+                    // stopped countdown bar around behind the stack.
+                    card.classList.remove('deck-running');
                     // Not focusable (the action row is visibility:hidden off the
                     // front card) and redundant with the dots, so it is hidden
                     // from assistive tech rather than announced twice.
@@ -1489,33 +1547,46 @@ let ticketStep = 1;
                 if (index === activeIndex) dot.setAttribute('aria-current', 'true');
                 else dot.removeAttribute('aria-current');
             });
+
+            // Zero-padded so the width never jitters as the count passes ten.
+            if (counter) {
+                const pad = value => String(value).padStart(2, '0');
+                counter.textContent = `${pad(activeIndex + 1)} / ${pad(cards.length)}`;
+            }
         }
 
         function scheduleDeckAdvance() {
             clearTimeout(deckTimer);
+            const front = cards[activeIndex];
             const shouldRun = deckVisible && !deckHovered && !deckFocused &&
                 !document.hidden && cards.length > 1;
+            // Removed and re-added on the next frame so the bar replays from
+            // zero rather than resuming wherever it had got to.
+            if (front) front.classList.remove('deck-running');
             if (!shouldRun) return;
+            if (front) window.requestAnimationFrame(() => front.classList.add('deck-running'));
             deckTimer = window.setTimeout(() => selectServer(activeIndex + 1), DECK_INTERVAL);
         }
 
         // Carousel moves are pure transitions: the outgoing front card simply
         // animates to its new side slot, so there is no leaving state to
         // babysit and rapid clicks always land on a consistent layout.
-        function selectServer(index, options = {}) {
+        function selectServer(index) {
             const target = ((index % cards.length) + cards.length) % cards.length;
             if (target === activeIndex) return;
 
             activeIndex = target;
             layoutDeck();
 
-            // A pick restarts the clock rather than stopping it: the deck still
-            // shuffles on its own, just not immediately after someone chose.
-            if (options.fromUser) scheduleDeckAdvance();
+            // Re-armed on every move, automatic ones included. Re-arming only
+            // on a pick meant the timer was never set again after the first
+            // automatic advance, so the deck moved once and then sat still
+            // until something else poked it.
+            scheduleDeckAdvance();
         }
 
-        function stepDeck(delta, fromUser) {
-            selectServer(activeIndex + delta, { fromUser });
+        function stepDeck(delta) {
+            selectServer(activeIndex + delta);
         }
 
         // The deck takes itself off the clock while it is off-screen, hovered,
@@ -1542,14 +1613,39 @@ let ticketStep = 1;
         document.addEventListener('visibilitychange', scheduleDeckAdvance);
 
         deck.addEventListener('keydown', event => {
-            if (event.key === 'ArrowRight') { event.preventDefault(); stepDeck(1, true); }
-            else if (event.key === 'ArrowLeft') { event.preventDefault(); stepDeck(-1, true); }
-            else if (event.key === 'Home') { event.preventDefault(); selectServer(0, { fromUser: true }); }
-            else if (event.key === 'End') { event.preventDefault(); selectServer(cards.length - 1, { fromUser: true }); }
+            if (event.key === 'ArrowRight') { event.preventDefault(); dismissHint(); stepDeck(1); }
+            else if (event.key === 'ArrowLeft') { event.preventDefault(); dismissHint(); stepDeck(-1); }
+            else if (event.key === 'Home') { event.preventDefault(); dismissHint(); selectServer(0); }
+            else if (event.key === 'End') { event.preventDefault(); dismissHint(); selectServer(cards.length - 1); }
         });
 
-        document.getElementById('serverDeckPrev')?.addEventListener('click', () => stepDeck(-1, true));
-        document.getElementById('serverDeckNext')?.addEventListener('click', () => stepDeck(1, true));
+        // Touch: a sideways drag steps the deck. A mostly vertical drag is left
+        // alone so scrolling past the deck still works, and the threshold is
+        // wide enough that a tap does not register as a swipe.
+        let touchStartX = 0;
+        let touchStartY = 0;
+        deck.addEventListener('touchstart', event => {
+            const touch = event.changedTouches[0];
+            if (!touch) return;
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }, { passive: true });
+        deck.addEventListener('touchmove', event => {
+            const touch = event.changedTouches[0];
+            if (!touch) return;
+            const dx = touch.clientX - touchStartX;
+            const dy = touch.clientY - touchStartY;
+            if (Math.abs(dx) < 46 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+            lastSwipeAt = Date.now();
+            dismissHint();
+            stepDeck(dx < 0 ? 1 : -1);
+            // Re-anchored so one long drag cannot fire repeatedly.
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }, { passive: true });
+
+        document.getElementById('serverDeckPrev')?.addEventListener('click', () => { dismissHint(); stepDeck(-1); });
+        document.getElementById('serverDeckNext')?.addEventListener('click', () => { dismissHint(); stepDeck(1); });
 
         layoutDeck();
         section.hidden = false;
