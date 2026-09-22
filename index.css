@@ -1935,31 +1935,19 @@
    Every server gets the same slot: its own avatar as the hero image, then the
    name, the description its admin wrote and its member count. The row is a
    scroll-snap track, so a phone swipe and a trackpad drag both move it for
-   free; index.js adds the automatic advance, the arrows, the dots and the
-   keyboard. The slot that is left of centre is dimmed, so the row reads as
-   one community being featured rather than a wall of equals.
+   free; index.js adds the automatic advance, the dots and the keyboard. The
+   slot that is left of centre is dimmed, so the row reads as one community
+   being featured rather than a wall of equals.
+   No panel wraps the row: the cards are the section, so the page background
+   runs behind them and only the peeking neighbours are cropped. The padding is
+   the room the lifted front slot's shadow needs, not a frame.
    ========================================================================== */
 .server-carousel {
     --slide-gap: 16px;
     --slide-width: min(340px, 84%);
     position: relative;
     overflow: hidden;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 20px 20px 16px;
-    backdrop-filter: blur(16px);
-}
-.server-carousel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 70%;
-    height: 180px;
-    transform: translateX(-50%);
-    background: radial-gradient(60% 100% at 50% 0%, var(--accent-glow), transparent 72%);
-    pointer-events: none;
+    padding: 6px 0 12px;
 }
 @keyframes serverCarouselIn {
     0% { opacity: 0; transform: translateY(20px) scale(0.98); }
@@ -1968,7 +1956,7 @@
 .server-carousel.is-live { animation: serverCarouselIn 0.6s var(--ease-out-expo) both; }
 
 /* The inline padding is what lets the first and last slot sit centred in the
-   panel instead of pinned to its edges. */
+   row instead of pinned to its edges. */
 .server-track {
     position: relative;
     display: flex;
@@ -1985,6 +1973,27 @@
     outline: 2px solid var(--accent);
     outline-offset: 4px;
     border-radius: var(--radius-lg);
+}
+
+/* One or two communities have no neighbours to peek at, so from tablet width
+   up the slots take the space instead of leaving an empty strip either side:
+   the row centres them and stops scrolling entirely. Narrower screens keep the
+   peek layout above, because two half-width slots cannot be read on a phone.
+   The caps are a share of the row, so the pair can never spill past it. */
+@media (min-width: 768px) {
+    .server-carousel[data-slots="1"] .server-track,
+    .server-carousel[data-slots="2"] .server-track {
+        justify-content: center;
+        padding-inline: 0;
+    }
+    .server-carousel[data-slots="1"] .server-slide {
+        flex: 1 1 0;
+        max-width: min(560px, 60%);
+    }
+    .server-carousel[data-slots="2"] .server-slide {
+        flex: 1 1 0;
+        max-width: min(520px, 45%);
+    }
 }
 
 .server-slide {
@@ -2210,7 +2219,6 @@
 @media (max-width: 700px) {
     .server-carousel {
         --slide-width: min(300px, 86%);
-        padding: 14px 12px 12px;
     }
     .server-slide-hero { aspect-ratio: 16 / 11; }
     .server-slide-body { padding: 14px 15px 16px; }

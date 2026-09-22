@@ -1510,6 +1510,10 @@ let ticketStep = 1;
             return;
         }
 
+        // The stylesheet keys the fill-the-row layout off the count: a row of
+        // one or two has nothing to peek at, so the slots take the space.
+        panel.dataset.slots = String(servers.length);
+
         track.style.setProperty('--slide-interval', `${SLIDE_INTERVAL}ms`);
         // One community needs no controls: the arrows and dots would only say
         // "there is more" where there is not.
@@ -1546,14 +1550,23 @@ let ticketStep = 1;
             return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
         }
 
+        // Whether every slot already fits without scrolling. A short row is
+        // centred by the stylesheet, so moving through it is a change of which
+        // slot is in front and nothing else: there is no scroll to perform, and
+        // the slots are all on screen rather than cropped to a peek.
+        function rowFits() {
+            return track.scrollWidth <= track.clientWidth + 1;
+        }
+
         function setActive(index) {
             activeIndex = index;
             slides.forEach((slide, position) => {
                 const current = position === index;
                 slide.classList.toggle('is-active', current);
-                // Only the front slot is announced; the rest are still read by
-                // the dots' labels and reachable through them.
-                if (current) slide.removeAttribute('aria-hidden');
+                // Only the front slot is announced, unless the whole row fits
+                // and the others are on screen rather than cropped; those are
+                // read by the dots' labels and reachable through them.
+                if (current || rowFits()) slide.removeAttribute('aria-hidden');
                 else slide.setAttribute('aria-hidden', 'true');
             });
             dots.forEach((dot, position) => {
@@ -1582,10 +1595,14 @@ let ticketStep = 1;
         function goTo(index) {
             const target = ((index % slides.length) + slides.length) % slides.length;
             const slide = slides[target];
-            track.scrollTo({
-                left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
-                behavior: prefersReducedMotion() ? 'auto' : 'smooth'
-            });
+            // Scrolling a row that already fits would only nudge every slot
+            // sideways, so the move is the highlight alone.
+            if (!rowFits()) {
+                track.scrollTo({
+                    left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
+                    behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+                });
+            }
             setActive(target);
             schedule();
         }
