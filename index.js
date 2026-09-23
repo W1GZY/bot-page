@@ -174,24 +174,129 @@
     // The docs and commands markup lives on the landing page too, hidden behind
     // tabs. Building both at load put ~10k nodes of DOM behind the first paint
     // for content the visitor had not opened, so each tab is built the first
-    // time it is shown instead.
+    // time it is shown instead. The datasets behind them are heavy too
+    // (docs-data.js is ~210 KB, commands-data.js ~100 KB), so a tab's file is
+    // fetched on that same first open rather than at page load.
     const tabInitializers = {
         docs: initDocsPage,
         commands: initCommandsPage
     };
-    const builtTabs = new Set();
+    const tabDataSources = {
+        docs: { src: 'docs-data.js?v=d2da3b33', loaded: docsDataLoaded },
+        commands: { src: 'commands-data.js?v=1010f96b', loaded: commandsDataLoaded }
+    };
+    const tabBuilds = new Map();
+    const dataLoads = new Map();
 
+    // docs.html and commands.html load their dataset before index.js, so there
+    // these already report true and no fetch happens. Both have to run in global
+    // scope, because a top-level `const` in a classic script binds in the global
+    // lexical environment rather than as a property of window.
+    function docsDataLoaded() {
+        return typeof docsData !== 'undefined';
+    }
+
+    function commandsDataLoaded() {
+        return typeof commandsDatabase !== 'undefined';
+    }
+
+    function ensureTabData(tabId) {
+        const source = tabDataSources[tabId];
+        if (!source || source.loaded()) return Promise.resolve();
+        if (dataLoads.has(tabId)) return dataLoads.get(tabId);
+
+        const load = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = source.src;
+            script.addEventListener('load', resolve);
+            script.addEventListener('error', () => {
+                // Forget the failed attempt so a later open retries the fetch
+                // instead of replaying the rejection for the whole visit.
+                dataLoads.delete(tabId);
+                reject(new Error(`${source.src} could not be loaded`));
+            });
+            document.head.appendChild(script);
+        });
+        dataLoads.set(tabId, load);
+        return load;
+    }
+
+    // A prefetch spends the visitor's data without being asked to, so it is
+    // skipped when the browser says the connection is metered or slow. The API
+    // is Chromium-only, so everywhere else this reports true and the head start
+    // is kept. This never gates opening a tab: that always loads its file.
+    function shouldPrefetchTabData() {
+        const connection = navigator.connection;
+        if (!connection) return true;
+        if (connection.saveData) return false;
+        return !['slow-2g', '2g'].includes(connection.effectiveType);
+    }
+
+    // The download is the slow part of opening a tab, so its file starts the
+    // moment the visitor shows intent: hovering, focusing or touching the
+    // control that opens it. The build still waits for the real open, so a hover
+    // that goes nowhere costs one cached file and no DOM. `data-tab` is the
+    // contract - every control that opens a tab, in the nav or in the page body,
+    // names the tab it opens.
+    function prefetchTabData(tabId) {
+        if (!tabId || !tabDataSources[tabId]) return;
+        if (!shouldPrefetchTabData()) return;
+        // Speculative, so a failure is left for the open that actually happens
+        // to report, against the panel the visitor can see.
+        ensureTabData(tabId).catch(() => {});
+    }
+
+    ['pointerover', 'focusin', 'touchstart'].forEach(type => {
+        document.addEventListener(type, event => {
+            const target = event.target instanceof Element ? event.target : null;
+            const opener = target?.closest('[data-tab]');
+            if (opener) prefetchTabData(opener.getAttribute('data-tab'));
+        }, { passive: true });
+    });
+
+    // A dataset that never arrives would leave the panel blank, which reads as a
+    // missing feature, so the panel says what happened and offers the retry.
+    function showTabDataFailure(tabId) {
+        const view = document.getElementById(`view-${tabId}`);
+        const source = tabDataSources[tabId];
+        if (!view || !source || view.querySelector('.tab-data-failure')) return;
+
+        const notice = document.createElement('div');
+        notice.className = 'tab-data-failure';
+        notice.appendChild(document.createTextNode(`${source.src} could not be loaded. `));
+
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.className = 'tab-data-retry';
+        retry.textContent = 'Try again';
+        retry.addEventListener('click', () => {
+            notice.remove();
+            initTab(tabId);
+        });
+        notice.appendChild(retry);
+        view.prepend(notice);
+    }
+
+    // Resolves once the tab is built, so a caller that needs the rendered markup
+    // (a deep link to a guide or a command category) can wait for it instead of
+    // racing the fetch.
     function initTab(tabId) {
-        if (builtTabs.has(tabId)) return;
+        if (tabBuilds.has(tabId)) return tabBuilds.get(tabId);
         const build = tabInitializers[tabId];
-        if (!build) return;
-        // Marked before the build so a re-entrant call cannot double-render.
-        builtTabs.add(tabId);
-        build();
+        if (!build) return Promise.resolve();
+
+        // Recorded before the build so a re-entrant call cannot double-render.
+        const pending = ensureTabData(tabId).then(build).catch(() => {
+            // The tab stays unbuilt so the next open can try the file again.
+            tabBuilds.delete(tabId);
+            showTabDataFailure(tabId);
+        });
+        tabBuilds.set(tabId, pending);
+        return pending;
     }
 
     function switchTab(tabId) {
-        initTab(tabId);
+        const built = initTab(tabId);
         document.querySelectorAll('.tab-view').forEach(view => {
             const isTarget = view.id === `view-${tabId}`;
             view.classList.toggle('active-view', isTarget);
@@ -201,12 +306,14 @@
         setTopNavActive(tabId);
         closeTopNav();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.setTimeout(() => {
-            const activeView = document.getElementById(`view-${tabId}`);
-            if (activeView && typeof window.refreshScrollReveals === 'function') {
-                window.refreshScrollReveals(activeView);
-            }
-        }, 80);
+        return built.then(() => {
+            window.setTimeout(() => {
+                const activeView = document.getElementById(`view-${tabId}`);
+                if (activeView && typeof window.refreshScrollReveals === 'function') {
+                    window.refreshScrollReveals(activeView);
+                }
+            }, 80);
+        });
     }
 
     topNavToggle?.addEventListener('click', () => {
@@ -435,14 +542,14 @@
     // showing; back/forward has just restored the reader's position.
     function ensureTab(tabId) {
         const view = document.getElementById(`view-${tabId}`);
-        if (!view || view.classList.contains('active-view')) return;
-        switchTab(tabId);
+        if (view && !view.classList.contains('active-view')) switchTab(tabId);
+        return initTab(tabId);
     }
 
     // One route table for every fragment: tab (#docs), section (#features),
     // guide id (#tickets), command category (#moderation). A fragment behaves
     // the same whether it arrives with a page load or is typed in.
-    function applyHashRoute() {
+    async function applyHashRoute() {
         const hash = window.location.hash.replace(/^#/, '');
         if (!hash) return;
 
@@ -458,32 +565,41 @@
             return;
         }
 
-        if (typeof docsData !== 'undefined' && docsData.some(d => d.id === hash)) {
-            ensureTab('docs');
-            setTimeout(() => window.activateDoc?.(hash, { updateHistory: 'skip' }), 50);
+        // A guide id or a command category is only recognisable once its dataset
+        // is present, and neither file loads for an ordinary visit. A fragment
+        // that might name one is what justifies fetching it, so a deep link is
+        // the one route that still pays for data up front - and only the data,
+        // since nothing renders until the id is known to exist. Guides are
+        // checked first because a guide id is what these fragments usually are.
+        const docsReady = await ensureTabData('docs').then(() => true, () => false);
+        if (docsReady && docsDataLoaded() && docsData.some(d => d.id === hash)) {
+            await ensureTab('docs');
+            window.activateDoc?.(hash, { updateHistory: 'skip' });
             return;
         }
 
-        if (typeof commandsDatabase !== 'undefined' && commandsDatabase.some(c => c.id === hash)) {
-            // ensureTab builds the tab, so this category section only exists from
-            // here on: the browser's own fragment scroll already looked for it in
-            // empty markup, which means this path has to scroll it into view.
-            ensureTab('commands');
-            const targetSec = document.getElementById(hash);
-            if (!targetSec) return;
+        const commandsReady = await ensureTabData('commands').then(() => true, () => false);
+        if (!commandsReady || !commandsDataLoaded()) return;
+        if (!commandsDatabase.some(c => c.id === hash)) return;
+
+        await ensureTab('commands');
+        // The tab was built just now, so this category section only exists from
+        // here on: the browser's own fragment scroll already looked for it in
+        // empty markup, which means this path has to scroll it into view.
+        const targetSec = document.getElementById(hash);
+        if (!targetSec) return;
+        setTimeout(() => {
+            const before = window.scrollY;
+            targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // A smooth move can be skipped outright (reduced motion, a page
+            // that never composites, a very long jump). If the page has not
+            // moved at all, jump to the section for real.
             setTimeout(() => {
-                const before = window.scrollY;
-                targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // A smooth move can be skipped outright (reduced motion, a page
-                // that never composites, a very long jump). If the page has not
-                // moved at all, jump to the section for real.
-                setTimeout(() => {
-                    if (Math.abs(window.scrollY - before) < 2) {
-                        targetSec.scrollIntoView({ block: 'start' });
-                    }
-                }, 800);
-            }, 100);
-        }
+                if (Math.abs(window.scrollY - before) < 2) {
+                    targetSec.scrollIntoView({ block: 'start' });
+                }
+            }, 800);
+        }, 100);
     }
 
     // Back/forward fires popstate and hashchange; the fragment carries the
@@ -1069,8 +1185,12 @@ function initDocsPage() {
         // docs.html and commands.html are a single tab with no tab wrapper
         // (body[data-nav]), so their content builds right away. The landing page
         // wraps all three views in .tab-view and builds each one on first open.
-        if (!document.querySelector('.tab-view')) initTab(document.body.dataset.nav);
-        window.setTimeout(() => window.refreshScrollReveals?.(document), 60);
+        const reveal = () => window.setTimeout(() => window.refreshScrollReveals?.(document), 60);
+        if (document.querySelector('.tab-view')) {
+            reveal();
+            return;
+        }
+        initTab(document.body.dataset.nav).then(reveal);
     });
 
 

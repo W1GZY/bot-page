@@ -2,37 +2,47 @@
 <!--
   Only the pages with their own URL and content are listed. The Overview,
   Documentation and Commands tabs on the landing page are in-page sections
-  (#docs, #commands) of index.html, and invite.html is a redirect, so neither
-  is a separate entry.
+  (#docs, #commands) of index.html, so they are not separate entries, and
+  neither are the two pages that carry robots: noindex - 404.html, which is
+  served on a miss, and invite.html, which is a redirect.
+
+  Each lastmod is the day the page last changed. scripts/check_site_map.py
+  fails when one falls behind that page's last commit.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sean.bot.nu/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://sean.bot.nu/commands.html</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://sean.bot.nu/docs.html</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://sean.bot.nu/setup.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sean.bot.nu/tos.html</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://sean.bot.nu/cookies.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

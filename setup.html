@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot Setup - What Happens After You Invite It</title>
+    <meta name="description" content="What happens after you invite SeanBot to a Discord server, in seven short steps: the onboarding message, the bot role, the dashboard, logging, and the access check.">
+    <link rel="canonical" href="https://sean.bot.nu/setup.html">
+    <meta name="theme-color" content="#09090b">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SeanBot">
+    <meta property="og:title" content="SeanBot Setup - What Happens After You Invite It">
+    <meta property="og:description" content="The onboarding message, the bot role, the dashboard, logging, and the access check, in seven short steps.">
+    <meta property="og:url" content="https://sean.bot.nu/setup.html">
+    <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png?v=994ca5f0">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeanBot Setup - What Happens After You Invite It">
+    <meta name="twitter:description" content="The onboarding message, the bot role, the dashboard, logging, and the access check, in seven short steps.">
+    <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png?v=994ca5f0">
+
+    <link rel="icon" href="/favicon.svg?v=706011f8" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
+
+    <script src="theme-init.js?v=f90abd42"></script>
+    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
+         The @font-face rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
+
+    <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+    <link rel="stylesheet" href="global.css?v=8ff6eb99">
+    <link rel="stylesheet" href="brand.css?v=5cf0b2ab">
+    <link rel="stylesheet" href="docs.css?v=542b5949">
+    <script src="layout.js?v=3f9e08c1" defer></script>
+</head>
+<body data-nav="none" data-title="Setup">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+            <div class="brand-mark">
+                <i class="ph-fill ph-paw-print"></i>
+                <span>SeanBot<span class="brand-mark-dot">.</span></span>
+            </div>
+            <button class="hamburger" id="closeSidebarBtn" aria-label="Close navigation"><i class="ph ph-x"></i></button>
+        </div>
+        <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
+        <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
+        <a href="setup.html" class="nav-link active"><i class="ph ph-rocket-launch"></i><span>Setup</span></a>
+        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+        <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="top-header">
+            <div style="display:flex; align-items:center; gap:16px;">
+                <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a href="index.html" class="breadcrumb-item"><i class="ph-fill ph-paw-print breadcrumb-icon"></i><span class="breadcrumb-brand-text">SeanBot.</span></a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">Setup</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle" title="Change theme accent">
+                    <div class="active-display"></div><i class="ph ph-caret-down"></i>
+                    <div class="dropdown-menu-content">
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin-bottom:8px;">Theme Accent</div>
+                        <div class="color-grid" id="colorGrid">
+                            <div class="accent-dot" data-accent="gold" style="background:#FFD700;" title="Gold"></div>
+                            <div class="accent-dot" data-accent="orange" style="background:#F97316;" title="Orange"></div>
+                            <div class="accent-dot" data-accent="rose" style="background:#E11D48;" title="Rose"></div>
+                            <div class="accent-dot" data-accent="purple" style="background:#9333EA;" title="Purple"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background:#5865F2;" title="Blurple"></div>
+                            <div class="accent-dot" data-accent="blue" style="background:#3B82F6;" title="Blue"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background:#06B6D4;" title="Cyan"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background:#10B981;" title="Emerald"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content" style="max-width:900px;">
+            <div>
+                <h1 class="docs-page-heading">Set up SeanBot</h1>
+                <p class="docs-page-subtitle">What happens after you invite it, in the order it happens. Seven short steps, and none of them are required to get started.</p>
+            </div>
+
+            <p class="setup-lead">Not invited yet? <a href="invite.html">Add SeanBot to your server</a>, then come back to this page.</p>
+
+            <ol class="setup-steps">
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">A message arrives</h2>
+                        <p class="setup-step-text">Adding SeanBot sends a short direct message to whoever invited it, offering three things: <strong>Set up SeanBot</strong>, <strong>Quick tour</strong>, and <strong>Open dashboard</strong>. Set up SeanBot asks one question - what kind of server is this - and turns on the features that fit. If that account has direct messages closed, the same menu is posted in the first channel the bot can write in.</p>
+                    </div>
+                </li>
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">Nothing has to be switched on</h2>
+                        <p class="setup-step-text">Every optional feature is already available the moment the bot joins. Setup is about switching off what this server does not want, and a choice you make is remembered from then on.</p>
+                    </div>
+                </li>
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">Give the bot room to act</h2>
+                        <p class="setup-step-text">In Discord, open <strong>Server Settings &gt; Roles</strong> and drag the SeanBot role above every role it has to assign, remove, quarantine, mute, or manage. Discord only lets a bot touch roles below its own, so while it sits underneath them those actions quietly do nothing.</p>
+                    </div>
+                </li>
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">Open the dashboard</h2>
+                        <p class="setup-step-text">Sign in with Discord, choose the server, and open <strong>Module Settings</strong> - that is the whole list of switches, and a server that has never saved a choice sees the getting-started card that says so. <code>/dashboard</code> takes you to the same place from Discord.</p>
+                    </div>
+                </li>
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">Turn logging on first</h2>
+                        <p class="setup-step-text">Enable <strong>Logging</strong> in Module Settings, then open <strong>Log Config</strong> and choose <em>All logs in one channel</em> to begin with. That is how you see what the bot is doing rather than guessing from the outside. Separate channels are there when moderation, security, member and voice logs need to be kept apart.</p>
+                    </div>
+                </li>
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">Add security once you can watch it</h2>
+                        <p class="setup-step-text">Anti-Raid has a <strong>Canary Mode</strong> that logs what it would have caught without acting on it. Run it that way for a few days, look at what it flags on your own traffic, then let it act.</p>
+                    </div>
+                </li>
+                <li class="setup-step">
+                    <div>
+                        <h2 class="setup-step-title">Check that it is healthy</h2>
+                        <p class="setup-step-text">Setup finishes with an access check naming anything genuinely wrong - a channel the bot cannot post in, or a role sitting below the member roles. Run <code>/permissions</code> for the same audit whenever you like, and <code>/staff diagnose</code> to see what is configured and what still needs attention.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="callout-box callout-note">
+                <strong><i class="ph-fill ph-info"></i> If a command does not appear</strong>
+                <p style="margin:8px 0 0;">It is nearly always one of three things: its module is switched off, the command is disallowed under <strong>Server Settings &gt; Integrations</strong>, or the person typing it does not have the role.</p>
+            </div>
+
+            <p class="setup-lead" style="margin-top:28px;">That is the whole on-ramp. Everything past it is optional, and every module has a page of its own written for whoever ends up doing the configuring.</p>
+
+            <div class="setup-cta">
+                <a href="docs.html" class="btn-large btn-primary"><i class="ph-bold ph-book-open"></i> Read the documentation</a>
+                <a href="commands.html" class="btn-large btn-secondary"><i class="ph-bold ph-terminal-window"></i> Browse the commands</a>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div style="display: flex; gap: 18px;"><a href="tos.html">Terms & Privacy</a><a href="cookies.html">Cookie Policy</a></div>
+        </footer>
+    </div>
+</body>
+</html>

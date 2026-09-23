@@ -528,6 +528,23 @@
             box-shadow: 0 0 26px var(--accent-glow);
             color: #000;
         }
+        /* The quieter half of a banner's pair: the read-only previews, beside
+           the invite. Secondary on purpose, so it does not compete with the
+           button that adds the bot. */
+        .section-cta-link {
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+            transition: color var(--transition-fast);
+        }
+        .section-cta-link:hover {
+            color: var(--accent);
+        }
         /* Hero details */
         .hero-badge-pill {
             background: rgba(255, 215, 0, 0.08);
@@ -2180,7 +2197,8 @@
 .server-carousel-controls[hidden],
 .server-carousel-dots[hidden] { display: none; }
 .server-carousel-notice:empty { display: none; }
-.server-load-failure {
+.server-load-failure,
+.tab-data-failure {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2193,7 +2211,8 @@
     line-height: 1.5;
     text-align: center;
 }
-.server-load-retry {
+.server-load-retry,
+.tab-data-retry {
     appearance: none;
     flex: 0 0 auto;
     padding: 6px 14px;
@@ -2207,11 +2226,13 @@
     cursor: pointer;
     transition: background var(--transition-fast), border-color var(--transition-fast);
 }
-.server-load-retry:hover {
+.server-load-retry:hover,
+.tab-data-retry:hover {
     background: rgba(255, 255, 255, 0.12);
     border-color: var(--accent);
 }
-.server-load-retry:disabled {
+.server-load-retry:disabled,
+.tab-data-retry:disabled {
     opacity: 0.6;
     cursor: default;
 }
