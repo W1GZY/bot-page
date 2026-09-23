@@ -4,37 +4,37 @@ const docsData = [
         "id": "quickstart",
         "icon": "ph-rocket-launch",
         "title": "Install and set up",
-        "subtitle": "Invite, role position, module switches, logging, then a test in a private channel. This is the order that avoids problems later.",
+        "subtitle": "Invite it, move its role to the top, choose your switches, turn logging on, then test in a private channel. Do these in order and nothing bites you later.",
         "content": [
             {
                 "type": "heading",
-                "text": "Before You Install"
+                "text": "Before you invite it"
             },
             {
                 "type": "list",
                 "items": [
-                    "Use a Discord account with Manage Server. Server ownership or Administrator is recommended for the first setup.",
-                    "Create a private staff channel for testing commands and a private log channel such as #seanbot-logs.",
-                    "Decide which existing roles are administrators, moderators, support staff, event staff, and ordinary members.",
-                    "Keep Discord role hierarchy in mind: SeanBot can only manage members and roles below its highest role."
+                    "Sign in with a Discord account that has Manage Server. Use the owner or an Administrator account for the first setup.",
+                    "Make a private staff channel for testing commands, and a private log channel such as #seanbot-logs.",
+                    "Write down which of your existing roles are administrators, moderators, support staff, event staff, and ordinary members.",
+                    "Keep the role hierarchy in mind: SeanBot can only manage members and roles below its highest role."
                 ]
             },
             {
                 "type": "heading",
-                "text": "1. Invite and Place the Bot Role"
+                "text": "1. Invite it and move its role up"
             },
             {
                 "type": "list",
                 "items": [
-                    "Invite SeanBot from the official website and select the server you want to configure.",
-                    "Open Server Settings &gt; Roles and move the SeanBot role above every role it must assign, remove, quarantine, mute, or manage.",
-                    "Do not remove View Channel, Send Messages, Embed Links, Attach Files, Read Message History, or Use Application Commands from channels where the bot is expected to work.",
-                    "Add feature-specific permissions only where needed. Create Expressions is required for approved emoji suggestions; Manage Roles is required for role automation."
+                    "Invite SeanBot from this site and pick the server you want to configure.",
+                    "Open Server Settings &gt; Roles and drag the SeanBot role above every role it has to assign, remove, quarantine, mute, or manage.",
+                    "Leave View Channel, Send Messages, Embed Links, Attach Files, Read Message History, and Use Application Commands alone in the channels where it is meant to work.",
+                    "Add feature-specific permissions only where a feature needs them. Create Expressions is required for approved emoji suggestions, and Manage Roles for role automation."
                 ]
             },
             {
                 "type": "heading",
-                "text": "2. Confirm the Installation"
+                "text": "2. Check it landed"
             },
             {
                 "type": "commands",
@@ -60,68 +60,68 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Adding SeanBot sends a short direct message to whoever invited it. Set up SeanBot asks one question - what kind of server is this - and turns on the features that fit, Quick tour walks through what the bot does, and Open dashboard is a one-time sign-in link. If that account has direct messages closed, the same menu is posted in the first channel SeanBot can write in."
+                "text": "You will get a direct message the moment it joins. Set up SeanBot asks one question - what kind of server is this - and turns on the features that fit, Quick tour walks through what the bot does, and Open dashboard is a one-time sign-in link. If your direct messages are closed, the same menu is posted in the first channel SeanBot can write in."
             },
             {
                 "type": "text",
-                "text": "Nothing has to be turned on for SeanBot to work: every optional feature is already available when it joins, and setup is about switching off what this server does not want. Setup ends with an Access check naming anything genuinely wrong - channels SeanBot cannot post in, or a role placed below the member roles - so those are fixed before a feature fails. Run /permissions at any time for the same audit with more detail."
+                "text": "Nothing has to be turned on. Every optional feature already works when it joins, so setup is about switching off what this server does not want. Setup ends with an Access check that names anything genuinely wrong, such as a channel SeanBot cannot post in or a role placed below the member roles, so you fix those before a feature fails. Run /permissions any time for the same audit with more detail."
             },
             {
                 "type": "heading",
-                "text": "3. Open the Dashboard and Control Access"
+                "text": "3. Sign in and hand out access"
             },
             {
                 "type": "list",
                 "items": [
                     "Sign in with Discord, choose your server, and open Module Settings.",
                     "A server that has never saved a module choice shows a getting-started card pointing at Module Settings, because every feature is on by default. Switching one off is a deliberate choice and is remembered from then on.",
-                    "Open Server Access before inviting other staff into the dashboard. Assign page access and individual actions to trusted roles using least privilege.",
-                    "Use Dashboard Logs to confirm who changed settings, deleted records, approved requests, or performed dashboard actions."
+                    "Open Server Access before you let other staff into the dashboard. Give each trusted role the pages and the single actions it needs, and no more than that.",
+                    "Use Dashboard Logs to see who changed settings, deleted records, approved requests, or acted in the dashboard."
                 ]
             },
             {
                 "type": "heading",
-                "text": "4. Configure Logging First"
+                "text": "4. Set logging up first"
             },
             {
                 "type": "list",
                 "items": [
-                    "Enable Logging in Module Settings, then open Log Config.",
-                    "Choose All logs in one channel for the fastest setup, or Separate channels when moderation, security, member, voice, and staff logs must be isolated.",
-                    "Enable moderation, security, staff workflows, public reports, ban appeals, emoji suggestions, tickets, and dashboard actions as needed.",
-                    "Changes to the logging settings themselves are always recorded, including the change that turns logging off, so the configuration cannot be altered without a trace.",
-                    "Perform one harmless dashboard change and one test command, then verify both appear in the expected log channel."
+                    "Open Log Config: logging is on already, and it needs a channel to report into.",
+                    "Choose All logs in one channel for the fastest start, or Separate channels when moderation, security, member, voice, and staff logs have to be kept apart.",
+                    "Review the events you want logged: moderation, security, staff workflows, public reports, ban appeals, emoji suggestions, tickets, and dashboard actions.",
+                    "Changes to the logging settings are always recorded, including the change that turns logging off, so nobody can alter the configuration without leaving a trace.",
+                    "Make one harmless dashboard change and run one test command, then check both landed in the log channel you expected."
                 ]
             },
             {
                 "type": "heading",
-                "text": "5. Configure Security Safely"
+                "text": "5. Tune security once you can watch it"
             },
             {
                 "type": "list",
                 "items": [
-                    "Enable Anti-Raid and open its dashboard page.",
-                    "Choose trusted staff roles, safe domains, alert channels, and a quarantine role placed below SeanBot.",
-                    "Start with Canary mode so detections are logged without automatically punishing members.",
-                    "Run /antiraid audit and /antiraid simulate, review the output, then enable enforcement only after your trusted roles and thresholds are correct."
+                    "Anti-Raid is on from the start, so open its dashboard page rather than switching it on.",
+                    "Choose your trusted staff roles, safe domains, alert channels, and a quarantine role placed below SeanBot.",
+                    "Start in Canary mode, where detections are logged without punishing anyone.",
+                    "Run /antiraid audit and /antiraid simulate, read the output, and turn enforcement on only once your trusted roles and thresholds are right."
                 ]
             },
             {
                 "type": "heading",
-                "text": "6. Prepare Staff Workflows"
+                "text": "6. Set up your staff workflows"
             },
             {
                 "type": "list",
                 "items": [
-                    "Confirm moderator roles have only the Discord permissions they need and remain below the server owner.",
-                    "Configure warnings and moderation presets before staff begin issuing cases.",
-                    "Create private review channels for ban appeals, public reports, community suggestions, emoji suggestions, tickets, and leave requests before enabling those modules.",
-                    "Assign reviewer or support roles on each feature page and submit one test request from a non-staff account."
+                    "Confirm moderator roles have only the Discord permissions they need, and sit below the server owner.",
+                    "Configure warnings and moderation presets before your staff start issuing cases.",
+                    "Create the private review channels for ban appeals, public reports, community suggestions, emoji suggestions, tickets, and leave requests before you enable those modules.",
+                    "Assign reviewer or support roles on each feature page, then submit one test request from a non-staff account."
                 ]
             },
             {
                 "type": "heading",
-                "text": "7. Add Optional Community Features"
+                "text": "7. Add the extras you want"
             },
             {
                 "type": "list",
@@ -136,15 +136,15 @@ const docsData = [
             },
             {
                 "type": "heading",
-                "text": "8. Final Verification"
+                "text": "8. Run the final check"
             },
             {
                 "type": "list",
                 "items": [
-                    "Run /staff diagnose again after configuration.",
+                    "Run /staff diagnose again now that everything is configured.",
                     "Test one member command, one moderator command, one dashboard change, one approval workflow, and one scheduled or automated feature.",
-                    "Verify the bot cannot manage roles above its own role and that ordinary members cannot access staff-only dashboard actions.",
-                    "Confirm logs identify the actor, action, target, and result in normal language.",
+                    "Confirm the bot cannot manage roles above its own role, and that ordinary members cannot reach staff-only dashboard actions.",
+                    "Check that the logs name the actor, the action, the target, and the result in plain language.",
                     "Review Module Settings and disable anything you are not using."
                 ]
             },
@@ -152,7 +152,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "note",
                 "title": "If a command does not appear",
-                "text": "Check that its module is enabled, the command is allowed under Server Settings &gt; Integrations, the user has the required role or Discord permission, and SeanBot can view the current channel. Discord may take a short time to refresh newly synchronized commands."
+                "text": "Check three things, in this order: the module is switched off, the command is disallowed under Server Settings &gt; Integrations, and the user has the role or Discord permission it needs. SeanBot also has to be able to view the channel you are typing in. Discord can take a short while to show newly synced commands."
             }
         ]
     },
@@ -160,7 +160,7 @@ const docsData = [
         "id": "core",
         "icon": "ph-layout",
         "title": "Dashboard, Modules & Staff Access",
-        "subtitle": "How module switches and dashboard permissions actually behave, and why a command might be missing.",
+        "subtitle": "What the switches and the dashboard permissions actually do, and what to check when a command is missing.",
         "content": [
             {
                 "type": "heading",
@@ -168,13 +168,13 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Optional features are controlled per server. Disabling a module hides its dashboard page and blocks its protected API actions; it does not delete saved configuration. Re-enable the module to continue using the existing settings."
+                "text": "The switches are per server, and everything is on when the bot joins: a server nobody has configured is already running its modules. Turning one off hides its dashboard page and blocks its protected actions; it does not delete what you saved there. Turn it back on and your settings are still waiting. Last Message tracking is the one exception, a heavy lookup that stays off until you ask for it."
             },
             {
                 "type": "list",
                 "items": [
-                    "Open Module Settings and enable the feature before attempting its setup commands.",
-                    "Use search and Enabled Only to review the active configuration without enabling unrelated tools.",
+                    "Skim Module Settings once before you configure a feature, and switch off what this server does not want.",
+                    "Use search and Enabled Only to review what is actually running.",
                     "After disabling a scheduled feature, check its guide for any messages, channels, or roles that should be removed manually."
                 ]
             },
@@ -184,7 +184,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Server Access delegates dashboard pages and individual actions to Discord roles. A role can receive read-only access to a page without receiving approval, deletion, or configuration actions."
+                "text": "Server Access hands dashboard pages and single actions to Discord roles. You can give a role read-only access to a page without also handing it approval, deletion, or configuration."
             },
             {
                 "type": "list",
@@ -722,16 +722,16 @@ const docsData = [
         "id": "server_admin",
         "icon": "ph-wrench",
         "title": "Server Administration Helpers",
-        "subtitle": "Modules, roles, channels and bot messages, all from inside Discord.",
+        "subtitle": "Modules, roles, channels and bot messages, handled from inside Discord.",
         "content": [
             {
                 "type": "heading",
-                "text": "Before Using These Commands"
+                "text": "Before you use these"
             },
             {
                 "type": "list",
                 "items": [
-                    "Place SeanBot above every role it needs to create, edit, delete, add, or remove.",
+                    "Put SeanBot above every role it has to create, edit, delete, add, or remove.",
                     "The person running a role command must also be allowed to manage the target role.",
                     "Use Dashboard Logs and server logs to retain an audit trail for dashboard and Discord changes.",
                     "The say command suppresses mass mentions, but staff should still use it only in approved channels."
@@ -810,7 +810,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Anti-Raid in Module Settings.",
+                    "Anti-Raid is on by default, so the work here is tuning it rather than enabling it.",
                     "Choose trusted roles, safe domains, alert channels, and a quarantine role below SeanBot.",
                     "Turn on Canary mode first so detections are logged without automatic punishment.",
                     "Run /antiraid audit and /antiraid simulate, review false positives, then enable enforcement.",
@@ -1458,7 +1458,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable TimePing in Module Settings and make sure SeanBot can read messages, add reactions, manage events if using Discord Scheduled Events, and mention the roles you want pinged.",
+                    "TimePing is on by default; make sure SeanBot can read messages, add reactions, manage events if using Discord Scheduled Events, and mention the roles you want pinged.",
                     "Open the dashboard TimePing page and set Defaults first: timezone, reminder intervals, ping target, cleanup timing, and reminder text.",
                     "Create reusable interval templates if your server repeats the same reminders, such as 24h, 1h, and 10m before an event.",
                     "For a Discord Scheduled Event, use /timeping native or the dashboard event linker so members can join the event and still get SeanBot reminders.",
@@ -2087,7 +2087,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Temporary Voice Channels in Module Settings.",
+                    "Temporary Voice Channels is on by default, so what is left is choosing where members make their own rooms.",
                     "Create or choose a voice channel that members will join when they want their own room.",
                     "Open the dashboard Temp Channels page and set that channel as the Join-To-Create channel.",
                     "Set inactivity cleanup so empty rooms are removed automatically.",
@@ -2136,7 +2136,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Ticket System in Module Settings.",
+                    "The ticket system is on by default, so start with where tickets should land.",
                     "Open the dashboard Tickets page and choose the category where ticket channels should be created.",
                     "Select support staff roles so the right staff can view, claim, assign, and close tickets.",
                     "Choose a ticket log channel for opens, closes, staff actions, and transcript links.",
@@ -2518,7 +2518,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Reaction Pings in Module Settings.",
+                    "Reaction Pings is on by default, so the first choice is how a ping reaches people.",
                     "Open Reaction Pings in the dashboard and choose Direct Mentions or Temporary Role.",
                     "Keep the user cap reasonable so one message cannot ping too many people at once.",
                     "Add trusted staff roles that can ping reactors on any eligible message.",
@@ -2571,7 +2571,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Sticky Messages in Module Settings.",
+                    "Sticky Messages is on by default, so start by picking a channel and writing the message.",
                     "Open Sticky Messages in the dashboard, choose a channel, write the message, and save.",
                     "Use Normal Message for plain text or Embed for a cleaner announcement look.",
                     "Messages Before Repost controls how busy the channel must be before SeanBot moves the sticky back down.",
@@ -3286,7 +3286,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Voice Analytics in Module Settings.",
+                    "Voice Analytics is on by default and measures voice activity wherever the bot can see it.",
                     "Confirm the bot can View Channels and observe voice state updates in the channels you want measured.",
                     "Exclude or restrict private channels according to your server privacy policy.",
                     "Allow enough activity to collect before expecting meaningful leaderboards, loyalty, streak, or graph results."
@@ -3971,7 +3971,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Enable Honeypot in Module Settings and open the dashboard Honeypot page.",
+                    "Honeypot is on by default, so open the dashboard Honeypot page and place the trap.",
                     "Start with the Log only action to watch hits before raising enforcement.",
                     "Click Deploy Trap Channel on the dashboard (or run /honeypot deploy) to create a trap channel instantly without leaving the page.",
                     "Keep trap channels visible to @everyone; that visibility is what attracts the bots. Place them somewhere out of the way.",
