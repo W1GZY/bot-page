@@ -145,11 +145,10 @@
             <!-- Hero Section -->
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    Your favourite Discord bot, <span style="color: var(--accent);">One click away.</span>.
+                    Your favourite Discord bot, <span style="color: var(--accent);">one click away</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation, analytics, and a Wizard101 suite deeper than anything you can find out there. Best part is every module is optional, and it is all free.
-
+                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation, analytics, and the only Wizard101 suite in the table below. Every module is optional, and all of it is free.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -237,19 +236,24 @@
                 </div>
             </div>         
 
-            <!-- Product highlights. The live server count lands in the
-                 "Communities" card below - one place, filled by index.js. -->
+            <!-- Product highlights. The two catalog counts are generated:
+                 data-site-stat marks where each lands, and
+                 scripts/generate_site_stats.py writes them from the command
+                 reference and the dashboard's module catalog. The number in
+                 the "Communities" card is the last known value, replaced on
+                 load by index.js from the bot's own guild count; it is what an
+                 offline or blocked visitor sees, not a second source of truth. -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">250+</div>
+                    <div class="stat-number" data-site-stat="commands">490</div>
                     <div class="stat-label">Slash and prefix commands</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">47+</div>
+                    <div class="stat-number" data-site-stat="modules">35</div>
                     <div class="stat-label">Modules, every one of them optional</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number stat-word" id="liveServerCount">5</div>
+                    <div class="stat-number stat-word" id="liveServerCount">7</div>
                     <div class="stat-label">Communities running it</div>
                 </div>
             </div>
