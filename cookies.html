@@ -23,8 +23,7 @@
     <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
 
-    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
-         The @font-face rules live in global.css. -->
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
@@ -38,9 +37,9 @@
         const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
         document.documentElement.setAttribute('data-accent', savedAccent);
     </script>
-    <link rel="stylesheet" href="global.css?v=8ff6eb99">
-    <link rel="stylesheet" href="brand.css?v=5cf0b2ab">
-    <script src="layout.js?v=3f9e08c1" defer></script>
+    <link rel="stylesheet" href="global.css?v=a8678982">
+    <link rel="stylesheet" href="brand.css?v=d8de8e56">
+    <script src="layout.js?v=a8ed0a65" defer></script>
     <style>
         /* Cookie Policy Custom Styles */
         .cookie-note {
@@ -183,10 +182,8 @@
                 <p>sean.bot.nu is a static page. There is no login, no server-side session, and no personalisation stored on a server, so there is nothing for us to put in a cookie.</p>
                 <p>Three small values are stored in your browser instead. None is a cookie: they stay on your device, they are never sent to our servers, and nothing else can read them.</p>
 
-                <!-- The gate in scripts/check_cookie_inventory.py reads the rows of
-                     the data-site-inventory table below and compares them with what the
-                     shipped HTML and JS actually touch, so a new key fails the check
-                     until it is listed here. -->
+                <!-- Read back against the shipped HTML and JS by a check in scripts/,
+                     so a new key fails there until it is listed here. -->
                 <div class="cookie-table-wrap">
                     <table class="cookie-table" data-site-inventory>
                         <colgroup>

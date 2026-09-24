@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Design tokens
-   ========================================================================== */
 :root {
   --bg-dark: #09090b;
   --bg-panel: #121215;
@@ -24,24 +21,20 @@
 
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Premium easing: fast-out, gentle landing. Use for anything that moves
-     in response to the cursor or enters the viewport. */
+  /* Easing for motion that answers the cursor or enters the viewport. */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Layered surface shadows: tight contact shadow plus a soft ambient one.
-     Cards and buttons lift between these instead of toggling a single shadow. */
+  /* Two-layer shadows: cards and buttons lift between these instead of flipping one. */
   --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.22);
   --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 16px 40px -8px rgba(0, 0, 0, 0.55);
   --shadow-lift-accent: 0 2px 4px rgba(0, 0, 0, 0.45), 0 12px 32px -6px var(--accent-glow);
 
-  /* Jump clearance: header height plus the gap below it. index.css raises
-     --header-height for the taller landing topbar. */
+  /* Header height plus the gap below. index.css raises --header-height for the landing topbar. */
   --header-height: 60px;
   --anchor-gap: 20px;
   --anchor-offset: calc(var(--header-height) + var(--anchor-gap));
 }
 
-/* Accent Themes */
 :root[data-accent="gold"]    { --accent: #FFD700; --accent-glow: rgba(255, 215, 0, 0.15); }
 :root[data-accent="amber"]   { --accent: #F59E0B; --accent-glow: rgba(245, 158, 11, 0.15); }
 :root[data-accent="orange"]  { --accent: #F97316; --accent-glow: rgba(249, 115, 22, 0.15); }
@@ -59,13 +52,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-/* Inter is served from this origin, not from a font CDN: a page that pulls a
-   webfont from someone else's server hands that server every visitor's IP and
-   referrer. Files are the upstream variable fonts in assets/fonts, subset to
-   latin and latin-ext; anything outside those ranges falls back to the system
-   font stack. Adding a subset means dropping the woff2 beside these and
-   widening the unicode-range here. Inter v20, SIL OFL 1.1, the licence text
-   ships at assets/fonts/OFL-Inter.txt. */
+/* Inter is served from this origin, not a font CDN: a webfont pulled from someone
+   else's server hands that server every visitor's IP and referrer. Variable fonts in
+   assets/fonts, subset to latin and latin-ext; anything outside those ranges falls
+   back to the system stack. Add a subset by dropping the woff2 here and widening its
+   unicode-range. Inter v20, SIL OFL 1.1, licence at assets/fonts/OFL-Inter.txt. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -116,7 +107,7 @@ code {
 ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
-/* Accent-tinted text selection: a small, free signal of craft. */
+/* Accent-tinted text selection. */
 ::selection { background: var(--accent-glow); color: #fff; }
 
 /* Keyboard focus rings that match the accent instead of the UA default.
@@ -127,16 +118,11 @@ code {
   border-radius: var(--radius-sm);
 }
 
-/* ==========================================================================
-   Premium finishing layer
-   Ambience, typography and tactile feedback. Everything here degrades to
-   the base styles above when the property is unsupported, and the whole
-   layer is inert for prefers-reduced-motion users.
-   ========================================================================== */
+/* Finishing layer: ambience, typography and tactile feedback. Every rule here
+   degrades to the base styles above, and the layer is inert under reduced motion. */
 
-/* -- Ambient background: two soft accent auroras fixed behind the page. --
-   The pseudo-elements hang off <body> so every page gets the same depth
-   without touching markup. Pure color washes, no blur cost. */
+/* Two soft accent washes fixed behind the page, hung off <body> so no markup is
+   needed for them. */
 body::before {
   content: "";
   position: fixed;
@@ -161,9 +147,8 @@ body::after {
   z-index: -1;
 }
 
-/* -- Metallic accent text: slow gradient shimmer on brand-colored words. --
-   .accent-shine works on any inline element; the color falls back to the
-   plain accent when background-clip is unsupported. */
+/* Slow gradient shimmer on brand-coloured words; the colour falls back to the
+   plain accent without background-clip. */
 .accent-shine {
   color: var(--accent);
 }
@@ -182,7 +167,7 @@ body::after {
   50% { background-position: 100% 0; }
 }
 
-/* -- Tactile buttons: light sheen sweeps across on hover; press sinks. -- */
+/* Button sheen on hover; a press sinks. */
 .btn-primary, .btn-secondary {
   position: relative;
   overflow: hidden;
@@ -206,8 +191,7 @@ body::after {
 .btn-secondary { transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast); }
 .btn-secondary:hover { box-shadow: var(--shadow-lift); }
 
-/* -- Card elevation: real depth instead of a border flip. Gradient ring
-   draws a subtle accent-tinted edge on hover via the ::before overlay. -- */
+/* Hover edge drawn by a ::before gradient ring rather than a border flip. */
 .glass-card, .feature-card, .stat-card, .module-card {
   position: relative;
 }
@@ -230,7 +214,7 @@ body::after {
 }
 .feature-card:hover::before, .glass-card:hover::before, .stat-card:hover::before { opacity: 1; }
 
-/* -- Nav links and breadcrumbs: animated accent underline. -- */
+/* Animated accent underline on nav links and breadcrumbs. */
 .nav-link, .breadcrumb-item {
   position: relative;
 }
@@ -250,7 +234,6 @@ body::after {
 .nav-link:hover::before { transform: scaleX(1); }
 .nav-link.active::before { transform: scaleX(1); opacity: 0.55; }
 
-/* -- Hero aurora: a larger, breathing accent wash behind the hero panel. -- */
 .hero-section {
   position: relative;
   overflow: hidden;
@@ -272,8 +255,7 @@ body::after {
 }
 .hero-section > * { position: relative; } /* keep content above the aurora */
 
-/* -- Animated stat numbers: tabular figures stop layout shift while the
-   count-up runs, and a subtle text glow sells the accent. -- */
+/* Tabular figures for the count-up, so the number cannot shift the layout. */
 .stat-number {
   font-variant-numeric: tabular-nums;
   text-shadow: 0 0 22px var(--accent-glow);
@@ -546,7 +528,6 @@ body::after {
   .page-footer { flex-direction: column; gap: 12px; text-align: center; }
   code { word-break: break-all; font-size: 0.8em; }
 }
-/* Hero & Overview Layout Components */
 .hero-section {
   text-align: center;
   padding: clamp(32px, 5vw, 56px) 24px;
@@ -582,13 +563,11 @@ body::after {
 }
 
 
-/* Safe Progressive Scroll Animations (No Blocking Opacity) */
 .scroll-reveal {
     transition: transform 0.4s ease-out;
 }
 
 
-/* Fixed Aspect-Ratio Viewports (Zero Layout Shifts) */
 .showcase-image-frame {
     width: 100%;
     height: 320px;
@@ -618,7 +597,6 @@ body::after {
 }
 
 
-/* Sticky Comparison Table Header */
 .comparison-table-container {
     background: var(--bg-card);
     border: 1px solid var(--border);

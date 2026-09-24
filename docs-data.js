@@ -235,7 +235,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Calculate expected damage for raids and regular combat. Multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes, and pierce multipliers with exact numerical accuracy."
+                "text": "Work out what a hit will land for before you commit to a raid or a normal fight. The calculation accounts for multi-blade stacks, traps, auras, gear damage percentages, shadow pips, critical strikes and pierce multipliers, and it rounds nothing off on the way."
             },
             {
                 "type": "commands",
@@ -488,7 +488,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Eliminate waiting at dungeon gates. Post Team-Up boards for Waterworks, Darkmoor, or raids. Players join with one click, select their school, and get auto-created voice channels when full."
+                "text": "Post a Team-Up board for Waterworks, Darkmoor or a raid, and let the team fill itself. Members join with one click, pick their school, and get a voice channel made for them once the team is full."
             },
             {
                 "type": "commands",
@@ -568,7 +568,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Store and query boss cheat guides directly in Discord chat to execute flawless dungeon strategies."
+                "text": "Keep your boss cheat sheets in Discord and pull them up mid-run instead of alt-tabbing to a wiki."
             },
             {
                 "type": "commands",
@@ -606,7 +606,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Track your own Wizard101 house tapestry and bobblehead collection with simple list and toggle commands."
+                "text": "Your own checklist of Wizard101 house tapestries and bobbleheads, ticked off with a command."
             },
             {
                 "type": "commands",
@@ -793,7 +793,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Protect your community against raid bots, scam links, suspicious webhooks, invite abuse, and fast message bursts. SeanBot tracks temporary heat scores, supports canary mode for log-only testing, and can use quarantine roles when the bot has the needed role permissions. Scam bots that hide in voice-channel text chats are caught too: a member whose very first message in a voice channel's text chat carries two or more images is treated as a hard detection, with its own configurable response policy (quarantine by default) in the Threat Action Policies section."
+                "text": "Raid bots, scam links, suspicious webhooks, invite abuse and message floods, watched as they arrive. Heat scores are temporary. Canary mode logs what it would have caught without punishing anyone, and a quarantine role can hold an account out of the way as long as the bot's role sits above it. Scam bots that hide in a voice channel's text chat are caught too: a first message there carrying two or more images counts as a hard detection, and the Threat Action Policies section decides what happens to it, quarantine by default."
             },
             {
                 "type": "list",
@@ -905,7 +905,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Maintain order across large servers with rapid enforcement actions, shadowbans, bulk message purges, and automated transcript exports."
+                "text": "Warnings, timeouts, kicks, bans, shadowbans, bulk message purges and transcripts, each one carrying its reason and leaving a log entry behind it."
             },
             {
                 "type": "heading",
@@ -1016,7 +1016,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Track member infractions, log warning histories, calculate active penalty points, and set automatic punishment thresholds."
+                "text": "Every warning keeps its reason, the staff member who issued it and the date, so a case is something you can read back rather than a message buried in a channel."
             },
             {
                 "type": "heading",
@@ -1083,7 +1083,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Stream server audit events (message edits/deletions, role updates, voice activity, member joins) to Discord log channels. Log Config can route everything into one all-logs channel for simple setup, or split categories into separate webhook channels for busy servers. Ban appeal, suggestion, and public report staff actions are handled by the Staff Workflows logging category."
+                "text": "Message edits and deletions, role changes, voice activity, joins and leaves: every audit event lands in the log channel you point it at. Log Config can send the lot to one all-logs channel if that is all you want, or split the categories across separate webhook channels when the server is busy. Ban appeals, suggestions and public report actions are written by the Staff Workflows category."
             },
             {
                 "type": "heading",
@@ -1349,7 +1349,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Give members a safe way to flag rule violations or harassment directly to moderators. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, track weighted approve/decline votes, protect selected roles from public voting, and log staff actions through Log Config under Staff Workflows. Members can create vote reports from the message context menu, with `/report` plus a message link, or with the optional dashboard-configured report emoji shortcut."
+                "text": "A report button that does not announce itself: the member flags a message or a person, and only staff see that it happened. Public Vote Reports can post a review card in your chosen staff channel, ping selected roles, track weighted approve/decline votes, protect selected roles from public voting, and log staff actions through Log Config under Staff Workflows. Members can create vote reports from the message context menu, with `/report` plus a message link, or with the optional dashboard-configured report emoji shortcut."
             },
             {
                 "type": "list",
@@ -1429,7 +1429,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Keep raids, guild meetings, and community events on time. Admins can schedule reminders, link Discord Scheduled Events, or let SeanBot watch selected channels for event times. Members join reminder lists by reacting with the configured emoji."
+                "text": "Reminders for the things people have to be told about: raids, guild meetings, anything with a start time. Staff schedule them by hand, link a Discord Scheduled Event, or point the bot at a channel and let it read the event time out of the post. Members join a reminder list by reacting with the emoji you chose."
             },
             {
                 "type": "text",
@@ -1539,7 +1539,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Eliminate timezone math for international gaming groups. Members can detect, set, view, compare, or clear their timezone, then use live community time maps and local-time conversions across the server."
+                "text": "Nobody has to work out what 8 PM means for everybody else. A member sets a timezone once, or lets the bot detect it, and every poll close time, event reminder and timestamp printed afterwards arrives in their own local clock."
             },
             {
                 "type": "text",
@@ -1555,7 +1555,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/timezone detect",
-                        "desc": "Automatically detect your timezone by entering local time."
+                        "desc": "Work out your timezone from the local time you enter."
                     },
                     {
                         "cmd": "/timezone compare [user]",
@@ -1741,7 +1741,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Schedule gaming events with role signup embeds, localized event times, and strategy requirements."
+                "text": "Put an event up with a sign-up embed, ping the roles that need to know about it, and show every member the start time in their own timezone."
             },
             {
                 "type": "heading",
@@ -2052,7 +2052,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Unite allied communities. When Broadcast Team-Ups to Mesh is enabled in the source server and receiving servers, posting a Team-Up lobby broadcasts synced proxy embeds to partner boards. When the team forms, SeanBot creates linked threads so the cross-server team chat stays connected."
+                "text": "A dungeon lobby that reaches past your own server. With Broadcast Team-Ups to Mesh switched on in both servers, posting a Team-Up mirrors it onto your partners' boards, and once the team forms the threads are linked so the cross-server chat stays in one place."
             },
             {
                 "type": "commands",
@@ -2078,7 +2078,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Members join a generator voice channel and SeanBot creates a private, custom voice channel for them with full owner controls."
+                "text": "A member joins your generator channel and gets a room of their own, with its name, its user limit and its lock in their hands."
             },
             {
                 "type": "heading",
@@ -2127,7 +2127,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Deploy interactive support panels where members click to open private ticket channels. Ticket channels are private as soon as they are created, staff members can claim tickets, assign tickets to another staff member or staff role from the dashboard, set priority levels, post internal notes, and close tickets from Discord or the dashboard with duplicate-close protection, transcript logging, optional transcript DMs, stored transcript fallback, and channel cleanup."
+                "text": "Members press a button and get a private channel with staff in it. A ticket is private the moment it exists, staff can claim it, hand it to another staff member or staff role from the dashboard, tag its priority and leave internal notes, and close it from Discord or the dashboard. Closing twice is blocked, and the transcript is logged, optionally sent to the opener by direct message, and stored even when the log channel no longer exists."
             },
             {
                 "type": "heading",
@@ -2162,7 +2162,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket setup_channel",
-                        "desc": "Automatically create a ticket category, panel channel, and default panel."
+                        "desc": "Create a ticket category, panel channel, and default panel."
                     },
                     {
                         "cmd": "/ticket claim",
@@ -2212,7 +2212,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Monitor chat messages, voice attendance, reactions, and command activity to automatically reward active members."
+                "text": "Counts messages, voice time, reactions and command use per member, then hands out the Active and Inactive roles on the schedule you set."
             },
             {
                 "type": "heading",
@@ -2255,7 +2255,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "SeanBot automatically pins messages that receive a set number of reaction emojis."
+                "text": "Enough reactions and the message gets pinned. The count and the emoji are yours to set."
             },
             {
                 "type": "heading",
@@ -2446,7 +2446,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Track community reaction activity, ping users who reacted to a message, and sweep bot reactions."
+                "text": "Reaction counts for any message, animated emoji previews, and a ping to everyone who reacted. Stray bot reactions can be swept up as well."
             },
             {
                 "type": "heading",
@@ -2623,7 +2623,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Draft, design, preview, and publish custom rich Discord embeds from the dashboard. The builder supports saved templates, automation triggers, buttons, reaction roles, and emoji text fields."
+                "text": "Build a rich embed in the dashboard with a live Discord preview beside it, then publish it. An embed can be saved as a template, fired by a trigger such as a join or a keyword, or carried by buttons and reaction roles."
             },
             {
                 "type": "heading",
@@ -3107,7 +3107,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/embed builder",
-                        "desc": "Deploy embed builder design dashboard."
+                        "desc": "Open the embed builder design dashboard."
                     },
                     {
                         "cmd": "/embed clone [template/msg]",
@@ -3145,7 +3145,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Set custom text messages sent automatically when another member mentions you in chat."
+                "text": "Each member writes their own reply, and it goes out whenever somebody mentions them. Pause it or delete it whenever you like."
             },
             {
                 "type": "heading",
@@ -3196,7 +3196,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Right-click any message to set a reminder with natural date parsing."
+                "text": "Right-click a message, say when, in words - tomorrow morning, in two hours - and the bot reminds you then."
             },
             {
                 "type": "commands",
@@ -3226,7 +3226,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Translate messages across international gaming groups."
+                "text": "Translation for the moment two members do not share a language: one message, a whole channel, or everything a single member posts."
             },
             {
                 "type": "commands",
@@ -3256,7 +3256,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Monitors designated forum threads and prevents Discord from archiving them."
+                "text": "Keeps the threads you name from being archived, so a slow forum post does not get locked halfway through."
             },
             {
                 "type": "commands",
@@ -3277,7 +3277,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Rank members by voice dedication, track unbroken session records, and generate weekly graphs."
+                "text": "How long each member spends in voice, the longest unbroken sessions, and weekly graphs of when the server is busy and when it is empty."
             },
             {
                 "type": "heading",
@@ -3332,7 +3332,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Automatically generate live voice counter channels displaying server member counts."
+                "text": "Voice channel names that update themselves: member counts, boosts, and anything else you have a number for."
             },
             {
                 "type": "commands",
@@ -3370,7 +3370,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Set a specific role automatically granted to users who rejoin within a 2-year window."
+                "text": "Mark a role as returnable and somebody who leaves and comes back inside the window gets it handed back without a moderator being asked."
             },
             {
                 "type": "heading",
@@ -3417,7 +3417,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Connect multiple Discord servers into a shared network. A network can share forum threads, relay normal text channels, broadcast Team-Up requests, and show Beastmoon leaderboards across allied servers. Moderation-only tools such as tickets, ban appeals, public reports, and LOA stay local by default so private staff data is not leaked to partner servers."
+                "text": "Link the servers you already trust and let chosen channels run as one. A network can share forum threads, relay ordinary text channels, pass Team-Up requests between boards, and show Beastmoon leaderboards across every server in it. The private side stays private: tickets, ban appeals, public reports and leave requests are local unless you deliberately open them up."
             },
             {
                 "type": "heading",
@@ -3516,7 +3516,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Multiplayer Rock-Paper-Scissors style battle royales based on Wizard101 schools."
+                "text": "Rock-paper-scissors, Wizard101 style: schools battle it out in voice chat until one of them is left standing."
             },
             {
                 "type": "commands",
@@ -3606,7 +3606,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "General utility commands providing bot latency metrics and RAM usage."
+                "text": "Host numbers for the machine the bot runs on: latency, memory use, and whether it is keeping up."
             },
             {
                 "type": "heading",
@@ -3727,7 +3727,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The Leave of Absence (LOA) module allows staff members and community users to request temporary leave. Requests can be submitted directly via `/loa request` or through the Web Dashboard, with automatic role assignment/removal for the configured leave role, custom review channels, configurable auto-approval thresholds, and dashboard role checkboxes for user/admin access."
+                "text": "Someone is going to be away for a while and the server should know. Staff and members file a request with `/loa request` or from the dashboard, an approver signs it off, and the leave role goes on and comes off by itself when they are due back. You choose the review channel, who may approve, and whether a short request can be auto-approved."
             },
             {
                 "type": "callout",

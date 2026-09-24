@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Page navigation, showcase, filters, reveals, counters
-   ========================================================================== */
-// Single-page navigation and section jumping
     const topNavLinks = document.querySelectorAll('.site-nav-link');
     const topNavMenu = document.getElementById('topNavLinks');
     const topNavToggle = document.getElementById('topNavToggle');
@@ -42,8 +38,7 @@
     let showcaseIsVisible = false;
     let showcaseUserSelected = false;
     // Screenshots stay deferred (data-src) until the carousel is near the
-    // viewport, so the first paint is not held up by images nobody has reached
-    // yet.
+    // viewport, so the first paint is not held up by images nobody has reached.
     let showcaseIsWarm = false;
 
     function scheduleShowcaseAdvance() {
@@ -57,11 +52,9 @@
         }, SHOWCASE_INTERVAL);
     }
 
-    // Screenshots inside inactive panels ship as data-src so a page visit does
-    // not download ~850 KB of images nobody can see yet. The panel is hydrated
-    // the moment it is shown, which keeps the swap deterministic (unlike
-    // loading="lazy", which never fires for images revealed out of display:none
-    // in some engines).
+    // Screenshots inside inactive panels ship as data-src, so a visit does not
+    // download ~850 KB nobody can see yet. The panel is hydrated the moment it is
+    // shown: loading="lazy" never fires for an image revealed out of display:none.
     function hydratePanelImages(panel) {
         panel.querySelectorAll('img[data-src]').forEach(img => {
             img.src = img.dataset.src;
@@ -171,27 +164,23 @@
 
     document.addEventListener('DOMContentLoaded', initShowcaseRotator);
 
-    // The docs and commands markup lives on the landing page too, hidden behind
-    // tabs. Building both at load put ~10k nodes of DOM behind the first paint
-    // for content the visitor had not opened, so each tab is built the first
-    // time it is shown instead. The datasets behind them are heavy too
-    // (docs-data.js is ~210 KB, commands-data.js ~100 KB), so a tab's file is
-    // fetched on that same first open rather than at page load.
+    // The docs and commands markup lives on the landing page too, behind tabs.
+    // Building both at load put ~10k nodes of DOM and ~310 KB of dataset behind
+    // the first paint, so a tab is built and its file fetched on first open.
     const tabInitializers = {
         docs: initDocsPage,
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=070601cd', loaded: docsDataLoaded },
+        docs: { src: 'docs-data.js?v=a4ed35e3', loaded: docsDataLoaded },
         commands: { src: 'commands-data.js?v=1010f96b', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
     const dataLoads = new Map();
 
-    // docs.html and commands.html load their dataset before index.js, so there
-    // these already report true and no fetch happens. Both have to run in global
-    // scope, because a top-level `const` in a classic script binds in the global
-    // lexical environment rather than as a property of window.
+    // On docs.html and commands.html the dataset loads first, so these already
+    // report true. Both run in global scope, where a classic script's top-level
+    // `const` binds.
     function docsDataLoaded() {
         return typeof docsData !== 'undefined';
     }
@@ -221,10 +210,8 @@
         return load;
     }
 
-    // A prefetch spends the visitor's data without being asked to, so it is
-    // skipped when the browser says the connection is metered or slow. The API
-    // is Chromium-only, so everywhere else this reports true and the head start
-    // is kept. This never gates opening a tab: that always loads its file.
+    // A prefetch spends the visitor's data unasked, so it is skipped on a metered
+    // or slow connection. This never gates opening a tab: that always loads its file.
     function shouldPrefetchTabData() {
         const connection = navigator.connection;
         if (!connection) return true;
@@ -232,12 +219,9 @@
         return !['slow-2g', '2g'].includes(connection.effectiveType);
     }
 
-    // The download is the slow part of opening a tab, so its file starts the
-    // moment the visitor shows intent: hovering, focusing or touching the
-    // control that opens it. The build still waits for the real open, so a hover
-    // that goes nowhere costs one cached file and no DOM. `data-tab` is the
-    // contract - every control that opens a tab, in the nav or in the page body,
-    // names the tab it opens.
+    // The download is the slow part, so a tab's file starts on hover, focus or
+    // touch; the build still waits for the real open. `data-tab` is the contract:
+    // every control that opens a tab names the tab it opens.
     function prefetchTabData(tabId) {
         if (!tabId || !tabDataSources[tabId]) return;
         if (!shouldPrefetchTabData()) return;
@@ -362,7 +346,6 @@
         });
     });
 
-    // Searchable module directory
     const overviewPills = document.querySelectorAll('#overviewCategoryFilters .pill-btn');
     const moduleSearch = document.getElementById('moduleSearch');
     const moduleCards = Array.from(document.querySelectorAll('#featuresGrid .module-card'));
@@ -421,11 +404,9 @@
         });
     });
 
-    // Stat count-up: hero numbers roll from a low value to their target the
-    // first time the stats grid enters the viewport. Non-numeric labels like
-    // "Guild friendly" and the live-updating server count (id=liveServerCount)
-    // are skipped so nothing overwrites data set elsewhere. Respects
-    // prefers-reduced-motion by leaving the numbers as written.
+    // Hero numbers roll up the first time the stats grid enters the viewport.
+    // Non-numeric labels and the live server count are skipped, so nothing
+    // overwrites data set elsewhere, and reduced motion leaves the numbers alone.
     function runStatCountUps() {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         document.querySelectorAll('.stats-grid .stat-number').forEach(el => {
@@ -446,8 +427,7 @@
             const tick = now => {
                 const progress = Math.min((now - start) / duration, 1);
                 // The last frame writes the exact target text, so a dropped or
-                // throttled animation still lands on the real number instead of
-                // being left mid-roll.
+                // throttled animation still lands on the real number.
                 if (progress >= 1) {
                     el.textContent = `${target}${suffix}`;
                     el.classList.remove('is-counting');
@@ -462,9 +442,8 @@
 
     const statsGrid = document.querySelector('.stats-grid');
     if (statsGrid && 'IntersectionObserver' in window) {
-        // 0.4 never fires when the cards stack vertically on a short screen
-        // (the grid grows taller than the viewport), so trigger on a quarter
-        // of the grid and disconnect after the single run.
+        // 0.4 never fires when the cards stack on a short screen, so trigger on a
+        // quarter of the grid and disconnect after the single run.
         const statsObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
@@ -483,7 +462,6 @@
         runStatCountUps();
     }
 
-    // Scroll-triggered pop-in reveals
     let scrollRevealObserver = null;
 
     function ensureScrollRevealObserver() {
@@ -546,9 +524,8 @@
         return initTab(tabId);
     }
 
-    // One route table for every fragment: tab (#docs), section (#features),
-    // guide id (#tickets), command category (#moderation). A fragment behaves
-    // the same whether it arrives with a page load or is typed in.
+    // One route table for every fragment: tab, section, guide id or command
+    // category, whether it arrives with a page load or is typed in.
     async function applyHashRoute() {
         const hash = window.location.hash.replace(/^#/, '');
         if (!hash) return;
@@ -565,12 +542,9 @@
             return;
         }
 
-        // A guide id or a command category is only recognisable once its dataset
-        // is present, and neither file loads for an ordinary visit. A fragment
-        // that might name one is what justifies fetching it, so a deep link is
-        // the one route that still pays for data up front - and only the data,
-        // since nothing renders until the id is known to exist. Guides are
-        // checked first because a guide id is what these fragments usually are.
+        // A guide id or a command category is only recognisable once its dataset is
+        // here, and neither file loads for an ordinary visit: a deep link is the one
+        // route that still fetches data up front. Guides are checked first.
         const docsReady = await ensureTabData('docs').then(() => true, () => false);
         if (docsReady && docsDataLoaded() && docsData.some(d => d.id === hash)) {
             await ensureTab('docs');
@@ -583,17 +557,15 @@
         if (!commandsDatabase.some(c => c.id === hash)) return;
 
         await ensureTab('commands');
-        // The tab was built just now, so this category section only exists from
-        // here on: the browser's own fragment scroll already looked for it in
-        // empty markup, which means this path has to scroll it into view.
+        // Built just now, so the browser's own fragment scroll looked in empty
+        // markup: this path has to scroll the section into view.
         const targetSec = document.getElementById(hash);
         if (!targetSec) return;
         setTimeout(() => {
             const before = window.scrollY;
             targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // A smooth move can be skipped outright (reduced motion, a page
-            // that never composites, a very long jump). If the page has not
-            // moved at all, jump to the section for real.
+            // A smooth move can be skipped outright (reduced motion, a very long
+            // jump). If the page has not moved at all, jump to the section for real.
             setTimeout(() => {
                 if (Math.abs(window.scrollY - before) < 2) {
                     targetSec.scrollIntoView({ block: 'start' });
@@ -606,11 +578,9 @@
     // route, so hashchange covers traversal as well.
     window.addEventListener('hashchange', applyHashRoute);
 
-    // Handle Hash Navigation on Page Load
     window.addEventListener('load', () => {
         applyHashRoute();
 
-        // Back to Top Button Scroll Listener
         const backToTopBtn = document.getElementById('backToTopBtn');
         if (backToTopBtn) {
             window.addEventListener('scroll', () => {
@@ -621,15 +591,10 @@
                 }
             }, { passive: true });
         }
-        // Stat count-ups live in runStatCountUps() further up; there is exactly
-        // one animation per number so nothing can read another loop's midpoint
-        // and freeze there.
+        // One animation per number, so nothing can read another loop's midpoint.
     });
 
 
-/* ==========================================================================
-   Documentation and command rendering
-   ========================================================================== */
 
 // Callout colour and icon both come from the variant (note = accent,
 // tip = green, warning = red). Unknown or missing falls back to a plain note.
@@ -768,7 +733,6 @@ function initDocsPage() {
             groups[meta.cat].items.push(doc);
         });
 
-        // Render sticky page nav
         if (navContainer) {
             navContainer.innerHTML = '';
             Object.keys(groups).forEach(catKey => {
@@ -798,7 +762,6 @@ function initDocsPage() {
             });
         }
 
-        // Render sidebar TOC nav
         if (sidebarNavContainer) {
             sidebarNavContainer.innerHTML = '';
             Object.keys(groups).forEach(catKey => {
@@ -835,7 +798,6 @@ function initDocsPage() {
             });
         }
 
-        // Render articles feed
         contentContainer.innerHTML = '';
         docsData.forEach((doc, idx) => {
             const article = document.createElement('article');
@@ -898,7 +860,6 @@ function initDocsPage() {
                 }
             });
 
-            // Prev / Next Navigation Footer
             html += `<div class="doc-article-nav">`;
             if (prevDoc) {
                 html += `
@@ -933,7 +894,6 @@ function initDocsPage() {
             contentContainer.appendChild(article);
         });
 
-        // Prev/Next and copy buttons inside the article.
         contentContainer.addEventListener('click', (e) => {
             const btn = e.target.closest('.doc-nav-btn');
             if (btn) {
@@ -957,7 +917,6 @@ function initDocsPage() {
             }
         });
 
-        // Category filter pills
         const catFilterBtns = document.querySelectorAll('#docsCategoryFilters .pill-btn');
         catFilterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -979,7 +938,6 @@ function initDocsPage() {
             });
         });
 
-        // Live search input filter
         const searchInput = document.getElementById('docSearch');
         let activeDocsCategory = 'all';
 
@@ -1034,7 +992,6 @@ function initDocsPage() {
         if (initialDoc) activateDoc(initialDoc, { updateHistory: 'skip' });
     }
 
-    // Commands page renderer
     
     function getDocModuleForCommand(cmdName, categoryId) {
         const name = (cmdName || '').toLowerCase();
@@ -1182,9 +1139,8 @@ function initDocsPage() {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // docs.html and commands.html are a single tab with no tab wrapper
-        // (body[data-nav]), so their content builds right away. The landing page
-        // wraps all three views in .tab-view and builds each one on first open.
+        // docs.html and commands.html are a single tab with no wrapper, so their
+        // content builds right away; the landing page builds each view on first open.
         const reveal = () => window.setTimeout(() => window.refreshScrollReveals?.(document), 60);
         if (document.querySelector('.tab-view')) {
             reveal();
@@ -1194,12 +1150,8 @@ function initDocsPage() {
     });
 
 
-/* ==========================================================================
-   Ticket demo
-   ========================================================================== */
 let ticketStep = 1;
 
-    // Random usernames for the final step
     const randomUsernames = [
         "Mek", "PvPGhost", "StarShard", "Krokopatra",
         "WolfBlade77", "LilPwny", "NightMist", "SunWizard"
@@ -1213,12 +1165,10 @@ let ticketStep = 1;
         const textElement = document.getElementById('ticket-step-text');
         const actionArea = document.getElementById('ticket-action-area');
 
-        // Disable buttons temporarily while "typing"
         actionArea.style.pointerEvents = "none";
         actionArea.style.opacity = "0.6";
 
         if (ticketStep === 1) {
-            // Show typing indicator
             typingIndicator.style.display = 'flex';
             if (textElement) textElement.innerText = 'SeanBot is processing your request...';
 
@@ -1238,14 +1188,12 @@ let ticketStep = 1;
                 actionArea.style.pointerEvents = "auto";
                 actionArea.style.opacity = "1";
                 ticketStep = 2;
-            }, 1200); // 1.2s delay for typing simulation
+            }, 1200);
 
         } else if (ticketStep === 2) {
-            // Pick a random username
             const randomUser = randomUsernames[Math.floor(Math.random() * randomUsernames.length)];
             document.getElementById('random-user-name').innerText = randomUser;
 
-            // Show typing indicator
             typingIndicator.style.display = 'flex';
             if (textElement) textElement.innerText = `${randomUser} is typing...`;
 
@@ -1254,7 +1202,6 @@ let ticketStep = 1;
                 step2.style.display = 'none';
                 step3.style.display = 'block';
 
-                // Step 3: the invite button follows the user's request message.
                 if (textElement) textElement.innerHTML = '';
                 
                 actionArea.innerHTML = `
@@ -1269,7 +1216,7 @@ let ticketStep = 1;
                 actionArea.style.pointerEvents = "auto";
                 actionArea.style.opacity = "1";
                 ticketStep = 3;
-            }, 1500); // 1.5s delay for realistic typing feel
+            }, 1500);
         }
     }
 
@@ -1296,10 +1243,6 @@ let ticketStep = 1;
     }
 
 
-/* ==========================================================================
-   Timezone demo
-   ========================================================================== */
-// Timezone data for each region
     const timezoneData = {
         America: [
             { label: "US Eastern (UTC-5)", role: "US Eastern" },
@@ -1338,10 +1281,8 @@ let ticketStep = 1;
         const selectMenu = document.getElementById('tz-select-menu');
         const statusMsg = document.getElementById('tz-status-message');
 
-        // Hide status message while selecting
         statusMsg.style.display = 'none';
 
-        // Populate options
         selectMenu.innerHTML = `<option value="" disabled selected>Select a timezone in ${region}...</option>`;
         timezoneData[region].forEach(item => {
             const opt = document.createElement('option');
@@ -1350,7 +1291,6 @@ let ticketStep = 1;
             selectMenu.appendChild(opt);
         });
 
-        // Display the dropdown menu
         selectContainer.style.display = 'block';
     }
 
@@ -1363,7 +1303,6 @@ let ticketStep = 1;
 
         if (!selectedRole) return;
 
-        // Show typing indicator
         typingIndicator.style.display = 'flex';
 
         setTimeout(() => {
@@ -1379,19 +1318,9 @@ let ticketStep = 1;
         document.getElementById('tz-typing-status').style.display = 'none';
     }
 
-/* ==========================================================================
-   Communities using SeanBot deck
-
-   One full slot per opted-in server: its own avatar as the hero image, then
-   the name, the description its admin wrote and its member count, with the
-   track moving on by itself until the reader takes over. The dashboard's
-   public API serves exactly the servers whose admins turned the showcase on.
-   The static featuredServers list from servers-data.js is a local
-   dev seed only and ships empty, so the site never shows a server that did
-   not opt in. The section stays hidden when the list is genuinely empty, and
-   shows one line with a retry when the list could not be fetched at all, so
-   an offline or blocked visit is not mistaken for a feature that is gone.
-   ========================================================================== */
+// Communities using SeanBot deck: one slot per opted-in server, from the
+// dashboard's public API. The featuredServers seed in servers-data.js ships
+// empty, so the site never shows a server that did not opt in.
 (function () {
     const SERVERS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/servers';
     const CACHE_KEY = 'seanbot.publicServers';
@@ -1410,9 +1339,7 @@ let ticketStep = 1;
             .map(part => part.charAt(0)).join('').toUpperCase();
     }
 
-    // A colour of its own for each community, derived from the name so it is
-    // the same on every visit and on every machine. Purely decorative: it
-    // tints the avatar of a server that has no icon, and nothing reads it back.
+    // A decorative per-server hue, derived from the name so it is stable.
     function hueFor(name) {
         const text = String(name);
         let hash = 0;
@@ -1432,9 +1359,7 @@ let ticketStep = 1;
         hero.appendChild(initials);
     }
 
-    // The hero for one slot: the server's own avatar, filling the top of the
-    // card. It is cropped to the frame rather than letterboxed, because the
-    // frame is meant to read as the community's own picture.
+    // The slot hero: the server's own avatar, cropped to the frame.
     function buildHero(server) {
         const hero = document.createElement('div');
         hero.className = 'server-slide-hero';
@@ -1455,15 +1380,12 @@ let ticketStep = 1;
         return hero;
     }
 
-    // One full slot: the hero, then the name, the description and the members
-    // the API serves for that same server. Unlike the tile wall, everything a
-    // server has to say is on its own card, because the member count and the
-    // invite only mean anything next to the avatar they belong to.
+    // One slot: the hero, then the name, description and member count the API
+    // serves for that same server.
     function buildSlide(server, index) {
         const slide = document.createElement('article');
         slide.className = 'server-slide';
         slide.dataset.index = String(index);
-        // The initials plate reads its hue off the slot.
         slide.style.setProperty('--slide-hue', String(hueFor(server.name)));
 
         const progress = document.createElement('span');
@@ -1481,12 +1403,8 @@ let ticketStep = 1;
         name.textContent = String(server.name).trim();
         body.appendChild(name);
 
-        // The server's own short description, read under the name the public
-        // API serves it by. There is deliberately no second local name for it:
-        // a page that reads its own name for a served field renders blank the
-        // day the two drift apart, with nothing raised anywhere. That is how
-        // this shipped broken once, the builder looking for "tagline" while
-        // the API served "description".
+        // Read under the API's own name, with no second local name for it. This
+        // shipped blank once, the builder asking for a "tagline" the API never served.
         const description = String(server.description || '').trim();
         if (description) {
             const line = document.createElement('p');
@@ -1532,11 +1450,8 @@ let ticketStep = 1;
         return slide;
     }
 
-    // The row reads biggest first: the largest opted-in community opens the
-    // carousel. The bot already sorts its payload this way and the route
-    // republishes it untouched, but the site sorts again so the order still
-    // holds for the local dev seed and for a cached response, and a reordering
-    // upstream cannot quietly change which community is featured.
+    // Biggest first. The API already sorts this way, but sorting again keeps the
+    // order for the dev seed and a cached response.
     function sortByMembers(entries) {
         return entries.slice().sort((left, right) =>
             (Number(right.members) || 0) - (Number(left.members) || 0));
@@ -1545,10 +1460,8 @@ let ticketStep = 1;
     // How long one community holds the front before the row moves on.
     const SLIDE_INTERVAL = 6000;
 
-    // The running carousel, or null. Kept here rather than inside the build so
-    // the controls can be wired once: the track and the panel are emptied and
-    // refilled on a rebuild, never replaced, so a listener added per build
-    // would stack and make one click step twice.
+    // The running carousel, kept out here so the controls are wired once: a
+    // rebuild empties and refills the track, so a per-build listener would stack.
     let carouselRuntime = null;
 
     function stopCarousel() {
@@ -1576,11 +1489,8 @@ let ticketStep = 1;
             if (carousel) carousel.handleScroll();
         });
 
-        // Clicking a slot that is not the one in front brings it forward, so
-        // the neighbours peeking at either side are the way back and forward
-        // through the row: they are the control, in place of arrow buttons.
-        // Anything inside the front slot is left alone, which is what keeps
-        // the invite link working.
+        // Clicking a slot that is not in front brings it forward, so the neighbours
+        // either side are the control. Anything inside the front slot is left alone.
         track.addEventListener('click', event => {
             const carousel = runtime();
             if (!carousel) return;
@@ -1646,9 +1556,7 @@ let ticketStep = 1;
             return slide;
         });
 
-        // One dot per community: the peeking slots are a pointer affordance, so
-        // the dots (and the arrows) are the keyboard and screen-reader way
-        // through the row.
+        // One dot per community: the keyboard and screen-reader way through the row.
         const dots = servers.map((server, index) => {
             const dot = document.createElement('button');
             dot.type = 'button';
@@ -1670,10 +1578,8 @@ let ticketStep = 1;
             return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
         }
 
-        // Whether every slot already fits without scrolling. A short row is
-        // centred by the stylesheet, so moving through it is a change of which
-        // slot is in front and nothing else: there is no scroll to perform, and
-        // the slots are all on screen rather than cropped to a peek.
+        // Whether every slot already fits: a short row is centred by the stylesheet,
+        // so a move changes the highlight and nothing else.
         function rowFits() {
             return track.scrollWidth <= track.clientWidth + 1;
         }
@@ -1683,9 +1589,7 @@ let ticketStep = 1;
             slides.forEach((slide, position) => {
                 const current = position === index;
                 slide.classList.toggle('is-active', current);
-                // Only the front slot is announced, unless the whole row fits
-                // and the others are on screen rather than cropped; those are
-                // read by the dots' labels and reachable through them.
+                // Only the front slot is announced, unless the row fits and the dots cover the rest.
                 if (current || rowFits()) slide.removeAttribute('aria-hidden');
                 else slide.setAttribute('aria-hidden', 'true');
             });
@@ -1695,9 +1599,8 @@ let ticketStep = 1;
             });
         }
 
-        // Which slot is nearest the middle of the visible track. Read from the
-        // scroll position rather than tracked alongside it, so a finger swipe
-        // and the timer cannot disagree about where the row is.
+        // Which slot is nearest the middle of the visible track, read from the
+        // scroll position so a swipe and the timer cannot disagree.
         function nearestIndex() {
             const centre = track.scrollLeft + track.clientWidth / 2;
             let best = 0;
@@ -1727,9 +1630,8 @@ let ticketStep = 1;
             schedule();
         }
 
-        // The countdown bar is dropped and re-added a frame later so it replays
-        // from zero after every move, and it only runs while the row is on
-        // screen, unhovered, unfocused and in the foreground tab.
+        // The countdown bar is dropped and re-added a frame later so it replays from
+        // zero, and only while the row is on screen, unhovered and unfocused.
         function schedule() {
             window.clearTimeout(timer);
             slides.forEach(slide => slide.classList.remove('is-running'));
@@ -1740,9 +1642,8 @@ let ticketStep = 1;
             timer = window.setTimeout(() => goTo(activeIndex + 1), SLIDE_INTERVAL);
         }
 
-        // A swipe or a trackpad drag is the reader's own move, so the dots
-        // follow the track instead of the track being snapped back. Throttled
-        // to one read per frame; a scroll fires far more often than that.
+        // A swipe or drag is the reader's own move, so the dots follow the track.
+        // Throttled to one read per frame.
         function handleScroll() {
             if (scrollFrame) return;
             scrollFrame = window.requestAnimationFrame(() => {
@@ -1821,17 +1722,15 @@ let ticketStep = 1;
                 name: String(server.name).trim().slice(0, 100),
                 icon: String(server.icon || '').trim().slice(0, 300),
                 members: Number(server.members) || 0,
-                // Kept under the API's own name so the shape the grid renders
-                // is the shape the API serves, rather than a second vocabulary
-                // that a rename on either side would break silently.
+                // Kept under the API's own name, so the shape the grid renders is
+                // the shape the API serves.
                 description: String(server.description || '').trim().slice(0, 140),
                 invite: String(server.invite || '').trim().slice(0, 200)
             }));
     }
 
-    // Two attempts, because the first one is the one that meets a cold Vercel
-    // instance plus the bot's own round-trip. A single 4s try was enough to
-    // blank the whole section on a slow first paint.
+    // Two attempts: the first meets a cold Vercel instance plus the bot's own
+    // round-trip, and a single 4s try blanked the section on a slow first paint.
     const FETCH_ATTEMPTS = 2;
     const RETRY_DELAY_MS = 900;
 
@@ -1846,11 +1745,9 @@ let ticketStep = 1;
         return host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '';
     }
 
-    // The failure state, built into the detail strip. Before this, a request
-    // that could not complete at all (offline, CORS, the bot down, a timeout)
-    // left the section hidden, which is indistinguishable from a feature that
-    // was never built - and it is what a local preview always hits, because
-    // the dashboard's CORS policy only answers the live site's own origin.
+    // The failure state. Before this, a request that could not complete left the
+    // section hidden, which reads as a feature that was never built, and a local
+    // preview always hits it: the dashboard's CORS answers only the live origin.
     function buildLoadFailure() {
         const wrap = document.createElement('p');
         wrap.className = 'server-load-failure';
@@ -1942,12 +1839,8 @@ let ticketStep = 1;
     }
 })();
 
-/* ==========================================================================
-   Live server count
-   Fills the "Communities" stat card from the dashboard's public stats bridge.
-   Any failure (offline, CORS, bot down, timeout) leaves the static copy in
-   place instead of showing a number that may be wrong.
-   ========================================================================== */
+// Live server count: fills the "Communities" stat card from the dashboard's
+// public stats bridge; any failure leaves the static number in place.
 (function () {
     // Dashboard route that proxies get_public_stats for the static site.
     const STATS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/stats';

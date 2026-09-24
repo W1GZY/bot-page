@@ -3,7 +3,6 @@
     window.__seanbotLayoutInit = true;
 
     function initGlobalEvents() {
-        // Theme accent picker
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', (e) => {
@@ -30,7 +29,6 @@
             });
         });
 
-        // Mobile menu drawer
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebarOverlay');
         const openBtn = document.getElementById('openSidebarBtn');

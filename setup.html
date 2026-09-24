@@ -26,8 +26,7 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
 
     <script src="theme-init.js?v=f90abd42"></script>
-    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
-         The @font-face rules live in global.css. -->
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
@@ -36,10 +35,10 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
-    <link rel="stylesheet" href="global.css?v=8ff6eb99">
-    <link rel="stylesheet" href="brand.css?v=5cf0b2ab">
-    <link rel="stylesheet" href="docs.css?v=542b5949">
-    <script src="layout.js?v=3f9e08c1" defer></script>
+    <link rel="stylesheet" href="global.css?v=a8678982">
+    <link rel="stylesheet" href="brand.css?v=d8de8e56">
+    <link rel="stylesheet" href="docs.css?v=a296fc64">
+    <script src="layout.js?v=a8ed0a65" defer></script>
 </head>
 <body data-nav="none" data-title="Setup">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -91,52 +90,68 @@
         <main class="content" style="max-width:900px;">
             <div>
                 <h1 class="docs-page-heading">Set up SeanBot</h1>
-                <p class="docs-page-subtitle">Seven steps, in the order they come at you. Follow them and you are done in about five minutes - and none of them are required before you start using the bot.</p>
+                <p class="docs-page-subtitle">Six steps, in the order they come at you. Follow them and you are done in about five minutes - and none of them are required before you start using the bot.</p>
             </div>
 
             <p class="setup-lead">Not invited yet? <a href="invite.html">Add SeanBot to your server</a> first, then come back here.</p>
+
+            <figure class="setup-shot">
+                <img src="assets/setup/01-invite-screen.png?v=bf9571fb" alt="Discord's authorize screen for adding SeanBot, with the permission list and the server picker" loading="lazy" decoding="async">
+            </figure>
 
             <ol class="setup-steps">
                 <li class="setup-step">
                     <div>
                         <h2 class="setup-step-title">Expect a DM from SeanBot</h2>
-                        <p class="setup-step-text">The moment it joins, whoever invited it gets a direct message with three buttons: <strong>Set up SeanBot</strong>, <strong>Quick tour</strong>, and <strong>Open dashboard</strong>. Press <strong>Set up SeanBot</strong> and answer the one question it asks - what kind of server is this - and it switches on the features that fit. If that account has DMs closed, the same menu is posted in the first channel the bot can write in.</p>
+                        <p class="setup-step-text">The moment it joins, whoever invited it gets a direct message with three buttons: <strong>Set up SeanBot</strong>, <strong>Quick tour</strong>, and <strong>Open dashboard</strong>. Press <strong>Set up SeanBot</strong> and answer the one question it asks - what kind of server is this - and it switches on the features that fit. It remembers the type you picked last time, so keeping it is one tap. If that account has DMs closed, the same menu is posted in the first channel the bot can write in.</p>
+                        <figure class="setup-shot">
+                            <img src="assets/setup/02-welcome-dm.png?v=2488686a" alt="The welcome DM from SeanBot with its three buttons, and the server-type dropdown with Everything (All Features) selected" loading="lazy" decoding="async">
+                        </figure>
                     </div>
                 </li>
                 <li class="setup-step">
                     <div>
-                        <h2 class="setup-step-title">Then turn things off</h2>
-                        <p class="setup-step-text">There is nothing to enable first: every optional feature works the second the bot joins. So go through the switches and turn off what this server does not want. Whatever you choose is remembered from then on.</p>
+                        <h2 class="setup-step-title">Check what it turns on</h2>
+                        <p class="setup-step-text">The wizard ticks every feature that fits the server type you chose - nothing changes until you press <strong>Turn on</strong>. Untick what this server will not use, or press <strong>I'll customize later</strong> to pick by hand. Whatever you choose is remembered from then on.</p>
+                        <figure class="setup-shot">
+                            <img src="assets/setup/03-module-settings.png?v=ab84e26b" alt="Module Settings from the setup wizard, with every recommended feature ticked and the Turn on button ready" loading="lazy" decoding="async">
+                        </figure>
                     </div>
                 </li>
                 <li class="setup-step">
                     <div>
                         <h2 class="setup-step-title">Now put the bot role on top</h2>
                         <p class="setup-step-text">Open <strong>Server Settings &gt; Roles</strong> and drag the SeanBot role above every role it has to assign, remove, quarantine, mute, or manage. Discord only lets a bot touch roles below its own, so while it sits underneath them those actions quietly do nothing.</p>
+                        <figure class="setup-shot">
+                            <img src="assets/setup/04-bot-role.png?v=6b242f8c" alt="The role list in Server Settings, with the SeanBot role dragged above the roles it hands out" loading="lazy" decoding="async">
+                        </figure>
                     </div>
                 </li>
                 <li class="setup-step">
                     <div>
                         <h2 class="setup-step-title">Go to the dashboard</h2>
                         <p class="setup-step-text">Sign in with Discord, choose the server, and open <strong>Module Settings</strong> - that is the whole list of switches, and a server that has never saved a choice sees the getting-started card that says so. Type <code>/dashboard</code> in Discord to land in the same place.</p>
+                        <figure class="setup-shot">
+                            <img src="assets/setup/05-dashboard-signin.png?v=6b85680c" alt="The dashboard after sign-in, with the bot's profile card and the module list beside it" loading="lazy" decoding="async">
+                        </figure>
                     </div>
                 </li>
                 <li class="setup-step">
                     <div>
                         <h2 class="setup-step-title">Set logging up before anything else</h2>
                         <p class="setup-step-text">Logging is already on, so open <strong>Log Config</strong> and pick where it goes: start with <em>All logs in one channel</em>. That is how you watch what the bot is doing instead of guessing from the outside. Split into separate channels later, when moderation, security, member and voice logs need to be kept apart.</p>
-                    </div>
-                </li>
-                <li class="setup-step">
-                    <div>
-                        <h2 class="setup-step-title">Tune security once you can watch it</h2>
-                        <p class="setup-step-text">Anti-Raid is on from the start, so put it in <strong>Canary Mode</strong> first: it logs what it would have caught without acting on it. Let it run a few days, look at what it flags on your own traffic, then let it act.</p>
+                        <figure class="setup-shot">
+                            <img src="assets/setup/06-log-config.png?v=6c9ef5f3" alt="Log Config, with all logs pointed at one channel" loading="lazy" decoding="async">
+                        </figure>
                     </div>
                 </li>
                 <li class="setup-step">
                     <div>
                         <h2 class="setup-step-title">Finish with the check</h2>
                         <p class="setup-step-text">Setup ends with an access check that names anything genuinely wrong: a channel the bot cannot post in, a role sitting below the member roles. Run <code>/permissions</code> for the same audit whenever you like, and <code>/staff diagnose</code> to see what is set and what still needs you.</p>
+                        <figure class="setup-shot">
+                            <img src="assets/setup/07-access-check.png?v=018defdd" alt="The access check that ends setup, listing the bot's role reach, moderation actions, and any blocked channels" loading="lazy" decoding="async">
+                        </figure>
                     </div>
                 </li>
             </ol>

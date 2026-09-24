@@ -10,8 +10,7 @@
     <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
 
-    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
-         The @font-face rules live in global.css. -->
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
@@ -32,8 +31,8 @@
         const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
         document.documentElement.setAttribute('data-accent', savedAccent);
     </script>
-    <link rel="stylesheet" href="global.css?v=8ff6eb99">
-    <script src="layout.js?v=3f9e08c1" defer></script>
+    <link rel="stylesheet" href="global.css?v=a8678982">
+    <script src="layout.js?v=a8ed0a65" defer></script>
 </head>
 
 <body data-nav="none" data-title="Error 404">

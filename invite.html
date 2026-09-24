@@ -10,25 +10,16 @@
     <link rel="icon" href="/favicon.svg?v=706011f8" type="image/svg+xml">
     <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
-    <!--
-        ═══════════════════════════════════════════════════════════════════
-        SINGLE SOURCE OF TRUTH for SeanBot's invite link.
-
-        Every "Invite SeanBot" button on the site points to this page, so to
-        change the invite target (e.g. a new client ID) only THIS FILE needs
-        editing. Update the INVITE_URL constant below and the two inline
-        copies marked with ★.
-        ═══════════════════════════════════════════════════════════════════
-    -->
+    <!-- The invite link lives here and nowhere else. Every "Invite SeanBot"
+         button on the site points at this page, so a new client ID means
+         changing this constant and the two copies of it below. -->
     <script>
-        // ★ INVITE_URL - update me, plus the two ★ spots below.
+        // Change this, and the two copies of it below.
         const INVITE_URL = "https://discord.com/oauth2/authorize?client_id=1361721001120895114";
         window.location.replace(INVITE_URL);
     </script>
-    <!-- ★ Meta refresh fallback (works even with JavaScript disabled). -->
     <meta http-equiv="refresh" content="0; url=https://discord.com/oauth2/authorize?client_id=1361721001120895114">
-    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
-         The @font-face rules live in global.css. -->
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
@@ -37,14 +28,13 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
-    <link rel="stylesheet" href="global.css?v=8ff6eb99">
+    <link rel="stylesheet" href="global.css?v=a8678982">
 </head>
 <body data-nav="none" data-title="Invite SeanBot" style="background: #1c1c21;">
     <div class="content" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
         <div style="text-align: center;" class="auto-fade-in">
             <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 12px;">Taking you to Discord...</h1>
             <p style="color: var(--text-secondary); margin-bottom: 20px;">If you aren't redirected automatically, click below.</p>
-            <!-- ★ Manual fallback link (also kept in sync from INVITE_URL). -->
             <a id="manual-link" class="btn-large btn-primary" href="https://discord.com/oauth2/authorize?client_id=1361721001120895114" target="_blank" rel="noopener"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot</a>
         </div>
     </div>

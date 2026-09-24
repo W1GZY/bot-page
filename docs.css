@@ -1,15 +1,9 @@
-/* ==========================================================================
-   Documentation and command reference
-   --------------------------------------------------------------------------
-   Single owner of these components. Loaded by index.html (Documentation and
-   Commands tabs), docs.html and commands.html, so one article, sidebar and
-   command card render the same on all three. Duplicating any of them in
-   global.css or index.css breaks that; landing-page-only layout stays there.
-   ========================================================================== */
+/* Documentation and command reference components, owned here and nowhere else.
+   index.html's Documentation and Commands tabs, docs.html and commands.html all
+   load this file, so one article, sidebar and command card render the same on
+   all three. Landing-page-only layout belongs in index.css. */
 
-/* --------------------------------------------------------------------------
-   Page chrome, docs.html and commands.html only
-   -------------------------------------------------------------------------- */
+/* Page chrome, docs.html and commands.html only. */
 .docs-page-heading {
     margin: 0;
     font-size: 2rem;
@@ -47,10 +41,7 @@
     font: inherit;
 }
 
-/* --------------------------------------------------------------------------
-   Layout containers
-   index.css widens .docs-grid to two columns on the landing page.
-   -------------------------------------------------------------------------- */
+/* Layout containers. index.css widens .docs-grid to two columns on the landing page. */
 .docs-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -64,10 +55,8 @@
     align-items: start;
 }
 
-/* --------------------------------------------------------------------------
-   Sidebars. One box for the guide list on all three pages; only the sizing
-   differs where docs.html nests it in the site sidebar.
-   -------------------------------------------------------------------------- */
+/* Sidebars: one box for the guide list on all three pages, sized differently where
+   docs.html nests it in the site sidebar. */
 .docs-nav,
 .toc-sidebar,
 .sidebar-toc-container {
@@ -176,9 +165,6 @@
     font-weight: 700;
 }
 
-/* --------------------------------------------------------------------------
-   Guide article
-   -------------------------------------------------------------------------- */
 .docs-article {
     display: none;
     min-width: 0;
@@ -249,10 +235,8 @@
     margin-top: 7px;
 }
 
-/* --------------------------------------------------------------------------
-   Callouts. Colour comes from the variant class, so changing the accent
-   cannot change what a callout means.
-   -------------------------------------------------------------------------- */
+/* Callouts. Colour comes from the variant class, so changing the accent cannot
+   change what a callout means. */
 .callout-box {
     margin: 18px 0;
     padding: 14px 16px;
@@ -297,9 +281,6 @@
     color: #ED4245;
 }
 
-/* --------------------------------------------------------------------------
-   Badges
-   -------------------------------------------------------------------------- */
 .badge-container {
     display: flex;
     gap: 4px;
@@ -333,9 +314,6 @@
     color: #f472b6;
 }
 
-/* --------------------------------------------------------------------------
-   Command rows inside a guide (with copy button)
-   -------------------------------------------------------------------------- */
 .cmd-item-list {
     list-style: none;
     padding: 0;
@@ -410,9 +388,6 @@
     color: #000;
 }
 
-/* --------------------------------------------------------------------------
-   Previous / next guide footer
-   -------------------------------------------------------------------------- */
 .doc-article-nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -465,9 +440,6 @@
     font-weight: 700;
 }
 
-/* --------------------------------------------------------------------------
-   Command reference feed
-   -------------------------------------------------------------------------- */
 .commands-feed {
     min-width: 0;
 }
@@ -543,9 +515,6 @@
     line-height: 1.5;
 }
 
-/* --------------------------------------------------------------------------
-   Responsive
-   -------------------------------------------------------------------------- */
 @media (min-width: 1200px) {
     /* Crops the measure on wide viewports. rem and not ch: ch resolves against
        whichever font is loaded when the element is first styled, which gave
@@ -594,7 +563,7 @@
     }
 }
 
-/* Setup page: the numbered on-ramp, one card per step. */
+/* Setup page: one card per step. */
 .setup-steps {
     counter-reset: setup-step;
     list-style: none;
@@ -684,6 +653,24 @@
     align-items: center;
     gap: 14px;
     margin-top: 8px;
+}
+
+/* Setup page: the shot under a step. Every shot is 1280 by 720, so the frame holds
+   that ratio whatever file lands in it. */
+.setup-shot {
+    margin: 16px 0 0;
+}
+
+.setup-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: #0d0e15;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 640px) {

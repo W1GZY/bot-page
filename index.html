@@ -27,8 +27,7 @@
     <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
     
-    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
-         The @font-face rules live in global.css. -->
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
@@ -39,14 +38,13 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 
     <script src="theme-init.js?v=f90abd42"></script>
-    <link rel="stylesheet" href="global.css?v=8ff6eb99">
-    <link rel="stylesheet" href="brand.css?v=5cf0b2ab">
+    <link rel="stylesheet" href="global.css?v=a8678982">
+    <link rel="stylesheet" href="brand.css?v=d8de8e56">
 
-    <!-- Documentation and Commands tabs live on this page, so the docs
-         stylesheet has to load here too. Keep it before index.css: index.css
-         holds this page's layout overrides. -->
-    <link rel="stylesheet" href="docs.css?v=542b5949">
-    <link rel="stylesheet" href="index.css?v=eeb6ef0f">
+    <!-- The Documentation and Commands tabs live on this page, so docs.css
+         loads here too, ahead of index.css and its layout overrides. -->
+    <link rel="stylesheet" href="docs.css?v=a296fc64">
+    <link rel="stylesheet" href="index.css?v=4b3315b6">
 
     <script type="application/ld+json">
     {
@@ -73,13 +71,12 @@
 
 <body data-nav="overview" data-title="Overview">
 
-<!-- Legacy navigation hooks retained for layout.js compatibility -->
+<!-- Ids layout.js expects on every page; this page's nav is the header below. -->
 <div id="sidebar" hidden aria-hidden="true"></div>
 <div id="sidebarOverlay" hidden aria-hidden="true"></div>
 <button id="openSidebarBtn" hidden type="button" aria-hidden="true"></button>
 <button id="closeSidebarBtn" hidden type="button" aria-hidden="true"></button>
 
-<!-- Top Navigation -->
 <div class="content-wrapper">
     <header class="top-header site-topbar">
         <a href="#overview" class="brand-mark site-nav-link active" data-tab="overview" aria-label="SeanBot overview">
@@ -141,15 +138,13 @@
 
     <main class="content" style="max-width: 1400px;">
         
-        <!-- ==================== TAB 1: OVERVIEW ==================== -->
         <section id="view-overview" class="tab-view active-view">
-            <!-- Hero Section -->
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    Your soon-to-be favourite Discord bot, <span style="color: var(--accent);">one click away</span>.
+                    Your soon-to-be favourite Discord bot, <span style="color: var(--accent);">with no premium tier</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation and analytics, plus the only Wizard101 suite on this page. Every module is on when the bot joins, so you only switch off what your server does not want. There is no premium tier.
+                    Anti-raid, tickets, reaction roles, timezone roles, cross-server federation, analytics, and a Wizard101 suite the other bots on this page do not have. Every module is switched on the moment the bot joins, so all you have to do is turn off what your server does not want. Nothing is behind a paywall.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -164,7 +159,6 @@
                     </a>
                 </div>
 
-                <!-- Dashboard preview -->
                 <div class="hero-mockup-container">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; margin-bottom: 16px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -186,24 +180,19 @@
                                 <span style="font-size: 0.775rem; color: #949ba4;">Today at 18:23</span>
                             </div>
                             
-                            <!-- Discord audit log preview -->
                             <div style="background: #2b2d31; border-left: 4px solid #57F287; border-radius: 8px; padding: 16px 18px; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
                                 
-                                <!-- Top right thumbnail image -->
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 76px; height: 76px; border-radius: 8px; object-fit: cover; position: absolute; right: 16px; top: 16px;" alt="Thumbnail">
 
-                                <!-- Author Header -->
                                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; max-width: calc(100% - 90px);">
                                     <img src="assets/seanbot.png?v=5db7d29f" style="width: 22px; height: 22px; border-radius: 50%;" alt="User">
                                     <span style="font-weight: 700; color: #f2f3f5; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">@Community Member</span>
                                 </div>
 
-                                <!-- Embed Title -->
                                 <div style="font-weight: 800; font-size: 1.05rem; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
                                     <span style="background: #57F287; color: #000; width: 18px; height: 18px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900;">✓</span> Invite Created
                                 </div>
 
-                                <!-- Field Grid -->
                                 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; max-width: calc(100% - 90px);">
                                     <div>
                                         <div style="font-size: 0.8rem; font-weight: 700; color: #f2f3f5; margin-bottom: 4px;">Code</div>
@@ -227,7 +216,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Footer Line -->
                                 <div style="font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
                                     INSTANT AUDIT LOGGING • INVITE CREATED • TODAY AT 18:23
                                 </div>
@@ -237,16 +225,10 @@
                 </div>
             </div>         
 
-            <!-- Product highlights. The two catalog counts are generated:
-                 data-site-stat marks where each lands, and
-                 scripts/generate_site_stats.py writes them from the command
-                 reference and the dashboard's module catalog. The command
-                 count is the whole reference, right-click apps included, so it
-                 matches what the Commands tab renders, and the same marker is
-                 written into that tab's banner below. The number in the
-                 "Communities" card is the last known value, replaced on load
-                 by index.js from the bot's own guild count; it is what an
-                 offline or blocked visitor sees, not a second source of truth. -->
+            <!-- The two catalog counts are generated: data-site-stat marks where
+                 each lands and scripts/generate_site_stats.py fills them from the
+                 command reference and the module catalog. The Communities card is
+                 the last known guild count, replaced on load by index.js. -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number" data-site-stat="commands">508</div>
@@ -262,16 +244,14 @@
                 </div>
             </div>
 
-            <!-- Why SeanBot section -->
             <div class="plain-intro-section">
                 <h2><i class="ph-duotone ph-wrench"></i> Why it is built in pieces</h2>
                 <div class="plain-intro-copy">
-                    <p class="plain-intro-lead">SeanBot ships as separate modules. Anything you wish to not use, you can keep disabled.</p>
-                    <p>Everything else can be customized for your needs. Everything from Anti-raid and moderation to tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools can make your users' server experience feel out of the ordinary. Keep the things you like and make the bot fit your server.</p>
+                    <p class="plain-intro-lead">SeanBot ships as separate modules, and every one of them is switched on when the bot joins. Anything this server does not need, turn it off and leave it.</p>
+                    <p>That covers the lot: anti-raid and moderation, tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools. Keep the parts your community actually uses and leave the rest alone, so the bot ends up fitting your server rather than the other way round.</p>
                 </div>
             </div>
 
-            <!-- Split Feature Section 1: Raid Shield (Text Left, Scrollable Visual Card Right) -->
             <div class="feature-row">
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Anti-Raid and AutoMod</h2>
@@ -288,9 +268,7 @@
                     </button>
                 </div>
                 
-                <!-- Anti-raid preview -->
                 <div style="background: #313338; border-radius: 8px; padding: 16px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
-                    <!-- Channel top header bar -->
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 14px;">
                         <div style="font-weight: 700; font-size: 0.95rem; color: #f2f3f5; display: flex; align-items: center; gap: 8px;">
                             <span style="color: #949ba4; font-size: 1.1rem;">#</span>
@@ -299,9 +277,7 @@
                         </div>
                     </div>
 
-                    <!-- Anti-raid log sequence -->
                     <div class="antiraid-sequence-container" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-                        <!-- Log 1: Mass Join Detected -->
                         <div class="antiraid-log-card" style="border-left-color: #ed4245;">
                             <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
@@ -319,7 +295,6 @@
                             </div>
                         </div>
 
-                        <!-- Log 2: Security Quarantine Log -->
                         <div class="antiraid-log-card" style="border-left-color: #5865F2;">
                             <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
@@ -337,7 +312,6 @@
                             </div>
                         </div>
 
-                        <!-- Log 3: Notice Message Log -->
                         <div class="antiraid-log-card" style="border-left-color: #fee75c;">
                             <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
@@ -355,7 +329,6 @@
                             </div>
                         </div>
 
-                        <!-- Log 4: Admin Member Log -->
                         <div class="antiraid-log-card" style="border-left-color: #ed4245;">
                             <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
@@ -376,9 +349,7 @@
                 </div>
             </div>
 
-                        <!-- Split Feature Section 2: Interactive Support Ticket System -->
             <div class="feature-row">
-                <!-- Interactive replica card -->
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
                         <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
@@ -390,10 +361,8 @@
                         Click "Open Ticket" below to start a Discord ticket!
                     </p>
 
-                    <!-- Pure CSS Discord message container -->
                     <div style="background: #2b2d31; border-radius: 8px; padding: 16px; margin-bottom: 12px; text-align: left; min-height: 220px; border-left: 4px solid #5865F2; display: flex; flex-direction: column; justify-content: center; position: relative;">
                         
-                        <!-- STEP 1: Initial Panel UI with logo.png & Avatar -->
                         <div id="ticket-ui-step-1">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
@@ -412,7 +381,6 @@
                             </div>
                         </div>
 
-                        <!-- STEP 2: Ticket Created Channel UI -->
                         <div id="ticket-ui-step-2" style="display: none;">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
@@ -425,7 +393,6 @@
                             </div>
                         </div>
 
-                        <!-- STEP 3: Random User Message UI -->
                         <div id="ticket-ui-step-3" style="display: none;">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="User Avatar">
@@ -439,7 +406,6 @@
                             </div>
                         </div>
 
-                        <!-- Discord animated typing indicator bar -->
                         <div id="discord-typing-status" style="display: none; align-items: center; gap: 6px; font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
                             <span style="display: inline-flex; gap: 3px; align-items: center;">
                                 <span class="typing-dot"></span>
@@ -451,7 +417,6 @@
 
                     </div>
 
-                    <!-- Ticket controls -->
                     <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px;" id="ticket-action-area">
                         <button onclick="handleTicketStep()" style="background: #5865F2; color: #fff; border: none; cursor: pointer; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);">
                             <i class="ph-fill ph-ticket"></i> Open Ticket
@@ -459,7 +424,6 @@
                     </div>
                 </div>
 
-                <!-- Description Side -->
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Support tickets stay private</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
@@ -471,9 +435,7 @@
                 </div>
             </div>
 
-           <!-- Feature Section: Interactive Timezone Selector -->
             <div class="feature-row">
-                <!-- Description Side -->
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Timezone roles</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
@@ -484,7 +446,6 @@
                     </p>
                 </div>
 
-                <!-- Interactive Card -->
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
@@ -494,10 +455,8 @@
                         <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">V3.1</span>
                     </div>
 
-                    <!-- Discord message outer container -->
                     <div style="background: #2b2d31; border-radius: 8px; padding: 16px; margin-bottom: 12px; text-align: left; border-left: 4px solid #5865F2;">
                         
-                        <!-- Message Header -->
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
                             <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
                             <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">SeanBot</span>
@@ -505,7 +464,6 @@
                             <span style="font-size: 0.75rem; color: #949ba4;">Today at 18:36</span>
                         </div>
 
-                        <!-- Embed Container -->
                         <div style="background: #1e1f22; border-left: 4px solid #5865F2; border-radius: 4px; padding: 14px; margin-bottom: 12px;">
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                                 <h4 style="margin: 0; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
@@ -523,7 +481,6 @@
                             </div>
                         </div>
 
-                        <!-- Region buttons container -->
                         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
                             <button onclick="selectRegion('America')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
                                 🌎 America
@@ -545,14 +502,11 @@
                             </button>
                         </div>
 
-                        <!-- Dynamic dropdown select container -->
                         <div id="tz-dropdown-container" style="display: none; margin-top: 8px;">
                             <select id="tz-select-menu" class="discord-select" onchange="handleTimezoneSelection()">
-                                <!-- Populated dynamically -->
                             </select>
                         </div>
 
-                        <!-- Typing Status -->
                         <div id="tz-typing-status" style="display: none; align-items: center; gap: 6px; font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
                             <span style="display: inline-flex; gap: 3px; align-items: center;">
                                 <span class="typing-dot"></span>
@@ -562,7 +516,6 @@
                             <span>Registering timezone...</span>
                         </div>
 
-                        <!-- Confirmation result message -->
                         <div id="tz-status-message" style="display: none; background: rgba(35, 165, 90, 0.15); border-left: 4px solid #23a55a; border-radius: 4px; padding: 10px; margin-top: 10px;">
                             <p style="margin: 0; color: #23a55a; font-size: 0.825rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
                                 <i class="ph-bold ph-check-circle"></i> Timezone registered!
@@ -574,7 +527,6 @@
 
                     </div>
 
-                    <!-- Action reset button -->
                     <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
                         <button onclick="resetTimezoneDemo()" style="background: rgba(255,255,255,0.08); color: #dbdee1; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-weight: 700; padding: 5px 12px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.775rem;">
                             <i class="ph-bold ph-arrows-counter-clockwise"></i> Clear Selection
@@ -584,7 +536,6 @@
                 </div>
             </div>
 
-            <!-- Split Feature Section 4: Server Federation (Visual Left, Text Right - Live Server A ↔ Server B Relay) -->
             <div class="feature-row">
                 <div class="glass-card federation-preview" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div class="federation-preview-header">
@@ -601,7 +552,6 @@
                     </div>
 
                     <div class="federation-chat-grid">
-                        <!-- Server A -->
                         <section class="federation-server" aria-label="Server A chat log">
                             <div class="federation-server-topbar">
                                 <div>
@@ -646,7 +596,6 @@
                             <span class="federation-bridge-label">SIGNED RELAY</span>
                         </div>
 
-                        <!-- Server B -->
                         <section class="federation-server" aria-label="Server B chat log">
                             <div class="federation-server-topbar">
                                 <div>
@@ -707,7 +656,6 @@
                 </div>
             </div>
 
-            <!-- Polls and dynamic timestamps -->
             <div class="feature-row">
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Polls and raid sign-ups</h2>
@@ -723,9 +671,7 @@
                     </button>
                 </div>
 
-                <!-- Poll preview -->
                 <div style="background: #313338; border-radius: 8px; padding: 16px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
-                    <!-- Channel top header bar -->
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 14px;">
                         <div style="font-weight: 700; font-size: 0.95rem; color: #f2f3f5; display: flex; align-items: center; gap: 8px;">
                             <span style="color: #949ba4; font-size: 1.1rem;">#</span>
@@ -737,7 +683,6 @@
                         </div>
                     </div>
 
-                    <!-- Slash Command Popup & Auto-Complete Bar -->
                     <div style="background: #2b2d31; border-radius: 8px 8px 0 0; padding: 8px 12px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.06); border-bottom: none; display: flex; align-items: center; justify-content: space-between;">
                         <div style="display: flex; align-items: center; gap: 6px; color: #949ba4;">
                             <span style="font-weight: 700; color: #f2f3f5;">answers</span>
@@ -765,7 +710,6 @@
                         <span style="color: #b5bac1; font-size: 1.1rem;">😊</span>
                     </div>
 
-                    <!-- Generated poll embed message output -->
                     <div style="position: relative; padding-left: 50px;">
                         <img src="assets/seanbot.png?v=5db7d29f" style="width: 40px; height: 40px; border-radius: 50%; position: absolute; left: 0; top: 0;" alt="SeanBot Avatar">
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
@@ -795,7 +739,6 @@
                             </div>
                         </div>
 
-                        <!-- Reaction vote button row -->
                         <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
                             <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
                                 <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">1</span> 1
@@ -821,7 +764,6 @@
                 </div>
             </div>
 
-            <!-- Split Feature Section 2: Emoji Analytics (Visual Left, Text Right) -->
             <div class="feature-row">
                 <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
@@ -869,7 +811,6 @@
                 </div>
             </div>
 
-            <!-- Live feature showcase section -->
             <section id="showcase" style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Look at the dashboard first</h2>
@@ -877,7 +818,6 @@
                 </div>
 
                 <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
-                    <!-- Showcase navigation tabs -->
                     <div class="showcase-tabs" role="tablist" aria-label="SeanBot dashboard previews" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
                         <button class="showcase-tab active" type="button" role="tab" data-showcase="timezone" aria-selected="true" aria-controls="showcase-timezone"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Analytics</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="antiraid" aria-selected="false" aria-controls="showcase-antiraid"><i class="ph-duotone ph-shield-check"></i> Anti-Raid</button>
@@ -888,7 +828,6 @@
                         <button class="showcase-tab" type="button" role="tab" data-showcase="embed" aria-selected="false" aria-controls="showcase-embed"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
                     </div>
 
-                    <!-- Showcase content panels -->
                     <div id="showcase-timezone" class="showcase-panel active" role="tabpanel" aria-label="Timezone analytics preview" style="display: grid;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Timezone dashboard</span>
@@ -1063,12 +1002,8 @@
                 </div>
             </section>
 
-            <!-- Communities carousel. Entries come from the dashboard's public
-                 API and are strictly opt-in; the whole section stays hidden
-                 until index.js finds at least one opted-in server. Each slot
-                 is one server - its avatar as the hero, its name, the
-                 description the admin wrote and its member count - and the
-                 track moves on by itself until the reader takes over. -->
+            <!-- Slots come from the dashboard's public API and are strictly
+                 opt-in: the whole section stays hidden until index.js finds one. -->
             <section id="servers" hidden style="margin: 44px 0 48px 0;">
                 <div style="text-align: center; margin-bottom: 4px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Communities using <span style="color: var(--accent);">SeanBot</span></h2>
@@ -1077,21 +1012,16 @@
                 <div class="server-carousel" id="serverCarousel">
                     <div class="server-track" id="serverTrack" role="group" tabindex="0" aria-label="Communities using SeanBot. It moves through them on its own; the left and right arrow keys move it too."></div>
 
-                    <!-- No arrows: the slots either side of the front one are
-                         the control, and the dots are how a reader jumps
-                         straight to a server without stepping through the row. -->
+                    <!-- The peeking slots are the control here; the dots are the keyboard path. -->
                     <div class="server-carousel-controls" id="serverCarouselControls">
                         <div class="server-carousel-dots" id="serverCarouselDots"></div>
                     </div>
 
-                    <!-- Filled only when the list could not be fetched at all,
-                         so a blocked or offline visit is not a blank page. -->
+                    <!-- Filled only when the list could not be fetched at all. -->
                     <div class="server-carousel-notice" id="serverCarouselNotice" aria-live="polite"></div>
                 </div>
             </section>
 
-            <!-- Bot feature comparison -->
-            <!-- Bot feature comparison table -->
             <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
                 <div style="text-align: center; margin-bottom: 28px;">
                     <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
@@ -1173,7 +1103,6 @@
                 </div>
             </section>
 
-            <!-- Featured Modules -->
             <section id="features" class="modules-section">
                 <div class="modules-heading">
                     <div>
@@ -1567,7 +1496,6 @@
             </div>
         </section>
 
-        <!-- ==================== TAB 2: DOCUMENTATION ==================== -->
         <section id="view-docs" class="tab-view">
             <div class="docs-page-header" style="margin-bottom: 24px;">
                 <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation</h1>
@@ -1576,7 +1504,6 @@
                 </p>
             </div>
 
-            <!-- Doc search category filters -->
             <div style="margin-bottom: 20px;">
                 <div class="filter-pills" id="docsCategoryFilters">
                     <button class="pill-btn active" data-category="all">All modules</button>
@@ -1588,7 +1515,6 @@
                 </div>
             </div>
 
-            <!-- Doc search input filter -->
             <div class="search-container" style="margin-bottom: 24px;">
                 <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
                 <input type="text" id="docSearch" placeholder="Search the guides, or a command name...">
@@ -1599,46 +1525,42 @@
                 <i class="ph-bold ph-caret-down" aria-hidden="true"></i>
             </button>
 
-            <!-- Documentation layout grid -->
             <div class="docs-grid">
                 <aside class="docs-nav" id="docsSidebar" aria-label="Documentation modules">
                     <div class="docs-nav-title"><i class="ph ph-compass"></i> Documentation</div>
                     <div id="docsNavLinks"></div>
                 </aside>
 
-                <!-- Main articles container -->
                 <main id="docsContent"></main>
             </div>
         </section>
 
         
-        <!-- ==================== TAB 4: TERMS & PRIVACY ==================== -->
         <section id="view-tos" class="tab-view">
             <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(16px);">
                 <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px;">Terms of Service & Privacy Policy</h1>
                 <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 0.95rem;">Last updated: July 2026</p>
 
                 <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">1. Terms of Service</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">By adding SeanBot to your Discord server or using our Web Dashboard, you agree to comply with Discord's Terms of Service and Community Guidelines. SeanBot is provided "as-is" without warranties of any kind.</p>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">By adding SeanBot to your server or signing in to the dashboard, you agree to follow Discord's Terms of Service and Community Guidelines. The bot is provided as it is, without warranties of any kind.</p>
 
                 <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">2. Data Collection & Privacy</h2>
                 <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">SeanBot collects only the data it needs to work:</p>
                 <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px; margin-bottom: 20px;">
-                    <li><strong>Server IDs & Channel IDs:</strong> Stored to maintain server configuration settings.</li>
-                    <li><strong>User IDs:</strong> Stored for moderation points, warning history, LOA status, and timezone settings.</li>
-                    <li><strong>Command Usage Logs:</strong> Processed temporarily for analytics and error diagnostics.</li>
+                    <li><strong>Server and channel IDs:</strong> Stored so your configuration keeps working.</li>
+                    <li><strong>User IDs:</strong> Stored for moderation points, warning history, leave of absence status, and timezone settings.</li>
+                    <li><strong>Command usage:</strong> Processed as it happens, for analytics and error diagnostics.</li>
                 </ul>
 
                 <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">3. Data Security & Storage</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">All database connections use encrypted channels. We do not sell, rent, or trade any user or server data to third parties.</p>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">Database connections are encrypted, and we do not sell, rent, or trade your data to anyone.</p>
 
                 <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">4. Contact & Support</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7;">If you have questions regarding these terms or wish to request data removal, please contact our staff team through the support ticket system or official Discord community server.</p>
+                <p style="color: var(--text-secondary); line-height: 1.7;">Questions about any of this, or a request to remove your data, go to the staff team through the support tickets or the official Discord server. This tab is the short version; the full <a href="tos.html" style="color: var(--accent);">Terms of Service &amp; Privacy Policy</a> stands on its own page.</p>
             </div>
         </section>
 
 
-        <!-- ==================== TAB 3: COMMANDS ==================== -->
         <section id="view-commands" class="tab-view">
             <div style="margin-bottom: 24px;">
                 <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Commands</h1>
@@ -1679,19 +1601,16 @@
     </footer>
 </div>
 
-<!-- Floating Back to Top Button -->
 <button id="backToTopBtn" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
     <i class="ph-bold ph-caret-up"></i>
 </button>
 
-<script src="servers-data.js?v=5c309d68"></script>
-<script src="layout.js?v=3f9e08c1"></script>
+<script src="servers-data.js?v=189f2f74"></script>
+<script src="layout.js?v=a8ed0a65"></script>
 
-<!-- The docs and command datasets are large generated files (docs-data.js is
-     ~210 KB, commands-data.js ~100 KB) and only one tab needs each. index.js
-     fetches a tab's file the first time that tab is opened, so a visit that
-     stays on the overview downloads neither. -->
-<script src="index.js?v=67019809"></script>
+<!-- docs-data.js (~210 KB) and commands-data.js (~100 KB) load only when their
+     tab is first opened, so a visit that stays on the overview downloads neither. -->
+<script src="index.js?v=e3c08ab1"></script>
 
 </body>
 </html>

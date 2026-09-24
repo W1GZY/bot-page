@@ -23,8 +23,7 @@
     <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
     
-    <!-- Inter is served from this origin, so nothing here reaches a font CDN.
-         The @font-face rules live in global.css. -->
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
     <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
 
     <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
@@ -38,9 +37,9 @@
         const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
         document.documentElement.setAttribute('data-accent', savedAccent);
     </script>
-    <link rel="stylesheet" href="global.css?v=8ff6eb99">
-    <link rel="stylesheet" href="brand.css?v=5cf0b2ab">
-    <script src="layout.js?v=3f9e08c1" defer></script>
+    <link rel="stylesheet" href="global.css?v=a8678982">
+    <link rel="stylesheet" href="brand.css?v=d8de8e56">
+    <script src="layout.js?v=a8ed0a65" defer></script>
     <style>
         /* TOS & Privacy Policy Custom Styles */
         .tos-card {
@@ -225,7 +224,6 @@
                 <p style="color: var(--text-secondary);">We may update our Terms of Service or Privacy Policy from time to time. Please check this page regularly for the latest information.</p>
             </div>
 
-            <!-- TOS header -->
             <div class="tos-section" style="margin-top: 48px;">
                 <h1 class="tos-title" style="font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">1. Terms of Service</h1>
                 <p>By using <strong>SeanBot</strong> (the "Bot"), you agree to comply with Discord's Terms of Service and all applicable laws. Your continued use signifies acceptance of these Terms.</p>
@@ -303,10 +301,9 @@
                 <p>From time to time, we may offer certain features of the Bot in an experimental, "Beta Features". Beta Features are provided "as is" and "as available" and may contain bugs, errors, or inaccuracies. Using Beta Features is entirely voluntary and at your own risk. We make no guarantees regarding the performance, functionality, or continuation of any Beta Features, and they may be changed or withdrawn at any time without notice or liability.</p>
             </div>
 
-            <!-- Privacy policy header -->
             <div class="tos-section" style="margin-top: 48px;">
                 <h1 class="tos-title" style="font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">2. Privacy Policy</h1>
-                <p>SeanBot is an application running on the Discord platform. Use of the Bot is also subject to <strong>Discord's Terms of Service and Privacy Policy</strong>, which we are not responsible for. This policy outlines the types of information we collect, how we use it, and your rights regarding your data.</p>
+                <p>SeanBot is an application running on the Discord platform, so using the Bot also puts you under <strong>Discord's Terms of Service and Privacy Policy</strong>, which are not ours. This policy covers what we collect, how we use it, and what you can ask us to do about it.</p>
 
                 <h3 style="margin-top: 0;">Our role for server data</h3>
                 <p>For data that belongs to a particular Discord server, SeanBot generally acts as a service provider for that server. The server owner and staff decide which features to enable, how to configure them, and where logs or transcripts are sent. SeanBot provides the tools and processes the data needed to run those features, but it does not control the server itself and does not decide how the server uses its own data.</p>
@@ -325,13 +322,15 @@
                 </div>
 
                 <h3 style="margin-top: 0;">Security</h3>
-                <p>We use reasonable administrative, technical, and physical measures to protect the data we hold against unauthorized access, loss, and misuse. We do not represent or warrant that our measures will prevent every breach, leak, or unauthorized access. If we become aware of a security incident that may affect personal data, we will take reasonable steps to address it and will notify affected users or server owners where appropriate and where required by law.
+                <p>We use reasonable administrative, technical, and physical measures to protect the data we hold against unauthorized access, loss, and misuse. We do not represent or warrant that our measures will prevent every breach, leak, or unauthorized access. If we become aware of a security incident that may affect personal data, we will take reasonable steps to address it and will notify affected users or server owners where appropriate and where required by law.</p>
 
                 <h3>Legal requests and disclosures</h3>
-                <p>We may disclose data where we are required to do so by law, where necessary to protect the safety of people or servers, or where another legally valid request applies. We do not publish or advertise involuntary disclosures, and any such disclosure is limited to what is necessary for the purpose at issue.</p></p>
-            </div>            <div class="tos-section">
+                <p>We may disclose data where we are required to do so by law, where necessary to protect the safety of people or servers, or where another legally valid request applies. We do not publish or advertise involuntary disclosures, and any such disclosure is limited to what is necessary for the purpose at issue.</p>
+            </div>
+
+            <div class="tos-section">
                 <h2>2.1 What we collect</h2>
-                <p>We only collect data that a feature needs in order to work. Most of it comes from the Discord API, from the server's settings, or from information you or a server enter into a feature. We do not collect extra personal data from you or from server members just because it is available through the Discord API.</p>
+                <p>We collect only what a feature needs to work. Most of it comes from the Discord API or from the server's own settings, and the rest is what you type into a feature. Nothing is collected just because the API happens to make it available.</p>
 
                 <h3>Identity data from Discord</h3>
                 <p>When a feature needs it, we may use Discord identity information such as a username, numerical Discord ID, avatar hash, or public flags. We do not take more identity data than the feature needs.</p>
@@ -349,17 +348,17 @@
 <p>If a server enables message-deletion or edit logging, and where message content storage is allowed by the Bot's configuration, we may keep a short-lived snapshot of recently deleted messages so the log can reconstruct what was removed. Depending on that server's settings, a snapshot may include a truncated version of the message text, embed titles or descriptions, attachment links, and counts of mentions, role mentions, or @everyone/@here usage. We do not store your full message history across the server. These snapshots are not kept for every server or every feature, they expire automatically after a configured retention period, and they are removed once they have been used for a deletion log.</p>
 
 <h3>Website and operational data</h3>
-<p>The SeanBot website and the Bot itself may generate technical and operational data needed to run them, such as connection, usage, or error data. If any such data is collected, it is limited to what is needed for operation, debugging, security, or service improvement, and is handled under the same approach described in this policy. We do not use this data to build profiles about you beyond what the related feature requires. Cookies and other browser storage are covered separately in the <a href="cookies.html">Cookie Policy</a>.</p>
+<p>Running the site and the Bot can produce technical data such as connection records, usage counts and error reports. Where that happens it is limited to what operation, debugging, security and service improvement need, and it is handled under the same approach as everything else in this policy. It is not used to build profiles about you beyond what the related feature requires. Cookies and other browser storage are covered separately in the <a href="cookies.html">Cookie Policy</a>.</p>
 
 <h3>Third-party services</h3>
-<p>The Bot and the SeanBot website may rely on third-party services such as Discord, hosting providers, database providers, analytics or error-reporting services, and security providers. Those third parties collect and handle their own data under their own terms and privacy practices, which this policy does not cover. Where a third-party service collects usage data, it does so under its own policy, not under this one. If you use the Bot, you are also subject to the terms and privacy practices of any third-party services it depends on.</p>
+<p>The Bot and the SeanBot website run on third-party services: Discord itself, plus hosting, database, analytics or error-reporting, and security providers. Those providers collect and handle data under their own terms and privacy practices, which this policy does not cover, so using the Bot also puts you under theirs.</p>
 
-                <p style="margin-top: 16px; color: var(--text-secondary);"><strong>Quick note on retention.</strong> Different kinds of data are kept for different lengths of time. Server configuration and feature data is generally kept while the bot remains in that server and may persist briefly after removal so things like moderation or ticket history stay usable to the server. Deletion/edit snapshots are short-lived and expire automatically. User-specific data is generally deleted or de-linked when the bot leaves the user&rsquo;s last shared server or on a valid deletion request, subject to the limits in this policy. Anonymized and aggregated usage data may be kept longer. The full retention details are in section 2.2.</p>
+                <p style="margin-top: 16px; color: var(--text-secondary);"><strong>Retention.</strong> Different kinds of data are kept for different lengths of time, and the detail is in section 2.2 below.</p>
             </div>
 
             <div class="tos-section">
                 <h2>2.2 Use of Data</h2>
-                <p>Your data is used solely to <strong>operate, maintain, and improve</strong> the Bot's core features, including: responding to user requests, running commands, managing events and tracking, saving user preferences, and maintaining security to prevent abuse. We do not use your content or activity data for advertising or unrelated promotional purposes.</p>
+                <p>Your data is used solely to <strong>operate, maintain, and improve</strong> the Bot's core features: answering user requests, running commands, managing events and tracking, saving preferences, and keeping a server safe from abuse. It is not used for advertising or unrelated promotion.</p>
                 <p>We <strong>do not sell</strong> your personal data. We may share limited data with Discord, our hosting, database, analytics, and security providers, authorized Server Administrators, and public authorities where required by law. These parties receive only the information necessary for their relevant purpose.</p>
                 <p><strong>Data Retention.</strong> We retain data only for as long as necessary to provide the service or comply with legal obligations. Different kinds of data are retained differently:</p>
                 <ul>
@@ -417,7 +416,6 @@
                 <p>Nothing in these Terms or this Privacy Policy creates any right, obligation, or contract between you and the staff or owners of any individual server, or any promise by SeanBot about how a server will use the tools we provide. Disputes about a particular server's conduct are separate from any dispute with SeanBot.</p>
             </div>
 
-            <!-- General provisions header -->
             <div class="tos-section" style="margin-top: 48px;">
                 <h1 class="tos-title" style="font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">3. General Provisions and Dispute Resolution</h1>
             </div>

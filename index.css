@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Styles ported out of index.html's inline <style> blocks, in order.
-   ========================================================================== */
-/* Tab Views Control */
         .tab-view {
             display: none;
         }
@@ -10,7 +6,6 @@
             animation: fadeIn 0.2s ease-out forwards;
         }
 
-        /* Animated Discord Anti-Raid Log Sequence (Pop in one by one and STOP) */
         @keyframes discordPopInOnce {
             0% { opacity: 0; transform: translateY(14px) scale(0.97); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
@@ -41,7 +36,6 @@
         .antiraid-log-card:nth-child(3) { animation-delay: 2.7s; border-left-color: #fee75c; }
         .antiraid-log-card:nth-child(4) { animation-delay: 3.9s; border-left-color: #ed4245; }
 
-        /* GIF-Like Live Animation Keyframes */
         @keyframes pulseGlow {
             0% { opacity: 0.4; transform: scale(0.9); }
             50% { opacity: 1; transform: scale(1.25); box-shadow: 0 0 8px currentColor; }
@@ -65,7 +59,6 @@
             animation: tickerScroll 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Hero Section */
         .hero-section {
             text-align: center;
             padding: 44px 24px;
@@ -120,7 +113,6 @@
             line-height: 1.45;
         }
 
-        /* Documentation-only sidebar */
         .docs-grid {
             display: grid;
             grid-template-columns: minmax(230px, 270px) minmax(0, 1fr);
@@ -165,7 +157,6 @@
             from { opacity: 0; transform: translateY(-10px) scale(0.985); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        /* Commands View Layout */
         .layout-with-toc {
             display: grid;
             grid-template-columns: 1fr 240px;
@@ -190,7 +181,6 @@
             }
         }
     
-        /* Dashboard showcase */
         .showcase-tab {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
@@ -469,7 +459,6 @@
             display: block;
         }
 
-        /* Section Call to Action Banners */
         .section-cta-banner {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 20, 25, 0.6) 100%);
             border: 1px solid rgba(255, 215, 0, 0.25);
@@ -528,9 +517,8 @@
             box-shadow: 0 0 26px var(--accent-glow);
             color: #000;
         }
-        /* The quieter half of a banner's pair: the read-only previews, beside
-           the invite. Secondary on purpose, so it does not compete with the
-           button that adds the bot. */
+        /* The quieter half of a banner's pair: the read-only previews beside the
+           invite, secondary so they do not compete with the button that adds the bot. */
         .section-cta-link {
             color: var(--text-secondary);
             font-weight: 700;
@@ -545,7 +533,6 @@
         .section-cta-link:hover {
             color: var(--accent);
         }
-        /* Hero details */
         .hero-badge-pill {
             background: rgba(255, 215, 0, 0.08);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -634,7 +621,6 @@
             line-height: 1.65 !important;
         }
 
-        /* Card hover states */
         .glass-card, .feature-card, .stat-card, .showcase-container {
             transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
         }
@@ -657,7 +643,6 @@
             transform: scale(1.04);
         }
 
-        /* Background decoration */
         body::before {
             content: '';
             position: fixed;
@@ -672,7 +657,6 @@
             content: none;
         }
 
-        /* Button hover states */
         .btn-large, .btn-primary, .btn-secondary, .showcase-tab, .pill-btn, .topbar-invite-btn, .section-cta-btn {
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, filter 0.2s ease !important;
             position: relative;
@@ -690,7 +674,6 @@
             padding-bottom: 8px;
         }
 
-        /* Section reveal */
         .fade-in-section {
             opacity: 0;
             transform: translateY(16px);
@@ -701,7 +684,6 @@
             transform: translateY(0);
         }
 
-        /* Section headings */
         h2.section-heading,
         .section-title-accent {
             position: relative;
@@ -709,7 +691,6 @@
             align-items: center;
         }
 
-        /* Reusable split-feature layout */
         .feature-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -722,7 +703,6 @@
             letter-spacing: -0.3px;
         }
 
-        /* Stat cards */
         .stat-card {
             background: #141518 !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -772,7 +752,6 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 24px var(--accent-glow);
         }
 
-        /* Top Bar Invite Button */
         .topbar-invite-btn {
             background: var(--accent);
             color: #000;
@@ -793,7 +772,6 @@
             filter: brightness(1.1);
         }
 
-        /* Comparison Table Styling */
         .comparison-table-container {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -873,7 +851,6 @@
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
-        /* Federation Live Relay Preview */
         .federation-preview-header {
             display: flex;
             align-items: center;
@@ -1211,7 +1188,6 @@
         }
 
 
-        /* Top navigation */
         .content-wrapper {
             width: 100% !important;
             max-width: none !important;
@@ -1317,7 +1293,6 @@
             font-weight: 700;
         }
 
-        /* Scroll-triggered pop-in motion */
         .scroll-pop {
             opacity: 0;
             transform: translateY(28px) scale(0.975);
@@ -1339,7 +1314,6 @@
             filter: blur(0);
         }
 
-        /* Module directory */
         .modules-section { margin: 54px 0 20px; }
         .modules-heading {
             display: flex;
@@ -1512,7 +1486,6 @@
         .module-empty-state i { color: var(--accent); font-size: 2rem; }
         .module-empty-state strong { color: #fff; }
 
-        /* Featured module cards - larger, with accent border and badge */
         .module-card.featured {
             grid-column: span 2;
             min-height: 260px;
@@ -1550,7 +1523,6 @@
             padding-top: 18px;
         }
 
-        /* Wizard101 suite card - expands to show all W101 tools */
         .module-card.w101-suite {
             grid-column: span 2;
             min-height: 240px;
@@ -1598,13 +1570,10 @@
         @media (max-width: 820px) {
             .plain-intro-copy { padding-left: 0; }
         }
-        /* Compact topbar row: between the width where the full row stops
-           fitting and the width where the hamburger takes over, the link
-           icons and padding are dropped so all seven links still fit.
-           Measured on the live header: the full row needs ~1100-1250px
-           depending on the visitor's fonts, the compact row ~1000-1100px,
-           so 1560/1240 leave margin on both sides. The hamburger block
-           below must stay after this one so it wins at narrow widths. */
+        /* Compact topbar row, between the width where the full row stops fitting
+           and the width where the hamburger takes over. Measured on the live header,
+           so the cutoffs leave margin either side; must stay ahead of the
+           hamburger block to win at narrow widths. */
         @media (max-width: 1560px) {
             .site-nav-link:not(.brand-mark) i { display: none; }
             .site-nav-link:not(.brand-mark) { padding: 9px 8px; }
@@ -1692,7 +1661,6 @@
             }
         }
 
-        /* Page footer */
         .page-footer {
             max-width: 1400px;
             margin: 28px auto 0;
@@ -1734,7 +1702,6 @@
         }
 
 
-/* Discord bouncing typing dots */
     @keyframes discordDotBounce {
         0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
         40% { transform: translateY(-4px); opacity: 1; }
@@ -1749,9 +1716,6 @@
     }
     .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 
-/* ========================================================================
-   Landing page overrides
-   ======================================================================== */
 .content {
     max-width: 1180px !important;
     padding-top: 28px;
@@ -1929,7 +1893,6 @@
     .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
 
-/* Discord dropdown select menu */
     .discord-select {
         background: #1e1f22;
         color: #dbdee1;
@@ -1947,18 +1910,9 @@
         color: #fff;
     }
 
-/* ==========================================================================
-   Communities carousel (entries come from the dashboard's public API)
-   Every server gets the same slot: its own avatar as the hero image, then the
-   name, the description its admin wrote and its member count. The row is a
-   scroll-snap track, so a phone swipe and a trackpad drag both move it for
-   free; index.js adds the automatic advance, the dots and the keyboard. The
-   slot that is left of centre is dimmed, so the row reads as one community
-   being featured rather than a wall of equals.
-   No panel wraps the row: the cards are the section, so the page background
-   runs behind them and only the peeking neighbours are cropped. The padding is
-   the room the lifted front slot's shadow needs, not a frame.
-   ========================================================================== */
+/* Communities carousel: one scroll-snap track and no panel wrapping it, so the
+   cards are the section and only the peeking neighbours are cropped. index.js
+   adds the automatic advance, the dots and the keyboard. */
 .server-carousel {
     --slide-gap: 16px;
     --slide-width: min(340px, 84%);
@@ -1992,11 +1946,9 @@
     border-radius: var(--radius-lg);
 }
 
-/* One or two communities have no neighbours to peek at, so from tablet width
-   up the slots take the space instead of leaving an empty strip either side:
-   the row centres them and stops scrolling entirely. Narrower screens keep the
-   peek layout above, because two half-width slots cannot be read on a phone.
-   The caps are a share of the row, so the pair can never spill past it. */
+/* One or two communities have no neighbours to peek at, so from tablet width up
+   the slots take the space and the row centres them without scrolling. Narrower
+   screens keep the peek layout: two half-width slots cannot be read on a phone. */
 @media (min-width: 768px) {
     .server-carousel[data-slots="1"] .server-track,
     .server-carousel[data-slots="2"] .server-track {
@@ -2025,9 +1977,8 @@
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-rest);
     opacity: 0.55;
-    /* Clicking a neighbour is what brings it to the front, so it advertises
-       that with a pointer. The front slot does not: a click there belongs to
-       whatever it landed on. */
+    /* Clicking a neighbour brings it to the front, so it advertises that with a
+       pointer. The front slot does not: a click there belongs to what it landed on. */
     cursor: pointer;
     transition: opacity 0.3s ease, border-color var(--transition-fast), box-shadow 0.4s ease;
 }
@@ -2045,10 +1996,8 @@
    how a card that should have come forward simply sticks to the cursor. */
 .server-slide-hero img { -webkit-user-drag: none; }
 
-/* The hero: the server's own avatar filling the top of the slot. A square icon
-   is cropped to the frame rather than letterboxed, because the frame reads as
-   the community's own picture. A server without one gets its initials on a
-   gradient in its own hue instead of an empty box. */
+/* The slot hero: the server's own avatar cropped to the frame, or its initials on
+   a gradient in its own hue when there is no icon. */
 .server-slide-hero {
     position: relative;
     aspect-ratio: 16 / 10;
@@ -2134,8 +2083,7 @@
     box-shadow: 0 4px 14px rgba(88, 101, 242, 0.5);
 }
 
-/* How long the front slot has left before the track moves on. Built on every
-   slot and shown on one, so it reads as "this community, and then the next". */
+/* The countdown on the front slot: how long before the track moves on. */
 .server-slide-progress {
     position: absolute;
     top: 0;
