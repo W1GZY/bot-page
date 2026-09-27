@@ -868,7 +868,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid scam_list",
-            "desc": "Lists blocked scam images, or rebuilds the library from past detections.",
+            "desc": "Lists blocked scam images, checks their health, rebuilds the library, or clears it.",
             "badge": "Administrator",
             "type": "perm"
         },
