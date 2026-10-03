@@ -636,7 +636,7 @@ const docsData = [
         "id": "wizard_info",
         "icon": "ph-user-list",
         "title": "W101: Wizard Registry",
-        "subtitle": "Every member's wizards in one place, kept current with one paste a month.",
+        "subtitle": "VIP servers only - every member's wizards in one place.",
         "content": [
             {
                 "type": "heading",
@@ -644,7 +644,13 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The registry keeps every member's Wizard101 wizards: name, school, level, any guild badges, when they joined the in-game guild, and whether they are still in it. Members add their own wizards, so staff never have to collect wizard posts from a channel."
+                "text": "The registry keeps track of every member's Wizard101 wizards: name, school, level, any guild badges they hold, when they joined your in-game guild, and whether they're still in it. Members sign their own wizards up, so nobody on staff has to chase wizard posts around a channel."
+            },
+            {
+                "type": "callout",
+                "variant": "warning",
+                "title": "VIP servers only",
+                "text": "The Wizard Registry is a feature for VIP servers. Want it on yours? DM me on Discord and I'll switch it on."
             },
             {
                 "type": "heading",
@@ -652,7 +658,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "One wizard per line. `Sean IronStone death 170` is enough. The long form the game reader writes works too: `Sean IronStone - Death - Lv 180 - member since 2024-01-09.` Badges and the join date are optional - a line without them leaves whatever is stored alone."
+                "text": "One wizard per line. `Sean IronStone death 170` is all you need. The long form the game reader spits out works too: `Sean IronStone - Death - Lv 180 - member since 2024-01-09.` Badges and join dates are optional - a line without them leaves what's already stored alone."
             },
             {
                 "type": "heading",
@@ -661,12 +667,12 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Open the Wizard Config page in the dashboard and turn member self-service on.",
-                    "Pick a channel and press Post panel. Members press that panel to add or change their own wizards.",
-                    "Use /wizard unregistered to see who has added nothing, and /wizard remind to send them a DM.",
-                    "Use /wizard unassigned to find wizards nobody claims, and assign them to the right member.",
-                    "Once a month, give SeanBot the in-game guild list: levels move in place, badges and join dates are recorded, and anyone who left the in-game guild is flagged - nothing is deleted.",
-                    "The list can be pasted by hand on the Wizard Config page, or pushed automatically by the scan machine (sync_guild.bat beside the roster scripts). Same result either way."
+                    "Open the Wizard Config page in the dashboard and switch member self-service on.",
+                    "Pick a channel and press Post panel. Members press that panel to add or fix their own wizards.",
+                    "/wizard unregistered shows who hasn't added anything yet, and /wizard remind DMs them for you.",
+                    "/wizard unassigned shows wizards nobody has claimed yet. Assign each one to the member it belongs to.",
+                    "Once a month, hand SeanBot the in-game guild list. Levels update in place, badges and join dates get recorded, and anyone who left the in-game guild gets flagged. Nothing gets deleted.",
+                    "You can paste the list yourself on the Wizard Config page, or let the scan machine push it for you - that's sync_guild.bat, the file that sits next to the roster scripts. Both do the same thing."
                 ]
             },
             {
@@ -726,7 +732,7 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "tip",
-                "text": "Ticking a wizard off as removed never deletes it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Marked wizards stay on record, and they come back on their own when the next list names them again."
+                "text": "Ticking a wizard off as removed doesn't delete it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Marked wizards stay on record, and if the next list names them again, they're back - no undo needed."
             }
         ]
     },

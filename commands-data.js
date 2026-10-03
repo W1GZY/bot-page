@@ -2825,73 +2825,73 @@ const commandsDatabase = [{
         },
         {
             "name": "/wizard all",
-            "desc": "Show every member and the wizards registered to them",
+            "desc": "Show every member and the wizards registered to them (VIP servers)",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard assign",
-            "desc": "Assign one unassigned wizard to a member",
+            "desc": "Assign one unassigned wizard to a member (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard badges",
-            "desc": "Post who holds each guild badge, grouped by badge",
+            "desc": "Post who holds each guild badge, grouped by badge (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard guildstats",
-            "desc": "Show the latest tenure report for the in-game guild",
+            "desc": "Show the latest tenure report for the in-game guild (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard list",
-            "desc": "Show the wizards registered to a member",
+            "desc": "Show the wizards registered to a member (VIP servers)",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard panel",
-            "desc": "Post the panel members use to register their own wizards",
+            "desc": "Post the panel members use to register their own wizards (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard register",
-            "desc": "Register one or more wizards by pasting lines",
+            "desc": "Register one or more wizards by pasting lines (VIP servers)",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard remind",
-            "desc": "DM the members who still have no wizards registered",
+            "desc": "DM the members who still have no wizards registered (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard remove",
-            "desc": "Remove one of a member's wizards by name",
+            "desc": "Remove one of a member's wizards by name (VIP servers)",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard setup",
-            "desc": "Register your own wizards, or update the ones on file",
+            "desc": "Register your own wizards, or update the ones on file (VIP servers)",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard unassigned",
-            "desc": "Show the wizards nobody is registered to, and assign them",
+            "desc": "Show the wizards nobody is registered to, and assign them (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard unregistered",
-            "desc": "List members who have no wizards registered",
+            "desc": "List members who have no wizards registered (VIP servers)",
             "badge": "Manage Server",
             "type": "perm"
         }
