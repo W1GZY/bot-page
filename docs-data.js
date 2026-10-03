@@ -636,33 +636,37 @@ const docsData = [
         "id": "wizard_info",
         "icon": "ph-user-list",
         "title": "W101: Wizard Registry",
-        "subtitle": "Members register their own wizards; staff work the exceptions.",
+        "subtitle": "Every member's wizards in one place, kept current with one paste a month.",
         "content": [
             {
                 "type": "heading",
-                "text": "Overview"
+                "text": "What it does"
             },
             {
                 "type": "text",
-                "text": "The registry keeps every member's Wizard101 wizards: name, school, level, and whether that wizard is still in your in-game guild. Members enter their own through a guided flow, so nobody has to collect wizard posts from a channel and paste them in."
-            },
-            {
-                "type": "text",
-                "text": "Bulk entry still works. One wizard per line as name, school, level, for example \"Sean IronStone death 170\". Separators, an optional Level prefix, and several wizards on one line are all accepted."
+                "text": "The registry keeps every member's Wizard101 wizards: name, school, level, any guild badges, when they joined the in-game guild, and whether they are still in it. Members add their own wizards, so staff never have to collect wizard posts from a channel."
             },
             {
                 "type": "heading",
-                "text": "Setup & Verification"
+                "text": "The paste format"
+            },
+            {
+                "type": "text",
+                "text": "One wizard per line. `Sean IronStone death 170` is enough. The long form the game reader writes works too: `Sean IronStone - Death - Lv 180 - member since 2024-01-09.` Badges and the join date are optional - a line without them leaves whatever is stored alone."
+            },
+            {
+                "type": "heading",
+                "text": "Getting started"
             },
             {
                 "type": "list",
                 "items": [
-                    "Open the Wizard Config page in the dashboard and switch member self-service on.",
-                    "Choose the panel channel and press Post panel. Posting leaves that channel read-only for @everyone, so the panel stays something members press rather than chat under; clear the checkbox on the page to leave the channel open.",
-                    "Ask members to press the panel, or to run /wizard setup themselves.",
-                    "Use /wizard unregistered to see who has registered nothing, then /wizard remind to DM them.",
-                    "Work the roster with /wizard unassigned, or paste a whole list as staff with /wizard register.",
-                    "Once a month, paste your in-game guild roster on the Wizard Config page: levels move in place, and wizards that dropped out are flagged as removed in-game."
+                    "Open the Wizard Config page in the dashboard and turn member self-service on.",
+                    "Pick a channel and press Post panel. Members press that panel to add or change their own wizards.",
+                    "Use /wizard unregistered to see who has added nothing, and /wizard remind to send them a DM.",
+                    "Use /wizard unassigned to find wizards nobody claims, and assign them to the right member.",
+                    "Once a month, give SeanBot the in-game guild list: levels move in place, badges and join dates are recorded, and anyone who left the in-game guild is flagged - nothing is deleted.",
+                    "The list can be pasted by hand on the Wizard Config page, or pushed automatically by the scan machine (sync_guild.bat beside the roster scripts). Same result either way."
                 ]
             },
             {
@@ -708,13 +712,21 @@ const docsData = [
                     {
                         "cmd": "/wizard assign [wizard] [member]",
                         "desc": "Move one unassigned wizard onto the member it belongs to."
+                    },
+                    {
+                        "cmd": "/wizard badges [channel] [badge]",
+                        "desc": "Post who holds each guild badge, grouped by badge."
+                    },
+                    {
+                        "cmd": "/wizard guildstats",
+                        "desc": "Show the latest tenure report: how long members have been in the in-game guild."
                     }
                 ]
             },
             {
                 "type": "callout",
                 "variant": "tip",
-                "text": "Staff can mark a wizard as gone from the in-game guild from /wizard unassigned, from /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Nothing is deleted either way: the wizard keeps its place and is listed under the members who are no longer in the guild."
+                "text": "Ticking a wizard off as removed never deletes it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Marked wizards stay on record, and they come back on their own when the next list names them again."
             }
         ]
     },

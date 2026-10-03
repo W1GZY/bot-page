@@ -2836,6 +2836,18 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/wizard badges",
+            "desc": "Post who holds each guild badge, grouped by badge",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/wizard guildstats",
+            "desc": "Show the latest tenure report for the in-game guild",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/wizard list",
             "desc": "Show the wizards registered to a member",
             "badge": "Everyone",
