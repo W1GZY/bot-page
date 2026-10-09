@@ -1397,6 +1397,12 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/raidsignup",
+            "desc": "Post a Wizard101 signup sheet for a raid, a gold key run, or a custom event.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/returning_role clear",
             "desc": "Disable the returning member role system.",
             "badge": "Administrator",
@@ -1417,6 +1423,12 @@ const commandsDatabase = [{
         {
             "name": "/set_raid_channel",
             "desc": "Set the channel for event signups.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/set_raid_roster_channel",
+            "desc": "Set the channel finished raid rosters are posted in. No channel clears it.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -2825,73 +2837,97 @@ const commandsDatabase = [{
         },
         {
             "name": "/wizard all",
-            "desc": "Show every member and the wizards registered to them (VIP servers)",
+            "desc": "Show every member and the wizards registered to them",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard assign",
-            "desc": "Assign one unassigned wizard to a member (VIP servers)",
+            "desc": "Assign one unassigned wizard to a member",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard badges",
-            "desc": "Post who holds each guild badge, grouped by badge (VIP servers)",
+            "desc": "Post who holds each guild badge, grouped by badge",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/wizard claim",
+            "desc": "Claim your own unassigned wizards",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/wizard claimpanel",
+            "desc": "Post the panel members use to claim unassigned wizards",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/wizard claims",
+            "desc": "Review the wizard claims waiting on a moderator",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard guildstats",
-            "desc": "Show the latest tenure report for the in-game guild (VIP servers)",
+            "desc": "Re-post the guild's latest tenure stats report",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard list",
-            "desc": "Show the wizards registered to a member (VIP servers)",
+            "desc": "Show the wizards registered to a member",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard panel",
-            "desc": "Post the panel members use to register their own wizards (VIP servers)",
+            "desc": "Post the panel members use to register their own wizards",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard register",
-            "desc": "Register one or more wizards by pasting lines (VIP servers)",
+            "desc": "Register one or more wizards by pasting lines",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard remind",
-            "desc": "DM the members who still have no wizards registered (VIP servers)",
+            "desc": "DM the members who still have no wizards registered",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard remove",
-            "desc": "Remove one of a member's wizards by name (VIP servers)",
+            "desc": "Remove one of a member's wizards by name",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/wizard setup",
-            "desc": "Register your own wizards, or update the ones on file (VIP servers)",
+            "desc": "Register your own wizards, or update the ones on file",
             "badge": "Everyone",
             "type": "public"
         },
         {
+            "name": "/wizard statspanel",
+            "desc": "Post (or refresh) a guild stats panel in a channel",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/wizard unassigned",
-            "desc": "Show the wizards nobody is registered to, and assign them (VIP servers)",
+            "desc": "Show the wizards nobody is registered to, and assign them",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/wizard unregistered",
-            "desc": "List members who have no wizards registered (VIP servers)",
+            "desc": "List members who have no wizards registered",
             "badge": "Manage Server",
             "type": "perm"
         }
@@ -3042,6 +3078,12 @@ const commandsDatabase = [{
     "icon": "ph-cursor-click",
     "tocLabel": "13.0 Right-Click Apps",
     "commands": [
+        {
+            "name": "Right-click: Add to scam library",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
         {
             "name": "Right-click: Add Wizard",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
