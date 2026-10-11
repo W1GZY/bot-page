@@ -1391,6 +1391,12 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/raid_defaults",
+            "desc": "Set, show, or clear the roles a raid's signup sheet opens with.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/raidpoll",
             "desc": "Create signup polls step by step - guided wizard for any game",
             "badge": "Manage Channels",

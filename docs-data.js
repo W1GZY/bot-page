@@ -636,7 +636,7 @@ const docsData = [
         "id": "wizard_info",
         "icon": "ph-user-list",
         "title": "W101: Wizard Registry",
-        "subtitle": "VIP servers only - every member's wizards in one place.",
+        "subtitle": "VIP servers only - every member's wizards in one place, with badges, claims and guild stats.",
         "content": [
             {
                 "type": "heading",
@@ -674,6 +674,26 @@ const docsData = [
                     "Once a month, hand SeanBot the in-game guild list. Levels update in place, badges and join dates get recorded, and anyone who left the in-game guild gets flagged. Nothing gets deleted.",
                     "You can paste the list yourself on the Wizard Config page, or let the scan machine push it for you - that's sync_guild.bat, the file that sits next to the roster scripts. Both do the same thing."
                 ]
+            },
+            {
+                "type": "heading",
+                "text": "Claiming wizards"
+            },
+            {
+                "type": "text",
+                "text": "Members can claim the wizards nobody has registered: /wizard claim picks from the unassigned wizards, and /wizard claimpanel posts a panel that does the same for anyone who presses it. A moderator works the queue with /wizard claims, and nothing is added to a member until it is approved, so a wizard another member has already asked for is left alone until that claim is settled."
+            },
+            {
+                "type": "heading",
+                "text": "Guild stats and tenure"
+            },
+            {
+                "type": "text",
+                "text": "/wizard statspanel posts one message in a channel and keeps it current, with the guild's members, schools and activity as the registry knows them. Running it again in the same channel refreshes that panel rather than posting a second one."
+            },
+            {
+                "type": "text",
+                "text": "/wizard guildstats re-posts the guild's latest tenure report, the import that says how long each member has been in the in-game guild. The same list is where the badges come from, and on the Wizard Config page a badge can be mapped to a Discord role: the role goes on when the badge does, arrives over a join, and Sync roles now applies the mapping to everyone already in the server."
             },
             {
                 "type": "commands",
@@ -720,8 +740,24 @@ const docsData = [
                         "desc": "Move one unassigned wizard onto the member it belongs to."
                     },
                     {
+                        "cmd": "/wizard claim",
+                        "desc": "Claim the unassigned wizards that are yours."
+                    },
+                    {
+                        "cmd": "/wizard claimpanel [channel]",
+                        "desc": "Post the panel members press to claim their own wizards."
+                    },
+                    {
+                        "cmd": "/wizard claims",
+                        "desc": "Review the wizard claims waiting on a moderator."
+                    },
+                    {
                         "cmd": "/wizard badges [channel] [badge]",
                         "desc": "Post who holds each guild badge, grouped by badge."
+                    },
+                    {
+                        "cmd": "/wizard statspanel [channel]",
+                        "desc": "Post or refresh a guild stats panel in a channel."
                     },
                     {
                         "cmd": "/wizard guildstats",
@@ -1774,6 +1810,26 @@ const docsData = [
                 ]
             },
             {
+                "type": "heading",
+                "text": "Signup sheets and rosters"
+            },
+            {
+                "type": "text",
+                "text": "A signup sheet is posted with /raidsignup: say what is running (a raid, a gold key run, or a custom event), the date and time in your own timezone, how long it lasts, and who is hosting. The guided setup walks you through the choices, and the quick form takes the same answers as options in one command."
+            },
+            {
+                "type": "text",
+                "text": "Roles go in one field, comma separated, and a pipe starts a new group: Tank: Bear, Ice | Healer: Life puts the first two under a Tank heading and the healer under its own. Up to twelve roles fit on a sheet, and /raid_defaults stores the set a raid opens with, so a weekly run is not retyped every week."
+            },
+            {
+                "type": "text",
+                "text": "/set_raid_roster_channel names the channel finished rosters are posted in; leave it empty to clear it. A posted roster keeps the raid, its date, the duration, the roles and the host, so the same sheet can go out again, and a channel that has been deleted is not a reason to lose it. /raid history reads one board back - what it is, who is on it, and how it got there - including boards that have already ended."
+            },
+            {
+                "type": "text",
+                "text": "A sheet can draw each signer as a real mention or as their display name, and the board itself never pings anyone, whoever it names."
+            },
+            {
                 "type": "commands",
                 "title": "Commands Reference",
                 "items": [
@@ -1808,6 +1864,22 @@ const docsData = [
                     {
                         "cmd": "/raid unlock [msg_id]",
                         "desc": "Re-open raid signups for new players."
+                    },
+                    {
+                        "cmd": "/raidsignup",
+                        "desc": "Post a signup sheet for a raid, a gold key run, or a custom event."
+                    },
+                    {
+                        "cmd": "/raid_defaults",
+                        "desc": "Set, show, or clear the roles a raid sheet opens with."
+                    },
+                    {
+                        "cmd": "/set_raid_roster_channel [channel]",
+                        "desc": "Choose where finished rosters are posted, or clear it."
+                    },
+                    {
+                        "cmd": "/raid history [msg_id]",
+                        "desc": "Read one board back, including boards that have already ended."
                     }
                 ]
             }
