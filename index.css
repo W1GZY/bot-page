@@ -1493,49 +1493,6 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        .modules-cta {
-            margin: 56px auto 24px;
-            max-width: 720px;
-            padding: 36px 32px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.07) 0%, rgba(20, 20, 25, 0.6) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.25);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-        }
-        .modules-cta h3 {
-            margin: 0 0 10px;
-            color: #fff;
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: -0.4px;
-        }
-        .modules-cta p {
-            margin: 0 auto;
-            max-width: 520px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .modules-cta-actions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-            margin-top: 26px;
-        }
-        .modules-cta-docs {
-            padding: 13px 22px;
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-        @media (max-width: 620px) {
-            .modules-cta { padding: 28px 20px; }
-            .modules-cta-actions { flex-direction: column; }
-            .modules-cta-actions > a,
-            .modules-cta-docs { width: 100%; justify-content: center; }
-        }
-
         .module-card.featured {
             grid-column: span 2;
             min-height: 260px;
