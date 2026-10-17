@@ -44,7 +44,7 @@
     <!-- The Documentation and Commands tabs live on this page, so docs.css
          loads here too, ahead of index.css and its layout overrides. -->
     <link rel="stylesheet" href="docs.css?v=a296fc64">
-    <link rel="stylesheet" href="index.css?v=4b3315b6">
+    <link rel="stylesheet" href="index.css?v=19662d2c">
 
     <script type="application/ld+json">
     {
@@ -141,10 +141,10 @@
         <section id="view-overview" class="tab-view active-view">
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    Your soon-to-be favourite Discord bot, <span style="color: var(--accent);">one click away</span>.
+                    A Discord bot you can shape to fit <span style="color: var(--accent);">your server</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    A Discord bot, that can be customized to your needs. Perfect for Communities and Guilds. SeanBot is a multi-purpose bot that can help you moderate your server, provide analytics, and much more.
+                    SeanBot is built for communities and guilds. It handles moderation, analytics, tickets, polls and Wizard101 tools. Turn on the parts you need and leave the rest off.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -231,11 +231,11 @@
                  the last known guild count, replaced on load by index.js. -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number" data-site-stat="commands">518</div>
+                    <div class="stat-number" data-site-stat="commands">524</div>
                     <div class="stat-label">Slash, prefix and right-click commands</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" data-site-stat="modules">35</div>
+                    <div class="stat-number" data-site-stat="modules">36</div>
                     <div class="stat-label">Modules, every one of them optional</div>
                 </div>
                 <div class="stat-card">
@@ -248,7 +248,7 @@
                 <h2><i class="ph-duotone ph-wrench"></i> Only what your server needs</h2>
                 <div class="plain-intro-copy">
                     <p class="plain-intro-lead">SeanBot comes as separate modules, and they're all switched on when the bot joins your server. Don't need one? Turn it off.</p>
-                    <p>Anti-raid and moderation, tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools - it's all in there. Keep the parts your community actually uses and switch the rest off, so the bot fits your server instead of the other way around.</p>
+                    <p>Anti-raid and moderation, tickets, reaction roles, timezone roles, federation, analytics, and the Wizard101 tools are all included. Keep the parts your community uses and turn off the rest, so the bot fits your server and not the other way around.</p>
                 </div>
             </div>
 
@@ -256,7 +256,7 @@
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Anti-Raid and AutoMod</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Discord's own anti-raid catches the obvious cases, and SeanBot builds on top of it. Make sure your Server is safe from spam floods and bots trying to break it. Fully customizable and easy way to configure.
+                        Discord's own anti-raid catches the obvious cases. SeanBot builds on top of it to stop spam floods and raid bots. Every rule can be changed to suit your server.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
                         <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> <strong style="color: var(--accent);">Log Mode:</strong> logs detections without acting on them, so you can tune everything against your own server.</li>
@@ -427,7 +427,7 @@
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Flexible Support tickets</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Seamless, private ticketing from start to finish. Drop a button, and SeanBot routes users straight to a secure, staff-only channel. Whether you're running a simple help desk or a multi-department queue, your mods can claim tickets, avoid double-answering, and collaborate behind the scenes using hidden staff notes (/ticket staffsay) that never appear in member transcripts.
+                        Members open a ticket from a button, and SeanBot sends them to a private channel that only staff can see. Mods can claim a ticket so two people do not answer the same one. Staff notes added with /ticket staffsay stay out of the member transcript.
                     </p>
                     <p style="margin: 0;">
                         <button type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" data-tab="docs" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.9rem; font-family: inherit;">Read the ticket guide <i class="ph-bold ph-arrow-right"></i></button>
@@ -660,11 +660,11 @@
                 <div>
                     <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Polls and raid sign-ups</h2>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
-                        Effortless community voting and automated raid rosters. Set up a poll with a question, options, and an optional closing time in seconds. Easy to use and easy to setup.
+                        Run community polls and raid sign-ups from a channel. Add a question and options, and set a closing time in seconds if you want one.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Up to 20 answers, each with its own numbered reaction, so voting is one click.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Closing time is optional. When it passes, the results post themselves.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Up to 20 answers, each with its own numbered reaction.</li>
+                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Closing time is optional. When it passes, the results post automatically.</li>
                     </ul>
                     <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('raidpolls'), 50);" data-tab="docs" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
                         <i class="ph-bold ph-chart-polar"></i> Read the poll guide
@@ -1089,8 +1089,8 @@
 
                 <div class="section-cta-banner">
                     <div class="section-cta-content">
-                        <h3>No need to draw your wallet for managing your servers.</h3>
-                        <p>What other bots put behind a subscription, we do it for free.</p>
+                        <h3>Free to run. No subscription.</h3>
+                        <p>Other bots charge a monthly fee for features that SeanBot includes at no cost.</p>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
                         <a href="#showcase" class="section-cta-link">
@@ -1482,17 +1482,20 @@
                     <strong>No modules found</strong>
                     <span>Try another search or choose a different category.</span>
                 </div>
+                <p class="modules-more">Click any module to open its guide in the docs.</p>
             </section>
 
-
-            <div class="section-cta-banner">
-                <div class="section-cta-content">
-                    <h3>Still unsure?</h3>
-                    <p>What's the worst that could happen-your server gets better? Its 100% free, maybe your community will love it!</p>
+            <div class="modules-cta">
+                <h3>Add SeanBot to your server</h3>
+                <p>Free to invite. Turn on the modules you want and leave the rest off.</p>
+                <div class="modules-cta-actions">
+                    <a href="invite.html" target="_blank" rel="noopener" class="section-cta-btn">
+                        <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
+                    </a>
+                    <button type="button" onclick="switchTab('docs')" data-tab="docs" class="btn-large btn-secondary modules-cta-docs">
+                        <i class="ph-bold ph-book-open-text"></i> Read the docs
+                    </button>
                 </div>
-                <a href="invite.html" target="_blank" class="section-cta-btn">
-                    <i class="ph-bold ph-discord-logo"></i> Invite SeanBot Free
-                </a>
             </div>
         </section>
 
@@ -1583,7 +1586,7 @@
             <div class="section-cta-banner">
                 <div class="section-cta-content">
                     <h3>Every command links to a setup guide.</h3>
-                    <p><span data-site-stat="commands">518</span> slash, prefix and right-click commands for your Discord server.</p>
+                    <p><span data-site-stat="commands">524</span> slash, prefix and right-click commands for your Discord server.</p>
                 </div>
                 <a href="invite.html" target="_blank" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot
@@ -1610,7 +1613,7 @@
 
 <!-- docs-data.js (~210 KB) and commands-data.js (~100 KB) load only when their
      tab is first opened, so a visit that stays on the overview downloads neither. -->
-<script src="index.js?v=c1cc0abd"></script>
+<script src="index.js?v=317d4e13"></script>
 
 </body>
 </html>

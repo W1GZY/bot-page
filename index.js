@@ -172,8 +172,8 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=aa71d85a', loaded: docsDataLoaded },
-        commands: { src: 'commands-data.js?v=b9f4e364', loaded: commandsDataLoaded }
+        docs: { src: 'docs-data.js?v=ad5b10b1', loaded: docsDataLoaded },
+        commands: { src: 'commands-data.js?v=eaccd775', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
     const dataLoads = new Map();

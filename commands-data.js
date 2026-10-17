@@ -367,6 +367,12 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "/seanbot emojis",
+            "desc": "Browse SeanBot's own emojis: names, keys, ids and markup.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/server avatar",
             "desc": "View a member's avatar.",
             "badge": "Everyone",
@@ -2855,7 +2861,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/wizard badges",
-            "desc": "Post who holds each guild badge, grouped by badge",
+            "desc": "Post who holds each guild tag, grouped by tag",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -2879,7 +2885,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/wizard guildstats",
-            "desc": "Re-post the guild's latest tenure stats report",
+            "desc": "Re-post the guild's latest recruit stats report",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -3085,6 +3091,12 @@ const commandsDatabase = [{
     "tocLabel": "13.0 Right-Click Apps",
     "commands": [
         {
+            "name": "Right-click: Add TimePing Reminder",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "Right-click: Add to scam library",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3115,13 +3127,13 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "Right-click: Create Event Ping",
+            "name": "Right-click: Create Event Time/Poll",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"
         },
         {
-            "name": "Right-click: Create Event Time/Poll",
+            "name": "Right-click: Edit TimePing",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"
@@ -3131,6 +3143,12 @@ const commandsDatabase = [{
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"
+        },
+        {
+            "name": "Right-click: Pick emojis to react",
+            "desc": "Offers a member's own message's emojis, for them to pick reactable ones from. Gated to the message's author with Manage Messages: the picker is a reaction tool for the member who wrote the list, not for decorating anyone else's message.",
+            "badge": "Manage Messages",
+            "type": "perm"
         },
         {
             "name": "Right-click: Ping Mentions",
@@ -3151,7 +3169,19 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "Right-click: React with numbers",
+            "desc": "Reacts with the number emojis 1-10 the message names, so it can be voted on.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "Right-click: Remind Me",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "Right-click: Remove TimePing",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"
@@ -3170,6 +3200,12 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: Show Wizard Info",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "Right-click: Timeping",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"

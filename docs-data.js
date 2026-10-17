@@ -60,7 +60,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "You will get a direct message the moment it joins. Set up SeanBot asks one question - what kind of server is this - and turns on the features that fit, Quick tour walks through what the bot does, and Open dashboard is a one-time sign-in link. If your direct messages are closed, the same menu is posted in the first channel SeanBot can write in."
+                "text": "You will get a direct message the moment it joins. Set up SeanBot asks one question about what kind of server this is, and turns on the features that fit, Quick tour walks through what the bot does, and Open dashboard is a one-time sign-in link. If your direct messages are closed, the same menu is posted in the first channel SeanBot can write in."
             },
             {
                 "type": "text",
@@ -636,7 +636,7 @@ const docsData = [
         "id": "wizard_info",
         "icon": "ph-user-list",
         "title": "W101: Wizard Registry",
-        "subtitle": "VIP servers only - every member's wizards in one place, with badges, claims and guild stats.",
+        "subtitle": "VIP servers only. Every member's wizards in one place, with badges, claims and guild stats.",
         "content": [
             {
                 "type": "heading",
@@ -658,7 +658,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "One wizard per line. `Sean IronStone death 170` is all you need. The long form the game reader spits out works too: `Sean IronStone - Death - Lv 180 - member since 2024-01-09.` Badges and join dates are optional - a line without them leaves what's already stored alone."
+                "text": "One wizard per line. `Sean IronStone death 170` is all you need. The long form the game reader spits out works too: `Sean IronStone - Death - Lv 180 - member since 2024-01-09.` Badges and join dates are optional. A line without them leaves what's already stored alone."
             },
             {
                 "type": "heading",
@@ -672,7 +672,7 @@ const docsData = [
                     "/wizard unregistered shows who hasn't added anything yet, and /wizard remind DMs them for you.",
                     "/wizard unassigned shows wizards nobody has claimed yet. Assign each one to the member it belongs to.",
                     "Once a month, hand SeanBot the in-game guild list. Levels update in place, badges and join dates get recorded, and anyone who left the in-game guild gets flagged. Nothing gets deleted.",
-                    "You can paste the list yourself on the Wizard Config page, or let the scan machine push it for you - that's sync_guild.bat, the file that sits next to the roster scripts. Both do the same thing."
+                    "You can paste the list yourself on the Wizard Config page, or let the scan machine push it for you. It's sync_guild.bat, the file that sits next to the roster scripts. Both do the same thing."
                 ]
             },
             {
@@ -685,15 +685,15 @@ const docsData = [
             },
             {
                 "type": "heading",
-                "text": "Guild stats and tenure"
+                "text": "Guild stats and recruit"
             },
             {
                 "type": "text",
-                "text": "/wizard statspanel posts one message in a channel and keeps it current, with the guild's members, schools and activity as the registry knows them. Running it again in the same channel refreshes that panel rather than posting a second one."
+                "text": "/wizard statspanel posts one message in a channel and keeps it current, with the guild's members, how those members break down by school (and how many of each school are at the level cap), and its activity as the registry knows them. Running it again in the same channel refreshes that panel rather than posting a second one."
             },
             {
                 "type": "text",
-                "text": "/wizard guildstats re-posts the guild's latest tenure report, the import that says how long each member has been in the in-game guild. The same list is where the badges come from, and on the Wizard Config page a badge can be mapped to a Discord role: the role goes on when the badge does, arrives over a join, and Sync roles now applies the mapping to everyone already in the server."
+                "text": "/wizard guildstats re-posts the guild's latest recruit report, the import that says how long each member has been in the in-game guild, and the same scan's count of every school in the guild: one total, and how many of those are at the level cap. The same list is where the badges come from, and on the Wizard Config page a badge can be mapped to a Discord role: the role goes on when the badge does, arrives over a join, and Sync roles now applies the mapping to everyone already in the server."
             },
             {
                 "type": "commands",
@@ -761,14 +761,14 @@ const docsData = [
                     },
                     {
                         "cmd": "/wizard guildstats",
-                        "desc": "Show the latest tenure report: how long members have been in the in-game guild."
+                        "desc": "Show the latest recruit report: how long members have been in the in-game guild, and the guild's wizards by school."
                     }
                 ]
             },
             {
                 "type": "callout",
                 "variant": "tip",
-                "text": "Ticking a wizard off as removed doesn't delete it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Marked wizards stay on record, and if the next list names them again, they're back - no undo needed."
+                "text": "Ticking a wizard off as removed doesn't delete it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Marked wizards stay on record, and if the next list names them again, they're back, with no undo needed."
             }
         ]
     },
@@ -1149,7 +1149,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The record is written even when the change was to turn logging off. Logging config is an always-on event: /log toggle, /log toggle_batch and the Event Toggles panels cannot switch it off, so silencing the log leaves an entry naming who silenced it and what they silenced. It is stored where no log channel is needed to hold it - the server's log archive, which the Server Logs page reads, and the change history kept for the server - so a server that never configured a destination still has the trail."
+                "text": "The record is written even when the change was to turn logging off. Logging config is an always-on event: /log toggle, /log toggle_batch and the Event Toggles panels cannot switch it off, so silencing the log leaves an entry naming who silenced it and what they silenced. It is stored where no log channel is needed to hold it: the server's log archive, which the Server Logs page reads, and the change history kept for the server, so a server that never configured a destination still has the trail."
             },
             {
                 "type": "text",
@@ -1823,7 +1823,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "/set_raid_roster_channel names the channel finished rosters are posted in; leave it empty to clear it. A posted roster keeps the raid, its date, the duration, the roles and the host, so the same sheet can go out again, and a channel that has been deleted is not a reason to lose it. /raid history reads one board back - what it is, who is on it, and how it got there - including boards that have already ended."
+                "text": "/set_raid_roster_channel names the channel finished rosters are posted in; leave it empty to clear it. A posted roster keeps the raid, its date, the duration, the roles and the host, so the same sheet can go out again, and a channel that has been deleted is not a reason to lose it. /raid history reads one board back: what it is, who is on it, and how it got there, including boards that have already ended."
             },
             {
                 "type": "text",
@@ -1909,7 +1909,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "One form can build several nights. A raid that runs on three nights usually starts at the same hour each night, so name the nights and the clock once - Fri, Sat, Sun 20:00 - and all three slots are added together, sharing the name and cap you gave them. Different start times work the same way: Fri 20:00, Sat 21:00. Six nights is still one form, and the reply tells you how many slots landed."
+                "text": "One form can build several nights. A raid that runs on three nights usually starts at the same hour each night, so name the nights and the clock once, as Fri, Sat, Sun 20:00, and all three slots are added together, sharing the name and cap you gave them. Different start times work the same way: Fri 20:00, Sat 21:00. Six nights is still one form, and the reply tells you how many slots landed."
             },
             {
                 "type": "text",
@@ -1945,7 +1945,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "A cap fills first come, first served. Once it is full, further signups join the waitlist and the member is told they are on it. When somebody leaves a capped slot, the next member on its waitlist is promoted automatically and SeanBot sends them a direct message naming the slot they are now in. Raising a slot cap does the same thing: the freed places go to the waitlist in order, and lifting a cap altogether lets everyone who was waiting in. Lowering a cap works in reverse - the members past the new limit move to the waitlist and are told, because a cap that does not move anyone is only a number - and they take the front of the queue, so they are the first back in if the cap rises again. If a promoted or moved member has their direct messages closed, the poll channel is used instead, because finding out where you stand is the whole point of the notice."
+                "text": "A cap fills first come, first served. Once it is full, further signups join the waitlist and the member is told they are on it. When somebody leaves a capped slot, the next member on its waitlist is promoted automatically and SeanBot sends them a direct message naming the slot they are now in. Raising a slot cap does the same thing: the freed places go to the waitlist in order, and lifting a cap altogether lets everyone who was waiting in. Lowering a cap works in reverse: the members past the new limit move to the waitlist and are told, because a cap that does not move anyone is only a number, and they take the front of the queue, so they are the first back in if the cap rises again. If a promoted or moved member has their direct messages closed, the poll channel is used instead, because finding out where you stand is the whole point of the notice."
             },
             {
                 "type": "heading",
@@ -1989,7 +1989,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "A schedule often covers more than one raid, and one long signup list is hard to read. On the review screen, Post as Separate Polls makes one poll per raid name instead: every Big Raid night becomes a poll of its own, with its own roster, its own caps, and its own banner. Post as One Combined Poll keeps the whole week on a single embed with one running numbering. The review lists what splitting would make before you choose it - the raid names, how many slots each holds, and whether each one has artwork - so the choice is made with the result in sight."
+                "text": "A schedule often covers more than one raid, and one long signup list is hard to read. On the review screen, Post as Separate Polls makes one poll per raid name instead: every Big Raid night becomes a poll of its own, with its own roster, its own caps, and its own banner. Post as One Combined Poll keeps the whole week on a single embed with one running numbering. The review lists what splitting would make before you choose it: the raid names, how many slots each holds, and whether each one has artwork, so the choice is made with the result in sight."
             },
             {
                 "type": "text",
@@ -2033,15 +2033,15 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "A weekly schedule is nearly always last week's schedule with the dates moved on, so SeanBot remembers the last schedule a server posted and offers it back. Run /raidpoll and it asks Same as last time? before opening a fresh wizard: one button posts the whole thing again - title, close time, every slot, every cap, and the raid banners - and Start a fresh poll instead builds a new one. The offer is only made for a schedule posted in the last 90 days, so a schedule the server has moved on from cannot come back by accident."
+                "text": "A weekly schedule is nearly always last week's schedule with the dates moved on, so SeanBot remembers the last schedule a server posted and offers it back. Run /raidpoll and it asks Same as last time? before opening a fresh wizard: one button posts the whole thing again, with its title, close time, every slot, every cap, and the raid banners. Start a fresh poll instead builds a new one. The offer is only made for a schedule posted in the last 90 days, so a schedule the server has moved on from cannot come back by accident."
             },
             {
                 "type": "text",
-                "text": "Dates move on by whole weeks, so every weekday, clock time and gap between slots is exactly as it was - a Friday-to-Sunday run stays a Friday-to-Sunday run instead of being torn apart by the first date that is already in the past. The review above the buttons shows which dates each choice would post, and warns how many of the original dates have gone if you choose to keep them. A schedule that went out as one poll per raid comes back the same way, and each raid's banner is looked up fresh, so a raid gets this week's artwork rather than last week's."
+                "text": "Dates move on by whole weeks, so every weekday, clock time and gap between slots is exactly as it was. A Friday-to-Sunday run stays a Friday-to-Sunday run instead of being torn apart by the first date that is already in the past. The review above the buttons shows which dates each choice would post, and warns how many of the original dates have gone if you choose to keep them. A schedule that went out as one poll per raid comes back the same way, and each raid's banner is looked up fresh, so a raid gets this week's artwork rather than last week's."
             },
             {
                 "type": "text",
-                "text": "Any poll can also be repeated from its own message. On a closed poll - the one people actually repeat - the message buttons offer Repost beside Finalize Roster and Delete Poll, with the same choice between next week's dates and the originals. Reposting makes that schedule the new same as last time, so the offer always moves you forward one week."
+                "text": "Any poll can also be repeated from its own message. On a closed poll, the one people actually repeat, the message buttons offer Repost beside Finalize Roster and Delete Poll, with the same choice between next week's dates and the originals. Reposting makes that schedule the new same as last time, so the offer always moves you forward one week."
             },
             {
                 "type": "heading",
@@ -2052,8 +2052,8 @@ const docsData = [
                 "items": [
                     "Set your own timezone first with /timezone set, or let SeanBot work it out with /timezone detect. Slot times, close times, and every member menu read from saved timezones.",
                     "Confirm SeanBot can Send Messages, Embed Links, and Add Reactions where polls are posted, and that everyone who posts polls has Manage Channels, which /raidpoll requires. Manage Messages lets SeanBot tidy the reaction fallback on a reaction poll.",
-                    "Run /raidpoll, give the poll a title and a signups-close time, then press Add Slot once per event and post it with Review & Post. If one raid runs several nights on the same hour, put them in the one When box - `Fri, Sat, Sun 20:00` - and it adds all of them.",
-                    "Name slots after the activity you actually run, then press Raid Banners on the review screen and give each raid its artwork once - the server remembers it for every later schedule.",
+                    "Run /raidpoll, give the poll a title and a signups-close time, then press Add Slot once per event and post it with Review & Post. If one raid runs several nights on the same hour, put them in the one When box as `Fri, Sat, Sun 20:00`, and it adds all of them.",
+                    "Name slots after the activity you actually run, then press Raid Banners on the review screen and give each raid its artwork once, and the server remembers it for every later schedule.",
                     "Test the waitlist before you rely on it: cap one slot at 1, sign two members up, then have the first leave and watch the promotion notice arrive.",
                     "Next week, run /raidpoll and take the Same as last time? offer: it reuses the title, the close time, every slot, every cap and the raid banners, and moves the dates on by whole weeks. Keep Paste List for a schedule you have written down by hand."
                 ]
@@ -2103,7 +2103,7 @@ const docsData = [
                 "items": [
                     "The Ends line. Fill in the optional Poll Time / Close Time field, or the poll end time in /poll create, and SeanBot posts an Ends line under the answers: the full date and time plus a live countdown. This line always renders as a timestamp and ignores the timestamps option, because a close time you picked must be announced. Clear the Poll Time field if you want a poll with no end date at all.",
                     "Timestamps you typed yourself. If an answer already contains Discord timestamp markup, such as something copied from the Time Converter, SeanBot posts it untouched. The timestamps option and saved templates never alter or strip this markup, so anyone can paste a time they copied elsewhere.",
-                    "Converted answers. With the timestamps option on, the default for new polls, SeanBot reads the poll creator's saved timezone and rewrites date-like answer text as timestamps: explicit forms such as 29.07.2026 20:00 or 2026-07-29 20:00, and natural forms such as tomorrow 8 PM or Friday 20:00 - Beastmoon practice. A time-and-label answer becomes a timestamp followed by its label, a date-only answer becomes a date-only timestamp, and text that does not look like a date is left alone."
+                    "Converted answers. With the timestamps option on, the default for new polls, SeanBot reads the poll creator's saved timezone and rewrites date-like answer text as timestamps: explicit forms such as 29.07.2026 20:00 or 2026-07-29 20:00, and natural forms such as tomorrow 8 PM or Friday 20:00 for Beastmoon practice. A time-and-label answer becomes a timestamp followed by its label, a date-only answer becomes a date-only timestamp, and text that does not look like a date is left alone."
                 ]
             },
             {
@@ -2830,7 +2830,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Whether a role button toggles or only adds is decided per button by the Action Type you choose in the Buttons step - not by Discord. Every button remembers its own behavior."
+                "text": "Whether a role button toggles or only adds is decided per button by the Action Type you choose in the Buttons step, not by Discord. Every button remembers its own behavior."
             },
             {
                 "type": "list",
@@ -2847,7 +2847,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "tip",
                 "title": "Changing a button's behavior",
-                "text": "Open the embed in the builder, go to Buttons, change that button's Action Type, then re-publish. Older embeds may show Custom Action ID in the dropdown even though the button still toggles or adds - the small action text on the button is the source of truth."
+                "text": "Open the embed in the builder, go to Buttons, change that button's Action Type, then re-publish. Older embeds may show Custom Action ID in the dropdown even though the button still toggles or adds. The small action text on the button is the source of truth."
             },
             {
                 "type": "heading",
@@ -2863,39 +2863,39 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "role:ROLE_ID",
-                        "desc": "Toggle Role - adds if missing, removes if present. List several IDs with spaces."
+                        "desc": "Toggle Role: adds if missing, removes if present. List several IDs with spaces."
                     },
                     {
                         "cmd": "role_add:ROLE_ID",
-                        "desc": "Add Role - only ever adds the role."
+                        "desc": "Add Role: only ever adds the role."
                     },
                     {
                         "cmd": "role_remove:ROLE_ID",
-                        "desc": "Remove Role - only ever removes the role."
+                        "desc": "Remove Role: only ever removes the role."
                     },
                     {
                         "cmd": "msg:TEXT",
-                        "desc": "Private Reply - visible only to the person who clicked."
+                        "desc": "Private Reply: visible only to the person who clicked."
                     },
                     {
                         "cmd": "public_msg:TEXT",
-                        "desc": "Public Reply - visible to everyone in the channel."
+                        "desc": "Public Reply: visible to everyone in the channel."
                     },
                     {
                         "cmd": "dm:TEXT",
-                        "desc": "DM Reply - sends the clicker a direct message."
+                        "desc": "DM Reply: sends the clicker a direct message."
                     },
                     {
                         "cmd": "embed_reply:Title|Text",
-                        "desc": "Private Embed Reply - ephemeral gold embed with a title and description."
+                        "desc": "Private Embed Reply: ephemeral gold embed with a title and description."
                     },
                     {
                         "cmd": "random_msg:Option A|Option B|Option C",
-                        "desc": "Random Reply - picks one option at random."
+                        "desc": "Random Reply: picks one option at random."
                     },
                     {
                         "cmd": "dismiss",
-                        "desc": "Dismiss Message - removes the bot message when clicked."
+                        "desc": "Dismiss Message: removes the bot message when clicked."
                     }
                 ]
             },
@@ -2903,25 +2903,25 @@ const docsData = [
                 "type": "list",
                 "title": "Action type reference",
                 "items": [
-                    "Open Link - payload: a URL, for example https://sean.bot.nu. The style automatically switches to Link Out and the button opens that page in the browser. No bot permissions needed and nothing is sent to the server.",
-                    "Toggle Role - payload: role:ROLE_ID, for example role:123456789012345678. Adds the role if the member does not have it and removes it if they do. You can list several roles in one payload, for example role:111 222 333.",
-                    "Add Role - payload: role_add:ROLE_ID. Only ever adds the role; clicking again does nothing. Several role IDs can be listed the same way.",
-                    "Remove Role - payload: role_remove:ROLE_ID. Only ever removes the role. Several role IDs can be listed the same way.",
-                    "Role Menu Button - no payload text needed. A panel appears under the button with Roles to give and Roles to remove checkboxes. SeanBot saves the choice and one click applies every checked role at once.",
-                    "Private Reply - payload: msg:TEXT, for example msg:Thanks for clicking!. Shows the text only to the person who clicked.",
-                    "Public Reply - payload: public_msg:TEXT. Posts the text in the channel where the button was clicked, visible to everyone.",
-                    "DM Reply - payload: dm:TEXT. Sends the text to the clicker as a direct message. If their DMs are closed, they get a friendly notice instead of an error.",
-                    "Private Embed Reply - payload: embed_reply:Title|Text, for example embed_reply:Server Guidelines|Thank you for reading. Shows a small gold embed with a title and description, only to the person who clicked.",
-                    "Random Reply - payload: random_msg:Option A|Option B|Option C. Picks one of the options at random and shows it to the clicker. Great for fun giveaways or daily rewards.",
-                    "Dismiss Message - payload: dismiss. Removes the bot's message entirely when clicked. Good for closing welcome screens or temporary notices.",
-                    "Custom Action ID - payload: any ID string, for example btn_action. Only useful when another part of your setup listens for that exact ID; a plain custom ID does nothing by default and is meant for advanced integrations."
+                    "Open Link, payload: a URL, for example https://sean.bot.nu. The style automatically switches to Link Out and the button opens that page in the browser. No bot permissions needed and nothing is sent to the server.",
+                    "Toggle Role, payload: role:ROLE_ID, for example role:123456789012345678. Adds the role if the member does not have it and removes it if they do. You can list several roles in one payload, for example role:111 222 333.",
+                    "Add Role, payload: role_add:ROLE_ID. Only ever adds the role; clicking again does nothing. Several role IDs can be listed the same way.",
+                    "Remove Role, payload: role_remove:ROLE_ID. Only ever removes the role. Several role IDs can be listed the same way.",
+                    "Role Menu Button needs no payload text. A panel appears under the button with Roles to give and Roles to remove checkboxes. SeanBot saves the choice and one click applies every checked role at once.",
+                    "Private Reply, payload: msg:TEXT, for example msg:Thanks for clicking!. Shows the text only to the person who clicked.",
+                    "Public Reply, payload: public_msg:TEXT. Posts the text in the channel where the button was clicked, visible to everyone.",
+                    "DM Reply, payload: dm:TEXT. Sends the text to the clicker as a direct message. If their DMs are closed, they get a friendly notice instead of an error.",
+                    "Private Embed Reply, payload: embed_reply:Title|Text, for example embed_reply:Server Guidelines|Thank you for reading. Shows a small gold embed with a title and description, only to the person who clicked.",
+                    "Random Reply, payload: random_msg:Option A|Option B|Option C. Picks one of the options at random and shows it to the clicker. Great for fun giveaways or daily rewards.",
+                    "Dismiss Message, payload: dismiss. Removes the bot's message entirely when clicked. Good for closing welcome screens or temporary notices.",
+                    "Custom Action ID, payload: any ID string, for example btn_action. Only useful when another part of your setup listens for that exact ID; a plain custom ID does nothing by default and is meant for advanced integrations."
                 ]
             },
             {
                 "type": "callout",
                 "variant": "warning",
                 "title": "Ticket panel buttons are different",
-                "text": "When the embed is a Ticket Creation Panel, buttons do not use action types or payloads at all - the button STYLE decides the behavior. Primary, Success, Danger, and Secondary buttons each open a ticket (use different styles or labels to make one ticket per department), while Link Out opens a URL instead. SeanBot generates the internal ticket action IDs for you, so ignore the Custom Action ID field on ticket panels and never use Link style for a ticket-opening button."
+                "text": "When the embed is a Ticket Creation Panel, buttons do not use action types or payloads at all, and the button STYLE decides the behavior. Primary, Success, Danger, and Secondary buttons each open a ticket (use different styles or labels to make one ticket per department), while Link Out opens a URL instead. SeanBot generates the internal ticket action IDs for you, so ignore the Custom Action ID field on ticket panels and never use Link style for a ticket-opening button."
             },
             {
                 "type": "heading",
@@ -2934,7 +2934,7 @@ const docsData = [
                     "In the Buttons step, add a button (or click an existing one to edit it).",
                     "Pick a style: Blurple, Grey, Green, Red, or Link Out. Link Out is only for Open Link buttons.",
                     "Choose the Action Type from the dropdown.",
-                    "Fill in the URL / Action Payload box using the formats above, or pick from the Quick Action Presets & Role Picker dropdown right below it - it fills in ready-made payloads and lists every server role for the role actions.",
+                    "Fill in the URL / Action Payload box using the formats above, or pick from the Quick Action Presets & Role Picker dropdown right below it, and it fills in ready-made payloads and lists every server role for the role actions.",
                     "Choose which row the button sits on. Each row holds up to five buttons.",
                     "Publish the embed, or re-publish an existing one to apply the change."
                 ]
@@ -2965,9 +2965,9 @@ const docsData = [
                 "type": "list",
                 "title": "Buttons to add",
                 "items": [
-                    "Agree and Get Access - Primary style - Toggle Role - payload role:YOUR_MEMBER_ROLE. Grants the Member role the first time and does nothing if they already have it.",
-                    "Read Full Rules - Secondary style - Open Link - payload the URL of your rules page or a pastebin.",
-                    "Done Reading - Secondary style - Dismiss Message - payload dismiss. Removes the message so it does not clutter the channel."
+                    "Agree and Get Access, Primary style, Toggle Role, payload role:YOUR_MEMBER_ROLE. Grants the Member role the first time and does nothing if they already have it.",
+                    "Read Full Rules, Secondary style, Open Link, payload the URL of your rules page or a pastebin.",
+                    "Done Reading, Secondary style, Dismiss Message, payload dismiss. Removes the message so it does not clutter the channel."
                 ]
             },
             {
@@ -2976,11 +2976,11 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "role:YOUR_MEMBER_ROLE",
-                        "desc": "Agree and Get Access - Toggle Role"
+                        "desc": "Agree and Get Access: Toggle Role"
                     },
                     {
                         "cmd": "dismiss",
-                        "desc": "Done Reading - Dismiss Message"
+                        "desc": "Done Reading: Dismiss Message"
                     }
                 ]
             },
@@ -2996,10 +2996,10 @@ const docsData = [
                 "type": "list",
                 "title": "Buttons to add",
                 "items": [
-                    "Enter Giveaway - Success style - Add Role - payload role_add:YOUR_ENTRY_ROLE. Only ever adds, so entering twice cannot create duplicates.",
-                    "Try Your Luck - Primary style - Random Reply - payload random_msg:You won 100 Gold Coins!|Try again next time!|You found a rare gem!.",
-                    "How to Enter - Secondary style - Private Reply - payload msg:React to this message with the giveaway emoji. Winners are picked when the giveaway ends.",
-                    "Leave Giveaway - Secondary style - Remove Role - payload role_remove:YOUR_ENTRY_ROLE."
+                    "Enter Giveaway, Success style, Add Role, payload role_add:YOUR_ENTRY_ROLE. Only ever adds, so entering twice cannot create duplicates.",
+                    "Try Your Luck, Primary style, Random Reply, payload random_msg:You won 100 Gold Coins!|Try again next time!|You found a rare gem!.",
+                    "How to Enter, Secondary style, Private Reply, payload msg:React to this message with the giveaway emoji. Winners are picked when the giveaway ends.",
+                    "Leave Giveaway, Secondary style, Remove Role, payload role_remove:YOUR_ENTRY_ROLE."
                 ]
             },
             {
@@ -3008,15 +3008,15 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "role_add:YOUR_ENTRY_ROLE",
-                        "desc": "Enter Giveaway - Add Role"
+                        "desc": "Enter Giveaway: Add Role"
                     },
                     {
                         "cmd": "random_msg:You won 100 Gold Coins!|Try again next time!|You found a rare gem!",
-                        "desc": "Try Your Luck - Random Reply"
+                        "desc": "Try Your Luck: Random Reply"
                     },
                     {
                         "cmd": "role_remove:YOUR_ENTRY_ROLE",
-                        "desc": "Leave Giveaway - Remove Role"
+                        "desc": "Leave Giveaway: Remove Role"
                     }
                 ]
             },
@@ -3032,20 +3032,20 @@ const docsData = [
                 "type": "list",
                 "title": "Buttons to add (ticket panel)",
                 "items": [
-                    "General Support - Primary style - opens a Support ticket. No payload needed on a ticket panel.",
-                    "Report a Bug - Danger style - opens a Bug Report ticket.",
-                    "Appeal a Punishment - Success style - opens an Appeal ticket.",
-                    "Knowledge Base - Link Out style - Open Link - payload the URL of your help page or wiki."
+                    "General Support, Primary style, opens a Support ticket. No payload needed on a ticket panel.",
+                    "Report a Bug, Danger style, opens a Bug Report ticket.",
+                    "Appeal a Punishment, Success style, opens an Appeal ticket.",
+                    "Knowledge Base, Link Out style, Open Link, payload the URL of your help page or wiki."
                 ]
             },
             {
                 "type": "list",
                 "title": "Buttons to add (normal embed instead)",
                 "items": [
-                    "General Support - Primary style - DM Reply - payload dm:Please describe your issue and a staff member will reply shortly.",
-                    "Report a Bug - Danger style - Private Embed Reply - payload embed_reply:Bug Report|Please tell us what happened, what you expected, and any error text.",
-                    "Appeal a Punishment - Success style - DM Reply - payload dm:Appeals are reviewed in order. Include your case ID if you have one.",
-                    "Knowledge Base - Link Out style - Open Link - payload the URL of your help page or wiki."
+                    "General Support, Primary style, DM Reply, payload dm:Please describe your issue and a staff member will reply shortly.",
+                    "Report a Bug, Danger style, Private Embed Reply, payload embed_reply:Bug Report|Please tell us what happened, what you expected, and any error text.",
+                    "Appeal a Punishment, Success style, DM Reply, payload dm:Appeals are reviewed in order. Include your case ID if you have one.",
+                    "Knowledge Base, Link Out style, Open Link, payload the URL of your help page or wiki."
                 ]
             },
             {
@@ -3054,11 +3054,11 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "dm:Please describe your issue and a staff member will reply shortly.",
-                        "desc": "General Support - DM Reply"
+                        "desc": "General Support: DM Reply"
                     },
                     {
                         "cmd": "embed_reply:Bug Report|Please tell us what happened, what you expected, and any error text.",
-                        "desc": "Report a Bug - Private Embed Reply"
+                        "desc": "Report a Bug: Private Embed Reply"
                     }
                 ]
             },
@@ -3066,7 +3066,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "tip",
                 "title": "Making recipes your own",
-                "text": "The styles and labels are suggestions - the important part is the payload. Pick the style that fits your look, write a label that makes sense for your server, and swap the role IDs and texts for your own. Use the Quick Action Presets dropdown to fill payloads without typing."
+                "text": "The styles and labels are suggestions. The important part is the payload. Pick the style that fits your look, write a label that makes sense for your server, and swap the role IDs and texts for your own. Use the Quick Action Presets dropdown to fill payloads without typing."
             },
             {
                 "type": "heading",
@@ -3081,7 +3081,7 @@ const docsData = [
                 "title": "What you can do from the list",
                 "items": [
                     "Jump to message opens the exact message in Discord.",
-                    "Broadcasts show an N copies badge - those rows are the same embed posted in different channels.",
+                    "Broadcasts show an N copies badge. Those rows are the same embed posted in different channels.",
                     "Load into builder drops any embed back into the editor for editing.",
                     "Save as template saves any published embed as a reusable design, named Imported: &lt;title&gt;."
                 ]
@@ -3106,7 +3106,7 @@ const docsData = [
                 "items": [
                     "Scan previews found embeds so you can load or save them.",
                     "Import to history writes them permanently into the Published Embeds list alongside new ones.",
-                    "Imports are idempotent - running it again skips embeds already tracked, so duplicates never appear."
+                    "Imports are idempotent. Running it again skips embeds already tracked, so duplicates never appear."
                 ]
             },
             {
@@ -3189,7 +3189,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "note",
                 "title": "Good to know",
-                "text": "A mention only pings when the person or role exists in the server. SeanBot sends embeds with mentions fully enabled, so &lt;@USER_ID&gt; really notifies that member, and @everyone or @here would also go through - use them sparingly."
+                "text": "A mention only pings when the person or role exists in the server. SeanBot sends embeds with mentions fully enabled, so &lt;@USER_ID&gt; really notifies that member, and @everyone or @here would also go through, so use them sparingly."
             },
             {
                 "type": "commands",
@@ -3286,7 +3286,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Right-click a message, say when, in words - tomorrow morning, in two hours - and the bot reminds you then."
+                "text": "Right-click a message, say when, in words, such as tomorrow morning or in two hours, and the bot reminds you then."
             },
             {
                 "type": "commands",
