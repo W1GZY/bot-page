@@ -3,7 +3,10 @@
     window.__seanbotLayoutInit = true;
 
     const PALETTES = ['original', 'new', 'indigo'];
-    function applyPalette(name) {
+    // persist=false on the first call below: that call only mirrors the attribute
+    // theme-init.js already set onto the option buttons, and writing the choice
+    // back on a page that never restored it would erase a visitor's saved palette.
+    function applyPalette(name, persist = true) {
         const palette = PALETTES.includes(name) ? name : 'original';
         if (palette === 'original') {
             document.documentElement.removeAttribute('data-palette');
@@ -15,9 +18,10 @@
             o.classList.toggle('active', isCurrent);
             o.setAttribute('aria-checked', isCurrent ? 'true' : 'false');
         });
+        if (!persist) return;
         try { localStorage.setItem('seanbotPalette', palette); } catch (e) {}
     }
-    applyPalette(document.documentElement.getAttribute('data-palette') || 'original');
+    applyPalette(document.documentElement.getAttribute('data-palette') || 'original', false);
 
     function initGlobalEvents() {
         const themeToggle = document.getElementById('themeToggle');
