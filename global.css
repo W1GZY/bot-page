@@ -9,6 +9,10 @@
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
 
+  /* The display face. Every palette keeps Inter for headings; Indigo swaps in
+     Fredoka, so the friendly look is a palette choice, not a site rewrite. */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
   --accent: #FFD700;
   --accent-glow: rgba(255, 215, 0, 0.15);
   --accent-faint: rgba(255, 215, 0, 0.03);
@@ -50,6 +54,57 @@
 :root[data-accent="green"]   { --accent: #22C55E; --accent-glow: rgba(34, 197, 94, 0.15); }
 :root[data-accent="lime"]    { --accent: #84CC16; --accent-glow: rgba(132, 204, 22, 0.15); }
 
+/* Palettes. The accent rules above only set --accent*, so a palette never
+   fights them: a palette picks the surfaces and the display face, the accent
+   dots still pick the highlight colour. "original" is the default and carries
+   no attribute, so a visitor who never chose a palette sees the old look. */
+:root[data-palette="new"] {
+  --bg-dark: #0b0d12;
+  --bg-panel: #11151d;
+  --bg-card: rgba(20, 25, 35, 0.66);
+  --bg-card-hover: rgba(26, 32, 44, 0.8);
+  --border: rgba(220, 230, 255, 0.075);
+  --border-highlight: rgba(220, 230, 255, 0.13);
+  --text-primary: #f1f4fa;
+  --text-secondary: #a5afc0;
+  --text-muted: #7c8698;
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-palette="indigo"] {
+  --bg-dark: #0b0a17;
+  --bg-panel: #13122a;
+  --bg-card: rgba(19, 18, 42, 0.62);
+  --bg-card-hover: rgba(30, 27, 66, 0.8);
+  --border: #2a2852;
+  --border-highlight: #3a3868;
+  --text-primary: #eeedfb;
+  --text-secondary: #a3a1c4;
+  --text-muted: #7a78a0;
+  --font-display: 'Fredoka', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --shadow-rest: 0 1px 2px rgba(5, 4, 13, 0.35), 0 8px 24px -8px rgba(5, 4, 13, 0.5);
+  --shadow-lift: 0 2px 4px rgba(5, 4, 13, 0.4), 0 18px 44px -14px rgba(140, 134, 255, 0.35);
+  --shadow-lift-accent: 0 2px 4px rgba(5, 4, 13, 0.4), 0 14px 36px -8px var(--accent-glow);
+}
+
+/* The display face is applied here rather than in body: headings, the brand
+   mark, the buttons and the stat numerals take it, so swapping the palette
+   swaps the voice without touching a single rule. */
+h1, h2, h3, h4, h5, h6,
+.brand-mark,
+.hero-title,
+.tos-title,
+.btn-large,
+.pill-btn,
+.stat-number {
+  font-family: var(--font-display);
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 /* Inter is served from this origin, not a font CDN: a webfont pulled from someone
@@ -71,6 +126,26 @@
   font-weight: 100 900;
   font-display: swap;
   src: url('assets/fonts/inter-latin-ext.woff2?v=34b9c504') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Fredoka, the Indigo palette's rounded display face. Same privacy rule as
+   Inter: served from this origin, subset to latin and latin-ext, SIL OFL 1.1,
+   licence at assets/fonts/OFL-Fredoka.txt. It is only fetched when a page
+   actually sets --font-display to it, so the other palettes never pay for it. */
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/fredoka-latin.woff2?v=99d6c78e') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/fredoka-latin-ext.woff2?v=18a1723c') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -375,6 +450,27 @@ body::after {
 .accent-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; transition: transform var(--transition-fast); }
 .accent-dot:hover { transform: scale(1.25); }
 
+/* The palette row, directly under the accent dots. Original is the default
+   and carries no data-palette attribute, so a visitor who never chose one is
+   unchanged; New and Indigo are opt-in token sets in this file. */
+.palette-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.palette-option {
+  appearance: none;
+  border: 1px solid var(--border-highlight);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 4px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.palette-option:hover { color: #fff; border-color: var(--accent); }
+.palette-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.palette-option.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
+
 .content {
   padding: 32px clamp(16px, 4vw, 40px);
   max-width: 1400px;
@@ -403,6 +499,28 @@ body::after {
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: border-color var(--transition-fast);
+}
+
+/* Indigo's tactile layer: solid surfaces instead of glass, pill corners on
+   the buttons and nav, and the lifted shadow the palette already sets. */
+:root[data-palette="indigo"] .glass-card,
+:root[data-palette="indigo"] .feature-card,
+:root[data-palette="indigo"] .stat-card,
+:root[data-palette="indigo"] .module-card,
+:root[data-palette="indigo"] .hero-section,
+:root[data-palette="indigo"] .comparison-table-container {
+  backdrop-filter: none;
+  background: var(--bg-card);
+  border-color: var(--border);
+  border-radius: var(--radius-lg);
+}
+:root[data-palette="indigo"] .btn-large,
+:root[data-palette="indigo"] .pill-btn {
+  border-radius: var(--radius-full);
+}
+:root[data-palette="indigo"] .nav-link,
+:root[data-palette="indigo"] .site-nav-link {
+  border-radius: var(--radius-full);
 }
 
 .btn-large {

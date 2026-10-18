@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeanBot Features - Modules and Tools for Your Server</title>
+    <meta name="description" content="Every SeanBot module in one place: moderation and anti-raid, tickets, timezone roles, federation, polls, analytics, events and more. Each one is optional.">
+    <link rel="canonical" href="https://sean.bot.nu/features.html">
+    <meta name="theme-color" content="#09090b">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SeanBot">
+    <meta property="og:title" content="SeanBot Features - Modules and Tools for Your Server">
+    <meta property="og:description" content="Every SeanBot module in one place: moderation and anti-raid, tickets, timezone roles, federation, polls, analytics, events and more. Each one is optional.">
+    <meta property="og:url" content="https://sean.bot.nu/features.html">
+    <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png?v=994ca5f0">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeanBot Features - Modules and Tools for Your Server">
+    <meta name="twitter:description" content="Every SeanBot module in one place: moderation and anti-raid, tickets, timezone roles, federation, polls, analytics, events and more. Each one is optional.">
+    <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png?v=994ca5f0">
+
+    <link rel="icon" href="/favicon.svg?v=706011f8" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
+
+    <script src="theme-init.js?v=dc15ca3a"></script>
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
+
+    <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+    <link rel="stylesheet" href="global.css?v=474cab35">
+    <link rel="stylesheet" href="brand.css?v=d8de8e56">
+    <link rel="stylesheet" href="docs.css?v=a296fc64">
+    <script src="layout.js?v=07a639f0" defer></script>
+</head>
+<body data-nav="none" data-title="Features">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+            <div class="brand-mark">
+                <i class="ph-fill ph-paw-print"></i>
+                <span>SeanBot<span class="brand-mark-dot">.</span></span>
+            </div>
+            <button class="hamburger" id="closeSidebarBtn" aria-label="Close navigation"><i class="ph ph-x"></i></button>
+        </div>
+        <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
+        <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
+        <a href="features.html" class="nav-link active"><i class="ph ph-squares-four"></i><span>Features</span></a>
+        <a href="status.html" class="nav-link"><i class="ph ph-activity"></i><span>Status</span></a>
+        <a href="setup.html" class="nav-link"><i class="ph ph-rocket-launch"></i><span>Setup</span></a>
+        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+        <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="top-header">
+            <div style="display:flex; align-items:center; gap:16px;">
+                <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a href="index.html" class="breadcrumb-item"><i class="ph-fill ph-paw-print breadcrumb-icon"></i><span class="breadcrumb-brand-text">SeanBot.</span></a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">Features</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle" title="Change theme accent">
+                    <div class="active-display"></div><i class="ph ph-caret-down"></i>
+                    <div class="dropdown-menu-content">
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin-bottom:8px;">Theme Accent</div>
+                        <div class="color-grid" id="colorGrid">
+                            <div class="accent-dot" data-accent="gold" style="background:#FFD700;" title="Gold"></div>
+                            <div class="accent-dot" data-accent="orange" style="background:#F97316;" title="Orange"></div>
+                            <div class="accent-dot" data-accent="rose" style="background:#E11D48;" title="Rose"></div>
+                            <div class="accent-dot" data-accent="purple" style="background:#9333EA;" title="Purple"></div>
+                            <div class="accent-dot" data-accent="blurple" style="background:#5865F2;" title="Blurple"></div>
+                            <div class="accent-dot" data-accent="blue" style="background:#3B82F6;" title="Blue"></div>
+                            <div class="accent-dot" data-accent="cyan" style="background:#06B6D4;" title="Cyan"></div>
+                            <div class="accent-dot" data-accent="emerald" style="background:#10B981;" title="Emerald"></div>
+                        </div>
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin:12px 0 8px;">Palette</div>
+                        <div class="palette-options" role="radiogroup" aria-label="Theme palette">
+                            <button type="button" class="palette-option" data-palette="original" role="radio" aria-checked="true">Original</button>
+                            <button type="button" class="palette-option" data-palette="new" role="radio" aria-checked="false">New</button>
+                            <button type="button" class="palette-option" data-palette="indigo" role="radio" aria-checked="false">Indigo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content" style="max-width:1000px;">
+            <div>
+                <h1 class="docs-page-heading">Every module, one place</h1>
+                <p class="docs-page-subtitle">SeanBot is a set of independent modules rather than one fixed feature list. Turn on the ones your server needs and leave the rest off; each has a page of its own in the documentation.</p>
+            </div>
+
+            <div class="responsive-grid-2" style="margin-top:24px;">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-shield-check"></i></div>
+                    <div>
+                        <h3 class="feature-title">Moderation and anti-raid</h3>
+                        <p class="feature-desc">AutoMod filters, raid detection, quarantine, timeouts, bans and a full audit log. Stops a flood before it becomes a problem.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-ticket"></i></div>
+                    <div>
+                        <h3 class="feature-title">Support tickets</h3>
+                        <p class="feature-desc">Private threads with a panel, transcripts and staff roles. Members open a ticket instead of pinging a moderator.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-clock"></i></div>
+                    <div>
+                        <h3 class="feature-title">Timezone roles</h3>
+                        <p class="feature-desc">Give every member a role that matches where they are, then read the times in their own zone instead of guessing.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-planet"></i></div>
+                    <div>
+                        <h3 class="feature-title">Cross-server federation</h3>
+                        <p class="feature-desc">Link two or more servers so a message posted in one appears in the others, with per-link rules.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-check-square"></i></div>
+                    <div>
+                        <h3 class="feature-title">Polls and raid sign-ups</h3>
+                        <p class="feature-desc">Quick polls, timed events and raid sign-up boards with capped slots and role-based teams.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-chart-bar"></i></div>
+                    <div>
+                        <h3 class="feature-title">Analytics and logging</h3>
+                        <p class="feature-desc">Server statistics, emoji usage, voice activity and a configurable audit log, all searchable from the dashboard.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-calendar-check"></i></div>
+                    <div>
+                        <h3 class="feature-title">Event manager</h3>
+                        <p class="feature-desc">Create events with sign-ups, reminders and a countdown, and post them as embeds your members can react to.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-frame-corners"></i></div>
+                    <div>
+                        <h3 class="feature-title">Embed builder</h3>
+                        <p class="feature-desc">Design embeds with live preview, then send them to any channel or reuse them as welcome and farewell messages.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-smiley"></i></div>
+                    <div>
+                        <h3 class="feature-title">Emoji and sticker tools</h3>
+                        <p class="feature-desc">Track which emoji your server actually uses, and manage custom emoji from the dashboard.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-gift"></i></div>
+                    <div>
+                        <h3 class="feature-title">Giveaways</h3>
+                        <p class="feature-desc">Run a giveaway with role requirements, entry limits and a fair draw, then announce the winner.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-users-three"></i></div>
+                    <div>
+                        <h3 class="feature-title">Welcome and farewell</h3>
+                        <p class="feature-desc">Greet new members and mark departures with embeds that can carry a role or a DM.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ph-fill ph-wrench"></i></div>
+                    <div>
+                        <h3 class="feature-title">Wizard101 tools</h3>
+                        <p class="feature-desc">Roster, badge scanning, guild activity and raid boards for Wizard101 communities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setup-cta">
+                <a href="setup.html" class="btn-large btn-primary"><i class="ph-bold ph-rocket-launch"></i> See how setup works</a>
+                <a href="docs.html" class="btn-large btn-secondary"><i class="ph-bold ph-book-open"></i> Read the documentation</a>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div style="display: flex; gap: 18px;"><a href="tos.html">Terms & Privacy</a><a href="cookies.html">Cookie Policy</a></div>
+        </footer>
+    </div>
+</body>
+</html>

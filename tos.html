@@ -37,9 +37,9 @@
         const savedAccent = localStorage.getItem('seanbotAccent') || 'gold';
         document.documentElement.setAttribute('data-accent', savedAccent);
     </script>
-    <link rel="stylesheet" href="global.css?v=a8678982">
+    <link rel="stylesheet" href="global.css?v=474cab35">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
-    <script src="layout.js?v=a8ed0a65" defer></script>
+    <script src="layout.js?v=07a639f0" defer></script>
     <style>
         /* TOS & Privacy Policy Custom Styles */
         .tos-card {
@@ -180,6 +180,8 @@
         </div>
         <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
         <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
+        <a href="features.html" class="nav-link"><i class="ph ph-stack"></i><span>Features</span></a>
+        <a href="status.html" class="nav-link"><i class="ph ph-activity"></i><span>Status</span></a>
         <a href="setup.html" class="nav-link"><i class="ph ph-rocket-launch"></i><span>Setup</span></a>
         <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
         <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
@@ -209,6 +211,12 @@
                             <div class="accent-dot" data-accent="blue" style="background:#3B82F6;" title="Blue"></div>
                             <div class="accent-dot" data-accent="cyan" style="background:#06B6D4;" title="Cyan"></div>
                             <div class="accent-dot" data-accent="emerald" style="background:#10B981;" title="Emerald"></div>
+                        </div>
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin:12px 0 8px;">Palette</div>
+                        <div class="palette-options" role="radiogroup" aria-label="Theme palette">
+                            <button type="button" class="palette-option" data-palette="original" role="radio" aria-checked="true">Original</button>
+                            <button type="button" class="palette-option" data-palette="new" role="radio" aria-checked="false">New</button>
+                            <button type="button" class="palette-option" data-palette="indigo" role="radio" aria-checked="false">Indigo</button>
                         </div>
                     </div>
                 </div>

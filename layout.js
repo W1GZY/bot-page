@@ -2,6 +2,23 @@
     if (window.__seanbotLayoutInit) return;
     window.__seanbotLayoutInit = true;
 
+    const PALETTES = ['original', 'new', 'indigo'];
+    function applyPalette(name) {
+        const palette = PALETTES.includes(name) ? name : 'original';
+        if (palette === 'original') {
+            document.documentElement.removeAttribute('data-palette');
+        } else {
+            document.documentElement.setAttribute('data-palette', palette);
+        }
+        document.querySelectorAll('.palette-option').forEach(o => {
+            const isCurrent = o.getAttribute('data-palette') === palette;
+            o.classList.toggle('active', isCurrent);
+            o.setAttribute('aria-checked', isCurrent ? 'true' : 'false');
+        });
+        try { localStorage.setItem('seanbotPalette', palette); } catch (e) {}
+    }
+    applyPalette(document.documentElement.getAttribute('data-palette') || 'original');
+
     function initGlobalEvents() {
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
@@ -24,6 +41,17 @@
                 if (color) {
                     document.documentElement.setAttribute('data-accent', color);
                     localStorage.setItem('seanbotAccent', color);
+                    themeToggle?.classList.remove('open');
+                }
+            });
+        });
+
+        document.querySelectorAll('.palette-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const palette = e.target.getAttribute('data-palette');
+                if (palette) {
+                    applyPalette(palette);
                     themeToggle?.classList.remove('open');
                 }
             });
