@@ -2,7 +2,32 @@
     if (window.__seanbotLayoutInit) return;
     window.__seanbotLayoutInit = true;
 
-    const PALETTES = ['original', 'new', 'indigo', 'ember', 'ocean', 'moss'];
+    // The palette row is rendered from the registry in theme-init.js, so the menu,
+    // the swatches and the allow-list come from one list. Each option carries its
+    // swatch colours as --sw-* custom properties, which .palette-swatch reads.
+    const PALETTE_REGISTRY = window.SEANBOT_PALETTES || [];
+    const PALETTES = PALETTE_REGISTRY.map(p => p.id);
+    function renderPaletteRow() {
+        const row = document.querySelector('.palette-options');
+        if (!row) return;
+        row.replaceChildren(...PALETTE_REGISTRY.map(p => {
+            const option = document.createElement('button');
+            option.type = 'button';
+            option.className = 'palette-option';
+            option.dataset.palette = p.id;
+            option.setAttribute('role', 'radio');
+            option.setAttribute('aria-checked', 'false');
+            option.style.setProperty('--sw-page', p.page);
+            option.style.setProperty('--sw-panel', p.panel);
+            option.style.setProperty('--sw-hue', p.hue);
+            const swatch = document.createElement('span');
+            swatch.className = 'palette-swatch';
+            swatch.setAttribute('aria-hidden', 'true');
+            option.append(swatch, p.label);
+            return option;
+        }));
+    }
+    renderPaletteRow();
     // persist=false on the first call below: that call only mirrors the attribute
     // theme-init.js already set onto the option buttons, and writing the choice
     // back on a page that never restored it would erase a visitor's saved palette.
@@ -53,7 +78,7 @@
         document.querySelectorAll('.palette-option').forEach(option => {
             option.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const palette = e.target.getAttribute('data-palette');
+                const palette = e.currentTarget.getAttribute('data-palette');
                 if (palette) {
                     applyPalette(palette);
                     themeToggle?.classList.remove('open');

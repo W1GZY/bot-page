@@ -80,17 +80,22 @@
 }
 
 :root[data-palette="ember"] {
-  --bg-dark: #0d0907;
-  --bg-panel: #17110d;
-  --bg-card: rgba(28, 20, 15, 0.6);
-  --bg-card-hover: rgba(40, 29, 22, 0.8);
-  --border: rgba(255, 236, 214, 0.07);
-  --border-highlight: rgba(255, 236, 214, 0.13);
-  --text-primary: #f8f2ee;
-  --text-secondary: #b5a397;
-  --text-muted: #8a7b70;
-  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.28);
-  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 16px 40px -8px rgba(0, 0, 0, 0.55);
+  --bg-dark: #120804;
+  --bg-panel: #1c0f08;
+  --bg-card: rgba(44, 24, 14, 0.62);
+  --bg-card-hover: rgba(60, 32, 18, 0.8);
+  --border: rgba(255, 180, 130, 0.1);
+  --border-highlight: rgba(255, 180, 130, 0.18);
+  --text-primary: #fff3e6;
+  --text-secondary: #cfae96;
+  --text-muted: #94735d;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --shadow-rest: 0 1px 2px rgba(18, 6, 0, 0.45), 0 6px 20px rgba(18, 6, 0, 0.35), 0 0 24px -12px rgba(249, 115, 22, 0.2);
+  --shadow-lift: 0 2px 4px rgba(18, 6, 0, 0.5), 0 18px 44px -12px rgba(249, 115, 22, 0.35);
+  --shadow-lift-accent: 0 2px 4px rgba(18, 6, 0, 0.5), 0 14px 36px -8px rgba(249, 115, 22, 0.4);
 }
 
 :root[data-palette="ocean"] {
@@ -141,6 +146,88 @@
   --shadow-rest: 0 1px 2px rgba(5, 4, 13, 0.35), 0 8px 24px -8px rgba(5, 4, 13, 0.5);
   --shadow-lift: 0 2px 4px rgba(5, 4, 13, 0.4), 0 18px 44px -14px rgba(140, 134, 255, 0.35);
   --shadow-lift-accent: 0 2px 4px rgba(5, 4, 13, 0.4), 0 14px 36px -8px var(--accent-glow);
+}
+
+/* Sunset: warm plum surfaces, with the rounder corners of a softer, later sky. */
+:root[data-palette="sunset"] {
+  --bg-dark: #120a10;
+  --bg-panel: #1d1019;
+  --bg-card: rgba(40, 20, 34, 0.6);
+  --bg-card-hover: rgba(54, 27, 46, 0.8);
+  --border: rgba(255, 200, 220, 0.08);
+  --border-highlight: rgba(255, 200, 220, 0.14);
+  --text-primary: #fbf1f4;
+  --text-secondary: #c2a3b0;
+  --text-muted: #94778a;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-rest: 0 1px 2px rgba(20, 2, 12, 0.4), 0 6px 20px rgba(20, 2, 12, 0.3);
+  --shadow-lift: 0 2px 4px rgba(20, 2, 12, 0.45), 0 18px 44px -12px rgba(251, 113, 133, 0.25);
+}
+
+/* Aurora: deep teal-black, with a teal lift on every lifted surface. */
+:root[data-palette="aurora"] {
+  --bg-dark: #05090f;
+  --bg-panel: #0b1420;
+  --bg-card: rgba(12, 24, 36, 0.62);
+  --bg-card-hover: rgba(14, 34, 46, 0.8);
+  --border: rgba(180, 255, 240, 0.07);
+  --border-highlight: rgba(180, 255, 240, 0.13);
+  --text-primary: #ecfbf8;
+  --text-secondary: #95b8b4;
+  --text-muted: #6d8f8b;
+  --shadow-rest: 0 1px 2px rgba(0, 4, 8, 0.4), 0 4px 16px rgba(0, 4, 8, 0.25);
+  --shadow-lift: 0 2px 4px rgba(0, 4, 8, 0.45), 0 16px 40px -10px rgba(45, 212, 191, 0.3);
+  --shadow-lift-accent: 0 2px 4px rgba(0, 4, 8, 0.45), 0 12px 32px -6px rgba(45, 212, 191, 0.3);
+}
+
+/* Glacier: pale-blue frosted glass with the roundest corners of the set. */
+:root[data-palette="glacier"] {
+  --bg-dark: #0a1119;
+  --bg-panel: #101b27;
+  --bg-card: rgba(186, 230, 253, 0.05);
+  --bg-card-hover: rgba(186, 230, 253, 0.09);
+  --border: rgba(186, 230, 253, 0.12);
+  --border-highlight: rgba(186, 230, 253, 0.22);
+  --text-primary: #f0f9ff;
+  --text-secondary: #9bb6c7;
+  --text-muted: #6f8a9b;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --shadow-rest: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 16px rgba(2, 8, 16, 0.3);
+  --shadow-lift: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 16px 40px -12px rgba(2, 8, 16, 0.6);
+}
+
+/* Terminal: pure black with amber phosphor text. Nothing is rounded, the type is
+   monospace, and the lifted surfaces are flat, so it reads as a screen, not a
+   web page. The body font follows --font-display for this palette only. */
+:root[data-palette="terminal"] {
+  --bg-dark: #050400;
+  --bg-panel: #0c0a03;
+  --bg-card: rgba(20, 16, 4, 0.7);
+  --bg-card-hover: rgba(34, 27, 6, 0.8);
+  --border: rgba(255, 190, 60, 0.16);
+  --border-highlight: rgba(255, 190, 60, 0.3);
+  --text-primary: #ffe7a6;
+  --text-secondary: #b8954a;
+  --text-muted: #856a33;
+  --font-display: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius-sm: 0;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-full: 2px;
+  --shadow-rest: none;
+  --shadow-lift: 0 0 0 1px rgba(255, 190, 60, 0.3);
+  --shadow-lift-accent: 0 0 0 1px rgba(255, 190, 60, 0.5);
+}
+:root[data-palette="terminal"] body {
+  font-family: var(--font-display);
+  letter-spacing: 0;
 }
 
 /* The display face is applied here rather than in body: headings, the brand
@@ -504,42 +591,38 @@ body::after {
 /* The palette row, directly under the accent dots. Original is the default
    and carries no data-palette attribute, so a visitor who never chose one is
    unchanged; New and Indigo are opt-in token sets in this file. */
-.palette-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.palette-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; }
 .palette-option {
   appearance: none;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 6px;
-  border: 1px solid var(--border-highlight);
-  background: rgba(255, 255, 255, 0.04);
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  background: transparent;
   color: var(--text-secondary);
   font-family: inherit;
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 6px 6px 7px;
-  border-radius: var(--radius-md);
+  line-height: 1.2;
+  text-align: left;
+  padding: 5px 7px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
-/* Colour swatch: three bands of the palette's own colours (page, panel, and a
-   hue that names it). Fixed previews, so each option shows its palette. */
+/* Small square chip: the palette's page and panel split on the diagonal, its
+   hue in the corner that names it. Fixed previews, so each option shows its palette. */
 .palette-swatch {
-  display: block;
-  height: 22px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(90deg,
-    var(--sw-page) 0 40%,
-    var(--sw-panel) 40% 68%,
-    var(--sw-hue) 68% 100%);
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg,
+    var(--sw-page) 0 50%,
+    var(--sw-panel) 50% 72%,
+    var(--sw-hue) 72% 100%);
 }
-.palette-option[data-palette="original"] { --sw-page: #09090b; --sw-panel: #111113; --sw-hue: #71717a; }
-.palette-option[data-palette="new"]      { --sw-page: #0b0d12; --sw-panel: #11151d; --sw-hue: #60a5fa; }
-.palette-option[data-palette="indigo"]   { --sw-page: #0b0a17; --sw-panel: #13122a; --sw-hue: #8c86ff; }
-.palette-option[data-palette="ember"]    { --sw-page: #0d0907; --sw-panel: #17110d; --sw-hue: #fb923c; }
-.palette-option[data-palette="ocean"]    { --sw-page: #050d13; --sw-panel: #0a1820; --sw-hue: #22d3ee; }
-.palette-option[data-palette="moss"]     { --sw-page: #080d09; --sw-panel: #101810; --sw-hue: #4ade80; }
 .palette-option:hover { color: #fff; border-color: var(--accent); }
 .palette-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .palette-option.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
