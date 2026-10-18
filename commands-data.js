@@ -1350,13 +1350,25 @@ const commandsDatabase = [{
         },
         {
             "name": "/raid cancel",
-            "desc": "Cancel an event by Message ID.",
+            "desc": "Cancel a signup board - the message is marked and the board cleared.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/raid channel",
+            "desc": "Set the channel signups are posted in.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/raid defaults",
+            "desc": "Set, show, or clear the roles a raid's signup sheet opens with.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/raid edit",
-            "desc": "Edit an existing raid event.",
+            "desc": "Edit an existing signup board.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -1368,31 +1380,37 @@ const commandsDatabase = [{
         },
         {
             "name": "/raid list",
-            "desc": "List all current active signups.",
+            "desc": "List the open signups in this server.",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/raid lock",
-            "desc": "Lock a raid to prevent new signups.",
+            "desc": "Lock a signup so nobody new can join.",
             "badge": "Manage Messages",
             "type": "perm"
         },
         {
             "name": "/raid my",
-            "desc": "List upcoming events you are signed up for.",
+            "desc": "List the open signups you have joined.",
             "badge": "Everyone",
             "type": "public"
         },
         {
+            "name": "/raid roster-channel",
+            "desc": "Set where finished rosters go. Leave the channel out to clear it.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/raid start",
-            "desc": "Start a new Event signup using a Form.",
+            "desc": "Start a signup sheet - the same guided setup /raidsignup opens.",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/raid unlock",
-            "desc": "Unlock a raid to allow signups.",
+            "desc": "Unlock a signup so people can join again.",
             "badge": "Manage Messages",
             "type": "perm"
         },
@@ -1434,13 +1452,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/set_raid_channel",
-            "desc": "Set the channel for event signups.",
+            "desc": "Set the channel signups are posted in. Same as /raid channel.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/set_raid_roster_channel",
-            "desc": "Set the channel finished raid rosters are posted in. No channel clears it.",
+            "desc": "Set where finished rosters go. No channel clears it.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -3097,12 +3115,6 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "Right-click: Add to scam library",
-            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "Right-click: Add Wizard",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3139,18 +3151,6 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "Right-click: Grab ID",
-            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "Right-click: Pick emojis to react",
-            "desc": "Offers a member's own message's emojis, for them to pick reactable ones from. Gated to the message's author with Manage Messages: the picker is a reaction tool for the member who wrote the list, not for decorating anyone else's message.",
-            "badge": "Manage Messages",
-            "type": "perm"
-        },
-        {
             "name": "Right-click: Ping Mentions",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3163,13 +3163,13 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "Right-click: React with emoji",
-            "desc": "Reacts to a message using a context menu and modal for emoji input.",
-            "badge": "Everyone",
-            "type": "public"
+            "name": "Right-click: React w/ emojis",
+            "desc": "Offers a member's own message's emojis, for them to pick reactable ones from. Gated to the message's author with Manage Messages: the picker is a reaction tool for the member who wrote the list, not for decorating anyone else's message.",
+            "badge": "Manage Messages",
+            "type": "perm"
         },
         {
-            "name": "Right-click: React with numbers",
+            "name": "Right-click: React w/ numbers",
             "desc": "Reacts with the number emojis 1-10 the message names, so it can be voted on.",
             "badge": "Everyone",
             "type": "public"
@@ -3187,6 +3187,12 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "Right-click: Report Scam",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "Right-click: Report User",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3194,12 +3200,6 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: Reroll Giveaway",
-            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "Right-click: Show Wizard Info",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"
@@ -3217,6 +3217,12 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "Right-click: View ID",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "Right-click: View Timezone",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3224,6 +3230,12 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: View Warnings",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "Right-click: View Wizards",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"

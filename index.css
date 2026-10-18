@@ -832,8 +832,8 @@
             gap: 4px;
         }
         .badge-warn {
-            background: rgba(254, 231, 92, 0.15);
-            color: #FEE75C;
+            background: rgba(var(--warning-light-rgb), 0.15);
+            color: var(--warning-light);
             padding: 4px 10px;
             border-radius: 12px;
             font-weight: 600;

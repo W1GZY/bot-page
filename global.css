@@ -17,6 +17,13 @@
   --accent-glow: rgba(255, 215, 0, 0.15);
   --accent-faint: rgba(255, 215, 0, 0.03);
 
+  /* The caution tone and its wash/border channels, mirroring the dashboard's
+     token names so a warning reads the same on both sites. Original is the
+     Discord yellow the comparison badges have always used; Indigo pulls the
+     whole family onto the violet ramp the way the dashboard does. */
+  --warning-light: #fee75c;
+  --warning-light-rgb: 254, 231, 92;
+
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -72,6 +79,48 @@
   --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.5);
 }
 
+:root[data-palette="ember"] {
+  --bg-dark: #0d0907;
+  --bg-panel: #17110d;
+  --bg-card: rgba(28, 20, 15, 0.6);
+  --bg-card-hover: rgba(40, 29, 22, 0.8);
+  --border: rgba(255, 236, 214, 0.07);
+  --border-highlight: rgba(255, 236, 214, 0.13);
+  --text-primary: #f8f2ee;
+  --text-secondary: #b5a397;
+  --text-muted: #8a7b70;
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.28);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 16px 40px -8px rgba(0, 0, 0, 0.55);
+}
+
+:root[data-palette="ocean"] {
+  --bg-dark: #050d13;
+  --bg-panel: #0a1820;
+  --bg-card: rgba(12, 27, 36, 0.62);
+  --bg-card-hover: rgba(16, 38, 50, 0.8);
+  --border: rgba(200, 235, 250, 0.075);
+  --border-highlight: rgba(200, 235, 250, 0.13);
+  --text-primary: #eef7fb;
+  --text-secondary: #98b3c1;
+  --text-muted: #6f8a98;
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-palette="moss"] {
+  --bg-dark: #080d09;
+  --bg-panel: #101810;
+  --bg-card: rgba(18, 28, 20, 0.62);
+  --bg-card-hover: rgba(26, 40, 29, 0.8);
+  --border: rgba(214, 255, 224, 0.07);
+  --border-highlight: rgba(214, 255, 224, 0.12);
+  --text-primary: #f0f7f1;
+  --text-secondary: #a2b5a5;
+  --text-muted: #768a7a;
+  --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.5);
+}
+
 :root[data-palette="indigo"] {
   --bg-dark: #0b0a17;
   --bg-panel: #13122a;
@@ -87,6 +136,8 @@
   --radius-md: 14px;
   --radius-lg: 18px;
   --radius-xl: 26px;
+  --warning-light: #ede9fe;
+  --warning-light-rgb: 167, 139, 250;
   --shadow-rest: 0 1px 2px rgba(5, 4, 13, 0.35), 0 8px 24px -8px rgba(5, 4, 13, 0.5);
   --shadow-lift: 0 2px 4px rgba(5, 4, 13, 0.4), 0 18px 44px -14px rgba(140, 134, 255, 0.35);
   --shadow-lift-accent: 0 2px 4px rgba(5, 4, 13, 0.4), 0 14px 36px -8px var(--accent-glow);
@@ -453,20 +504,42 @@ body::after {
 /* The palette row, directly under the accent dots. Original is the default
    and carries no data-palette attribute, so a visitor who never chose one is
    unchanged; New and Indigo are opt-in token sets in this file. */
-.palette-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.palette-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .palette-option {
   appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
   border: 1px solid var(--border-highlight);
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
   font-family: inherit;
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 6px 4px;
+  padding: 6px 6px 7px;
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
+/* Colour swatch: three bands of the palette's own colours (page, panel, and a
+   hue that names it). Fixed previews, so each option shows its palette. */
+.palette-swatch {
+  display: block;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg,
+    var(--sw-page) 0 40%,
+    var(--sw-panel) 40% 68%,
+    var(--sw-hue) 68% 100%);
+}
+.palette-option[data-palette="original"] { --sw-page: #09090b; --sw-panel: #111113; --sw-hue: #71717a; }
+.palette-option[data-palette="new"]      { --sw-page: #0b0d12; --sw-panel: #11151d; --sw-hue: #60a5fa; }
+.palette-option[data-palette="indigo"]   { --sw-page: #0b0a17; --sw-panel: #13122a; --sw-hue: #8c86ff; }
+.palette-option[data-palette="ember"]    { --sw-page: #0d0907; --sw-panel: #17110d; --sw-hue: #fb923c; }
+.palette-option[data-palette="ocean"]    { --sw-page: #050d13; --sw-panel: #0a1820; --sw-hue: #22d3ee; }
+.palette-option[data-palette="moss"]     { --sw-page: #080d09; --sw-panel: #101810; --sw-hue: #4ade80; }
 .palette-option:hover { color: #fff; border-color: var(--accent); }
 .palette-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .palette-option.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }

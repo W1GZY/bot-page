@@ -2,7 +2,7 @@
     if (window.__seanbotLayoutInit) return;
     window.__seanbotLayoutInit = true;
 
-    const PALETTES = ['original', 'new', 'indigo'];
+    const PALETTES = ['original', 'new', 'indigo', 'ember', 'ocean', 'moss'];
     // persist=false on the first call below: that call only mirrors the attribute
     // theme-init.js already set onto the option buttons, and writing the choice
     // back on a page that never restored it would erase a visitor's saved palette.

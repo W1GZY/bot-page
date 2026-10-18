@@ -768,7 +768,7 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "tip",
-                "text": "Ticking a wizard off as removed doesn't delete it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; Show Wizard Info. Marked wizards stay on record, and if the next list names them again, they're back, with no undo needed."
+                "text": "Ticking a wizard off as removed doesn't delete it. Staff do that from /wizard unassigned or /wizard list, or by right-clicking a member and choosing Apps &gt; View Wizards. Marked wizards stay on record, and if the next list names them again, they're back, with no undo needed."
             }
         ]
     },
@@ -1839,7 +1839,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/raid start [host]",
-                        "desc": "Open modal form to build and publish a new raid signup."
+                        "desc": "Open the guided setup - the same one /raidsignup posts with."
                     },
                     {
                         "cmd": "/raid list",
@@ -3782,8 +3782,24 @@ const docsData = [
                         "desc": "Notify eligible members who reacted."
                     },
                     {
-                        "cmd": "Apps &gt; React with emoji",
-                        "desc": "Add an emoji through SeanBot."
+                        "cmd": "Apps &gt; React w/ emojis",
+                        "desc": "Pick emojis from your own message for the bot to react with."
+                    },
+                    {
+                        "cmd": "Apps &gt; React w/ numbers",
+                        "desc": "Add the number reactions a message names, so it can be voted on."
+                    },
+                    {
+                        "cmd": "Apps &gt; Report Scam",
+                        "desc": "File a scam post in the scam library."
+                    },
+                    {
+                        "cmd": "Apps &gt; View ID",
+                        "desc": "Copy a member's Discord ID."
+                    },
+                    {
+                        "cmd": "Apps &gt; View Wizards",
+                        "desc": "See a member's registered Wizard101 wizards."
                     }
                 ]
             }
