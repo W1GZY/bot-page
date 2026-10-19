@@ -44,7 +44,7 @@
     <!-- The Documentation and Commands tabs live on this page, so docs.css
          loads here too, ahead of index.css and its layout overrides. -->
     <link rel="stylesheet" href="docs.css?v=c1896f84">
-    <link rel="stylesheet" href="index.css?v=59f6370e">
+    <link rel="stylesheet" href="index.css?v=026fa6d7">
 
     <script type="application/ld+json">
     {
@@ -141,10 +141,18 @@
     <main class="content" style="max-width: 1400px;">
         
         <section id="view-overview" class="tab-view active-view">
+            <a class="spotlight-band" href="#features">
+                <i class="ph-fill ph-sparkle" aria-hidden="true"></i>
+                <span>One module, eleven Wizard101 tools.</span>
+                <span class="spotlight-go">See it <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></span>
+            </a>
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
+                <div class="hero-mark" aria-hidden="true">
+                    <img src="assets/seanbot.png?v=5db7d29f" alt="">
+                </div>
                 <span class="section-eyebrow" style="display: block; margin-bottom: 12px;">One bot, every module optional</span>
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
-                    A Discord bot you can shape to fit <span style="color: var(--accent);">your server</span>.
+                    A Discord bot you can shape to fit <span class="scribble-word" style="color: var(--accent);">your server<svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7 C 30 2, 55 9, 90 5 S 150 2, 198 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
                     Moderation, analytics, tickets, polls and Wizard101 tools in one bot. Switch on the modules your community uses and leave the rest off.
@@ -246,6 +254,35 @@
                     <div class="stat-label">Communities running it</div>
                 </div>
             </div>
+
+            <section class="section-block" aria-labelledby="personas-title">
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">Who it is for</span>
+                    <h2 class="section-title" id="personas-title">Servers like yours</h2>
+                </div>
+                <div class="persona-grid">
+                    <div class="persona-card">
+                        <i class="ph-duotone ph-game-controller"></i>
+                        <h3>Gaming guilds</h3>
+                        <p>Raid sign-ups, polls and voice stats.</p>
+                    </div>
+                    <div class="persona-card">
+                        <i class="ph-duotone ph-magic-wand"></i>
+                        <h3>Wizard101</h3>
+                        <p>Damage math, deck checks, pets and spells.</p>
+                    </div>
+                    <div class="persona-card">
+                        <i class="ph-duotone ph-books"></i>
+                        <h3>Study and community</h3>
+                        <p>Timezone roles, events and quiet moderation.</p>
+                    </div>
+                    <div class="persona-card">
+                        <i class="ph-duotone ph-shield-check"></i>
+                        <h3>Staff teams</h3>
+                        <p>Tickets, logs and an audit trail.</p>
+                    </div>
+                </div>
+            </section>
 
             <div class="plain-intro-section">
                 <div class="section-head">
@@ -1026,6 +1063,14 @@
                 </div>
             </section>
 
+            <section class="section-block" aria-labelledby="onebot-title">
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">One bot instead of four</span>
+                    <h2 class="section-title" id="onebot-title">Less juggling, fewer logins</h2>
+                    <p class="section-lede">A moderation bot, a ticket bot and a poll bot are three dashboards to keep in sync. SeanBot puts them in one place, with one permission list and one log.</p>
+                </div>
+            </section>
+
             <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
                 <div class="section-head is-center">
                     <span class="section-eyebrow">Side by side</span>
@@ -1546,6 +1591,31 @@
                     </details>
                 </div>
             </section>
+
+            <section class="section-block" aria-labelledby="privacy-title">
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">Your data</span>
+                    <h2 class="section-title" id="privacy-title">What it keeps, and how to check</h2>
+                </div>
+                <div class="trust-grid">
+                    <div class="trust-card">
+                        <h3><i class="ph-duotone ph-database"></i> What it stores</h3>
+                        <ul>
+                            <li>Server and channel IDs, so your settings keep working.</li>
+                            <li>User IDs for warnings, timeouts and timezone choices.</li>
+                            <li>Command use, for analytics and error logs.</li>
+                        </ul>
+                    </div>
+                    <div class="trust-card">
+                        <h3><i class="ph-duotone ph-magnifying-glass"></i> How to check</h3>
+                        <p>Run <code>/permissions</code> for an access audit, or <code>/staff diagnose</code> to see what is set and what still needs you. The full list is in the <a href="tos.html">privacy policy</a>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="scribble-divider" aria-hidden="true">
+                <svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 8 C 20 2, 38 12, 58 6 S 100 2, 118 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </div>
 
             <div class="section-cta-banner">
                 <div class="section-cta-content">
