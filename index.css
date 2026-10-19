@@ -1856,28 +1856,57 @@
             box-shadow: none;
         }
 
-        /* A slim line above the hero for one thing worth a look. */
-        .spotlight-band {
+        /* One thing worth a look, as a card rather than a strip. */
+        .spotlight-card {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 16px;
             max-width: 1100px;
-            margin: 0 auto 8px;
-            padding: 9px 18px;
-            background: var(--accent-glow);
-            border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
-            border-radius: 999px;
+            margin: 0 auto 10px;
+            padding: 14px 18px;
+            background:
+                radial-gradient(120% 180% at 100% 0%, var(--accent-glow), transparent 62%),
+                var(--bg-card);
+            border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--border));
+            border-radius: var(--radius-lg);
             color: var(--text-primary);
-            font-size: 0.85rem;
-            font-weight: 600;
             text-decoration: none;
-            transition: border-color var(--transition-fast);
+            transition: border-color var(--transition-fast), transform var(--transition-fast);
         }
-        .spotlight-band:hover { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
-        .spotlight-band > i { color: var(--accent); font-size: 1rem; }
-        .spotlight-go { color: var(--accent); font-weight: 800; display: inline-flex; align-items: center; gap: 6px; }
+        .spotlight-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+            transform: translateY(-1px);
+        }
+        .spotlight-icon {
+            flex: 0 0 auto;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--accent-glow);
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+        .spotlight-copy { display: grid; gap: 2px; min-width: 0; }
+        .spotlight-kicker { color: var(--accent); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+        .spotlight-copy strong { font-size: 0.98rem; font-weight: 800; }
+        .spotlight-sub { color: var(--text-secondary); font-size: 0.84rem; }
+        .spotlight-cta {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 640px) {
+            .spotlight-card { flex-wrap: wrap; }
+            .spotlight-cta { margin-left: 0; }
+        }
 
         /* The paw mark above the hero, tilted a little off true. */
         .hero-mark {
