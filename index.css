@@ -204,7 +204,7 @@
         }
         .showcase-tab.active {
             background: var(--accent);
-            color: #000;
+            color: var(--accent-text);
             border-color: var(--accent);
             font-weight: 700;
         }
@@ -500,7 +500,7 @@
         }
         .section-cta-btn {
             background: var(--accent);
-            color: #000;
+            color: var(--accent-text);
             font-weight: 800;
             font-size: 0.9rem;
             padding: 11px 22px;
@@ -516,7 +516,7 @@
         .section-cta-btn:hover {
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 0 26px var(--accent-glow);
-            color: #000;
+            color: var(--accent-text);
         }
         /* The quieter half of a banner's pair: the read-only previews beside the
            invite, secondary so they do not compete with the button that adds the bot. */
@@ -748,14 +748,14 @@
         }
         .back-to-top-btn:hover {
             background: var(--accent);
-            color: #000;
+            color: var(--accent-text);
             transform: translateY(-3px) !important;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 24px var(--accent-glow);
         }
 
         .topbar-invite-btn {
             background: var(--accent);
-            color: #000;
+            color: var(--accent-text);
             font-weight: 700;
             font-size: 0.85rem;
             padding: 7px 16px;
@@ -1624,7 +1624,7 @@
                 gap: 7px;
                 margin-top: 4px;
                 padding: 11px 12px;
-                color: #000;
+                color: var(--accent-text);
                 background: var(--accent);
                 border-radius: var(--radius-sm);
                 text-decoration: none;

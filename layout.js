@@ -3,8 +3,8 @@
     window.__seanbotLayoutInit = true;
 
     // The palette row is rendered from the registry in theme-init.js, so the menu,
-    // the swatches and the allow-list come from one list. Each option carries its
-    // swatch colours as --sw-* custom properties, which .palette-swatch reads.
+    // the glyphs and the allow-list come from one list. Each option carries its
+    // hue as --palette-hue, which tints the Phosphor glyph .palette-icon draws.
     const PALETTE_REGISTRY = window.SEANBOT_PALETTES || [];
     const PALETTES = PALETTE_REGISTRY.map(p => p.id);
     function renderPaletteRow() {
@@ -17,13 +17,11 @@
             option.dataset.palette = p.id;
             option.setAttribute('role', 'radio');
             option.setAttribute('aria-checked', 'false');
-            option.style.setProperty('--sw-page', p.page);
-            option.style.setProperty('--sw-panel', p.panel);
-            option.style.setProperty('--sw-hue', p.hue);
-            const swatch = document.createElement('span');
-            swatch.className = 'palette-swatch';
-            swatch.setAttribute('aria-hidden', 'true');
-            option.append(swatch, p.label);
+            option.style.setProperty('--palette-hue', p.hue);
+            const icon = document.createElement('i');
+            icon.className = 'ph ' + p.icon + ' palette-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            option.append(icon, p.label);
             return option;
         }));
     }

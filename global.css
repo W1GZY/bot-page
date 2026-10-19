@@ -16,6 +16,9 @@
   --accent: #FFD700;
   --accent-glow: rgba(255, 215, 0, 0.15);
   --accent-faint: rgba(255, 215, 0, 0.03);
+  /* The text drawn on a solid accent surface. Black for every accent except
+     Discord blurple, which keeps white text. */
+  --accent-text: #000000;
 
   /* The caution tone and its wash/border channels, mirroring the dashboard's
      token names so a warning reads the same on both sites. Original is the
@@ -46,20 +49,20 @@
   --anchor-offset: calc(var(--header-height) + var(--anchor-gap));
 }
 
-:root[data-accent="gold"]    { --accent: #FFD700; --accent-glow: rgba(255, 215, 0, 0.15); }
-:root[data-accent="amber"]   { --accent: #F59E0B; --accent-glow: rgba(245, 158, 11, 0.15); }
-:root[data-accent="orange"]  { --accent: #F97316; --accent-glow: rgba(249, 115, 22, 0.15); }
-:root[data-accent="rose"]    { --accent: #E11D48; --accent-glow: rgba(225, 29, 72, 0.15); }
-:root[data-accent="pink"]    { --accent: #EC4899; --accent-glow: rgba(236, 72, 153, 0.15); }
-:root[data-accent="purple"]  { --accent: #9333EA; --accent-glow: rgba(147, 51, 234, 0.15); }
-:root[data-accent="blurple"] { --accent: #5865F2; --accent-glow: rgba(88, 101, 242, 0.15); }
-:root[data-accent="indigo"]  { --accent: #6366F1; --accent-glow: rgba(99, 102, 241, 0.15); }
-:root[data-accent="blue"]    { --accent: #3B82F6; --accent-glow: rgba(59, 130, 246, 0.15); }
-:root[data-accent="cyan"]    { --accent: #06B6D4; --accent-glow: rgba(6, 182, 212, 0.15); }
-:root[data-accent="teal"]    { --accent: #0D9488; --accent-glow: rgba(13, 148, 136, 0.15); }
-:root[data-accent="emerald"] { --accent: #10B981; --accent-glow: rgba(16, 185, 129, 0.15); }
-:root[data-accent="green"]   { --accent: #22C55E; --accent-glow: rgba(34, 197, 94, 0.15); }
-:root[data-accent="lime"]    { --accent: #84CC16; --accent-glow: rgba(132, 204, 22, 0.15); }
+:root[data-accent="gold"]    { --accent: #FFD700; --accent-glow: rgba(255, 215, 0, 0.15); --accent-text: #000000; }
+:root[data-accent="amber"]   { --accent: #F59E0B; --accent-glow: rgba(245, 158, 11, 0.15); --accent-text: #000000; }
+:root[data-accent="orange"]  { --accent: #F97316; --accent-glow: rgba(249, 115, 22, 0.15); --accent-text: #000000; }
+:root[data-accent="rose"]    { --accent: #E11D48; --accent-glow: rgba(225, 29, 72, 0.15); --accent-text: #000000; }
+:root[data-accent="pink"]    { --accent: #EC4899; --accent-glow: rgba(236, 72, 153, 0.15); --accent-text: #000000; }
+:root[data-accent="purple"]  { --accent: #9333EA; --accent-glow: rgba(147, 51, 234, 0.15); --accent-text: #000000; }
+:root[data-accent="blurple"] { --accent: #5865F2; --accent-glow: rgba(88, 101, 242, 0.15); --accent-text: #ffffff; }
+:root[data-accent="indigo"]  { --accent: #6366F1; --accent-glow: rgba(99, 102, 241, 0.15); --accent-text: #000000; }
+:root[data-accent="blue"]    { --accent: #3B82F6; --accent-glow: rgba(59, 130, 246, 0.15); --accent-text: #000000; }
+:root[data-accent="cyan"]    { --accent: #06B6D4; --accent-glow: rgba(6, 182, 212, 0.15); --accent-text: #000000; }
+:root[data-accent="teal"]    { --accent: #0D9488; --accent-glow: rgba(13, 148, 136, 0.15); --accent-text: #000000; }
+:root[data-accent="emerald"] { --accent: #10B981; --accent-glow: rgba(16, 185, 129, 0.15); --accent-text: #000000; }
+:root[data-accent="green"]   { --accent: #22C55E; --accent-glow: rgba(34, 197, 94, 0.15); --accent-text: #000000; }
+:root[data-accent="lime"]    { --accent: #84CC16; --accent-glow: rgba(132, 204, 22, 0.15); --accent-text: #000000; }
 
 /* Palettes. The accent rules above only set --accent*, so a palette never
    fights them: a palette picks the surfaces and the display face, the accent
@@ -89,6 +92,7 @@
   --text-primary: #fff3e6;
   --text-secondary: #cfae96;
   --text-muted: #94735d;
+  --font-display: 'Bitter', Georgia, 'Times New Roman', serif;
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -108,6 +112,10 @@
   --text-primary: #eef7fb;
   --text-secondary: #98b3c1;
   --text-muted: #6f8a98;
+  --font-display: 'Comfortaa', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
   --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.5);
 }
@@ -122,6 +130,7 @@
   --text-primary: #f0f7f1;
   --text-secondary: #a2b5a5;
   --text-muted: #768a7a;
+  --font-display: 'Domine', Georgia, 'Times New Roman', serif;
   --shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
   --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 40px -8px rgba(0, 0, 0, 0.5);
 }
@@ -159,6 +168,7 @@
   --text-primary: #fbf1f4;
   --text-secondary: #c2a3b0;
   --text-muted: #94778a;
+  --font-display: 'Quicksand', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -178,6 +188,7 @@
   --text-primary: #ecfbf8;
   --text-secondary: #95b8b4;
   --text-muted: #6d8f8b;
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --shadow-rest: 0 1px 2px rgba(0, 4, 8, 0.4), 0 4px 16px rgba(0, 4, 8, 0.25);
   --shadow-lift: 0 2px 4px rgba(0, 4, 8, 0.45), 0 16px 40px -10px rgba(45, 212, 191, 0.3);
   --shadow-lift-accent: 0 2px 4px rgba(0, 4, 8, 0.45), 0 12px 32px -6px rgba(45, 212, 191, 0.3);
@@ -194,6 +205,7 @@
   --text-primary: #f0f9ff;
   --text-secondary: #9bb6c7;
   --text-muted: #6f8a9b;
+  --font-display: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --radius-sm: 12px;
   --radius-md: 18px;
   --radius-lg: 24px;
@@ -266,10 +278,11 @@ h1, h2, h3, h4, h5, h6,
   src: url('assets/fonts/inter-latin-ext.woff2?v=34b9c504') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-/* Fredoka, the Indigo palette's rounded display face. Same privacy rule as
-   Inter: served from this origin, subset to latin and latin-ext, SIL OFL 1.1,
-   licence at assets/fonts/OFL-Fredoka.txt. It is only fetched when a page
-   actually sets --font-display to it, so the other palettes never pay for it. */
+/* The display faces, one per palette, served from this origin like Inter and
+   subset to latin and latin-ext. Each is SIL OFL 1.1 with its licence beside the
+   woff2 files in assets/fonts. A palette sets --font-display to one of them, and
+   a browser only fetches a face a page actually uses, so a visitor pays for the
+   voice of the palette they chose and nothing else. */
 @font-face {
   font-family: 'Fredoka';
   font-style: normal;
@@ -285,6 +298,114 @@ h1, h2, h3, h4, h5, h6,
   font-display: swap;
   src: url('assets/fonts/fredoka-latin-ext.woff2?v=18a1723c') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Bitter, the Ember palette's slab serif: warm and sturdy, built like a hearth. */
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/bitter-latin.woff2?v=0efe0fbe') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/bitter-latin-ext.woff2?v=8c1f1559') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Comfortaa, the Ocean palette's rounded sans: soft and circular, water-worn. */
+@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/comfortaa-latin.woff2?v=408f20ae') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/comfortaa-latin-ext.woff2?v=1afa0e5e') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Domine, the Moss palette's serif: earthy and upright, grown rather than built. */
+@font-face {
+  font-family: 'Domine';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('assets/fonts/domine-latin.woff2?v=d0531fda') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Domine';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('assets/fonts/domine-latin-ext.woff2?v=c80dc59d') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Quicksand, the Sunset palette's geometric sans: every edge soft after a long day. */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/quicksand-latin.woff2?v=2add7d60') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/quicksand-latin-ext.woff2?v=b5a37861') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Space Grotesk, the Aurora palette's technical sans: spare and luminous. */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/space-grotesk-latin.woff2?v=06408904') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('assets/fonts/space-grotesk-latin-ext.woff2?v=952dddb4') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Outfit, the Glacier palette's crisp geometric sans: clean as cut ice. */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/outfit-latin.woff2?v=6c18d579') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/outfit-latin-ext.woff2?v=0f53d1c0') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 body {
@@ -610,22 +731,18 @@ body::after {
   cursor: pointer;
   transition: all var(--transition-fast);
 }
-/* Small square chip: the palette's page and panel split on the diagonal, its
-   hue in the corner that names it. Fixed previews, so each option shows its palette. */
-.palette-swatch {
+/* The palette's own glyph, tinted with its hue so the row reads by symbol and by
+   colour at once. */
+.palette-icon {
   flex: 0 0 auto;
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(135deg,
-    var(--sw-page) 0 50%,
-    var(--sw-panel) 50% 72%,
-    var(--sw-hue) 72% 100%);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--palette-hue);
 }
 .palette-option:hover { color: #fff; border-color: var(--accent); }
 .palette-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.palette-option.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
+.palette-option.active { background: var(--accent); border-color: var(--accent); color: var(--accent-text); font-weight: 700; }
+.palette-option.active .palette-icon { color: currentColor; }
 
 .content {
   padding: 32px clamp(16px, 4vw, 40px);
@@ -679,6 +796,123 @@ body::after {
   border-radius: var(--radius-full);
 }
 
+/* Ember's voice: a living hearth. A thin ember hairline catches along the top
+   edge and a warm wash rises from the base of every panel, so the cards read as
+   lit from a fire below rather than as a darker copy of Original. */
+:root[data-palette="ember"] .glass-card,
+:root[data-palette="ember"] .feature-card,
+:root[data-palette="ember"] .stat-card,
+:root[data-palette="ember"] .module-card,
+:root[data-palette="ember"] .hero-section,
+:root[data-palette="ember"] .comparison-table-container {
+  backdrop-filter: none;
+  background:
+    linear-gradient(180deg, rgba(251, 146, 60, 0.5), transparent 3px),
+    radial-gradient(125% 95% at 50% 125%, rgba(249, 115, 22, 0.32), transparent 62%),
+    var(--bg-card);
+  border-color: rgba(255, 180, 130, 0.18);
+}
+/* Ember lights the page from the floor as well as the cards, so the lower wash
+   goes warm and the whole page sits in the firelight. */
+:root[data-palette="ember"] body::after {
+  background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.16) 0%, transparent 66%);
+}
+/* Ocean's voice: deep-water surfaces that fade as they rise, and pill controls,
+   so the page reads as depth rather than as a tinted copy of the default. */
+:root[data-palette="ocean"] .glass-card,
+:root[data-palette="ocean"] .feature-card,
+:root[data-palette="ocean"] .stat-card,
+:root[data-palette="ocean"] .module-card,
+:root[data-palette="ocean"] .hero-section,
+:root[data-palette="ocean"] .comparison-table-container {
+  backdrop-filter: none;
+  background: linear-gradient(180deg, rgba(34, 74, 94, 0.5), rgba(8, 22, 30, 0.84));
+  border-color: rgba(200, 235, 250, 0.14);
+}
+:root[data-palette="ocean"] .btn-large,
+:root[data-palette="ocean"] .pill-btn,
+:root[data-palette="ocean"] .nav-link,
+:root[data-palette="ocean"] .site-nav-link {
+  border-radius: var(--radius-full);
+}
+
+/* Moss's voice: leaf-cut cards with two rounded corners and two close ones, on
+   earthy green surfaces, so the grid reads as grown rather than switched on. */
+:root[data-palette="moss"] .glass-card,
+:root[data-palette="moss"] .feature-card,
+:root[data-palette="moss"] .stat-card,
+:root[data-palette="moss"] .module-card {
+  backdrop-filter: none;
+  background: linear-gradient(155deg, rgba(26, 42, 30, 0.72), rgba(14, 22, 16, 0.84));
+  border-color: rgba(214, 255, 224, 0.14);
+  border-radius: 6px 22px;
+}
+:root[data-palette="moss"] .hero-section,
+:root[data-palette="moss"] .comparison-table-container {
+  backdrop-filter: none;
+  background: linear-gradient(155deg, rgba(26, 42, 30, 0.72), rgba(14, 22, 16, 0.84));
+  border-color: rgba(214, 255, 224, 0.14);
+}
+
+/* Sunset's voice: warm plum surfaces lit from the top corner, with the softest
+   radius of the set, so every panel looks like the last light of the day. */
+:root[data-palette="sunset"] .glass-card,
+:root[data-palette="sunset"] .feature-card,
+:root[data-palette="sunset"] .stat-card,
+:root[data-palette="sunset"] .module-card,
+:root[data-palette="sunset"] .hero-section,
+:root[data-palette="sunset"] .comparison-table-container {
+  backdrop-filter: none;
+  background: linear-gradient(160deg, rgba(251, 146, 60, 0.12), transparent 45%), linear-gradient(160deg, rgba(60, 28, 46, 0.74), rgba(30, 14, 24, 0.84));
+  border-color: rgba(255, 200, 220, 0.14);
+}
+:root[data-palette="sunset"] .btn-large,
+:root[data-palette="sunset"] .pill-btn,
+:root[data-palette="sunset"] .nav-link,
+:root[data-palette="sunset"] .site-nav-link {
+  border-radius: var(--radius-full);
+}
+
+/* Aurora's voice: a pale band across the top of every surface and slightly open
+   letterforms, so the panels read as lit from above by something moving. */
+:root[data-palette="aurora"] .glass-card,
+:root[data-palette="aurora"] .feature-card,
+:root[data-palette="aurora"] .stat-card,
+:root[data-palette="aurora"] .module-card,
+:root[data-palette="aurora"] .hero-section,
+:root[data-palette="aurora"] .comparison-table-container {
+  backdrop-filter: none;
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.1), transparent 42%), var(--bg-card);
+  border-color: rgba(180, 255, 240, 0.16);
+}
+:root[data-palette="aurora"] h1,
+:root[data-palette="aurora"] h2,
+:root[data-palette="aurora"] h3,
+:root[data-palette="aurora"] .hero-title {
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
+
+/* Glacier's voice: frosted panels that blur what sits behind them, a bright top
+   edge where the ice catches light, and the roundest controls of the set. */
+:root[data-palette="glacier"] .glass-card,
+:root[data-palette="glacier"] .feature-card,
+:root[data-palette="glacier"] .stat-card,
+:root[data-palette="glacier"] .module-card,
+:root[data-palette="glacier"] .hero-section,
+:root[data-palette="glacier"] .comparison-table-container {
+  backdrop-filter: blur(18px) saturate(1.3);
+  background: var(--bg-card);
+  border-color: rgba(186, 230, 253, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), var(--shadow-rest);
+}
+:root[data-palette="glacier"] .btn-large,
+:root[data-palette="glacier"] .pill-btn,
+:root[data-palette="glacier"] .nav-link,
+:root[data-palette="glacier"] .site-nav-link {
+  border-radius: var(--radius-full);
+}
+
 .btn-large {
   display: inline-flex;
   align-items: center;
@@ -690,7 +924,7 @@ body::after {
   transition: all var(--transition-fast);
   cursor: pointer;
 }
-.btn-primary { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent-glow); }
+.btn-primary { background: var(--accent); color: var(--accent-text); box-shadow: 0 0 20px var(--accent-glow); }
 .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 6px 24px var(--accent-glow); }
 .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; }
 .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--border-highlight); transform: translateY(-2px); }
@@ -766,7 +1000,7 @@ body::after {
   transition: all var(--transition-fast);
 }
 .pill-btn:hover { color: #fff; border-color: var(--border-highlight); background: rgba(255, 255, 255, 0.08); }
-.pill-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 800; box-shadow: 0 0 16px var(--accent-glow); }
+.pill-btn.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 800; box-shadow: 0 0 16px var(--accent-glow); }
 
 .tos-title { color: #fff; margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: 0; }
 .tos-date { color: var(--text-secondary); font-size: 0.85rem; margin: 8px 0 24px; }

@@ -385,7 +385,7 @@
 .copy-btn:hover {
     background: var(--accent);
     border-color: var(--accent);
-    color: #000;
+    color: var(--accent-text);
 }
 
 .doc-article-nav {
