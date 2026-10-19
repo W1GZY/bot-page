@@ -709,6 +709,108 @@ body::after {
 .accent-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; transition: transform var(--transition-fast); }
 .accent-dot:hover { transform: scale(1.25); }
 
+/* Editorial section rhythm, shared by every page. A header pairs a small
+   accent label with a title and one lede line, so a section opens the same
+   way whether it sits on the landing page or a guide. */
+.section-head { max-width: 720px; margin: 0 0 30px; }
+.section-head.is-center { max-width: 760px; margin-inline: auto; text-align: center; }
+.section-title {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+}
+.section-lede {
+  margin: 12px 0 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.section-eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.section-head .section-eyebrow { display: inline-block; margin-bottom: 8px; }
+
+/* A numbered band: one card per step of a short how-it-works story. */
+.steps-band {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.step-card {
+  padding: 22px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+.step-card h3 { margin: 0 0 6px; font-size: 1.05rem; font-weight: 800; }
+.step-card p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+/* Questions answered in place. Native details keeps the toggle free. */
+.faq { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.faq details {
+  padding: 4px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.faq summary {
+  padding: 14px 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; float: right; color: var(--accent); font-weight: 800; }
+.faq details[open] summary::after { content: '\2212'; }
+.faq details p {
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* An aside that says what the bot will not do, in the owner's voice. */
+.owner-note {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+}
+.owner-note p { margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; }
+.owner-note strong { color: var(--text-primary); }
+
+/* A full-width band that opens with a section head, so the new blocks share
+   the landing page's own measure instead of inventing another one. */
+.section-block { max-width: 1100px; margin: 72px auto 0; }
+
+@media (max-width: 760px) {
+  .steps-band { grid-template-columns: 1fr; }
+  .section-block { margin-top: 48px; }
+}
+
 /* The palette row, directly under the accent dots. Original is the default
    and carries no data-palette attribute, so a visitor who never chose one is
    unchanged; New and Indigo are opt-in token sets in this file. */

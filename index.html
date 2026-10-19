@@ -38,13 +38,13 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 
     <script src="theme-init.js?v=b1713db3"></script>
-    <link rel="stylesheet" href="global.css?v=c4420ac0">
+    <link rel="stylesheet" href="global.css?v=8e825f22">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
 
     <!-- The Documentation and Commands tabs live on this page, so docs.css
          loads here too, ahead of index.css and its layout overrides. -->
     <link rel="stylesheet" href="docs.css?v=c1896f84">
-    <link rel="stylesheet" href="index.css?v=3feb929d">
+    <link rel="stylesheet" href="index.css?v=59f6370e">
 
     <script type="application/ld+json">
     {
@@ -142,11 +142,12 @@
         
         <section id="view-overview" class="tab-view active-view">
             <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
+                <span class="section-eyebrow" style="display: block; margin-bottom: 12px;">One bot, every module optional</span>
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
                     A Discord bot you can shape to fit <span style="color: var(--accent);">your server</span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    SeanBot is built for communities and guilds. It handles moderation, analytics, tickets, polls and Wizard101 tools. Turn on the parts you need and leave the rest off.
+                    Moderation, analytics, tickets, polls and Wizard101 tools in one bot. Switch on the modules your community uses and leave the rest off.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -247,17 +248,17 @@
             </div>
 
             <div class="plain-intro-section">
-                <h2><i class="ph-duotone ph-wrench"></i> Only what your server needs</h2>
-                <div class="plain-intro-copy">
-                    <p class="plain-intro-lead">SeanBot comes as separate modules, and they're all switched on when the bot joins your server. Don't need one? Turn it off.</p>
-                    <p>Anti-raid and moderation, tickets, reaction roles, timezone roles, federation, analytics, and the Wizard101 tools are all included. Keep the parts your community uses and turn off the rest, so the bot fits your server and not the other way around.</p>
+                <div class="section-head">
+                    <span class="section-eyebrow">Pick your own mix</span>
+                    <h2 class="section-title">Only what your server needs</h2>
+                    <p class="section-lede">SeanBot ships as separate modules, all switched on when it joins. Anti-raid and moderation, tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools are included. Keep the parts your community uses and turn off the rest, so the bot fits your server rather than the other way around.</p>
                 </div>
             </div>
 
             <div class="feature-row">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Anti-Raid and AutoMod</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                    <h2 class="section-title">Anti-Raid and AutoMod</h2>
+                    <p class="section-lede">
                         Discord's own anti-raid catches the obvious cases. SeanBot builds on top of it to stop spam floods and raid bots. Every rule can be changed to suit your server.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
@@ -427,8 +428,8 @@
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Flexible Support tickets</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                    <h2 class="section-title">Flexible Support tickets</h2>
+                    <p class="section-lede">
                         Members open a ticket from a button, and SeanBot sends them to a private channel that only staff can see. Mods can claim a ticket so two people do not answer the same one. Staff notes added with /ticket staffsay stay out of the member transcript.
                     </p>
                     <p style="margin: 0;">
@@ -439,8 +440,8 @@
 
             <div class="feature-row">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Timezone roles</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                    <h2 class="section-title">Timezone roles</h2>
+                    <p class="section-lede">
                         Make global events sync up automatically. Let members set their timezone with /timezone set for their specific city. SeanBot handles the math, so poll closings, event reminders, and raid sign-ups always appear in everyone's own local time. Best of all? It's completely optional. Make it easy to create events and to track who is from where.
                     </p>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin: 0;">
@@ -645,8 +646,8 @@
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Running two servers as one</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                    <h2 class="section-title">Running two servers as one</h2>
+                    <p class="section-lede">
                         Federation links servers you already trust. A channel in one becomes readable in the other, so an alliance-chat thread, a forum post, a Team-Up request or a leaderboard can be shared without asking everyone to join a second Discord.
                     </p>
                     <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; margin: 0 0 20px 0;">
@@ -660,8 +661,8 @@
 
             <div class="feature-row">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Polls and raid sign-ups</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                    <h2 class="section-title">Polls and raid sign-ups</h2>
+                    <p class="section-lede">
                         Run community polls and raid sign-ups from a channel. Add a question and options, and set a closing time in seconds if you want one.
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
@@ -803,8 +804,8 @@
                 </div>
 
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 14px 0; letter-spacing: -0.5px; line-height: 1.25;">Which emoji are still earning their slot</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin-bottom: 20px;">
+                    <h2 class="section-title">Which emoji are still earning their slot</h2>
+                    <p class="section-lede">
                         Discord caps how many emoji a server can hold, and half of what you added is usually still sitting there unused. This counts message emoji and reactions separately, over a week, a month or all time, and ranks members by how much they actually use them. Worth a look before you decide what to delete.
                     </p>
                     <p style="margin: 0;">
@@ -814,9 +815,10 @@
             </div>
 
             <section id="showcase" style="margin: 44px 0 48px 0;">
-                <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Change Everything from the Dashboard</h2>
-                    <p style="color: var(--text-secondary); max-width: 760px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;"><span data-site-stat="previews">Seven</span> parts of the dashboard are shown on this page: Timezone Analytics, Anti-Raid, Voice Analytics, Server Statistics, Event Manager, Emoji Analytics and Web Embed Builder. Manage your community from the dashboard or from Discord, and you get the best of both.</p>
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">The dashboard</span>
+                    <h2 class="section-title">Change everything from the dashboard</h2>
+                    <p class="section-lede"><span data-site-stat="previews">Seven</span> parts of the dashboard are shown on this page: Timezone Analytics, Anti-Raid, Voice Analytics, Server Statistics, Event Manager, Emoji Analytics and Web Embed Builder. Manage your community from the dashboard or from Discord, and you get the best of both.</p>
                 </div>
 
                 <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
@@ -1007,8 +1009,8 @@
             <!-- Slots come from the dashboard's public API and are strictly
                  opt-in: the whole section stays hidden until index.js finds one. -->
             <section id="servers" hidden style="margin: 44px 0 48px 0;">
-                <div style="text-align: center; margin-bottom: 4px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Communities using <span style="color: var(--accent);"> SeanBot</span></h2>
+                <div class="section-head is-center">
+                    <h2 class="section-title">Communities using <span style="color: var(--accent);">SeanBot</span></h2>
                 </div>
 
                 <div class="server-carousel" id="serverCarousel">
@@ -1025,9 +1027,10 @@
             </section>
 
             <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
-                <div style="text-align: center; margin-bottom: 28px;">
-                    <h2 class="section-title-accent" style="font-size: 2.2rem; font-weight: 800; margin-top: 0; letter-spacing: -0.5px;">Compare Bots</h2>
-                    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 0 auto; font-size: 0.95rem; line-height: 1.6;">See for yourself and decide which bot fits your server, or just check what the competition puts behind a paywall.</p>
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">Side by side</span>
+                    <h2 class="section-title">Compare bots</h2>
+                    <p class="section-lede">See which bot fits your server, and what the others put behind a paywall.</p>
                 </div>
 
                 <div class="comparison-scroll-wrapper">
@@ -1109,7 +1112,7 @@
                 <div class="modules-heading">
                     <div>
                         <span class="section-eyebrow">Choose your own mix</span>
-                        <h2 class="section-title-accent"><i class="ph-duotone ph-plugs-connected"></i> Explore the modules</h2>
+                        <h2 class="section-title"><i class="ph-duotone ph-plugs-connected"></i> Explore the modules</h2>
                         <p>Browse the modules, filter by server type, or search for the feature you want.</p>
                     </div>
                     <span class="module-count-badge" id="moduleResultsSummary">Loading...</span>
@@ -1487,10 +1490,67 @@
                 <p class="modules-more">Click any module to open its guide in the docs.</p>
             </section>
 
+            <section class="section-block" aria-labelledby="steps-title">
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">Up and running</span>
+                    <h2 class="section-title" id="steps-title">Set up in about a minute</h2>
+                </div>
+                <div class="steps-band">
+                    <div class="step-card">
+                        <span class="step-index">1</span>
+                        <h3>Add the bot</h3>
+                        <p>Press Invite and pick your server, then approve the permissions it asks for.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-index">2</span>
+                        <h3>Pick your modules</h3>
+                        <p>Everything arrives switched on. Turn off whatever your community will not use, and tune the rest from the dashboard.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-index">3</span>
+                        <h3>Change it live</h3>
+                        <p>Settings reach the bot in seconds, with no restart needed.</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="owner-note section-block">
+                <p><strong>What it will not do.</strong> SeanBot will not sell your data, and no module sits behind a paywall. Everything on this page is free to run, and it stays that way.</p>
+            </aside>
+
+            <section class="section-block" aria-labelledby="faq-title">
+                <div class="section-head is-center">
+                    <span class="section-eyebrow">Straight answers</span>
+                    <h2 class="section-title" id="faq-title">Questions people ask first</h2>
+                </div>
+                <div class="faq">
+                    <details>
+                        <summary>Is SeanBot really free?</summary>
+                        <p>Yes. Every module is included from the day you add the bot, with no subscription and no premium tier.</p>
+                    </details>
+                    <details>
+                        <summary>What permissions does it ask for?</summary>
+                        <p>You approve them on the invite screen, and you can change them later in your server settings. Nothing is requested that a module does not use.</p>
+                    </details>
+                    <details>
+                        <summary>Can it replace the bots I already run?</summary>
+                        <p>For most servers, yes. Moderation, tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools all live in one bot. Keep any you still like; they run side by side.</p>
+                    </details>
+                    <details>
+                        <summary>Does it work for Wizard101 communities?</summary>
+                        <p>That is what it was built for. Damage calculation, deck building, pets, spells and stat caps ship together with the general modules.</p>
+                    </details>
+                    <details>
+                        <summary>Do my members need to do anything?</summary>
+                        <p>No. Everything is optional, so a member who never opens a menu or sets a timezone still sees the server working exactly as before.</p>
+                    </details>
+                </div>
+            </section>
+
             <div class="section-cta-banner">
                 <div class="section-cta-content">
-                    <h3>Start with anti-raid, add the rest when someone asks</h3>
-                    <p>Moderation and tickets work as soon as you configure them. Everything else can sit switched off until you want it. Every module is included from the day you add the bot, and there is no premium tier.</p>
+                    <h3>Try SeanBot now, see for yourself!</h3>
+                    <p>What's the worst that can happen? Your server gets better? You won't find out without trying, it's completely free.</p>
                 </div>
                 <a href="invite.html" target="_blank" rel="noopener" class="section-cta-btn">
                     <i class="ph-bold ph-discord-logo"></i> Invite SeanBot Free
@@ -1499,11 +1559,10 @@
         </section>
 
         <section id="view-docs" class="tab-view">
-            <div class="docs-page-header" style="margin-bottom: 24px;">
-                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Documentation</h1>
-                <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">
-                    One page per module, in roughly the order you would actually configure them. Written for whoever has to do the configuring.
-                </p>
+            <div class="section-head" style="margin-bottom: 24px;">
+                <span class="section-eyebrow">Guides</span>
+                <h1 class="section-title">Documentation</h1>
+                <p class="section-lede">One page per module, in roughly the order you would actually configure them. Written for whoever has to do the configuring.</p>
             </div>
 
             <div style="margin-bottom: 20px;">
@@ -1540,7 +1599,8 @@
         
         <section id="view-tos" class="tab-view">
             <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(16px);">
-                <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px;">Terms of Service & Privacy Policy</h1>
+                <span class="section-eyebrow">Legal</span>
+                <h1 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.5px;">Terms of Service & Privacy Policy</h1>
                 <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 0.95rem;">Last updated: July 2026</p>
 
                 <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">1. Terms of Service</h2>
@@ -1564,9 +1624,10 @@
 
 
         <section id="view-commands" class="tab-view">
-            <div style="margin-bottom: 24px;">
-                <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Commands</h1>
-                <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem;">Every command SeanBot ships with, each linked to its setup guide.</p>
+            <div class="section-head" style="margin-bottom: 24px;">
+                <span class="section-eyebrow">Reference</span>
+                <h1 class="section-title">Commands</h1>
+                <p class="section-lede">Every command SeanBot ships with, each linked to its setup guide.</p>
             </div>
 
             <div class="search-container" style="margin-bottom: 24px;">

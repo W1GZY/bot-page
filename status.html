@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
-    <link rel="stylesheet" href="global.css?v=c4420ac0">
+    <link rel="stylesheet" href="global.css?v=8e825f22">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
     <link rel="stylesheet" href="docs.css?v=c1896f84">
     <script src="layout.js?v=20df8546" defer></script>
@@ -99,7 +99,8 @@
         </header>
 
         <main class="content" style="max-width:900px;">
-            <div>
+            <div class="section-head" style="max-width: 780px;">
+                <span class="section-eyebrow">Live status</span>
                 <h1 class="docs-page-heading">All systems operational</h1>
                 <p class="docs-page-subtitle">The current state of the parts of SeanBot you can reach from outside. If something is wrong, this page is the first place it shows up.</p>
             </div>
@@ -110,27 +111,19 @@
                         <span style="width:9px; height:9px; border-radius:50%; background:#57F287; display:inline-block;"></span>
                         <strong style="font-size:0.95rem;">Discord bot</strong>
                     </div>
-                    <div style="font-size:0.8rem; color:var(--text-secondary);">Online and responding to commands.</div>
                 </div>
                 <div class="stat-card" style="text-align:left;">
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
                         <span style="width:9px; height:9px; border-radius:50%; background:#57F287; display:inline-block;"></span>
                         <strong style="font-size:0.95rem;">Dashboard</strong>
                     </div>
-                    <div style="font-size:0.8rem; color:var(--text-secondary);">Sign-in and module settings are working.</div>
                 </div>
                 <div class="stat-card" style="text-align:left;">
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
                         <span style="width:9px; height:9px; border-radius:50%; background:#57F287; display:inline-block;"></span>
                         <strong style="font-size:0.95rem;">Public API</strong>
                     </div>
-                    <div style="font-size:0.8rem; color:var(--text-secondary);">Server counts and statistics are answering.</div>
                 </div>
-            </div>
-
-            <div class="callout-box callout-note">
-                <strong><i class="ph-fill ph-info"></i> Reading this page</strong>
-                <p style="margin:8px 0 0;">The lights above reflect the last known state of each service. If a service is degraded, the card turns amber; if it is down, it turns red. A longer incident history lives in the dashboard.</p>
             </div>
 
             <div class="setup-cta">
