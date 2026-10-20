@@ -727,14 +727,6 @@ body::after {
   font-size: 1rem;
   line-height: 1.65;
 }
-.section-eyebrow {
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-.section-head .section-eyebrow { display: inline-block; margin-bottom: 8px; }
 
 /* A numbered band: one card per step of a short how-it-works story. */
 .steps-band {

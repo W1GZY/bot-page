@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 
     <script src="theme-init.js?v=b1713db3"></script>
-    <link rel="stylesheet" href="global.css?v=15b9d9e1">
+    <link rel="stylesheet" href="global.css?v=abfccb80">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
 
     <!-- The Documentation and Commands tabs live on this page, so docs.css
@@ -154,12 +154,11 @@
                 <div class="hero-mark" aria-hidden="true">
                     <img src="assets/seanbot.png?v=5db7d29f" alt="">
                 </div>
-                <span class="section-eyebrow" style="display: block; margin-bottom: 12px;">One bot, every module optional</span>
                 <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
                     A Discord bot you can shape to fit <span class="scribble-word" style="color: var(--accent);">your server<svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7 C 30 2, 55 9, 90 5 S 150 2, 198 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>.
                 </h1>
                 <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
-                    Moderation, analytics, tickets, polls and Wizard101 tools in one bot. Switch on the modules your community uses and leave the rest off.
+                    Moderation, tickets, polls, analytics and the Wizard101 tools. Every module is optional, so you can leave the ones you do not need switched off.
                 </p>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
@@ -261,7 +260,6 @@
 
             <section class="section-block" aria-labelledby="personas-title">
                 <div class="section-head is-center">
-                    <span class="section-eyebrow">In practice</span>
                     <h2 class="section-title" id="personas-title">What it is good at</h2>
                 </div>
                 <div class="persona-grid">
@@ -290,9 +288,8 @@
 
             <div class="plain-intro-section">
                 <div class="section-head">
-                    <span class="section-eyebrow">Pick your own mix</span>
                     <h2 class="section-title">Only what your server needs</h2>
-                    <p class="section-lede">SeanBot ships as separate modules, all switched on when it joins. Anti-raid and moderation, tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools are included. Keep the parts your community uses and turn off the rest, so the bot fits your server rather than the other way around.</p>
+                    <p class="section-lede">Most of it is on when the bot joins. If your server will never use timezone roles or federation, switch them off and they stop asking for attention. The rest keeps working exactly the same.</p>
                 </div>
             </div>
 
@@ -469,7 +466,7 @@
                 </div>
 
                 <div>
-                    <h2 class="section-title">Flexible Support tickets</h2>
+                    <h2 class="section-title">Support tickets</h2>
                     <p class="section-lede">
                         Members open a ticket from a button, and SeanBot sends them to a private channel that only staff can see. Mods can claim a ticket so two people do not answer the same one. Staff notes added with /ticket staffsay stay out of the member transcript.
                     </p>
@@ -483,7 +480,7 @@
                 <div>
                     <h2 class="section-title">Timezone roles</h2>
                     <p class="section-lede">
-                        Make global events sync up automatically. Let members set their timezone with /timezone set for their specific city. SeanBot handles the math, so poll closings, event reminders, and raid sign-ups always appear in everyone's own local time. Best of all? It's completely optional. Make it easy to create events and to track who is from where.
+                        Members set a city with /timezone set and get a role for it. Poll closings, event reminders and raid sign-ups then show in their own local time.
                     </p>
                     <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin: 0;">
                         If a member never sets one, nothing breaks. They just see event times in the server default like they always did.
@@ -857,9 +854,8 @@
 
             <section id="showcase" style="margin: 44px 0 48px 0;">
                 <div class="section-head is-center">
-                    <span class="section-eyebrow">The dashboard</span>
-                    <h2 class="section-title">Change everything from the dashboard</h2>
-                    <p class="section-lede"><span data-site-stat="previews">Seven</span> parts of the dashboard are shown on this page: Timezone Analytics, Anti-Raid, Voice Analytics, Server Statistics, Event Manager, Emoji Analytics and Web Embed Builder. Manage your community from the dashboard or from Discord, and you get the best of both.</p>
+                    <h2 class="section-title">Dashboard previews</h2>
+                    <p class="section-lede"><span data-site-stat="previews">Seven</span> tabs, one per page: Timezone Analytics, Anti-Raid, Voice Analytics, Server Statistics, Event Manager, Emoji Analytics and Web Embed Builder. Click one here, or sign in and use the real thing.</p>
                 </div>
 
                 <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
@@ -877,7 +873,7 @@
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Timezone dashboard</span>
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Look up your members' timezones</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">View member timezones and IANA zones right from your dashboard. No more guessing who is awake or doing math to find their time. See exactly who is available, so scheduling events, raids, and meetings stops being a guess.</p>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Every member's zone sits on one map, with IANA names. Use it before picking a raid time, or to see who is likely awake right now.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Discord panel</span>
                                 <span class="pill-badge">Timezone roles</span>
@@ -892,8 +888,8 @@
                     <div id="showcase-antiraid" class="showcase-panel" role="tabpanel" aria-label="Anti-raid preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Security dashboard</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Secure your server</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Monitor your server's security status, and make sure your servers safety is maintained and take action against potential threats.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">The security page</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">A security rating, the checks currently running, and the last few detections. If something spikes, the page says which rule fired and what it did.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Security rating</span>
                                 <span class="pill-badge">Active protection checks</span>
@@ -908,8 +904,8 @@
                     <div id="showcase-voice" class="showcase-panel" role="tabpanel" aria-label="Voice analytics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice activity</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Track the Busiest voice hours</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">View your communities' voice activity and identify the most active hours. Find out who is your most active voice user.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Voice hours, by member and by day</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Session length per member and the busiest hours of the week. Handy when you are deciding what time to run an event.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Session durations</span>
                                 <span class="pill-badge">Member activity</span>
@@ -924,8 +920,8 @@
                     <div id="showcase-serverstats" class="showcase-panel" role="tabpanel" aria-label="Server statistics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Server stats</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Know Your Server's Performance</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">View your communities activity and see Member growth, online counts, message totals and channel activity, on one screen.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Members, messages and channel use</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Member growth, online counts, messages and the channels people actually use. The same numbers the stats channels read from.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Core stats</span>
                                 <span class="pill-badge">Channel activity</span>
@@ -973,8 +969,8 @@
                     <div id="showcase-events" class="showcase-panel" role="tabpanel" aria-label="Event manager preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Events and reminders</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">The event module</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">You can set up cool cooldowns and events for your needs and make your community more engaging. </p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Events and reminders</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Create an event, attach a reminder, and let members RSVP. A countdown channel can rename itself as the start gets closer.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Upcoming events</span>
                                 <span class="pill-badge">Reminders</span>
@@ -1016,8 +1012,8 @@
                     <div id="showcase-emoji" class="showcase-panel" role="tabpanel" aria-label="Emoji analytics preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Emoji usage</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Everything about Emoji Usage</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Find out which emoji get used, how the reactions trend and which ones are only taking up a slot. This makes it fun to see how your community interacts with emojis!</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Which emoji earn their slot</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Message emoji and reactions counted separately, over a week, a month or all time. The unused half of your slots is usually obvious within a day.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Emoji tracking</span>
                                 <span class="pill-badge">Reaction tracking</span>
@@ -1032,8 +1028,8 @@
                     <div id="showcase-embed" class="showcase-panel" role="tabpanel" aria-label="Web embed builder preview" hidden style="display: none;">
                         <div>
                             <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Embed builder</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Build and preview embeds visually</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Build a rule, an announcement or a welcome embed beside a live Discord preview, then post it in one click.</p>
+                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Embeds with a live preview</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Write the embed on the left, watch the Discord preview on the right, then post it or save it as a welcome message.</p>
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <span class="pill-badge">Live preview</span>
                                 <span class="pill-badge">Placeholders</span>
@@ -1067,19 +1063,10 @@
                 </div>
             </section>
 
-            <section class="section-block" aria-labelledby="onebot-title">
-                <div class="section-head is-center">
-                    <span class="section-eyebrow">One bot instead of four</span>
-                    <h2 class="section-title" id="onebot-title">Less juggling, fewer logins</h2>
-                    <p class="section-lede">A moderation bot, a ticket bot and a poll bot are three dashboards to keep in sync. SeanBot puts them in one place, with one permission list and one log.</p>
-                </div>
-            </section>
-
             <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
                 <div class="section-head is-center">
-                    <span class="section-eyebrow">Side by side</span>
                     <h2 class="section-title">Compare bots</h2>
-                    <p class="section-lede">See which bot fits your server, and what the others put behind a paywall.</p>
+                    <p class="section-lede">What each bot does, and what the others charge for. The paywall row at the bottom is the short version.</p>
                 </div>
 
                 <div class="comparison-scroll-wrapper">
@@ -1144,7 +1131,7 @@
                 <div class="section-cta-banner">
                     <div class="section-cta-content">
                         <h3>Free to run. No subscription.</h3>
-                        <p>Other bots charge a monthly fee for features that SeanBot includes at no cost.</p>
+                        <p>Nothing in the table above needs a paid plan.</p>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
                         <a href="#showcase" class="section-cta-link">
@@ -1160,9 +1147,8 @@
             <section id="features" class="modules-section">
                 <div class="modules-heading">
                     <div>
-                        <span class="section-eyebrow">Choose your own mix</span>
-                        <h2 class="section-title"><i class="ph-duotone ph-plugs-connected"></i> Explore the modules</h2>
-                        <p>Browse the modules, filter by server type, or search for the feature you want.</p>
+                        <h2 class="section-title"><i class="ph-duotone ph-plugs-connected"></i> The module list</h2>
+                        <p>Filter by what you run, or search for the thing you need. Every card opens its guide.</p>
                     </div>
                     <span class="module-count-badge" id="moduleResultsSummary">Loading...</span>
                 </div>
@@ -1541,8 +1527,7 @@
 
             <section class="section-block" aria-labelledby="steps-title">
                 <div class="section-head is-center">
-                    <span class="section-eyebrow">Up and running</span>
-                    <h2 class="section-title" id="steps-title">Set up in about a minute</h2>
+                    <h2 class="section-title" id="steps-title">Set up in a few minutes</h2>
                 </div>
                 <div class="steps-band">
                     <div class="step-card">
@@ -1553,7 +1538,7 @@
                     <div class="step-card">
                         <span class="step-index">2</span>
                         <h3>Pick your modules</h3>
-                        <p>Everything arrives switched on. Turn off whatever your community will not use, and tune the rest from the dashboard.</p>
+                        <p>Most things arrive switched on. Turn off whatever your community will not use, and tune the rest from the dashboard.</p>
                     </div>
                     <div class="step-card">
                         <span class="step-index">3</span>
@@ -1564,41 +1549,39 @@
             </section>
 
             <aside class="owner-note section-block">
-                <p><strong>What it will not do.</strong> SeanBot will not sell your data, and no module sits behind a paywall. Everything on this page is free to run, and it stays that way.</p>
+                <p><strong>What it will not do.</strong> Sell your data, or charge for a module. No premium tier, and no plan to add one.</p>
             </aside>
 
             <section class="section-block" aria-labelledby="faq-title">
                 <div class="section-head is-center">
-                    <span class="section-eyebrow">Straight answers</span>
-                    <h2 class="section-title" id="faq-title">Questions people ask first</h2>
+                    <h2 class="section-title" id="faq-title">Questions we get</h2>
                 </div>
                 <div class="faq">
                     <details>
                         <summary>Is SeanBot really free?</summary>
-                        <p>Yes. Every module is included from the day you add the bot, with no subscription and no premium tier.</p>
+                        <p>Yes. Nothing is held back for a paid plan, and there is no plan to add one later.</p>
                     </details>
                     <details>
                         <summary>What permissions does it ask for?</summary>
-                        <p>You approve them on the invite screen, and you can change them later in your server settings. Nothing is requested that a module does not use.</p>
+                        <p>You approve the list on the invite screen and can edit it later under Server Settings. The access check at the end of setup names anything missing.</p>
                     </details>
                     <details>
                         <summary>Can it replace the bots I already run?</summary>
-                        <p>For most servers, yes. Moderation, tickets, reaction roles, timezone roles, federation, analytics and the Wizard101 tools all live in one bot. Keep any you still like; they run side by side.</p>
+                        <p>Usually. Keep whichever bots you still like; they run alongside this one. What you stop doing is keeping three dashboards in sync.</p>
                     </details>
                     <details>
                         <summary>Does it work for Wizard101 communities?</summary>
-                        <p>That is what it was built for. Damage calculation, deck building, pets, spells and stat caps ship together with the general modules.</p>
+                        <p>Yes. Damage, decks, pets, spells, stat caps and raid rosters ship alongside the general modules.</p>
                     </details>
                     <details>
                         <summary>Do my members need to do anything?</summary>
-                        <p>No. Everything is optional, so a member who never opens a menu or sets a timezone still sees the server working exactly as before.</p>
+                        <p>No. A member who never sets a timezone or opens a ticket sees the server exactly as it was.</p>
                     </details>
                 </div>
             </section>
 
             <section class="section-block" aria-labelledby="privacy-title">
                 <div class="section-head is-center">
-                    <span class="section-eyebrow">Your data</span>
                     <h2 class="section-title" id="privacy-title">What it keeps, and how to check</h2>
                 </div>
                 <div class="trust-grid">
@@ -1634,7 +1617,6 @@
 
         <section id="view-docs" class="tab-view">
             <div class="section-head" style="margin-bottom: 24px;">
-                <span class="section-eyebrow">Guides</span>
                 <h1 class="section-title">Documentation</h1>
                 <p class="section-lede">One page per module, in roughly the order you would actually configure them. Written for whoever has to do the configuring.</p>
             </div>
@@ -1673,7 +1655,6 @@
         
         <section id="view-tos" class="tab-view">
             <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(16px);">
-                <span class="section-eyebrow">Legal</span>
                 <h1 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.5px;">Terms of Service & Privacy Policy</h1>
                 <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 0.95rem;">Last updated: July 2026</p>
 
@@ -1699,7 +1680,6 @@
 
         <section id="view-commands" class="tab-view">
             <div class="section-head" style="margin-bottom: 24px;">
-                <span class="section-eyebrow">Reference</span>
                 <h1 class="section-title">Commands</h1>
                 <p class="section-lede">Every command SeanBot ships with, each linked to its setup guide.</p>
             </div>
