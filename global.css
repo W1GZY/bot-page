@@ -1031,6 +1031,19 @@ body::after {
 .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; }
 .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--border-highlight); transform: translateY(-2px); }
 
+/* a:hover above is more specific than .btn-primary, which painted the label
+   in the accent over an accent fill. Keep filled buttons on their own ink. */
+a.btn-primary:hover,
+a.btn-primary:focus-visible,
+a.topbar-invite-btn:hover,
+a.topbar-invite-btn:focus-visible {
+  color: var(--accent-text);
+}
+a.btn-secondary:hover,
+a.btn-secondary:focus-visible {
+  color: var(--text-primary);
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
