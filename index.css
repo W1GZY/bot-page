@@ -172,14 +172,9 @@
         }
     #featuresGrid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: 1fr;
             grid-auto-flow: dense;
             gap: 20px;
-        }
-        @media (min-width: 1100px) {
-            #featuresGrid {
-                grid-template-columns: repeat(3, 1fr);
-            }
         }
     
         .showcase-tab {
@@ -1392,7 +1387,7 @@
             justify-content: flex-end;
         }
         #featuresGrid {
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 16px;
         }
         .module-card {
@@ -1487,7 +1482,7 @@
             font-size: 0.9rem;
         }
         .module-card.featured {
-            grid-column: span 2;
+            grid-column: auto;
             min-height: 260px;
             padding: 24px 28px;
             background: linear-gradient(135deg, var(--bg-card) 0%, color-mix(in srgb, var(--accent) 6%, var(--bg-card)) 100%);
@@ -1524,7 +1519,7 @@
         }
 
         .module-card.w101-suite {
-            grid-column: span 2;
+            grid-column: auto;
             min-height: 240px;
             padding: 22px 26px;
             background: linear-gradient(135deg, var(--bg-card) 0%, rgba(147, 51, 234, 0.04) 100%);
