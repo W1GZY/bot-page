@@ -526,7 +526,10 @@
 
     // One route table for every fragment: tab, section, guide id or command
     // category, whether it arrives with a page load or is typed in.
+    let firstHashRoute = true;
     async function applyHashRoute() {
+        const isFirstRoute = firstHashRoute;
+        firstHashRoute = false;
         const hash = window.location.hash.replace(/^#/, '');
         if (!hash) return;
 
@@ -548,7 +551,7 @@
         const docsReady = await ensureTabData('docs').then(() => true, () => false);
         if (docsReady && docsDataLoaded() && docsData.some(d => d.id === hash)) {
             await ensureTab('docs');
-            window.activateDoc?.(hash, { updateHistory: 'skip' });
+            window.activateDoc?.(hash, { updateHistory: 'skip', scrollTop: isFirstRoute });
             return;
         }
 
@@ -608,6 +611,10 @@ function initDocsPage() {
         const navContainer = document.getElementById('docsNavLinks');
         const sidebarNavContainer = document.getElementById('sidebarDocsNavLinks');
         const contentContainer = document.getElementById('docsContent');
+        const catalogContainer = document.getElementById('docsCatalog');
+        const readerContainer = document.getElementById('docsReader');
+        const landingContainer = document.getElementById('docsLanding');
+        const mobileNavContainer = document.getElementById('docsMobileNavLinks');
 
         if (!contentContainer) return;
 
@@ -682,6 +689,14 @@ function initDocsPage() {
             if (!docId) return;
 
             const updateHistory = options.updateHistory || 'replace';
+            const openedFromCatalog = Boolean(catalogContainer && !catalogContainer.hidden);
+            const scrollToTop = openedFromCatalog || options.scrollTop === true;
+            if (catalogContainer && readerContainer) {
+                catalogContainer.hidden = true;
+                readerContainer.hidden = false;
+                if (landingContainer) landingContainer.hidden = true;
+                document.getElementById('docsMobile')?.removeAttribute('open');
+            }
 
             const previousScrollY = window.scrollY;
 
@@ -713,10 +728,29 @@ function initDocsPage() {
                 }
             }
 
-            // Swapping documentation articles must not move the main page or dashboard.
+            // Swapping documentation articles keeps the reader still; a card opens
+            // the reader at its top, since the catalog was above it.
             requestAnimationFrame(() => {
-                window.scrollTo({ top: previousScrollY, left: window.scrollX, behavior: 'auto' });
+                if (scrollToTop) {
+                    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+                } else {
+                    window.scrollTo({ top: previousScrollY, left: window.scrollX, behavior: 'auto' });
+                }
             });
+
+            // A deep link lands before the browser applies the fragment, so the
+            // page can jump back down after the frame above. Settle once after
+            // load to keep the header and the guide picker in view.
+            if (options.scrollTop === true) {
+                const settleTop = () => window.setTimeout(() => {
+                    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+                }, 50);
+                if (document.readyState === 'complete') {
+                    settleTop();
+                } else {
+                    window.addEventListener('load', settleTop, { once: true });
+                }
+            }
 
             const activeArticle = document.getElementById(docId);
             if (activeArticle && typeof window.animateScrollPop === 'function') {
@@ -733,8 +767,50 @@ function initDocsPage() {
             groups[meta.cat].items.push(doc);
         });
 
-        if (navContainer) {
-            navContainer.innerHTML = '';
+        function showDocsCatalog(options = {}) {
+            if (!catalogContainer || !readerContainer) return;
+            readerContainer.hidden = true;
+            catalogContainer.hidden = false;
+            if (landingContainer) landingContainer.hidden = false;
+            closeMobileDocsNav();
+            document.getElementById('docsMobile')?.removeAttribute('open');
+            if (options.updateHistory !== 'skip') {
+                history.pushState({}, '', window.location.pathname);
+            }
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }
+        window.showDocsCatalog = showDocsCatalog;
+
+        // The landing is one flat card per guide, the way the Physalia docs
+        // page does it: icon, title, summary, no category headings to scan.
+        function buildDocsCatalog() {
+            if (!catalogContainer) return;
+            catalogContainer.innerHTML = '';
+            docsData.forEach(doc => {
+                const card = document.createElement('a');
+                card.className = 'guide-card';
+                card.href = `#${doc.id}`;
+                card.setAttribute('data-doc-card', doc.id);
+                card.innerHTML = `
+                    <span class="guide-icon"><i class="ph-duotone ${doc.icon}"></i></span>
+                    <h2>${doc.title}</h2>
+                    <p>${doc.subtitle}</p>
+                `;
+                card.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    activateDoc(doc.id, { updateHistory: 'push' });
+                });
+                catalogContainer.appendChild(card);
+            });
+        }
+
+        buildDocsCatalog();
+
+        // One list builder for the landing sidebar, the mobile dropdown and
+        // the docs tab on index.html, so the three cannot drift apart.
+        function buildDocsNav(container, linkClass) {
+            if (!container) return;
+            container.innerHTML = '';
             Object.keys(groups).forEach(catKey => {
                 const grp = groups[catKey];
                 const grpDiv = document.createElement('div');
@@ -748,40 +824,11 @@ function initDocsPage() {
 
                 grp.items.forEach(doc => {
                     const navLink = document.createElement('a');
-                    navLink.className = `docs-nav-link ${doc.id === docsData[0].id ? 'active' : ''}`;
+                    navLink.className = `${linkClass} ${doc.id === docsData[0].id ? 'active' : ''}`;
                     navLink.setAttribute('data-doc', doc.id);
                     navLink.href = `#${doc.id}`;
                     navLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
                     navLink.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        activateDoc(doc.id, { updateHistory: 'push' });
-                    });
-                    grpDiv.appendChild(navLink);
-                });
-                navContainer.appendChild(grpDiv);
-            });
-        }
-
-        if (sidebarNavContainer) {
-            sidebarNavContainer.innerHTML = '';
-            Object.keys(groups).forEach(catKey => {
-                const grp = groups[catKey];
-                const grpDiv = document.createElement('div');
-                grpDiv.className = 'docs-nav-group';
-                grpDiv.setAttribute('data-category-group', catKey);
-
-                const grpTitle = document.createElement('div');
-                grpTitle.className = 'docs-nav-group-title';
-                grpTitle.innerHTML = `<i class="ph ${grp.icon}"></i> ${grp.title}`;
-                grpDiv.appendChild(grpTitle);
-
-                grp.items.forEach(doc => {
-                    const sidebarLink = document.createElement('a');
-                    sidebarLink.className = `sidebar-toc-link ${doc.id === docsData[0].id ? 'active' : ''}`;
-                    sidebarLink.setAttribute('data-doc', doc.id);
-                    sidebarLink.href = `#${doc.id}`;
-                    sidebarLink.innerHTML = `<i class="ph ${doc.icon}"></i> ${doc.title}`;
-                    sidebarLink.addEventListener('click', (e) => {
                         e.preventDefault();
                         activateDoc(doc.id, { updateHistory: 'push' });
                         if (window.innerWidth <= 1000) {
@@ -792,11 +839,15 @@ function initDocsPage() {
                             document.body.style.overflow = '';
                         }
                     });
-                    grpDiv.appendChild(sidebarLink);
+                    grpDiv.appendChild(navLink);
                 });
-                sidebarNavContainer.appendChild(grpDiv);
+                container.appendChild(grpDiv);
             });
         }
+
+        buildDocsNav(navContainer, 'docs-nav-link');
+        buildDocsNav(sidebarNavContainer, catalogContainer ? 'docs-nav-link' : 'sidebar-toc-link');
+        buildDocsNav(mobileNavContainer, 'docs-nav-link');
 
         contentContainer.innerHTML = '';
         docsData.forEach((doc, idx) => {
@@ -816,9 +867,14 @@ function initDocsPage() {
             const nextDoc = idx < docsData.length - 1 ? docsData[idx + 1] : null;
 
             let html = `
+                <nav class="doc-crumbs" aria-label="Breadcrumb">
+                    <a href="#" class="docs-crumb-home">Documentation</a>
+                    <span aria-hidden="true">/</span>
+                    <span>${doc.title}</span>
+                </nav>
                 <div class="docs-article-heading">
                     <div>
-                        <h2><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h2>
+                        <h1><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h1>
                         <p class="docs-article-subtitle">${doc.subtitle}</p>
                     </div>
                     <span class="badge role">${meta.title}</span>
@@ -827,7 +883,7 @@ function initDocsPage() {
 
             doc.content.forEach(item => {
                 if (item.type === 'heading') {
-                    html += `<h3>${item.text}</h3>`;
+                    html += `<h2>${item.text}</h2>`;
                 } else if (item.type === 'text') {
                     html += `<p>${item.text}</p>`;
                 } else if (item.type === 'callout') {
@@ -838,10 +894,10 @@ function initDocsPage() {
                         </div>
                     `;
                 } else if (item.type === 'list') {
-                    if (item.title) html += `<h3>${item.title}</h3>`;
+                    if (item.title) html += `<h2>${item.title}</h2>`;
                     html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
                 } else if (item.type === 'commands') {
-                    if (item.title) html += `<h3>${item.title}</h3>`;
+                    if (item.title) html += `<h2>${item.title}</h2>`;
                     html += `<div class="cmd-item-list">`;
                     item.items.forEach(cmd => {
                         html += `
@@ -866,7 +922,7 @@ function initDocsPage() {
                     <button class="doc-nav-btn prev-btn" data-doc="${prevDoc.id}">
                         <i class="ph ph-arrow-left"></i>
                         <div>
-                            <span class="nav-label">PREVIOUS MODULE</span>
+                            <span class="nav-label">Previous guide</span>
                             <span class="nav-title">${prevDoc.title}</span>
                         </div>
                     </button>
@@ -879,7 +935,7 @@ function initDocsPage() {
                 html += `
                     <button class="doc-nav-btn next-btn" data-doc="${nextDoc.id}">
                         <div>
-                            <span class="nav-label">NEXT MODULE</span>
+                            <span class="nav-label">Next guide</span>
                             <span class="nav-title">${nextDoc.title}</span>
                         </div>
                         <i class="ph ph-arrow-right"></i>
@@ -895,6 +951,13 @@ function initDocsPage() {
         });
 
         contentContainer.addEventListener('click', (e) => {
+            const crumb = e.target.closest('.docs-crumb-home');
+            if (crumb) {
+                e.preventDefault();
+                showDocsCatalog();
+                return;
+            }
+
             const btn = e.target.closest('.doc-nav-btn');
             if (btn) {
                 const targetDocId = btn.getAttribute('data-doc');
@@ -941,8 +1004,8 @@ function initDocsPage() {
         const searchInput = document.getElementById('docSearch');
         let activeDocsCategory = 'all';
 
-        // Sidebar filter only: a link needs the active category and the query.
-        // Empty groups hide; the open article does not change while typing.
+        // Filter the sidebar and the landing cards together: a link or card
+        // needs the active category and the query, and empty groups hide.
         function applyDocSearchFilter(rawQuery) {
             const normalized = String(rawQuery || '').toLowerCase().trim();
             const groupVisibility = {};
@@ -958,6 +1021,10 @@ function initDocsPage() {
                     link.style.display = visible ? 'flex' : 'none';
                 });
 
+                document.querySelectorAll(`[data-doc-card="${doc.id}"]`).forEach(card => {
+                    card.hidden = !visible;
+                });
+
                 groupVisibility[meta.cat] = Boolean(groupVisibility[meta.cat] || visible);
             });
 
@@ -968,10 +1035,15 @@ function initDocsPage() {
         }
 
         searchInput?.addEventListener('input', (e) => {
+            if (catalogContainer && readerContainer) {
+                readerContainer.hidden = true;
+                catalogContainer.hidden = false;
+                if (landingContainer) landingContainer.hidden = false;
+            }
             applyDocSearchFilter(e.target.value);
         });
 
-        // Enter opens the best match; typing only filters the sidebar.
+        // Enter opens the best match; typing only filters the lists.
         searchInput?.addEventListener('keydown', (e) => {
             if (e.key !== 'Enter') return;
             const query = e.target.value.toLowerCase().trim();
@@ -985,11 +1057,19 @@ function initDocsPage() {
             }
         });
 
-        // Open the first guide (or the one in the URL) so the pane is not
-        // blank, without writing that choice into the address bar.
+        // docs.html lands on the guide grid unless the URL names a guide; the
+        // docs tab on index.html has no grid, so its pane opens the first guide.
         const requestedDoc = window.location.hash.replace(/^#/, '');
-        const initialDoc = docsData.some((doc) => doc.id === requestedDoc) ? requestedDoc : docsData[0]?.id;
-        if (initialDoc) activateDoc(initialDoc, { updateHistory: 'skip' });
+        if (catalogContainer && readerContainer) {
+            if (docsData.some((doc) => doc.id === requestedDoc)) {
+                activateDoc(requestedDoc, { updateHistory: 'skip' });
+            } else {
+                showDocsCatalog({ updateHistory: 'skip' });
+            }
+        } else {
+            const initialDoc = docsData.some((doc) => doc.id === requestedDoc) ? requestedDoc : docsData[0]?.id;
+            if (initialDoc) activateDoc(initialDoc, { updateHistory: 'skip' });
+        }
     }
 
     

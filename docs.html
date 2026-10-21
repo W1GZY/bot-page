@@ -35,12 +35,12 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
-    <link rel="stylesheet" href="global.css?v=abfccb80">
+    <link rel="stylesheet" href="global.css?v=627556fb">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
-    <link rel="stylesheet" href="docs.css?v=c1896f84">
+    <link rel="stylesheet" href="docs.css?v=32f49183">
     <script src="docs-data.js?v=d24496e9" defer></script>
     <script src="layout.js?v=20df8546" defer></script>
-    <script src="index.js?v=ed702259" defer></script>
+    <script src="index.js?v=5665dca9" defer></script>
 </head>
 <body data-nav="docs" data-title="Documentation">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -59,10 +59,6 @@
         <a href="setup.html" class="nav-link"><i class="ph ph-rocket-launch"></i><span>Setup</span></a>
         <a href="docs.html" class="nav-link active"><i class="ph ph-book-open"></i><span>Documentation</span></a>
         <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
-        <div class="sidebar-toc-container" id="sidebarDocsNav">
-            <div class="sidebar-toc-header"><i class="ph ph-compass"></i> Documentation</div>
-            <div id="sidebarDocsNavLinks"></div>
-        </div>
     </nav>
 
     <div class="content-wrapper">
@@ -105,17 +101,37 @@
         </header>
 
         <main class="content" style="max-width:1400px;">
-            <div class="section-head" style="max-width: 780px;">
-                
-                <h1 class="docs-page-heading">Documentation</h1>
-                <p class="docs-page-subtitle">Set the bot up once, then open the guide for whatever you want to configure. Every page uses the same names you will see in Discord and on the dashboard.</p>
+            <div id="docsLanding">
+                <div class="section-head" style="max-width: 780px;">
+                    <h1 class="docs-page-heading">Guides and help</h1>
+                    <p class="docs-page-subtitle">Short walkthroughs for every module. If you are new, start with <a href="#quickstart">Install and set up</a>.</p>
+                </div>
+                <label class="docs-search" for="docSearch">
+                    <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" id="docSearch" placeholder="Search guides" autocomplete="off">
+                </label>
+                <div class="guide-grid" id="docsCatalog"></div>
             </div>
-            <label class="docs-search" for="docSearch">
-                <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" id="docSearch" placeholder="Search setup guides, features, or commands..." autocomplete="off">
-            </label>
-            <div class="docs-grid">
-                <section id="docsContent" aria-live="polite"></section>
+            <div class="docs-layout" id="docsReader" hidden>
+                <aside class="docs-side">
+                    <nav class="docs-nav" aria-label="Guides">
+                        <p class="docs-nav-title">Guides</p>
+                        <div id="sidebarDocsNavLinks"></div>
+                        <p class="docs-nav-title">More</p>
+                        <a class="docs-nav-link" href="commands.html"><i class="ph ph-terminal-window"></i> All commands</a>
+                        <a class="docs-nav-link" href="features.html"><i class="ph ph-stack"></i> All features</a>
+                        <a class="docs-nav-link" href="index.html"><i class="ph ph-house"></i> Overview</a>
+                    </nav>
+                </aside>
+                <div class="docs-main">
+                    <details class="docs-mobile" id="docsMobile">
+                        <summary><i class="ph ph-list" aria-hidden="true"></i> Pick a guide <i class="ph-bold ph-caret-down chev" aria-hidden="true"></i></summary>
+                        <div id="docsMobileNavLinks"></div>
+                    </details>
+                    <div class="docs-grid">
+                        <section id="docsContent" aria-live="polite"></section>
+                    </div>
+                </div>
             </div>
         </main>
 
