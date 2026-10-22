@@ -463,61 +463,61 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/staff check",
+            "name": "/stafflist check",
             "desc": "Start an activity check: staff press I'm here.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff check-results",
+            "name": "/stafflist check-results",
             "desc": "Who has not answered the latest activity check.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff goal clear",
+            "name": "/stafflist goal clear",
             "desc": "Remove a message goal.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff goal set",
+            "name": "/stafflist goal set",
             "desc": "Set a message goal for a role or one person.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff goals",
+            "name": "/stafflist goals",
             "desc": "Message goal progress for staff.",
             "badge": "Everyone",
             "type": "public"
         },
         {
-            "name": "/staff group-add",
+            "name": "/stafflist group-add",
             "desc": "Add a role group to the staff list.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff group-remove",
+            "name": "/stafflist group-remove",
             "desc": "Remove a role group from the staff list.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff report",
+            "name": "/stafflist report",
             "desc": "Post the weekly staff report now.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff settings",
+            "name": "/stafflist settings",
             "desc": "Set the duty role and the weekly summary channel.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff team",
+            "name": "/stafflist team",
             "desc": "Everyone on the staff list.",
             "badge": "Everyone",
             "type": "public"
