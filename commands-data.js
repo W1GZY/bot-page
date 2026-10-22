@@ -13,6 +13,12 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
+            "name": "/adminpanel",
+            "desc": "ADMIN PANEL: modules and admin commands - all by button",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/antiping exempt",
             "desc": "Exempt a role, user, or channel from Anti-Ping.",
             "badge": "Manage Server",
@@ -47,6 +53,12 @@ const commandsDatabase = [{
             "desc": "Remove protection from a role or user.",
             "badge": "Manage Server",
             "type": "perm"
+        },
+        {
+            "name": "/away",
+            "desc": "Mark yourself away for some days (or back on with off).",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/botsupport giveawaybot botid",
@@ -155,6 +167,12 @@ const commandsDatabase = [{
             "desc": "Get a link to view server stats",
             "badge": "Manage Server",
             "type": "perm"
+        },
+        {
+            "name": "/duty",
+            "desc": "Go on or off duty.",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/giveaway cancel",
@@ -443,6 +461,126 @@ const commandsDatabase = [{
             "desc": "Set up SeanBot: pick a server type and the features to turn on",
             "badge": "Manage Server",
             "type": "perm"
+        },
+        {
+            "name": "/staff check",
+            "desc": "Start an activity check: staff press I'm here.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff check-results",
+            "desc": "Who has not answered the latest activity check.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff goal clear",
+            "desc": "Remove a message goal.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff goal set",
+            "desc": "Set a message goal for a role or one person.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff goals",
+            "desc": "Message goal progress for staff.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/staff group-add",
+            "desc": "Add a role group to the staff list.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff group-remove",
+            "desc": "Remove a role group from the staff list.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff report",
+            "desc": "Post the weekly staff report now.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff settings",
+            "desc": "Set the duty role and the weekly summary channel.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/staff team",
+            "desc": "Everyone on the staff list.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification disable",
+            "desc": "Turn verification off.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification member",
+            "desc": "Verify a member by hand.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/verification question",
+            "desc": "Set the question and accepted answers.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification role add",
+            "desc": "Add a role granted on verification.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification role list",
+            "desc": "List the roles granted on verification.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification role remove",
+            "desc": "Stop granting a role on verification.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification rules",
+            "desc": "Set account age, avatar, attempts and kick timer.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification setup",
+            "desc": "Turn verification on for new members.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verification status",
+            "desc": "Show the current verification settings.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/verify",
+            "desc": "Get the verification prompt again.",
+            "badge": "Everyone",
+            "type": "public"
         }
     ]
 },{
@@ -981,18 +1119,6 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/legacy_quarantine remove",
-            "desc": "Restore roles to a quarantined user",
-            "badge": "Kick Members",
-            "type": "perm"
-        },
-        {
-            "name": "/legacy_quarantine user",
-            "desc": "Quarantine a member, optionally for duration",
-            "badge": "Kick Members",
-            "type": "perm"
-        },
-        {
             "name": "/log health",
             "desc": "Enable or disable SeanBot permission-health alert notifications",
             "badge": "Manage Server",
@@ -1190,12 +1316,6 @@ const commandsDatabase = [{
             "desc": "Warn a member using a saved moderation preset.",
             "badge": "Manage Messages",
             "type": "perm"
-        },
-        {
-            "name": "/staffsay",
-            "desc": "Staff: post an internal note inside the current ticket",
-            "badge": "Everyone",
-            "type": "public"
         },
         {
             "name": "/suggestion close",
@@ -1596,24 +1716,6 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "/timeping admin dlq_clear",
-            "desc": "Clear all dead-letter queue items.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping admin dlq_list",
-            "desc": "List dead-letter queue items.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
-            "name": "/timeping admin dlq_retry",
-            "desc": "Retry/replay dead-letter queue items.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
             "name": "/timeping auto add",
             "desc": "Add a channel to auto-watch for events.",
             "badge": "Manage Channels",
@@ -1647,6 +1749,12 @@ const commandsDatabase = [{
             "name": "/timeping defaults view",
             "desc": "View Server defaults.",
             "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/timeping dlq",
+            "desc": "Admin: list, replay, or clear failed reminder deliveries.",
+            "badge": "Administrator",
             "type": "perm"
         },
         {
@@ -3036,18 +3144,6 @@ const commandsDatabase = [{
     "tocLabel": "12.0 Advanced Administration",
     "commands": [
         {
-            "name": "/memory_cleanup",
-            "desc": "Free expired bot caches and show RAM before/after.",
-            "badge": "Bot Owner",
-            "type": "perm"
-        },
-        {
-            "name": "/reload_commands",
-            "desc": "Synchronizes all active commands.",
-            "badge": "Administrator",
-            "type": "perm"
-        },
-        {
             "name": "/serveradmin addrole",
             "desc": "Create a new server role.",
             "badge": "Manage Roles",
@@ -3109,12 +3205,6 @@ const commandsDatabase = [{
     "tocLabel": "13.0 Right-Click Apps",
     "commands": [
         {
-            "name": "Right-click: Add TimePing Reminder",
-            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "Right-click: Add Wizard",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3145,12 +3235,6 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "Right-click: Edit TimePing",
-            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "Right-click: Ping Mentions",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
@@ -3176,12 +3260,6 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: Remind Me",
-            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
-            "name": "Right-click: Remove TimePing",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"

@@ -1190,14 +1190,6 @@ const docsData = [
                     {
                         "cmd": "/log reset",
                         "desc": "Reset audit logging configurations back to server defaults."
-                    },
-                    {
-                        "cmd": "/legacy_quarantine user [member] [duration]",
-                        "desc": "Jail a member and safely back up their original roles."
-                    },
-                    {
-                        "cmd": "/legacy_quarantine remove [member]",
-                        "desc": "Release a jailed member and restore all saved roles."
                     }
                 ]
             }
