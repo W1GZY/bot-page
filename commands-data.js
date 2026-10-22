@@ -7,12 +7,6 @@ const commandsDatabase = [{
     "tocLabel": "1.0 General & Quick Access",
     "commands": [
         {
-            "name": "/8ball",
-            "desc": "Ask the magic 8-ball a question.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "/adminpanel",
             "desc": "ADMIN PANEL: modules and admin commands - all by button",
             "badge": "Manage Server",

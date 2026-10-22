@@ -3717,10 +3717,6 @@ const docsData = [
                     {
                         "cmd": "/invite",
                         "desc": "Get official SeanBot server invite links."
-                    },
-                    {
-                        "cmd": "/8ball [question]",
-                        "desc": "Ask the Magic 8-Ball a question."
                     }
                 ]
             }
