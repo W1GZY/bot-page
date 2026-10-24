@@ -172,7 +172,7 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=390ab527', loaded: docsDataLoaded },
+        docs: { src: 'docs-data.js?v=c775223e', loaded: docsDataLoaded },
         commands: { src: 'commands-data.js?v=9fe91105', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
@@ -635,6 +635,7 @@ function initDocsPage() {
             'recap_tracker': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
 
             'antiraid': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'verification': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'moderation': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'warn_cog': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'logging': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },

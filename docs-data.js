@@ -836,6 +836,181 @@ const docsData = [
         ]
     },
     {
+        "id": "verification",
+        "icon": "ph-seal-check",
+        "title": "Verification Gate",
+        "subtitle": "Hold new members until they prove they are real, by button, question or picture code, with an optional staff review queue.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What It Does"
+            },
+            {
+                "type": "text",
+                "text": "Verification holds new members back from the roles you choose until they pass a check. You choose one of three methods, the roles that unlock the server, and how many tries somebody gets. Nothing is held until you turn the gate on: the module is off by default, so a server that never configures it is unaffected."
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "Off until you ask for it",
+                "text": "The module ships switched off. Turn it on from the dashboard Verification page, or with /verification setup, and members who join after that are gated. People who were already in the server are never sent back through it."
+            },
+            {
+                "type": "heading",
+                "text": "The Three Methods"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Button: one click on the prompt and the member is verified. This is the default, and the quickest option for a server that only wants proof of a pulse.",
+                    "Question: the member answers a question you set. Answers are matched ignoring case and extra spaces, and you can accept several spellings separated by a pipe character.",
+                    "Picture code: the bot shows an image with a five-character code and the member types it. Codes skip the characters people confuse, such as 0 and O or 1 and I, so a real person can read them."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Account Checks"
+            },
+            {
+                "type": "text",
+                "text": "Two rules can run before the member ever sees a prompt. A minimum account age turns away freshly created accounts, and Require a profile picture turns away accounts with no picture. An account that fails either check is kicked on join instead of being invited to verify, so the prompt stays for people who have a chance of passing."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Minimum account age runs from 0 to 365 days. Zero means no age check.",
+                    "Both checks are off by default. A server with no gift-account problem does not need them.",
+                    "These checks apply whether or not the staff review queue is on."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Roles and Attempts"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Up to ten roles can be granted on verification. They must be normal roles below SeanBot in the role list, not managed by an integration, and not the default role.",
+                    "Attempts run from one to ten, with three as the default, and apply to the question and picture methods: a wrong answer or code spends one. A member who uses them all is locked out until staff step in.",
+                    "The kick timer is off unless you set it. When it is set, anybody who has not passed within that many minutes is kicked, including somebody waiting in the staff review queue; the bot checks every five minutes, so the kick lands shortly after the deadline.",
+                    "A member who was kicked or is locked out can be verified by hand with /verification member. Somebody still waiting in the queue can be approved from the dashboard or the card instead."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Setting It Up"
+            },
+            {
+                "type": "text",
+                "text": "The dashboard Verification page holds every setting in one form: the prompt channel, the method, the roles, the account rules, the attempt limit, the kick timer, the question and the review queue. Pick the channel first, because that is where the prompt is posted, then save and tick Enable Verification. The gate itself can also be set up from Discord with the commands below; the review queue and its log channel are dashboard-only."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Create a channel such as #verify that new members can see and the bot can post in. The bot posts one prompt there for each member who joins.",
+                    "Give the roles you want to grant a position below the SeanBot role, or the bot cannot add them.",
+                    "Run /verification setup with the channel and method, then /verification role add once per role.",
+                    "Run /verification question before you rely on the question method, or members are told no question is set.",
+                    "Test with an account that is not staff, and confirm the roles arrive only after the check passes."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "The Staff Review Queue"
+            },
+            {
+                "type": "text",
+                "text": "When you want a person to make the call, turn on Send new members to review on the dashboard and pick a review queue channel, plus a log channel if you want an audit trail. New members who pass the account checks are then posted to the queue instead of being prompted, and staff decide with four buttons: Approve, Deny, Kick and Ban. Approve grants the verification roles, Deny closes the entry and leaves the member in the server without those roles, and Kick and Ban remove them."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Every decision is posted to the log channel, if you set one, with the member, the staff member, the method and the reason. The card in the queue is replaced with the decision and the reason too, so nobody has to guess what happened to it.",
+                    "The same four buttons are on the Discord card and on the dashboard Verification page, under Pending reviews, so staff do not have to be in Discord to work the queue.",
+                    "The queue lists the longest wait first, up to fifty entries, with the join date and account creation date beside each name.",
+                    "A member who leaves while waiting is marked as gone. Ban still works by user ID if they are already gone.",
+                    "If the queue channel is missing or unset, the bot falls back to the normal prompt rather than leaving somebody stuck with no instructions.",
+                    "In Server Access, Verification has two grants: settings for the gate itself and review for the queue. A moderator can work the queue without being able to change the rules.",
+                    "On Discord the queue card checks Discord permissions instead: its buttons need Manage Server or Ban Members there, regardless of what the dashboard grants."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Reasons on Deny, Kick and Ban"
+            },
+            {
+                "type": "text",
+                "text": "Those three buttons ask for a reason, because the reason is what makes the log useful a month later. On Discord the button opens a short form that will not submit empty; on the dashboard every queue row has a reason field beside the buttons. The bot refuses a deny, kick or ban with no reason and says so on the page or in the reply. Approve never asks, since there is nothing to explain about letting somebody in."
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "Deny is not a kick",
+                "text": "Deny keeps the member in the server without the verification roles and closes their entry. Pressing Verify again tells them staff have closed it, so the prompt does not let them back in. If you meant to remove them, use Kick or Ban. If you denied somebody by mistake, verify them by hand with /verification member."
+            },
+            {
+                "type": "heading",
+                "text": "When Somebody Is Stuck"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Have them run /verify to get the button again, or verify them by hand with /verification member.",
+                    "Check the prompt channel: if the bot cannot post there, no prompt is sent and the member has nothing to click.",
+                    "Run /verification status to see the method, channel, roles and rules the bot is actually using.",
+                    "If the method is Picture code and the member cannot read the image, verify them by hand rather than raising the attempt limit.",
+                    "Turn the gate off with /verification disable, or the Enable Verification switch in the dashboard, when the queue of new members is not worth the delay."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands Reference",
+                "items": [
+                    {
+                        "cmd": "/verification setup [channel] [method]",
+                        "desc": "Turn the gate on, post prompts in that channel, and choose button, question or picture code."
+                    },
+                    {
+                        "cmd": "/verification rules [min_age_days] [require_avatar] [attempts] [kick_minutes]",
+                        "desc": "Set the account age floor, the avatar check, the attempt limit and the kick timer."
+                    },
+                    {
+                        "cmd": "/verification question [question] [answers]",
+                        "desc": "Set the question and the accepted answers, separated by a pipe character."
+                    },
+                    {
+                        "cmd": "/verification role add [role]",
+                        "desc": "Grant one more role when a member passes."
+                    },
+                    {
+                        "cmd": "/verification role remove [role]",
+                        "desc": "Stop granting a role on verification."
+                    },
+                    {
+                        "cmd": "/verification role list",
+                        "desc": "List the roles currently granted on verification."
+                    },
+                    {
+                        "cmd": "/verification member [member]",
+                        "desc": "Verify one member by hand, skipping the prompt."
+                    },
+                    {
+                        "cmd": "/verification status",
+                        "desc": "Show the settings the bot is using, including the review queue and log channels."
+                    },
+                    {
+                        "cmd": "/verification disable",
+                        "desc": "Turn the gate off without deleting its settings."
+                    },
+                    {
+                        "cmd": "/verify",
+                        "desc": "Get the verify button again, privately, for yourself."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "antiraid",
         "icon": "ph-shield-warning",
         "title": "Anti-Raid & Security",
