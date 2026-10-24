@@ -475,6 +475,18 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/stafflist goal default",
+            "desc": "The goal for every staff member without one of their own.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/stafflist goal default-clear",
+            "desc": "Remove the default goal.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/stafflist goal set",
             "desc": "Set a message goal for a role or one person.",
             "badge": "Manage Server",
@@ -812,55 +824,55 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/staff clean",
+            "name": "/stafflist clean",
             "desc": "Delete recent bot messages in this channel.",
             "badge": "Manage Messages",
             "type": "perm"
         },
         {
-            "name": "/staff diagnose",
+            "name": "/stafflist diagnose",
             "desc": "Check bot permissions across Messaging, Moderation, and Voice settings.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff locked",
+            "name": "/stafflist locked",
             "desc": "List channels currently locked for @everyone.",
             "badge": "Manage Channels",
             "type": "perm"
         },
         {
-            "name": "/staff logs",
+            "name": "/stafflist logs",
             "desc": "View a user's warning history.",
             "badge": "Manage Messages",
             "type": "perm"
         },
         {
-            "name": "/staff members",
+            "name": "/stafflist members",
             "desc": "List members that have a role.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
-            "name": "/staff points",
+            "name": "/stafflist points",
             "desc": "View a user's active moderation points.",
             "badge": "Manage Messages",
             "type": "perm"
         },
         {
-            "name": "/staff slowmode",
+            "name": "/stafflist slowmode",
             "desc": "View, set, or disable slowmode in a channel.",
             "badge": "Manage Channels",
             "type": "perm"
         },
         {
-            "name": "/staff timeouts",
+            "name": "/stafflist timeouts",
             "desc": "List currently timed-out members.",
             "badge": "Moderate Members",
             "type": "perm"
         },
         {
-            "name": "/staff unlock",
+            "name": "/stafflist unlock",
             "desc": "Unlock a channel for @everyone.",
             "badge": "Manage Channels",
             "type": "perm"
@@ -1458,7 +1470,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/poll create",
-            "desc": "Create a simple reaction poll from a comma-separated list of answers.",
+            "desc": "Create a simple reaction poll. An answer starting with an emoji gets that emoji, not a number.",
             "badge": "Manage Messages",
             "type": "perm"
         },

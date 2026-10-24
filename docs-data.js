@@ -2132,7 +2132,15 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "/poll create posts one embed with 2-20 answer choices and number reactions. The question is the embed title, members vote by reacting, and staff can close it with /poll close plus the poll message ID to lock in the final totals. You can add an optional poll end time, and date-like answer text is rewritten into Discord timestamps by default (the timestamps option turns that off). The dashboard can create simple polls, preview them beside the form, and save common polls as templates for later."
+                "text": "/poll create posts one embed with 2-20 answer choices, each reacted with the number at its position. The question is the embed title, members vote by reacting, and staff can close it with /poll close plus the poll message ID to lock in the final totals. You can add an optional poll end time, and date-like answer text is rewritten into Discord timestamps by default (the timestamps option turns that off). The dashboard can create simple polls, preview them beside the form, and save common polls as templates for later."
+            },
+            {
+                "type": "heading",
+                "text": "Answers With Their Own Emoji"
+            },
+            {
+                "type": "text",
+                "text": "Start an answer with an emoji and that answer is reacted with the emoji instead of its number. Write 🎯 Movie night as the fifth answer and the line reads 🎯 Movie night, reacted with 🎯: the emoji takes the place of the number in the line, so the answer reads as you wrote it. One message cannot be reacted with the same emoji twice, so an emoji a number already answers with, or one an earlier answer took, stays in the words instead, and an answer that is only an emoji keeps its number. The poll still carries one reaction per answer, so it still stops at 20. If Discord refuses an emoji the bot cannot use (another server's upload, or one deleted since it was typed), that answer falls back to its number and keeps its own emoji in the words, so nothing you wrote disappears. The dashboard preview draws the same emoji beside each answer, so what the form shows is what gets posted."
             },
             {
                 "type": "heading",
@@ -2231,7 +2239,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/poll create",
-                        "desc": "Create a quick reaction poll with 2-20 answers, an optional poll end time, and the timestamps option."
+                        "desc": "Create a quick reaction poll with 2-20 answers, an optional poll end time, and the timestamps option. An answer that starts with an emoji is reacted with that emoji."
                     },
                     {
                         "cmd": "/poll close",
