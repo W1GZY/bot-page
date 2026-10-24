@@ -277,7 +277,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/decks create",
-                        "desc": "Draft a custom deck loadout with visual card slots (Keymaster role)."
+                        "desc": "Draft a custom deck loadout with visual card slots (deck editor role)."
                     },
                     {
                         "cmd": "/decks browse",

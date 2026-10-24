@@ -2813,7 +2813,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/decks create",
-            "desc": "Create a new deck (Keymaster only)",
+            "desc": "Create a new deck (deck editors only)",
             "badge": "Everyone",
             "type": "public"
         },
