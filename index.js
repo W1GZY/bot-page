@@ -172,7 +172,7 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=63c5eeaf', loaded: docsDataLoaded },
+        docs: { src: 'docs-data.js?v=595ad8c4', loaded: docsDataLoaded },
         commands: { src: 'commands-data.js?v=97a9fad4', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
@@ -607,6 +607,18 @@ const CALLOUT_VARIANTS = {
     warning: { className: 'callout-warning', icon: 'ph-warning' }
 };
 
+// Guide prose is plain text with two bits of shorthand: `code` for a command
+// or a literal value, and **bold** for the name of a control. Escape first,
+// then expand, so a stray angle bracket in a guide is text and never markup.
+function docInline(text) {
+    return String(text)
+        .replace(/&(?!#?\w+;)/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+}
+
 function initDocsPage() {
         const navContainer = document.getElementById('docsNavLinks');
         const sidebarNavContainer = document.getElementById('sidebarDocsNavLinks');
@@ -662,6 +674,7 @@ function initDocsPage() {
             'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'staff_list': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaways': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'giveaway_feed': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
 
             'activitytracker': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'autopin': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
@@ -793,14 +806,15 @@ function initDocsPage() {
             if (!catalogContainer) return;
             catalogContainer.innerHTML = '';
             docsData.forEach(doc => {
+                const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' };
                 const card = document.createElement('a');
                 card.className = 'guide-card';
                 card.href = `#${doc.id}`;
                 card.setAttribute('data-doc-card', doc.id);
                 card.innerHTML = `
-                    <span class="guide-icon"><i class="ph-duotone ${doc.icon}"></i></span>
-                    <h2>${doc.title}</h2>
-                    <p>${doc.subtitle}</p>
+                    <span class="guide-card-cat">${meta.title}</span>
+                    <h2><i class="ph ${doc.icon}" aria-hidden="true"></i>${doc.title}</h2>
+                    <p>${docInline(doc.subtitle)}</p>
                 `;
                 card.addEventListener('click', (event) => {
                     event.preventDefault();
@@ -878,41 +892,46 @@ function initDocsPage() {
                     <span aria-hidden="true">/</span>
                     <span>${doc.title}</span>
                 </nav>
-                <div class="docs-article-heading">
-                    <div>
-                        <h1><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h1>
-                        <p class="docs-article-subtitle">${doc.subtitle}</p>
-                    </div>
-                    <span class="badge role">${meta.title}</span>
-                </div>
+                <header class="docs-article-heading">
+                    <p class="docs-article-eyebrow">${meta.title}</p>
+                    <h1><i class="ph ${doc.icon}" aria-hidden="true"></i>${doc.title}</h1>
+                    <p class="docs-article-subtitle">${docInline(doc.subtitle)}</p>
+                </header>
             `;
 
             doc.content.forEach(item => {
                 if (item.type === 'heading') {
-                    html += `<h2>${item.text}</h2>`;
+                    html += `<h2>${docInline(item.text)}</h2>`;
                 } else if (item.type === 'text') {
-                    html += `<p>${item.text}</p>`;
+                    html += `<p>${docInline(item.text)}</p>`;
                 } else if (item.type === 'callout') {
                     const callout = CALLOUT_VARIANTS[item.variant] || CALLOUT_VARIANTS.note;
                     html += `
                         <div class="callout-box ${callout.className}">
-                            <strong><i class="ph-fill ${callout.icon}"></i>${item.title}:</strong> ${item.text}
+                            <strong><i class="ph-fill ${callout.icon}"></i>${docInline(item.title)}:</strong> ${docInline(item.text)}
                         </div>
                     `;
                 } else if (item.type === 'list') {
-                    if (item.title) html += `<h2>${item.title}</h2>`;
-                    html += `<ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+                    if (item.title) html += `<h2>${docInline(item.title)}</h2>`;
+                    html += `<ul>${item.items.map(i => `<li>${docInline(i)}</li>`).join('')}</ul>`;
+                } else if (item.type === 'steps') {
+                    if (item.title) html += `<h2>${docInline(item.title)}</h2>`;
+                    html += `<ol class="docs-steps">${item.items.map(i => `<li>${docInline(i)}</li>`).join('')}</ol>`;
                 } else if (item.type === 'commands') {
                     if (item.title) html += `<h2>${item.title}</h2>`;
                     html += `<div class="cmd-item-list">`;
                     item.items.forEach(cmd => {
+                        // A few rows were written with backticks inside the data
+                        // itself, as the literal text to type. Strip the wrapper
+                        // for display and for the copy button alike.
+                        const command = String(cmd.cmd).replace(/^`+|`+$/g, '');
                         html += `
                             <div class="cmd-item-box">
                                 <div class="cmd-item-left">
-                                    <code class="cmd-code">${cmd.cmd}</code>
-                                    <span class="cmd-desc-text">${cmd.desc}</span>
+                                    <code class="cmd-code">${command}</code>
+                                    <span class="cmd-desc-text">${docInline(cmd.desc)}</span>
                                 </div>
-                                <button class="copy-btn" data-cmd="${cmd.cmd.replace(/"/g, '&quot;')}" title="Copy Command">
+                                <button class="copy-btn" data-cmd="${command.replace(/"/g, '&quot;')}" title="Copy Command">
                                     <i class="ph ph-copy"></i>
                                 </button>
                             </div>

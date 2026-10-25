@@ -4,6 +4,22 @@
    all three. Landing-page-only layout belongs in index.css. */
 
 /* Page chrome, docs.html and commands.html only. */
+.docs-page-head {
+    max-width: 720px;
+    margin: 18px 0 0;
+}
+
+.docs-eyebrow,
+.docs-article-eyebrow,
+.guide-card-cat {
+    margin: 0 0 12px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
 .docs-page-heading {
     margin: 0;
     font-size: 2rem;
@@ -18,79 +34,88 @@
     line-height: 1.55;
 }
 
+/* The docs and features landing share a quieter, larger title than the inner
+   pages that reuse the same class. */
+.docs-page-head .docs-page-heading {
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.docs-page-head .docs-page-subtitle {
+    margin: 14px 0 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.docs-page-head .docs-page-subtitle a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 /* Guide grid, docs.html landing: one card per guide, no category headings. */
 .guide-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+    gap: 12px;
 }
 
 .guide-card {
-    display: block;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--bg-card);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.015);
     color: inherit;
     text-decoration: none;
-    transition: border-color var(--transition-fast), background var(--transition-fast),
-        transform var(--transition-fast);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .guide-card:hover {
     border-color: var(--border-highlight);
-    background: var(--bg-card-hover);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.03);
 }
 
-.guide-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-    background: var(--accent-glow);
-    color: var(--accent);
-    font-size: 1.2rem;
+.guide-card-cat {
+    margin-bottom: 10px;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
 }
 
 .guide-card h2 {
-    margin: 10px 0 5px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 8px;
     color: #fff;
-    font-size: 1.02rem;
-    font-weight: 800;
-    letter-spacing: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     line-height: 1.35;
+}
+
+.guide-card h2 i {
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
 .guide-card p {
     margin: 0;
     color: var(--text-secondary);
-    font-size: 0.86rem;
-    line-height: 1.55;
+    font-size: 0.875rem;
+    line-height: 1.6;
 }
 
-/* Guide reader, docs.html: sticky guide list, article, mobile dropdown. */
+/* Guide reader, docs.html: one reading column, with the guide list folded
+   into a disclosure above it. */
 .docs-layout {
-    display: grid;
-    grid-template-columns: 230px minmax(0, 1fr);
-    gap: 28px;
-    align-items: start;
-}
-
-.docs-side {
-    position: sticky;
-    top: 78px;
-    max-height: calc(100vh - 96px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
-}
-
-.docs-side .docs-nav {
-    position: static;
-    max-height: none;
+    display: block;
+    max-width: 760px;
+    margin: 0 auto;
 }
 
 .docs-main {
@@ -98,21 +123,31 @@
 }
 
 .docs-mobile {
-    display: none;
+    display: block;
+    margin: 8px 0 34px;
+    border-bottom: 1px solid var(--border);
 }
 
 .docs-mobile summary {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
-    padding: 11px 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--bg-card);
-    color: var(--text-primary);
-    font-weight: 700;
+    padding: 4px 0 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
     list-style: none;
+}
+
+.docs-mobile summary span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .docs-mobile summary::-webkit-details-marker {
@@ -130,11 +165,45 @@
 }
 
 .docs-mobile > div {
-    padding: 8px 4px 0;
+    max-height: min(62vh, 620px);
+    padding: 4px 12px 18px 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-highlight) transparent;
 }
 
-.docs-mobile .docs-nav {
-    margin-top: 10px;
+.docs-mobile .docs-nav-group {
+    margin-bottom: 16px;
+}
+
+.docs-mobile .docs-nav-link {
+    padding-left: 4px;
+    border-left: 0;
+    border-radius: 0;
+}
+
+.docs-mobile .docs-nav-link.active {
+    background: transparent;
+    border-left: 2px solid var(--accent);
+    padding-left: 8px;
+}
+
+.docs-more-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 14px 0 2px;
+    border-top: 1px solid var(--border);
+}
+
+.docs-more-links a {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-decoration: none;
+}
+
+.docs-more-links a:hover {
+    color: #fff;
 }
 
 .guide-card[hidden],
@@ -163,72 +232,119 @@
     color: var(--accent);
 }
 
-/* Feature catalog, features.html: category pills and one card per module. */
+/* Feature catalog, features.html: category links and one card per module. */
 .cat-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 26px 0 30px;
+    gap: 8px 22px;
+    margin: 32px 0 10px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .cat-link {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 7px 12px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.025);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: var(--text-secondary);
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 0.86rem;
+    font-weight: 500;
     text-decoration: none;
-    transition: color var(--transition-fast), border-color var(--transition-fast),
-        background var(--transition-fast);
+    transition: color var(--transition-fast);
+}
+
+.cat-link i {
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
 .cat-link:hover {
     color: #fff;
-    border-color: var(--border-highlight);
-    background: rgba(255, 255, 255, 0.06);
+    background: transparent;
+}
+
+.cat-link:hover i {
+    color: var(--text-secondary);
 }
 
 .feature-cat {
     scroll-margin-top: 90px;
 }
 
+.cat-nav + .feature-cat {
+    margin-top: 26px;
+}
+
 .feature-cat + .feature-cat {
-    margin-top: 36px;
+    margin-top: 56px;
 }
 
 .feature-cat h2 {
     display: flex;
     align-items: center;
     gap: 9px;
-    margin: 0 0 14px;
+    margin: 0 0 18px;
     color: #fff;
-    font-size: 1.2rem;
-    font-weight: 800;
-    letter-spacing: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .feature-cat h2 i {
-    color: var(--accent);
+    color: var(--text-muted);
+    font-size: 1rem;
 }
 
 .feature-cat-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 12px;
 }
 
 .feature-cat-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    min-height: 196px;
+    gap: 10px;
+    min-height: 0;
+    padding: 22px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.015);
     color: inherit;
     text-decoration: none;
+}
+
+.feature-cat-card:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: none;
+}
+
+.feature-cat-card .feature-icon {
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+}
+
+.feature-cat-card .feature-title {
+    margin: 0 0 7px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.feature-cat-card .feature-desc {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
 }
 
 .feature-cat-body {
@@ -237,31 +353,25 @@
     flex-direction: column;
 }
 
-.feature-cat-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: auto;
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 700;
-}
 
-.feature-cat-card:hover .feature-cat-more {
-    color: #fff;
-}
 
 .docs-search {
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
-    margin: 20px 0 24px;
-    padding: 0 14px;
-    min-height: 46px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.025);
+    max-width: 360px;
+    margin: 30px 0 34px;
+    padding: 0 0 12px;
+    min-height: 0;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
+}
+
+.docs-search i {
+    color: var(--text-muted);
 }
 
 .docs-search input {
@@ -272,6 +382,11 @@
     background: transparent;
     color: var(--text-primary);
     font: inherit;
+    font-size: 0.9rem;
+}
+
+.docs-search input::placeholder {
+    color: var(--text-muted);
 }
 
 /* Layout containers. index.css widens .docs-grid to two columns on the landing page. */
@@ -288,8 +403,7 @@
     align-items: start;
 }
 
-/* Sidebars: one box for the guide list on all three pages, sized differently where
-   docs.html nests it in the site sidebar. */
+/* Sidebars: one box for the guide list on index.html and commands.html. */
 .docs-nav,
 .toc-sidebar,
 .sidebar-toc-container {
@@ -401,15 +515,12 @@
 .docs-article {
     display: none;
     min-width: 0;
-    padding: 26px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    margin-bottom: 20px;
-    /* Reading measure. The cap only applies once the column is wider than it. */
+    margin: 0 0 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     max-width: 100%;
-    margin-inline: auto;
 }
 
 .docs-article.active-doc {
@@ -418,44 +529,53 @@
 }
 
 .docs-article-heading {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 18px;
+    display: block;
+    margin: 22px 0 30px;
+}
+
+.docs-article-eyebrow {
+    margin-bottom: 14px;
 }
 
 .docs-article-heading h1 {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: baseline;
+    gap: 12px;
     margin: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
+    padding: 0;
+    border: 0;
     color: #fff;
-    font-size: 1.45rem;
-    font-weight: 800;
-    letter-spacing: 0;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.docs-article-heading h1 i {
+    color: var(--text-muted);
+    font-size: 0.5em;
 }
 
 .docs-article-subtitle {
-    margin: 7px 0 0;
+    margin: 16px 0 0;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.65;
 }
 
 .docs-article h2 {
-    margin: 30px 0 10px;
-    color: var(--accent);
-    font-size: 1.12rem;
-    font-weight: 700;
-    letter-spacing: 0;
+    margin: 44px 0 14px;
+    color: #fff;
+    font-size: 1.28rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .docs-article h3 {
-    margin: 28px 0 10px;
-    color: var(--accent);
-    font-size: 1.02rem;
-    font-weight: 700;
-    letter-spacing: 0;
+    margin: 34px 0 12px;
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 600;
 }
 
 /* Paragraphs and list items share one size and colour. Below the subtitle rule
@@ -463,45 +583,121 @@
 .docs-article p,
 .docs-article li {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.65;
+    font-size: 0.94rem;
+    line-height: 1.75;
 }
 
-.docs-article ul {
-    margin: 8px 0 18px;
-    padding-left: 22px;
+.docs-article p {
+    margin: 0 0 18px;
+}
+
+.docs-article ul,
+.docs-article ol {
+    margin: 0 0 22px;
+    padding-left: 20px;
+}
+
+.docs-article li {
+    padding-left: 4px;
 }
 
 .docs-article li + li {
-    margin-top: 7px;
+    margin-top: 9px;
+}
+
+.docs-article li::marker {
+    color: var(--text-muted);
+}
+
+.docs-article strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.docs-article a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.docs-article code {
+    padding: 1px 5px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.86em;
+}
+
+/* Numbered setup steps, Physalia style: a quiet circled count and one line of
+   instruction, with the control name in bold rather than a wall of prose. */
+.docs-steps {
+    counter-reset: docs-step;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px;
+}
+
+.docs-steps li {
+    position: relative;
+    counter-increment: docs-step;
+    padding: 0 0 0 42px;
+    min-height: 30px;
+}
+
+.docs-steps li + li {
+    margin-top: 16px;
+}
+
+.docs-steps li::before {
+    content: counter(docs-step);
+    position: absolute;
+    top: -2px;
+    left: 0;
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid var(--border-highlight);
+    border-radius: 50%;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 600;
 }
 
 /* Callouts. Colour comes from the variant class, so changing the accent cannot
    change what a callout means. */
 .callout-box {
-    margin: 18px 0;
-    padding: 14px 16px;
-    border-left: 3px solid var(--accent);
-    border-radius: 0 6px 6px 0;
-    background: var(--accent-glow);
+    margin: 22px 0;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--text-muted);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
     color: var(--text-secondary);
-    font-size: 0.85rem;
-    line-height: 1.55;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.callout-box strong {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .callout-box.callout-note {
     border-left-color: var(--accent);
-    background: var(--accent-glow);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 .callout-box.callout-tip {
     border-left-color: #57F287;
-    background: rgba(87, 242, 135, 0.08);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 .callout-box.callout-warning {
     border-left-color: #ED4245;
-    background: rgba(237, 66, 69, 0.08);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 .callout-box strong i {
@@ -556,85 +752,84 @@
 }
 
 .cmd-item-list {
-    list-style: none;
-    padding: 0;
-    margin: 12px 0;
-    display: grid;
-    gap: 8px;
+    display: block;
+    margin: 4px 0 26px;
+    border-top: 1px solid var(--border);
 }
 
 .cmd-item-box {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
     min-width: 0;
-    padding: 11px 12px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    background: rgba(0, 0, 0, 0.14);
-    transition: border-color var(--transition-fast), background var(--transition-fast);
+    padding: 13px 2px;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
 }
 
 .cmd-item-box:hover {
-    border-color: var(--border-highlight);
-    background: rgba(0, 0, 0, 0.5);
+    background: transparent;
 }
 
 .cmd-item-left {
     display: flex;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: 7px 12px;
+    gap: 6px 14px;
     min-width: 0;
 }
 
 .cmd-code {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text-primary);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    background: rgba(255, 215, 0, 0.08);
-    color: var(--accent);
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    white-space: nowrap;
+    font-size: 0.86rem;
+    font-weight: 500;
+    white-space: normal;
     overflow-wrap: anywhere;
 }
 
 .cmd-desc-text {
     color: var(--text-secondary);
-    font-size: 0.84rem;
-    line-height: 1.45;
+    font-size: 0.88rem;
+    line-height: 1.5;
 }
 
 .copy-btn {
     display: grid;
-    flex: 0 0 32px;
-    width: 32px;
-    height: 32px;
+    flex: 0 0 26px;
+    width: 26px;
+    height: 26px;
     place-items: center;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-secondary);
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-muted);
     cursor: pointer;
-    transition: background var(--transition-fast), color var(--transition-fast),
-        border-color var(--transition-fast);
+    opacity: 0;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.cmd-item-box:hover .copy-btn,
+.copy-btn:focus-visible {
+    opacity: 1;
 }
 
 .copy-btn:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--accent-text);
+    color: var(--text-primary);
 }
 
 .doc-article-nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin-top: 30px;
-    padding-top: 18px;
+    gap: 14px;
+    margin-top: 56px;
+    padding-top: 24px;
     border-top: 1px solid var(--border);
 }
 
@@ -643,19 +838,19 @@
     align-items: center;
     gap: 10px;
     min-width: 0;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    background: rgba(255, 255, 255, 0.03);
-    color: var(--text-primary);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-secondary);
     cursor: pointer;
     text-align: left;
-    transition: border-color var(--transition-fast), background var(--transition-fast);
+    transition: color var(--transition-fast);
 }
 
 .doc-nav-btn:hover {
-    border-color: var(--accent);
-    background: var(--accent-glow);
+    background: transparent;
+    color: #fff;
 }
 
 .doc-nav-btn.next-btn {
@@ -674,11 +869,11 @@
 
 .doc-nav-btn .nav-title {
     display: block;
-    margin-top: 2px;
+    margin-top: 3px;
     overflow-wrap: anywhere;
-    color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 500;
 }
 
 .commands-feed {
@@ -777,17 +972,7 @@
     }
 
     .docs-layout {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .docs-side {
-        display: none;
-    }
-
-    .docs-mobile {
         display: block;
-        margin-bottom: 12px;
     }
 }
 
