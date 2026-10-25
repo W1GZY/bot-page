@@ -172,8 +172,8 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=f6092173', loaded: docsDataLoaded },
-        commands: { src: 'commands-data.js?v=4a0edd49', loaded: commandsDataLoaded }
+        docs: { src: 'docs-data.js?v=63c5eeaf', loaded: docsDataLoaded },
+        commands: { src: 'commands-data.js?v=97a9fad4', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
     const dataLoads = new Map();
@@ -621,6 +621,7 @@ function initDocsPage() {
         const categoryMap = {
             'quickstart': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
             'core': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
+            'text_commands': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
             'server_admin': { cat: 'getting_started', title: 'Getting started', icon: 'ph-rocket' },
 
             'w101': { cat: 'w101', title: 'Wizard101', icon: 'ph-magic-wand' },
@@ -639,6 +640,8 @@ function initDocsPage() {
             'moderation': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'warn_cog': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'logging': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'last_message_lookup': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'ban_relay': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'staff_tools': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'reports': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'invites': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
@@ -657,11 +660,13 @@ function initDocsPage() {
             'temp_vc': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'staff_list': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaways': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
 
             'activitytracker': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'autopin': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'starboard': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'emoji_analytics': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'emojis': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'reactions': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'reaction_pings': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },

@@ -8,7 +8,7 @@ const commandsDatabase = [{
     "commands": [
         {
             "name": "/adminpanel",
-            "desc": "ADMIN PANEL: modules and admin commands - all by button",
+            "desc": "Administration tools and utilities.",
             "badge": "Manage Server",
             "type": "perm"
         },

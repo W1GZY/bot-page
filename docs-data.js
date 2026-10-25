@@ -168,7 +168,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The switches are per server, and everything is on when the bot joins: a server nobody has configured is already running its modules. Turning one off hides its dashboard page and blocks its protected actions; it does not delete what you saved there. Turn it back on and your settings are still waiting. Last Message tracking is the one exception, a heavy lookup that stays off until you ask for it."
+                "text": "The switches are per server, and everything is on when the bot joins: a server nobody has configured is already running its modules. Turning one off hides its dashboard page and stops what it does in Discord; it does not delete what you saved there. Turn it back on and your settings are still waiting. Last Message tracking is the exception: it stays off until you ask for it."
             },
             {
                 "type": "list",
@@ -224,10 +224,87 @@ const docsData = [
         ]
     },
     {
+        "id": "text_commands",
+        "icon": "ph-terminal-window",
+        "title": "Text Commands",
+        "subtitle": "Pick a prefix such as ! and commands that have a text form still work the old way, for the members and staff who still type.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What the Prefix Does"
+            },
+            {
+                "type": "text",
+                "text": "Every command SeanBot publishes as a slash command also has a text form when it is built as a hybrid command. Typing a prefix in front of the name runs that form: `!help` instead of `/help`, or `!lastmessage @member` instead of `/lastmessage`. The prefix is a setting for the whole server, not for one member or channel, and it applies to every hybrid command at once."
+            },
+            {
+                "type": "list",
+                "title": "How the Prefix Behaves",
+                "items": [
+                    "The default is `!`, so text commands work in a new server with no setup.",
+                    "Changing the prefix adds one. SeanBot keeps accepting `!` as well, so old pinned instructions and habits keep working.",
+                    "Mentioning the bot always works whatever the prefix is, for example `@SeanBot help`.",
+                    "The text form takes plain arguments in the order the command expects, not slash syntax: `!lastmessage @member`, not `user:@member`.",
+                    "Slash commands keep working while a prefix is set. The prefix does not replace them.",
+                    "A command that does not answer usually has its module switched off, not a wrong prefix. Module switches apply to both forms."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Change the Prefix"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Run `/prefix` with no value to see the current prefix. Anyone in the server can do this.",
+                    "Run `/prefix new_prefix:?` to change it. You need Administrator or Manage Server.",
+                    "The value must be 1 to 5 visible characters with no spaces. `/`, `@`, `<`, `>` and backticks are refused because Discord uses them for mentions, channels and slash commands.",
+                    "Try `?help` afterwards. If the new prefix does not answer, check the command's module and the member's permissions before changing it again."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "A prefix is not a permission",
+                "text": "Text commands check the same permissions as their slash versions, and a disabled module disables both. Setting a prefix for members does not give anyone a command they could not already use."
+            },
+            {
+                "type": "heading",
+                "text": "When to Set One"
+            },
+            {
+                "type": "text",
+                "text": "Slash commands are easier to discover and fill in, with autocomplete and a visible parameter list. A text prefix is for the members and staff who still type out of habit, or who are on a client where opening the slash menu is slow. If nobody asks for it, leaving the default alone costs nothing."
+            },
+            {
+                "type": "commands",
+                "title": "Text Command Setup",
+                "items": [
+                    {
+                        "cmd": "/prefix",
+                        "desc": "Show this server's text command prefix."
+                    },
+                    {
+                        "cmd": "/prefix new_prefix:?",
+                        "desc": "Change the prefix. Administrator or Manage Server only."
+                    },
+                    {
+                        "cmd": "/help",
+                        "desc": "Open the command list. Also answers to `!help` and `@SeanBot help`."
+                    },
+                    {
+                        "cmd": "!help",
+                        "desc": "The text form of the same command, using the current prefix."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "w101",
         "icon": "ph-magic-wand",
-        "title": "W101: Core Toolkit & Damage",
-        "subtitle": "Damage calculation with buff stacking and gear scaling, plus deck images you can share.",
+        "title": "W101: Tools & Damage",
+        "subtitle": "Work out what a hit lands for, with blades, traps and gear, and share deck images.",
         "content": [
             {
                 "type": "heading",
@@ -269,7 +346,7 @@ const docsData = [
             },
             {
                 "type": "heading",
-                "text": "Visual Deck Building Suite"
+                "text": "Deck Building"
             },
             {
                 "type": "commands",
@@ -310,7 +387,7 @@ const docsData = [
     {
         "id": "beastmoon",
         "icon": "ph-paw-print",
-        "title": "W101: Beastmoon Suite",
+        "title": "W101: Beastmoon Hunt",
         "subtitle": "Track form progress, price out Lunari and Idols, and compare against the global boards.",
         "content": [
             {
@@ -454,7 +531,7 @@ const docsData = [
         "id": "spells",
         "icon": "ph-book-open-text",
         "title": "W101: Spell Tome Database",
-        "subtitle": "Spell card lookup by name or school from the bot's cached card-art registry.",
+        "subtitle": "Look up a spell by name or school, with its card art beside it.",
         "content": [
             {
                 "type": "heading",
@@ -462,7 +539,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Search the spell card registry by spell name or school folder. Results show available card art and school groupings from the bot's spell cache."
+                "text": "Search by spell name or school and get every matching card, with the art available for it and the school it belongs to."
             },
             {
                 "type": "commands",
@@ -672,7 +749,7 @@ const docsData = [
                     "/wizard unregistered shows who hasn't added anything yet, and /wizard remind DMs them for you.",
                     "/wizard unassigned shows wizards nobody has claimed yet. Assign each one to the member it belongs to.",
                     "Once a month, hand SeanBot the in-game guild list. Levels update in place, badges and join dates get recorded, and anyone who left the in-game guild gets flagged. Nothing gets deleted.",
-                    "You can paste the list yourself on the Wizard Config page, or let the scan machine push it for you. It's sync_guild.bat, the file that sits next to the roster scripts. Both do the same thing."
+                    "You can paste the list yourself on the Wizard Config page, or let the roster sync push it for you. Both do the same thing."
                 ]
             },
             {
@@ -838,7 +915,7 @@ const docsData = [
     {
         "id": "verification",
         "icon": "ph-seal-check",
-        "title": "Verification Gate",
+        "title": "Verification",
         "subtitle": "Hold new members until they prove they are real, by button, question or picture code, with an optional staff review queue.",
         "content": [
             {
@@ -1013,23 +1090,23 @@ const docsData = [
     {
         "id": "antiraid",
         "icon": "ph-shield-warning",
-        "title": "Anti-Raid & Security",
-        "subtitle": "Raid protection, scam detection, quarantine, and a live risk score you can watch.",
+        "title": "Anti-Raid & Server Risk Score",
+        "subtitle": "Raid protection, scam detection and quarantine, with a live server risk score you can watch.",
         "content": [
             {
                 "type": "heading",
-                "text": "Security Engine"
+                "text": "What It Watches For"
             },
             {
                 "type": "text",
-                "text": "Raid bots, scam links, suspicious webhooks, invite abuse and message floods, watched as they arrive. Heat scores are temporary. Canary mode logs what it would have caught without punishing anyone, and a quarantine role can hold an account out of the way as long as the bot's role sits above it. Scam bots that hide in a voice channel's text chat are caught too: a first message there carrying two or more images counts as a hard detection, and the Threat Action Policies section decides what happens to it, quarantine by default."
+                "text": "Raid bots, scam links, suspicious webhooks, invite abuse and message floods, watched as they arrive. A member's risk score falls again once the behaviour stops, so an old flag does not follow them around. Canary mode logs what it would have caught without punishing anyone, and a quarantine role can hold an account out of the way as long as the bot's role sits above it. Scam bots that hide in a voice channel's text chat are caught too: a first message there carrying two or more images counts as a hard detection, and the Threat Action Policies section decides what happens to it, quarantine by default."
             },
             {
                 "type": "list",
                 "title": "Dashboard Pages",
                 "items": [
                     "Anti-Raid shows the main protection settings, trusted roles, safe domains, quarantine settings, and penalty timing.",
-                    "The integrated Risk Score view shows live heat scores, saved channel multipliers, role multipliers, channel thresholds, and a reset control for active risk tracking."
+                    "The Risk Score panel shows live scores, the channel and role multipliers you saved, per-channel thresholds, and a reset button for active tracking."
                 ]
             },
             {
@@ -1125,12 +1202,12 @@ const docsData = [
     {
         "id": "moderation",
         "icon": "ph-gavel",
-        "title": "Server Moderation",
+        "title": "Moderation",
         "subtitle": "The enforcement commands, which respect Discord's role hierarchy so staff cannot act on somebody above them by accident.",
         "content": [
             {
                 "type": "heading",
-                "text": "High-Efficiency Moderation Tools"
+                "text": "What Staff Can Do"
             },
             {
                 "type": "text",
@@ -1254,7 +1331,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Confirm the warnings database and Logging module are available.",
+                    "Confirm the Warnings module and Logging are on.",
                     "Use /modpreset set to create consistent reasons for common staff actions.",
                     "Test /warn add on a test member, review /warn list, then clear the test warning.",
                     "Limit warning management to trusted moderator roles through Discord command permissions and dashboard access."
@@ -1303,16 +1380,16 @@ const docsData = [
     {
         "id": "logging",
         "icon": "ph-file-text",
-        "title": "Audit Logging & Jails",
-        "subtitle": "Audit events go to your webhook after the fact, so a slow log endpoint cannot lag the bot.",
+        "title": "Audit Logs & Quarantine",
+        "subtitle": "Every edit, deletion, join, leave and moderation action, sent to the channels you choose. Quarantine holds a suspicious account until someone reviews it.",
         "content": [
             {
                 "type": "heading",
-                "text": "High-Speed Event Logging"
+                "text": "What Gets Logged"
             },
             {
                 "type": "text",
-                "text": "Message edits and deletions, role changes, voice activity, joins and leaves: every audit event lands in the log channel you point it at. Log Config can send the lot to one all-logs channel if that is all you want, or split the categories across separate webhook channels when the server is busy. Ban appeals, suggestions and public report actions are written by the Staff Workflows category."
+                "text": "Message edits and deletions, role changes, voice activity, joins and leaves: every audit event lands in the log channel you point it at. Log Config can send the lot to one all-logs channel if that is all you want, or split the categories across separate channels when the server is busy. Ban appeals, suggestions and public report actions are written by the Staff Workflows category."
             },
             {
                 "type": "heading",
@@ -1320,15 +1397,27 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Every change to the logging configuration is recorded, whether it was made with a /log command or on this page. The entry says who made it and what actually moved: which events went off or came back on, where each category now reports, which channels were muted, and whether invite tracking, the deep-log archive, the integrity channel or the permission-health alerts changed. Webhook URLs are deliberately left out, because holding one is enough to post into the channel."
+                "text": "Every change to the logging configuration is recorded, whether it was made with a /log command or on this page. The entry says who made it and what actually moved: which events went off or came back on, where each category now reports, which channels were muted, and whether invite tracking, the deep-log archive, the integrity channel or the permission-health alerts changed. Webhook links are left out on purpose: anyone holding one can post in that channel."
             },
             {
                 "type": "text",
-                "text": "The record is written even when the change was to turn logging off. Logging config is an always-on event: /log toggle, /log toggle_batch and the Event Toggles panels cannot switch it off, so silencing the log leaves an entry naming who silenced it and what they silenced. It is stored where no log channel is needed to hold it: the server's log archive, which the Server Logs page reads, and the change history kept for the server, so a server that never configured a destination still has the trail."
+                "text": "The record is written even when the change was to turn logging off. Logging itself cannot be switched off: /log toggle, /log toggle_batch and the Event Toggles panels leave that record alone, so silencing the log still leaves an entry naming who silenced it and what they silenced. You can read it on the Server Logs page, so a server with no log channel set still has the trail."
             },
             {
                 "type": "text",
                 "text": "A server that has gone quiet can see what happened and undo it. /log reset turns every event back on and records how many had been off, and /log status marks the always-on events inside their category, so the panel and the log channel agree about what is arriving."
+            },
+            {
+                "type": "heading",
+                "text": "Quarantine"
+            },
+            {
+                "type": "text",
+                "text": "Quarantine is the step between a warning and a ban. The member gets a role that hides the server from them, and the roles they already held are saved, so releasing them puts everything back the way it was."
+            },
+            {
+                "type": "text",
+                "text": "The Quarantine page deploys or refreshes the role and channel, sets how long someone waits before they are timed out, and lists everyone waiting for review. Anti-Raid and Honeypot can send a catch here instead of banning, which is the default for both."
             },
             {
                 "type": "commands",
@@ -1365,6 +1454,195 @@ const docsData = [
                     {
                         "cmd": "/log reset",
                         "desc": "Reset audit logging configurations back to server defaults."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "last_message_lookup",
+        "icon": "ph-clock-counter-clockwise",
+        "title": "Last Message Lookup",
+        "subtitle": "See when a member last spoke, without keeping a copy of what they said.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What It Records"
+            },
+            {
+                "type": "text",
+                "text": "SeanBot notes the newest message each member sends in the server and replaces that note with the next one. The record is a timestamp, the channel, the message link, and the member's name and avatar. Message text is never stored, so the lookup can say when someone last spoke but not what they said."
+            },
+            {
+                "type": "list",
+                "title": "What Is Kept",
+                "items": [
+                    "The server, member, message and channel IDs, and the time of the newest message only.",
+                    "Nothing from older messages: the record moves forward each time the member posts.",
+                    "Bot accounts are skipped, and rows left by older builds that tracked them are removed.",
+                    "Records survive a restart and are deleted for a server when SeanBot leaves it."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Look Someone Up"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Open the dashboard's Last Message Lookup page. It opens with the most recent speakers.",
+                    "Type a display name, a username, or a Discord user ID into the search box. Matching current members are listed first, then tracked members who have left.",
+                    "Each row shows the relative time, the exact local time, and whether the person is still in the server.",
+                    "The Jump to message button appears only when you can view that channel. A link to a channel you cannot see is hidden rather than shown and refused.",
+                    "Run `/lastmessage user:@member` for one person. The reply gives the same time and a jump link, or says no message has been recorded yet."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "Tracking starts when the tracker starts",
+                "text": "Only messages sent while SeanBot is running are recorded. A member who has not posted since the tracker was added has no row yet, and the page says so instead of guessing from old history."
+            },
+            {
+                "type": "heading",
+                "text": "Turn It On"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Last Message Lookup ships switched off. Turn it on in the Module Manager.",
+                    "The page lives under Analytics & Stats in the dashboard sidebar.",
+                    "To let moderators use it, grant Last Message Lookup in Server Access. Without that grant the page and the command are closed to them.",
+                    "Check the page once after enabling it so staff know what an empty record looks like."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "warning",
+                "title": "This is not a message archive",
+                "text": "The page answers only one question: when did this member last speak. If a report needs the words themselves, use Discord's own search or the server's audit logs before the messages are deleted."
+            },
+            {
+                "type": "text",
+                "text": "For a team-wide answer rather than one member, use the activity check in the Staff List guide."
+            },
+            {
+                "type": "commands",
+                "title": "Last Message Commands",
+                "items": [
+                    {
+                        "cmd": "/lastmessage user:@member",
+                        "desc": "Show how long ago the member's newest recorded message was, with a jump link."
+                    },
+                    {
+                        "cmd": "!lastmessage @member",
+                        "desc": "The text form, using this server's prefix."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "ban_relay",
+        "icon": "ph-paper-plane-tilt",
+        "title": "Ban Relay & Mod Feed",
+        "subtitle": "When another bot bans someone, SeanBot DMs them how to appeal. Kicks and timeouts from other bots land in one feed, so your moderation record stays in one place.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What It Does"
+            },
+            {
+                "type": "text",
+                "text": "Ban Relay reads the server's audit log instead of talking to other bots, so it works with Carl-bot, MEE6, Dyno, a staff member's manual ban, or anything else that writes a ban entry. Two jobs run from that one stream: a ban gets an appeal DM to the banned member, and kicks and timeouts get a line in the mod feed."
+            },
+            {
+                "type": "list",
+                "title": "What Is Relayed",
+                "items": [
+                    "Bans: the banned member receives the same appeal message SeanBot sends for its own bans, with the reason and the ways to appeal (the ban menu, /appeals submit, and the public appeals page).",
+                    "Blocked DMs: if the member has DMs closed, a notice goes to the feed channel so staff know the person was never told.",
+                    "Kicks and timeouts by other bots or staff are posted to the feed channel and saved for the dashboard.",
+                    "Mass bans are posted as one summary instead of a wall of individual notices.",
+                    "SeanBot's own bans and global punishments are skipped, because those already DM the member and write their own log."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "The Mod Feed"
+            },
+            {
+                "type": "text",
+                "text": "Every ban, kick, timeout, and mass-ban notice is stored with the member, the executor, the reason, and the time. The Ban Relay page filters the feed by action type and counts each kind, so a kick from another bot and a timeout from a moderator sit in the same record. Point the feed channel at your existing mod log to keep one unified feed."
+            },
+            {
+                "type": "heading",
+                "text": "The Burst Guard"
+            },
+            {
+                "type": "text",
+                "text": "Four moderation actions in 30 seconds from the same account (ban, kick, unban, or timeout) count as a burst. Appeal DMs pause and one summary notice is posted instead, so a raid purge does not send hundreds of DMs to accounts that are already gone. The same threshold drives Server Security's alerts for those actions. Channel and role churn has its own stricter threshold that this setting cannot raise. Set the threshold to 0 to turn burst handling off."
+            },
+            {
+                "type": "callout",
+                "variant": "warning",
+                "title": "The relay ships switched off",
+                "text": "Ban Relay DMs people, so it is opt-in. The module being visible in the dashboard does not enable it: tick Enable Ban Relay on the page, or run /banrelay enable. Turning it off stops both the appeal DMs and the feed."
+            },
+            {
+                "type": "heading",
+                "text": "Set It Up"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Make sure SeanBot has View Audit Log. Without it there are no entries to read.",
+                    "Open Ban Relay and choose the feed channel. Your mod log channel is usually the right one.",
+                    "Tick Enable Ban Relay, and leave kick and timeout logging on unless member-event logging already covers them.",
+                    "Kick a test account with another bot and confirm the feed line appears.",
+                    "Check the mass-action threshold. The default of four actions per 30 seconds is deliberately low for a server where bans arrive one at a time.",
+                    "Decide whether you want appeal DMs at all. If you do not, leave the relay off and review appeals only through the Ban Appeals page."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The appeal itself is reviewed on the Ban Appeals page. The Appeals & Suggestions guide covers that side, including review channels, notification roles, and approvals that unban."
+            },
+            {
+                "type": "commands",
+                "title": "Ban Relay Commands",
+                "items": [
+                    {
+                        "cmd": "/banrelay show",
+                        "desc": "Show the relay status, feed channel, threshold, and logging switches."
+                    },
+                    {
+                        "cmd": "/banrelay enable",
+                        "desc": "Turn the appeal DM relay and the mod feed on."
+                    },
+                    {
+                        "cmd": "/banrelay disable",
+                        "desc": "Turn both off. SeanBot's own actions and logs are unaffected."
+                    },
+                    {
+                        "cmd": "/banrelay logchannel channel:#mod-log",
+                        "desc": "Set the feed channel."
+                    },
+                    {
+                        "cmd": "/banrelay logchannel",
+                        "desc": "Clear the feed channel."
+                    },
+                    {
+                        "cmd": "/banrelay masslimit limit:4",
+                        "desc": "Set the burst threshold in actions per 30 seconds. 0 turns burst handling off."
+                    },
+                    {
+                        "cmd": "/banrelay kicks enabled:true",
+                        "desc": "Log kicks by other bots and staff to the feed."
+                    },
+                    {
+                        "cmd": "/banrelay timeouts enabled:true",
+                        "desc": "Log timeouts by other bots and staff to the feed."
                     }
                 ]
             }
@@ -1455,7 +1733,7 @@ const docsData = [
     {
         "id": "invites",
         "icon": "ph-link-simple",
-        "title": "Invite Links & Tracking",
+        "title": "Invite Links",
         "subtitle": "Create an invite, attach a reward role, then see who actually joined through it.",
         "content": [
             {
@@ -1485,7 +1763,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Each invite can carry its own perks, stored per invite code and applied automatically when a member joins through it."
+                "text": "Each invite can carry its own perks, and they are applied when a member joins through it."
             },
             {
                 "type": "list",
@@ -1532,7 +1810,7 @@ const docsData = [
                 "items": [
                     "Search by code, channel, or creator, and sort by soonest expiry; expiring invites list before never-expiring ones.",
                     "Duplicate copies an invite together with its perks into a new invite with the same lifetime.",
-                    "Revoke deletes the invite immediately and removes any stored perks.",
+                    "Revoke deletes the invite immediately, along with its perks.",
                     "The server's vanity URL is shown separately when one is set."
                 ]
             },
@@ -1561,7 +1839,7 @@ const docsData = [
     {
         "id": "reports",
         "icon": "ph-flag",
-        "title": "Member Reports",
+        "title": "Member & Public Reports",
         "subtitle": "One click to report a message or a member, without anyone in chat seeing it happen.",
         "content": [
             {
@@ -1641,8 +1919,8 @@ const docsData = [
     {
         "id": "timeping",
         "icon": "ph-clock-countdown",
-        "title": "TimePing & Event Pings",
-        "subtitle": "Role pings and countdowns for events, kept in step with Discord's own scheduled events.",
+        "title": "Event Reminders",
+        "subtitle": "Reminders that ping the right role at the right local time, with a reaction sign-up on the same message.",
         "content": [
             {
                 "type": "heading",
@@ -1756,7 +2034,7 @@ const docsData = [
         "content": [
             {
                 "type": "heading",
-                "text": "Global Time Synchronization"
+                "text": "Times In Each Member's Clock"
             },
             {
                 "type": "text",
@@ -1817,7 +2095,7 @@ const docsData = [
     {
         "id": "time_converter",
         "icon": "ph-clock-user",
-        "title": "Time & Timestamp Converter",
+        "title": "Time Converter",
         "subtitle": "Turns a time somebody typed into a tag every reader sees in their own timezone.",
         "content": [
             {
@@ -1834,7 +2112,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "For quick timestamp creation, wrap a time in backticks or a code block, such as `8 PM EST`. SeanBot replies with Discord timestamp markup that renders in each viewer's local Discord time. Bare wrapped times require the author's saved timezone."
+                "text": "For quick timestamp creation, wrap a time in backticks or a code block, such as `8 PM EST`. SeanBot replies with a tag every reader sees in their own local time. Bare wrapped times require the author's saved timezone."
             },
             {
                 "type": "commands",
@@ -2055,7 +2333,7 @@ const docsData = [
     {
         "id": "raidpolls",
         "icon": "ph-users-three",
-        "title": "Polls & Event Rosters",
+        "title": "Sign-up Polls & Simple Polls",
         "subtitle": "Simple reaction polls, and sign-up polls with slots, caps and waitlists for anything that needs a roster.",
         "content": [
             {
@@ -2064,7 +2342,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids and for any other game, activity, or community night. /raidpoll opens a guided wizard that builds the poll one piece at a time, with live feedback at every step before anything is posted. The wizard survives bot restarts: progress is saved as you go, running /raidpoll again offers to resume where you left off, and the buttons on an older wizard message keep working. Press Quick Form (experts) if you would rather fill the whole thing in at once."
+                "text": "Use /poll create or the dashboard simple poll form when you need an easy reaction vote. Use /raidpoll when you need signup slots, caps, waitlists, and roster automation. Advanced polls are game-neutral: they work for Wizard101 raids and for any other game, activity, or community night. /raidpoll opens a guided wizard that builds the poll one piece at a time, with live feedback at every step before anything is posted. Progress is kept as you go, so closing the wizard or coming back later carries on where you left off, and the buttons on an older wizard message keep working. Press Quick Form (experts) if you would rather fill the whole thing in at once."
             },
             {
                 "type": "heading",
@@ -2295,7 +2573,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "/poll close rebuilds the poll embed with final vote totals, which drops the Ends line, while converted timestamps inside answers survive closing because only the vote counts are added. The dashboard preview mirrors all of this live: the Ends line, the per-answer conversions, and a warning when you fill in a close time without having set a timezone."
+                "text": "/poll close posts the final vote totals, which drops the Ends line; converted timestamps stay in the answers, because closing only adds the counts. The dashboard preview mirrors all of this live: the Ends line, the per-answer conversions, and a warning when you fill in a close time without having set a timezone."
             },
             {
                 "type": "callout",
@@ -2309,11 +2587,11 @@ const docsData = [
         "id": "teamup_fed",
         "icon": "ph-arrows-merge",
         "title": "Team-Up Federation Mesh",
-        "subtitle": "Push a dungeon lobby out to allied servers, with a proxy thread so the replies come back to you.",
+        "subtitle": "Post a dungeon lobby to your partner servers, and keep the replies in one thread.",
         "content": [
             {
                 "type": "heading",
-                "text": "Cross-Server Federation Mesh"
+                "text": "Team-Ups Across Servers"
             },
             {
                 "type": "text",
@@ -2339,11 +2617,11 @@ const docsData = [
         "content": [
             {
                 "type": "heading",
-                "text": "Join-to-Create Voice Generator"
+                "text": "Your Own Voice Room"
             },
             {
                 "type": "text",
-                "text": "A member joins your generator channel and gets a room of their own, with its name, its user limit and its lock in their hands."
+                "text": "A member joins the join-to-create channel you picked and gets a room of their own, with its name, its user limit and its lock in their hands."
             },
             {
                 "type": "heading",
@@ -2357,7 +2635,7 @@ const docsData = [
                     "Open the dashboard Temp Channels page and set that channel as the Join-To-Create channel.",
                     "Set inactivity cleanup so empty rooms are removed automatically.",
                     "Optionally choose an owner role and max server channel limit.",
-                    "Join the generator channel with a test account and confirm SeanBot creates, transfers, and deletes rooms correctly."
+                    "Join the join-to-create channel with a test account and confirm SeanBot creates, transfers, and deletes rooms correctly."
                 ]
             },
             {
@@ -2383,7 +2661,7 @@ const docsData = [
     {
         "id": "tickets",
         "icon": "ph-ticket",
-        "title": "Support Ticket System",
+        "title": "Ticket System",
         "subtitle": "Private tickets, staff claiming, priority tags and archived transcripts. Still in beta.",
         "content": [
             {
@@ -2468,12 +2746,12 @@ const docsData = [
     {
         "id": "activitytracker",
         "icon": "ph-chart-line-up",
-        "title": "Activity Tracker",
+        "title": "Member Activity",
         "subtitle": "Message and voice activity per member, with Active and Inactive roles handed out on a schedule.",
         "content": [
             {
                 "type": "heading",
-                "text": "Automated Engagement Analytics"
+                "text": "What It Tracks"
             },
             {
                 "type": "text",
@@ -2511,7 +2789,7 @@ const docsData = [
     {
         "id": "autopin",
         "icon": "ph-push-pin",
-        "title": "Auto-Pin System",
+        "title": "Auto-Pin",
         "subtitle": "Pins a message once enough people react to it.",
         "content": [
             {
@@ -2615,6 +2893,90 @@ const docsData = [
         ]
     },
     {
+        "id": "emoji_analytics",
+        "icon": "ph-chart-bar",
+        "title": "Emoji Analytics",
+        "subtitle": "See which emojis actually get used and which nobody touches, so you know what to delete.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What It Counts"
+            },
+            {
+                "type": "text",
+                "text": "Two separate counters feed the page, and they stay separate. Emojis counts custom emoji typed inside chat messages. Reactions counts reactions added to messages, whether the reaction is a server emoji or a standard one. The Users view adds both kinds together for each member, so it answers who uses expressions most rather than who reacts most."
+            },
+            {
+                "type": "list",
+                "title": "Counting Rules",
+                "items": [
+                    "A plain Unicode emoji typed in a message is not in the Emojis ranking. Custom and external emoji written as emoji markup are.",
+                    "Each count is stored per member, per emoji, per day, and per kind.",
+                    "Channels muted in Log Config are left out. A channel muted for all logging is excluded from both counters; a channel muted only for reactions is excluded from the Reactions side.",
+                    "Messages posted before the tracker was running are not counted. The ranking starts with the first message it sees."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Reading the Page"
+            },
+            {
+                "type": "text",
+                "text": "Three view tabs sit above three range tabs. Emojis ranks typed emoji, Reactions ranks reactions, and Users ranks members by combined usage. Weekly covers the last 7 days, Monthly the last 30, and All Time everything stored. Each view draws a bar chart and a ranked card per entry, up to 15 places."
+            },
+            {
+                "type": "heading",
+                "text": "The Commands"
+            },
+            {
+                "type": "text",
+                "text": "The same numbers are available in Discord. /emojis reads the chat side, /reaction reads the reactions side, and each has a top15 and a top_users subcommand with a weekly, monthly, or all_time interval. These are hybrid commands, so the server's text prefix works too. Unlike the dashboard's Users view, the command user rankings keep the two kinds apart."
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "Counts arrive in batches",
+                "text": "New usage is written every 30 seconds, so the dashboard can be half a minute behind the last message. The commands cache their answer for 10 minutes, which is why a fresh reaction can take a while to change a command ranking."
+            },
+            {
+                "type": "heading",
+                "text": "Using It"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Open Emoji Analytics under Analytics & Stats. It is on by default, and Server Access can grant it to moderators who should see the rankings.",
+                    "Check the All Time view first so a quiet week does not read as an unused emoji set.",
+                    "Use the Emojis view to find what members actually type. A top slot is worth keeping and renaming around.",
+                    "Use the Users view to spot the members who carry the server's tone, and the Reactions view to see which reaction images land.",
+                    "To act on the bottom of the list, run /emoji suggest_purge days:30 to see what has not been used, then /emoji purge_dead days:30 to delete it. Both are covered in Emoji Management & Suggestions."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Emoji Analytics Commands",
+                "items": [
+                    {
+                        "cmd": "/emojis top15 interval:weekly",
+                        "desc": "Top 15 custom emoji typed in chat. Also monthly and all_time."
+                    },
+                    {
+                        "cmd": "/emojis top_users interval:weekly",
+                        "desc": "Who types custom emoji the most."
+                    },
+                    {
+                        "cmd": "/reaction top15 interval:weekly",
+                        "desc": "Top 15 reactions added to messages, custom or standard."
+                    },
+                    {
+                        "cmd": "/reaction top_users interval:weekly",
+                        "desc": "Who reacts the most."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "emojis",
         "icon": "ph-smiley-sticker",
         "title": "Emoji Management & Suggestions",
@@ -2645,7 +3007,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Uploads must be PNG, JPEG, GIF, or WebP and no larger than 256 KiB. SeanBot validates the actual file bytes and stores a durable copy so dashboard approval still works after Discord's temporary attachment link expires. Each member can have up to three suggestions awaiting review."
+                "text": "Uploads must be PNG, JPEG, GIF, or WebP and no larger than 256 KiB. A suggestion stays in the review queue after Discord's attachment link expires, so staff can still approve it days later. Each member can have up to three suggestions awaiting review."
             },
             {
                 "type": "commands",
@@ -2702,7 +3064,7 @@ const docsData = [
     {
         "id": "reactions",
         "icon": "ph-thumbs-up",
-        "title": "Reaction Suite & Pings",
+        "title": "Reactions & Pings",
         "subtitle": "Reaction counts, animated emoji previews, and a ping for whoever reacted.",
         "content": [
             {
@@ -2879,8 +3241,8 @@ const docsData = [
     {
         "id": "embeds",
         "icon": "ph-layout",
-        "title": "Visual Embed Builder",
-        "subtitle": "A visual embed designer, plus template triggers for things like welcome messages.",
+        "title": "Embed Builder & Welcome Messages",
+        "subtitle": "Build an embed with a live preview, then send it once or on a join, a leave or a boost.",
         "content": [
             {
                 "type": "heading",
@@ -2938,7 +3300,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "warning",
                 "title": "Ticket Button Rule",
-                "text": "For ticket panels, Primary, Secondary, Success, and Danger buttons open tickets automatically. Do not use Link style for ticket-opening buttons. You can set the label, style, emoji, and row; SeanBot generates the internal action IDs for you."
+                "text": "For ticket panels, Primary, Secondary, Success, and Danger buttons open tickets automatically. Do not use Link style for ticket-opening buttons. You can set the label, style, emoji, and row; SeanBot handles the button wiring for you."
             },
             {
                 "type": "heading",
@@ -2951,7 +3313,7 @@ const docsData = [
                     "Open the dashboard Embed Builder and build the message members should see, such as Support, Appeals, Bug Reports, or Partner Requests.",
                     "Go to the Button Builder and add a button for each ticket path. Example labels: `Open Ticket`, `Report a Bug`, `Appeal Punishment`, or `Contact Staff`.",
                     "Use Primary for the main support action, Success for positive actions, Danger for urgent reports, and Secondary for lower-priority departments.",
-                    "Leave the action payload as-is unless you are making a non-ticket interactive embed. Ticket panels ignore custom action payloads and generate persistent ticket button IDs automatically.",
+                    "Leave the action payload as-is unless you are making a non-ticket interactive embed. Ticket panels ignore the payload box and handle their button wiring for you.",
                     "Go to Broadcast & Publish, select Ticket Creation Panel, choose the deploy channel and ticket category, set naming/max-open/cooldown options, then deploy."
                 ]
             },
@@ -3281,7 +3643,7 @@ const docsData = [
                 "items": [
                     "Scan previews found embeds so you can load or save them.",
                     "Import to history writes them permanently into the Published Embeds list alongside new ones.",
-                    "Imports are idempotent. Running it again skips embeds already tracked, so duplicates never appear."
+                    "Running it again skips embeds already tracked, so duplicates never appear."
                 ]
             },
             {
@@ -3401,7 +3763,7 @@ const docsData = [
     {
         "id": "autoreply",
         "icon": "ph-chat-centered-text",
-        "title": "Auto Mention Replies",
+        "title": "Auto-Reply",
         "subtitle": "Replies that fire when somebody mentions you, in your own words.",
         "content": [
             {
@@ -3452,7 +3814,7 @@ const docsData = [
     {
         "id": "reminders",
         "icon": "ph-bell",
-        "title": "Personal Reminders",
+        "title": "Remind Me",
         "subtitle": "Right-click a message to be reminded about it later. Times can be written the way you would say them out loud.",
         "content": [
             {
@@ -3482,7 +3844,7 @@ const docsData = [
     {
         "id": "translate_cog",
         "icon": "ph-translate",
-        "title": "Message Translator",
+        "title": "Translation",
         "subtitle": "Translate a message, a whole channel, or everything one member posts.",
         "content": [
             {
@@ -3588,8 +3950,8 @@ const docsData = [
     {
         "id": "stats",
         "icon": "ph-chart-line-up",
-        "title": "Live counters",
-        "subtitle": "Counter channels that update themselves, plus member growth charts.",
+        "title": "Live Counters & Server Statistics",
+        "subtitle": "Counter channels that update themselves, plus charts for messages, growth, voice time and the channels people use.",
         "content": [
             {
                 "type": "heading",
@@ -3673,7 +4035,7 @@ const docsData = [
     {
         "id": "federation",
         "icon": "ph-globe-hemisphere-west",
-        "title": "Server Federation",
+        "title": "Federation",
         "subtitle": "Links servers you trust so that chosen channels relay between them in real time.",
         "content": [
             {
@@ -3798,12 +4160,12 @@ const docsData = [
     {
         "id": "fun",
         "icon": "ph-smiley",
-        "title": "Cat Facts & Quotes",
-        "subtitle": "Cat facts, cat pictures, and quote cards made from your own chat.",
+        "title": "Cat Facts, Quotes & Slap",
+        "subtitle": "Cat facts, cat pictures, quote cards made from your own chat, and a slap for whoever deserves it.",
         "content": [
             {
                 "type": "heading",
-                "text": "Cat Command Center"
+                "text": "Cat Commands"
             },
             {
                 "type": "commands",
@@ -3863,7 +4225,7 @@ const docsData = [
         "id": "general_sys",
         "icon": "ph-cpu",
         "title": "System Diagnostics",
-        "subtitle": "Host stats for the machine the bot runs on, for when something feels slow.",
+        "subtitle": "Latency and memory use, for when something feels slow.",
         "content": [
             {
                 "type": "heading",
@@ -3871,7 +4233,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Host numbers for the machine the bot runs on: latency, memory use, and whether it is keeping up."
+                "text": "Latency, memory use, and whether the bot is keeping up."
             },
             {
                 "type": "heading",
@@ -3988,19 +4350,19 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Ensure SeanBot was granted the `applications.commands` scope when invited."
+                "text": "SeanBot was probably invited without the commands scope. Invite it again from this site if the slash commands never appeared."
             }
         ]
     },
     {
         "id": "loa",
         "icon": "ph-calendar-check",
-        "title": "Leave of Absence (LOA)",
-        "subtitle": "Leave requests with approval, and an automatic role change while somebody is away.",
+        "title": "Staff Leave of Absence",
+        "subtitle": "Staff file their leave dates, an approver signs off, and the leave role comes off when they are due back.",
         "content": [
             {
                 "type": "heading",
-                "text": "Overview & Functionality"
+                "text": "Overview"
             },
             {
                 "type": "text",
@@ -4041,9 +4403,179 @@ const docsData = [
         ]
     },
     {
+        "id": "staff_list",
+        "icon": "ph-identification-badge",
+        "title": "Staff List",
+        "subtitle": "A staff roster that keeps itself up to date: who is on duty, who is away, message goals, activity checks and a weekly report.",
+        "content": [
+            {
+                "type": "heading",
+                "text": "What the Staff List Does"
+            },
+            {
+                "type": "text",
+                "text": "Pick the roles that make someone staff, and the roster does the rest. Everyone holding one of those roles is grouped by their highest staff role, with their presence, highest role tag, duty and away tags, and their progress against the message goal that applies to them. Nothing has to be typed into a list message and edited by hand."
+            },
+            {
+                "type": "list",
+                "title": "What the Page Shows",
+                "items": [
+                    "Staff Team: one block per staff role, highest role first. A member with two staff roles appears once, under the higher one.",
+                    "Presence: online, idle, do not disturb, and offline, read from Discord.",
+                    "Duty and away: who is on duty right now and who is away until which date.",
+                    "Message goals: each person is measured against their own goal, else their highest staff role's goal, else the server default.",
+                    "This week's report: messages, tickets closed, first replies, hours on duty, and ticket ratings, one row per staff member."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Goals and Counts"
+            },
+            {
+                "type": "text",
+                "text": "A goal is a number of messages in a daily, weekly, or monthly period. Counts come from messages sent in this server since the period started, and only counts are stored. Message content is never read into storage, rendered, or logged."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "A personal goal beats a role goal, and a role goal beats the server default.",
+                    "Use /stafflist goals to see progress in Discord, or read the bars on the dashboard page.",
+                    "Goals are encouragement, not enforcement. Nothing removes a role or punishes a member for missing one."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Duty and Away"
+            },
+            {
+                "type": "text",
+                "text": "Duty is how the ticket system knows who to ping. /duty on adds the optional duty role and starts counting hours; /duty off removes the role and banks the time. /away days:7 marks a member away until a date, stops their pings, and takes them off duty. /away off brings them back immediately. Staff who are away cannot go on duty until they are back."
+            },
+            {
+                "type": "heading",
+                "text": "Activity Checks"
+            },
+            {
+                "type": "text",
+                "text": "`/stafflist check` posts an I'm here button in the channel where you run it. `/stafflist check-results` lists the staff who did not press it. An unanswered check is reported, never punished automatically: the list is a starting point for a conversation, not an infraction."
+            },
+            {
+                "type": "heading",
+                "text": "The Weekly Report"
+            },
+            {
+                "type": "text",
+                "text": "The report is posted to the summary channel every Monday at 09:00 UTC, and /stafflist report posts it on demand. Ticket ratings come from the 1 to 5 star prompt a member gets when their claimed ticket closes. Without a summary channel the Monday post has nowhere to go, but the report still shows on the dashboard page and from the command."
+            },
+            {
+                "type": "heading",
+                "text": "Set It Up"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Turn the Staff List module on. It ships switched off.",
+                    "Open the Staff List page and pick the staff roles in Team settings, then save.",
+                    "Set an optional default goal for everyone those roles cover.",
+                    "Run /stafflist settings summary_channel:#staff-log to choose where the Monday report goes, and duty_role:@On Duty if you want a visible duty role.",
+                    "Run /stafflist team once to confirm the roster and the role order.",
+                    "Add or remove role groups with /stafflist group-add and /stafflist group-remove if you want separate list messages in separate channels."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "Give the report a home before Monday",
+                "text": "Set the summary channel on the first day. Without one the Monday report has nowhere to post, and the first week is only visible on the dashboard."
+            },
+            {
+                "type": "text",
+                "text": "For planned time off with dates and a staff request, use the Staff Leave of Absence guide. /away is the quick version for a few days."
+            },
+            {
+                "type": "commands",
+                "title": "Staff List Commands",
+                "items": [
+                    {
+                        "cmd": "/stafflist team",
+                        "desc": "Show the roster, grouped by staff role."
+                    },
+                    {
+                        "cmd": "/stafflist goals",
+                        "desc": "Show message goal progress for staff."
+                    },
+                    {
+                        "cmd": "/stafflist group-add key name description role channel",
+                        "desc": "Add a role group and the channel that holds its list message."
+                    },
+                    {
+                        "cmd": "/stafflist group-remove key",
+                        "desc": "Remove a role group."
+                    },
+                    {
+                        "cmd": "/stafflist settings duty_role summary_channel",
+                        "desc": "Set the optional duty role and the weekly report channel."
+                    },
+                    {
+                        "cmd": "/stafflist goal set period messages role",
+                        "desc": "Set a message goal for one role."
+                    },
+                    {
+                        "cmd": "/stafflist goal set period messages user",
+                        "desc": "Set a message goal for one person."
+                    },
+                    {
+                        "cmd": "/stafflist goal clear role",
+                        "desc": "Remove a role's goal."
+                    },
+                    {
+                        "cmd": "/stafflist goal clear user",
+                        "desc": "Remove a person's goal."
+                    },
+                    {
+                        "cmd": "/stafflist goal default period messages",
+                        "desc": "Set the goal for staff without a personal or role goal."
+                    },
+                    {
+                        "cmd": "/stafflist goal default-clear",
+                        "desc": "Remove the default goal."
+                    },
+                    {
+                        "cmd": "/duty state:on",
+                        "desc": "Go on duty. Adds the duty role and starts counting hours."
+                    },
+                    {
+                        "cmd": "/duty state:off",
+                        "desc": "Go off duty. Removes the duty role and banks the hours."
+                    },
+                    {
+                        "cmd": "/away days:7",
+                        "desc": "Mark yourself away for 1 to 90 days."
+                    },
+                    {
+                        "cmd": "/away off:true",
+                        "desc": "Come back now."
+                    },
+                    {
+                        "cmd": "/stafflist check",
+                        "desc": "Post an I'm here button for an activity check."
+                    },
+                    {
+                        "cmd": "/stafflist check-results",
+                        "desc": "List the staff who did not answer the latest check."
+                    },
+                    {
+                        "cmd": "/stafflist report",
+                        "desc": "Post the weekly staff report now."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "global_enforcement",
         "icon": "ph-globe-hemisphere-west",
-        "title": "Global enforcement",
+        "title": "Global Enforcement",
         "subtitle": "Punish a member across every server you manage with one action, and let ban appeal approvals unban them everywhere at once.",
         "content": [
             {
@@ -4060,7 +4592,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The permission model is built around your existing Discord access. To link a server to a network, to run a global action in it, or to mirror an appeal unban into it, the acting staff member must hold Administrator or Manage Server in that server. The dashboard only lists servers where that access exists, and the backend re-checks the live Discord permissions before every execution. Delegated staff can be added to a network for management convenience, but they still need Administrator or Manage Server in every target server to execute."
+                "text": "To link a server to a network, run a global action in it, or mirror an appeal unban into it, the staff member needs Administrator or Manage Server in that server. The dashboard only lists servers where you have that access, and it is checked again when the action runs. Delegated staff can be added to a network for management convenience, but they still need Administrator or Manage Server in every target server to execute."
             },
             {
                 "type": "heading",
@@ -4157,11 +4689,11 @@ const docsData = [
             },
             {
                 "type": "heading",
-                "text": "How It Combines with Anti-Raid & Logging"
+                "text": "How It Fits With Anti-Raid and Logging"
             },
             {
                 "type": "text",
-                "text": "Anti-Ping fills the gap between the two existing layers instead of duplicating them. Anti-Raid's mass-mention detector watches for floods and applies raid policies (quarantine, progressive timeouts) when many mentions arrive in a window. Logging records ghost pings and high mention volume passively. Anti-Ping adds the per-message rules staff actually configure: how many pings are allowed, who is protected, who is exempt, and what happens on violation. All three share the same Logging pipeline: Anti-Ping events are routed under the Security category (Anti-Ping log type) in Log Config, and Anti-Raid alerts stay in their own security channels."
+                "text": "The three do different jobs. Anti-Raid watches for floods and applies raid policies (quarantine, progressive timeouts) when many mentions arrive in a window. Logging records ghost pings and high mention volume. Anti-Ping enforces the per-message rules you set: how many pings are allowed, who is protected, who is exempt, and what happens on a violation. To find the records, Anti-Ping has its own log type under Security in Log Config, and Anti-Raid alerts stay in their security channels."
             },
             {
                 "type": "heading",
@@ -4212,7 +4744,7 @@ const docsData = [
     {
         "id": "honeypot",
         "icon": "ph-magnet",
-        "title": "Honeypot channels",
+        "title": "Honeypot",
         "subtitle": "Decoy trap text channels that flag malicious users before they reach your members.",
         "content": [
             {
