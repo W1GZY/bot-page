@@ -35,12 +35,12 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
-    <link rel="stylesheet" href="global.css?v=bda292b1">
+    <link rel="stylesheet" href="global.css?v=8a010085">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
-    <link rel="stylesheet" href="docs.css?v=158f576b">
+    <link rel="stylesheet" href="docs.css?v=0b549517">
     <script src="docs-data.js?v=595ad8c4" defer></script>
     <script src="layout.js?v=20df8546" defer></script>
-    <script src="index.js?v=b0670739" defer></script>
+    <script src="index.js?v=94346bee" defer></script>
 </head>
 <body data-nav="docs" data-title="Documentation">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -100,12 +100,11 @@
             </div>
         </header>
 
-        <main class="content" style="max-width:1120px;">
-            <div id="docsLanding" class="docs-landing">
-                <div class="docs-page-head">
-                    <p class="docs-eyebrow">Documentation</p>
+        <main class="content" style="max-width:1400px;">
+            <div id="docsLanding">
+                <div class="section-head" style="max-width: 780px;">
                     <h1 class="docs-page-heading">Guides and help</h1>
-                    <p class="docs-page-subtitle">Short walkthroughs for every module, written the way you would explain them to a new staff member. New here? Start with <a href="#quickstart">Install and set up</a>.</p>
+                    <p class="docs-page-subtitle">Short walkthroughs for every module. If you are new, start with <a href="#quickstart">Install and set up</a>.</p>
                 </div>
                 <label class="docs-search" for="docSearch">
                     <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
@@ -114,17 +113,24 @@
                 <div class="guide-grid" id="docsCatalog"></div>
             </div>
             <div class="docs-layout" id="docsReader" hidden>
+                <aside class="docs-side">
+                    <nav class="docs-nav" aria-label="Guides">
+                        <p class="docs-nav-title">Guides</p>
+                        <div id="sidebarDocsNavLinks"></div>
+                        <p class="docs-nav-title">More</p>
+                        <a class="docs-nav-link" href="commands.html"><i class="ph ph-terminal-window"></i> All commands</a>
+                        <a class="docs-nav-link" href="features.html"><i class="ph ph-stack"></i> All features</a>
+                        <a class="docs-nav-link" href="index.html"><i class="ph ph-house"></i> Overview</a>
+                    </nav>
+                </aside>
                 <div class="docs-main">
                     <details class="docs-mobile" id="docsMobile">
-                        <summary><span><i class="ph ph-list" aria-hidden="true"></i> All guides</span><i class="ph-bold ph-caret-down chev" aria-hidden="true"></i></summary>
-                        <div id="sidebarDocsNavLinks"></div>
-                        <div class="docs-more-links">
-                            <a href="commands.html"><i class="ph ph-terminal-window"></i> All commands</a>
-                            <a href="features.html"><i class="ph ph-stack"></i> All features</a>
-                            <a href="index.html"><i class="ph ph-house"></i> Overview</a>
-                        </div>
+                        <summary><i class="ph ph-list" aria-hidden="true"></i> Pick a guide <i class="ph-bold ph-caret-down chev" aria-hidden="true"></i></summary>
+                        <div id="docsMobileNavLinks"></div>
                     </details>
-                    <section id="docsContent" aria-live="polite"></section>
+                    <div class="docs-grid">
+                        <section id="docsContent" aria-live="polite"></section>
+                    </div>
                 </div>
             </div>
         </main>

@@ -806,14 +806,13 @@ function initDocsPage() {
             if (!catalogContainer) return;
             catalogContainer.innerHTML = '';
             docsData.forEach(doc => {
-                const meta = categoryMap[doc.id] || { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' };
                 const card = document.createElement('a');
                 card.className = 'guide-card';
                 card.href = `#${doc.id}`;
                 card.setAttribute('data-doc-card', doc.id);
                 card.innerHTML = `
-                    <span class="guide-card-cat">${meta.title}</span>
-                    <h2><i class="ph ${doc.icon}" aria-hidden="true"></i>${doc.title}</h2>
+                    <span class="guide-icon"><i class="ph-duotone ${doc.icon}"></i></span>
+                    <h2>${doc.title}</h2>
                     <p>${docInline(doc.subtitle)}</p>
                 `;
                 card.addEventListener('click', (event) => {
@@ -892,11 +891,13 @@ function initDocsPage() {
                     <span aria-hidden="true">/</span>
                     <span>${doc.title}</span>
                 </nav>
-                <header class="docs-article-heading">
-                    <p class="docs-article-eyebrow">${meta.title}</p>
-                    <h1><i class="ph ${doc.icon}" aria-hidden="true"></i>${doc.title}</h1>
-                    <p class="docs-article-subtitle">${docInline(doc.subtitle)}</p>
-                </header>
+                <div class="docs-article-heading">
+                    <div>
+                        <h1><i class="ph ${doc.icon}" style="color: var(--accent);"></i> ${doc.title}</h1>
+                        <p class="docs-article-subtitle">${docInline(doc.subtitle)}</p>
+                    </div>
+                    <span class="badge role">${meta.title}</span>
+                </div>
             `;
 
             doc.content.forEach(item => {

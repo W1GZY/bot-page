@@ -1025,6 +1025,10 @@ a.btn-secondary:focus-visible {
   margin-bottom: 32px;
 }
 
+/* Status has three services, so it keeps three columns on desktop instead of
+   leaving the fourth empty. The mobile rules below still collapse it. */
+.stats-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
 .stat-card {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
@@ -1092,7 +1096,27 @@ a.btn-secondary:focus-visible {
 .pill-btn.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 800; box-shadow: 0 0 16px var(--accent-glow); }
 
 .tos-title { color: #fff; margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: 0; }
-.tos-date { color: var(--text-secondary); font-size: 0.85rem; margin: 8px 0 24px; }
+
+/* Page titles carry the same accent icon as a docs article, so setup, status
+   and the legal pages read as part of the site rather than plain documents. */
+.page-heading-icon { margin-right: 10px; color: var(--accent); font-size: 0.85em; vertical-align: -1px; }
+
+.tos-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 26px;
+  padding: 4px 10px;
+  border: 1px solid var(--accent-glow);
+  border-radius: var(--radius-full);
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.tos-section h2 { color: var(--accent); }
+.tos-section a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); }
 .hamburger:hover { background: rgba(255, 255, 255, 0.08); }
@@ -1113,6 +1137,7 @@ a.btn-secondary:focus-visible {
 
 @media (max-width: 768px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stats-grid.stats-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .responsive-grid-2 { grid-template-columns: 1fr; gap: 14px; }
   .filter-pills { display: flex; overflow-x: auto; width: 100%; padding-bottom: 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .pill-btn { flex-shrink: 0; }
@@ -1121,6 +1146,7 @@ a.btn-secondary:focus-visible {
 @media (max-width: 480px) {
   .hero-title { font-size: 1.65rem; }
   .stats-grid { grid-template-columns: 1fr; }
+  .stats-grid.stats-grid-3 { grid-template-columns: 1fr; }
   .btn-large { width: 100%; justify-content: center; min-height: 48px; }
   .page-footer { flex-direction: column; gap: 12px; text-align: center; }
   code { word-break: break-all; font-size: 0.8em; }
