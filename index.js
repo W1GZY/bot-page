@@ -172,8 +172,8 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=595ad8c4', loaded: docsDataLoaded },
-        commands: { src: 'commands-data.js?v=97a9fad4', loaded: commandsDataLoaded }
+        docs: { src: 'docs-data.js?v=786092f1', loaded: docsDataLoaded },
+        commands: { src: 'commands-data.js?v=93a2afad', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
     const dataLoads = new Map();
@@ -1721,7 +1721,10 @@ let ticketStep = 1;
             return best;
         }
 
-        function goTo(index) {
+        // `instant` is for the opening placement: the deck starts on a middle
+        // community, and sliding the row there on load would look like a move
+        // nobody made.
+        function goTo(index, { instant = false } = {}) {
             const target = ((index % slides.length) + slides.length) % slides.length;
             const slide = slides[target];
             // Scrolling a row that already fits would only nudge every slot
@@ -1729,7 +1732,7 @@ let ticketStep = 1;
             if (!rowFits()) {
                 track.scrollTo({
                     left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
-                    behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+                    behavior: instant || prefersReducedMotion() ? 'auto' : 'smooth'
                 });
             }
             setActive(target);
@@ -1771,9 +1774,12 @@ let ticketStep = 1;
         section.hidden = false;
         panel.classList.add('is-live');
         // Painted only once the section is on screen: a hidden section reports
-        // a width of zero, which would park every slot off centre.
-        setActive(0);
-        goTo(0);
+        // a width of zero, which would park every slot off centre. The deck
+        // opens on its middle community so the row reads as centred instead of
+        // starting flush left; a row of one or two has no middle to open on.
+        const startIndex = slides.length > 2 ? Math.floor(slides.length / 2) : 0;
+        setActive(startIndex);
+        goTo(startIndex, { instant: true });
 
         carouselRuntime = {
             next() { goTo(activeIndex + 1); },
@@ -1945,8 +1951,8 @@ let ticketStep = 1;
     }
 })();
 
-// Live server count: fills the "Communities" stat card from the dashboard's
-// public stats bridge; any failure leaves the static number in place.
+// Live server count: fills the stat card from the dashboard's public stats
+// bridge; show an explicit unavailable state rather than a stale or stuck count.
 (function () {
     // Dashboard route that proxies get_public_stats for the static site.
     const STATS_ENDPOINT = 'https://dashboard-seanbo.vercel.app/api/public/stats';
@@ -1957,7 +1963,7 @@ let ticketStep = 1;
     function readCachedStats() {
         try {
             const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
-            if (!cached || typeof cached.servers !== 'number') return null;
+            if (!cached || !Number.isSafeInteger(cached.servers) || cached.servers < 0) return null;
             if (Date.now() - Number(cached.fetchedAt || 0) > CACHE_TTL_MS) return null;
             return cached;
         } catch (error) {
@@ -1977,7 +1983,7 @@ let ticketStep = 1;
     }
 
     function applyStats(stats) {
-        if (!stats || typeof stats.servers !== 'number' || stats.servers < 0) return;
+        if (!stats || !Number.isSafeInteger(stats.servers) || stats.servers < 0) return;
 
         // Plain digits: the counter animation parses this text.
         const cardCount = document.getElementById('liveServerCount');
@@ -1987,6 +1993,7 @@ let ticketStep = 1;
     async function loadLiveStats() {
         if (!document.getElementById('liveServerCount')) return;
 
+        const cardCount = document.getElementById('liveServerCount');
         const cached = readCachedStats();
         if (cached) {
             applyStats(cached);
@@ -2000,12 +2007,20 @@ let ticketStep = 1;
                 signal: controller.signal,
                 headers: { Accept: 'application/json' }
             });
-            if (!response.ok) return;
+            if (!response.ok) {
+                cardCount.textContent = 'Unavailable';
+                return;
+            }
             const stats = await response.json();
+            if (!stats || !Number.isSafeInteger(stats.servers) || stats.servers < 0) {
+                cardCount.textContent = 'Unavailable';
+                return;
+            }
             applyStats(stats);
             writeCachedStats(stats);
         } catch (error) {
-            // Offline, CORS-blocked or unreachable: keep the static copy.
+            // Offline, CORS-blocked or unreachable: do not leave a false count.
+            cardCount.textContent = 'Unavailable';
         } finally {
             clearTimeout(timeout);
         }

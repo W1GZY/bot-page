@@ -763,19 +763,6 @@ body::after {
   line-height: 1.65;
 }
 
-/* An aside that says what the bot will not do, in the owner's voice. */
-.owner-note {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 22px 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius-md);
-}
-.owner-note p { margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; }
-.owner-note strong { color: var(--text-primary); }
-
 /* A full-width band that opens with a section head, so the new blocks share
    the landing page's own measure instead of inventing another one. */
 .section-block { max-width: 1100px; margin: 72px auto 0; }

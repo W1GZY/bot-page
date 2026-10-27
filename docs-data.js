@@ -128,7 +128,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/prefix [new_prefix]",
-                        "desc": "View or change the optional legacy text-command prefix."
+                        "desc": "View or change the text-command prefix, for servers that still use one."
                     },
                     {
                         "cmd": "/staff diagnose",
@@ -556,7 +556,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/strategy import [json_file]",
-                        "desc": "Import strategy entries from a JSON file."
+                        "desc": "Import strategy entries from a file."
                     },
                     {
                         "cmd": "/strategy delete [boss_name]",
@@ -764,7 +764,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/serveradmin editrole [role]",
-                        "desc": "Change a role name, color, display, or mentionable state."
+                        "desc": "Change a role's name, color, display style, or whether it can be mentioned."
                     },
                     {
                         "cmd": "/serveradmin delrole [role]",
@@ -776,7 +776,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/serveradmin editchannel [channel]",
-                        "desc": "Edit a text channel name, topic, NSFW state, or slowmode."
+                        "desc": "Edit a text channel's name, topic, age-restricted setting, or slowmode."
                     },
                     {
                         "cmd": "/serveradmin mods",
@@ -921,7 +921,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/antiraid audit",
-                        "desc": "Perform automated security audit to flag role hierarchy risks."
+                        "desc": "Run a security check for risky role positions."
                     },
                     {
                         "cmd": "/antiraid canary [state]",
@@ -929,11 +929,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/antiraid register_scam [image] [message]",
-                        "desc": "Register scam images as visual blocks: upload the files, or pass a message link and the bot fingerprints the picture that is already posted, which keeps re-crops and re-renders of it matchable."
+                        "desc": "Register scam images so they are blocked on sight: upload the files, or paste a message link and the bot remembers that picture, including later crops and screenshots of it."
                     },
                     {
                         "cmd": "/antiraid unregister_scam [hash]",
-                        "desc": "Remove an image hash from the visual scam blocker."
+                        "desc": "Stop blocking an image that was registered by mistake."
                     },
                     {
                         "cmd": "/antiraid scam_list [recover] [days]",
@@ -1175,7 +1175,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Turning a category off is recorded, with who did it and what moved. `/log reset` brings every event back on, and `/log status` shows the current state."
+                "text": "Turning a category off is recorded, with who did it and what moved. `/log reset` brings every event back on, and `/log status` shows what is on right now."
             },
             {
                 "type": "heading",
@@ -2140,7 +2140,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket panel [name]",
-                        "desc": "Deploy a reusable support ticket panel to a text channel."
+                        "desc": "Post a reusable support ticket panel in a text channel."
                     },
                     {
                         "cmd": "/ticket setup_channel",
@@ -2152,7 +2152,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket unclaim",
-                        "desc": "Release ticket ownership back to queue."
+                        "desc": "Hand a ticket back to the staff queue."
                     },
                     {
                         "cmd": "/ticket priority [level]",
@@ -2642,7 +2642,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Every normal button has a style, an action type and a short payload:"
+                "text": "Every normal button has a style, an action and a value:"
             },
             {
                 "type": "list",
@@ -2904,7 +2904,7 @@ const docsData = [
         "content": [
             {
                 "type": "text",
-                "text": "SeanBot records time in voice per member, the longest unbroken sessions, and weekly graphs of when voice is busy and when it is empty. Voice Analytics is on by default wherever SeanBot can see voice state."
+                "text": "SeanBot records time in voice per member, the longest unbroken sessions, and weekly graphs of when voice is busy and when it is empty. Voice Analytics is on by default wherever SeanBot can see who joins voice."
             },
             {
                 "type": "text",
@@ -2932,7 +2932,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/voice graph [member]",
-                        "desc": "Render historical weekly voice activity chart."
+                        "desc": "Show a weekly voice activity chart."
                     }
                 ]
             }
@@ -3039,8 +3039,8 @@ const docsData = [
             {
                 "type": "steps",
                 "items": [
-                    "Pick one trusted server as the owner. Run `/thread network create` there and keep the token private.",
-                    "In each partner, turn on Federation and run `/thread network join` with the token.",
+                    "Pick one trusted server as the owner. Run `/thread network create` there and keep the code private.",
+                    "In each partner, turn on Federation and run `/thread network join` with the code.",
                     "Choose the forum channel where shared threads should appear on the **Federation** page."
                 ]
             },
@@ -3062,7 +3062,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/thread network join [token]",
-                        "desc": "Join a thread network using access token."
+                        "desc": "Join a thread network with its access code."
                     },
                     {
                         "cmd": "/thread network info",
@@ -3212,7 +3212,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/ping",
-                        "desc": "Check bot API latency in milliseconds."
+                        "desc": "Check how fast the bot answers, in milliseconds."
                     },
                     {
                         "cmd": "/invite",
@@ -3552,7 +3552,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/gpunish network list",
-                        "desc": "List your networks with server counts and appeal sync state."
+                        "desc": "List your networks with their server counts and whether appeal unbans are shared."
                     },
                     {
                         "cmd": "/gpunish run &lt;user&gt; &lt;timeout|kick|ban|unban|untimeout&gt; [duration_minutes] [scope] [reason]",
@@ -3560,7 +3560,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/gpunish appealsync &lt;on|off&gt; [server_ids]",
-                        "desc": "Toggle ban appeal unban sync and choose its server scope."
+                        "desc": "Choose whether unbans from appeals apply across the network, and where."
                     },
                     {
                         "cmd": "/gpunish history [limit]",
@@ -3650,7 +3650,7 @@ const docsData = [
                     "Honeypot is on by default.",
                     "Open the **Honeypot** page and place the trap.",
                     "Start with **Log only** so you can watch hits.",
-                    "Press **Deploy Trap Channel** to create and arm one."
+                    "Press **Create Trap Channel** to make one and turn it on."
                 ]
             },
             {

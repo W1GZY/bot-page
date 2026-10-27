@@ -776,6 +776,11 @@
             backdrop-filter: blur(16px);
             overflow-x: auto;
             margin: 48px 0;
+            /* The paywall ramp's alarm end, defined once so the cells and the
+               legend swatches cannot drift apart. Lighter than the Discord red
+               the cross badges use: at 0.8rem that red measures 3.9:1 on the
+               lightest palette's wash, and this one clears AA in all of them. */
+            --grade-red: #FF7B7E;
         }
         .comparison-table {
             width: 100%;
@@ -837,14 +842,43 @@
             align-items: center;
             gap: 4px;
         }
+        /* Free and None labels in the comparison table. */
         .badge-free {
-            background: var(--accent-glow);
-            color: var(--accent);
+            background: rgba(87, 242, 135, 0.15);
+            color: #57F287;
             padding: 4px 10px;
             border-radius: 12px;
             font-weight: 800;
             font-size: 0.8rem;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Monthly price row, when a price can be verified from the vendor. */
+        .comparison-price-row td {
+            padding-top: 16px;
+            padding-bottom: 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border-bottom: none;
+        }
+        .comparison-price-row td:last-child { padding-right: 20px; }
+        .price-tag {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .price-period {
+            color: var(--text-secondary);
+            font-size: 0.78em;
+            font-weight: 600;
+        }
+        /* Comparison source and pricing note. */
+        .comparison-footnote {
+            margin: 12px 2px 0;
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            line-height: 1.6;
+            opacity: 0.85;
         }
 
         .federation-preview-header {

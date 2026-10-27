@@ -278,7 +278,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/gpunish appealsync",
-            "desc": "Toggle ban appeal unban sync for your network.",
+            "desc": "Choose whether appeal unbans apply across your network.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -1000,7 +1000,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid register_pattern",
-            "desc": "Registers a dynamic scam text pattern (regex).",
+            "desc": "Adds a custom scam message pattern.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1174,7 +1174,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/log metrics",
-            "desc": "View internal logging performance and cache status",
+            "desc": "See how logs are being delivered and whether anything is behind",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1204,7 +1204,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/log webhook",
-            "desc": "Set the webhook URL for logging events",
+            "desc": "Set the webhook address logs are sent to",
             "badge": "Manage Server",
             "type": "perm"
         }
@@ -1385,7 +1385,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/ticket panel",
-            "desc": "Admin: deploy a reusable ticket panel to a text channel",
+            "desc": "Admin: post a reusable ticket panel in a text channel",
             "badge": "Ticket Administrator",
             "type": "perm"
         },
@@ -2000,7 +2000,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/embed builder",
-            "desc": "Deploy the embed builder design dashboard.",
+            "desc": "Open the embed builder.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2295,7 +2295,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/counter setup",
-            "desc": "Deploy a built-in statistics counter template",
+            "desc": "Create counter channels from a ready-made set",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2307,7 +2307,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/ping",
-            "desc": "Display bot latency, database latency, and system queue metrics",
+            "desc": "Display bot latency, database latency, and how much work is queued",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2319,7 +2319,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/stats growth",
-            "desc": "Render 30-day historical member growth chart",
+            "desc": "Show a 30-day member growth chart",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2440,7 +2440,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/identity proof",
-            "desc": "Submit a verification token to prove ownership",
+            "desc": "Submit a verification code to prove ownership",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2494,7 +2494,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/relay link",
-            "desc": "Link this text channel to a relay network via token",
+            "desc": "Link this text channel to a relay network with its invite code",
             "badge": "Network Manager",
             "type": "perm"
         },
@@ -2620,7 +2620,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/thread network dashboard",
-            "desc": "View federation health and config dashboard",
+            "desc": "View network health and settings",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2650,7 +2650,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/thread network join",
-            "desc": "Join a thread network using a token",
+            "desc": "Join a thread network with its access code",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -2698,13 +2698,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/thread network rotate_secret",
-            "desc": "Rotate the network cryptographic secret (Admin only - CRITICAL)",
+            "desc": "Replace the network's security key (Admin only - CRITICAL)",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/thread network rotate_token",
-            "desc": "Rotate the join token (Owner only)",
+            "desc": "Replace the join code (Owner only)",
             "badge": "Administrator",
             "type": "perm"
         }
@@ -2807,13 +2807,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/deck lookup",
-            "desc": "Render and inspect a compact deck code",
+            "desc": "Show and check a compact deck code",
             "badge": "Everyone",
             "type": "public"
         },
         {
             "name": "/deck show",
-            "desc": "Display a saved deck from database or render a web share code",
+            "desc": "Show a saved deck, or a share code for it",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2903,7 +2903,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/strategy import",
-            "desc": "Import strategies via JSON file (Admins Only)",
+            "desc": "Import strategies from a file (Admins Only)",
             "badge": "Administrator",
             "type": "perm"
         },
