@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 
     <script src="theme-init.js?v=b1713db3"></script>
-    <link rel="stylesheet" href="global.css?v=42e4135b">
+    <link rel="stylesheet" href="global.css?v=8bb05edd">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
     <script src="layout.js?v=20df8546" defer></script>
     <style>
@@ -98,6 +98,18 @@
                into the next column on a narrow screen. */
             overflow-wrap: anywhere;
         }
+
+        /* Column widths, one table each: the storage inventory and the
+           dashboard's single session cookie do not split the same way. */
+        .cookie-table--site col:nth-child(1) { width: 22%; }
+        .cookie-table--site col:nth-child(2) { width: 19%; }
+        .cookie-table--site col:nth-child(3) { width: 37%; }
+        .cookie-table--site col:nth-child(4) { width: 22%; }
+        .cookie-table--session col:nth-child(1) { width: 18%; }
+        .cookie-table--session col:nth-child(2) { width: 18%; }
+        .cookie-table--session col:nth-child(3) { width: 42%; }
+        .cookie-table--session col:nth-child(4) { width: 22%; }
+
     </style>
 </head>
 
@@ -112,7 +124,7 @@
             </div>
             <button class="hamburger" id="closeSidebarBtn" aria-label="Close navigation"><i class="ph ph-x"></i></button>
         </div>
-        <div style="font-size:0.65rem; font-weight:800; color:#71717a; text-transform:uppercase; margin:15px 0 8px;">Menu</div>
+        <div class="sidebar-menu-label">Menu</div>
         <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
         <a href="features.html" class="nav-link"><i class="ph ph-stack"></i><span>Features</span></a>
         <a href="status.html" class="nav-link"><i class="ph ph-activity"></i><span>Status</span></a>
@@ -123,7 +135,7 @@
 
     <div class="content-wrapper">
         <header class="top-header">
-            <div style="display:flex; align-items:center; gap:16px;">
+            <div class="top-header-leading">
                 <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation"><i class="ph ph-list"></i></button>
                 <div class="breadcrumbs">
                     <a href="index.html" class="breadcrumb-item"><i class="ph-fill ph-paw-print breadcrumb-icon"></i><span class="breadcrumb-brand-text">SeanBot.</span></a>
@@ -135,24 +147,24 @@
                 <div class="dropdown-toggle" id="themeToggle" title="Change theme accent">
                     <div class="active-display"></div><i class="ph ph-caret-down"></i>
                     <div class="dropdown-menu-content">
-                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin-bottom:8px;">Theme Accent</div>
+                        <div class="theme-menu-caption">Theme Accent</div>
                         <div class="color-grid" id="colorGrid">
-                            <div class="accent-dot" data-accent="gold" style="background: #FFD700;" title="Gold"></div>
-                            <div class="accent-dot" data-accent="amber" style="background: #F59E0B;" title="Amber"></div>
-                            <div class="accent-dot" data-accent="orange" style="background: #F97316;" title="Orange"></div>
-                            <div class="accent-dot" data-accent="rose" style="background: #E11D48;" title="Rose"></div>
-                            <div class="accent-dot" data-accent="pink" style="background: #EC4899;" title="Pink"></div>
-                            <div class="accent-dot" data-accent="purple" style="background: #9333EA;" title="Purple"></div>
-                            <div class="accent-dot" data-accent="blurple" style="background: #5865F2;" title="Blurple"></div>
-                            <div class="accent-dot" data-accent="indigo" style="background: #6366F1;" title="Indigo"></div>
-                            <div class="accent-dot" data-accent="blue" style="background: #3B82F6;" title="Blue"></div>
-                            <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;" title="Cyan"></div>
-                            <div class="accent-dot" data-accent="teal" style="background: #0D9488;" title="Teal"></div>
-                            <div class="accent-dot" data-accent="emerald" style="background: #10B981;" title="Emerald"></div>
-                            <div class="accent-dot" data-accent="green" style="background: #22C55E;" title="Green"></div>
-                            <div class="accent-dot" data-accent="lime" style="background: #84CC16;" title="Lime"></div>
+                            <div class="accent-dot accent-dot--gold" data-accent="gold" title="Gold"></div>
+                            <div class="accent-dot accent-dot--amber" data-accent="amber" title="Amber"></div>
+                            <div class="accent-dot accent-dot--orange" data-accent="orange" title="Orange"></div>
+                            <div class="accent-dot accent-dot--rose" data-accent="rose" title="Rose"></div>
+                            <div class="accent-dot accent-dot--pink" data-accent="pink" title="Pink"></div>
+                            <div class="accent-dot accent-dot--purple" data-accent="purple" title="Purple"></div>
+                            <div class="accent-dot accent-dot--blurple" data-accent="blurple" title="Blurple"></div>
+                            <div class="accent-dot accent-dot--indigo" data-accent="indigo" title="Indigo"></div>
+                            <div class="accent-dot accent-dot--blue" data-accent="blue" title="Blue"></div>
+                            <div class="accent-dot accent-dot--cyan" data-accent="cyan" title="Cyan"></div>
+                            <div class="accent-dot accent-dot--teal" data-accent="teal" title="Teal"></div>
+                            <div class="accent-dot accent-dot--emerald" data-accent="emerald" title="Emerald"></div>
+                            <div class="accent-dot accent-dot--green" data-accent="green" title="Green"></div>
+                            <div class="accent-dot accent-dot--lime" data-accent="lime" title="Lime"></div>
                         </div>
-                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600; margin:12px 0 8px;">Palette</div>
+                        <div class="theme-menu-subtitle">Palette</div>
                         <div class="palette-options" role="radiogroup" aria-label="Theme palette">
                         </div>
                     </div>
@@ -167,11 +179,11 @@
             <div class="tos-date">Last Updated: 15. April 2026</div>
 
             <div class="tos-section">
-                <p style="color: var(--text-secondary);">This page covers cookies and browser storage for <strong>sean.bot.nu</strong> and the SeanBot dashboard. It sits alongside the <a href="tos.html">Terms of Service &amp; Privacy Policy</a>, which covers what the bot stores on Discord; this page is only about your browser.</p>
+                <p class="tos-muted">This page covers cookies and browser storage for <strong>sean.bot.nu</strong> and the SeanBot dashboard. It sits alongside the <a href="tos.html">Terms of Service &amp; Privacy Policy</a>, which covers what the bot stores on Discord; this page is only about your browser.</p>
             </div>
 
-            <div class="tos-section" style="margin-top: 48px;">
-                <h1 class="tos-title" style="font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">1. Cookies and this site</h1>
+            <div class="tos-section tos-section--spaced">
+                <h1 class="tos-title tos-heading">1. Cookies and this site</h1>
                 <p>A cookie is a small file a site asks your browser to keep and send back with later requests. Sites use them for things like sign-in, preferences, and tracking. This policy says which of those, if any, apply here, because the answer is shorter than most cookie policies.</p>
 
                 <div class="cookie-note">
@@ -194,12 +206,12 @@
                 <!-- Read back against the shipped HTML and JS by a check in scripts/,
                      so a new key fails there until it is listed here. -->
                 <div class="cookie-table-wrap">
-                    <table class="cookie-table" data-site-inventory>
+                    <table class="cookie-table cookie-table--site" data-site-inventory>
                         <colgroup>
-                            <col style="width: 22%;">
-                            <col style="width: 19%;">
-                            <col style="width: 37%;">
-                            <col style="width: 22%;">
+                            <col>
+                            <col>
+                            <col>
+                            <col>
                         </colgroup>
                         <thead>
                             <tr>
@@ -257,12 +269,12 @@
                 <p>The dashboard is the signed-in web panel for server admins and staff, and it runs at a different address from this site. It needs one cookie to work, and that is the only one it sets.</p>
 
                 <div class="cookie-table-wrap">
-                    <table class="cookie-table">
+                    <table class="cookie-table cookie-table--session">
                         <colgroup>
-                            <col style="width: 18%;">
-                            <col style="width: 18%;">
-                            <col style="width: 42%;">
-                            <col style="width: 22%;">
+                            <col>
+                            <col>
+                            <col>
+                            <col>
                         </colgroup>
                         <thead>
                             <tr>
@@ -305,13 +317,13 @@
 
             <div class="tos-section">
                 <h2>1.6 Contact</h2>
-                <p>Questions about this page, or a request about your data, go to the same place as everything else: Discord DM <strong style="color: var(--accent);">@energetic_starfish_67605</strong>. Your data rights and the contact details for formal requests are set out in section 2.3 of the <a href="tos.html">Terms of Service &amp; Privacy Policy</a>.</p>
+                <p>Questions about this page, or a request about your data, go to the same place as everything else: Discord DM <strong class="tos-accent">@energetic_starfish_67605</strong>. Your data rights and the contact details for formal requests are set out in section 2.3 of the <a href="tos.html">Terms of Service &amp; Privacy Policy</a>.</p>
             </div>
         </div>
 
         <footer class="page-footer">
             <div>&copy; 2026 SeanBot. All rights reserved.</div>
-            <div style="display: flex; gap: 18px;">
+            <div class="page-footer-links">
                 <a href="tos.html">Terms &amp; Privacy</a>
                 <a href="index.html"><i class="ph ph-arrow-left"></i> Back to Home</a>
             </div>

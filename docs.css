@@ -18,6 +18,27 @@
     line-height: 1.55;
 }
 
+/* Page widths. The content column is already 1400px wide, so a page that wants
+   a tighter column asks for one of these instead of restating a max-width on
+   its <main>. */
+.content--feature {
+    max-width: 1100px;
+}
+
+.content--info {
+    max-width: 900px;
+}
+
+/* The lede under a page title, held to a shorter measure than the page so the
+   first paragraph reads as a column rather than one long line. */
+.page-lead {
+    max-width: 780px;
+}
+
+.page-lead--wide {
+    max-width: 820px;
+}
+
 /* Guide grid, docs.html landing: one card per guide, no category headings. */
 .guide-grid {
     display: grid;
@@ -960,6 +981,52 @@
     align-items: center;
     gap: 14px;
     margin-top: 8px;
+}
+
+/* The closing paragraph of setup sits apart from the callout above it. */
+.setup-outro {
+    margin-top: 28px;
+}
+
+/* A callout whose last line is a paragraph: the box's own padding is the only
+   spacing the text needs above it. */
+.callout-note-copy {
+    margin: 8px 0 0;
+}
+
+/* Status page: one card per service, each a left-aligned row that ends in a
+   live dot on the right. */
+.status-grid {
+    margin-top: 24px;
+}
+
+.status-card {
+    text-align: left;
+}
+
+.status-card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.status-card-icon {
+    color: var(--accent);
+    font-size: 1.05rem;
+}
+
+.status-card-name {
+    font-size: 0.95rem;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #57F287;
+    display: inline-block;
+    margin-left: auto;
 }
 
 /* Setup page: the shot under a step. Every shot is 1280 by 720, so the frame holds

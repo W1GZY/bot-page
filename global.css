@@ -47,6 +47,12 @@
   --header-height: 60px;
   --anchor-gap: 20px;
   --anchor-offset: calc(var(--header-height) + var(--anchor-gap));
+
+  /* One gap between sections, on every page. A page never sets its own
+     section spacing: it either uses .section-block or reads this token, so
+     the rhythm cannot drift block by block. The narrow-screen value is set
+     once below, in the media query, instead of per rule. */
+  --section-gap: 72px;
 }
 
 :root[data-accent="gold"]    { --accent: #FFD700; --accent-glow: rgba(255, 215, 0, 0.15); --accent-text: #000000; }
@@ -607,6 +613,9 @@ body::after {
   padding-left: 4px;
 }
 
+/* The small caps heading that opens the sidebar's list of pages. */
+.sidebar-menu-label { font-size: 0.65rem; font-weight: 800; color: #71717a; text-transform: uppercase; margin: 15px 0 8px; }
+
 .nav-link {
   display: flex;
   align-items: center;
@@ -652,6 +661,10 @@ body::after {
   scroll-margin-top: var(--anchor-offset);
 }
 
+/* The hamburger and the trail to the current page travel together on the
+   left of the top bar. */
+.top-header-leading { display: flex; align-items: center; gap: 16px; }
+
 .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
 .breadcrumb-item { color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
 
@@ -690,6 +703,30 @@ body::after {
 .color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 8px; }
 .accent-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; transition: transform var(--transition-fast); }
 .accent-dot:hover { transform: scale(1.25); }
+
+/* The picker's swatches and the two labels above them. Every page carries this
+   menu, so the colours live here rather than in index.css: the landing page was
+   only the first page to stop spelling them out on each dot. */
+.accent-dot--gold { background: #FFD700; }
+.accent-dot--amber { background: #F59E0B; }
+.accent-dot--orange { background: #F97316; }
+.accent-dot--rose { background: #E11D48; }
+.accent-dot--pink { background: #EC4899; }
+.accent-dot--purple { background: #9333EA; }
+.accent-dot--blurple { background: #5865F2; }
+.accent-dot--indigo { background: #6366F1; }
+.accent-dot--blue { background: #3B82F6; }
+.accent-dot--cyan { background: #06B6D4; }
+.accent-dot--teal { background: #0D9488; }
+.accent-dot--emerald { background: #10B981; }
+.accent-dot--green { background: #22C55E; }
+.accent-dot--lime { background: #84CC16; }
+
+/* The landing page heads its two picker sections in caps; the docs and legal
+   pages keep the label as written, so they take the sentence-case class. */
+.theme-menu-label { font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+.theme-menu-caption { font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; }
+.theme-menu-subtitle { font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin: 12px 0 8px; }
 
 /* Editorial section rhythm, shared by every page. A header pairs a small
    accent label with a title and one lede line, so a section opens the same
@@ -765,11 +802,11 @@ body::after {
 
 /* A full-width band that opens with a section head, so the new blocks share
    the landing page's own measure instead of inventing another one. */
-.section-block { max-width: 1100px; margin: 72px auto 0; }
+.section-block { max-width: 1100px; margin: var(--section-gap) auto 0; }
 
 @media (max-width: 760px) {
+  :root { --section-gap: 48px; }
   .steps-band { grid-template-columns: 1fr; }
-  .section-block { margin-top: 48px; }
 }
 
 /* The palette row, directly under the accent dots. Original is the default
@@ -826,6 +863,26 @@ body::after {
   color: var(--text-secondary);
   background: rgba(13, 13, 16, 0.95);
 }
+
+/* The footer's right-hand link row. */
+.page-footer-links { display: flex; gap: 18px; }
+
+/* The two chrome-less pages, the 404 and the invite hand-off. Each fills the
+   window with one centred block, so the geometry lives with the layout
+   instead of in the two documents. */
+.not-found-shell { display: flex; align-items: center; justify-content: center; }
+.not-found-inner { text-align: center; }
+.not-found-icon { font-size: 5rem; color: var(--accent); margin-bottom: 10px; opacity: 0.9; }
+.not-found-code { font-size: 6rem; font-weight: 900; color: #fff; margin: 0; line-height: 1; letter-spacing: -2px; }
+.not-found-title { font-size: 1.6rem; color: var(--accent); margin-top: 15px; font-weight: 700; }
+.not-found-copy { color: var(--text-secondary); margin: 15px auto 0 auto; font-size: 1.1rem; max-width: 400px; line-height: 1.6; }
+.not-found-cta { margin-top: 20px; }
+
+.invite-page { background: #1c1c21; }
+.invite-shell { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.invite-inner { text-align: center; }
+.invite-title { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+.invite-copy { color: var(--text-secondary); margin-bottom: 20px; }
 
 .glass-card {
   background: var(--bg-card);
@@ -1104,6 +1161,61 @@ a.btn-secondary:focus-visible {
 
 .tos-section h2 { color: var(--accent); }
 .tos-section a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* The legal pages' rhythm: a section band between the numbered headings, a
+   heading that rules off from the text under it, and the tinted "in short"
+   callout. tos.html and cookies.html both use them, so they live here beside
+   .tos-title rather than twice inside the two documents. */
+.tos-section--spaced {
+  margin-top: 48px;
+}
+
+/* Declared after .tos-title on purpose: a numbered section heading reuses that
+   class and asks for a slightly smaller size. */
+.tos-heading {
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.tos-muted {
+  color: var(--text-secondary);
+}
+
+.tos-flush {
+  margin-top: 0;
+}
+
+.tos-note {
+  margin-top: 16px;
+  color: var(--text-secondary);
+}
+
+.tos-accent {
+  color: var(--accent);
+}
+
+.tos-callout {
+  background: rgba(88, 101, 242, 0.08);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+}
+
+.tos-callout-title {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tos-callout-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
 
 .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); }
 .hamburger:hover { background: rgba(255, 255, 255, 0.08); }

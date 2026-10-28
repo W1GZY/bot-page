@@ -38,13 +38,13 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 
     <script src="theme-init.js?v=b1713db3"></script>
-    <link rel="stylesheet" href="global.css?v=42e4135b">
+    <link rel="stylesheet" href="global.css?v=8bb05edd">
     <link rel="stylesheet" href="brand.css?v=d8de8e56">
 
     <!-- The Documentation and Commands tabs live on this page, so docs.css
-         loads here too, ahead of index.css and its layout overrides. -->
-    <link rel="stylesheet" href="docs.css?v=0b549517">
-    <link rel="stylesheet" href="index.css?v=629ac7cf">
+ loads here too, ahead of index.css and its layout overrides. -->
+    <link rel="stylesheet" href="docs.css?v=bf6883a1">
+    <link rel="stylesheet" href="index.css?v=6b0a6336">
 
     <script type="application/ld+json">
     {
@@ -109,24 +109,24 @@
                 <i class="ph ph-caret-down"></i>
                 
                 <div class="dropdown-menu-content">
-                    <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">Theme Accent</div>
+                    <div class="theme-menu-label">Theme Accent</div>
                     <div class="color-grid" id="colorGrid">
-                        <div class="accent-dot" data-accent="gold" style="background: #FFD700;" title="Gold"></div>
-                        <div class="accent-dot" data-accent="amber" style="background: #F59E0B;" title="Amber"></div>
-                        <div class="accent-dot" data-accent="orange" style="background: #F97316;" title="Orange"></div>
-                        <div class="accent-dot" data-accent="rose" style="background: #E11D48;" title="Rose"></div>
-                        <div class="accent-dot" data-accent="pink" style="background: #EC4899;" title="Pink"></div>
-                        <div class="accent-dot" data-accent="purple" style="background: #9333EA;" title="Purple"></div>
-                        <div class="accent-dot" data-accent="blurple" style="background: #5865F2;" title="Blurple"></div>
-                        <div class="accent-dot" data-accent="indigo" style="background: #6366F1;" title="Indigo"></div>
-                        <div class="accent-dot" data-accent="blue" style="background: #3B82F6;" title="Blue"></div>
-                        <div class="accent-dot" data-accent="cyan" style="background: #06B6D4;" title="Cyan"></div>
-                        <div class="accent-dot" data-accent="teal" style="background: #0D9488;" title="Teal"></div>
-                        <div class="accent-dot" data-accent="emerald" style="background: #10B981;" title="Emerald"></div>
-                        <div class="accent-dot" data-accent="green" style="background: #22C55E;" title="Green"></div>
-                        <div class="accent-dot" data-accent="lime" style="background: #84CC16;" title="Lime"></div>
+                        <div class="accent-dot accent-dot--gold" data-accent="gold" title="Gold"></div>
+                        <div class="accent-dot accent-dot--amber" data-accent="amber" title="Amber"></div>
+                        <div class="accent-dot accent-dot--orange" data-accent="orange" title="Orange"></div>
+                        <div class="accent-dot accent-dot--rose" data-accent="rose" title="Rose"></div>
+                        <div class="accent-dot accent-dot--pink" data-accent="pink" title="Pink"></div>
+                        <div class="accent-dot accent-dot--purple" data-accent="purple" title="Purple"></div>
+                        <div class="accent-dot accent-dot--blurple" data-accent="blurple" title="Blurple"></div>
+                        <div class="accent-dot accent-dot--indigo" data-accent="indigo" title="Indigo"></div>
+                        <div class="accent-dot accent-dot--blue" data-accent="blue" title="Blue"></div>
+                        <div class="accent-dot accent-dot--cyan" data-accent="cyan" title="Cyan"></div>
+                        <div class="accent-dot accent-dot--teal" data-accent="teal" title="Teal"></div>
+                        <div class="accent-dot accent-dot--emerald" data-accent="emerald" title="Emerald"></div>
+                        <div class="accent-dot accent-dot--green" data-accent="green" title="Green"></div>
+                        <div class="accent-dot accent-dot--lime" data-accent="lime" title="Lime"></div>
                     </div>
-                    <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin: 12px 0 8px;">Palette</div>
+                    <div class="theme-menu-subtitle">Palette</div>
                     <div class="palette-options" role="radiogroup" aria-label="Theme palette">
                     </div>
                 </div>
@@ -138,7 +138,7 @@
         </div>
     </header>
 
-    <main class="content" style="max-width: 1400px;">
+    <main class="content">
         
         <section id="view-overview" class="tab-view active-view">
             <a class="spotlight-card" href="#compare">
@@ -150,88 +150,88 @@
                 </span>
                 <span class="spotlight-cta">Compare bots <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></span>
             </a>
-            <div class="hero-section" style="padding: 36px 16px 20px 16px; text-align: center; position: relative;">
+            <div class="hero-section">
                 <div class="hero-mark" aria-hidden="true">
                     <img src="assets/seanbot.png?v=5db7d29f" alt="">
                 </div>
-                <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.15; max-width: 920px; margin: 0 auto 16px auto;">
+                <h1 class="hero-title">
                     I built SeanBot because Wizard101 guild raids were hard to organize.
                 </h1>
-                <p class="hero-desc" style="font-size: 1.05rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 28px auto; line-height: 1.6;">
+                <p class="hero-desc">
                     It started with tools to coordinate raids, rosters and builds for my Wizard101 guild. Since then, it has grown into a free bot for guilds and communities that want the day-to-day Discord work in one place, with modules you can turn off if you do not need them.
                 </p>
 
-                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-                    <a href="invite.html" target="_blank" class="btn-large btn-primary" style="padding: 14px 28px; font-weight: 800; font-size: 0.95rem;">
+                <div class="hero-actions">
+                    <a href="invite.html" target="_blank" class="btn-large btn-primary">
                         <i class="ph-bold ph-discord-logo"></i> Invite SeanBot to Server
                     </a>
-                    <button onclick="switchTab('commands')" data-tab="commands" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
+                    <button onclick="switchTab('commands')" data-tab="commands" class="btn-large btn-secondary">
                         <i class="ph-bold ph-terminal-window"></i> Browse the commands
                     </button>
-                    <a href="setup.html" class="btn-large btn-secondary" style="padding: 14px 22px; font-weight: 700; font-size: 0.9rem;">
+                    <a href="setup.html" class="btn-large btn-secondary">
                         <i class="ph-bold ph-rocket-launch"></i> See how setup works
                     </a>
                 </div>
 
                 <div class="hero-mockup-container">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; margin-bottom: 16px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-mono);">#audit-log</span>
-                            <span style="font-size: 0.65rem; color: var(--text-secondary); letter-spacing: 0.06em;">EXAMPLE</span>
+                    <div class="mock-head--embed">
+                        <div class="mock-row">
+                            <span class="mock-channel-name">#audit-log</span>
+                            <span class="mock-channel-tag">EXAMPLE</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #57F287; font-weight: 700;">
-                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #57F287;"></span> Example status
+                        <div class="mock-row--status">
+                            <span class="mock-status-dot"></span> Example status
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 14px; text-align: left; align-items: flex-start;">
-                        <img src="assets/seanbot.png?v=5db7d29f" style="width: 40px; height: 40px; border-radius: 50%;" alt="SeanBot">
-                        <div style="flex: 1;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #fff;">Info: Invite Log</span>
-                                <span style="background: #5865F2; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 1px 5px; border-radius: 3px; display: inline-flex; align-items: center; gap: 3px;">
-                                    <i class="ph-bold ph-check" style="font-size: 0.65rem;"></i> APP
+                    <div class="mock-message-row">
+                        <img class="mock-avatar--medium" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                        <div class="is-flex-fill">
+                            <div class="mock-user-row--tight">
+                                <span class="mock-card-title--tight">Info: Invite Log</span>
+                                <span class="mock-app-tag--hero-alt">
+                                    <i class="ph-bold ph-check mock-text--tiny"></i> APP
                                 </span>
-                                <span style="font-size: 0.775rem; color: #949ba4;">18:23</span>
+                                <span class="mock-caption--dim">18:23</span>
                             </div>
                             
-                            <div style="background: #2b2d31; border-left: 4px solid #57F287; border-radius: 8px; padding: 16px 18px; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
+                            <div class="mock-app-embed">
                                 
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 76px; height: 76px; border-radius: 8px; object-fit: cover; position: absolute; right: 16px; top: 16px;" alt="Thumbnail">
+                                <img class="mock-embed-thumb" src="assets/seanbot.png?v=5db7d29f" alt="Thumbnail">
 
-                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; max-width: calc(100% - 90px);">
-                                    <img src="assets/seanbot.png?v=5db7d29f" style="width: 22px; height: 22px; border-radius: 50%;" alt="User">
-                                    <span style="font-weight: 700; color: #f2f3f5; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">@Example Member</span>
+                                <div class="mock-user-row--thumbnail">
+                                    <img class="mock-avatar--brand" src="assets/seanbot.png?v=5db7d29f" alt="User">
+                                    <span class="mock-author--ellipsis">@Example Member</span>
                                 </div>
 
-                                <div style="font-weight: 800; font-size: 1.05rem; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
-                                    <span style="background: #57F287; color: #000; width: 18px; height: 18px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900;">✓</span> Invite Created
+                                <div class="mock-embed-heading">
+                                    <span class="mock-verified-badge">✓</span> Invite Created
                                 </div>
 
-                                <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; max-width: calc(100% - 90px);">
+                                <div class="mock-field-grid">
                                     <div>
-                                        <div style="font-size: 0.8rem; font-weight: 700; color: #f2f3f5; margin-bottom: 4px;">Code</div>
-                                        <span style="background: #1e1f22; padding: 3px 8px; border-radius: 4px; font-family: var(--font-mono); color: #dbdee1; font-size: 0.8rem;">xYzAbC12</span>
+                                        <div class="mock-field-label">Code</div>
+                                        <span class="mock-code--mono">xYzAbC12</span>
                                     </div>
                                     <div>
-                                        <div style="font-size: 0.8rem; font-weight: 700; color: #f2f3f5; margin-bottom: 4px;">Channel</div>
-                                        <span style="background: rgba(88, 101, 242, 0.25); padding: 3px 8px; border-radius: 4px; color: #c9cdfb; font-size: 0.8rem;"># 📋-server-rules</span>
+                                        <div class="mock-field-label">Channel</div>
+                                        <span class="mock-command-value"># 📋-server-rules</span>
                                     </div>
                                     <div>
-                                        <div style="font-size: 0.8rem; font-weight: 700; color: #f2f3f5; margin-bottom: 4px;">Creator</div>
-                                        <span style="background: rgba(88, 101, 242, 0.25); padding: 3px 8px; border-radius: 4px; color: #c9cdfb; font-size: 0.8rem;">@Server Admin</span>
+                                        <div class="mock-field-label">Creator</div>
+                                        <span class="mock-command-value">@Server Admin</span>
                                     </div>
                                     <div>
-                                        <div style="font-size: 0.8rem; font-weight: 700; color: #f2f3f5; margin-bottom: 4px;">Max Uses</div>
-                                        <div style="color: #dbdee1; font-size: 0.85rem;">No limit</div>
+                                        <div class="mock-field-label">Max Uses</div>
+                                        <div class="mock-field-value">No limit</div>
                                     </div>
                                     <div>
-                                        <div style="font-size: 0.8rem; font-weight: 700; color: #f2f3f5; margin-bottom: 4px;">Expires</div>
-                                        <span style="background: #1e1f22; padding: 3px 8px; border-radius: 4px; color: #dbdee1; font-size: 0.8rem;">No expiry</span>
+                                        <div class="mock-field-label">Expires</div>
+                                        <span class="mock-code--field">No expiry</span>
                                     </div>
                                 </div>
 
-                                <div style="font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
+                                <div class="mock-embed-foot">
                                     EXAMPLE LOG ENTRY • INVITE CREATED
                                 </div>
                             </div>
@@ -285,7 +285,7 @@
                 </div>
             </section>
 
-            <div class="plain-intro-section">
+            <div class="section-block plain-intro-section">
                 <div class="section-head">
                     <h2 class="section-title">Use the parts you need</h2>
                     <p class="section-lede">Most modules start on. Last-message tracking, staff lists and verification start off and can be enabled when you need them. Some modules rely on others, so check the dashboard's dependency notes before switching one off.</p>
@@ -298,91 +298,91 @@
                     <p class="section-lede">
                         SeanBot adds join-rate rules, spam checks and configurable actions alongside Discord AutoMod. Start with Log Mode to see what the rules catch before turning on punishments.
                     </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> <strong style="color: var(--accent);">Log Mode:</strong> logs detections without acting on them, so you can tune everything against your own server.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> <strong style="color: var(--accent);">Configurable responses:</strong> choose a response policy by detection type; progressive timeouts are available for repeat offenses.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #57F287; font-size: 1.2rem;"></i> <strong style="color: var(--accent);">Safety:</strong> configure trusted-role bypasses; some detections also support channel-specific thresholds or multipliers.</li>
+                    <ul class="feature-points">
+                        <li class="feature-point"><i class="ph-fill ph-check-circle feature-point-icon"></i> <strong class="feature-point-mark">Log Mode:</strong> logs detections without acting on them, so you can tune everything against your own server.</li>
+                        <li class="feature-point"><i class="ph-fill ph-check-circle feature-point-icon"></i> <strong class="feature-point-mark">Configurable responses:</strong> choose a response policy by detection type; progressive timeouts are available for repeat offenses.</li>
+                        <li class="feature-point"><i class="ph-fill ph-check-circle feature-point-icon"></i> <strong class="feature-point-mark">Safety:</strong> configure trusted-role bypasses; some detections also support channel-specific thresholds or multipliers.</li>
                     </ul>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" data-tab="docs" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('antiraid'), 50);" data-tab="docs" class="btn-large btn-secondary feature-guide-btn">
                         <i class="ph-bold ph-shield-check"></i> Read the anti-raid guide
                     </button>
                 </div>
                 
-                <div style="background: #313338; border-radius: 8px; padding: 16px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 14px;">
-                        <div style="font-weight: 700; font-size: 0.95rem; color: #f2f3f5; display: flex; align-items: center; gap: 8px;">
-                            <span style="color: #949ba4; font-size: 1.1rem;">#</span>
+                <div class="mock-shell">
+                    <div class="mock-head--log">
+                        <div class="mock-channel-title">
+                            <span class="mock-channel-mark">#</span>
                             <span>security-logs</span>
-                            <span style="color: #949ba4; font-size: 0.8rem; font-weight: 400; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 8px;">Illustrative entries: names, counts and actions are samples; actual rules depend on server settings</span>
+                            <span class="mock-head-note">Illustrative entries: names, counts and actions are samples; actual rules depend on server settings</span>
                         </div>
                     </div>
 
-                    <div class="antiraid-sequence-container" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-                        <div class="antiraid-log-card" style="border-left-color: #ed4245;">
-                            <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                                <span style="color: #fff; font-weight: 800;">Debug: General Log</span>
-                                <span style="background: #5865F2; color: #fff; font-size: 0.6rem; padding: 0 4px; border-radius: 3px; font-weight: 800;">APP</span>
-                                <span style="color: #949ba4; font-weight: 400; font-size: 0.675rem; margin-left: auto;">21:45</span>
+                    <div class="antiraid-sequence-container mock-shell--bare">
+                        <div class="antiraid-log-card mock-accent--red">
+                            <div class="mock-log-head">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                                <span class="mock-name">Debug: General Log</span>
+                                <span class="mock-app-tag">APP</span>
+                                <span class="mock-time">21:45</span>
                             </div>
-                            <div style="font-size: 0.85rem; font-weight: 800; color: #f2f3f5; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;">
+                            <div class="mock-log-title">
                                 🚨 Mass Join Detected!
                             </div>
-                            <div style="font-size: 0.775rem; color: #dbdee1; line-height: 1.5;">
-                                <div><strong>Joins:</strong> <span style="background: #1e1f22; padding: 1px 6px; border-radius: 3px; font-family: monospace;">Join-rate rule triggered (sample)</span></div>
-                                <div><strong>Suspected Invites:</strong> <span style="background: #1e1f22; padding: 1px 6px; border-radius: 3px; font-family: monospace;">3xFd9QkZ</span></div>
-                                <div style="margin-top: 4px; color: #57F287; font-weight: 700;">🛡️ Sample action: see server's configured policy</div>
+                            <div class="mock-log-body">
+                                <div><strong>Joins:</strong> <span class="mock-code--tight">Join-rate rule triggered (sample)</span></div>
+                                <div><strong>Suspected Invites:</strong> <span class="mock-code--tight">3xFd9QkZ</span></div>
+                                <div class="mock-log-action">🛡️ Sample action: see server's configured policy</div>
                             </div>
                         </div>
 
-                        <div class="antiraid-log-card" style="border-left-color: #5865F2;">
-                            <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                                <span style="color: #fff; font-weight: 800;">Security: Quarantine Log</span>
-                                <span style="background: #5865F2; color: #fff; font-size: 0.6rem; padding: 0 4px; border-radius: 3px; font-weight: 800;">APP</span>
-                                <span style="color: #949ba4; font-weight: 400; font-size: 0.675rem; margin-left: auto;">21:45</span>
+                        <div class="antiraid-log-card mock-accent--blurple">
+                            <div class="mock-log-head">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                                <span class="mock-name">Security: Quarantine Log</span>
+                                <span class="mock-app-tag">APP</span>
+                                <span class="mock-time">21:45</span>
                             </div>
-                            <div style="font-size: 0.85rem; font-weight: 800; color: #5865F2; margin-bottom: 4px;">
+                            <div class="mock-log-title--blurple">
                                 ℹ️ Member Timed Out
                             </div>
-                            <div style="font-size: 0.775rem; color: #dbdee1; line-height: 1.5;">
-                                <div><strong>User:</strong> <span style="background: rgba(88,101,242,0.3); color: #c9cdfb; padding: 0 5px; border-radius: 3px;">@BotSpammer_99</span></div>
-                                <div><strong>Duration:</strong> <span style="background: #1e1f22; padding: 1px 6px; border-radius: 3px;">Example setting</span></div>
-                                <div style="margin-top: 4px; color: #949ba4; font-size: 0.7rem; font-family: monospace;">MEMBER QUARANTINE • Target: @BotSpammer_99</div>
+                            <div class="mock-log-body">
+                                <div><strong>User:</strong> <span class="mock-mention">@BotSpammer_99</span></div>
+                                <div><strong>Duration:</strong> <span class="mock-code--plain">Example setting</span></div>
+                                <div class="mock-log-foot--mono">MEMBER QUARANTINE • Target: @BotSpammer_99</div>
                             </div>
                         </div>
 
-                        <div class="antiraid-log-card" style="border-left-color: #fee75c;">
-                            <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                                <span style="color: #fff; font-weight: 800;">Notice: Message Log</span>
-                                <span style="background: #5865F2; color: #fff; font-size: 0.6rem; padding: 0 4px; border-radius: 3px; font-weight: 800;">APP</span>
-                                <span style="color: #949ba4; font-weight: 400; font-size: 0.675rem; margin-left: auto;">21:46</span>
+                        <div class="antiraid-log-card mock-accent--yellow">
+                            <div class="mock-log-head">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                                <span class="mock-name">Notice: Message Log</span>
+                                <span class="mock-app-tag">APP</span>
+                                <span class="mock-time">21:46</span>
                             </div>
-                            <div style="font-size: 0.85rem; font-weight: 800; color: #fee75c; margin-bottom: 4px;">
+                            <div class="mock-log-title--yellow">
                                 🗑️ Message Deleted
                             </div>
-                            <div style="font-size: 0.775rem; color: #dbdee1; line-height: 1.5;">
-                                <div><strong>Author:</strong> <span style="background: rgba(88,101,242,0.3); color: #c9cdfb; padding: 0 5px; border-radius: 3px;">@VortexSpammer_99</span></div>
-                                <div><strong>Channel:</strong> <span style="background: #1e1f22; padding: 1px 6px; border-radius: 3px; color: #949ba4;">🔊 Voice chat- Questing 1</span></div>
-                                <div style="margin-top: 2px; color: #949ba4; font-size: 0.7rem;">MESSAGE DELETE • Target: @BotSpammer_99</div>
+                            <div class="mock-log-body">
+                                <div><strong>Author:</strong> <span class="mock-mention">@VortexSpammer_99</span></div>
+                                <div><strong>Channel:</strong> <span class="mock-code--muted">🔊 Voice chat- Questing 1</span></div>
+                                <div class="mock-log-foot">MESSAGE DELETE • Target: @BotSpammer_99</div>
                             </div>
                         </div>
 
-                        <div class="antiraid-log-card" style="border-left-color: #ed4245;">
-                            <div style="display: flex; align-items: center; gap: 6px; font-size: 0.775rem; font-weight: 700; color: #f2f3f5; margin-bottom: 6px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                                <span style="color: #fff; font-weight: 800;">Admin: Member Log</span>
-                                <span style="background: #5865F2; color: #fff; font-size: 0.6rem; padding: 0 4px; border-radius: 3px; font-weight: 800;">APP</span>
-                                <span style="color: #949ba4; font-weight: 400; font-size: 0.675rem; margin-left: auto;">21:49</span>
+                        <div class="antiraid-log-card mock-accent--red">
+                            <div class="mock-log-head">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                                <span class="mock-name">Admin: Member Log</span>
+                                <span class="mock-app-tag">APP</span>
+                                <span class="mock-time">21:49</span>
                             </div>
-                            <div style="font-size: 0.85rem; font-weight: 800; color: #ed4245; margin-bottom: 4px;">
+                            <div class="mock-log-title--red">
                                 🔨 Member Banned
                             </div>
-                            <div style="font-size: 0.775rem; color: #dbdee1; line-height: 1.5;">
-                                <div><strong>Target:</strong> <span style="background: rgba(88,101,242,0.3); color: #c9cdfb; padding: 0 5px; border-radius: 3px;">@VortexSpammer_99</span></div>
-                                <div><strong>Reason:</strong> <span style="background: #1e1f22; padding: 1px 6px; border-radius: 3px;">Anti-Raid: Mass join spike detected.</span></div>
-                                <div style="margin-top: 2px; color: #949ba4; font-size: 0.7rem;">MEMBER BAN • Action By: @SeanBot Security</div>
+                            <div class="mock-log-body">
+                                <div><strong>Target:</strong> <span class="mock-mention">@VortexSpammer_99</span></div>
+                                <div><strong>Reason:</strong> <span class="mock-code--plain">Anti-Raid: Mass join spike detected.</span></div>
+                                <div class="mock-log-foot">MEMBER BAN • Action By: @SeanBot Security</div>
                             </div>
                         </div>
                     </div>
@@ -390,64 +390,64 @@
             </div>
 
             <div class="feature-row">
-                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
-                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-ticket" style="color: #5865F2;"></i> Ticket example
+                <div class="glass-card mock-card">
+                    <div class="mock-head">
+                        <div class="mock-card-title">
+                            <i class="ph-fill ph-ticket mock-tint--blurple"></i> Ticket example
                         </div>
                     </div>
 
-                    <p id="ticket-step-text" style="font-size: 0.875rem; color: #dbdee1; margin-bottom: 16px;">
+                    <p class="mock-embed-lead" id="ticket-step-text">
                         Try this interactive preview of the Discord ticket flow; it does not create a real ticket.
                     </p>
 
-                    <div style="background: #2b2d31; border-radius: 8px; padding: 16px; margin-bottom: 12px; text-align: left; min-height: 220px; border-left: 4px solid #5865F2; display: flex; flex-direction: column; justify-content: center; position: relative;">
+                    <div class="mock-panel--tall">
                         
                         <div id="ticket-ui-step-1">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                                <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">SeanBot</span>
-                                <span style="background: #5865F2; color: #fff; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; font-weight: 700;">BOT</span>
-                                <span style="font-size: 0.75rem; color: #949ba4;">12:00 PM</span>
+                            <div class="mock-user-row">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                                <span class="mock-author">SeanBot</span>
+                                <span class="mock-bot-tag">BOT</span>
+                                <span class="mock-note">12:00 PM</span>
                             </div>
-                            <div style="background: #1e1f22; border-left: 4px solid #5865F2; border-radius: 4px; padding: 14px;">
-                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                                    <h4 style="margin: 0; color: #fff; font-size: 0.95rem;">Support & Assistance</h4>
-                                    <img src="assets/seanbot.png?v=5db7d29f" style="width: 24px; height: 24px; object-fit: contain;" alt="SeanBot">
+                            <div class="mock-embed">
+                                <div class="mock-embed-head">
+                                    <h4 class="mock-embed-title">Support & Assistance</h4>
+                                    <img class="mock-avatar--logo-large" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
                                 </div>
-                                <p style="margin: 0; color: #dbdee1; font-size: 0.825rem; line-height: 1.4;">
+                                <p class="mock-embed-text">
                                     Need help with the server or assistance from staff? Click the button below to open a ticket with your server's support team.
                                 </p>
                             </div>
                         </div>
 
-                        <div id="ticket-ui-step-2" style="display: none;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                                <span style="font-weight: 700; color: #5865F2; font-size: 0.9rem;"><i class="ph-bold ph-hash"></i> ticket-0001</span>
-                                <span style="background: rgba(35, 165, 90, 0.2); color: #23a55a; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 700;">OPEN</span>
+                        <div class="is-hidden" id="ticket-ui-step-2">
+                            <div class="mock-user-row">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                                <span class="mock-author--blurple"><i class="ph-bold ph-hash"></i> ticket-0001</span>
+                                <span class="mock-status-pill">OPEN</span>
                             </div>
-                            <div style="background: #1e1f22; border-left: 4px solid #23a55a; border-radius: 4px; padding: 12px;">
-                                <p style="margin: 0 0 6px 0; color: #fff; font-size: 0.85rem; font-weight: 700;">Example ticket welcome</p>
-                                <p style="margin: 0; color: #dbdee1; font-size: 0.8rem; line-height: 1.4;">This example welcome text can be customized by the server's support team.</p>
+                            <div class="mock-embed--open">
+                                <p class="mock-embed-intro">Example ticket welcome</p>
+                                <p class="mock-embed-text--small">This example welcome text can be customized by the server's support team.</p>
                             </div>
                         </div>
 
-                        <div id="ticket-ui-step-3" style="display: none;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="User Avatar">
-                                <span id="random-user-name" style="font-weight: 700; color: #00a8fc; font-size: 0.9rem;">User</span>
-                                <span style="font-size: 0.75rem; color: #949ba4;">12:01 PM</span>
+                        <div class="is-hidden" id="ticket-ui-step-3">
+                            <div class="mock-user-row--tight">
+                                <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="User Avatar">
+                                <span class="mock-author--blue" id="random-user-name">User</span>
+                                <span class="mock-note">12:01 PM</span>
                             </div>
-                            <div style="background: #1e1f22; border-left: 4px solid #00a8fc; border-radius: 4px; padding: 12px;">
-                                <p style="margin: 0; color: #fff; font-size: 0.85rem; line-height: 1.4;">
+                            <div class="mock-embed--user">
+                                <p class="mock-embed-text--white">
                                     hey can i get the invite link for seanbot? want to try it on my server
                                 </p>
                             </div>
                         </div>
 
-                        <div id="discord-typing-status" style="display: none; align-items: center; gap: 6px; font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
-                            <span style="display: inline-flex; gap: 3px; align-items: center;">
+                        <div class="mock-typing-row" id="discord-typing-status">
+                            <span class="mock-typing">
                                 <span class="typing-dot"></span>
                                 <span class="typing-dot"></span>
                                 <span class="typing-dot"></span>
@@ -457,8 +457,8 @@
 
                     </div>
 
-                    <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px;" id="ticket-action-area">
-                        <button onclick="handleTicketStep()" style="background: #5865F2; color: #fff; border: none; cursor: pointer; font-weight: 700; padding: 7px 16px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.825rem; box-shadow: 0 2px 8px rgba(88, 101, 242, 0.4);">
+                    <div class="mock-toolbar" id="ticket-action-area">
+                        <button class="mock-cta" onclick="handleTicketStep()">
                             <i class="ph-fill ph-ticket"></i> Open Ticket
                         </button>
                     </div>
@@ -469,8 +469,8 @@
                     <p class="section-lede">
                         Members open tickets from a panel button; channel access depends on the panel, the ticket participants and the server's support roles. Staff can claim a ticket to coordinate who handles it. Notes posted with /ticket staffsay appear in the ticket channel and are included in its generated transcript.
                     </p>
-                    <p style="margin: 0;">
-                        <button type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" data-tab="docs" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.9rem; font-family: inherit;">Read the ticket guide <i class="ph-bold ph-arrow-right"></i></button>
+                    <p class="is-flush">
+                        <button class="feature-guide-link" type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('tickets'), 50);" data-tab="docs">Read the ticket guide <i class="ph-bold ph-arrow-right"></i></button>
                     </p>
                 </div>
             </div>
@@ -481,74 +481,74 @@
                     <p class="section-lede">
                         Members can set their timezone with /timezone set and receive a matching role when automatic timezone roles are enabled. Scheduled TimePing events use an explicit timezone, then the organizer's saved timezone or server default; raid sign-up slots display Discord's localized timestamp.
                     </p>
-                    <p style="color: var(--text-secondary); font-size: 0.975rem; line-height: 1.65; margin: 0;">
+                    <p class="feature-note">
                         Members who have not set a timezone can still use events; times continue to display as Discord timestamps.
                     </p>
                 </div>
 
-                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(88, 101, 242, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                <div class="glass-card mock-card">
                     
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
-                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #5865F2;"></i> Timezone setup preview
+                    <div class="mock-head">
+                        <div class="mock-card-title">
+                            <i class="ph-fill ph-globe-hemisphere-west mock-tint--blurple"></i> Timezone setup preview
                         </div>
-                        <span style="background: rgba(88, 101, 242, 0.2); color: #5865F2; font-size: 0.725rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">Example</span>
+                        <span class="mock-example-badge">Example</span>
                     </div>
 
-                    <div style="background: #2b2d31; border-radius: 8px; padding: 16px; margin-bottom: 12px; text-align: left; border-left: 4px solid #5865F2;">
+                    <div class="mock-panel">
                         
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                            <img src="assets/seanbot.png?v=5db7d29f" style="width: 18px; height: 18px; border-radius: 50%;" alt="SeanBot">
-                            <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">SeanBot</span>
-                            <span style="background: #5865F2; color: #fff; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; font-weight: 700;">BOT</span>
-                            <span style="font-size: 0.75rem; color: #949ba4;">18:36</span>
+                        <div class="mock-user-row">
+                            <img class="mock-avatar" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                            <span class="mock-author">SeanBot</span>
+                            <span class="mock-bot-tag">BOT</span>
+                            <span class="mock-note">18:36</span>
                         </div>
 
-                        <div style="background: #1e1f22; border-left: 4px solid #5865F2; border-radius: 4px; padding: 14px; margin-bottom: 12px;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                                <h4 style="margin: 0; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
+                        <div class="mock-embed--spaced">
+                            <div class="mock-embed-head">
+                                <h4 class="mock-embed-title--flex">
                                     🌐 Set Your Timezone
                                 </h4>
-                                <img src="assets/seanbot.png?v=5db7d29f" style="width: 22px; height: 22px; object-fit: contain;" alt="Logo">
+                                <img class="mock-avatar--logo" src="assets/seanbot.png?v=5db7d29f" alt="Logo">
                             </div>
-                            <p style="margin: 0 0 10px 0; color: #dbdee1; font-size: 0.8rem; line-height: 1.4;">
+                            <p class="mock-embed-note">
                                 Interactive preview only; this does not save a timezone or change Discord roles.
                             </p>
-                            <div style="font-size: 0.78rem; color: #949ba4; line-height: 1.5; background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 4px;">
-                                <strong style="color: #fff;">How to set it:</strong><br>
+                            <div class="mock-hint">
+                                <strong class="mock-text--white">How to set it:</strong><br>
                                 1. Click a <strong>Region</strong> below to select your timezone.<br>
-                                💡 <em>Or use <code style="background: #2b2d31; color: #dbdee1; padding: 1px 4px; border-radius: 3px;">/timezone set</code> to search globally!</em>
+                                💡 <em>Or use <code class="mock-code--inline">/timezone set</code> to search globally!</em>
                             </div>
                         </div>
 
-                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
-                            <button onclick="selectRegion('America')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                        <div class="mock-region-row">
+                            <button class="mock-region-button" onclick="selectRegion('America')">
                                 🌎 America
                             </button>
-                            <button onclick="selectRegion('Europe')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                            <button class="mock-region-button" onclick="selectRegion('Europe')">
                                 🌍 Europe
                             </button>
-                            <button onclick="selectRegion('Asia')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                            <button class="mock-region-button" onclick="selectRegion('Asia')">
                                 🌏 Asia
                             </button>
-                            <button onclick="selectRegion('Oceania')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                            <button class="mock-region-button" onclick="selectRegion('Oceania')">
                                 🌏 Oceania
                             </button>
-                            <button onclick="selectRegion('Africa')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                            <button class="mock-region-button" onclick="selectRegion('Africa')">
                                 🌍 Africa
                             </button>
-                            <button onclick="selectRegion('Other')" style="background: #35373c; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 12px; border-radius: 4px; font-size: 0.775rem; display: inline-flex; align-items: center; gap: 4px;">
+                            <button class="mock-region-button" onclick="selectRegion('Other')">
                                 🌐 Other
                             </button>
                         </div>
 
-                        <div id="tz-dropdown-container" style="display: none; margin-top: 8px;">
+                        <div class="mock-dropdown" id="tz-dropdown-container">
                             <select id="tz-select-menu" class="discord-select" onchange="handleTimezoneSelection()">
                             </select>
                         </div>
 
-                        <div id="tz-typing-status" style="display: none; align-items: center; gap: 6px; font-size: 0.75rem; color: #949ba4; margin-top: 10px;">
-                            <span style="display: inline-flex; gap: 3px; align-items: center;">
+                        <div class="mock-typing-row" id="tz-typing-status">
+                            <span class="mock-typing">
                                 <span class="typing-dot"></span>
                                 <span class="typing-dot"></span>
                                 <span class="typing-dot"></span>
@@ -556,19 +556,19 @@
                             <span>Showing preview selection...</span>
                         </div>
 
-                        <div id="tz-status-message" style="display: none; background: rgba(35, 165, 90, 0.15); border-left: 4px solid #23a55a; border-radius: 4px; padding: 10px; margin-top: 10px;">
-                            <p style="margin: 0; color: #23a55a; font-size: 0.825rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                        <div class="mock-success-panel" id="tz-status-message">
+                            <p class="mock-success-text">
                                 <i class="ph-bold ph-check-circle"></i> Preview selection
                             </p>
-                            <p style="margin: 4px 0 0 0; color: #dbdee1; font-size: 0.8rem;">
-                                Example timezone role: <span id="tz-role-name" style="background: rgba(88, 101, 242, 0.3); color: #5865F2; padding: 1px 6px; border-radius: 3px; font-weight: 700;"></span>
+                            <p class="mock-success-note">
+                                Example timezone role: <span class="mock-role-chip" id="tz-role-name"></span>
                             </p>
                         </div>
 
                     </div>
 
-                    <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
-                        <button onclick="resetTimezoneDemo()" style="background: rgba(255,255,255,0.08); color: #dbdee1; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-weight: 700; padding: 5px 12px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.775rem;">
+                    <div class="mock-actions-row">
+                        <button class="mock-ghost-button" onclick="resetTimezoneDemo()">
                             <i class="ph-bold ph-arrows-counter-clockwise"></i> Clear Selection
                         </button>
                     </div>
@@ -577,10 +577,10 @@
             </div>
 
             <div class="feature-row">
-                <div class="glass-card federation-preview" style="padding: 24px; background: #18191c; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+                <div class="glass-card federation-preview mock-card--cyan">
                     <div class="federation-preview-header">
-                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-globe-hemisphere-west" style="color: #06B6D4;"></i> Example federation relay
+                        <div class="mock-card-title">
+                            <i class="ph-fill ph-globe-hemisphere-west mock-tint--cyan"></i> Example federation relay
                         </div>
                         <span class="federation-live-badge">Example</span>
                     </div>
@@ -687,10 +687,10 @@
                     <p class="section-lede">
                         Federation links servers you already trust. A channel in one becomes readable in the other, so an alliance-chat thread, a forum post, a Team-Up request or a leaderboard can be shared without asking everyone to join a second Discord.
                     </p>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; margin: 0 0 20px 0;">
+                    <p class="feature-note--spaced">
                         Pairing is per channel, so a share can be as narrow as the one channel you both agreed on.
                     </p>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('federation'), 50);" data-tab="docs" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('federation'), 50);" data-tab="docs" class="btn-large btn-secondary feature-guide-btn">
                         <i class="ph-bold ph-globe-hemisphere-west"></i> How pairing works
                     </button>
                 </div>
@@ -702,139 +702,139 @@
                     <p class="section-lede">
                         Make a quick reaction poll, or collect raid sign-ups with named spots and a waitlist. The mock poll here is an example, not a live server post.
                     </p>
-                    <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Up to 20 answers, each with its own reaction, a number or the emoji the answer starts with.</li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #fff; font-size: 0.9rem;"><i class="ph-fill ph-check-circle" style="color: #06B6D4; font-size: 1.2rem;"></i> Simple reaction polls can show an optional end time; a moderator with Manage Messages closes one to post final totals.</li>
+                    <ul class="feature-points">
+                        <li class="feature-point"><i class="ph-fill ph-check-circle feature-point-icon--cyan"></i> Up to 20 answers, each with its own reaction, a number or the emoji the answer starts with.</li>
+                        <li class="feature-point"><i class="ph-fill ph-check-circle feature-point-icon--cyan"></i> Simple reaction polls can show an optional end time; a moderator with Manage Messages closes one to post final totals.</li>
                     </ul>
-                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('raidpolls'), 50);" data-tab="docs" class="btn-large btn-secondary" style="padding: 10px 20px; font-weight: 700; font-size: 0.875rem;">
+                    <button onclick="switchTab('docs'); setTimeout(()=>activateDoc('raidpolls'), 50);" data-tab="docs" class="btn-large btn-secondary feature-guide-btn">
                         <i class="ph-bold ph-chart-polar"></i> Read the poll guide
                     </button>
                 </div>
 
-                <div style="background: #313338; border-radius: 8px; padding: 16px; font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #dbdee1; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 14px;">
-                        <div style="font-weight: 700; font-size: 0.95rem; color: #f2f3f5; display: flex; align-items: center; gap: 8px;">
-                            <span style="color: #949ba4; font-size: 1.1rem;">#</span>
+                <div class="mock-shell">
+                    <div class="mock-head--log">
+                        <div class="mock-channel-title">
+                            <span class="mock-channel-mark">#</span>
                             <span>raid-polls</span>
-                            <span style="color: #949ba4; font-size: 0.8rem; font-weight: 400; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 8px;">SeanBot Polls</span>
+                            <span class="mock-head-note">SeanBot Polls</span>
                         </div>
-                        <div style="font-size: 0.75rem; color: #b5bac1; font-weight: 600;">
+                        <div class="mock-head-status">
                             Waiting for a command
                         </div>
                     </div>
 
-                    <div style="background: #2b2d31; border-radius: 8px 8px 0 0; padding: 8px 12px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.06); border-bottom: none; display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center; gap: 6px; color: #949ba4;">
-                            <span style="font-weight: 700; color: #f2f3f5;">answers</span>
+                    <div class="mock-composer">
+                        <div class="mock-row--muted">
+                            <span class="mock-author--soft">answers</span>
                             <span>Every answer in one field, separated by commas.</span>
                         </div>
-                        <span style="color: #949ba4; font-size: 0.9rem; cursor: pointer;">✕</span>
+                        <span class="mock-close">✕</span>
                     </div>
-                    <div style="background: #383a40; border-radius: 0 0 8px 8px; padding: 10px 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.875rem;">
-                            <img src="assets/seanbot.png?v=5db7d29f" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover;" alt="SeanBot">
-                            <span style="font-weight: 700; color: #fff; font-size: 0.95rem;">Example: /poll create</span>
-                            <span style="background: #2b2d31; border-radius: 4px; display: inline-flex; border: 1px solid rgba(255,255,255,0.1); font-size: 0.825rem; overflow: hidden;">
-                                <span style="background: rgba(255,255,255,0.07); padding: 3px 8px; color: #f2f3f5; font-weight: 600;">question</span>
-                                <span style="padding: 3px 8px; color: #949ba4;">Raid this weekend</span>
+                    <div class="mock-composer-input">
+                        <div class="mock-composer-row">
+                            <img class="mock-avatar--small" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot">
+                            <span class="mock-author--white">Example: /poll create</span>
+                            <span class="mock-command-chip">
+                                <span class="mock-command-key">question</span>
+                                <span class="mock-command-value--muted">Raid this weekend</span>
                             </span>
-                            <span style="background: #2b2d31; border-radius: 4px; display: inline-flex; border: 1px solid rgba(255,255,255,0.1); font-size: 0.825rem; overflow: hidden;">
-                                <span style="background: rgba(255,255,255,0.07); padding: 3px 8px; color: #f2f3f5; font-weight: 600;">answers</span>
-                                <span style="padding: 3px 8px; color: #949ba4;">Ghastly Conspiracy, Rift, Raid 20:00</span>
+                            <span class="mock-command-chip">
+                                <span class="mock-command-key">answers</span>
+                                <span class="mock-command-value--muted">Ghastly Conspiracy, Rift, Raid 20:00</span>
                             </span>
-                            <span style="background: #2b2d31; border-radius: 4px; display: inline-flex; border: 1px solid rgba(87,242,135,0.5); font-size: 0.825rem; overflow: hidden;">
-                                <span style="background: rgba(87,242,135,0.15); padding: 3px 8px; color: #57F287; font-weight: 700;">timestamps</span>
-                                <span style="padding: 3px 8px; color: #57F287; font-weight: 700;">True</span>
+                            <span class="mock-command-chip--green">
+                                <span class="mock-command-value--green">timestamps</span>
+                                <span class="mock-command-value--green-flat">True</span>
                             </span>
                         </div>
-                        <span style="color: #b5bac1; font-size: 1.1rem;">😊</span>
+                        <span class="mock-emoji">😊</span>
                     </div>
 
-                    <div style="position: relative; padding-left: 50px;">
-                        <img src="assets/seanbot.png?v=5db7d29f" style="width: 40px; height: 40px; border-radius: 50%; position: absolute; left: 0; top: 0;" alt="SeanBot Avatar">
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                            <span style="font-weight: 700; color: #f2f3f5; font-size: 0.95rem;">SeanBot</span>
-                            <span style="background: #5865F2; color: #fff; font-size: 0.625rem; font-weight: 800; padding: 1px 5px; border-radius: 3px; display: inline-flex; align-items: center; gap: 3px;">APP</span>
-                            <span style="font-size: 0.725rem; color: #949ba4;">22:52</span>
+                    <div class="mock-message-offset">
+                        <img class="mock-avatar--pinned" src="assets/seanbot.png?v=5db7d29f" alt="SeanBot Avatar">
+                        <div class="mock-user-row--meta">
+                            <span class="mock-author--f2">SeanBot</span>
+                            <span class="mock-app-tag--hero">APP</span>
+                            <span class="mock-time--tiny">22:52</span>
                         </div>
-                        <div style="background: #2b2d31; border-left: 4px solid #5865F2; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.775rem; color: #949ba4; margin-bottom: 6px;">
-                                <span style="font-weight: 700; color: #dbdee1;">Example poll</span>
+                        <div class="mock-panel--compact">
+                            <div class="mock-row--meta">
+                                <span class="mock-author--muted">Example poll</span>
                             </div>
-                            <div style="font-weight: 800; font-size: 1.05rem; color: #f2f3f5; margin-bottom: 12px;">
+                            <div class="mock-embed-question">
                                 Raid this weekend
                             </div>
-                            <div style="font-size: 0.85rem; line-height: 1.7; color: #dbdee1; display: flex; flex-direction: column; gap: 4px;">
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">1</span> Ghastly Conspiracy (Main raid) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sun 6:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">2</span> Ghastly Conspiracy (Main raid) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sun 7:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">3</span> Voracious Void (Main raid) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sun 6:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">4</span> Voracious Void (Main raid) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sun 7:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">5</span> Cabal's Revenge (Poison Oak) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sun 6:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">6</span> Cabal's Revenge (Poison Oak) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sun 7:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">7</span> Ghastly Conspiracy (Main raid) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sat 6:00 PM</span></div>
-                                <div><span style="background: #5865F2; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 0.775rem;">8</span> Ghastly Conspiracy (Main raid) - <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1; font-family: monospace;">Sat 7:00 PM</span></div>
+                            <div class="mock-answer-list">
+                                <div><span class="mock-answer-index">1</span> Ghastly Conspiracy (Main raid) - <span class="mock-code">Sun 6:00 PM</span></div>
+                                <div><span class="mock-answer-index">2</span> Ghastly Conspiracy (Main raid) - <span class="mock-code">Sun 7:00 PM</span></div>
+                                <div><span class="mock-answer-index">3</span> Voracious Void (Main raid) - <span class="mock-code">Sun 6:00 PM</span></div>
+                                <div><span class="mock-answer-index">4</span> Voracious Void (Main raid) - <span class="mock-code">Sun 7:00 PM</span></div>
+                                <div><span class="mock-answer-index">5</span> Cabal's Revenge (Poison Oak) - <span class="mock-code">Sun 6:00 PM</span></div>
+                                <div><span class="mock-answer-index">6</span> Cabal's Revenge (Poison Oak) - <span class="mock-code">Sun 7:00 PM</span></div>
+                                <div><span class="mock-answer-index">7</span> Ghastly Conspiracy (Main raid) - <span class="mock-code">Sat 6:00 PM</span></div>
+                                <div><span class="mock-answer-index">8</span> Ghastly Conspiracy (Main raid) - <span class="mock-code">Sat 7:00 PM</span></div>
                             </div>
-                            <div style="margin-top: 14px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #949ba4;">
-                                Poll end time: <span style="background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #dbdee1;">Monday 6:00 PM</span> <span style="color: #949ba4;">(moderator closes poll)</span>
+                            <div class="mock-embed-footnote">
+                                Poll end time: <span class="mock-code--small">Monday 6:00 PM</span> <span class="mock-tint--muted">(moderator closes poll)</span>
                             </div>
                         </div>
 
-                        <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
-                            <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
-                                <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">1</span> 1
+                        <div class="mock-chip-row">
+                            <span class="mock-vote">
+                                <span class="mock-poll-badge">1</span> 1
                             </span>
-                            <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
-                                <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">2</span> 1
+                            <span class="mock-vote">
+                                <span class="mock-poll-badge">2</span> 1
                             </span>
-                            <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
-                                <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">3</span> 1
+                            <span class="mock-vote">
+                                <span class="mock-poll-badge">3</span> 1
                             </span>
-                            <span style="background: rgba(88,101,242,0.3); border: 1px solid #5865F2; border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #fff; display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
-                                <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">4</span> 1
+                            <span class="mock-vote">
+                                <span class="mock-poll-badge">4</span> 1
                             </span>
-                            <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #b5bac1; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
-                                <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">5</span> 1
+                            <span class="mock-vote--muted">
+                                <span class="mock-poll-badge">5</span> 1
                             </span>
-                            <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 4px 10px; font-size: 0.825rem; color: #b5bac1; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
-                                <span style="background: #5865F2; color: #fff; width: 18px; height: 18px; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem;">6</span> 1
+                            <span class="mock-vote--muted">
+                                <span class="mock-poll-badge">6</span> 1
                             </span>
-                            <span style="color: #b5bac1; font-size: 1.1rem; margin-left: 4px;">😊</span>
+                            <span class="mock-emoji--offset">😊</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="feature-row">
-                <div class="glass-card" style="padding: 24px; background: #18191c; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
-                        <div style="font-weight: 800; font-size: 0.95rem; color: #fff; display: flex; align-items: center; gap: 8px;">
-                            <i class="ph-fill ph-chart-bar" style="color: var(--accent);"></i> Top Server Emojis
+                <div class="glass-card mock-card--gold">
+                    <div class="mock-head--wide">
+                        <div class="mock-card-title">
+                            <i class="ph-fill ph-chart-bar feature-point-mark"></i> Top Server Emojis
                         </div>
-                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Illustrative sample data</span>
+                        <span class="mock-caption">Illustrative sample data</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div class="mock-stack">
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: #fff;">
+                            <div class="mock-bar-row">
                                 <span>🔥 :fire_hype:</span> <span>1,420 uses (sample)</span>
                             </div>
-                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
-                                <div style="width: 85%; height: 100%; background: var(--accent);"></div>
+                            <div class="mock-bar-track">
+                                <div class="mock-bar-fill--85"></div>
                             </div>
                         </div>
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: #fff;">
+                            <div class="mock-bar-row">
                                 <span>💎 :diamond_boost:</span> <span>980 uses (sample)</span>
                             </div>
-                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
-                                <div style="width: 62%; height: 100%; background: #5865F2;"></div>
+                            <div class="mock-bar-track">
+                                <div class="mock-bar-fill--62"></div>
                             </div>
                         </div>
                         <div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: #fff;">
+                            <div class="mock-bar-row">
                                 <span>🚀 :rocket_launch:</span> <span>640 uses (sample)</span>
                             </div>
-                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
-                                <div style="width: 45%; height: 100%; background: #57F287;"></div>
+                            <div class="mock-bar-track">
+                                <div class="mock-bar-fill--45"></div>
                             </div>
                         </div>
                     </div>
@@ -845,20 +845,20 @@
                     <p class="section-lede">
                         See which custom emoji and reactions people actually use, over a week, a month or all time. It can help you choose what to keep when the server's emoji slots fill up.
                     </p>
-                    <p style="margin: 0;">
-                        <button type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('emojis'), 50);" data-tab="docs" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.9rem; font-family: inherit;">Emoji commands and dashboard views <i class="ph-bold ph-arrow-right"></i></button>
+                    <p class="is-flush">
+                        <button class="feature-guide-link" type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('emojis'), 50);" data-tab="docs">Emoji commands and dashboard views <i class="ph-bold ph-arrow-right"></i></button>
                     </p>
                 </div>
             </div>
 
-            <section id="showcase" style="margin: 44px 0 48px 0;">
+            <section id="showcase" class="section-block">
                 <div class="section-head is-center">
                     <h2 class="section-title">Dashboard previews (<span data-site-stat="previews">Seven</span>)</h2>
                     <p class="section-lede">Dashboard screenshots and illustrative UI mockups; sample names, counts and activity are not live server data.</p>
                 </div>
 
-                <div class="showcase-container" id="showcaseRotator" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
-                    <div class="showcase-tabs" role="tablist" aria-label="SeanBot dashboard previews" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border);">
+                <div class="showcase-container showcase-frame" id="showcaseRotator">
+                    <div class="showcase-tabs showcase-tabs-row" role="tablist" aria-label="SeanBot dashboard previews">
                         <button class="showcase-tab active" type="button" role="tab" data-showcase="timezone" aria-selected="true" aria-controls="showcase-timezone"><i class="ph-duotone ph-globe-hemisphere-west"></i> Timezone Analytics</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="antiraid" aria-selected="false" aria-controls="showcase-antiraid"><i class="ph-duotone ph-shield-check"></i> Anti-Raid</button>
                         <button class="showcase-tab" type="button" role="tab" data-showcase="voice" aria-selected="false" aria-controls="showcase-voice"><i class="ph-duotone ph-microphone-stage"></i> Voice Analytics</button>
@@ -868,12 +868,12 @@
                         <button class="showcase-tab" type="button" role="tab" data-showcase="embed" aria-selected="false" aria-controls="showcase-embed"><i class="ph-duotone ph-paint-brush"></i> Web Embed Builder</button>
                     </div>
 
-                    <div id="showcase-timezone" class="showcase-panel active" role="tabpanel" aria-label="Timezone analytics preview" style="display: grid;">
+                    <div id="showcase-timezone" class="showcase-panel active is-grid" role="tabpanel" aria-label="Timezone analytics preview">
                         <div>
-                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Timezone dashboard</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Look up your members' timezones</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Members can set a timezone and appear on the community map. Use it before picking a raid time, or to see who is likely awake right now.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--gold">Timezone dashboard</span>
+                            <h3 class="showcase-title">Look up your members' timezones</h3>
+                            <p class="showcase-copy">Members can set a timezone and appear on the community map. Use it before picking a raid time, or to see who is likely awake right now.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Discord panel</span>
                                 <span class="pill-badge">Timezone roles</span>
                                 
@@ -884,12 +884,12 @@
                         </div>
                     </div>
 
-                    <div id="showcase-antiraid" class="showcase-panel" role="tabpanel" aria-label="Anti-raid preview" hidden style="display: none;">
+                    <div id="showcase-antiraid" class="showcase-panel is-hidden" role="tabpanel" aria-label="Anti-raid preview" hidden>
                         <div>
-                            <span class="pill-badge" style="background: rgba(87, 242, 135, 0.15); color: #57F287; border-color: rgba(87, 242, 135, 0.3);">Security dashboard</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">The security page</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">A security rating, the checks currently running, and the last few detections. If something spikes, the page says which rule fired and what it did.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--green">Security dashboard</span>
+                            <h3 class="showcase-title">The security page</h3>
+                            <p class="showcase-copy">A security rating, the checks currently running, and the last few detections. If something spikes, the page says which rule fired and what it did.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Security rating</span>
                                 <span class="pill-badge">Active protection checks</span>
                                 
@@ -900,12 +900,12 @@
                         </div>
                     </div>
 
-                    <div id="showcase-voice" class="showcase-panel" role="tabpanel" aria-label="Voice analytics preview" hidden style="display: none;">
+                    <div id="showcase-voice" class="showcase-panel is-hidden" role="tabpanel" aria-label="Voice analytics preview" hidden>
                         <div>
-                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #c9cdfb; border-color: rgba(88, 101, 242, 0.3);">Voice activity</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Voice hours, by member and by day</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Session length per member and the busiest hours of the week. Handy when you are deciding what time to run an event.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--blurple-light">Voice activity</span>
+                            <h3 class="showcase-title">Voice hours, by member and by day</h3>
+                            <p class="showcase-copy">Session length per member and the busiest hours of the week. Handy when you are deciding what time to run an event.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Session durations</span>
                                 <span class="pill-badge">Member activity</span>
                                 
@@ -916,12 +916,12 @@
                         </div>
                     </div>
 
-                    <div id="showcase-serverstats" class="showcase-panel" role="tabpanel" aria-label="Server statistics preview" hidden style="display: none;">
+                    <div id="showcase-serverstats" class="showcase-panel is-hidden" role="tabpanel" aria-label="Server statistics preview" hidden>
                         <div>
-                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Server stats</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Members, messages and channel use</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">View member growth, online counts, messages and channel activity in the dashboard.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--gold">Server stats</span>
+                            <h3 class="showcase-title">Members, messages and channel use</h3>
+                            <p class="showcase-copy">View member growth, online counts, messages and channel activity in the dashboard.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Core stats</span>
                                 <span class="pill-badge">Channel activity</span>
                                 
@@ -945,10 +945,10 @@
                                     <div class="showcase-surface">
                                         <div class="showcase-surface-title">Top Active Channels</div>
                                         <div class="showcase-bar-list">
-                                            <div class="showcase-bar-row"><span># general</span><div class="showcase-bar-track"><div class="showcase-bar-fill" style="width: 92%;"></div></div><strong>18.4k</strong></div>
-                                            <div class="showcase-bar-row"><span># media</span><div class="showcase-bar-track"><div class="showcase-bar-fill" style="width: 74%;"></div></div><strong>14.1k</strong></div>
-                                            <div class="showcase-bar-row"><span># clips</span><div class="showcase-bar-track"><div class="showcase-bar-fill" style="width: 58%;"></div></div><strong>10.6k</strong></div>
-                                            <div class="showcase-bar-row"><span># support</span><div class="showcase-bar-track"><div class="showcase-bar-fill" style="width: 43%;"></div></div><strong>7.8k</strong></div>
+                                            <div class="showcase-bar-row"><span># general</span><div class="showcase-bar-track"><div class="showcase-bar-fill mock-bar-fill--92"></div></div><strong>18.4k</strong></div>
+                                            <div class="showcase-bar-row"><span># media</span><div class="showcase-bar-track"><div class="showcase-bar-fill mock-bar-fill--74"></div></div><strong>14.1k</strong></div>
+                                            <div class="showcase-bar-row"><span># clips</span><div class="showcase-bar-track"><div class="showcase-bar-fill mock-bar-fill--58"></div></div><strong>10.6k</strong></div>
+                                            <div class="showcase-bar-row"><span># support</span><div class="showcase-bar-track"><div class="showcase-bar-fill mock-bar-fill--43"></div></div><strong>7.8k</strong></div>
                                         </div>
                                     </div>
                                     <div class="showcase-surface">
@@ -965,12 +965,12 @@
                         </div>
                     </div>
 
-                    <div id="showcase-events" class="showcase-panel" role="tabpanel" aria-label="Event manager preview" hidden style="display: none;">
+                    <div id="showcase-events" class="showcase-panel is-hidden" role="tabpanel" aria-label="Event manager preview" hidden>
                         <div>
-                            <span class="pill-badge" style="background: rgba(236, 72, 153, 0.16); color: #f9a8d4; border-color: rgba(236, 72, 153, 0.26);">Events and reminders</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Events and reminders</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Create an event, attach a reminder, and let members RSVP. A countdown channel can rename itself as the start gets closer.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--pink">Events and reminders</span>
+                            <h3 class="showcase-title">Events and reminders</h3>
+                            <p class="showcase-copy">Create an event, attach a reminder, and let members RSVP. A countdown channel can rename itself as the start gets closer.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Upcoming events</span>
                                 <span class="pill-badge">Reminders</span>
                                 
@@ -984,7 +984,7 @@
                                         <div class="showcase-dashboard-subtitle">Illustrative mock events · not from a real server</div>
                                     </div>
                                 </div>
-                                <div class="showcase-kpi-grid" style="margin-bottom: 16px;">
+                                <div class="showcase-kpi-grid showcase-kpi-grid--spaced">
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">Total Events</div><div class="showcase-kpi-value">28</div></div>
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">RSVPs</div><div class="showcase-kpi-value">214</div></div>
                                     <div class="showcase-kpi-card"><div class="showcase-kpi-label">Reminders Sent</div><div class="showcase-kpi-value">96%</div></div>
@@ -1008,12 +1008,12 @@
                         </div>
                     </div>
 
-                    <div id="showcase-emoji" class="showcase-panel" role="tabpanel" aria-label="Emoji analytics preview" hidden style="display: none;">
+                    <div id="showcase-emoji" class="showcase-panel is-hidden" role="tabpanel" aria-label="Emoji analytics preview" hidden>
                         <div>
-                            <span class="pill-badge" style="background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: rgba(255, 215, 0, 0.3);">Emoji usage</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Which emoji earn their slot</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Compare message emoji and reactions over a week, a month or all time to see which custom emoji are used most.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--gold">Emoji usage</span>
+                            <h3 class="showcase-title">Which emoji earn their slot</h3>
+                            <p class="showcase-copy">Compare message emoji and reactions over a week, a month or all time to see which custom emoji are used most.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Emoji tracking</span>
                                 <span class="pill-badge">Reaction tracking</span>
                                 
@@ -1024,12 +1024,12 @@
                         </div>
                     </div>
 
-                    <div id="showcase-embed" class="showcase-panel" role="tabpanel" aria-label="Web embed builder preview" hidden style="display: none;">
+                    <div id="showcase-embed" class="showcase-panel is-hidden" role="tabpanel" aria-label="Web embed builder preview" hidden>
                         <div>
-                            <span class="pill-badge" style="background: rgba(88, 101, 242, 0.15); color: #5865F2; border-color: rgba(88, 101, 242, 0.3);">Embed builder</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 800; margin: 12px 0; letter-spacing: -0.3px;">Embeds with a live preview</h3>
-                            <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.925rem;">Write the embed on the left, watch the Discord preview on the right, then post it or save it as a welcome message.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span class="pill-badge showcase-badge--blurple">Embed builder</span>
+                            <h3 class="showcase-title">Embeds with a live preview</h3>
+                            <p class="showcase-copy">Write the embed on the left, watch the Discord preview on the right, then post it or save it as a welcome message.</p>
+                            <div class="showcase-tags">
                                 <span class="pill-badge">Live preview</span>
                                 <span class="pill-badge">Placeholders</span>
                                 
@@ -1044,7 +1044,7 @@
 
             <!-- Slots come from the dashboard's public API and are strictly
                  opt-in: the whole section stays hidden until index.js finds one. -->
-            <section id="servers" hidden style="margin: 44px 0 48px 0;">
+            <section id="servers" class="section-block" hidden>
                 <div class="section-head is-center">
                     <h2 class="section-title">Featured communities</h2>
                     <p class="section-lede">These servers opted in to appear here. The live count above is the total number of Discord servers running SeanBot.</p>
@@ -1063,7 +1063,7 @@
                 </div>
             </section>
 
-            <section class="comparison-table-container" id="compare" style="margin: 44px 0;">
+            <section class="section-block comparison-table-container" id="compare">
                 <div class="section-head is-center">
                     <h2 class="section-title">Compare bots</h2>
                     <p class="section-lede">What each bot does, and what the others charge for it. The price and paywall rows at the bottom are the short version.</p>
@@ -1073,12 +1073,12 @@
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th style="width: 25%;">Feature &amp; Description</th>
-                                <th style="width: 15%;"><div class="bot-col-header" style="color: var(--accent); font-weight: 800;"><img src="assets/seanbot.png?v=5db7d29f" class="bot-avatar-img" style="border-color: var(--accent);" alt="SeanBot"> SeanBot</div></th>
-                                <th style="width: 15%;"><div class="bot-col-header"><img src="assets/dyno.png?v=c711afb1" class="bot-avatar-img" alt="Dyno"> Dyno</div></th>
-                                <th style="width: 15%;"><div class="bot-col-header"><img src="assets/carlbot.png?v=8f6597ab" class="bot-avatar-img" alt="Carl-bot"> Carl-bot</div></th>
-                                <th style="width: 15%;"><div class="bot-col-header"><img src="assets/mee6.png?v=e77bec25" class="bot-avatar-img" alt="MEE6"> MEE6</div></th>
-                                <th style="width: 15%;"><div class="bot-col-header"><img src="assets/probot.png?v=d116f831" class="bot-avatar-img" alt="ProBot"> ProBot</div></th>
+                                <th>Feature &amp; Description</th>
+                                <th><div class="bot-col-header bot-col-header--featured"><img src="assets/seanbot.png?v=5db7d29f" class="bot-avatar-img bot-avatar-img--featured" alt="SeanBot"> SeanBot</div></th>
+                                <th><div class="bot-col-header"><img src="assets/dyno.png?v=c711afb1" class="bot-avatar-img" alt="Dyno"> Dyno</div></th>
+                                <th><div class="bot-col-header"><img src="assets/carlbot.png?v=8f6597ab" class="bot-avatar-img" alt="Carl-bot"> Carl-bot</div></th>
+                                <th><div class="bot-col-header"><img src="assets/mee6.png?v=e77bec25" class="bot-avatar-img" alt="MEE6"> MEE6</div></th>
+                                <th><div class="bot-col-header"><img src="assets/probot.png?v=d116f831" class="bot-avatar-img" alt="ProBot"> ProBot</div></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1134,7 +1134,7 @@
                         <h3>Free to run. No subscription.</h3>
                         <p>Nothing in the table above needs a paid plan.</p>
                     </div>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <div class="section-cta-actions">
                         <a href="#showcase" class="section-cta-link">
                             <i class="ph-bold ph-monitor-play"></i> See the previews
                         </a>
@@ -1613,12 +1613,12 @@
         </section>
 
         <section id="view-docs" class="tab-view">
-            <div class="section-head" style="margin-bottom: 24px;">
+            <div class="section-head">
                 <h1 class="section-title">Documentation</h1>
                 <p class="section-lede">One page per module, in roughly the order you would actually configure them. Written for whoever has to do the configuring.</p>
             </div>
 
-            <div style="margin-bottom: 20px;">
+            <div class="docs-filters">
                 <div class="filter-pills" id="docsCategoryFilters">
                     <button class="pill-btn active" data-category="all">All modules</button>
                     <button class="pill-btn" data-category="getting_started">Getting started</button>
@@ -1629,8 +1629,8 @@
                 </div>
             </div>
 
-            <div class="search-container" style="margin-bottom: 24px;">
-                <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+            <div class="search-container">
+                <i class="ph ph-magnifying-glass"></i>
                 <input type="text" id="docSearch" placeholder="Search the guides, or a command name...">
             </div>
 
@@ -1651,38 +1651,38 @@
 
         
         <section id="view-tos" class="tab-view">
-            <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(16px);">
-                <h1 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.5px;">Terms of Service & Privacy Policy</h1>
-                <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 0.95rem;">Last updated: July 2026</p>
+            <div class="privacy-card">
+                <h1 class="privacy-title">Terms of Service & Privacy Policy</h1>
+                <p class="privacy-updated">Last updated: July 2026</p>
 
-                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">1. Terms of Service</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">By adding SeanBot to your server or signing in to the dashboard, you agree to follow Discord's Terms of Service and Community Guidelines. The bot is provided as it is, without warranties of any kind.</p>
+                <h2 class="privacy-heading">1. Terms of Service</h2>
+                <p class="privacy-copy">By adding SeanBot to your server or signing in to the dashboard, you agree to follow Discord's Terms of Service and Community Guidelines. The bot is provided as it is, without warranties of any kind.</p>
 
-                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">2. Data Collection & Privacy</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">SeanBot collects only the data it needs to work:</p>
-                <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px; margin-bottom: 20px;">
+                <h2 class="privacy-heading">2. Data Collection & Privacy</h2>
+                <p class="privacy-copy">SeanBot collects only the data it needs to work:</p>
+                <ul class="privacy-list">
                     <li><strong>Server and channel IDs:</strong> Stored so your configuration keeps working.</li>
                     <li><strong>User IDs:</strong> Stored for moderation points, warning history, leave of absence status, and timezone settings.</li>
                     <li><strong>Command usage:</strong> Processed as it happens, for analytics and error diagnostics.</li>
                 </ul>
 
-                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">3. Data Security & Storage</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">Database connections are encrypted, and we do not sell, rent, or trade your data to anyone.</p>
+                <h2 class="privacy-heading">3. Data Security & Storage</h2>
+                <p class="privacy-copy">Database connections are encrypted, and we do not sell, rent, or trade your data to anyone.</p>
 
-                <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0;">4. Contact & Support</h2>
-                <p style="color: var(--text-secondary); line-height: 1.7;">Questions about any of this, or a request to remove your data, go to the staff team through the support tickets or the official Discord server. This tab is the short version; the full <a href="tos.html" style="color: var(--accent);">Terms of Service &amp; Privacy Policy</a> stands on its own page.</p>
+                <h2 class="privacy-heading">4. Contact & Support</h2>
+                <p class="privacy-close">Questions about any of this, or a request to remove your data, go to the staff team through the support tickets or the official Discord server. This tab is the short version; the full <a href="tos.html" class="privacy-link">Terms of Service &amp; Privacy Policy</a> stands on its own page.</p>
             </div>
         </section>
 
 
         <section id="view-commands" class="tab-view">
-            <div class="section-head" style="margin-bottom: 24px;">
+            <div class="section-head">
                 <h1 class="section-title">Commands</h1>
                 <p class="section-lede">Browse the slash commands and right-click apps listed in this reference.</p>
             </div>
 
-            <div class="search-container" style="margin-bottom: 24px;">
-                <i class="ph ph-magnifying-glass" style="color: var(--text-secondary); font-size: 1.2rem;"></i>
+            <div class="search-container">
+                <i class="ph ph-magnifying-glass"></i>
                 <input type="text" id="commandSearch" placeholder="Search for a command (e.g. /ban, /timeping)...">
             </div>
 
@@ -1725,7 +1725,7 @@
 <script src="layout.js?v=20df8546"></script>
 
 <!-- docs-data.js (~210 KB) and commands-data.js (~100 KB) load only when their
-     tab is first opened, so a visit that stays on the overview downloads neither. -->
+ tab is first opened, so a visit that stays on the overview downloads neither. -->
 <script src="index.js?v=ec72abf3"></script>
 
 </body>
