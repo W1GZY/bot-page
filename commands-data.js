@@ -1529,16 +1529,22 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
-            "name": "/raid start",
-            "desc": "Start a signup sheet - the same guided setup /raidsignup opens.",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "/raid unlock",
             "desc": "Unlock a signup so people can join again.",
             "badge": "Manage Messages",
             "type": "perm"
+        },
+        {
+            "name": "/raid wizard101 signup",
+            "desc": "Post a Wizard101 signup sheet.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/raid wizard101 start",
+            "desc": "Start the guided Wizard101 signup setup.",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/raid_defaults",
@@ -1551,12 +1557,6 @@ const commandsDatabase = [{
             "desc": "Create signup polls step by step - guided wizard for any game",
             "badge": "Manage Channels",
             "type": "perm"
-        },
-        {
-            "name": "/raidsignup",
-            "desc": "Post a Wizard101 signup sheet for a raid, a gold key run, or a custom event.",
-            "badge": "Everyone",
-            "type": "public"
         },
         {
             "name": "/returning_role clear",

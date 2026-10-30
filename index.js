@@ -172,8 +172,8 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=786092f1', loaded: docsDataLoaded },
-        commands: { src: 'commands-data.js?v=93a2afad', loaded: commandsDataLoaded }
+        docs: { src: 'docs-data.js?v=54cf09a1', loaded: docsDataLoaded },
+        commands: { src: 'commands-data.js?v=4240c8da', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
     const dataLoads = new Map();
@@ -1435,8 +1435,7 @@ let ticketStep = 1;
 
     function serverList() {
         if (typeof featuredServers === 'undefined' || !Array.isArray(featuredServers)) return [];
-        // A nameless entry would render an empty tile, so it is dropped rather
-        // than shipped as a blank slot.
+        // Skip entries that would render an empty tile.
         return featuredServers.filter(server => server && String(server.name || '').trim());
     }
 
@@ -1455,8 +1454,7 @@ let ticketStep = 1;
         return hash;
     }
 
-    // The initials plate for a server with no icon, or one whose icon link is
-    // dead. Shared by both paths so a slot can never render as an empty frame.
+    // Use initials when an icon is missing or fails to load.
     function fillInitials(hero, name) {
         hero.classList.add('is-initials');
         const initials = document.createElement('span');
@@ -1646,13 +1644,11 @@ let ticketStep = 1;
             return;
         }
 
-        // The stylesheet keys the fill-the-row layout off the count: a row of
-        // one or two has nothing to peek at, so the slots take the space.
+        // The stylesheet uses the slot count to size short rows.
         panel.dataset.slots = String(servers.length);
 
         track.style.setProperty('--slide-interval', `${SLIDE_INTERVAL}ms`);
-        // One community needs no controls: the arrows and dots would only say
-        // "there is more" where there is not.
+        // Hide navigation when there is only one community.
         if (dotRow) dotRow.hidden = servers.length < 2;
         if (controls) controls.hidden = servers.length < 2;
 
@@ -1684,8 +1680,7 @@ let ticketStep = 1;
             return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
         }
 
-        // Whether every slot already fits: a short row is centred by the stylesheet,
-        // so a move changes the highlight and nothing else.
+        // Short rows are centered and do not need scrolling.
         function rowFits() {
             return track.scrollWidth <= track.clientWidth + 1;
         }
@@ -1721,9 +1716,7 @@ let ticketStep = 1;
             return best;
         }
 
-        // `instant` is for the opening placement: the deck starts on a middle
-        // community, and sliding the row there on load would look like a move
-        // nobody made.
+        // Place the initial middle slide without animation.
         function goTo(index, { instant = false } = {}) {
             const target = ((index % slides.length) + slides.length) % slides.length;
             const slide = slides[target];
@@ -1857,9 +1850,7 @@ let ticketStep = 1;
         return host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '';
     }
 
-    // The failure state. Before this, a request that could not complete left the
-    // section hidden, which reads as a feature that was never built, and a local
-    // preview always hits it: the dashboard's CORS answers only the live origin.
+    // Local previews cannot fetch the list because dashboard CORS allows only the live origin.
     function buildLoadFailure() {
         const wrap = document.createElement('p');
         wrap.className = 'server-load-failure';
@@ -1889,8 +1880,7 @@ let ticketStep = 1;
         const notice = document.getElementById('serverCarouselNotice');
         const controls = document.getElementById('serverCarouselControls');
         if (!track || !section || !notice) return;
-        // Anything already on screen wins: a seed, or a payload built by an
-        // earlier attempt on this page.
+        // Keep a previously rendered seed or response visible.
         if (track.childElementCount) return;
         if (controls) controls.hidden = true;
         track.hidden = true;
@@ -1922,16 +1912,14 @@ let ticketStep = 1;
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
                 const servers = sanitizeServers(data && data.servers);
-                // An empty list is cached too: it is a valid state (nobody has
-                // opted in yet), not a failure worth retrying every view.
+                // An empty list is a valid response and should also be cached.
                 writeCachedServers(servers);
                 if (servers.length) buildCarousel(servers);
                 else hideSection();
                 return;
             } catch (error) {
                 clearTimeout(timeout);
-                // Offline, CORS, bot down, timeout: try once more, then say so
-                // rather than leaving the section invisible.
+                // Retry network, CORS, server, and timeout failures.
                 if (attempt < FETCH_ATTEMPTS) await wait(RETRY_DELAY_MS);
             }
         }

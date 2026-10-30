@@ -15,7 +15,7 @@ const docsData = [
                 "items": [
                     "Invite SeanBot from this site. In **Server Settings**, **Roles**, drag its role above every role it should manage.",
                     "Leave View Channel, Send Messages, Embed Links and Read Message History on in the channels where it works.",
-                    "Run `/staff diagnose` in a private staff channel. It names any missing permission.",
+                    "Run `/staff diagnose` in a private staff channel to check bot permissions there and in the server.",
                     "Sign in to the dashboard and open **Module Settings**. Switch off what this server will not use.",
                     "Pick a log channel in **Log Config**, then run one command and make one dashboard change to confirm both land."
                 ]
@@ -27,7 +27,7 @@ const docsData = [
             {
                 "type": "list",
                 "items": [
-                    "Every module starts on, so setup is mostly about switching things off.",
+                    "Most modules start on. Last Message tracking, Staff List and Verification start off.",
                     "**Server Access** decides which staff roles can see dashboard pages."
                 ]
             },
@@ -35,7 +35,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "note",
                 "title": "There is a shortcut",
-                "text": "SeanBot sends a guided setup menu when it joins. If your DMs are closed, the same menu appears in the first channel it can post in."
+                "text": "SeanBot tries to send a setup menu to the inviter, or the server owner if the inviter cannot be identified. If the DM fails, it tries a writable channel. You can also run `/setup` in the server."
             },
             {
                 "type": "commands",
@@ -51,7 +51,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/staff diagnose",
-                        "desc": "Check role hierarchy, channel access, and important bot permissions."
+                        "desc": "Check bot permissions in the current channel and server."
                     },
                     {
                         "cmd": "/serveradmin modules",
@@ -73,7 +73,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Every switch is per server and every module starts on. Turning one off hides its dashboard page and stops its work in Discord, but keeps the settings for later."
+                "text": "Every switch is per server. Most modules start on; Last Message tracking, Staff List and Verification start off. Turning one off hides its dashboard page and blocks its protected actions, but keeps its settings for later."
             },
             {
                 "type": "list",
@@ -107,7 +107,7 @@ const docsData = [
                 "items": [
                     "Check the module switch.",
                     "Check **Server Settings**, **Integrations** for a channel or member restriction.",
-                    "Run `/staff diagnose` for role order and channel access."
+                    "Run `/staff diagnose` to check bot permissions, and check role order separately."
                 ]
             },
             {
@@ -132,7 +132,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/staff diagnose",
-                        "desc": "Check common permission, channel, and hierarchy problems."
+                        "desc": "Check bot permissions in the current channel and server."
                     }
                 ]
             }
@@ -142,7 +142,7 @@ const docsData = [
         "id": "text_commands",
         "icon": "ph-terminal-window",
         "title": "Text Commands",
-        "subtitle": "Members who still type can use the same commands with a prefix, without opening the slash menu.",
+        "subtitle": "Members can use supported commands with a prefix, without opening the slash menu.",
         "content": [
             {
                 "type": "heading",
@@ -210,7 +210,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/item` looks up gear, `/levelscale` shows an item at another level, and `/statcaps` answers the \"is this the highest this goes\" question."
+                "text": "`/item` looks up gear, `/levelscale` shows an item at another level, and `/statcaps find` looks up a school's stat caps."
             },
             {
                 "type": "heading",
@@ -1011,7 +1011,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "A failed action is usually role order: Discord will not let SeanBot act on a member above its own role. `/staff diagnose` names the one that is wrong."
+                "text": "Discord will not let SeanBot act on a member above its own role. Check the role order, and use `/staff diagnose` to check its permissions."
             },
             {
                 "type": "commands",
@@ -1062,16 +1062,16 @@ const docsData = [
                         "desc": "Lock a text channel to prevent non-staff messaging."
                     },
                     {
-                        "cmd": "/archive [limit]",
-                        "desc": "Export complete channel message logs to file archive."
+                        "cmd": "/archive create [limit]",
+                        "desc": "Archive a limited number of recent channel messages."
                     },
                     {
                         "cmd": "/archive get [id]",
                         "desc": "Retrieve a previously archived channel transcript."
                     },
                     {
-                        "cmd": "/staff clean [count]",
-                        "desc": "Purge recent bot commands and responses."
+                        "cmd": "/staff clean [amount]",
+                        "desc": "Delete SeanBot messages among the recent messages checked."
                     },
                     {
                         "cmd": "/staff unlock [channel]",
@@ -1079,7 +1079,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/staff locked",
-                        "desc": "List all channels currently under staff lockdown."
+                        "desc": "List up to 50 locked text channels, with a count of any others."
                     },
                     {
                         "cmd": "/staff slowmode [seconds]",
@@ -1087,11 +1087,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/staff members [role]",
-                        "desc": "List all members holding a specific role."
+                        "desc": "List up to 40 members holding a role, with a count of any others."
                     },
                     {
                         "cmd": "/staff timeouts",
-                        "desc": "List all server members currently under active timeout."
+                        "desc": "List up to 40 members with active timeouts, with a count of any others."
                     }
                 ]
             }
@@ -1148,11 +1148,11 @@ const docsData = [
                         "desc": "Warn a member with a saved reason."
                     },
                     {
-                        "cmd": "/staff points [member]",
+                        "cmd": "/staff points [user]",
                         "desc": "Check total active moderation penalty points for a user."
                     },
                     {
-                        "cmd": "/staff logs [member]",
+                        "cmd": "/staff logs [user]",
                         "desc": "Inspect complete staff warning history logs for a user."
                     }
                 ]
@@ -1863,7 +1863,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/raidsignup` asks what is running, the date and time, the duration and the host. Roles go in one field, separated by commas, and a pipe starts a new group: `Tank: Bear, Ice | Healer: Life`. Up to twelve roles fit on a sheet."
+                "text": "`/raid wizard101 signup` asks what is running, the date and time, the duration and the host. Roles go in one field, separated by commas, and a pipe starts a new group: `Tank: Bear, Ice | Healer: Life`. Up to twelve roles fit on a sheet."
             },
             {
                 "type": "text",
@@ -1878,8 +1878,8 @@ const docsData = [
                         "desc": "Designate text channel where raid signup embeds publish."
                     },
                     {
-                        "cmd": "/raid start [host]",
-                        "desc": "Open the guided setup - the same one /raidsignup posts with."
+                        "cmd": "/raid wizard101 start [host]",
+                        "desc": "Open the guided setup - the same one /raid wizard101 signup posts with."
                     },
                     {
                         "cmd": "/raid list",
@@ -1906,7 +1906,7 @@ const docsData = [
                         "desc": "Re-open raid signups for new players."
                     },
                     {
-                        "cmd": "/raidsignup",
+                        "cmd": "/raid wizard101 signup",
                         "desc": "Post a signup sheet for a raid, a gold key run, or a custom event."
                     },
                     {
@@ -2107,11 +2107,11 @@ const docsData = [
         "id": "tickets",
         "icon": "ph-ticket",
         "title": "Ticket System",
-        "subtitle": "A support panel members press to open a private channel with staff. Still in beta.",
+        "subtitle": "A support panel members press to open a ticket channel with staff. Still in beta.",
         "content": [
             {
                 "type": "text",
-                "text": "Staff can claim a ticket, hand it to someone else, set a priority, add notes, and close it with the transcript kept."
+                "text": "Staff can claim a ticket, hand it to someone else, set a priority, add notes and close it. Channel access depends on the panel's privacy settings and support roles."
             },
             {
                 "type": "steps",
@@ -2124,7 +2124,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/ticket claim` shows who is handling it, `/ticket priority` sets low, normal, high or urgent, and `/ticket close` takes a reason and saves the transcript. `/ticket staffsay` posts as the bot when a staff member wants to stay anonymous."
+                "text": "`/ticket claim` shows who is handling it, and `/ticket priority` sets low, normal, high or critical. Closing attempts to generate a transcript; storage and delivery depend on settings. `/ticket staffsay` posts a note in the ticket channel with the staff member's name, visible to anyone with access."
             },
             {
                 "type": "commands",
@@ -2298,7 +2298,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/star stats leaderboard` shows which members get highlighted most."
+                "text": "`/star stats leaderboard` ranks members who have given the most stars."
             },
             {
                 "type": "commands",
@@ -2322,7 +2322,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/star stats leaderboard",
-                        "desc": "View the starboard member leaderboard."
+                        "desc": "Rank members by stars given."
                     }
                 ]
             }
@@ -2344,7 +2344,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/emojis top15` and `/reaction top15` show the same numbers in Discord. New usage can take half a minute to appear, and the commands refresh every few minutes."
+                "text": "`/emojis top15` and `/reaction top15` show usage in Discord. Usage is normally written in 30-second batches, and cached command results can remain unchanged for up to 40 minutes."
             },
             {
                 "type": "commands",
@@ -2858,15 +2858,15 @@ const docsData = [
         "id": "translate_cog",
         "icon": "ph-translate",
         "title": "Translation",
-        "subtitle": "Translate one message, a whole channel, or everything one member posts.",
+        "subtitle": "Translate a message from Discord's right-click menu.",
         "content": [
             {
                 "type": "text",
-                "text": "Right-click a message and choose **Apps**, **Translate**, for a one-off. For a channel or a member, turn on the ongoing option so new messages are translated as they arrive."
+                "text": "Right-click a message and choose **Apps**, **Translate**, to open the translation controls."
             },
             {
                 "type": "text",
-                "text": "The original stays in place and the translation is posted as a reply, so the conversation still reads in order."
+                "text": "The translation is private by default. Use **Share Public** to post it in the channel."
             },
             {
                 "type": "commands",
@@ -2875,10 +2875,6 @@ const docsData = [
                     {
                         "cmd": "Apps &gt; Translate",
                         "desc": "Right-click a message and translate it from Discord's Apps menu."
-                    },
-                    {
-                        "cmd": "Translate Message (Context Menu)",
-                        "desc": "Right-click message -&gt; Apps -&gt; Translate Message."
                     }
                 ]
             }
@@ -2952,7 +2948,7 @@ const docsData = [
                 "type": "steps",
                 "items": [
                     "`/counter setup` creates a counter channel.",
-                    "`/stats overview` opens the numbers in the dashboard.",
+                    "`/stats overview` shows server statistics in Discord.",
                     "`/counter list` shows every counter and lets you remove one."
                 ]
             },
@@ -2988,11 +2984,11 @@ const docsData = [
         "id": "returning_roles",
         "icon": "ph-arrow-u-down-left",
         "title": "Returning Roles",
-        "subtitle": "Hand back the roles a returning member earned, without a moderator being asked.",
+        "subtitle": "Give returning members a configured role.",
         "content": [
             {
                 "type": "text",
-                "text": "Mark a role as returnable. If a member leaves and comes back inside your window, SeanBot gives it back automatically. Members who were gone too long start fresh."
+                "text": "Choose one role for returning members. When someone leaves while the role is configured, SeanBot records their departure and assigns the configured role if they return while that record remains. Records older than two years are pruned monthly."
             },
             {
                 "type": "steps",
@@ -3142,7 +3138,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/discquote` turns a message into a shareable quote card, with the author's name attached. `/slap` takes a target and keeps a leaderboard; `/slap stats` shows the record."
+                "text": "`/discquote` turns a message into a shareable quote card, with the author's name attached. `/slap user` takes a target; `/slap stats` shows the record."
             },
             {
                 "type": "commands",
@@ -3200,7 +3196,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "When a feature is broken, run `/staff diagnose` before changing permissions. It checks role order, channel access and the permissions a feature needs, and names the missing one."
+                "text": "When a feature is broken, run `/staff diagnose` to check bot permissions in the current channel and server. Check role order separately."
             },
             {
                 "type": "commands",
@@ -3719,7 +3715,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/giveaway config` sets the log, vetting and archive channels, reminders, button label and colour. `/giveaway config show` prints the current setup."
+                "text": "Use the `/giveaway config` subcommands to set log, vetting and archive channels, reminders, button label and colour. `/giveaway config show` prints the current setup."
             },
             {
                 "type": "text",
