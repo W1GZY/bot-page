@@ -1843,83 +1843,201 @@ const docsData = [
         "id": "raids",
         "icon": "ph-sword",
         "title": "Raid & Event Organizer",
-        "subtitle": "Build a raid, ping the people who need to know, and let everyone sign up in their own timezone.",
+        "subtitle": "Plan a raid in one panel, post it, and let everyone claim a seat in their own timezone.",
         "content": [
             {
+                "type": "text",
+                "text": "Two kinds of signup live here. `/raid create` plans a raid: roles with a fixed number of seats, a waitlist when a role fills, a minimum to run, and a reminder before the start. `/raid wizard101 signup` is the class sheet: the roles are Tank, Healer, Damage and so on, and whoever reacts takes a slot."
+            },
+            {
                 "type": "heading",
-                "text": "Set it up"
+                "text": "Make a raid in one pass"
             },
             {
                 "type": "steps",
                 "items": [
-                    "Choose the raid channel with `/set_raid_channel`.",
-                    "Check that event staff can create, edit, lock and cancel raids.",
-                    "Run one short test raid before announcing a real one."
+                    "Run `/raid create`. The panel opens on **Details**, with the board drawn underneath - the same embed that will be posted.",
+                    "Fill in what matters and skip the rest. A title, a date and one role are enough to publish.",
+                    "On **Roster**, pick a size - 10, 20 or 40 player - and the roles arrive with their seats: `Tank x2 | Healer x4 | Damage x10 | Support x4`.",
+                    "Press **Publish raid** to post it, or **Save draft** to finish later with `/raid drafts`."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The preview is the board, not a summary of it. Every change redraws it, so there is nothing to picture and nothing to fix after posting."
+            },
+            {
+                "type": "heading",
+                "text": "The five sections"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "**Details** - name, description, date and time in your timezone, how long the raid runs, and a banner. Paste an image URL or type a built-in number, 1 to 3.",
+                    "**Roster** - a size preset, roles and seats typed by hand, the minimum to run, and what a full role does.",
+                    "**Signups** - Late, Tentative and Absent markers on or off, one role that must be held to sign up, and when signups close.",
+                    "**Posting** - the channel, up to ten roles to ping, a discussion thread, and pinning the board.",
+                    "**Reminders** - one automatic reminder, from 15 minutes to 2 hours before the start, pinging roles, `@everyone` or nobody."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "Nothing posts until you say so",
+                "text": "The panel builds a raid, it does not announce one. **Publish raid** is the only button that posts, and **Cancel** closes without posting or saving a draft."
+            },
+            {
+                "type": "heading",
+                "text": "Signing up"
+            },
+            {
+                "type": "text",
+                "text": "A published board is a set of reactions: one per role, plus one per status you turned on. React with a role to take a seat, react with another role to move, remove your reaction to leave. While the board is locked, only the role you already hold can be dropped."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "**Waitlist when full** keeps taking names and moves the first person up when a seat opens, with a DM to tell them.",
+                    "**Close a full role** refuses the reaction once the seats are gone, so that role never has a queue.",
+                    "**Late**, **Tentative** and **Absent** describe a member without moving them: the seat stays, the marker tells the host what to expect."
                 ]
             },
             {
                 "type": "heading",
-                "text": "Sign-up sheets"
+                "text": "Running it once it is live"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "`/raid list` shows every open board, `/raid my` shows the ones you are on.",
+                    "`/raid edit <message_id>` reopens the editor with the board as it stands, or right-click the board and pick **Apps**, then **Edit signup**.",
+                    "`/raid lock` and `/raid unlock` freeze and reopen a roster. `/raid cancel` takes it down.",
+                    "`/raid history <message_id>` reads a board back, including one that has already ended."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Wizard101 sheets"
             },
             {
                 "type": "text",
-                "text": "`/raid wizard101 signup` asks what is running, the date and time, the duration and the host. Roles go in one field, separated by commas, and a pipe starts a new group: `Tank: Bear, Ice | Healer: Life`. Up to twelve roles fit on a sheet."
+                "text": "The class sheet keeps its own flow, because it is a different thing: a list of slots somebody claims rather than a plan with seat limits. `/raid wizard101 signup` asks what is running, the date, the duration and the host, and takes up to twelve roles in one field, comma-separated, where a pipe starts a group: `Tank: Bear, Ice | Healer: Life`."
             },
             {
                 "type": "text",
-                "text": "`/set_raid_roster_channel` names where finished rosters are posted. A posted roster keeps the raid, date, duration, roles and host, so the same sheet can go out again. The board never pings anyone, whoever it names."
+                "text": "`/raid defaults raid:<raid> roles:<...>` saves the roles a sheet opens with, so a weekly run is one press. Finished rosters are posted to the channel named by `/raid roster-channel`."
+            },
+            {
+                "type": "heading",
+                "text": "Setting it up"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Choose the signup channel with `/raid channel`. Until one is set there is nowhere to post, and the bot says so where an administrator will read it.",
+                    "Choose where finished rosters go with `/raid roster-channel`, or leave the channel out to clear it.",
+                    "Run one short test raid before announcing a real one."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "The old names still work",
+                "text": "`/set_raid_channel`, `/set_raid_roster_channel` and `/raid_defaults` are the same commands, under the names they had first. Both spellings lead to one implementation, so a guide written for either one is right."
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "What the bot is holding in memory",
+                "text": "`/raid cache` shows the settings and identity caches: entries, hit rates, the memory ceiling and the memory the machine has. The ceiling follows the server on its own - a small share of its RAM - so there is nothing to tune and a large server gets room without being asked. The command answers the one question a slow-looking panel raises, whether that setting was really read again, with a number instead of a guess."
             },
             {
                 "type": "commands",
                 "title": "Commands",
                 "items": [
                     {
-                        "cmd": "/set_raid_channel [channel]",
-                        "desc": "Designate text channel where raid signup embeds publish."
+                        "cmd": "/raid create [copy]",
+                        "desc": "Open the raid planner. Give a message ID to start from that board's settings."
                     },
                     {
-                        "cmd": "/raid wizard101 start [host]",
-                        "desc": "Open the guided setup - the same one /raid wizard101 signup posts with."
+                        "cmd": "/raid drafts",
+                        "desc": "Reopen a saved draft, or delete one."
                     },
                     {
                         "cmd": "/raid list",
-                        "desc": "Display all active raid signups running in the server."
+                        "desc": "Every open board in the server, with a jump link."
                     },
                     {
                         "cmd": "/raid my",
-                        "desc": "View upcoming raid events you are signed up for."
+                        "desc": "The open boards you are signed up for."
                     },
                     {
                         "cmd": "/raid edit [msg_id]",
-                        "desc": "Edit title, description, or time of an active raid."
+                        "desc": "Change anything on a posted board, with the board drawn as you go."
                     },
                     {
                         "cmd": "/raid cancel [msg_id]",
-                        "desc": "Cancel a raid event and clean up signup reactions."
+                        "desc": "Take a board down and clean up its reactions."
                     },
                     {
                         "cmd": "/raid lock [msg_id]",
-                        "desc": "Lock raid signups to freeze active rosters."
+                        "desc": "Freeze a roster so nobody new can join."
                     },
                     {
                         "cmd": "/raid unlock [msg_id]",
-                        "desc": "Re-open raid signups for new players."
-                    },
-                    {
-                        "cmd": "/raid wizard101 signup",
-                        "desc": "Post a signup sheet for a raid, a gold key run, or a custom event."
-                    },
-                    {
-                        "cmd": "/raid_defaults",
-                        "desc": "Set, show, or clear the roles a raid sheet opens with."
-                    },
-                    {
-                        "cmd": "/set_raid_roster_channel [channel]",
-                        "desc": "Choose where finished rosters are posted, or clear it."
+                        "desc": "Reopen a roster for new signups."
                     },
                     {
                         "cmd": "/raid history [msg_id]",
-                        "desc": "Read one board back, including boards that have already ended."
+                        "desc": "Read one board back, including boards that have ended."
+                    },
+                    {
+                        "cmd": "/raid wizard101 signup",
+                        "desc": "Post a Wizard101 class sheet, a gold key run, or a custom event."
+                    },
+                    {
+                        "cmd": "/raid wizard101 start [host]",
+                        "desc": "Build a class sheet as a guided menu."
+                    },
+                    {
+                        "cmd": "/raid channel [channel]",
+                        "desc": "Where signup boards are posted."
+                    },
+                    {
+                        "cmd": "/raid roster-channel [channel]",
+                        "desc": "Where finished rosters go, or clear it."
+                    },
+                    {
+                        "cmd": "/raid defaults [raid] [roles]",
+                        "desc": "Set, show, or clear the roles a sheet opens with."
+                    },
+                    {
+                        "cmd": "/raid attendance [msg_id]",
+                        "desc": "Take attendance for a raid that has run - who turned up, who was late, who did not show."
+                    },
+                    {
+                        "cmd": "/raid stats [member]",
+                        "desc": "Who keeps turning up, worst first, with a rate once a member has three raids behind them."
+                    },
+                    {
+                        "cmd": "/raid schedule",
+                        "desc": "Set a raid up once and have its signup post every week, with a skip for the week the guild is off."
+                    },
+                    {
+                        "cmd": "/raid cache",
+                        "desc": "Entries, hit rates and the memory ceiling of the raid caches."
+                    },
+                    {
+                        "cmd": "/set_raid_channel [channel]",
+                        "desc": "The older name for /raid channel."
+                    },
+                    {
+                        "cmd": "/set_raid_roster_channel [channel]",
+                        "desc": "The older name for /raid roster-channel."
+                    },
+                    {
+                        "cmd": "/raid_defaults",
+                        "desc": "The older name for /raid defaults."
                     }
                 ]
             }
