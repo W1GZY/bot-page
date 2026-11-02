@@ -660,6 +660,7 @@ function initDocsPage() {
             'honeypot': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'antiping': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'global_enforcement': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'presence': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
 
             'timeping': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'timezones': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },

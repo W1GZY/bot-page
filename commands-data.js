@@ -1203,6 +1203,30 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/log unwatch_reaction",
+            "desc": "Stop logging reactions on a watched message",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/log watch_reaction",
+            "desc": "Log reactions on one message, even after it leaves the cache",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/log watch_reaction_auto",
+            "desc": "Auto-watch pinned and starred messages for reaction logging",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/log watch_reaction_list",
+            "desc": "List messages watched for reactions",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/log webhook",
             "desc": "Set the webhook address logs are sent to",
             "badge": "Manage Server",
@@ -1475,6 +1499,18 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/raid attendance",
+            "desc": "Take attendance for a raid that has run.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/raid cache",
+            "desc": "Show what the raid system is holding in memory.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/raid cancel",
             "desc": "Cancel a signup board - the message is marked and the board cleared.",
             "badge": "Administrator",
@@ -1487,14 +1523,26 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/raid create",
+            "desc": "Build a raid with a live preview - caps, waitlist, drafts, publish.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/raid defaults",
             "desc": "Set, show, or clear the roles a raid's signup sheet opens with.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
+            "name": "/raid drafts",
+            "desc": "Open a saved raid draft.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/raid edit",
-            "desc": "Edit an existing signup board.",
+            "desc": "Edit a signup board - opens the editor, or applies the fields given.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -1527,6 +1575,18 @@ const commandsDatabase = [{
             "desc": "Set where finished rosters go. Leave the channel out to clear it.",
             "badge": "Administrator",
             "type": "perm"
+        },
+        {
+            "name": "/raid schedule",
+            "desc": "Set a raid up once and have its signup post every week.",
+            "badge": "Manage Messages",
+            "type": "perm"
+        },
+        {
+            "name": "/raid stats",
+            "desc": "Who turns up: one member's attendance, or the server's table.",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/raid unlock",
@@ -3236,6 +3296,12 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: Create Event Time/Poll",
+            "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "Right-click: Edit signup",
             "desc": "Open this app from Discord's Apps menu after right-clicking the relevant message or member.",
             "badge": "Everyone",
             "type": "public"

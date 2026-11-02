@@ -1170,6 +1170,10 @@ const docsData = [
                 "text": "Forward everything to one channel, or split moderation, security, member, voice and staff events. The **Server Logs** page keeps a dated, searchable copy on the dashboard, so a moderator can read back last Tuesday without scrolling Discord."
             },
             {
+                "type": "text",
+                "text": "Soundboard sounds that are added, edited or deleted are logged with the person who changed them. Members who sign up for or leave a scheduled event are logged too, and so are changes to who can use an app command."
+            },
+            {
                 "type": "heading",
                 "text": "Logging changes are logged too"
             },
@@ -3489,6 +3493,28 @@ const docsData = [
                         "desc": "Admin command to review and manage all active and scheduled LOAs across the server."
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "id": "presence",
+        "icon": "ph-pulse",
+        "title": "Presence",
+        "subtitle": "A live view of who is online, idle or away right now, and for how long.",
+        "content": [
+            {
+                "type": "text",
+                "text": "The Presence page shows each member's status as Online, Idle, Do Not Disturb or Offline. It also times how long each account has been in that state, so you can see who has been idle all evening."
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "Live, not stored",
+                "text": "Presence is a live view, not a toggle. SeanBot keeps it in memory from Discord's gateway and stores nothing, so there is nothing to switch on."
+            },
+            {
+                "type": "text",
+                "text": "The page is for administrators only. Server Access cannot grant it to another role, the same rule that keeps Dashboard Logs to admins."
             }
         ]
     },
