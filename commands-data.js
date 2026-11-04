@@ -1203,8 +1203,32 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/log unwatch_presence",
+            "desc": "Stop logging one member's presence changes",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
             "name": "/log unwatch_reaction",
             "desc": "Stop logging reactions on a watched message",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/log watch_presence",
+            "desc": "Log one member's presence changes",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/log watch_presence_auto",
+            "desc": "Follow new members' presence automatically for a set number of days",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/log watch_presence_list",
+            "desc": "List members watched for presence changes",
             "badge": "Manage Server",
             "type": "perm"
         },
