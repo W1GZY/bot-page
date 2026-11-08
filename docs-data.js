@@ -3425,7 +3425,7 @@ const docsData = [
         "content": [
             {
                 "type": "text",
-                "text": "`/serverinfo` covers the basics, `/ping` shows latency, and `/invite` gives you the bot's invite link. These need no setup."
+                "text": "`/serverinfo` covers the basics and `/invite` gives you the bot's invite link. These need no setup."
             },
             {
                 "type": "text",
@@ -3438,10 +3438,6 @@ const docsData = [
                     {
                         "cmd": "/serverinfo",
                         "desc": "Show the server's members, roles and numbers."
-                    },
-                    {
-                        "cmd": "/ping",
-                        "desc": "Check how fast the bot answers, in milliseconds."
                     },
                     {
                         "cmd": "/invite",

@@ -2690,12 +2690,6 @@ const commandsDatabase = [{
             "type": "public"
         },
         {
-            "name": "/ping",
-            "desc": "Display bot latency, database latency, and how much work is queued",
-            "badge": "Everyone",
-            "type": "public"
-        },
-        {
             "name": "/stats digest",
             "desc": "Weekly activity summary with trends and top members",
             "badge": "Everyone",
