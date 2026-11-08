@@ -34,8 +34,8 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "note",
-                "title": "There is a shortcut",
-                "text": "SeanBot tries to send a setup menu to the inviter, or the server owner if the inviter cannot be identified. If the DM fails, it tries a writable channel. You can also run `/setup` in the server."
+                "title": "If the setup menu never arrives",
+                "text": "SeanBot sends the setup menu by DM. If it does not arrive, run `/setup` in the server. You need Manage Server to open it."
             },
             {
                 "type": "commands",
@@ -167,8 +167,8 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "note",
-                "title": "Not a permission",
-                "text": "A text command checks exactly what its slash version checks. A prefix does not give anyone extra access."
+                "title": "A prefix is not a permission",
+                "text": "Changing the prefix changes how people type a command, not who is allowed to use it. Discord permissions still decide that."
             },
             {
                 "type": "commands",
@@ -198,7 +198,7 @@ const docsData = [
         "id": "w101",
         "icon": "ph-magic-wand",
         "title": "Wizard101 Tools",
-        "subtitle": "Work out what a hit will land for, and keep the guild's decks in one place.",
+        "subtitle": "Work out how much damage a hit will do, and keep the guild's decks in one place.",
         "content": [
             {
                 "type": "heading",
@@ -230,15 +230,15 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/damage",
-                        "desc": "Launch the interactive Damage Assistant modal to model damage outputs."
+                        "desc": "Open the damage assistant and work out a hit before the raid."
                     },
                     {
                         "cmd": "/item [name]",
-                        "desc": "Search the complete gear database with stats, school requirements, and drops."
+                        "desc": "Look up a piece of gear and its stats, school requirement and drops."
                     },
                     {
                         "cmd": "/levelscale [item] [level]",
-                        "desc": "Calculate exact gear stat scaling across lower level tiers."
+                        "desc": "See what a piece of gear's stats are at a lower level."
                     },
                     {
                         "cmd": "/statcaps find",
@@ -254,31 +254,31 @@ const docsData = [
                     },
                     {
                         "cmd": "/decks create",
-                        "desc": "Draft a custom deck loadout with visual card slots (deck editor role)."
+                        "desc": "Build a deck card by card. Needs the deck editor role."
                     },
                     {
                         "cmd": "/decks browse",
-                        "desc": "Browse community-submitted decks saved in the server repository."
+                        "desc": "Browse the decks other members saved on this server."
                     },
                     {
                         "cmd": "/decks search [query]",
-                        "desc": "Search saved decks by school, boss counter, or card composition."
+                        "desc": "Search saved decks by school, the boss they answer, or the cards in them."
                     },
                     {
                         "cmd": "/decks share [deck] [user]",
-                        "desc": "Send a saved deck directly to a teammate via DM."
+                        "desc": "Send a saved deck to a teammate as a DM."
                     },
                     {
                         "cmd": "/decks export [deck]",
-                        "desc": "Export a high-definition image card graphic of any saved deck."
+                        "desc": "Get a picture of a saved deck to post or share."
                     },
                     {
                         "cmd": "/deck show [code]",
-                        "desc": "View a deck from another user or from a shared deck code."
+                        "desc": "Open a deck from the code someone sent you."
                     },
                     {
                         "cmd": "/deck lookup [code]",
-                        "desc": "View a deck from another user or from a shared deck code."
+                        "desc": "Find a deck by the code someone gave you."
                     }
                 ]
             }
@@ -292,7 +292,7 @@ const docsData = [
         "content": [
             {
                 "type": "text",
-                "text": "SeanBot keeps your form tiers and turns them into a Lunari and Idol estimate for the push to Tier 5. When you reach a new tier, it can announce it in a channel you choose."
+                "text": "SeanBot keeps your form tiers and estimates the Lunari and Idol cost to reach Tier 5. When you reach a new tier, it can announce it in a channel you choose."
             },
             {
                 "type": "steps",
@@ -308,23 +308,23 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/bm stats",
-                        "desc": "Open the Beastmoon form spell and stats browser."
+                        "desc": "Browse every Beastmoon form with its spells and stats."
                     },
                     {
                         "cmd": "/bm add",
-                        "desc": "Launch the Beastmoon Form Add function for tier progress."
+                        "desc": "Add a form you have, one step at a time."
                     },
                     {
                         "cmd": "/bm quick_add [form] [school] [tier]",
-                        "desc": "Update form tiers with autocomplete."
+                        "desc": "Set a form's tier, with autocomplete."
                     },
                     {
                         "cmd": "/bm check",
-                        "desc": "Inspect progress towards Tier 5 with exact Lunari and Idol costs."
+                        "desc": "See how far you are from Tier 5, in Lunari and Idols."
                     },
                     {
                         "cmd": "/bm forms",
-                        "desc": "Show your saved Beastmoon forms and unlock tier chart."
+                        "desc": "Show your forms and the tiers you have unlocked."
                     },
                     {
                         "cmd": "/bm leaderboard",
@@ -332,19 +332,19 @@ const docsData = [
                     },
                     {
                         "cmd": "/bm max",
-                        "desc": "Display players who have achieved max Tier 5 form masteries."
+                        "desc": "List the players who have every form at Tier 5."
                     },
                     {
                         "cmd": "/bm log_channel [channel]",
-                        "desc": "Designate a channel for public Beastmoon level-up announcements."
+                        "desc": "Pick the channel where level-ups get announced."
                     },
                     {
                         "cmd": "/bm redeem [code]",
-                        "desc": "Sync Beastmoon form upgrades from the Web Dashboard."
+                        "desc": "Pull in the upgrades you entered on the dashboard."
                     },
                     {
                         "cmd": "/bm forms_alt",
-                        "desc": "Show your saved alt-profile Beastmoon forms."
+                        "desc": "Show the forms saved on your alt profile."
                     },
                     {
                         "cmd": "/bm user [member]",
@@ -358,11 +358,11 @@ const docsData = [
         "id": "recap_tracker",
         "icon": "ph-notebook",
         "title": "W101 Raid & Activity Recap",
-        "subtitle": "Record a raid after it ends, so the guild has a record beyond memory.",
+        "subtitle": "Save a raid's result after it ends, so the guild can look it up later.",
         "content": [
             {
                 "type": "text",
-                "text": "Log the result, the keys used, who hosted, any school swaps, and who saw the wipe. The entries feed the recap and analytics views."
+                "text": "Log the result, the keys used, who hosted, any school swaps, and who saw the wipe. Together they make up the guild's raid and activity record."
             },
             {
                 "type": "steps",
@@ -420,7 +420,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/pet lookup [query]",
-                        "desc": "Search for any pet by name to check info."
+                        "desc": "Look up a pet by name."
                     }
                 ]
             }
@@ -442,7 +442,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/spell [query]",
-                        "desc": "Search for a spell card or choose a school list from autocomplete."
+                        "desc": "Find a spell by name, or pick a school from the list."
                     }
                 ]
             }
@@ -452,7 +452,7 @@ const docsData = [
         "id": "teamup_w101",
         "icon": "ph-users-four",
         "title": "W101: Dungeon Team-Ups",
-        "subtitle": "A dungeon board that fills itself, so nobody has to count who is coming.",
+        "subtitle": "A dungeon board that fills as people join, so nobody has to count who is coming.",
         "content": [
             {
                 "type": "text",
@@ -472,7 +472,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/teamup create",
-                        "desc": "Open an form to post a new dungeon Team-Up lobby."
+                        "desc": "Open a form to post a Team-Up for a dungeon."
                     },
                     {
                         "cmd": "/teamup quick [dungeon] [required players]",
@@ -480,7 +480,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/teamup list",
-                        "desc": "Display all open Team-Up lobbies actively looking for players."
+                        "desc": "List every Team-Up still looking for players."
                     },
                     {
                         "cmd": "/teamup edit",
@@ -496,11 +496,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/teamup channel [channel]",
-                        "desc": "Set dedicated text channel for Team-Up board postings."
+                        "desc": "Set the channel where Team-Up boards are posted."
                     },
                     {
                         "cmd": "/teamup role [role]",
-                        "desc": "Set default role pinged when new dungeon runs are posted."
+                        "desc": "Set the role pinged when a new run is posted."
                     }
                 ]
             }
@@ -548,19 +548,19 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/strategy list",
-                        "desc": "List all saved boss strategy guides available in the server."
+                        "desc": "List the boss guides this server has saved."
                     },
                     {
                         "cmd": "/strategy add [boss_name] [guide_text]",
-                        "desc": "Save a new boss cheat guide or strategy sequence."
+                        "desc": "Save a boss cheat sheet: what it does, the order, where to stand."
                     },
                     {
                         "cmd": "/strategy import [json_file]",
-                        "desc": "Import strategy entries from a file."
+                        "desc": "Import boss notes from a file."
                     },
                     {
                         "cmd": "/strategy delete [boss_name]",
-                        "desc": "Remove an outdated boss strategy guide."
+                        "desc": "Delete a boss guide that is out of date."
                     }
                 ]
             }
@@ -582,19 +582,19 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/tapestry list",
-                        "desc": "View your saved tapestry checklist."
+                        "desc": "Show your tapestry checklist."
                     },
                     {
                         "cmd": "/tapestry set [name] [status]",
-                        "desc": "Toggle whether a tapestry is marked collected."
+                        "desc": "Tick a tapestry off, or untick it."
                     },
                     {
                         "cmd": "/bobblehead list",
-                        "desc": "List all saved housing bobbleheads."
+                        "desc": "Show the bobbleheads on your list."
                     },
                     {
                         "cmd": "/bobblehead set [name] [status]",
-                        "desc": "Toggle ownership status of a housing bobblehead."
+                        "desc": "Tick a bobblehead off, or untick it."
                     }
                 ]
             }
@@ -604,7 +604,7 @@ const docsData = [
         "id": "wizard_info",
         "icon": "ph-user-list",
         "title": "W101: Wizard Registry",
-        "subtitle": "Every member's wizards in one place, with a guild view on top. VIP servers only.",
+        "subtitle": "All your members' wizards in one list, with a guild summary. VIP servers only.",
         "content": [
             {
                 "type": "callout",
@@ -618,7 +618,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Each member's wizard names, schools, levels, badges, guild join dates, and whether they are still in the guild. Members add their own, so the list stays current without a moderator chasing people."
+                "text": "Members add their own wizard names, schools, levels, badges and guild join dates. The list also shows who is still in the guild, so it stays current without a moderator chasing people."
             },
             {
                 "type": "text",
@@ -799,8 +799,8 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "tip",
-                "title": "Off until you turn it on",
-                "text": "Verification ships switched off. Turn it on when your prompt channel is ready."
+                "title": "Only new members are held",
+                "text": "Turning Verification on does not hold anyone who is already in the server. It applies to people who join after it is on, so you can set it up without locking out your community."
             },
             {
                 "type": "text",
@@ -829,7 +829,7 @@ const docsData = [
                     "A minimum account age and a profile picture requirement can turn away fresh or empty accounts. Both are off by default.",
                     "**Send new members to review** holds people for staff approval instead. Approve, deny, kick or ban with one button, from Discord or the dashboard.",
                     "Deny keeps the member in the server without the verification roles. It is not a kick.",
-                    "If someone is stuck, ask them to run `/verify` or verify them by hand with `/verification member`."
+                    "If someone is stuck, ask them to run `/verification verify` or verify them by hand with `/verification member`."
                 ]
             },
             {
@@ -873,7 +873,7 @@ const docsData = [
                         "desc": "Turn the gate off without deleting its settings."
                     },
                     {
-                        "cmd": "/verify",
+                        "cmd": "/verification verify",
                         "desc": "Get the verify button again, privately, for yourself."
                     }
                 ]
@@ -912,6 +912,14 @@ const docsData = [
                 "text": "`/antiraid pause` stops enforcement for a set number of minutes. `/antiraid unquarantine` releases a member you have checked, and `/antiraid threatlist` shows what is currently flagged."
             },
             {
+                "type": "heading",
+                "text": "Everyday filters and the Mind"
+            },
+            {
+                "type": "text",
+                "text": "Blocked words, caps floods, emoji floods and invite ads are all opt-in. The Mind is a rule-based learner, not AI: it remembers every catch and correction, forgets stale lessons over 30 days, and loosens only the filter that keeps misfiring. Check `/automod mind`, teach with `/automod teach`, pause tuning with `/automod learn off`, and clear lessons with `/automod forget`."
+            },
+            {
                 "type": "commands",
                 "title": "Commands",
                 "items": [
@@ -937,7 +945,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/antiraid scam_list [recover] [days]",
-                        "desc": "Inspect active visual scam fingerprints, or rebuild the library by re-registering scam images Anti-Raid caught in the past."
+                        "desc": "See the images being blocked, or rebuild the list from past catches."
                     },
                     {
                         "cmd": "/antiraid whitelist [role]",
@@ -969,19 +977,39 @@ const docsData = [
                     },
                     {
                         "cmd": "/antiraid reset",
-                        "desc": "Reset server anti-raid parameters back to default security levels."
+                        "desc": "Put the anti-raid settings back to their defaults."
                     },
                     {
                         "cmd": "/antiraid multiplier [channel|role] [multiplier]",
-                        "desc": "Configure risk score multipliers for high-exposure channels or roles."
+                        "desc": "Set the risk multiplier for a busy channel or a role."
                     },
                     {
                         "cmd": "/antiraid channelsensitivity [channel]",
-                        "desc": "Tweak security sensitivity on specific channels."
+                        "desc": "Set how strictly one channel is watched."
                     },
                     {
                         "cmd": "/antiraid advanced",
-                        "desc": "Configure advanced heuristic triggers and automated bans."
+                        "desc": "Choose what a risk score triggers, including automatic bans."
+                    },
+                    {
+                        "cmd": "/automod status",
+                        "desc": "Show which everyday filters are on, with learning totals."
+                    },
+                    {
+                        "cmd": "/automod mind",
+                        "desc": "Meet the Mind: mood, precision per filter, and most-corrected word."
+                    },
+                    {
+                        "cmd": "/automod teach <kind> <value>",
+                        "desc": "Fix a wrong AutoMod call: allow_word, block_word, allow_domain or false_positive."
+                    },
+                    {
+                        "cmd": "/automod learn <on|off>",
+                        "desc": "Stop the loosening, but keep recording lessons."
+                    },
+                    {
+                        "cmd": "/automod forget",
+                        "desc": "Clear every lesson. Your own filters stay."
                     }
                 ]
             }
@@ -1019,27 +1047,27 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/kick [member] [reason]",
-                        "desc": "Kick a member with DM notification and audit log tracking."
+                        "desc": "Kick a member, with a DM and a line in the audit log."
                     },
                     {
                         "cmd": "/ban [user] [reason]",
-                        "desc": "Ban a user and dispatch an appeal guide link via DM."
+                        "desc": "Ban a member and DM them the appeal link."
                     },
                     {
                         "cmd": "/unban [user_id] [reason]",
-                        "desc": "Revoke a ban using a numerical Discord User ID."
+                        "desc": "Unban a member by their Discord user ID."
                     },
                     {
                         "cmd": "/softban [user] [days]",
-                        "desc": "Ban and immediately unban to clear recent messages."
+                        "desc": "Softban: ban, then unban, to clear recent messages."
                     },
                     {
                         "cmd": "/shadowban [user_id]",
-                        "desc": "Pre-emptively ban a user ID before they join the server."
+                        "desc": "Ban a user ID before they ever join."
                     },
                     {
                         "cmd": "/nick [member] [nickname]",
-                        "desc": "Update or clear a member's server nickname."
+                        "desc": "Change a member's nickname, or clear it."
                     },
                     {
                         "cmd": "/timeout [member] [duration]",
@@ -1047,51 +1075,51 @@ const docsData = [
                     },
                     {
                         "cmd": "/untimeout [member]",
-                        "desc": "Remove an active timeout penalty."
+                        "desc": "Take a timeout off."
                     },
                     {
                         "cmd": "/purgetimeout [duration]",
-                        "desc": "Mass-clear messages sent by users currently in timeout."
+                        "desc": "Clear the recent messages of everyone in timeout."
                     },
                     {
                         "cmd": "/purge [amount]",
-                        "desc": "Bulk delete messages in the active channel."
+                        "desc": "Delete recent messages in this channel."
                     },
                     {
                         "cmd": "/lock [channel] [reason]",
-                        "desc": "Lock a text channel to prevent non-staff messaging."
+                        "desc": "Lock a channel so only staff can talk."
                     },
                     {
                         "cmd": "/archive create [limit]",
-                        "desc": "Archive a limited number of recent channel messages."
+                        "desc": "Save a transcript of the last messages in this channel."
                     },
                     {
                         "cmd": "/archive get [id]",
-                        "desc": "Retrieve a previously archived channel transcript."
+                        "desc": "Open a transcript you saved earlier."
                     },
                     {
                         "cmd": "/staff clean [amount]",
-                        "desc": "Delete SeanBot messages among the recent messages checked."
+                        "desc": "Remove SeanBot's own messages from the recent ones."
                     },
                     {
                         "cmd": "/staff unlock [channel]",
-                        "desc": "Re-open a locked channel for general messaging."
+                        "desc": "Unlock a channel."
                     },
                     {
                         "cmd": "/staff locked",
-                        "desc": "List up to 50 locked text channels, with a count of any others."
+                        "desc": "List the locked channels, 50 at a time."
                     },
                     {
                         "cmd": "/staff slowmode [seconds]",
-                        "desc": "Adjust channel message cooldown slowmode."
+                        "desc": "Set the channel's slowmode."
                     },
                     {
                         "cmd": "/staff members [role]",
-                        "desc": "List up to 40 members holding a role, with a count of any others."
+                        "desc": "List the members holding a role, 40 at a time."
                     },
                     {
                         "cmd": "/staff timeouts",
-                        "desc": "List up to 40 members with active timeouts, with a count of any others."
+                        "desc": "List the members in timeout, 40 at a time."
                     }
                 ]
             }
@@ -1125,15 +1153,15 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/warn add [member] [reason] [points]",
-                        "desc": "Issue an official warning log with assigned penalty points."
+                        "desc": "Warn a member and add points."
                     },
                     {
                         "cmd": "/warn list [member]",
-                        "desc": "Inspect a member's warning history and active points."
+                        "desc": "Show a member's warnings and their points."
                     },
                     {
                         "cmd": "/warn clear [member]",
-                        "desc": "Clear all warning logs and reset penalty points."
+                        "desc": "Clear a member's warnings and points."
                     },
                     {
                         "cmd": "/modpreset set [key] [reason]",
@@ -1149,11 +1177,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/staff points [user]",
-                        "desc": "Check total active moderation penalty points for a user."
+                        "desc": "Show how many points a member has."
                     },
                     {
                         "cmd": "/staff logs [user]",
-                        "desc": "Inspect complete staff warning history logs for a user."
+                        "desc": "Show everything staff have warned a member about."
                     }
                 ]
             }
@@ -1203,35 +1231,35 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/log webhook [url] [type]",
-                        "desc": "Configure and test a webhook destination for audit events."
+                        "desc": "Set a webhook for audit events and send a test through it."
                     },
                     {
                         "cmd": "/log toggle [log_type]",
-                        "desc": "Enable or disable logging for specific server events."
+                        "desc": "Turn logging on or off for one event."
                     },
                     {
                         "cmd": "/log toggle_batch [type] [state]",
-                        "desc": "Batch toggle multiple audit event categories at once."
+                        "desc": "Turn several event categories on or off together."
                     },
                     {
                         "cmd": "/log ignore_reaction_add [emoji]",
-                        "desc": "Ignore specific reaction emojis from audit logs."
+                        "desc": "Keep a reaction emoji out of the logs."
                     },
                     {
                         "cmd": "/log ignore_log_add [channel]",
-                        "desc": "Exclude high-traffic channels from audit logging."
+                        "desc": "Leave a busy channel out of the logs."
                     },
                     {
                         "cmd": "/log status",
-                        "desc": "Inspect active webhooks, enabled event types, and channel filters."
+                        "desc": "See the webhooks, events and channel filters in use."
                     },
                     {
                         "cmd": "/log metrics",
-                        "desc": "View audit event processing speed and throughput stats."
+                        "desc": "See how fast the log pipeline is keeping up."
                     },
                     {
                         "cmd": "/log reset",
-                        "desc": "Reset audit logging configurations back to server defaults."
+                        "desc": "Put the logging settings back to their defaults."
                     }
                 ]
             }
@@ -1306,8 +1334,8 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "warning",
-                "title": "Off until you enable it",
-                "text": "Ban Relay sends DMs, so it is opt-in. Use **Enable Ban Relay** or `/banrelay enable`."
+                "title": "Check the first ban",
+                "text": "Ban Relay DMs the banned member. After you enable it, watch the first ban to make sure the message arrives and the action shows in the feed."
             },
             {
                 "type": "heading",
@@ -1422,23 +1450,23 @@ const docsData = [
                     },
                     {
                         "cmd": "/appeals submit [text]",
-                        "desc": "Submit a ban appeal for staff evaluation."
+                        "desc": "File an appeal."
                     },
                     {
                         "cmd": "/appeals list",
-                        "desc": "View open ban appeals awaiting staff decision."
+                        "desc": "See the appeals waiting on staff."
                     },
                     {
                         "cmd": "/appeals view [id]",
-                        "desc": "Inspect appeal details, user statement, and history."
+                        "desc": "Open one appeal: what the member said, and their history."
                     },
                     {
                         "cmd": "/appeals close [id] [action]",
-                        "desc": "Approve or deny an appeal, triggering unbans."
+                        "desc": "Approve or deny an appeal. An approval unbans the member."
                     },
                     {
                         "cmd": "/suggestion setup [channel]",
-                        "desc": "Set channel where community suggestions publish."
+                        "desc": "Pick the channel where suggestions are posted."
                     },
                     {
                         "cmd": "/suggestion submit [title]",
@@ -1450,7 +1478,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/suggestion close [id] [status]",
-                        "desc": "Mark a suggestion Approved, Denied, or In Progress."
+                        "desc": "Set a suggestion to Approved, Denied or In Progress."
                     }
                 ]
             }
@@ -1493,8 +1521,8 @@ const docsData = [
             {
                 "type": "callout",
                 "variant": "note",
-                "title": "No invites listed",
-                "text": "Invite tracking needs Manage Server. Grant it, then refresh."
+                "title": "No invites? Check Manage Server",
+                "text": "Invite tracking needs Manage Server. Grant it, then refresh the page."
             },
             {
                 "type": "commands",
@@ -1553,7 +1581,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/report [message_link] [reason]",
-                        "desc": "Create a public vote report by pasting a Discord message link and adding a reason."
+                        "desc": "Start a vote report from a message link and a reason."
                     },
                     {
                         "cmd": "Report User (Context Menu)",
@@ -1569,7 +1597,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/publicreport channel [channel]",
-                        "desc": "Choose where public vote reports are posted for review."
+                        "desc": "Pick where vote reports are posted for review."
                     },
                     {
                         "cmd": "/publicreport notify_add_role [role]",
@@ -1581,7 +1609,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/publicreport view_settings",
-                        "desc": "Show public report channels, voting rules, and notification roles."
+                        "desc": "Show where reports go, who votes and who gets pinged."
                     }
                 ]
             }
@@ -1627,7 +1655,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/timeping schedule [title] [time] [role]",
-                        "desc": "Schedule a future role ping with custom text/images."
+                        "desc": "Schedule a ping for later, with your own text and images."
                     },
                     {
                         "cmd": "/timeping add [message] [time]",
@@ -1651,11 +1679,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/timeping simulate [time]",
-                        "desc": "Preview exact reminder firing times in advance."
+                        "desc": "Preview when each reminder will fire."
                     },
                     {
                         "cmd": "/timeping defaults set",
-                        "desc": "Update server-wide default alert preferences."
+                        "desc": "Set the server's default alert settings."
                     },
                     {
                         "cmd": "/timeping templates list",
@@ -1667,7 +1695,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/timeping auto settings [channel]",
-                        "desc": "Configure the watched channel emoji, timezone, reminder intervals, allowed reactor roles, recurrence, and who gets pinged."
+                        "desc": "Set the watch emoji, timezone, reminder intervals, who may react, how often it repeats and who gets pinged."
                     },
                     {
                         "cmd": "/timeping schedule",
@@ -1681,7 +1709,7 @@ const docsData = [
         "id": "timezones",
         "icon": "ph-globe-stand",
         "title": "Timezones & World Clocks",
-        "subtitle": "Members set a timezone once, and every time the bot prints arrives in their own clock.",
+        "subtitle": "Members set a timezone once, and every timestamp the bot posts shows in their own time.",
         "content": [
             {
                 "type": "heading",
@@ -1721,11 +1749,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/timezone admin-map",
-                        "desc": "Get administrative view of community timezone map."
+                        "desc": "Open the admin view of the timezone map."
                     },
                     {
                         "cmd": "/timezone admin-set [user] [tz]",
-                        "desc": "Force set a member's local timezone (Admin only)."
+                        "desc": "Set a member's timezone for them. Admin only."
                     },
                     {
                         "cmd": "/timezone set [tz]",
@@ -1751,7 +1779,7 @@ const docsData = [
         "id": "time_converter",
         "icon": "ph-clock-user",
         "title": "Time Converter",
-        "subtitle": "Turn a time somebody typed into a tag every reader sees in their own clock.",
+        "subtitle": "Turn a time somebody typed into a timestamp every reader sees in their own time.",
         "content": [
             {
                 "type": "text",
@@ -1779,7 +1807,7 @@ const docsData = [
                     },
                     {
                         "cmd": "`8 PM EST`",
-                        "desc": "Wrap a time in backticks or a code block to have SeanBot reply with a Discord timestamp."
+                        "desc": "Turn a time somebody typed into a timestamp every reader sees in their own time."
                     }
                 ]
             }
@@ -1837,7 +1865,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/event config clean [days]",
-                        "desc": "Delete event and poll history older than the chosen number of days."
+                        "desc": "Delete event and poll history older than the number of days you set."
                     }
                 ]
             }
@@ -1947,13 +1975,13 @@ const docsData = [
                 "type": "callout",
                 "variant": "note",
                 "title": "The old names still work",
-                "text": "`/set_raid_channel`, `/set_raid_roster_channel` and `/raid_defaults` are the same commands, under the names they had first. Both spellings lead to one implementation, so a guide written for either one is right."
+                "text": "`/set_raid_channel`, `/set_raid_roster_channel` and `/raid_defaults` are the original names for these settings. The old and new commands do the same thing, so either one is safe to use."
             },
             {
                 "type": "callout",
                 "variant": "note",
-                "title": "What the bot is holding in memory",
-                "text": "`/raid cache` shows the settings and identity caches: entries, hit rates, the memory ceiling and the memory the machine has. The ceiling follows the server on its own - a small share of its RAM - so there is nothing to tune and a large server gets room without being asked. The command answers the one question a slow-looking panel raises, whether that setting was really read again, with a number instead of a guess."
+                "title": "When the panel feels slow",
+                "text": "`/raid cache` shows what the bot is keeping in memory, how often it finds what it needs there, and how much room it is using. You do not need to tune it; the bot sets its own limit. Run it when a panel feels slow to see whether the bot had to look something up."
             },
             {
                 "type": "commands",
@@ -2059,7 +2087,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/poll create` is a simple reaction vote with 2 to 20 answers. `/raidpoll` is for sign-ups: named slots, caps, waitlists and a roster that keeps itself tidy."
+                "text": "`/poll create` is a simple reaction vote with 2 to 20 answers. `/raidpoll` is for sign-ups: named slots, caps, waitlists and a roster that updates as people join or leave."
             },
             {
                 "type": "heading",
@@ -2135,8 +2163,12 @@ const docsData = [
         "id": "simple_poll_timestamps",
         "icon": "ph-clock-countdown",
         "title": "Simple Poll Timestamps",
-        "subtitle": "Where a timestamp appears on a simple poll, and the one option that changes it.",
+        "subtitle": "How a simple poll shows its close time, and how to keep answers exactly as typed.",
         "content": [
+            {
+                "type": "text",
+                "text": "A simple poll can show when it closes. It can also turn dates in the answers into times each member reads in their own timezone. One setting controls the date conversion."
+            },
             {
                 "type": "list",
                 "items": [
@@ -2177,7 +2209,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/teamup_federation",
-                        "desc": "Open Team-Up Federation control panel to toggle broadcast nodes."
+                        "desc": "Choose which partners see your Team-Ups."
                     }
                 ]
             }
@@ -2211,15 +2243,15 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/vc claim",
-                        "desc": "Claim ownership of an eligible temporary voice channel."
+                        "desc": "Take over a temporary room whose owner left."
                     },
                     {
                         "cmd": "/vc save",
-                        "desc": "Save the current temporary voice channel as a personal template."
+                        "desc": "Save this room's name, limit and lock as a template."
                     },
                     {
                         "cmd": "/vc load",
-                        "desc": "Load a saved temporary voice channel template."
+                        "desc": "Apply a template you saved."
                     }
                 ]
             }
@@ -2266,7 +2298,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket setup_channel",
-                        "desc": "Create a ticket category, panel channel, and default panel."
+                        "desc": "Create the ticket category, panel channel and first panel."
                     },
                     {
                         "cmd": "/ticket claim",
@@ -2278,28 +2310,107 @@ const docsData = [
                     },
                     {
                         "cmd": "/ticket priority [level]",
-                        "desc": "Set priority level for active ticket (Low, Normal, High, Critical)."
+                        "desc": "Set the ticket's priority."
                     },
                     {
                         "cmd": "/ticket add [member]",
-                        "desc": "Staff-only: add another member to the current ticket channel."
+                        "desc": "Add a member to the ticket. Staff only."
                     },
                     {
                         "cmd": "/ticket remove [member]",
-                        "desc": "Staff-only: remove a member from the current ticket channel."
+                        "desc": "Remove a member from the ticket. Staff only."
                     },
                     {
                         "cmd": "/ticket info",
-                        "desc": "Display creator, staff assignment, status, priority, panel, and tags."
+                        "desc": "Show who opened the ticket, who has it, and its status, priority and tags."
                     },
                     {
                         "cmd": "/ticket staffsay [msg]",
-                        "desc": "Staff-only: post an internal discussion note inside the ticket."
+                        "desc": "Post a note only staff can read. Staff only."
                     },
                     {
                         "cmd": "/ticket close [reason]",
-                        "desc": "Close the ticket with duplicate-close protection, transcript logging, optional DM delivery, and channel cleanup."
+                        "desc": "Close the ticket, save a transcript and clean up the channel."
                     }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "applications",
+        "icon": "ph-clipboard-text",
+        "title": "Applications",
+        "subtitle": "Members apply for a staff role, an event spot, or anything else. You approve or deny each request in one place.",
+        "content": [
+            {
+                "type": "text",
+                "text": "Use Applications when members need to ask for something, like a staff role, an event spot, or a guild team. Each form has its own questions and its own Apply button, so people always answer the right one."
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "Say who the form is for",
+                "text": "Members see the form's title and description before the questions. Both should say who can apply and what happens next, so nobody starts the wrong form."
+            },
+            {
+                "type": "heading",
+                "text": "Set up a form"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Turn on **Applications** in **Module Settings** if it is off.",
+                    "Open **Applications** and press **New form**. A server can have up to 8 forms.",
+                    "Give the form a title and description, then write 1 to 5 questions. Each question can be a short answer or a paragraph, and can be required.",
+                    "Choose the panel channel, the review channel, the role to add on approval, and whether to send the applicant the outcome by DM. Save the form.",
+                    "Press **Post panel**. The bot posts one message with this form's own Apply button. Posting again updates the same message."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The panel channel is where members press Apply. The review channel is where each new application arrives with **Approve** and **Deny** buttons. Leave the review channel empty to review only from the dashboard. If you later move a form to a different panel channel, delete the old panel by hand: the bot posts a new one and cannot edit the message in the old channel."
+            },
+            {
+                "type": "heading",
+                "text": "What a member sees"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Press the form's **Apply** button in the panel channel.",
+                    "Check the form title, description and number of questions, then press **Start application**.",
+                    "Answer the questions and submit. The receipt names the form, so the member knows what was sent.",
+                    "Wait for a decision. A member can have one pending application per form; another form is still open to them."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Review an application"
+            },
+            {
+                "type": "text",
+                "text": "Every submission appears in the **Pending queue** and, if the form has a review channel, as a message with **Approve** and **Deny** buttons. The reviewer can add an optional note, which is included in the applicant's DM. The decision is recorded once and cannot be undone: a second click from the dashboard or Discord says the application has already been reviewed."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Approving adds the accept role if the form has one. Put that role below SeanBot's own role.",
+                    "The applicant is sent the outcome by DM if the form has DMs on. If their DMs are closed, the decision still goes through and the dashboard records that the message was not sent.",
+                    "**Recent decisions** keeps the history, and the form tabs filter both the queue and the totals.",
+                    "Deleting a form keeps its past decisions but is refused while it still has pending applications. The last form cannot be deleted."
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Who can do what"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Answers never appear in the panel channel. They go to the review channel you choose and to the dashboard.",
+                    "The Applications page opens for an Administrator or anyone with Manage Server. The review buttons in Discord ask for the same. Members never need the dashboard: the Apply button and the outcome DM are the whole member side.",
+                    "There are no slash commands for Applications. Setup and review live on the dashboard and on the panel and review buttons.",
+                    "Each form is edited from its own tab, so changing one form never changes another."
                 ]
             }
         ]
@@ -2332,11 +2443,11 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/activity setup [days]",
-                        "desc": "Opt server into activity tracking and set inactivity threshold."
+                        "desc": "Turn activity tracking on and set the inactivity threshold."
                     },
                     {
                         "cmd": "/activity disable",
-                        "desc": "Disable activity tracking for server and clean up roles."
+                        "desc": "Turn tracking off and take the Active and Inactive roles back."
                     }
                 ]
             }
@@ -2370,31 +2481,31 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/autopin toggle",
-                        "desc": "Enable or disable Auto-Pin system globally across server."
+                        "desc": "Turn Auto-Pin on or off for the server."
                     },
                     {
                         "cmd": "/autopin set_threshold [num]",
-                        "desc": "Set default reactions required to auto-pin."
+                        "desc": "Set how many reactions a pin needs."
                     },
                     {
                         "cmd": "/autopin set_emoji [emoji]",
-                        "desc": "Set emoji used to trigger community pins."
+                        "desc": "Pick the emoji people react with to pin."
                     },
                     {
                         "cmd": "/autopin channel_override",
-                        "desc": "Configure custom pin thresholds per channel."
+                        "desc": "Give one channel a different threshold."
                     },
                     {
                         "cmd": "/autopin toggle_channel",
-                        "desc": "Toggle auto-pin functionality for a specific channel."
+                        "desc": "Turn Auto-Pin on or off in one channel."
                     },
                     {
                         "cmd": "/autopin settings",
-                        "desc": "Display current auto-pin configurations and overrides."
+                        "desc": "Show the settings and any per-channel overrides."
                     },
                     {
                         "cmd": "/autopin stats",
-                        "desc": "View total messages pinned by community reactions."
+                        "desc": "See how many messages have been pinned."
                     }
                 ]
             }
@@ -2432,11 +2543,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/star advanced",
-                        "desc": "Configure star threshold, age, color, and self-star rules."
+                        "desc": "Set the star threshold, how old a message may be, the colour and self-starring."
                     },
                     {
                         "cmd": "/star info",
-                        "desc": "View the active starboard channel and settings."
+                        "desc": "Show the starboard channel and its settings."
                     },
                     {
                         "cmd": "/star stats dashboard",
@@ -2536,11 +2647,11 @@ const docsData = [
                     },
                     {
                         "cmd": "/emoji suggestion_setup [review_channel] [log_channel] [reviewer_role]",
-                        "desc": "Enable or disable suggestions and configure the review workflow. Requires Manage Server."
+                        "desc": "Turn suggestions on or off and set who reviews them. Needs Manage Server."
                     },
                     {
                         "cmd": "/emoji suggestion_queue [status]",
-                        "desc": "List pending, approved, rejected, or all suggestions. Available to expression managers and configured reviewer roles."
+                        "desc": "List suggestions by status. For expression managers and reviewer roles."
                     },
                     {
                         "cmd": "/emoji lock [emoji] [role]",
@@ -2552,19 +2663,19 @@ const docsData = [
                     },
                     {
                         "cmd": "/emoji react_lock_bulk",
-                        "desc": "Bulk lock reactions to specific permissions."
+                        "desc": "Lock several emoji to a permission at once."
                     },
                     {
                         "cmd": "/emoji set_guild_cooldown",
-                        "desc": "Set server-wide emoji reaction cooldown."
+                        "desc": "Set the server's reaction cooldown."
                     },
                     {
                         "cmd": "/emoji suggest_purge [days]",
-                        "desc": "See list of custom emojis not used recently."
+                        "desc": "List the emoji nobody has used lately."
                     },
                     {
                         "cmd": "/emoji purge_dead",
-                        "desc": "Delete unused emojis to free up server slots."
+                        "desc": "Delete unused emoji to free slots."
                     }
                 ]
             }
@@ -2598,7 +2709,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/reaction top_users",
-                        "desc": "Display top reacting users in server."
+                        "desc": "Rank the members who react most."
                     },
                     {
                         "cmd": "/react [emoji] [link]",
@@ -2606,19 +2717,19 @@ const docsData = [
                     },
                     {
                         "cmd": "/autoping type [method]",
-                        "desc": "Configure automated reaction ping methods."
+                        "desc": "Choose how a reaction ping reaches people."
                     },
                     {
                         "cmd": "/autoping roles",
-                        "desc": "Manage roles permitted to trigger reaction pings."
+                        "desc": "Choose which roles may send a reaction ping."
                     },
                     {
                         "cmd": "/autoping limits",
-                        "desc": "Set rate limits for automated reaction pings."
+                        "desc": "Set how often a reaction ping may fire."
                     },
                     {
                         "cmd": "/autoping authors",
-                        "desc": "Configure author permission checks for reaction pings."
+                        "desc": "Choose whether an author may ping their own reactors."
                     }
                 ]
             }
@@ -2882,27 +2993,27 @@ const docsData = [
                     },
                     {
                         "cmd": "/embed builder",
-                        "desc": "Open the embed builder design dashboard."
+                        "desc": "Open the embed builder."
                     },
                     {
                         "cmd": "/embed clone [template/msg]",
-                        "desc": "Clone existing message into designer."
+                        "desc": "Start from an existing message."
                     },
                     {
                         "cmd": "/embed load [template] [channel]",
-                        "desc": "Retrieve and post saved embed template."
+                        "desc": "Post a template you saved."
                     },
                     {
                         "cmd": "/embed delete [template]",
-                        "desc": "Delete a saved embed template."
+                        "desc": "Delete a saved template."
                     },
                     {
                         "cmd": "/embed disable",
-                        "desc": "Disable embed builder for specific channels."
+                        "desc": "Turn the embed builder off in a channel."
                     },
                     {
                         "cmd": "/embed list",
-                        "desc": "View and manage saved custom embed templates."
+                        "desc": "See and manage your saved templates."
                     }
                 ]
             }
@@ -2928,19 +3039,19 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/r set [reply_message]",
-                        "desc": "Set automated mention reply message."
+                        "desc": "Write the reply somebody gets when they mention you."
                     },
                     {
                         "cmd": "/r remove",
-                        "desc": "Remove automated mention reply."
+                        "desc": "Delete your mention reply."
                     },
                     {
                         "cmd": "/r toggle [status]",
-                        "desc": "Enable or disable automated mention reply."
+                        "desc": "Turn your mention reply on or off."
                     },
                     {
                         "cmd": "/r admin clear [user]",
-                        "desc": "Delete another member's saved reply."
+                        "desc": "Clear a member's reply that should not be there."
                     }
                 ]
             }
@@ -3034,19 +3145,19 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/voice loyalty",
-                        "desc": "Rank members by unbroken voice attendance."
+                        "desc": "Rank members by unbroken time in voice."
                     },
                     {
                         "cmd": "/voice sessions",
-                        "desc": "View longest unbroken voice sessions recorded."
+                        "desc": "See the longest single voice sessions."
                     },
                     {
                         "cmd": "/voice channels",
-                        "desc": "Display voice channel popularity heatmap."
+                        "desc": "Show when each voice channel is busy."
                     },
                     {
                         "cmd": "/voice streaks",
-                        "desc": "Display most consistent active voice members."
+                        "desc": "List the members who turn up in voice most often."
                     },
                     {
                         "cmd": "/voice graph [member]",
@@ -3060,7 +3171,7 @@ const docsData = [
         "id": "stats",
         "icon": "ph-chart-line-up",
         "title": "Live Counters & Server Statistics",
-        "subtitle": "Channel names that keep themselves current, and charts for the numbers behind them.",
+        "subtitle": "Channel names that update on their own, and charts for the numbers behind them.",
         "content": [
             {
                 "type": "text",
@@ -3084,19 +3195,19 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/counter setup",
-                        "desc": "Create counters from the guided setup."
+                        "desc": "Set up a counter with a walking guide."
                     },
                     {
                         "cmd": "/stats growth",
-                        "desc": "Generate visual server member growth chart."
+                        "desc": "See the member growth chart."
                     },
                     {
                         "cmd": "/counter list",
-                        "desc": "List active server counter channels."
+                        "desc": "List the counters running here."
                     },
                     {
                         "cmd": "/stats overview",
-                        "desc": "View current server statistics."
+                        "desc": "See this server's numbers."
                     }
                 ]
             }
@@ -3106,11 +3217,11 @@ const docsData = [
         "id": "returning_roles",
         "icon": "ph-arrow-u-down-left",
         "title": "Returning Roles",
-        "subtitle": "Give returning members a configured role.",
+        "subtitle": "Give members a role when they come back after leaving.",
         "content": [
             {
                 "type": "text",
-                "text": "Choose one role for returning members. When someone leaves while the role is configured, SeanBot records their departure and assigns the configured role if they return while that record remains. Records older than two years are pruned monthly."
+                "text": "Choose one role for returning members. When someone leaves, SeanBot notes the date. If they come back while that record is still there, they get the role. Records older than two years are cleared once a month."
             },
             {
                 "type": "steps",
@@ -3130,15 +3241,15 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/returning_role set [role]",
-                        "desc": "Set role automatically restored when past members rejoin."
+                        "desc": "Pick the role a returning member gets."
                     },
                     {
                         "cmd": "/returning_role view",
-                        "desc": "View current returning member role setting."
+                        "desc": "Show the role a returning member gets."
                     },
                     {
                         "cmd": "/returning_role clear",
-                        "desc": "Clear returning member role configuration."
+                        "desc": "Stop giving returning members a role."
                     }
                 ]
             }
@@ -3176,43 +3287,43 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/thread network create [name]",
-                        "desc": "Create a new Thread network hub."
+                        "desc": "Start a network."
                     },
                     {
                         "cmd": "/thread network join [token]",
-                        "desc": "Join a thread network with its access code."
+                        "desc": "Join a network with its code."
                     },
                     {
                         "cmd": "/thread network info",
-                        "desc": "View details of current connected network hub."
+                        "desc": "See the network this server belongs to."
                     },
                     {
                         "cmd": "/thread network dashboard",
-                        "desc": "Open network dashboard for linked servers."
+                        "desc": "Open the dashboard for every linked server."
                     },
                     {
                         "cmd": "/thread network health",
-                        "desc": "Check latency and status of linked servers."
+                        "desc": "Check whether each link is working."
                     },
                     {
                         "cmd": "/thread audit [thread_id]",
-                        "desc": "Audit a thread showing recent replies and metrics."
+                        "desc": "Read a thread's recent replies and counts."
                     },
                     {
                         "cmd": "/relay create [name]",
-                        "desc": "Create a cross-server relay channel connection."
+                        "desc": "Start a relay between two channels."
                     },
                     {
                         "cmd": "/relay link [code]",
-                        "desc": "Link local channel to remote relay network."
+                        "desc": "Link a channel here to the network."
                     },
                     {
                         "cmd": "/identity set [name]",
-                        "desc": "Set global network identity name."
+                        "desc": "Name the network."
                     },
                     {
                         "cmd": "/identity view",
-                        "desc": "View global network identity profile."
+                        "desc": "Show the network's name and servers."
                     }
                 ]
             }
@@ -3234,7 +3345,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/duel",
-                        "desc": "Open a lobby to host a Roshambo Battle Royale match."
+                        "desc": "Open a lobby for a school duel."
                     }
                 ]
             }
@@ -3284,23 +3395,23 @@ const docsData = [
                     },
                     {
                         "cmd": "/cat says [text]",
-                        "desc": "Generate image of cat saying custom text."
+                        "desc": "Make a picture of a cat saying what you type."
                     },
                     {
                         "cmd": "/discquote [user] [text]",
-                        "desc": "Generate a realistic fake Discord quote screenshot."
+                        "desc": "Turn a message into a fake quote card."
                     },
                     {
                         "cmd": "/slap user [member]",
-                        "desc": "Send a playful slap interaction to a member."
+                        "desc": "Slap a member."
                     },
                     {
                         "cmd": "/slap stats",
-                        "desc": "View your slap statistics and rank."
+                        "desc": "See your slap record."
                     },
                     {
                         "cmd": "/slap leaderboard",
-                        "desc": "View top slappers in the server."
+                        "desc": "Rank the hardest slappers."
                     }
                 ]
             }
@@ -3326,7 +3437,7 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/serverinfo",
-                        "desc": "Display server statistics including member count and roles."
+                        "desc": "Show the server's members, roles and numbers."
                     },
                     {
                         "cmd": "/ping",
@@ -3334,7 +3445,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/invite",
-                        "desc": "Get official SeanBot server invite links."
+                        "desc": "Get SeanBot's invite link."
                     }
                 ]
             }
@@ -3422,7 +3533,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "SeanBot was probably invited without the commands scope. Invite it again from this site."
+                "text": "SeanBot was probably added without the commands permission. Invite it again from this site."
             },
             {
                 "type": "heading",
@@ -3474,23 +3585,23 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/loa request",
-                        "desc": "Open the interactive modal to submit a new Leave of Absence request with start and end dates."
+                        "desc": "File a leave of absence with a start and end date."
                     },
                     {
                         "cmd": "/loa setup [approval_channel] [user_roles] [admin_roles] [leave_role] [max_duration] [auto_approval_hours]",
-                        "desc": "Configure LOA review channel, multi-role user/admin permissions, leave role, and auto-approval thresholds."
+                        "desc": "Set the review channel, the leave role, who may file or approve, and when leave is auto-approved."
                     },
                     {
                         "cmd": "/loa config",
-                        "desc": "Display an active summary embed of the server's LOA settings and permissions."
+                        "desc": "Show the server's leave settings."
                     },
                     {
                         "cmd": "/loa status",
-                        "desc": "View active or historical LOA requests with options to extend or cancel your leave."
+                        "desc": "See your leave, and extend or cancel it."
                     },
                     {
                         "cmd": "/loa list",
-                        "desc": "Admin command to review and manage all active and scheduled LOAs across the server."
+                        "desc": "Review everyone's leave across the server."
                     }
                 ]
             }
@@ -3510,7 +3621,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "note",
                 "title": "Live, not stored",
-                "text": "Presence is a live view, not a toggle. SeanBot keeps it in memory from Discord's gateway and stores nothing, so there is nothing to switch on."
+                "text": "Presence is a live view, not a setting. SeanBot reads it from Discord and never saves it, so there is nothing to turn on."
             },
             {
                 "type": "text",
@@ -3522,11 +3633,11 @@ const docsData = [
         "id": "staff_list",
         "icon": "ph-identification-badge",
         "title": "Staff List",
-        "subtitle": "A staff roster that keeps itself current, with goals, duty, time off and a weekly report.",
+        "subtitle": "A staff roster that updates itself, with goals, duty, time off and a weekly report.",
         "content": [
             {
                 "type": "text",
-                "text": "Pick the roles that make someone staff. Everyone holding one is grouped by their highest staff role, with presence, duty and away tags, and progress against a goal. A member with two staff roles appears once, under the higher one."
+                "text": "Pick the roles that make someone staff. Everyone holding one is grouped by their highest staff role. The page shows presence, duty and away tags, plus progress against a goal. A member with two staff roles appears once, under the higher one."
             },
             {
                 "type": "heading",
@@ -3656,7 +3767,7 @@ const docsData = [
         "content": [
             {
                 "type": "text",
-                "text": "Turn your linked servers into one punishment network. Run one action against all of them or a subset you choose, and each server records its own result."
+                "text": "Apply one timeout, kick or ban across every linked server, or just the ones you choose. Each server records its own result."
             },
             {
                 "type": "steps",
@@ -3680,31 +3791,31 @@ const docsData = [
                 "items": [
                     {
                         "cmd": "/gpunish network create &lt;name&gt;",
-                        "desc": "Create a network starting with the current server."
+                        "desc": "Start a network with this server."
                     },
                     {
                         "cmd": "/gpunish network add &lt;guild_id&gt;",
-                        "desc": "Link another server where you have Administrator or Manage Server."
+                        "desc": "Add a server where you are an administrator."
                     },
                     {
                         "cmd": "/gpunish network remove &lt;guild_id&gt;",
-                        "desc": "Remove a server from your network."
+                        "desc": "Take a server out of the network."
                     },
                     {
                         "cmd": "/gpunish network list",
-                        "desc": "List your networks with their server counts and whether appeal unbans are shared."
+                        "desc": "List your networks, how many servers each has, and whether unbans are shared."
                     },
                     {
                         "cmd": "/gpunish run &lt;user&gt; &lt;timeout|kick|ban|unban|untimeout&gt; [duration_minutes] [scope] [reason]",
-                        "desc": "Apply a punishment across the network (scope: all or comma-separated server IDs)."
+                        "desc": "Punish a member across the network, or on the servers you name."
                     },
                     {
                         "cmd": "/gpunish appealsync &lt;on|off&gt; [server_ids]",
-                        "desc": "Choose whether unbans from appeals apply across the network, and where."
+                        "desc": "Choose whether an appeal unban reaches the whole network."
                     },
                     {
                         "cmd": "/gpunish history [limit]",
-                        "desc": "Show recent global actions with per-server results."
+                        "desc": "See what was applied, and how each server answered."
                     }
                 ]
             }
@@ -3714,7 +3825,7 @@ const docsData = [
         "id": "antiping",
         "icon": "ph-at",
         "title": "Anti-Ping & Ghost Ping Alerts",
-        "subtitle": "Stop mention floods, protect important roles, and make the ping rules the server actually wants.",
+        "subtitle": "Stop mention floods, protect important roles, and enforce the ping rules you choose.",
         "content": [
             {
                 "type": "text",
@@ -4002,7 +4113,7 @@ const docsData = [
                     },
                     {
                         "cmd": "/botsupport carlbot drift &lt;threshold&gt;",
-                        "desc": "Set how many unparsed giveaway messages trigger a drift alert."
+                        "desc": "Set how many unreadable giveaway messages are worth an alert."
                     }
                 ]
             }

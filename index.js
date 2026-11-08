@@ -172,8 +172,8 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=5f5759f5', loaded: docsDataLoaded },
-        commands: { src: 'commands-data.js?v=0bff6e12', loaded: commandsDataLoaded }
+        docs: { src: 'docs-data.js?v=5e46aacb', loaded: docsDataLoaded },
+        commands: { src: 'commands-data.js?v=1155a24d', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
     const dataLoads = new Map();
@@ -673,6 +673,7 @@ function initDocsPage() {
             'temp_vc': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'applications': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'staff_list': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaways': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaway_feed': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
@@ -1158,12 +1159,23 @@ function initDocsPage() {
         feedContainer.innerHTML = '';
         tocContainer.innerHTML = '<div class="toc-title">Jump to Category</div>';
 
+        const useIntentSearch = typeof CommandSearch !== 'undefined';
+        const prepared = useIntentSearch ? CommandSearch.prepare(commandsDatabase) : [];
+        const entryByCommand = new Map(prepared.map(entry => [entry.command, entry]));
+        const entryByCard = new Map();
+        const cardByEntryOrder = new Map();
+        const sectionCards = new Map();
+        const originalSections = [];
+
         commandsDatabase.forEach((category) => {
+            const tocLabel = category.tocLabel;
+
             const tocLink = document.createElement('a');
             tocLink.href = `#${category.id}`;
             tocLink.className = 'toc-link';
             tocLink.setAttribute('data-target', category.id);
-            tocLink.textContent = `${category.tocLabel} (${category.commands.length})`;
+            tocLink.dataset.label = tocLabel;
+            tocLink.textContent = `${tocLabel} (${category.commands.length})`;
             
             tocLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1203,35 +1215,436 @@ function initDocsPage() {
             section.className = 'cmd-section';
             section.id = category.id;
             section.innerHTML = `
-                <h2><i class="ph-duotone ${category.icon}"></i> ${category.title} <span class="badge public">${category.commands.length}</span></h2>
+                <h2><i class="ph-duotone ${category.icon}"></i> ${category.title} <span class="badge public" data-total="${category.commands.length}">${category.commands.length}</span></h2>
                 <div class="cards-container">${cardsHTML}</div>
             `;
             
             feedContainer.appendChild(section);
+            originalSections.push(section);
+
+            const cards = [...section.querySelectorAll('.cmd-card')];
+            sectionCards.set(section, cards);
+            cards.forEach((card, index) => {
+                const entry = entryByCommand.get(sortedCommands[index]);
+                if (!entry) return;
+                entryByCard.set(card, entry);
+                cardByEntryOrder.set(entry.order, card);
+            });
         });
 
         const searchInput = document.getElementById('commandSearch');
         const cmdSections = document.querySelectorAll('.cmd-section');
 
-        searchInput?.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
-            cmdSections.forEach(section => {
-                let hasVisibleCard = false;
-                const cards = section.querySelectorAll('.cmd-card');
+        // The status line is created here rather than in both pages' markup.
+        let searchStatus = document.getElementById('commandSearchStatus');
+        if (searchInput && !searchStatus) {
+            searchStatus = document.createElement('p');
+            searchStatus.id = 'commandSearchStatus';
+            searchStatus.className = 'command-search-status';
+            searchStatus.setAttribute('role', 'status');
+            searchStatus.setAttribute('aria-live', 'polite');
+            searchInput.closest('.docs-search, .search-container')?.insertAdjacentElement('afterend', searchStatus);
+        }
+
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const searchShell = searchInput?.closest('.docs-search, .search-container') || null;
+
+        const RESULT_PAGE_SIZE = 10;
+
+        let activeResultCard = null;
+        let searchStatusBase = '';
+        let searchHasResults = false;
+
+        function visibleResultCards() {
+            return [...feedContainer.querySelectorAll('.cmd-section')]
+                .filter(section => section.style.display !== 'none')
+                .flatMap(section => [...section.querySelectorAll('.cmd-card')])
+                .filter(card => card.style.display !== 'none');
+        }
+
+        function isVisibleResultCard(card) {
+            if (!card || card.style.display === 'none') return false;
+            const section = card.closest('.cmd-section');
+            return Boolean(section) && section.style.display !== 'none';
+        }
+
+        const rawCardText = new WeakMap();
+        // CSS ranges avoid rewriting card text on every keystroke. Browsers
+        // without the Custom Highlight API fall back to <mark> elements.
+        const rangeHighlights = typeof Highlight === 'function' && globalThis.CSS?.highlights
+            ? new Highlight()
+            : null;
+        if (rangeHighlights) CSS.highlights.set('command-search-match', rangeHighlights);
+        const HIGHLIGHT_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+
+        function escapeHighlightText(text) {
+            return text.replace(/[&<>"']/g, character => HIGHLIGHT_ESCAPES[character]);
+        }
+
+        function highlightedMarkup(text, ranges) {
+            let markup = '';
+            let cursor = 0;
+            ranges.forEach(({ start, end }) => {
+                if (start > cursor) markup += escapeHighlightText(text.slice(cursor, start));
+                markup += `<mark class="search-hit">${escapeHighlightText(text.slice(start, end))}</mark>`;
+                cursor = end;
+            });
+            return markup + escapeHighlightText(text.slice(cursor));
+        }
+
+        function highlightCard(card, query) {
+            if (typeof CommandSearch === 'undefined' || typeof CommandSearch.matchRanges !== 'function') return;
+            card.querySelectorAll('.cmd-name, .cmd-desc').forEach(element => {
+                if (rangeHighlights) {
+                    const node = element.firstChild;
+                    if (!node || node.nodeType !== Node.TEXT_NODE) return;
+                    const ranges = query ? CommandSearch.matchRanges(node.nodeValue, query) : [];
+                    ranges.forEach(({ start, end }) => {
+                        const range = document.createRange();
+                        range.setStart(node, start);
+                        range.setEnd(node, end);
+                        rangeHighlights.add(range);
+                    });
+                    return;
+                }
+
+                if (!rawCardText.has(element)) rawCardText.set(element, element.textContent);
+                const text = rawCardText.get(element);
+                const ranges = query ? CommandSearch.matchRanges(text, query) : [];
+                if (!ranges.length) {
+                    if (element.firstElementChild) element.textContent = text;
+                    return;
+                }
+                element.innerHTML = highlightedMarkup(text, ranges);
+            });
+        }
+
+        function clearSearchHighlights() {
+            rangeHighlights?.clear();
+            if (rangeHighlights) return;
+            feedContainer.querySelectorAll('.cmd-name, .cmd-desc').forEach(element => {
+                const text = rawCardText.get(element);
+                if (text !== undefined) element.textContent = text;
+            });
+        }
+
+        function updateSearchStatus() {
+            if (!searchStatus) return;
+            const selectedName = activeResultCard?.querySelector('.cmd-name')?.textContent;
+            const cards = activeResultCard ? visibleResultCards() : [];
+            const position = cards.indexOf(activeResultCard);
+            const selected = selectedName
+                ? `Selected ${selectedName}${position === -1 ? '' : ` (${position + 1} of ${cards.length})`}. Enter opens.`
+                : '';
+            if (!searchStatusBase) {
+                searchStatus.textContent = selected;
+                return;
+            }
+            const parts = [searchStatusBase];
+            if (selected) parts.push(selected);
+            else if (searchHasResults) parts.push('Arrow keys browse, Enter opens.');
+            searchStatus.textContent = parts.join(' ');
+        }
+
+        function updateSearchPinned() {
+            const hasQuery = Boolean(searchInput?.value.trim());
+            const keepVisible = Boolean(activeResultCard) || (hasQuery && document.activeElement === searchInput);
+            searchShell?.classList.toggle('command-search-pinned', keepVisible);
+        }
+
+        function revealSearchShell() {
+            if (searchShell && searchShell.getBoundingClientRect().top < 0) {
+                searchShell.scrollIntoView({ block: 'start' });
+            }
+        }
+
+        function revealCommandResults() {
+            if (!searchShell || !feedContainer) return;
+            const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 60;
+            const feedTop = feedContainer.getBoundingClientRect().top + window.scrollY;
+            const target = Math.max(0, feedTop - headerHeight - searchShell.offsetHeight - 16);
+            if (window.scrollY > target + 1) window.scrollTo({ top: target });
+        }
+
+        function clearActiveResultCard() {
+            activeResultCard?.classList.remove('is-keyboard-active');
+            activeResultCard = null;
+            updateSearchPinned();
+        }
+
+        // Selection stops at the ends: wrapping from the first result to the last
+        // would scroll across the whole page and lose the reader's place.
+        function adjacentResultIndex(index, step, total) {
+            if (index === -1) return step > 0 ? 0 : total - 1;
+            return Math.min(total - 1, Math.max(0, index + step));
+        }
+
+        function setActiveResultCard(card, { moveFocus = false } = {}) {
+            if (!card) return;
+            if (activeResultCard !== card) {
+                clearActiveResultCard();
+                activeResultCard = card;
+                card.classList.add('is-keyboard-active');
+                updateSearchPinned();
+            }
+            if (moveFocus) card.focus({ preventScroll: true });
+            settleResultSection(card);
+            // Update the status line before scrolling: its text can wrap and
+            // shift the feed, which would put the card back under the field.
+            updateSearchStatus();
+            revealActiveCard(card);
+        }
+
+        // A result can sit in a section whose reveal animation has not run yet.
+        // The animation scales the whole section, so its cards report positions
+        // that will move once it plays. Finish it here before measuring.
+        function settleResultSection(card) {
+            const section = card.closest('.cmd-section');
+            if (!section) return;
+            const transform = getComputedStyle(section).transform;
+            const settled = section.classList.contains('in-view')
+                && (transform === 'none' || transform === 'matrix(1, 0, 0, 1, 0, 0)');
+            if (settled) return;
+            section.style.transition = 'none';
+            section.classList.add('in-view');
+            section.getBoundingClientRect();
+            section.style.removeProperty('transition');
+        }
+
+        // scrollIntoView treats the pinned search field as ordinary content, so
+        // a card can land underneath it. Scroll by the difference instead, keeping
+        // the whole card between the pinned field and the bottom of the viewport.
+        function revealActiveCard(card) {
+            const rect = card.getBoundingClientRect();
+            const pinned = searchShell?.classList.contains('command-search-pinned');
+            const topLimit = pinned ? searchShell.getBoundingClientRect().bottom + 8 : 0;
+            const bottomLimit = window.innerHeight - 8;
+            if (rect.top < topLimit) {
+                window.scrollBy({ top: rect.top - topLimit });
+            } else if (rect.bottom > bottomLimit) {
+                window.scrollBy({ top: Math.min(rect.bottom - bottomLimit, rect.top - topLimit) });
+            }
+        }
+
+        function resetCommandSearch() {
+            clearActiveResultCard();
+            clearSearchHighlights();
+            searchStatusBase = '';
+            searchHasResults = false;
+            originalSections.forEach(section => {
+                section.style.display = 'block';
+                feedContainer.appendChild(section);
+                const badge = section.querySelector('.badge.public[data-total]');
+                if (badge) badge.textContent = badge.dataset.total;
+            });
+            sectionCards.forEach((cards, section) => {
+                const container = section.querySelector('.cards-container');
                 cards.forEach(card => {
-                    const textContent = card.textContent.toLowerCase();
-                    if (!term || textContent.includes(term)) {
+                    card.style.display = 'flex';
+                    card.classList.remove('is-best-match');
+                    card.querySelector('.badge.best-match')?.remove();
+                    container.appendChild(card);
+                });
+            });
+            tocLinks.forEach(link => {
+                const section = document.getElementById(link.getAttribute('data-target'));
+                const total = section?.querySelector('.badge.public[data-total]')?.dataset.total;
+                link.textContent = `${link.dataset.label} (${total})`;
+                link.style.display = '';
+            });
+            if (searchStatus) searchStatus.textContent = '';
+            updateSearchPinned();
+            revealSearchShell();
+        }
+
+        // Navigation keys move a visual selection through the ranked cards while
+        // the field keeps focus, so a reader can keep typing to refine the query.
+        // Enter opens the selection, or the best match when nothing is selected.
+        searchInput?.addEventListener('focus', () => {
+            clearActiveResultCard();
+            updateSearchStatus();
+            updateSearchPinned();
+        });
+
+        searchInput?.addEventListener('blur', updateSearchPinned);
+
+        searchInput?.addEventListener('keydown', (event) => {
+            const cards = visibleResultCards();
+
+            if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && cards.length) {
+                event.preventDefault();
+                const index = cards.indexOf(activeResultCard);
+                const step = event.key === 'ArrowDown' ? 1 : -1;
+                const next = adjacentResultIndex(index, step, cards.length);
+                if (next !== index) setActiveResultCard(cards[next]);
+            } else if ((event.key === 'PageDown' || event.key === 'PageUp') && cards.length) {
+                event.preventDefault();
+                const index = cards.indexOf(activeResultCard);
+                const step = event.key === 'PageDown' ? RESULT_PAGE_SIZE : -RESULT_PAGE_SIZE;
+                const next = adjacentResultIndex(index, step, cards.length);
+                if (next !== index) setActiveResultCard(cards[next]);
+            } else if ((event.key === 'Home' || event.key === 'End') && cards.length) {
+                event.preventDefault();
+                setActiveResultCard(event.key === 'Home' ? cards[0] : cards[cards.length - 1]);
+            } else if (event.key === 'Enter' && cards.length) {
+                event.preventDefault();
+                (activeResultCard || cards[0]).click();
+            } else if (event.key === 'Escape' && searchInput.value) {
+                event.preventDefault();
+                searchInput.value = '';
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            } else if (event.key === 'Escape' && activeResultCard) {
+                event.preventDefault();
+                clearActiveResultCard();
+                updateSearchStatus();
+                revealSearchShell();
+            }
+        });
+
+        feedContainer.addEventListener('focusin', (event) => {
+            const card = event.target.closest('.cmd-card');
+            if (card) setActiveResultCard(card);
+        });
+
+        feedContainer.addEventListener('focusout', (event) => {
+            if (event.target.closest('.cmd-card') && !event.relatedTarget?.closest?.('.cmd-card')) {
+                clearActiveResultCard();
+                updateSearchStatus();
+            }
+        });
+
+        feedContainer.addEventListener('keydown', (event) => {
+            const card = event.target.closest('.cmd-card');
+            if (!card) return;
+
+            if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                const cards = visibleResultCards();
+                const index = cards.indexOf(card);
+                if (index === -1) return;
+                event.preventDefault();
+                const step = event.key === 'ArrowDown' ? 1 : -1;
+                const next = adjacentResultIndex(index, step, cards.length);
+                if (next !== index) setActiveResultCard(cards[next], { moveFocus: true });
+            } else if (event.key === 'Escape') {
+                event.preventDefault();
+                clearActiveResultCard();
+                updateSearchStatus();
+                searchInput.focus();
+                searchInput.select();
+            }
+        });
+
+        searchInput?.addEventListener('input', (event) => {
+            const query = event.target.value.trim();
+            const previousCard = activeResultCard;
+            clearActiveResultCard();
+            rangeHighlights?.clear();
+
+            if (!useIntentSearch || !prepared.length) {
+                searchStatusBase = '';
+                searchHasResults = false;
+                if (searchStatus) searchStatus.textContent = '';
+                cmdSections.forEach(section => {
+                    let hasVisibleCard = false;
+                    section.querySelectorAll('.cmd-card').forEach(card => {
+                        const matches = !query || card.textContent.toLowerCase().includes(query.toLowerCase());
+                        card.style.display = matches ? 'flex' : 'none';
+                        if (matches) hasVisibleCard = true;
+                    });
+                    section.style.display = hasVisibleCard ? 'block' : 'none';
+                });
+                if (query && isVisibleResultCard(previousCard)) setActiveResultCard(previousCard);
+                return;
+            }
+
+            if (!query) {
+                resetCommandSearch();
+                return;
+            }
+
+            const outcome = CommandSearch.search(prepared, query);
+            const resultByOrder = new Map(outcome.results.map(result => [result.entry.order, result]));
+            const sectionScores = new Map();
+
+            originalSections.forEach(section => {
+                let visible = 0;
+                let bestScore = -Infinity;
+                const matches = [];
+
+                sectionCards.get(section).forEach(card => {
+                    const entry = entryByCard.get(card);
+                    const match = entry ? resultByOrder.get(entry.order) : null;
+                    card.classList.remove('is-best-match');
+                    card.querySelector('.badge.best-match')?.remove();
+                    if (match) {
                         card.style.display = 'flex';
-                        hasVisibleCard = true;
+                        visible += 1;
+                        bestScore = Math.max(bestScore, match.score);
+                        matches.push({ card, score: match.score, order: entry.order });
                     } else {
                         card.style.display = 'none';
                     }
                 });
-                section.style.display = hasVisibleCard ? 'block' : 'none';
-            });
-        });
 
-        const tocLinks = document.querySelectorAll('.toc-link');
+                // Appending only the visible cards sorts them in place; the hidden
+                // ones stay put and are restored by resetCommandSearch.
+                matches.sort((left, right) => right.score - left.score || left.order - right.order);
+                const container = section.querySelector('.cards-container');
+                matches.forEach(({ card }) => container.appendChild(card));
+
+                section.style.display = visible ? 'block' : 'none';
+                section.dataset.visibleCount = String(visible);
+                sectionScores.set(section, visible ? bestScore : -Infinity);
+                const badge = section.querySelector('.badge.public[data-total]');
+                if (badge) badge.textContent = String(visible);
+            });
+
+            originalSections
+                .filter(section => sectionScores.get(section) > -Infinity)
+                .sort((left, right) => sectionScores.get(right) - sectionScores.get(left))
+                .forEach(section => feedContainer.appendChild(section));
+
+            // Wait until the cards have been re-sorted and re-parented: a
+            // custom range stops painting when its card moves in the DOM.
+            visibleResultCards().forEach(card => highlightCard(card, query));
+
+            tocLinks.forEach(link => {
+                const section = document.getElementById(link.getAttribute('data-target'));
+                const total = section?.querySelector('.badge.public[data-total]')?.dataset.total;
+                const visible = Number(section?.dataset.visibleCount || 0);
+                link.style.display = visible ? '' : 'none';
+                link.textContent = `${link.dataset.label} (${visible === Number(total) ? total : `${visible}/${total}`})`;
+            });
+
+            const bestResult = outcome.results[0];
+            const bestCard = bestResult ? cardByEntryOrder.get(bestResult.entry.order) : null;
+            if (bestCard) {
+                bestCard.classList.add('is-best-match');
+                const badgeContainer = bestCard.querySelector('.badge-container');
+                if (badgeContainer) {
+                    const bestBadge = document.createElement('span');
+                    bestBadge.className = 'badge best-match';
+                    bestBadge.textContent = 'Best match';
+                    badgeContainer.appendChild(bestBadge);
+                }
+            }
+
+            searchHasResults = outcome.results.length > 0;
+            searchStatusBase = searchHasResults
+                ? `${outcome.results.length} command${outcome.results.length === 1 ? '' : 's'} match "${query}".`
+                : `No commands match "${query}". Try describing the action, such as "stop logging a channel".`;
+
+            // Refining a query should not lose the highlighted result while it
+            // still matches. setActiveResultCard also handles the status and
+            // scroll, so skip the feed-top reveal in that case.
+            if (isVisibleResultCard(previousCard)) {
+                setActiveResultCard(previousCard);
+            } else {
+                updateSearchStatus();
+                updateSearchPinned();
+                revealCommandResults();
+            }
+        });
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

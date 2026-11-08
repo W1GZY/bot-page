@@ -623,6 +623,11 @@
     color: #f472b6;
 }
 
+.badge.best-match {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--accent);
+}
+
 .cmd-item-list {
     list-style: none;
     padding: 0;
@@ -798,6 +803,43 @@
     transform: translateY(-1px);
 }
 
+.cmd-card.is-best-match {
+    border-color: var(--accent);
+}
+
+.cmd-card:focus-visible,
+.cmd-card.is-keyboard-active {
+    border-color: transparent;
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+.command-search-status {
+    margin: -10px 0 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Keep the field clear of the sticky header when it is scrolled back into
+   view, then pin it while a selection is active so typing stays visible. */
+.docs-search,
+.search-container {
+    scroll-margin-top: calc(var(--header-height) + 8px);
+}
+
+.docs-search.command-search-pinned,
+.search-container.command-search-pinned {
+    position: sticky;
+    top: calc(var(--header-height) + 8px);
+    z-index: 30;
+    background: var(--bg-dark);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+.command-search-status:empty {
+    display: none;
+}
+
 .cmd-header {
     display: flex;
     align-items: flex-start;
@@ -823,6 +865,18 @@
     color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
+}
+
+.cmd-name mark.search-hit,
+.cmd-desc mark.search-hit {
+    border-radius: 3px;
+    background: var(--accent-glow);
+    color: var(--accent);
+}
+
+::highlight(command-search-match) {
+    background-color: var(--accent-glow);
+    color: var(--accent);
 }
 
 @media (min-width: 1200px) {

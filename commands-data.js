@@ -116,7 +116,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/carlbot drift",
-            "desc": "Show or set the parse-drift threshold (0 disables drift alerts).",
+            "desc": "Set how many unreadable Carl-bot giveaway posts trigger a warning.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -155,6 +155,42 @@ const commandsDatabase = [{
             "desc": "Enable or disable automatic winner vetting.",
             "badge": "Manage Server",
             "type": "perm"
+        },
+        {
+            "name": "/community custombot avatar",
+            "desc": "Set the bot's picture in this server.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community custombot clear_avatar",
+            "desc": "Put the bot's own picture back.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community custombot nickname",
+            "desc": "Rename the bot in this server.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community custombot presence",
+            "desc": "Set the bot's activity. This is the same on every server.",
+            "badge": "Bot Owner",
+            "type": "perm"
+        },
+        {
+            "name": "/community custombot reset",
+            "desc": "Put the bot's own name and picture back.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community custombot view",
+            "desc": "View this server's bot appearance.",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/dashboard",
@@ -380,7 +416,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/seanbot emojis",
-            "desc": "Browse SeanBot's own emojis: names, keys, ids and markup.",
+            "desc": "Browse SeanBot's emojis and copy their names or IDs.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -531,8 +567,8 @@ const commandsDatabase = [{
         {
             "name": "/verification disable",
             "desc": "Turn verification off.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification member",
@@ -543,47 +579,47 @@ const commandsDatabase = [{
         {
             "name": "/verification question",
             "desc": "Set the question and accepted answers.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification role add",
             "desc": "Add a role granted on verification.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification role list",
             "desc": "List the roles granted on verification.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification role remove",
             "desc": "Stop granting a role on verification.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification rules",
             "desc": "Set account age, avatar, attempts and kick timer.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification setup",
             "desc": "Turn verification on for new members.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
             "name": "/verification status",
             "desc": "Show the current verification settings.",
-            "badge": "Everyone",
-            "type": "public"
+            "badge": "Manage Server",
+            "type": "perm"
         },
         {
-            "name": "/verify",
+            "name": "/verification verify",
             "desc": "Get the verification prompt again.",
             "badge": "Everyone",
             "type": "public"
@@ -675,7 +711,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/publicreport approval_threshold",
-            "desc": "Configure required approvals to delete a message.",
+            "desc": "Set how many approvals, or what share of voters, it takes to delete a message.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -693,13 +729,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/publicreport cooldown",
-            "desc": "Set report creation cooldown per user in seconds.",
+            "desc": "Set how long a member must wait between reports.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/publicreport decline_threshold",
-            "desc": "Configure required declines to reject a report.",
+            "desc": "Set how many declines, or what share of voters, it takes to reject a report.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -777,7 +813,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/publicreport timeout",
-            "desc": "Set auto-close report timeout duration in hours.",
+            "desc": "Set how long a report stays open before it closes itself.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -789,7 +825,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/publicreport voting_mode",
-            "desc": "Configure how voter eligibility is determined.",
+            "desc": "Choose who can vote: a role, channel permissions, or both.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -896,6 +932,102 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/votemute audit",
+            "desc": "Read a vote's ballot record privately.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute cancel",
+            "desc": "Cancel an open vote.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/votemute export",
+            "desc": "Send the vote audit as a private CSV file.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute history",
+            "desc": "Recent vote mutes, newest first.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/votemute settings cooldown",
+            "desc": "Set how long after a vote closes the next one may start.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings enable",
+            "desc": "Turn vote mutes on or off.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings ladder",
+            "desc": "Set the mute lengths repeat offenders move through, in minutes.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings log-channel",
+            "desc": "Set where vote mutes are logged, or off.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings reset",
+            "desc": "Put every vote mute setting back to its default.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings role",
+            "desc": "Add or remove a role from a vote role list.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings share",
+            "desc": "Set what share of eligible voters must say yes. 0 uses the minimum count.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings trigger",
+            "desc": "Set the reaction that opens a vote, or off to disable it.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings vote-emoji",
+            "desc": "Set the emoji members vote with, on the card and on a voice poll's mute answer.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings votes",
+            "desc": "Set the fewest signatures every vote needs, whatever the share works out to.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute settings window",
+            "desc": "Set how long a vote stays open.",
+            "badge": "Manage Server",
+            "type": "perm"
+        },
+        {
+            "name": "/votemute start",
+            "desc": "Open a vote to mute a member.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
             "name": "/warn add",
             "desc": "Issue a warning to a member.",
             "badge": "Everyone",
@@ -934,13 +1066,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid canary",
-            "desc": "Toggles Canary mode (Logging Only).",
+            "desc": "Run Anti-Raid in log-only mode, so nothing is enforced.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/antiraid channelsensitivity",
-            "desc": "Set custom velocity threshold trigger levels per channel.",
+            "desc": "Set the risk level that triggers an alert in one channel.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -958,7 +1090,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid list_patterns",
-            "desc": "Lists all registered dynamic scam text patterns.",
+            "desc": "List the scam message patterns Anti-Raid recognises.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -970,7 +1102,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid multiplier",
-            "desc": "Sets the threat multiplier for a channel or a role.",
+            "desc": "Make Anti-Raid more or less sensitive for one channel or role.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1006,19 +1138,19 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid register_scam",
-            "desc": "Registers scam images as universal visual blocks, from uploads or from an existing post.",
+            "desc": "Block a scam image everywhere, from an upload or a message.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/antiraid reset",
-            "desc": "Hard resets all current scores and threat trackers in the server.",
+            "desc": "Clear every risk score and threat record in this server.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/antiraid scam_list",
-            "desc": "Lists blocked scam images, checks their health, rebuilds the library, or clears it.",
+            "desc": "List blocked scam images, or check, back up, rebuild or clear the library.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1030,13 +1162,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid simulate",
-            "desc": "Simulates the heat score of a hypothetical message.",
+            "desc": "Test a message to see how risky Anti-Raid would find it.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/antiraid threatlist",
-            "desc": "Shows users currently carrying high heat scores.",
+            "desc": "List members Anti-Raid currently rates as a high risk.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1054,7 +1186,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/antiraid unregister_pattern",
-            "desc": "Removes a dynamic scam text pattern.",
+            "desc": "Stop blocking a custom scam message pattern.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -1069,6 +1201,48 @@ const commandsDatabase = [{
             "desc": "Toggles a role to bypass all detection.",
             "badge": "Administrator",
             "type": "perm"
+        },
+        {
+            "name": "/automod allow_word",
+            "desc": "Teach AutoMod a word is safe (remove from block list).",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/automod block_word",
+            "desc": "Teach AutoMod a blocked word or phrase.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/automod forget",
+            "desc": "Make the Mind forget every lesson (filters stay).",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/automod learn",
+            "desc": "Turn the Mind's self-tuning on or off.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/automod mind",
+            "desc": "Meet AutoMod's mind: mood, precision and lessons.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/automod status",
+            "desc": "Show which everyday filters are on.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/automod teach",
+            "desc": "Correct AutoMod: allow/block a word/domain or mark false positive.",
+            "badge": "Everyone",
+            "type": "public"
         },
         {
             "name": "/honeypot add_channel",
@@ -1132,7 +1306,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/log ignore_log_add",
-            "desc": "Stop logging ALL events (messages, etc) in a channel",
+            "desc": "Stop logging anything in a channel.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -1174,31 +1348,31 @@ const commandsDatabase = [{
         },
         {
             "name": "/log metrics",
-            "desc": "See how logs are being delivered and whether anything is behind",
+            "desc": "See how reliably logs are delivered and whether any fail.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/log reset",
-            "desc": "Wipe logging filters",
+            "desc": "Turn every log event back on.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/log status",
-            "desc": "Check active logging setup (per-event allowlist)",
+            "desc": "See which logging events are switched on.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/log toggle",
-            "desc": "Enable or disable a single log event (per-event toggles)",
+            "desc": "Turn one kind of log event on or off.",
             "badge": "Manage Server",
             "type": "perm"
         },
         {
             "name": "/log toggle_batch",
-            "desc": "Enable or disable a category's log events (same as dashboard categories)",
+            "desc": "Turn a whole category of log events on or off.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -1252,7 +1426,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/log webhook",
-            "desc": "Set the webhook address logs are sent to",
+            "desc": "Set the webhook that receives your server logs.",
             "badge": "Manage Server",
             "type": "perm"
         }
@@ -1511,6 +1685,132 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/community birthday channel",
+            "desc": "Where celebrations post (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community birthday remove",
+            "desc": "Forget your saved birthday.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community birthday set",
+            "desc": "Save your birthday (month and day only).",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community birthday upcoming",
+            "desc": "Birthdays in the next days.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community booster_role clear",
+            "desc": "Disable the server booster role system.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community booster_role set",
+            "desc": "Set the role given to members while they boost the server.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community booster_role sync",
+            "desc": "Give the booster role to current boosters, remove it from past boosters.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community booster_role view",
+            "desc": "View the current server booster role.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community intros disable",
+            "desc": "Turn the intro flow off (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community intros prompt",
+            "desc": "Change the intro prompt (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community intros setup",
+            "desc": "Point intros at a channel (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community intros view",
+            "desc": "Show the current intro setup.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community kudos give",
+            "desc": "Thank a member for something good.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community kudos leaderboard",
+            "desc": "Top thanked members on this server.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community kudos stats",
+            "desc": "See someone's kudos totals.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community selfroles add",
+            "desc": "Add an emoji-to-role row (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community selfroles create",
+            "desc": "Start a new self-role menu (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community selfroles delete",
+            "desc": "Delete a menu (admin). Posted messages stay.",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community selfroles list",
+            "desc": "Show this server's self-role menus.",
+            "badge": "Everyone",
+            "type": "public"
+        },
+        {
+            "name": "/community selfroles post",
+            "desc": "Post a menu as a reaction message (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
+            "name": "/community selfroles remove",
+            "desc": "Remove an emoji row (admin).",
+            "badge": "Administrator",
+            "type": "perm"
+        },
+        {
             "name": "/poll close",
             "desc": "Close a simple reaction poll and show final totals.",
             "badge": "Manage Messages",
@@ -1674,7 +1974,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/teamup alias",
-            "desc": "[Admin] Add/Remove a dungeon abbreviation map",
+            "desc": "[Admin] Map a short name to a dungeon, or remove the mapping.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -1692,7 +1992,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/teamup config",
-            "desc": "[Admin] Customize matching variables, thresholds, and keyword overrides",
+            "desc": "[Admin] Set how closely a dungeon name must match and how often to suggest.",
             "badge": "Manage Server",
             "type": "perm"
         },
@@ -1969,13 +2269,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/timezone roles-sync",
-            "desc": "Sync timezone roles for all users who have set their timezone.",
+            "desc": "Give everyone who set a timezone the matching role.",
             "badge": "Manage Roles",
             "type": "perm"
         },
         {
             "name": "/timezone roles-toggle",
-            "desc": "Enable or disable automatic DST-aware timezone role assignment.",
+            "desc": "Turn timezone roles on or off. Turning them off deletes every timezone role.",
             "badge": "Manage Roles",
             "type": "perm"
         },
@@ -2138,13 +2438,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/emoji set_channel_cooldown",
-            "desc": "Override the reaction spam-prevention cooldown for a specific channel.",
+            "desc": "Set a different wait between locked reactions in one channel.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/emoji set_guild_cooldown",
-            "desc": "Adjust the spam-prevention cooldown for locked reactions server-wide.",
+            "desc": "Set how long members must wait between locked reactions.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -2457,7 +2757,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/voice channels",
-            "desc": "Voice channel popularity heatmap.",
+            "desc": "See which voice channels members use most.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2475,7 +2775,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/voice loyalty",
-            "desc": "Rank users by consistency and dedication (Duration / Sessions).",
+            "desc": "Rank members by their average time in voice (at least five sessions).",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2518,7 +2818,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/identity connect",
-            "desc": "Connect identity via OAuth2 (Proof of Ownership)",
+            "desc": "Link your network identity by confirming you own this account.",
             "badge": "Everyone",
             "type": "public"
         },
@@ -2584,7 +2884,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/relay role",
-            "desc": "Grant or remove a user's relay RBAC role",
+            "desc": "Set or remove a member's relay role: admin, moderator, or observer.",
             "badge": "Network Manager",
             "type": "perm"
         },
@@ -2752,7 +3052,7 @@ const commandsDatabase = [{
         },
         {
             "name": "/thread network observer",
-            "desc": "Set a guild to Observer Mode (Receive only)",
+            "desc": "Let a server receive network posts without sending any.",
             "badge": "Administrator",
             "type": "perm"
         },
@@ -2782,13 +3082,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/thread network rotate_secret",
-            "desc": "Replace the network's security key (Admin only - CRITICAL)",
+            "desc": "Replace the key that signs network posts. Owner only.",
             "badge": "Administrator",
             "type": "perm"
         },
         {
             "name": "/thread network rotate_token",
-            "desc": "Replace the join code (Owner only)",
+            "desc": "Replace the code other servers use to join.",
             "badge": "Administrator",
             "type": "perm"
         }
@@ -3240,6 +3540,12 @@ const commandsDatabase = [{
             "type": "perm"
         },
         {
+            "name": "/serveradmin bulkrole",
+            "desc": "Add or remove one role for every member a filter names.",
+            "badge": "Manage Roles",
+            "type": "perm"
+        },
+        {
             "name": "/serveradmin delrole",
             "desc": "Delete a server role.",
             "badge": "Manage Roles",
@@ -3247,13 +3553,13 @@ const commandsDatabase = [{
         },
         {
             "name": "/serveradmin editchannel",
-            "desc": "Edit a text channel's name, topic, NSFW flag, or slowmode.",
+            "desc": "Change a channel's name, topic, age restriction, or slowmode.",
             "badge": "Manage Channels",
             "type": "perm"
         },
         {
             "name": "/serveradmin editrole",
-            "desc": "Edit a role's name, color, hoist, or mentionable setting.",
+            "desc": "Change a role's name, color, whether it shows separately, or whether it can be mentioned.",
             "badge": "Manage Roles",
             "type": "perm"
         },
@@ -3344,7 +3650,7 @@ const commandsDatabase = [{
         },
         {
             "name": "Right-click: React w/ emojis",
-            "desc": "Offers a member's own message's emojis, for them to pick reactable ones from. Gated to the message's author with Manage Messages: the picker is a reaction tool for the member who wrote the list, not for decorating anyone else's message.",
+            "desc": "React to your own message with the emojis it contains. Only the message's author, with Manage Messages, can use this.",
             "badge": "Manage Messages",
             "type": "perm"
         },
