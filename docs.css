@@ -1107,3 +1107,82 @@
         gap: 12px;
     }
 }
+
+/* What's New: one dated entry per release, newest first. */
+.updates-list {
+    display: grid;
+    gap: 14px;
+}
+
+.update-entry {
+    padding: 22px;
+}
+
+.update-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.update-date {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.update-tag {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 9px;
+}
+
+.update-entry h2 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.update-entry p,
+.update-entry li {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.update-entry p {
+    margin: 0 0 10px;
+}
+
+.update-entry p:last-child {
+    margin-bottom: 0;
+}
+
+.update-entry ul {
+    margin: 0 0 10px;
+    padding-left: 20px;
+}
+
+.update-entry a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.update-entry a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 620px) {
+    .update-entry {
+        padding: 18px;
+    }
+}

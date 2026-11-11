@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The latest features and changes in SeanBot, newest first, with a link to the guide for each one.">
+    <title>SeanBot What's New</title>
+    <link rel="canonical" href="https://sean.bot.nu/whats-new.html">
+    <meta name="theme-color" content="#09090b">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SeanBot">
+    <meta property="og:title" content="SeanBot What's New">
+    <meta property="og:description" content="The latest features and changes in SeanBot, newest first, with a link to the guide for each one.">
+    <meta property="og:url" content="https://sean.bot.nu/whats-new.html">
+    <meta property="og:image" content="https://sean.bot.nu/assets/og-image.png?v=03d18b09">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeanBot What's New">
+    <meta name="twitter:description" content="The latest features and changes in SeanBot, newest first, with a link to the guide for each one.">
+    <meta name="twitter:image" content="https://sean.bot.nu/assets/og-image.png?v=03d18b09">
+
+    <link rel="icon" href="/favicon.svg?v=706011f8" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico?v=0f68e761" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f5ab2dbb">
+
+    <script src="theme-init.js?v=b1713db3"></script>
+    <!-- Self-hosted Inter: no font CDN sees a visitor. Rules live in global.css. -->
+    <link rel="preload" href="assets/fonts/inter-latin.woff2?v=3100e775" as="font" type="font/woff2" crossorigin>
+
+    <!-- Phosphor icons: only the weights this site uses (skips thin/light) -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+    <link rel="stylesheet" href="global.css?v=d6164ec0">
+    <link rel="stylesheet" href="brand.css?v=d8de8e56">
+    <link rel="stylesheet" href="docs.css?v=6fe0177f">
+    <script src="layout.js?v=20df8546" defer></script>
+</head>
+<body data-nav="none" data-title="What's New">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+            <div class="brand-mark">
+                <i class="ph-fill ph-paw-print"></i>
+                <span>SeanBot<span class="brand-mark-dot">.</span></span>
+            </div>
+            <button class="hamburger" id="closeSidebarBtn" aria-label="Close navigation"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="sidebar-menu-label">Menu</div>
+        <a href="index.html" class="nav-link"><i class="ph ph-house"></i><span>Overview</span></a>
+        <a href="features.html" class="nav-link"><i class="ph ph-squares-four"></i><span>Features</span></a>
+        <a href="status.html" class="nav-link"><i class="ph ph-activity"></i><span>Status</span></a>
+        <a href="setup.html" class="nav-link"><i class="ph ph-rocket-launch"></i><span>Setup</span></a>
+        <a href="docs.html" class="nav-link"><i class="ph ph-book-open"></i><span>Documentation</span></a>
+        <a href="commands.html" class="nav-link"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
+        <a href="whats-new.html" class="nav-link active"><i class="ph ph-sparkle"></i><span>What's New</span></a>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="top-header">
+            <div class="top-header-leading">
+                <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation"><i class="ph ph-list"></i></button>
+                <div class="breadcrumbs">
+                    <a href="index.html" class="breadcrumb-item"><i class="ph-fill ph-paw-print breadcrumb-icon"></i><span class="breadcrumb-brand-text">SeanBot.</span></a>
+                    <i class="ph ph-caret-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-item active">What's New</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="dropdown-toggle" id="themeToggle" title="Change theme accent">
+                    <div class="active-display"></div><i class="ph ph-caret-down"></i>
+                    <div class="dropdown-menu-content">
+                        <div class="theme-menu-caption">Theme Accent</div>
+                        <div class="color-grid" id="colorGrid">
+                            <div class="accent-dot accent-dot--gold" data-accent="gold" title="Gold"></div>
+                            <div class="accent-dot accent-dot--amber" data-accent="amber" title="Amber"></div>
+                            <div class="accent-dot accent-dot--orange" data-accent="orange" title="Orange"></div>
+                            <div class="accent-dot accent-dot--rose" data-accent="rose" title="Rose"></div>
+                            <div class="accent-dot accent-dot--pink" data-accent="pink" title="Pink"></div>
+                            <div class="accent-dot accent-dot--purple" data-accent="purple" title="Purple"></div>
+                            <div class="accent-dot accent-dot--blurple" data-accent="blurple" title="Blurple"></div>
+                            <div class="accent-dot accent-dot--indigo" data-accent="indigo" title="Indigo"></div>
+                            <div class="accent-dot accent-dot--blue" data-accent="blue" title="Blue"></div>
+                            <div class="accent-dot accent-dot--cyan" data-accent="cyan" title="Cyan"></div>
+                            <div class="accent-dot accent-dot--teal" data-accent="teal" title="Teal"></div>
+                            <div class="accent-dot accent-dot--emerald" data-accent="emerald" title="Emerald"></div>
+                            <div class="accent-dot accent-dot--green" data-accent="green" title="Green"></div>
+                            <div class="accent-dot accent-dot--lime" data-accent="lime" title="Lime"></div>
+                        </div>
+                        <div class="theme-menu-subtitle">Palette</div>
+                        <div class="palette-options" role="radiogroup" aria-label="Theme palette">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content content--feature">
+            <div class="section-head page-lead page-lead--wide">
+                <h1 class="docs-page-heading">What's new</h1>
+                <p class="docs-page-subtitle">The latest changes to SeanBot, newest first. Each entry links to the guide or page that covers the work.</p>
+            </div>
+
+            <!-- data-release is read by scripts/check_release_notes.py. A module key here
+                 says this entry is the release note for it; a slash command root covers
+                 every subcommand below it, and a right-click label is matched whole. -->
+            <div class="updates-list">
+                <article class="glass-card update-entry" data-release='{"modules": ["emoji_management", "emoji_analytics"], "commands": ["/emoji"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">11 November 2026</span>
+                        <span class="update-tag">Emoji Manager</span>
+                    </div>
+                    <h2>Never Used, and a library that stays in order</h2>
+                    <p>The Emoji Manager now lists custom emojis with no recorded uses and lets an administrator select and delete them in one pass. An emoji younger than seven days, locked to a role, named by an alias, managed by an app, or missing an upload date is marked and left out of the selection. The bot rechecks those rules against the live server before deleting anything.</p>
+                    <p>The library also keeps its own order now: drag a tile to set the order used here and in the emoji picker, or sort by uses or name for a moment. Usage counts follow the emoji id, so a rename no longer resets its history.</p>
+                    <p><a href="docs.html#emojis">Read the Emoji Manager guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["presence"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">11 November 2026</span>
+                        <span class="update-tag">Presence</span>
+                    </div>
+                    <h2>Presence, from the live board to the weeks behind it</h2>
+                    <p>Presence is now four tabs: <strong>Right now</strong>, <strong>Insights</strong>, <strong>Week history</strong> and <strong>Watch list</strong>. The live board keeps the per-member clock and the recent changes. Insights adds hours online in your timezone, the shape of the week, the members who spend the most time online, what the server plays and the split between desktop, mobile and web. Week history keeps the weeks after they end.</p>
+                    <p>A raid-time hint reads the last four weeks and waits for four hours of tracked time before it names a day, so one quiet evening cannot look like a pattern.</p>
+                    <p><a href="docs.html#presence">Read the Presence guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["logging"], "commands": ["/log"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">9 November 2026</span>
+                        <span class="update-tag">Logging</span>
+                    </div>
+                    <h2>Watch one member's presence</h2>
+                    <p>Presence watching follows one member instead of the whole server. A state change posts the old and new state, the activity and a timestamp. The list is saved and survives a restart, which reports the move it slept through instead of adopting the new state silently.</p>
+                    <p>New members can be followed automatically for one to thirty days, with the earliest deadline giving way first. Naming an automatic entry with <code>/log watch_presence</code> promotes it to a watch that lasts until you remove it.</p>
+                    <p><a href="docs.html#logging">Read the Logging guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["custom_bot"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">9 November 2026</span>
+                        <span class="update-tag">Custom Bot</span>
+                    </div>
+                    <h2>A name and picture for this server</h2>
+                    <p>Custom Bot Manager gives SeanBot its own nickname and server avatar without changing the bot anywhere else. Save a square image up to 512 KB, reset both with one button, and leave the rotating activity to the bot.</p>
+                    <p><a href="docs.html#custom_bot">Read the Custom Bot Manager guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["config_health", "config_history", "role_sweep", "permission_audit"], "commands": ["/serveradmin bulkrole"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">6 November 2026</span>
+                        <span class="update-tag">Server safety</span>
+                    </div>
+                    <h2>Config Health, Config History, Bulk Role Changes and Permission Audit</h2>
+                    <p>Four administrator pages arrived together. <strong>Config Health</strong> finds channels and roles that no longer resolve, and repairs a whole area with an undo record. <strong>Config History</strong> keeps up to 20 copies of the settings document and shows a restore one setting at a time. <strong>Bulk Role Changes</strong> previews a role add or remove for a filtered set, then changes at most 500 members in one run. <strong>Permission Audit</strong> reports who holds Administrator, what @everyone grants and which roles sit out of reach, with fixes for an Administrator role and a dangerous @everyone grant.</p>
+                    <p><a href="docs.html#config_tools">Read the server safety guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["votemute"], "commands": ["/votemute"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">5 November 2026</span>
+                        <span class="update-tag">Moderation</span>
+                    </div>
+                    <h2>Vote Mutes</h2>
+                    <p>The server can vote to time a member out. A trigger emoji or <code>/votemute start</code> opens a card; members sign with the vote emoji, and the threshold is the larger of a floor and a share of eligible members present. Repeat votes climb a mute ladder, and voter, starter and immune roles decide who may sign, who may open a vote and who can never be the target. The dashboard and <code>/votemute settings</code> read the same record, and the audit can be exported as a CSV file.</p>
+                    <p><a href="docs.html#votemute">Read the Vote Mutes guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["raids"], "commands": ["/raid"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">4 November 2026</span>
+                        <span class="update-tag">Raids</span>
+                    </div>
+                    <h2>Attendance and weekly signups</h2>
+                    <p>Raid boards gained attendance for a run that has happened, a repeat schedule that can skip a week, and a stats view of who keeps turning up. The raids guide covers the full flow, from the planner to the finished roster.</p>
+                    <p><a href="docs.html#raids">Read the Raid and Event Organizer guide</a></p>
+                </article>
+
+                <article class="glass-card update-entry" data-release='{"modules": ["stats"], "commands": ["/stats", "/serveradmin bulkrole", "/emoji"]}'>
+                    <div class="update-meta">
+                        <span class="update-date">November 2026</span>
+                        <span class="update-tag">Smaller changes</span>
+                    </div>
+                    <h2>Also in this pass</h2>
+                    <ul>
+                        <li><code>/stats digest</code> posts a weekly activity summary with trends and the members who led each.</li>
+                        <li><code>/serveradmin bulkrole</code> previews a bulk role change in Discord before it runs.</li>
+                        <li><code>/emoji purge_dead</code> takes the inactivity window in days, with a minimum of seven.</li>
+                        <li>Emoji Analytics keeps a renamed emoji's history in one row, and keeps the record a deleted emoji earned.</li>
+                    </ul>
+                    <p><a href="docs.html#stats">Read the Server Statistics guide</a></p>
+                </article>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <div>&copy; 2026 SeanBot. All rights reserved.</div>
+            <div class="page-footer-links"><a href="tos.html">Terms & Privacy</a><a href="cookies.html">Cookie Policy</a></div>
+        </footer>
+    </div>
+</body>
+</html>

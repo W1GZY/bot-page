@@ -65,7 +65,7 @@ const docsData = [
         "id": "core",
         "icon": "ph-layout",
         "title": "Dashboard, Modules & Staff Access",
-        "subtitle": "The module switches, who can see the dashboard, and the first place to look when a command will not answer.",
+        "subtitle": "Where the module switches live, who can see a page, and what to check when a command will not answer.",
         "content": [
             {
                 "type": "heading",
@@ -73,7 +73,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Every switch is per server. Most modules start on; Last Message tracking, Staff List and Verification start off. Turning one off hides its dashboard page and blocks its protected actions, but keeps its settings for later."
+                "text": "Each switch applies to one server. Most modules start on; Last Message tracking, Staff List and Verification start off. Turning one off hides its dashboard page and blocks its protected actions, but keeps its settings for later."
             },
             {
                 "type": "list",
@@ -744,7 +744,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/serveradmin modules` shows what is on. `/serveradmin module` changes one. Commands also cover roles, member roles, channels, moderator lists and posting a message as SeanBot. They are for quick fixes when opening the dashboard is slower than typing."
+                "text": "`/serveradmin modules` shows what is on. `/serveradmin module` changes one. Commands also cover roles, member roles, bulk role changes, channels, moderator lists and posting a message as SeanBot. They are for quick fixes when opening the dashboard is slower than typing."
             },
             {
                 "type": "commands",
@@ -773,6 +773,10 @@ const docsData = [
                     {
                         "cmd": "/serveradmin memberrole [member] [role] [action]",
                         "desc": "Add, remove, or toggle a member role."
+                    },
+                    {
+                        "cmd": "/serveradmin bulkrole [action] [role] [source] [include_bots]",
+                        "desc": "Preview, then add or remove one role for every member a filter names."
                     },
                     {
                         "cmd": "/serveradmin editchannel [channel]",
@@ -1133,7 +1137,7 @@ const docsData = [
         "content": [
             {
                 "type": "text",
-                "text": "Each warning keeps its reason, the staff member and the date. A warning list is something you can read back in a review, not a message buried in a channel."
+                "text": "Each warning keeps its reason, the staff member and the date. You can read the list back in a review instead of hunting through channel history."
             },
             {
                 "type": "steps",
@@ -1188,6 +1192,125 @@ const docsData = [
         ]
     },
     {
+        "id": "votemute",
+        "icon": "ph-hammer",
+        "title": "Vote Mutes",
+        "subtitle": "Let the server vote to time a member out, and set the numbers a vote runs on.",
+        "content": [
+            {
+                "type": "text",
+                "text": "A member starts a vote with the trigger emoji on a card, or with `/votemute start`. The bot posts a vote card and members add the vote emoji to sign. The target cannot sign their own card, and each member gets one signature. When the window closes, enough signatures time the target out."
+            },
+            {
+                "type": "text",
+                "text": "The number needed is the larger of the configured floor and the share of eligible members present. Eligible means online, not a bot, and allowed to vote. The mute length follows a ladder: a target with no recent vote mute gets the first rung, and repeat votes inside 24 hours move one rung up. Past the last rung the length stays there."
+            },
+            {
+                "type": "text",
+                "text": "Voter roles may sign, and an empty list lets everyone sign. Starter roles may open a vote, and an empty list lets everyone open one. Immune roles can never be the target, which is where staff roles belong. Cards, results and mutes can post to a log channel of their own."
+            },
+            {
+                "type": "heading",
+                "text": "Set it up"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Open **Vote Mutes** and switch the feature on.",
+                    "Set the floor, the share of eligible members present, the vote window, the cooldown and the ladder.",
+                    "Pick voter, starter and immune roles.",
+                    "Run one vote on a staff account, then cancel it, before the server needs the feature."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The dashboard saves the same settings document as `/votemute settings`, so either surface changes the other. A vote record names who signed and when; `/votemute audit` opens it privately, and `/votemute export` sends the same rows as a CSV file."
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/votemute start [member] [mode] [reason]",
+                        "desc": "Open a text or voice vote mute."
+                    },
+                    {
+                        "cmd": "/votemute",
+                        "desc": "Show open votes and when the next one may start."
+                    },
+                    {
+                        "cmd": "/votemute cancel [member]",
+                        "desc": "Cancel an open vote."
+                    },
+                    {
+                        "cmd": "/votemute history [member]",
+                        "desc": "Read recent vote mutes, newest first."
+                    },
+                    {
+                        "cmd": "/votemute audit [vote_id]",
+                        "desc": "Read a vote's ballot record privately."
+                    },
+                    {
+                        "cmd": "/votemute export [query]",
+                        "desc": "Send the vote audit as a private CSV file."
+                    },
+                    {
+                        "cmd": "/votemute settings",
+                        "desc": "Show every vote mute setting."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "config_tools",
+        "icon": "ph-heartbeat",
+        "title": "Config Health, History & Server Safety",
+        "subtitle": "Check broken references, keep a copy of the settings, change one role in bulk, and audit who holds Administrator.",
+        "content": [
+            {
+                "type": "text",
+                "text": "Four administrator pages keep the server's settings from drifting silently. All four are dashboard pages; none needs a command to open."
+            },
+            {
+                "type": "heading",
+                "text": "Config Health"
+            },
+            {
+                "type": "text",
+                "text": "Config Health reads every channel and role a feature points at, then lists the references that no longer resolve or that the bot cannot see. Each area has its own card: open the page that owns the setting, or repair the whole area at once. A repair points every broken reference in that area at one replacement channel or role. The bot records what each setting pointed at before it changes, so Config History can put that back."
+            },
+            {
+                "type": "heading",
+                "text": "Config History"
+            },
+            {
+                "type": "text",
+                "text": "Config History stores a copy of the whole settings document: every module's saved channels, roles and switches, and nothing about messages, logs or members. Give a copy a label before a bulk change. Restoring a copy shows what would change, one setting per row, before anything is written. A server keeps 20 snapshots; the oldest is dropped first. A Config Health repair writes its own undo record, which can be restored once."
+            },
+            {
+                "type": "heading",
+                "text": "Bulk Role Changes"
+            },
+            {
+                "type": "text",
+                "text": "Bulk Role Changes adds or removes one role for every member a filter names. Pick the role, an optional role that members must already hold, and whether bot accounts count. **Preview** shows exactly who would change; **Run it** is the only button that writes. One run changes at most 500 members and refuses outright when more match, so narrow the filter instead of running it twice. The plan is rebuilt at confirm time, a single failure does not stop the rest, and roles above the bot's own role are marked out of reach. Every run is recorded in the page's history and the server's log channel, with who ran it."
+            },
+            {
+                "type": "heading",
+                "text": "Permission Audit"
+            },
+            {
+                "type": "text",
+                "text": "Permission Audit reports who holds Administrator directly or through a role, what @everyone grants, and which roles sit out of reach. Findings are grouped by severity. Two fixes are offered where the bot can carry them out: move an Administrator role off its members, or remove a dangerous grant from @everyone. Each fix previews the change before it is applied, and the audit keeps a record of recent fixes."
+            },
+            {
+                "type": "text",
+                "text": "The four pages are administrator-only. Server Access cannot grant them to another role, because each one can change settings for the whole server. `/serveradmin bulkrole` opens the same preview for a bulk role change from Discord."
+            }
+        ]
+    },
+    {
         "id": "logging",
         "icon": "ph-file-text",
         "title": "Audit Logs & Quarantine, Server Logs",
@@ -1199,7 +1322,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Soundboard sounds that are added, edited or deleted are logged with the person who changed them. Members who sign up for or leave a scheduled event are logged too, and so are changes to who can use an app command."
+                "text": "Soundboard sounds that are added, edited or deleted are logged with the person who changed them. Members who sign up for or leave a scheduled event are logged. So are changes to who can use an app command."
             },
             {
                 "type": "heading",
@@ -1226,9 +1349,53 @@ const docsData = [
                 "text": "Make one harmless dashboard change and run one test command. If nothing lands, check that the module is on and the channel is not muted in Log Config."
             },
             {
+                "type": "heading",
+                "text": "Follow one message or member"
+            },
+            {
+                "type": "text",
+                "text": "A watched message keeps its reaction events after it leaves Discord's cache, which is useful for a pinned announcement or a poll people react to for days. A watched member gets a post for each presence change, with the state before and after, the activity they were showing and a timestamp. Both lists are opt-in and saved, so a restart keeps them; a restart also reports the presence moves it slept through instead of adopting them silently."
+            },
+            {
+                "type": "text",
+                "text": "Automatic watching can follow a channel's newest pins and starboard posts, or every new member for a set number of days. Both automatic sources are off by default, so an upgrade never starts watching a server that did not ask."
+            },
+            {
                 "type": "commands",
                 "title": "Commands",
                 "items": [
+                    {
+                        "cmd": "/log watch_reaction [message]",
+                        "desc": "Keep logging reactions on one message, even after it leaves the cache."
+                    },
+                    {
+                        "cmd": "/log unwatch_reaction [message]",
+                        "desc": "Stop watching one message for reaction logging."
+                    },
+                    {
+                        "cmd": "/log watch_reaction_list",
+                        "desc": "List the messages watched for reactions."
+                    },
+                    {
+                        "cmd": "/log watch_reaction_auto [scope]",
+                        "desc": "Follow pins, starboard posts, both, or turn automatic watching off."
+                    },
+                    {
+                        "cmd": "/log watch_presence [member]",
+                        "desc": "Log one member's presence changes."
+                    },
+                    {
+                        "cmd": "/log unwatch_presence [member]",
+                        "desc": "Stop logging one member's presence changes."
+                    },
+                    {
+                        "cmd": "/log watch_presence_list",
+                        "desc": "List the members watched for presence changes."
+                    },
+                    {
+                        "cmd": "/log watch_presence_auto [scope] [days]",
+                        "desc": "Follow new members for 1 to 30 days, or turn the rule off."
+                    },
                     {
                         "cmd": "/log webhook [url] [type]",
                         "desc": "Set a webhook for audit events and send a test through it."
@@ -1291,7 +1458,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "warning",
                 "title": "Not a message archive",
-                "text": "If a report needs the words, use Discord search or a transcript. This page answers one question: when did this person last speak?"
+                "text": "If a report needs the words, use Discord search or a transcript. This only records when the member last spoke."
             },
             {
                 "type": "text",
@@ -1351,7 +1518,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Appeals are reviewed on the **Ban Appeals** page. The Appeals & Suggestions guide covers that side."
+                "text": "Review appeals on the **Ban Appeals** page. The Appeals & Suggestions guide has the rest."
             },
             {
                 "type": "commands",
@@ -1488,7 +1655,7 @@ const docsData = [
         "id": "invites",
         "icon": "ph-link-simple",
         "title": "Invite Links",
-        "subtitle": "Create an invite, attach a reward, and see who actually arrived through it.",
+        "subtitle": "Create an invite, attach a reward, and see who came through it.",
         "content": [
             {
                 "type": "steps",
@@ -1725,7 +1892,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "`/timezone suggest-set` offers a zone and waits for the member to approve it. `/timezone admin-set` is the direct version."
+                "text": "`/timezone suggest-set` suggests a zone and waits for the member to approve it. `/timezone admin-set` is the direct version."
             },
             {
                 "type": "text",
@@ -1916,7 +2083,7 @@ const docsData = [
                 "type": "callout",
                 "variant": "tip",
                 "title": "Nothing posts until you say so",
-                "text": "The panel builds a raid, it does not announce one. **Publish raid** is the only button that posts, and **Cancel** closes without posting or saving a draft."
+                "text": "The panel builds a raid; it does not announce one. **Publish raid** is the only button that posts, and **Cancel** closes without posting or saving a draft."
             },
             {
                 "type": "heading",
@@ -1953,7 +2120,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The class sheet keeps its own flow, because it is a different thing: a list of slots somebody claims rather than a plan with seat limits. `/raid wizard101 signup` asks what is running, the date, the duration and the host, and takes up to twelve roles in one field, comma-separated, where a pipe starts a group: `Tank: Bear, Ice | Healer: Life`."
+                "text": "The class sheet works differently: it is a list of slots people claim, not a plan with seat limits. `/raid wizard101 signup` asks what is running, the date, the duration and the host, and takes up to twelve roles in one field, comma-separated, where a pipe starts a group: `Tank: Bear, Ice | Healer: Life`."
             },
             {
                 "type": "text",
@@ -2131,7 +2298,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Save a question and its answers as a template on the **Poll Manager** page. For a weekly schedule, `/raidpoll` offers the last one posted and moves the dates on by whole weeks. A closed poll also carries **Repost** and **Finalize Roster**."
+                "text": "Save a question and its answers as a template on the **Poll Manager** page. For a weekly schedule, `/raidpoll` starts from the last one posted and moves the dates on by whole weeks. A closed poll also carries **Repost** and **Finalize Roster**."
             },
             {
                 "type": "callout",
@@ -2416,6 +2583,302 @@ const docsData = [
         ]
     },
     {
+        "id": "birthdays",
+        "icon": "ph-cake",
+        "title": "Birthdays",
+        "subtitle": "Members save the month and day, and one post a day celebrates everyone whose birthday it is.",
+        "content": [
+            {
+                "type": "text",
+                "text": "Members save their own date with `/community birthday set` - month and day only, never a year. Nobody can set a date for someone else, and the year is not stored, so a birthday does not reveal an age."
+            },
+            {
+                "type": "heading",
+                "text": "Where celebrations post"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Turn on **Birthdays** in **Module Settings**.",
+                    "Open **Birthdays** and choose the celebration channel, or run `/community birthday channel [channel]`. The channel command needs Administrator.",
+                    "Give SeanBot Send Messages and Embed Links in that channel.",
+                    "Run `/community birthday upcoming` to check the saved dates before the first celebration."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The bot checks every configured server once per UTC day and posts one embed listing everyone whose birthday it is. Without a channel, celebrations are off and the saved dates are kept."
+            },
+            {
+                "type": "heading",
+                "text": "Coming up"
+            },
+            {
+                "type": "text",
+                "text": "`/community birthday upcoming` defaults to 14 days and accepts 1 to 60. The dashboard shows the next 30 days. February 29 is skipped in a year without a leap day instead of being moved to February 28."
+            },
+            {
+                "type": "callout",
+                "variant": "tip",
+                "title": "The Embed Builder has a birthday trigger too",
+                "text": "That trigger sends an embed you wrote. This module posts the built-in celebration. Use either or both; they do not conflict."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "A member can replace a saved date with `/community birthday set` or remove it with `/community birthday remove`.",
+                    "Turning the module off stops the daily post but keeps the saved dates and channel. Switch it back on to resume.",
+                    "The command's `days` window is capped at 60, so a request for a longer look is shortened rather than refused."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/community birthday set [month] [day]",
+                        "desc": "Save your birthday, month and day only."
+                    },
+                    {
+                        "cmd": "/community birthday remove",
+                        "desc": "Forget your saved birthday."
+                    },
+                    {
+                        "cmd": "/community birthday channel [channel]",
+                        "desc": "Set where celebrations post, or check the current channel."
+                    },
+                    {
+                        "cmd": "/community birthday upcoming [days]",
+                        "desc": "List birthdays in the next 1 to 60 days."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "introductions",
+        "icon": "ph-hand-waving",
+        "title": "Introductions",
+        "subtitle": "Every hello in the intro channel gets its own thread and a short checklist for staff.",
+        "content": [
+            {
+                "type": "text",
+                "text": "Point SeanBot at a channel where new members introduce themselves. A top-level message in that channel starts a thread named after the member, with a reply that repeats your prompt and gives staff a short checklist."
+            },
+            {
+                "type": "heading",
+                "text": "Set it up"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Turn on **Introductions** in **Module Settings**.",
+                    "Open **Introductions** and choose the channel, or run `/community intros setup [channel]`.",
+                    "Add an optional prompt, up to 500 characters. Without one, the bot uses its own short prompt.",
+                    "Give SeanBot Create Public Threads, Send Messages and Send Messages in Threads in that channel.",
+                    "Post a test intro and confirm the thread and checklist arrive."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "Changing the prompt on its own leaves the channel alone. `/community intros view` shows the current setup; `/community intros disable` or the dashboard's **Turn off** button stops threading new intros and leaves the channel and its messages where they are."
+            },
+            {
+                "type": "heading",
+                "text": "What staff see"
+            },
+            {
+                "type": "text",
+                "text": "The thread holds the intro and the checklist, so welcomes stay together instead of scrolling away. The checklist asks staff to say hello, point the member at the rules and hand out any newcomer role. It does not add a role on its own."
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "Each top-level message gets a thread",
+                "text": "Replies inside the thread stay there and do not start another. Messages from bots are ignored."
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Turning the module off stops new threads; existing threads stay.",
+                    "The dashboard saves the channel and the prompt separately, so changing one does not wipe the other.",
+                    "Setup, prompt and disable need Administrator; view is open to everyone.",
+                    "Threads archive after seven days without activity, Discord's default window."
+                ]
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/community intros setup [channel] [prompt]",
+                        "desc": "Choose the intro channel and an optional prompt."
+                    },
+                    {
+                        "cmd": "/community intros prompt [text]",
+                        "desc": "Change the prompt without touching the channel."
+                    },
+                    {
+                        "cmd": "/community intros view",
+                        "desc": "Show the current channel and prompt."
+                    },
+                    {
+                        "cmd": "/community intros disable",
+                        "desc": "Stop threading new introductions."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "kudos",
+        "icon": "ph-star",
+        "title": "Kudos",
+        "subtitle": "Members thank each other, with a small daily limit and a leaderboard that stays about people, not message counts.",
+        "content": [
+            {
+                "type": "text",
+                "text": "Kudos is a light reputation system. A member thanks someone with `/community kudos give`, optionally with a reason. SeanBot counts what each member received and gave; it does not store the messages around it."
+            },
+            {
+                "type": "heading",
+                "text": "How the limit works"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "Each member can give three kudos per UTC day. The count resets at midnight UTC, not in each member's timezone.",
+                    "A member cannot thank themselves or a bot.",
+                    "The reason is optional and capped at 200 characters; longer text is trimmed."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "`/community kudos stats` shows received and given totals for you or a member you name. `/community kudos leaderboard` shows the top ten by received, and the dashboard's **Kudos** page shows the same board."
+            },
+            {
+                "type": "heading",
+                "text": "What is stored"
+            },
+            {
+                "type": "text",
+                "text": "Only totals and the daily count behind the limit are kept. No message text, channel or reason history is stored, so the page can show who was thanked and how often without keeping the conversation."
+            },
+            {
+                "type": "callout",
+                "variant": "note",
+                "title": "There is nothing to configure",
+                "text": "The limits are fixed. Turn the module off in **Module Settings** if the server stops using it; totals are kept and return with the module."
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/community kudos give [member] [reason]",
+                        "desc": "Thank a member, with an optional reason."
+                    },
+                    {
+                        "cmd": "/community kudos stats [member]",
+                        "desc": "Show received and given totals."
+                    },
+                    {
+                        "cmd": "/community kudos leaderboard",
+                        "desc": "Show the top ten members by kudos received."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "selfroles",
+        "icon": "ph-mask-happy",
+        "title": "Self-Role Menus",
+        "subtitle": "Reaction menus that let members claim and drop their own roles, without a moderator in the loop.",
+        "content": [
+            {
+                "type": "text",
+                "text": "A self-role menu is a posted message with one reaction per role. A member adds the reaction to claim the role and removes it to drop the role. Staff build the menu in Discord; the dashboard shows every menu and can delete one."
+            },
+            {
+                "type": "heading",
+                "text": "Build a menu"
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Turn on **Self-Role Menus** in **Module Settings**.",
+                    "Run `/community selfroles create [name]`, for example `games`.",
+                    "Add each row with `/community selfroles add [menu] [emoji] [role]`. Repeat for every role in the menu.",
+                    "Give SeanBot Send Messages and Add Reactions in the channel where the menu will live.",
+                    "Post it with `/community selfroles post [menu] [channel]`.",
+                    "React once as a member to confirm the role arrives, then remove the reaction and confirm it leaves."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "Menus hold up to 20 rows. A row's role must sit below SeanBot's highest role, and @everyone and bot-managed roles are refused. Adding an emoji that is already in the menu replaces that row, so one reaction maps to one role."
+            },
+            {
+                "type": "heading",
+                "text": "What members see"
+            },
+            {
+                "type": "text",
+                "text": "The posted embed lists each emoji and role. Members react to claim; removing the reaction drops the role. Custom emoji and keycap numbers are matched by identity, so a renamed emoji or a different keycap still works."
+            },
+            {
+                "type": "heading",
+                "text": "Change or remove a menu"
+            },
+            {
+                "type": "list",
+                "items": [
+                    "`/community selfroles list` shows each menu, its rows and whether it is live. The create, add, remove, post and delete commands need Administrator; list is open to everyone.",
+                    "`/community selfroles remove [menu] [emoji]` drops one row. `/community selfroles delete [menu]` deletes the menu; messages already posted stay but stop granting roles.",
+                    "The dashboard's **Self-Role Menus** page lists menus with their rows and can delete one; it does not edit rows.",
+                    "Use the Embed Builder's **Reaction Roles** for rich embeds with buttons or several roles from one choice. These menus act only on their own posted messages, so the two do not compete."
+                ]
+            },
+            {
+                "type": "callout",
+                "variant": "warning",
+                "title": "Role order matters",
+                "text": "SeanBot needs Manage Roles, and its role must be above every role a menu hands out. Without that, reactions do nothing and the member gets no error."
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/community selfroles create [name]",
+                        "desc": "Start a new menu."
+                    },
+                    {
+                        "cmd": "/community selfroles add [menu] [emoji] [role]",
+                        "desc": "Add one emoji-to-role row."
+                    },
+                    {
+                        "cmd": "/community selfroles remove [menu] [emoji]",
+                        "desc": "Remove one row."
+                    },
+                    {
+                        "cmd": "/community selfroles post [menu] [channel]",
+                        "desc": "Post the menu as a reaction message."
+                    },
+                    {
+                        "cmd": "/community selfroles list",
+                        "desc": "Show every menu, its rows and whether it is live."
+                    },
+                    {
+                        "cmd": "/community selfroles delete [menu]",
+                        "desc": "Delete a menu. Posted messages stay."
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "activitytracker",
         "icon": "ph-chart-line-up",
         "title": "Member Activity",
@@ -2565,7 +3028,7 @@ const docsData = [
         "id": "emoji_analytics",
         "icon": "ph-chart-bar",
         "title": "Emoji Analytics",
-        "subtitle": "See which emoji people actually use, and which ones nobody has touched in a year.",
+        "subtitle": "See which emoji people use, and which ones nobody has touched in a year.",
         "content": [
             {
                 "type": "text",
@@ -2574,6 +3037,10 @@ const docsData = [
             {
                 "type": "text",
                 "text": "Weekly, Monthly and All Time sit above the rankings. Start with All Time, so a quiet week does not make the set look unused. Channels muted in **Log Config** are excluded."
+            },
+            {
+                "type": "text",
+                "text": "Counts follow the emoji id, not the name a message happened to carry. Renaming a custom emoji keeps its history in one row, and an emoji deleted from the server keeps the record it earned in the ranking."
             },
             {
                 "type": "text",
@@ -2611,7 +3078,7 @@ const docsData = [
         "content": [
             {
                 "type": "text",
-                "text": "A member uploads an image with a name and a reason. Staff review the queue from Discord or **Emoji Manager**, and approving it creates the emoji and logs who approved it."
+                "text": "A member uploads an image with a name and a reason. Staff review the queue from Discord or **Emoji Manager**, and approving it creates the emoji and logs who approved it. The same page is the library: every custom emoji, its all-time typed uses, its role locks and aliases, and the order the picker follows."
             },
             {
                 "type": "steps",
@@ -2622,12 +3089,24 @@ const docsData = [
                 ]
             },
             {
+                "type": "heading",
+                "text": "Keep the library tidy"
+            },
+            {
+                "type": "text",
+                "text": "Drag a tile to set the order used on this page and by the emoji picker, or use the sort menu to rank by uses or name for a moment. A saved order is a preference, not a delete: an emoji outside it still appears after the ones you placed."
+            },
+            {
                 "type": "text",
                 "text": "Uploads can be PNG, JPEG, GIF or WebP, up to 256 KiB. A suggestion survives Discord's expired attachment link, so staff can still approve it days later."
             },
             {
                 "type": "text",
-                "text": "`/emoji lock` controls who may use an emoji, and `/emoji purge_dead` clears the ones nobody has used."
+                "text": "The **Never Used** section lists custom emojis with no recorded uses. It suggests, it does not delete. An emoji uploaded in the last seven days, locked to a role, named by an alias, managed by an app, or without a readable upload date is shown with a badge and cannot be ticked. Select the rest, confirm once, and the bot checks those same rules against the live server before it deletes anything. One pass deletes at most 50 emojis, a failed safety check deletes none, and the delete is permanent."
+            },
+            {
+                "type": "text",
+                "text": "Usage counts are kept by emoji id, so a rename does not reset an emoji's history and a stale page cannot make a used emoji look unused. `/emoji purge_dead` remains the Discord-side version for a quick clean-up, and `/emoji lock` controls who may use an emoji."
             },
             {
                 "type": "commands",
@@ -2674,8 +3153,8 @@ const docsData = [
                         "desc": "List the emoji nobody has used lately."
                     },
                     {
-                        "cmd": "/emoji purge_dead",
-                        "desc": "Delete unused emoji to free slots."
+                        "cmd": "/emoji purge_dead [days]",
+                        "desc": "Delete custom emoji unused for at least 7 days to free slots."
                     }
                 ]
             }
@@ -2693,7 +3172,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Turn on Emoji Analytics if you want history, and give SeanBot Read Message History and Add Reactions in the channels involved. Use a ping only when you actually want to notify people."
+                "text": "Turn on Emoji Analytics if you want history, and give SeanBot Read Message History and Add Reactions in the channels involved. Use a ping only when you want to notify people."
             },
             {
                 "type": "text",
@@ -2759,7 +3238,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Roles from a reaction are set up on the embed itself. Add an emoji-to-role mapping in the **Embed Builder**, publish, and members who react get the role; removing the reaction takes it away. This guide covers the ping side."
+                "text": "Roles from a reaction are set up on the embed itself. Add an emoji-to-role mapping in the **Embed Builder**, publish, and members who react get the role; removing the reaction takes it away. Reaction Pings handles the notification side."
             },
             {
                 "type": "commands",
@@ -3190,6 +3669,10 @@ const docsData = [
                 "text": "Counters rename on Discord's schedule, so a change can take a few minutes to appear."
             },
             {
+                "type": "text",
+                "text": "`/stats digest` posts the week's activity summary: messages and voice time, how they compare with the week before, and the members who led each. It is a snapshot for the channel, not a scheduled report."
+            },
+            {
                 "type": "commands",
                 "title": "Commands",
                 "items": [
@@ -3208,8 +3691,37 @@ const docsData = [
                     {
                         "cmd": "/stats overview",
                         "desc": "See this server's numbers."
+                    },
+                    {
+                        "cmd": "/stats digest",
+                        "desc": "Post the weekly activity summary with trends and top members."
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "id": "custom_bot",
+        "icon": "ph-robot",
+        "title": "Custom Bot Manager",
+        "subtitle": "Give the bot its own name and picture in one server, without changing it anywhere else.",
+        "content": [
+            {
+                "type": "text",
+                "text": "Custom Bot Manager changes how SeanBot appears in this server. The name and picture are per server: the bot keeps its own identity everywhere else, and its commands and permissions do not change."
+            },
+            {
+                "type": "steps",
+                "items": [
+                    "Open **Custom Bot Manager** in the dashboard.",
+                    "Type a nickname up to 32 characters. Leave it empty to use the bot's own name.",
+                    "Paste a square image link for the server picture: PNG, JPEG, GIF or WebP, at least 128x128 and up to 512 KB.",
+                    "Use **Reset name and picture** to put both back."
+                ]
+            },
+            {
+                "type": "text",
+                "text": "The bot needs Change Nickname, and its role must sit above the members it should appear above. Discord limits picture changes, so save one you mean to keep. The activity line rotates on its own; there is no setting for it."
             }
         ]
     },
@@ -3607,21 +4119,63 @@ const docsData = [
         "id": "presence",
         "icon": "ph-pulse",
         "title": "Presence",
-        "subtitle": "A live view of who is online, idle or away right now, and for how long.",
+        "subtitle": "A live board, the server's quiet hours, the weeks behind them, and the members you watch.",
         "content": [
             {
                 "type": "text",
-                "text": "The Presence page shows each member's status as Online, Idle, Do Not Disturb or Offline. It also times how long each account has been in that state, so you can see who has been idle all evening."
+                "text": "The Presence page has four tabs. **Right now** is the live board: members grouped by Online, Idle, Do Not Disturb and Offline, with the time each has spent in that state, what they are doing, the clients they are on, and their last recorded change. Filter by state, search by name or ID, and show bots when you need to see them."
+            },
+            {
+                "type": "text",
+                "text": "**Insights** adds the history behind the board: time online by hour in your own timezone, this week day by day, earlier weeks, the members who spend the most time online, what the server plays, and the split between desktop, mobile and web. **Play mix, week by week** compares the titles a week earned, so a change in what people play reads as a shape rather than one long table."
+            },
+            {
+                "type": "text",
+                "text": "**Week history** lists the weeks the bot has kept, newest first, with the current week marked. Jump to a month or load older weeks without leaving the page. A week is kept after it ends; the live board does not wait for that."
+            },
+            {
+                "type": "text",
+                "text": "The **best time for a weekly raid** hint reads the last four weeks of the busy-hours grid. It names a day only when that window holds four hours of tracked time; before that it says how much it has and how much it still needs, so one quiet evening cannot look like a pattern."
             },
             {
                 "type": "callout",
                 "variant": "note",
-                "title": "Live, not stored",
-                "text": "Presence is a live view, not a setting. SeanBot reads it from Discord and never saves it, so there is nothing to turn on."
+                "title": "Presence is stored, message text is not",
+                "text": "SeanBot records when members are online, idle, in do not disturb or offline, and rolls those clocks into weeks. Bots are skipped, and no message content is stored. The page is administrator-only; Server Access cannot grant it to another role, the same rule that keeps Dashboard Logs to admins."
+            },
+            {
+                "type": "heading",
+                "text": "Watch one member"
             },
             {
                 "type": "text",
-                "text": "The page is for administrators only. Server Access cannot grant it to another role, the same rule that keeps Dashboard Logs to admins."
+                "text": "Watching a member posts each state change to the log channel with the previous state, the new one, the activity they were showing and a timestamp. It is opt-in: `/log watch_presence` adds one member, `/log unwatch_presence` removes them, and `/log watch_presence_list` shows the list. A watch list is capped and saved, so it survives a restart; a restart reports the move it slept through instead of adopting the new state silently."
+            },
+            {
+                "type": "text",
+                "text": "**New members** on the Watch list tab follows every joiner for a set number of days, from one to thirty. The same rule is set from Discord with `/log watch_presence_auto joiners [days]` or turned off with `/log watch_presence_auto off`. Automatic entries have their own cap of twenty-five and let the earliest deadline go first; naming an automatically watched member with `/log watch_presence` promotes them to a watch that lasts until you remove it."
+            },
+            {
+                "type": "commands",
+                "title": "Commands",
+                "items": [
+                    {
+                        "cmd": "/log watch_presence [member]",
+                        "desc": "Log one member's presence changes."
+                    },
+                    {
+                        "cmd": "/log unwatch_presence [member]",
+                        "desc": "Stop logging one member's presence changes."
+                    },
+                    {
+                        "cmd": "/log watch_presence_list",
+                        "desc": "List the members watched for presence changes."
+                    },
+                    {
+                        "cmd": "/log watch_presence_auto [scope] [days]",
+                        "desc": "Follow new members for 1 to 30 days, or turn the rule off."
+                    }
+                ]
             }
         ]
     },
@@ -3779,7 +4333,7 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "Approving a ban appeal mirrors the unban across the network, but only to servers where the member actually has an active ban. A failed action is reported and does not stop the others."
+                "text": "Approving a ban appeal mirrors the unban across the network, but only to servers where the member still has an active ban. A failed action is reported and does not stop the others."
             },
             {
                 "type": "commands",

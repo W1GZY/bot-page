@@ -43,7 +43,7 @@
 
     <!-- The Documentation and Commands tabs live on this page, so docs.css
  loads here too, ahead of index.css and its layout overrides. -->
-    <link rel="stylesheet" href="docs.css?v=1ffe85b3">
+    <link rel="stylesheet" href="docs.css?v=6fe0177f">
     <link rel="stylesheet" href="index.css?v=feba13b5">
 
     <script type="application/ld+json">
@@ -100,6 +100,7 @@
             <a href="features.html" class="site-nav-link"><i class="ph ph-stack"></i><span>Features</span></a>
             <a href="#docs" class="site-nav-link" data-tab="docs"><i class="ph ph-book-open"></i><span>Documentation</span></a>
             <a href="#commands" class="site-nav-link" data-tab="commands"><i class="ph ph-terminal-window"></i><span>Commands</span></a>
+            <a href="whats-new.html" class="site-nav-link"><i class="ph ph-sparkle"></i><span>What's New</span></a>
             <a href="invite.html" target="_blank" rel="noopener" class="site-nav-mobile-invite"><i class="ph-fill ph-discord-logo"></i> Invite SeanBot</a>
         </nav>
 
@@ -843,7 +844,7 @@
                 <div>
                     <h2 class="section-title">Which emoji are still earning their slot</h2>
                     <p class="section-lede">
-                        See which custom emoji and reactions people actually use, over a week, a month or all time. When the server's emoji slots fill up, this is where you find out what to keep.
+                        See which custom emoji and reactions people use, over a week, a month or all time. When the server's emoji slots fill up, this is where you find out what to keep.
                     </p>
                     <p class="is-flush">
                         <button class="feature-guide-link" type="button" onclick="switchTab('docs'); setTimeout(()=>activateDoc('emojis'), 50);" data-tab="docs">Emoji commands and dashboard views <i class="ph-bold ph-arrow-right"></i></button>
@@ -1214,6 +1215,42 @@
                         <p class="feature-desc">Set up forms for staff roles, event spots, or anything else. Members apply with one button, and you approve or deny each request in one place.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="birthdays community &amp; events members save their month and day, and one post a day celebrates everyone whose birthday it is. cake" data-doc="birthdays">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-cake"></i></span>
+                            <span class="module-category">Community &amp; Events</span>
+                        </div>
+                        <h3 class="feature-title">Birthdays</h3>
+                        <p class="feature-desc">Members save a month and day, and one post celebrates everyone whose birthday it is. No year is asked for or stored.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="introductions community &amp; events every top-level hello in the intro channel gets its own thread and a short staff checklist." data-doc="introductions">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-hand-waving"></i></span>
+                            <span class="module-category">Community &amp; Events</span>
+                        </div>
+                        <h3 class="feature-title">Introductions</h3>
+                        <p class="feature-desc">Every hello in the intro channel gets its own thread and a checklist reply, so welcomes stay together.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="kudos community &amp; events members thank each other with a small daily limit and a leaderboard, without storing message text." data-doc="kudos">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-star"></i></span>
+                            <span class="module-category">Community &amp; Events</span>
+                        </div>
+                        <h3 class="feature-title">Kudos</h3>
+                        <p class="feature-desc">Members thank each other with a daily limit and a leaderboard. Only the counts are kept, never the messages.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="self roles selfroles community &amp; events reaction menus that let members claim and drop their own roles, without a moderator in the loop." data-doc="selfroles">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-mask-happy"></i></span>
+                            <span class="module-category">Community &amp; Events</span>
+                        </div>
+                        <h3 class="feature-title">Self-Role Menus</h3>
+                        <p class="feature-desc">Reaction menus members use to claim and drop their own roles. Staff build them where members meet them.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
                     <article class="glass-card feature-card module-card featured" data-category="security" data-search="audit logs &amp; quarantine moderation &amp; safety track deleted messages, message edits, member joins and leaves, role changes, and isolate untrusted accounts using member quarantine. jails jail" data-doc="logging">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-notebook"></i></span>
@@ -1221,6 +1258,33 @@
                         </div>
                         <h3 class="feature-title">Audit Logs &amp; Quarantine</h3>
                         <p class="feature-desc">Edits, deletions, joins, leaves and role changes go to the channel you choose. Quarantine parks a suspicious account in a role it cannot talk past, with no ban needed.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="security" data-search="server logs viewer server logs server_logs moderation &amp; safety read a dated, searchable archive of everything the bot logged, without scrolling back through discord. audit logs" data-doc="logging">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-activity"></i></span>
+                            <span class="module-category">Moderation &amp; Safety</span>
+                        </div>
+                        <h3 class="feature-title">Server Logs Viewer</h3>
+                        <p class="feature-desc">A dated, searchable copy of everything the bot logged, so staff can read back last Tuesday without scrolling Discord.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="security" data-search="ban relay &amp; mod feed ban relay mod feed ban_relay moderation &amp; safety dm appeal instructions to members banned by another bot and keep third-party kicks and timeouts in one feed. audit log" data-doc="ban_relay">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-paper-plane-tilt"></i></span>
+                            <span class="module-category">Moderation &amp; Safety</span>
+                        </div>
+                        <h3 class="feature-title">Ban Relay &amp; Mod Feed</h3>
+                        <p class="feature-desc">Another bot bans someone, and SeanBot DMs the appeal steps and records the action in one feed. Kicks and timeouts from other bots land there too.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="security" data-search="global enforcement global_enforcement moderation &amp; safety apply one timeout, kick or ban across every server you manage, with each server recording its own result." data-doc="global_enforcement">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-globe-hemisphere-west"></i></span>
+                            <span class="module-category">Moderation &amp; Safety</span>
+                        </div>
+                        <h3 class="feature-title">Global Enforcement</h3>
+                        <p class="feature-desc">Apply one timeout, kick or ban across every server in the network you choose. An approved appeal mirrors the unban to servers where the ban still stands.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="auto-pin &amp; sticky messages community &amp; events auto-pin channel announcements when vote thresholds are met and keep active sticky messages at the bottom of busy chat channels." data-doc="autopin">
@@ -1299,6 +1363,15 @@
                         <p class="feature-desc">Share chosen channels with servers you trust, so one community does not have to live in five different Discords.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
+                    <article class="glass-card feature-card module-card" data-category="community" data-search="bot support feed bot support botsupport bot_support community &amp; events keep a record of giveaways run by giveawaybot or carl-bot as entries arrive, when they end and if they are rerolled. giveaway" data-doc="giveaway_feed">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-robot"></i></span>
+                            <span class="module-category">Community &amp; Events</span>
+                        </div>
+                        <h3 class="feature-title">Bot Support Feed</h3>
+                        <p class="feature-desc">A paper trail for giveaways run on GiveawayBot or Carl-bot, from the first entry to the winner and any reroll. The other bot still runs the giveaway; SeanBot keeps the record.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
                     <article class="glass-card feature-card module-card" data-category="utility" data-search="ghost ping alerts utility &amp; automation detect ghost pings when deleted messages mention users, and automatically sweep unwanted or spam reaction emojis from messages. sweeper" data-doc="antiping">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-ghost"></i></span>
@@ -1335,6 +1408,24 @@
                         <p class="feature-desc">Messages and voice time per member, with active and inactive roles handed out on a schedule you set.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="voice analytics voicestats utility &amp; automation see how long members spend in voice, their longest sessions and when each channel is busiest." data-doc="voicestats">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-waveform"></i></span>
+                            <span class="module-category">Utilities &amp; Automation</span>
+                        </div>
+                        <h3 class="feature-title">Voice Analytics</h3>
+                        <p class="feature-desc">Time in voice per member, the longest unbroken sessions, and weekly charts of when each channel is busy. Private channels can be left out.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="last message lookup last message last_messages utility &amp; automation see when a member last spoke, with a jump link, without storing what they said." data-doc="last_message_lookup">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-clock-counter-clockwise"></i></span>
+                            <span class="module-category">Utilities &amp; Automation</span>
+                        </div>
+                        <h3 class="feature-title">Last Message Lookup</h3>
+                        <p class="feature-desc">Find when a member last spoke, in which channel, with a jump link. Only the newest message per member is kept, and the text is never stored.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="moderation moderation &amp; safety execute kicks, bans, unbans, softbans, timeouts, nickname edits, and channel locks with automatic logging and moderator action records." data-doc="moderation">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-gavel"></i></span>
@@ -1353,6 +1444,42 @@
                         <p class="feature-desc">Pick a text prefix such as ! to use the supported prefix commands alongside slash commands.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="config health config_health utility &amp; automation find channels and roles that features still point at but no longer resolve, then repair one area at a time." data-doc="config_tools">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-heartbeat"></i></span>
+                            <span class="module-category">Utilities &amp; Automation</span>
+                        </div>
+                        <h3 class="feature-title">Config Health</h3>
+                        <p class="feature-desc">Lists every channel and role a feature points at that no longer resolves, or that the bot cannot see. Repair one area at a time, with an undo record.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="config history config_history utility &amp; automation snapshot the whole settings document, compare a restore one setting at a time, and keep the last 20 copies." data-doc="config_tools">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-clock-counter-clockwise"></i></span>
+                            <span class="module-category">Utilities &amp; Automation</span>
+                        </div>
+                        <h3 class="feature-title">Config History</h3>
+                        <p class="feature-desc">Snapshots of the whole settings document, with a labelled restore that shows one setting per row before writing. The server keeps the 20 most recent.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="bulk role changes bulk role role_sweep utility &amp; automation add or remove one role for every member a filter matches, behind a preview, with every run recorded." data-doc="config_tools">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-users-three"></i></span>
+                            <span class="module-category">Utilities &amp; Automation</span>
+                        </div>
+                        <h3 class="feature-title">Bulk Role Changes</h3>
+                        <p class="feature-desc">Add or remove one role for every member a filter names. Preview shows who would change, one run caps at 500 members, and every run is recorded.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="utility" data-search="custom bot manager custom bot custom_bot utility &amp; automation give the bot its own nickname and picture in this server without changing it anywhere else." data-doc="custom_bot">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-robot"></i></span>
+                            <span class="module-category">Utilities &amp; Automation</span>
+                        </div>
+                        <h3 class="feature-title">Custom Bot Manager</h3>
+                        <p class="feature-desc">Give the bot its own nickname and picture in this server. The name and image stay local; commands, permissions and the bot's identity elsewhere do not change.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
                     <article class="glass-card feature-card module-card" data-category="security" data-search="public reports moderation &amp; safety give trusted community members a structured way to review reports and help make responsible decisions." data-doc="reports">
                         <div class="module-card-header">
                             <span class="module-icon"><i class="ph-duotone ph-users-three"></i></span>
@@ -1360,6 +1487,15 @@
                         </div>
                         <h3 class="feature-title">Public Reports</h3>
                         <p class="feature-desc">Trusted members can review and vote on reports. Protected roles are excluded from the public-report workflow.</p>
+                        <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
+                    </article>
+                    <article class="glass-card feature-card module-card" data-category="security" data-search="permission audit permission_audit moderation &amp; safety see who holds administrator, what everyone grants and which roles sit above the bot, with two safe fixes." data-doc="config_tools">
+                        <div class="module-card-header">
+                            <span class="module-icon"><i class="ph-duotone ph-shield-warning"></i></span>
+                            <span class="module-category">Moderation &amp; Safety</span>
+                        </div>
+                        <h3 class="feature-title">Permission Audit</h3>
+                        <p class="feature-desc">Reports who holds Administrator directly or through a role, what @everyone grants and which roles sit out of reach. The two fixes it can make both preview first.</p>
                         <span class="module-learn-more">View documentation <i class="ph-bold ph-arrow-right"></i></span>
                     </article>
                     <article class="glass-card feature-card module-card" data-category="community" data-search="quote maker community &amp; events turn memorable discord messages into shareable quote cards for your community's amusement." data-doc="fun">
@@ -1736,7 +1872,7 @@
 
 <!-- docs-data.js (~210 KB) and commands-data.js (~100 KB) load only when their
  tab is first opened, so a visit that stays on the overview downloads neither. -->
-<script src="index.js?v=a6579908"></script>
+<script src="index.js?v=a479af72"></script>
 
 </body>
 </html>

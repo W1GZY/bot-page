@@ -172,7 +172,7 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=ad71beea', loaded: docsDataLoaded },
+        docs: { src: 'docs-data.js?v=081de6ea', loaded: docsDataLoaded },
         commands: { src: 'commands-data.js?v=8af64b3a', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
@@ -658,6 +658,8 @@ function initDocsPage() {
             'reports': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'invites': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'honeypot': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'votemute': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
+            'config_tools': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'antiping': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'global_enforcement': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
             'presence': { cat: 'security', title: 'Moderation & Safety', icon: 'ph-shield-check' },
@@ -674,6 +676,10 @@ function initDocsPage() {
             'tickets': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'loa': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'applications': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'birthdays': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'introductions': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'kudos': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
+            'selfroles': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'staff_list': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaways': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
             'giveaway_feed': { cat: 'community', title: 'Community & Events', icon: 'ph-users-three' },
@@ -693,6 +699,7 @@ function initDocsPage() {
             'thread_watcher': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'voicestats': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'stats': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
+            'custom_bot': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'returning_roles': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'federation': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
             'roshambo': { cat: 'utility', title: 'Utilities & Automation', icon: 'ph-gear-six' },
