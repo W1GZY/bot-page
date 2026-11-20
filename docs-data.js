@@ -4135,7 +4135,11 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The **best time for a weekly raid** hint reads the last four weeks of the busy-hours grid. It names a day only when that window holds four hours of tracked time; before that it says how much it has and how much it still needs, so one quiet evening cannot look like a pattern."
+                "text": "The **best time for a weekly raid** hint reads the newest four weeks that have finished in the busy-hours grid. It names a day only when that window holds four hours of tracked time; before that it says how much it has and how much it still needs, so one quiet evening cannot look like a pattern. The current week stays tickable in the Raid times tab but is not counted by default."
+            },
+            {
+                "type": "text",
+                "text": "The **Raid times** tab compares the weeks you pick. Each week's pill names its busiest hour and that hour's share of the week's tracked time, so a strong week is visible before you tick it. Load earlier weeks to reach the archive behind the newest quarter."
             },
             {
                 "type": "callout",

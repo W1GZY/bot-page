@@ -172,7 +172,7 @@
         commands: initCommandsPage
     };
     const tabDataSources = {
-        docs: { src: 'docs-data.js?v=081de6ea', loaded: docsDataLoaded },
+        docs: { src: 'docs-data.js?v=eecd8b4a', loaded: docsDataLoaded },
         commands: { src: 'commands-data.js?v=8af64b3a', loaded: commandsDataLoaded }
     };
     const tabBuilds = new Map();
@@ -2403,6 +2403,14 @@ let ticketStep = 1;
         if (!document.getElementById('liveServerCount')) return;
 
         const cardCount = document.getElementById('liveServerCount');
+
+        // A failed lookup is not a number, so the card leaves rather than
+        // showing an error where a count belongs.
+        function hideUnavailableStat() {
+            const card = cardCount.closest('.stat-card');
+            if (card) card.hidden = true;
+        }
+
         const cached = readCachedStats();
         if (cached) {
             applyStats(cached);
@@ -2417,19 +2425,19 @@ let ticketStep = 1;
                 headers: { Accept: 'application/json' }
             });
             if (!response.ok) {
-                cardCount.textContent = 'Unavailable';
+                hideUnavailableStat();
                 return;
             }
             const stats = await response.json();
             if (!stats || !Number.isSafeInteger(stats.servers) || stats.servers < 0) {
-                cardCount.textContent = 'Unavailable';
+                hideUnavailableStat();
                 return;
             }
             applyStats(stats);
             writeCachedStats(stats);
         } catch (error) {
             // Offline, CORS-blocked or unreachable: do not leave a false count.
-            cardCount.textContent = 'Unavailable';
+            hideUnavailableStat();
         } finally {
             clearTimeout(timeout);
         }
