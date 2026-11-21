@@ -4135,11 +4135,11 @@ const docsData = [
             },
             {
                 "type": "text",
-                "text": "The **best time for a weekly raid** hint reads the newest four weeks that have finished in the busy-hours grid. It names a day only when that window holds four hours of tracked time; before that it says how much it has and how much it still needs, so one quiet evening cannot look like a pattern. The current week stays tickable in the Raid times tab but is not counted by default."
+                "text": "The **best time for a weekly raid** hint ranks the newest finished weeks that kept member counts (falling back to tracked time) by **how many different members were available in each hour** - online or idle, with Do Not Disturb excluded, rather than time spent - so a member who looked in for ten minutes still counts as someone who was around, and a lone member staying all evening cannot outrank an hour four people shared. Beside each evening it names the **average headcount** and the time that hour holds on an average week; the time is context, not the score. A window reaching back to a week tracked before the counts existed ranks on tracked time instead and has no headcount to show. Counts are versioned by the rule that produced them: a week stored under the older any-presence rule is excluded from availability and ranked on time, and a week still live when the rule changes is marked mixed and excluded too; both keep their time grids. It names a day only when the window holds four hours of tracked time; before that it says how much it has and how much it still needs, so one quiet evening cannot look like a pattern. The current week stays tickable in the Raid times tab but is not counted by default."
             },
             {
                 "type": "text",
-                "text": "The **Raid times** tab compares the weeks you pick. Each week's pill names its busiest hour and that hour's share of the week's tracked time, so a strong week is visible before you tick it. Load earlier weeks to reach the archive behind the newest quarter."
+                "text": "The **Raid times** tab compares the weeks you pick. Each week's pill names its busiest hour and, when that week has member counts, how many people were usually there; an older week without counts shows its share of tracked time instead. Each evening shows the average headcount and the time that hour holds on an average week; the headcount is the measure, and the time is context. Finished weeks that kept member counts start ticked in preference to newer weeks that did not. Load earlier weeks to reach the archive behind the newest quarter."
             },
             {
                 "type": "callout",
